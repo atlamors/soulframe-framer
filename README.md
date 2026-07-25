@@ -16,13 +16,16 @@ database, CMS, or runtime dependency on Google Sheets.
 - Physical Defense, Magick Defense, and Stability Increase totals
 - Character Courage, Spirit, and Grace controls
 - Per-item base and scaling breakdowns
+- Verified virtue requirements with met/unmet status
+- Base-only results when an armor requirement is unmet
+- Complete Avakot-backed armor artwork
 - Browser persistence
 - Versioned, URL-encoded shareable builds
 - Responsive loadout presentation
 - Six source-workbook stat and virtue icons
 
-Armor requirements, tempers, configurable attunements, joinery, weapons, and
-other gear slots are not calculated yet.
+Tempers, configurable attunements, joinery, weapons, and other gear slots are
+not calculated yet.
 
 ## Requirements
 
@@ -83,7 +86,8 @@ Final defense =
 ```
 
 The source workbook truncates each individual defense increase before the three
-defenses are totaled. Armor requirements are intentionally excluded.
+defenses are totaled. Base defenses always apply; if an item's Avakot-sourced
+virtue requirement is unmet, the complete scaling term is suppressed.
 
 ## Updating the catalogue
 
@@ -127,10 +131,10 @@ Verified:
 - Courage, Spirit, and Grace pips for each defense
 - Scaling coefficient and truncation order
 - Six reference icons
+- Armor virtue requirements
 
 Not yet sourced:
 
-- Armor requirements
 - Temper definitions and rolls
 - Configurable attunement rules
 - Joinery
@@ -145,14 +149,24 @@ npm run import:armor-images
 The importer maps the rendered armour index to the canonical local catalogue,
 requires exact coverage, resolves each original image through the MediaWiki API,
 and records dimensions, MIME type, SHA-1, source page, and attribution metadata
-in `src/data/armor-images.generated.json`. The UI still uses labelled abstract
-placeholders until the image presentation is integrated.
+in `src/data/armor-images.generated.json`. The generated artwork is presented
+throughout the equipped slots, catalogue, and candidate comparison.
+
+Verified virtue requirements are imported separately from Avakot's public
+`Module:Data/Armour` source:
+
+```bash
+npm run import:armor-requirements
+```
+
+The runtime catalogue merges those thresholds with the workbook-derived defense
+data. Base defenses always apply; attunement scaling is included only when the
+equipped build meets the item's requirement.
 
 See [docs/data-migration.md](docs/data-migration.md) for the detailed source
 mapping and remaining ambiguities.
 
 ## Recommended next milestone
 
-Add authoritative item artwork and the approved in-game loadout reference, then
-expand the data model only after verified rules are available for the next
-equipment system.
+Add the approved in-game loadout reference, then expand the data model only
+after verified rules are available for the next equipment system.

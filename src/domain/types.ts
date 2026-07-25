@@ -17,10 +17,16 @@ export interface DefenseProfile {
   pips: VirtueValues;
 }
 
+export interface ArmorRequirement {
+  virtue: VirtueId;
+  value: number;
+}
+
 export interface ArmorItem {
   id: string;
   name: string;
   slot: ArmorSlot;
+  requirement: ArmorRequirement | null;
   defenses: Record<DefenseId, DefenseProfile>;
   provenance: {
     status: "verified";
@@ -44,6 +50,7 @@ export interface DefenseContribution {
 
 export interface ItemContribution {
   itemId: string;
+  requirementMet: boolean;
   defenses: Record<DefenseId, DefenseContribution>;
   total: number;
 }

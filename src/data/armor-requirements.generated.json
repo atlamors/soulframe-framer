@@ -1,0 +1,602 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-25T21:22:34.659Z",
+  "source": {
+    "name": "The Soulframe Wiki Armour data module",
+    "publisher": "Avakot",
+    "pageUrl": "https://wiki.avakot.org/Module:Data/Armour",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 45247,
+    "revisionTimestamp": "2026-06-15T19:09:05Z"
+  },
+  "coverage": {
+    "catalogueItems": 72,
+    "matchedItems": 72,
+    "itemsWithRequirement": 49,
+    "itemsWithoutRequirement": 23,
+    "missingItems": []
+  },
+  "items": [
+    {
+      "itemId": "helm-arbearers-mask",
+      "name": "Arbearer's Mask",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "courage",
+        "value": 19
+      }
+    },
+    {
+      "itemId": "helm-armet-of-orengall",
+      "name": "Armet of Orengall",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "grace",
+        "value": 17
+      }
+    },
+    {
+      "itemId": "helm-bascinet-of-the-mendicant-king",
+      "name": "Bascinet of The Mendicant King",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "courage",
+        "value": 17
+      }
+    },
+    {
+      "itemId": "helm-brazen-lung",
+      "name": "Brazen Lung",
+      "slot": "helm",
+      "requirement": null
+    },
+    {
+      "itemId": "helm-circades-helm-of-deceit",
+      "name": "Circade's Helm of Deceit",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "courage",
+        "value": 11
+      }
+    },
+    {
+      "itemId": "helm-crone-cucurbita-mask",
+      "name": "Crone Cucurbita Mask",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 9
+      }
+    },
+    {
+      "itemId": "helm-duelo-ribbon",
+      "name": "Duelo Ribbon",
+      "slot": "helm",
+      "requirement": null
+    },
+    {
+      "itemId": "helm-forgetfire-visard",
+      "name": "Forgetfire Visard",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "courage",
+        "value": 9
+      }
+    },
+    {
+      "itemId": "helm-garrens-crown-of-grace",
+      "name": "Garren's Crown of Grace",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "grace",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "helm-great-helm-of-the-fire-king",
+      "name": "Great Helm of The Fire King",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "courage",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "helm-helmless",
+      "name": "Helmless",
+      "slot": "helm",
+      "requirement": null
+    },
+    {
+      "itemId": "helm-lil-zook-mask",
+      "name": "Lil' Zook Mask",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "courage",
+        "value": 9
+      }
+    },
+    {
+      "itemId": "helm-mestras-helm",
+      "name": "Mestra's Helm",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "grace",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "helm-mockery-ilk",
+      "name": "Mockery Ilk",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "grace",
+        "value": 17
+      }
+    },
+    {
+      "itemId": "helm-osceldas-diadem",
+      "name": "Oscelda's Diadem",
+      "slot": "helm",
+      "requirement": null
+    },
+    {
+      "itemId": "helm-pensives-bonnet",
+      "name": "Pensive's Bonnet",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 6
+      }
+    },
+    {
+      "itemId": "helm-poppa-pepo-mask",
+      "name": "Poppa Pepo Mask",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "grace",
+        "value": 9
+      }
+    },
+    {
+      "itemId": "helm-regents-veil",
+      "name": "Regent's Veil",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "courage",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "helm-sirins-shroud",
+      "name": "Sirin's Shroud",
+      "slot": "helm",
+      "requirement": null
+    },
+    {
+      "itemId": "helm-steelsingers-circlet",
+      "name": "Steelsinger's Circlet",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 11
+      }
+    },
+    {
+      "itemId": "helm-tempest-visard",
+      "name": "Tempest Visard",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "grace",
+        "value": 7
+      }
+    },
+    {
+      "itemId": "helm-tethrens-cap",
+      "name": "Tethren's Cap",
+      "slot": "helm",
+      "requirement": null
+    },
+    {
+      "itemId": "helm-thawtide-grimguise",
+      "name": "Thawtide Grimguise",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "courage",
+        "value": 13
+      }
+    },
+    {
+      "itemId": "helm-thawtide-meltcap",
+      "name": "Thawtide Meltcap",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "grace",
+        "value": 14
+      }
+    },
+    {
+      "itemId": "helm-wazzards-bycoket",
+      "name": "Wazzard's Bycoket",
+      "slot": "helm",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 19
+      }
+    },
+    {
+      "itemId": "helm-wyld-osceldas-exhalt",
+      "name": "Wyld Oscelda's Exhalt",
+      "slot": "helm",
+      "requirement": null
+    },
+    {
+      "itemId": "helm-wyld-sirins-feignmask",
+      "name": "Wyld Sirin's Feignmask",
+      "slot": "helm",
+      "requirement": null
+    },
+    {
+      "itemId": "helm-wyld-tethrens-hornhelm",
+      "name": "Wyld Tethren's Hornhelm",
+      "slot": "helm",
+      "requirement": null
+    },
+    {
+      "itemId": "cuirass-arbearers-pauncher",
+      "name": "Arbearer's Pauncher",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "courage",
+        "value": 19
+      }
+    },
+    {
+      "itemId": "cuirass-circades-gutguard",
+      "name": "Circade's Gutguard",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "courage",
+        "value": 11
+      }
+    },
+    {
+      "itemId": "cuirass-fire-kings-plackart",
+      "name": "Fire King's Plackart",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "courage",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "cuirass-forgetfire-leathers",
+      "name": "Forgetfire Leathers",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "courage",
+        "value": 9
+      }
+    },
+    {
+      "itemId": "cuirass-laid-bare",
+      "name": "Laid Bare",
+      "slot": "cuirass",
+      "requirement": null
+    },
+    {
+      "itemId": "cuirass-mendicant-kings-suit-of-rancor",
+      "name": "Mendicant King's Suit of Rancor",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "courage",
+        "value": 17
+      }
+    },
+    {
+      "itemId": "cuirass-mestras-furbelow",
+      "name": "Mestra's Furbelow",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "grace",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "cuirass-mockery-binds",
+      "name": "Mockery Binds",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "grace",
+        "value": 17
+      }
+    },
+    {
+      "itemId": "cuirass-orengalls-cuirass",
+      "name": "Orengall's Cuirass",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "grace",
+        "value": 17
+      }
+    },
+    {
+      "itemId": "cuirass-osceldas-blues",
+      "name": "Oscelda's Blues",
+      "slot": "cuirass",
+      "requirement": null
+    },
+    {
+      "itemId": "cuirass-pensives-cloak",
+      "name": "Pensive's Cloak",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 6
+      }
+    },
+    {
+      "itemId": "cuirass-regalia-of-garren-rood",
+      "name": "Regalia of Garren Rood",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "grace",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "cuirass-regents-shell",
+      "name": "Regent's Shell",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "courage",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "cuirass-sirins-plainhide",
+      "name": "Sirin's Plainhide",
+      "slot": "cuirass",
+      "requirement": null
+    },
+    {
+      "itemId": "cuirass-steelsingers-stithywicks",
+      "name": "Steelsinger's Stithywicks",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 11
+      }
+    },
+    {
+      "itemId": "cuirass-tempest-leathers",
+      "name": "Tempest Leathers",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "grace",
+        "value": 7
+      }
+    },
+    {
+      "itemId": "cuirass-tethrens-tunic",
+      "name": "Tethren's Tunic",
+      "slot": "cuirass",
+      "requirement": null
+    },
+    {
+      "itemId": "cuirass-thawtide-thermals",
+      "name": "Thawtide Thermals",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "grace",
+        "value": 14
+      }
+    },
+    {
+      "itemId": "cuirass-wazzards-robes",
+      "name": "Wazzard's Robes",
+      "slot": "cuirass",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 19
+      }
+    },
+    {
+      "itemId": "cuirass-wyld-oscelda-pendelveil",
+      "name": "Wyld Oscelda Pendelveil",
+      "slot": "cuirass",
+      "requirement": null
+    },
+    {
+      "itemId": "cuirass-wyld-sirin-finery",
+      "name": "Wyld Sirin Finery",
+      "slot": "cuirass",
+      "requirement": null
+    },
+    {
+      "itemId": "cuirass-wyld-tethren-solist-shield",
+      "name": "Wyld Tethren Solist Shield",
+      "slot": "cuirass",
+      "requirement": null
+    },
+    {
+      "itemId": "leggings-arbearers-braes",
+      "name": "Arbearer's Braes",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "courage",
+        "value": 19
+      }
+    },
+    {
+      "itemId": "leggings-circades-greaves",
+      "name": "Circade's Greaves",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "courage",
+        "value": 11
+      }
+    },
+    {
+      "itemId": "leggings-fire-kings-kilt",
+      "name": "Fire King's Kilt",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "courage",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "leggings-forgetfire-braes",
+      "name": "Forgetfire Braes",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "courage",
+        "value": 9
+      }
+    },
+    {
+      "itemId": "leggings-forsaken-rags",
+      "name": "Forsaken Rags",
+      "slot": "leggings",
+      "requirement": null
+    },
+    {
+      "itemId": "leggings-garrens-cloven-hosen",
+      "name": "Garren's Cloven Hosen",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "grace",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "leggings-mendicant-kings-sabatons",
+      "name": "Mendicant King's Sabatons",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "courage",
+        "value": 17
+      }
+    },
+    {
+      "itemId": "leggings-mestras-breeches",
+      "name": "Mestra's Breeches",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "grace",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "leggings-mockery-douthrot",
+      "name": "Mockery Douthrot",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "grace",
+        "value": 17
+      }
+    },
+    {
+      "itemId": "leggings-orengalls-greaves",
+      "name": "Orengall's Greaves",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "grace",
+        "value": 17
+      }
+    },
+    {
+      "itemId": "leggings-osceldas-featherbinds",
+      "name": "Oscelda's Featherbinds",
+      "slot": "leggings",
+      "requirement": null
+    },
+    {
+      "itemId": "leggings-pensives-pantaloons",
+      "name": "Pensive's Pantaloons",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 6
+      }
+    },
+    {
+      "itemId": "leggings-regents-drapery",
+      "name": "Regent's Drapery",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "courage",
+        "value": 12
+      }
+    },
+    {
+      "itemId": "leggings-sirins-stalks",
+      "name": "Sirin's Stalks",
+      "slot": "leggings",
+      "requirement": null
+    },
+    {
+      "itemId": "leggings-steelsingers-shreds",
+      "name": "Steelsinger's Shreds",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 11
+      }
+    },
+    {
+      "itemId": "leggings-tempest-braes",
+      "name": "Tempest Braes",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "grace",
+        "value": 7
+      }
+    },
+    {
+      "itemId": "leggings-tethrens-roots",
+      "name": "Tethren's Roots",
+      "slot": "leggings",
+      "requirement": null
+    },
+    {
+      "itemId": "leggings-thawtide-shingles",
+      "name": "Thawtide Shingles",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "grace",
+        "value": 14
+      }
+    },
+    {
+      "itemId": "leggings-wazzards-trunks",
+      "name": "Wazzard's Trunks",
+      "slot": "leggings",
+      "requirement": {
+        "virtue": "spirit",
+        "value": 19
+      }
+    },
+    {
+      "itemId": "leggings-wyld-oscelda-beltolls",
+      "name": "Wyld Oscelda Beltolls",
+      "slot": "leggings",
+      "requirement": null
+    },
+    {
+      "itemId": "leggings-wyld-sirin-wevetbelt",
+      "name": "Wyld Sirin Wevetbelt",
+      "slot": "leggings",
+      "requirement": null
+    },
+    {
+      "itemId": "leggings-wyld-tethren-flamefoot",
+      "name": "Wyld Tethren Flamefoot",
+      "slot": "leggings",
+      "requirement": null
+    }
+  ]
+}

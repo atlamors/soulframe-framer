@@ -12,6 +12,16 @@ import {
 
 export const ARMOR_SCALE = 0.12;
 
+export function meetsArmorRequirement(
+  item: ArmorItem,
+  virtues: VirtueValues,
+) {
+  return (
+    item.requirement === null ||
+    virtues[item.requirement.virtue] >= item.requirement.value
+  );
+}
+
 export function calculateDefense(
   base: number,
   pips: VirtueValues,
@@ -29,19 +39,24 @@ export function calculateItemContribution(
   item: ArmorItem,
   virtues: VirtueValues,
 ): ItemContribution {
+  const requirementMet = meetsArmorRequirement(item, virtues);
+  const effectiveVirtues = requirementMet
+    ? virtues
+    : { courage: 0, spirit: 0, grace: 0 };
   const defenses = Object.fromEntries(
     DEFENSE_IDS.map((defense) => [
       defense,
       calculateDefense(
         item.defenses[defense].base,
         item.defenses[defense].pips,
-        virtues,
+        effectiveVirtues,
       ),
     ]),
   ) as Record<DefenseId, DefenseContribution>;
 
   return {
     itemId: item.id,
+    requirementMet,
     defenses,
     total: DEFENSE_IDS.reduce(
       (sum, defense) => sum + defenses[defense].total,
@@ -63,7 +78,13 @@ export function calculateBuild(
       warnings.push(`Unknown item id: ${itemId}`);
       return [];
     }
-    return [calculateItemContribution(item, build.virtues)];
+    const contribution = calculateItemContribution(item, build.virtues);
+    if (!contribution.requirementMet && item.requirement) {
+      warnings.push(
+        `${item.name} needs ${item.requirement.value} ${item.requirement.virtue}; attunement scaling is inactive.`,
+      );
+    }
+    return [contribution];
   });
 
   const defenses = Object.fromEntries(

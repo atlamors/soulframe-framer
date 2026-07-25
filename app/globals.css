@@ -2398,6 +2398,196 @@ body {
   font-size: 8px;
 }
 
+.requirement-badge {
+  --requirement-tone: var(--gold);
+  align-items: center;
+  align-self: flex-start;
+  border: 1px solid color-mix(in srgb, var(--requirement-tone) 42%, transparent);
+  color: var(--parchment);
+  display: inline-flex;
+  font-family: var(--font-inscription);
+  font-size: 8px;
+  gap: 4px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  min-height: 21px;
+  padding: 3px 5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.requirement-badge.tone-ember,
+.requirement-callout.tone-ember {
+  --requirement-tone: var(--ember);
+}
+
+.requirement-badge.tone-aether,
+.requirement-callout.tone-aether {
+  --requirement-tone: var(--aether);
+}
+
+.requirement-badge.tone-verdant,
+.requirement-callout.tone-verdant {
+  --requirement-tone: var(--verdant);
+}
+
+.requirement-badge img {
+  height: 14px;
+  object-fit: contain;
+  width: 14px;
+}
+
+.requirement-badge em {
+  color: var(--requirement-tone);
+  font-style: normal;
+  font-size: 7px;
+}
+
+.requirement-badge.requirement-unmet {
+  background: color-mix(in srgb, var(--requirement-tone) 12%, #17130f);
+  border-color: color-mix(in srgb, var(--requirement-tone) 68%, transparent);
+}
+
+.requirement-badge.requirement-unmet em {
+  color: #e2a472;
+}
+
+.requirement-badge.requirement-none {
+  border-color: rgba(198, 137, 45, 0.2);
+  color: var(--ink-faint);
+}
+
+.slot-copy .requirement-badge {
+  margin-top: 7px;
+}
+
+.item-list-side {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.item-list-side .requirement-badge {
+  align-self: flex-end;
+}
+
+.requirement-callout {
+  --requirement-tone: var(--gold);
+  align-items: center;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--requirement-tone) 12%, transparent),
+      transparent 68%
+    ),
+    rgba(31, 25, 20, 0.72);
+  border: 1px solid color-mix(in srgb, var(--requirement-tone) 38%, transparent);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto 1fr auto;
+  margin-top: 14px;
+  padding: 11px 13px;
+}
+
+.requirement-callout-mark {
+  align-items: center;
+  background: rgba(10, 8, 7, 0.45);
+  border: 1px solid color-mix(in srgb, var(--requirement-tone) 34%, transparent);
+  color: var(--gold);
+  display: flex;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.requirement-callout-mark img {
+  height: 25px;
+  object-fit: contain;
+  width: 25px;
+}
+
+.requirement-callout > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+.requirement-callout small,
+.requirement-callout b {
+  font-family: var(--font-inscription);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.requirement-callout small {
+  color: var(--ink-faint);
+  font-size: 8px;
+}
+
+.requirement-callout strong {
+  color: var(--parchment);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.requirement-callout em {
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-style: normal;
+  margin-top: 2px;
+}
+
+.requirement-callout b {
+  color: var(--requirement-tone);
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.requirement-callout.requirement-unmet {
+  border-color: color-mix(in srgb, var(--requirement-tone) 64%, transparent);
+}
+
+.requirement-callout.requirement-unmet b {
+  color: #e2a472;
+}
+
+.requirement-callout.requirement-none {
+  --requirement-tone: var(--gold);
+  opacity: 0.82;
+}
+
+.build-requirement-warning {
+  background: rgba(119, 62, 29, 0.16);
+  border: 1px solid rgba(210, 126, 66, 0.36);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 12px 0 4px;
+  padding: 10px 12px;
+}
+
+.build-requirement-warning strong {
+  color: #e2a472;
+  font-family: var(--font-inscription);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.build-requirement-warning span {
+  color: var(--ink-soft);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.footer a {
+  color: var(--gold);
+}
+
 .comparison-heading h3 {
   font-family: var(--font-inscription);
   letter-spacing: 0.05em;
@@ -2440,6 +2630,14 @@ body {
   }
 
   .app-shell::after {
+    display: none;
+  }
+
+  .requirement-callout {
+    grid-template-columns: auto 1fr;
+  }
+
+  .requirement-callout > b {
     display: none;
   }
 

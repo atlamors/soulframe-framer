@@ -24,6 +24,7 @@ describe("armor calculations", () => {
     expect(
       calculateItemContribution(item!, { courage: 28, spirit: 4, grace: 4 }),
     ).toMatchObject({
+      requirementMet: true,
       defenses: {
         physicalDefense: { total: 14 },
         magickDefense: { total: 4 },
@@ -37,7 +38,7 @@ describe("armor calculations", () => {
     const build: SoulframeBuild = {
       schemaVersion: 1,
       name: "Test",
-      virtues: { courage: 12, spirit: 12, grace: 12 },
+      virtues: { courage: 19, spirit: 12, grace: 12 },
       equipment: {
         helm: "helm-arbearers-mask",
         cuirass: "cuirass-arbearers-pauncher",
@@ -52,6 +53,36 @@ describe("armor calculations", () => {
         result.defenses.stabilityIncrease,
     );
     expect(result.warnings).toEqual([]);
+  });
+
+  it("applies base defenses but suppresses scaling when a requirement is unmet", () => {
+    const item = armorCatalogue.find((entry) => entry.id === "helm-arbearers-mask");
+    expect(item).toBeDefined();
+
+    expect(
+      calculateItemContribution(item!, { courage: 12, spirit: 12, grace: 12 }),
+    ).toMatchObject({
+      requirementMet: false,
+      defenses: {
+        physicalDefense: { base: 4, scaling: 0, total: 4 },
+        magickDefense: { base: 1, scaling: 0, total: 1 },
+        stabilityIncrease: { base: 2, scaling: 0, total: 2 },
+      },
+      total: 7,
+    });
+  });
+
+  it("reports equipped armor with unmet requirements", () => {
+    const build: SoulframeBuild = {
+      schemaVersion: 1,
+      name: "Unmet",
+      virtues: { courage: 12, spirit: 12, grace: 12 },
+      equipment: { helm: "helm-arbearers-mask" },
+    };
+
+    expect(calculateBuild(build, armorCatalogue).warnings).toEqual([
+      "Arbearer's Mask needs 19 courage; attunement scaling is inactive.",
+    ]);
   });
 
   it("reports unknown item ids without crashing", () => {

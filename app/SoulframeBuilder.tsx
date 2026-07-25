@@ -7,6 +7,7 @@ import { armorImageById } from "@/src/data/armor-images";
 import {
   calculateBuild,
   calculateItemContribution,
+  meetsArmorRequirement,
 } from "@/src/domain/calculation";
 import {
   BUILD_SCHEMA_VERSION,
@@ -159,15 +160,122 @@ function ArmorArtwork({
   );
 }
 
+function RequirementBadge({
+  item,
+  virtues,
+  compact = false,
+}: {
+  item: ArmorItem;
+  virtues: SoulframeBuild["virtues"];
+  compact?: boolean;
+}) {
+  const requirement = item.requirement;
+
+  if (!requirement) {
+    return (
+      <span className="requirement-badge requirement-none">
+        {compact ? "No req." : "No virtue requirement"}
+      </span>
+    );
+  }
+
+  const meta = virtueMeta[requirement.virtue];
+  const met = meetsArmorRequirement(item, virtues);
+
+  return (
+    <span
+      className={`requirement-badge tone-${meta.tone} ${
+        met ? "requirement-met" : "requirement-unmet"
+      }`}
+      title={`${requirement.value} ${meta.label} required — ${
+        met ? "met" : `${virtues[requirement.virtue]} current`
+      }`}
+    >
+      <Image
+        src={meta.icon}
+        alt=""
+        aria-hidden="true"
+        width={18}
+        height={18}
+        unoptimized
+      />
+      <span>{compact ? requirement.value : `${requirement.value} ${meta.label}`}</span>
+      <em>{met ? "Met" : "Unmet"}</em>
+    </span>
+  );
+}
+
+function RequirementCallout({
+  item,
+  virtues,
+}: {
+  item: ArmorItem;
+  virtues: SoulframeBuild["virtues"];
+}) {
+  const requirement = item.requirement;
+
+  if (!requirement) {
+    return (
+      <div className="requirement-callout requirement-none">
+        <span className="requirement-callout-mark" aria-hidden="true">
+          ◇
+        </span>
+        <span>
+          <small>Virtue requirement</small>
+          <strong>None</strong>
+          <em>Attunement scaling is always active.</em>
+        </span>
+      </div>
+    );
+  }
+
+  const meta = virtueMeta[requirement.virtue];
+  const current = virtues[requirement.virtue];
+  const met = meetsArmorRequirement(item, virtues);
+
+  return (
+    <div
+      className={`requirement-callout tone-${meta.tone} ${
+        met ? "requirement-met" : "requirement-unmet"
+      }`}
+    >
+      <span className="requirement-callout-mark">
+        <Image
+          src={meta.icon}
+          alt=""
+          aria-hidden="true"
+          width={30}
+          height={30}
+          unoptimized
+        />
+      </span>
+      <span>
+        <small>Virtue requirement</small>
+        <strong>
+          {requirement.value} {meta.label}
+        </strong>
+        <em>
+          {met
+            ? `Met at ${current}. Full attunement scaling is active.`
+            : `${current} / ${requirement.value}. Base defenses only until met.`}
+        </em>
+      </span>
+      <b>{met ? "Met" : "Unmet"}</b>
+    </div>
+  );
+}
+
 function EquipmentSlot({
   slot,
   item,
   contribution,
+  virtues,
   onOpen,
 }: {
   slot: ArmorSlot;
   item?: ArmorItem;
   contribution?: ItemContribution;
+  virtues: SoulframeBuild["virtues"];
   onOpen: () => void;
 }) {
   const meta = slotMeta[slot];
@@ -195,6 +303,9 @@ function EquipmentSlot({
             ? `${contribution.total} total defense`
             : "Choose armor"}
         </span>
+        {item ? (
+          <RequirementBadge item={item} virtues={virtues} compact />
+        ) : null}
       </span>
       <span className="slot-action" aria-hidden="true">
         Change <span>↗</span>
@@ -381,14 +492,17 @@ function ItemPicker({
                     <span>
                       <strong>{item.name}</strong>
                       <small>
-                        Base {itemBaseTotal(item)} · Scaled {result.total}
+                        Base {itemBaseTotal(item)} · Current {result.total}
                       </small>
                     </span>
-                    {item.id === currentItem?.id ? (
-                      <span className="equipped-chip">Equipped</span>
-                    ) : (
-                      <span className="item-list-total">{result.total}</span>
-                    )}
+                    <span className="item-list-side">
+                      <RequirementBadge item={item} virtues={build.virtues} compact />
+                      {item.id === currentItem?.id ? (
+                        <span className="equipped-chip">Equipped</span>
+                      ) : (
+                        <span className="item-list-total">{result.total}</span>
+                      )}
+                    </span>
                   </button>
                 );
               })}
@@ -445,6 +559,11 @@ function ItemPicker({
                     {currentItem ? `vs. ${currentItem.name}` : "Empty slot"}
                   </span>
                 </div>
+
+                <RequirementCallout
+                  item={candidate}
+                  virtues={build.virtues}
+                />
 
                 <ItemStatDetails
                   item={candidate}
@@ -527,6 +646,9 @@ export function SoulframeBuilder() {
     () => calculateBuild(build, armorCatalogue),
     [build],
   );
+  const unmetRequirementCount = calculation.items.filter(
+    (item) => !item.requirementMet,
+  ).length;
 
   useEffect(() => {
     let nextBuild: SoulframeBuild | undefined;
@@ -718,6 +840,7 @@ export function SoulframeBuilder() {
           <div className="formula-note">
             <span>Verified rule</span>
             <code>Base + INT(0.12 × weighted pips)</code>
+            <code>Requirement unmet → base defense only</code>
           </div>
         </div>
 
@@ -751,6 +874,7 @@ export function SoulframeBuilder() {
                 slot={slot}
                 item={item}
                 contribution={contribution}
+                virtues={build.virtues}
                 onOpen={() => setActiveSlot(slot)}
               />
             );
@@ -771,6 +895,16 @@ export function SoulframeBuilder() {
             <strong>{calculation.total}</strong>
             <small>Across {calculation.items.length} equipped pieces</small>
           </div>
+
+          {unmetRequirementCount > 0 ? (
+            <div className="build-requirement-warning" role="status">
+              <strong>
+                {unmetRequirementCount} requirement
+                {unmetRequirementCount === 1 ? "" : "s"} unmet
+              </strong>
+              <span>Those pieces currently contribute base defense only.</span>
+            </div>
+          ) : null}
 
           <div className="defense-list">
             {DEFENSE_IDS.map((defense) => (
@@ -832,11 +966,13 @@ export function SoulframeBuilder() {
 
       <footer className="footer">
         <span>
-          Data source: <strong>Soulframe Armor Scaling</strong>
+          Defense data: <strong>Soulframe Armor Scaling</strong>
         </span>
         <span>
-          Armor requirements are intentionally excluded. No unverified mechanics
-          are calculated.
+          Requirements and artwork:{" "}
+          <a href="https://wiki.avakot.org/Armour" target="_blank" rel="noreferrer">
+            The Soulframe Wiki ↗
+          </a>
         </span>
       </footer>
 

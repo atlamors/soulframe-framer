@@ -6,6 +6,8 @@
 - Spreadsheet ID: `1K-COIPAMp6EDDtZKP06L41WKm1BJV_ipCXLVtlrh8bw`
 - Tabs: `Helms`, `Cuirasses`, `Leggings`, and `Refs`
 - Imported rows begin at row 6 on each armor tab.
+- Requirements module: `https://wiki.avakot.org/Module:Data/Armour`
+- Requirements publisher: Avakot's `The Soulframe Wiki`
 
 The normalized catalogue contains 28 helms, 22 cuirasses, and 22 leggings.
 
@@ -57,13 +59,34 @@ The importer resolves their drawing relationships and anchor rows:
 
 They are written as ordinary PNG assets under `public/icons/`.
 
+## Virtue requirements
+
+The workbook does not contain armor requirements, so they are imported
+separately from Avakot's public `Module:Data/Armour` source. The importer matches
+all 72 entries back to the normalized catalogue by exact armor name and records
+the source revision with the generated data.
+
+Avakot's abbreviated thresholds map as follows:
+
+| Avakot value | Normalized requirement |
+| --- | --- |
+| `19 C` | `{ virtue: "courage", value: 19 }` |
+| `19 S` | `{ virtue: "spirit", value: 19 }` |
+| `19 G` | `{ virtue: "grace", value: 19 }` |
+| Blank or `nil` | `null` |
+
+The verified mechanic applies base defenses unconditionally. Attunement scaling
+is suppressed for an armor piece until its virtue threshold is met. The current
+manifest has 49 required pieces and 23 pieces without a requirement.
+
 ## Remaining source ambiguities
 
 - The workbook calls the C/S/G values attached to each defense “Attunement
   pips,” but it does not define selectable attunement configurations.
 - Courage, Spirit, and Grace are treated as character inputs. The workbook does
   not establish armor virtue contributions.
-- Armor requirements are explicitly excluded from the source calculations.
+- Armor requirements are excluded from the workbook and therefore sourced from
+  Avakot rather than inferred from the scaling sheet.
 - No item artwork, temper data, joinery data, acquisition data, or non-armor
   gear catalogue is present.
 
