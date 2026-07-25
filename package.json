@@ -12,6 +12,7 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "import:catalogue": "node scripts/import-catalogue.mjs",
+    "import:armor-images": "node scripts/import-armor-images.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
   "dependencies": {

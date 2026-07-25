@@ -130,15 +130,23 @@ Verified:
 
 Not yet sourced:
 
-- Item artwork
 - Armor requirements
 - Temper definitions and rolls
 - Configurable attunement rules
 - Joinery
 - Other gear categories
 
-Labelled abstract armor placeholders are used until an authoritative item-image
-source is available.
+The Avakot-backed artwork manifest is generated with:
+
+```bash
+npm run import:armor-images
+```
+
+The importer maps the rendered armour index to the canonical local catalogue,
+requires exact coverage, resolves each original image through the MediaWiki API,
+and records dimensions, MIME type, SHA-1, source page, and attribution metadata
+in `src/data/armor-images.generated.json`. The UI still uses labelled abstract
+placeholders until the image presentation is integrated.
 
 See [docs/data-migration.md](docs/data-migration.md) for the detailed source
 mapping and remaining ambiguities.
