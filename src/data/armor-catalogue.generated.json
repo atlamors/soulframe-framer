@@ -1,0 +1,2594 @@
+[
+  {
+    "id": "helm-arbearers-mask",
+    "name": "Arbearer's Mask",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 3,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 6
+    }
+  },
+  {
+    "id": "helm-armet-of-orengall",
+    "name": "Armet of Orengall",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 3
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 3
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 7
+    }
+  },
+  {
+    "id": "helm-bascinet-of-the-mendicant-king",
+    "name": "Bascinet of The Mendicant King",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 3,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 1,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 8
+    }
+  },
+  {
+    "id": "helm-brazen-lung",
+    "name": "Brazen Lung",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 9
+    }
+  },
+  {
+    "id": "helm-circades-helm-of-deceit",
+    "name": "Circade's Helm of Deceit",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 3,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 10
+    }
+  },
+  {
+    "id": "helm-crone-cucurbita-mask",
+    "name": "Crone Cucurbita Mask",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 1,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 11
+    }
+  },
+  {
+    "id": "helm-duelo-ribbon",
+    "name": "Duelo Ribbon",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 12
+    }
+  },
+  {
+    "id": "helm-forgetfire-visard",
+    "name": "Forgetfire Visard",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 13
+    }
+  },
+  {
+    "id": "helm-garrens-crown-of-grace",
+    "name": "Garren's Crown of Grace",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 14
+    }
+  },
+  {
+    "id": "helm-great-helm-of-the-fire-king",
+    "name": "Great Helm of The Fire King",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 15
+    }
+  },
+  {
+    "id": "helm-helmless",
+    "name": "Helmless",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 16
+    }
+  },
+  {
+    "id": "helm-lil-zook-mask",
+    "name": "Lil' Zook Mask",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 17
+    }
+  },
+  {
+    "id": "helm-mestras-helm",
+    "name": "Mestra's Helm",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 3
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 18
+    }
+  },
+  {
+    "id": "helm-mockery-ilk",
+    "name": "Mockery Ilk",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 19
+    }
+  },
+  {
+    "id": "helm-osceldas-diadem",
+    "name": "Oscelda's Diadem",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 20
+    }
+  },
+  {
+    "id": "helm-pensives-bonnet",
+    "name": "Pensive's Bonnet",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 1,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 21
+    }
+  },
+  {
+    "id": "helm-poppa-pepo-mask",
+    "name": "Poppa Pepo Mask",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 2
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 22
+    }
+  },
+  {
+    "id": "helm-regents-veil",
+    "name": "Regent's Veil",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 1,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 23
+    }
+  },
+  {
+    "id": "helm-sirins-shroud",
+    "name": "Sirin's Shroud",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 24
+    }
+  },
+  {
+    "id": "helm-steelsingers-circlet",
+    "name": "Steelsinger's Circlet",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 1,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 25
+    }
+  },
+  {
+    "id": "helm-tempest-visard",
+    "name": "Tempest Visard",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 26
+    }
+  },
+  {
+    "id": "helm-tethrens-cap",
+    "name": "Tethren's Cap",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 27
+    }
+  },
+  {
+    "id": "helm-thawtide-grimguise",
+    "name": "Thawtide Grimguise",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 1,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 28
+    }
+  },
+  {
+    "id": "helm-thawtide-meltcap",
+    "name": "Thawtide Meltcap",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 29
+    }
+  },
+  {
+    "id": "helm-wazzards-bycoket",
+    "name": "Wazzard's Bycoket",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 3,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 30
+    }
+  },
+  {
+    "id": "helm-wyld-osceldas-exhalt",
+    "name": "Wyld Oscelda's Exhalt",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 31
+    }
+  },
+  {
+    "id": "helm-wyld-sirins-feignmask",
+    "name": "Wyld Sirin's Feignmask",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 32
+    }
+  },
+  {
+    "id": "helm-wyld-tethrens-hornhelm",
+    "name": "Wyld Tethren's Hornhelm",
+    "slot": "helm",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Helms",
+      "sourceRow": 33
+    }
+  },
+  {
+    "id": "cuirass-arbearers-pauncher",
+    "name": "Arbearer's Pauncher",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 7,
+        "pips": {
+          "courage": 3,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 6
+    }
+  },
+  {
+    "id": "cuirass-circades-gutguard",
+    "name": "Circade's Gutguard",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 3,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 7
+    }
+  },
+  {
+    "id": "cuirass-fire-kings-plackart",
+    "name": "Fire King's Plackart",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 8
+    }
+  },
+  {
+    "id": "cuirass-forgetfire-leathers",
+    "name": "Forgetfire Leathers",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 9
+    }
+  },
+  {
+    "id": "cuirass-laid-bare",
+    "name": "Laid Bare",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 10
+    }
+  },
+  {
+    "id": "cuirass-mendicant-kings-suit-of-rancor",
+    "name": "Mendicant King's Suit of Rancor",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 6,
+        "pips": {
+          "courage": 3,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 1,
+          "spirit": 1,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 11
+    }
+  },
+  {
+    "id": "cuirass-mestras-furbelow",
+    "name": "Mestra's Furbelow",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 3
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 3
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 12
+    }
+  },
+  {
+    "id": "cuirass-mockery-binds",
+    "name": "Mockery Binds",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 13
+    }
+  },
+  {
+    "id": "cuirass-orengalls-cuirass",
+    "name": "Orengall's Cuirass",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 3
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 3
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 14
+    }
+  },
+  {
+    "id": "cuirass-osceldas-blues",
+    "name": "Oscelda's Blues",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 15
+    }
+  },
+  {
+    "id": "cuirass-pensives-cloak",
+    "name": "Pensive's Cloak",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "magickDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 16
+    }
+  },
+  {
+    "id": "cuirass-regalia-of-garren-rood",
+    "name": "Regalia of Garren Rood",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 17
+    }
+  },
+  {
+    "id": "cuirass-regents-shell",
+    "name": "Regent's Shell",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 6,
+        "pips": {
+          "courage": 2,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 18
+    }
+  },
+  {
+    "id": "cuirass-sirins-plainhide",
+    "name": "Sirin's Plainhide",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 19
+    }
+  },
+  {
+    "id": "cuirass-steelsingers-stithywicks",
+    "name": "Steelsinger's Stithywicks",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 20
+    }
+  },
+  {
+    "id": "cuirass-tempest-leathers",
+    "name": "Tempest Leathers",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 21
+    }
+  },
+  {
+    "id": "cuirass-tethrens-tunic",
+    "name": "Tethren's Tunic",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 22
+    }
+  },
+  {
+    "id": "cuirass-thawtide-thermals",
+    "name": "Thawtide Thermals",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 23
+    }
+  },
+  {
+    "id": "cuirass-wazzards-robes",
+    "name": "Wazzard's Robes",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 0,
+          "spirit": 3,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 24
+    }
+  },
+  {
+    "id": "cuirass-wyld-oscelda-pendelveil",
+    "name": "Wyld Oscelda Pendelveil",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 25
+    }
+  },
+  {
+    "id": "cuirass-wyld-sirin-finery",
+    "name": "Wyld Sirin Finery",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 26
+    }
+  },
+  {
+    "id": "cuirass-wyld-tethren-solist-shield",
+    "name": "Wyld Tethren Solist Shield",
+    "slot": "cuirass",
+    "defenses": {
+      "physicalDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Cuirasses",
+      "sourceRow": 27
+    }
+  },
+  {
+    "id": "leggings-arbearers-braes",
+    "name": "Arbearer's Braes",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 3,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 6
+    }
+  },
+  {
+    "id": "leggings-circades-greaves",
+    "name": "Circade's Greaves",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 5,
+        "pips": {
+          "courage": 3,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 1,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 7
+    }
+  },
+  {
+    "id": "leggings-fire-kings-kilt",
+    "name": "Fire King's Kilt",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 8
+    }
+  },
+  {
+    "id": "leggings-forgetfire-braes",
+    "name": "Forgetfire Braes",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 9
+    }
+  },
+  {
+    "id": "leggings-forsaken-rags",
+    "name": "Forsaken Rags",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 10
+    }
+  },
+  {
+    "id": "leggings-garrens-cloven-hosen",
+    "name": "Garren's Cloven Hosen",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 11
+    }
+  },
+  {
+    "id": "leggings-mendicant-kings-sabatons",
+    "name": "Mendicant King's Sabatons",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 3,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 1,
+          "spirit": 1,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 12
+    }
+  },
+  {
+    "id": "leggings-mestras-breeches",
+    "name": "Mestra's Breeches",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 3
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 3
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 13
+    }
+  },
+  {
+    "id": "leggings-mockery-douthrot",
+    "name": "Mockery Douthrot",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "magickDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 14
+    }
+  },
+  {
+    "id": "leggings-orengalls-greaves",
+    "name": "Orengall's Greaves",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 3
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 3
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 15
+    }
+  },
+  {
+    "id": "leggings-osceldas-featherbinds",
+    "name": "Oscelda's Featherbinds",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 16
+    }
+  },
+  {
+    "id": "leggings-pensives-pantaloons",
+    "name": "Pensive's Pantaloons",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 17
+    }
+  },
+  {
+    "id": "leggings-regents-drapery",
+    "name": "Regent's Drapery",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 18
+    }
+  },
+  {
+    "id": "leggings-sirins-stalks",
+    "name": "Sirin's Stalks",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 19
+    }
+  },
+  {
+    "id": "leggings-steelsingers-shreds",
+    "name": "Steelsinger's Shreds",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 20
+    }
+  },
+  {
+    "id": "leggings-tempest-braes",
+    "name": "Tempest Braes",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 21
+    }
+  },
+  {
+    "id": "leggings-tethrens-roots",
+    "name": "Tethren's Roots",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 1,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 22
+    }
+  },
+  {
+    "id": "leggings-thawtide-shingles",
+    "name": "Thawtide Shingles",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 3,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 2
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 23
+    }
+  },
+  {
+    "id": "leggings-wazzards-trunks",
+    "name": "Wazzard's Trunks",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 24
+    }
+  },
+  {
+    "id": "leggings-wyld-oscelda-beltolls",
+    "name": "Wyld Oscelda Beltolls",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 25
+    }
+  },
+  {
+    "id": "leggings-wyld-sirin-wevetbelt",
+    "name": "Wyld Sirin Wevetbelt",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 3,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 2,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 26
+    }
+  },
+  {
+    "id": "leggings-wyld-tethren-flamefoot",
+    "name": "Wyld Tethren Flamefoot",
+    "slot": "leggings",
+    "defenses": {
+      "physicalDefense": {
+        "base": 4,
+        "pips": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "magickDefense": {
+        "base": 0,
+        "pips": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 0
+        }
+      },
+      "stabilityIncrease": {
+        "base": 1,
+        "pips": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        }
+      }
+    },
+    "provenance": {
+      "status": "verified",
+      "sourceSheet": "Leggings",
+      "sourceRow": 27
+    }
+  }
+]

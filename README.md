@@ -1,0 +1,150 @@
+# Soulframe Framer
+
+Soulframe Framer is a local-first armor build builder for Soulframe. The first
+vertical slice lets a player equip a helm, cuirass, and leggings; enter
+Courage, Spirit, and Grace; and immediately see verified armor-scaling results.
+
+The application is intentionally anonymous and client-side. It has no accounts,
+database, CMS, or runtime dependency on Google Sheets.
+
+## Current milestone
+
+- 72 verified armor pieces from the canonical `Soulframe Armor Scaling` sheet
+- Helm, cuirass, and leggings selection
+- Searchable compatible-item catalogue
+- Candidate-versus-equipped comparisons
+- Physical Defense, Magick Defense, and Stability Increase totals
+- Character Courage, Spirit, and Grace controls
+- Per-item base and scaling breakdowns
+- Browser persistence
+- Versioned, URL-encoded shareable builds
+- Responsive loadout presentation
+- Six source-workbook stat and virtue icons
+
+Armor requirements, tempers, configurable attunements, joinery, weapons, and
+other gear slots are not calculated yet.
+
+## Requirements
+
+- Node.js `>=22.13.0`
+- npm `>=10`
+
+## Local setup
+
+```bash
+npm install
+npm run dev
+```
+
+The development server runs at `http://localhost:3000`.
+
+## Verification commands
+
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+```
+
+## Architecture
+
+```text
+Canonical Google Sheet
+        ↓ fresh XLSX export
+scripts/import-catalogue.mjs
+        ↓ validation + normalization
+src/data/armor-catalogue.generated.json
+        ↓
+Pure domain calculations → UI → localStorage / share URL
+```
+
+- `src/domain/types.ts` defines the armor-focused domain model.
+- `src/domain/calculation.ts` contains pure scaling and aggregation functions.
+- `src/domain/serialization.ts` validates and versions saved/shared builds.
+- `src/data/armor-catalogue.generated.json` contains normalized catalogue data.
+- `src/data/catalogue-provenance.json` records source identity, checksum, item
+  count, icon inventory, and verified formula.
+- `app/SoulframeBuilder.tsx` contains the interactive loadout experience.
+- `app/globals.css` contains the visual system and responsive layouts.
+
+## Verified calculation
+
+For each defense on each equipped armor piece:
+
+```text
+Final defense =
+  Base defense
+  + INT(0.12 × (
+      Courage × Courage pips
+      + Spirit × Spirit pips
+      + Grace × Grace pips
+    ))
+```
+
+The source workbook truncates each individual defense increase before the three
+defenses are totaled. Armor requirements are intentionally excluded.
+
+## Updating the catalogue
+
+1. Export the current canonical Google Sheet as XLSX.
+2. Keep the export outside the repository, or place it under `data/source/`
+   (XLSX files in that directory are ignored).
+3. Run:
+
+   ```bash
+   npm run import:catalogue -- /absolute/path/to/fresh-export.xlsx
+   ```
+
+4. Review the generated JSON and provenance checksum.
+5. Run all verification commands.
+
+The importer requires the exact source tabs and headers, validates every packed
+defense/pip cell, rejects duplicate IDs, and extracts the six icons from their
+anchored positions in the `Refs` tab. Do not hand-edit generated catalogue data;
+correct the canonical sheet or the importer instead.
+
+## Build persistence and sharing
+
+Builds use schema version `1` and store only:
+
+- Build name
+- Character virtue values
+- Stable equipped item IDs
+
+The active build is stored under `soulframe-framer.build.v1`. A valid `build`
+URL parameter overrides local state and becomes the active persisted build.
+Malformed data, unsupported versions, and unknown item IDs are handled without
+crashing.
+
+## Data status
+
+Verified:
+
+- Armor names
+- Armor slots
+- Base Physical, Magick, and Stability values
+- Courage, Spirit, and Grace pips for each defense
+- Scaling coefficient and truncation order
+- Six reference icons
+
+Not yet sourced:
+
+- Item artwork
+- Armor requirements
+- Temper definitions and rolls
+- Configurable attunement rules
+- Joinery
+- Other gear categories
+
+Labelled abstract armor placeholders are used until an authoritative item-image
+source is available.
+
+See [docs/data-migration.md](docs/data-migration.md) for the detailed source
+mapping and remaining ambiguities.
+
+## Recommended next milestone
+
+Add authoritative item artwork and the approved in-game loadout reference, then
+expand the data model only after verified rules are available for the next
+equipment system.

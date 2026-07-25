@@ -1,0 +1,20 @@
+{
+  "sourceId": "1K-COIPAMp6EDDtZKP06L41WKm1BJV_ipCXLVtlrh8bw",
+  "sourceUrl": "https://docs.google.com/spreadsheets/d/1K-COIPAMp6EDDtZKP06L41WKm1BJV_ipCXLVtlrh8bw/edit",
+  "sourceTitle": "Soulframe Armor Scaling",
+  "workbookSha256": "e578f6c88aba91d83912e4ae6cded1679d7a247d395b935cb51277453331d4fe",
+  "itemCount": 72,
+  "icons": [
+    "courage",
+    "grace",
+    "magick-defense",
+    "physical-defense",
+    "spirit",
+    "stability-increase"
+  ],
+  "formula": "Base + INT(0.12 × (Courage × C-pips + Spirit × S-pips + Grace × G-pips))",
+  "notes": [
+    "Armor requirements are intentionally excluded by the source workbook.",
+    "The application does not depend on Google Sheets at runtime."
+  ]
+}
