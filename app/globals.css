@@ -1732,3 +1732,690 @@ a:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Soulframe Framer brand pass — theatrical, folkloric, and tactile. */
+:root {
+  --ink: #e8dbbc;
+  --ink-soft: #c1b28f;
+  --ink-faint: #8e826b;
+  --night: #0c0a08;
+  --panel: rgba(30, 25, 20, 0.95);
+  --panel-solid: #1d1814;
+  --line: rgba(210, 159, 71, 0.24);
+  --line-bright: rgba(226, 177, 86, 0.56);
+  --gold: #c98a2e;
+  --gold-bright: #e4b454;
+  --parchment: #e8dbbc;
+  --coal: #171411;
+  --felt: #211b17;
+  --wood: #8d4f28;
+  --ember: #b85a40;
+  --aether: #73949a;
+  --verdant: #82946e;
+  --danger: #ca7663;
+  --font-display: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-inscription: Copperplate, "Copperplate Gothic Light", "Palatino Linotype", Georgia, serif;
+  --font-body: Georgia, "Times New Roman", serif;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 52% 20%, rgba(117, 61, 38, 0.24), transparent 36rem),
+    linear-gradient(108deg, rgba(69, 30, 24, 0.52) 0 7%, transparent 20% 79%, rgba(81, 38, 26, 0.42) 93%),
+    linear-gradient(180deg, #1d1713 0%, #0c0a08 50%, #120d0a 100%);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.app-shell {
+  padding-inline: clamp(20px, 4.25vw, 86px);
+}
+
+.app-shell::before {
+  background:
+    linear-gradient(76deg, transparent 0 11%, rgba(119, 57, 39, 0.19) 11.3% 23%, transparent 23.5% 76%, rgba(119, 57, 39, 0.16) 76.5% 89%, transparent 89.5%),
+    radial-gradient(ellipse at 50% -8%, rgba(226, 177, 86, 0.08), transparent 38rem);
+  mask-image: none;
+  opacity: 1;
+}
+
+.app-shell::after {
+  background:
+    repeating-linear-gradient(90deg, rgba(42, 19, 10, 0.2) 0 2px, transparent 2px 27px),
+    linear-gradient(90deg, #75401f, #b46a35 35%, #8b4b25 72%, #5e311a);
+  border-left: 1px solid rgba(231, 175, 81, 0.24);
+  box-shadow: inset 16px 0 28px rgba(34, 15, 8, 0.28);
+  content: "";
+  inset: 0 0 0 auto;
+  opacity: 0.32;
+  pointer-events: none;
+  position: absolute;
+  width: clamp(10px, 2.4vw, 44px);
+  z-index: -1;
+}
+
+.ambient {
+  border-color: rgba(215, 162, 68, 0.09);
+  box-shadow: 0 0 90px rgba(94, 52, 30, 0.12);
+}
+
+.topbar {
+  border-bottom-color: rgba(210, 159, 71, 0.3);
+  min-height: 94px;
+}
+
+.brand {
+  gap: 17px;
+}
+
+.brand-mark {
+  background:
+    url("/ornaments/slot-wreath.svg") center / 150% no-repeat,
+    radial-gradient(circle, #2b2017, #15110e);
+  border: 0;
+  border-radius: 50%;
+  height: 52px;
+  transform: none;
+  width: 52px;
+}
+
+.brand-mark::after {
+  border: 1px solid rgba(226, 177, 86, 0.52);
+  border-radius: 50%;
+  inset: 10px;
+}
+
+.brand-mark::before {
+  color: var(--parchment);
+  font-family: var(--font-inscription);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 2px #000;
+  transform: translate(-50%, -50%);
+}
+
+.brand strong {
+  font-family: var(--font-inscription);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.brand em {
+  color: var(--gold-bright);
+  font-family: var(--font-inscription);
+  font-size: 10px;
+  letter-spacing: 0.52em;
+}
+
+.topbar-center,
+.eyebrow,
+.button,
+.notice button,
+.slot-label,
+.slot-meta,
+.slot-action,
+.formula-note span,
+.source-note small,
+.breakdown-heading,
+.breakdown-row small,
+.catalogue-count,
+.equipped-chip,
+.verified-badge,
+.comparison-heading p,
+.comparison-context,
+.comparison-total small {
+  font-family: var(--font-inscription);
+}
+
+.topbar-center {
+  color: var(--ink-soft);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+}
+
+.button {
+  border-radius: 1px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  min-height: 42px;
+  padding-inline: 20px;
+}
+
+.button-primary {
+  background: #bb7b26;
+  border-color: #dda746;
+  box-shadow: inset 0 0 0 1px rgba(27, 17, 10, 0.4);
+  color: #1a120b;
+}
+
+.button-quiet {
+  background: rgba(18, 14, 11, 0.82);
+}
+
+.notice {
+  background: #261d15;
+  border-color: var(--line-bright);
+  font-size: 14px;
+}
+
+.hero-heading {
+  margin: 54px 0 34px;
+}
+
+.hero-heading > div:first-child {
+  min-width: min(720px, 70vw);
+}
+
+.eyebrow {
+  color: var(--gold-bright);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  margin-bottom: 11px;
+  text-shadow: 0 2px 2px #000;
+}
+
+.build-name {
+  background:
+    url("/ornaments/banner-frame.svg") center / 100% 100% no-repeat,
+    #17130f;
+  border: 0;
+  color: var(--parchment);
+  font-family: var(--font-inscription);
+  font-size: clamp(31px, 3.6vw, 54px);
+  font-weight: 500;
+  letter-spacing: 0.075em;
+  line-height: 1.2;
+  max-width: 720px;
+  padding: 18px clamp(36px, 5vw, 68px);
+  text-shadow: 0 3px 2px #000;
+  text-transform: uppercase;
+  width: min(70vw, 720px);
+}
+
+.build-name:hover,
+.build-name:focus {
+  border: 0;
+  filter: brightness(1.08);
+}
+
+.hero-heading p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.65;
+  margin-left: 20px;
+}
+
+.source-note {
+  border-left-color: rgba(210, 159, 71, 0.34);
+  padding-left: 24px;
+}
+
+.source-note strong {
+  color: var(--parchment);
+  font-family: var(--font-display);
+  font-size: 13px;
+}
+
+.source-note small {
+  color: var(--gold);
+  font-size: 9px;
+}
+
+.builder-grid {
+  gap: 20px;
+  grid-template-columns: minmax(270px, 0.86fr) minmax(520px, 1.92fr) minmax(300px, 0.98fr);
+  min-height: 680px;
+}
+
+.panel {
+  background:
+    url("/ornaments/corner-flourish.svg") left top / 82px 82px no-repeat,
+    linear-gradient(145deg, rgba(77, 52, 31, 0.16), transparent 46%),
+    linear-gradient(180deg, rgba(35, 29, 24, 0.98), rgba(20, 17, 14, 0.98));
+  border-color: rgba(198, 137, 45, 0.34);
+  box-shadow:
+    inset 0 0 0 4px rgba(9, 7, 6, 0.32),
+    0 16px 34px rgba(0, 0, 0, 0.18);
+  padding: 29px;
+}
+
+.panel::before {
+  display: none;
+}
+
+.panel::after {
+  border-color: var(--gold);
+  height: 13px;
+  opacity: 0.7;
+  width: 13px;
+}
+
+.panel-heading h2,
+.picker-header h2 {
+  color: var(--parchment);
+  font-family: var(--font-inscription);
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 2px #000;
+  text-transform: uppercase;
+}
+
+.panel-number {
+  color: rgba(222, 168, 75, 0.64);
+  font-family: var(--font-inscription);
+  font-size: 13px;
+}
+
+.panel-intro {
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.virtue-controls {
+  gap: 12px;
+}
+
+.virtue-control {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--tone) 10%, transparent), transparent 52%),
+    #17130f;
+  border-color: rgba(201, 141, 48, 0.28);
+  padding: 16px 15px 14px;
+}
+
+.virtue-control::before {
+  width: 3px;
+}
+
+.virtue-name strong {
+  font-family: var(--font-inscription);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.virtue-name small,
+.virtue-input-wrap > span {
+  color: var(--ink-faint);
+  font-family: var(--font-inscription);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.stat-icon {
+  background:
+    radial-gradient(circle, rgba(225, 175, 82, 0.11), transparent 68%),
+    #211a15;
+  border-color: rgba(204, 146, 51, 0.4);
+  box-shadow: inset 0 0 0 2px rgba(8, 6, 5, 0.26);
+}
+
+.virtue-input-wrap input {
+  color: var(--gold-bright);
+  font-family: var(--font-display);
+  font-size: 34px;
+  text-shadow: 0 2px 2px #000;
+}
+
+.formula-note code {
+  color: var(--ink-soft);
+  font-size: 10px;
+}
+
+.loadout-stage {
+  background:
+    linear-gradient(102deg, rgba(80, 35, 27, 0.5), transparent 22% 78%, rgba(80, 35, 27, 0.44)),
+    radial-gradient(ellipse at 50% 42%, rgba(194, 139, 51, 0.12), transparent 42%),
+    linear-gradient(180deg, #211b17, #0e0c0a 72%);
+  border-color: rgba(198, 137, 45, 0.34);
+  box-shadow:
+    inset 0 0 70px rgba(0, 0, 0, 0.48),
+    inset 0 0 0 4px rgba(7, 5, 4, 0.36);
+  min-height: 680px;
+}
+
+.loadout-stage::before {
+  background:
+    url("/ornaments/corner-flourish.svg") left top / 104px 104px no-repeat,
+    url("/ornaments/corner-flourish.svg") right bottom / 104px 104px no-repeat;
+  inset: 10px;
+  opacity: 0.6;
+}
+
+.stage-orbit {
+  border-color: rgba(217, 162, 67, 0.2);
+}
+
+.stage-orbit-two {
+  border-color: rgba(217, 162, 67, 0.17);
+}
+
+.character-rune {
+  color: rgba(205, 145, 48, 0.08);
+  font-family: var(--font-inscription);
+}
+
+.silhouette-head,
+.silhouette-body,
+.silhouette-leg {
+  border-color: rgba(214, 157, 65, 0.28);
+}
+
+.silhouette-head {
+  background: linear-gradient(145deg, #4d4438, #201b17 62%);
+}
+
+.silhouette-body {
+  background: linear-gradient(100deg, #211b17 0%, #575047 46%, #1c1814 100%);
+}
+
+.silhouette-leg {
+  background: linear-gradient(90deg, #1d1814, #484038, #17130f);
+}
+
+.character-caption {
+  background:
+    url("/ornaments/banner-frame.svg") center / 100% 100% no-repeat,
+    #17130f;
+  border: 0;
+  min-width: 172px;
+  padding: 13px 24px;
+}
+
+.character-caption span,
+.character-caption small {
+  color: var(--gold);
+  font-family: var(--font-inscription);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+.character-caption strong {
+  color: var(--gold-bright);
+  font-size: 28px;
+}
+
+.equipment-slot {
+  background:
+    linear-gradient(92deg, rgba(79, 50, 28, 0.18), transparent 56%),
+    #17130f;
+  border-color: rgba(198, 137, 45, 0.34);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  padding: 12px;
+  width: min(242px, 37%);
+}
+
+.equipment-slot:hover {
+  background: #2a2119;
+  border-color: var(--gold-bright);
+}
+
+.equipment-slot::after {
+  border-top-color: rgba(223, 169, 74, 0.5);
+}
+
+.slot-art,
+.candidate-art,
+.item-list-mark {
+  background:
+    url("/ornaments/stitched-frame.svg") center / 100% 100% no-repeat,
+    #211a15;
+  border: 0;
+}
+
+.slot-art {
+  height: 74px;
+  width: 74px;
+}
+
+.slot-art span,
+.candidate-art,
+.item-list-mark {
+  color: rgba(224, 171, 77, 0.62);
+  text-shadow: 0 2px 2px #000;
+}
+
+.slot-label {
+  color: var(--gold-bright);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+}
+
+.slot-copy strong {
+  color: var(--parchment);
+  font-size: 15px;
+}
+
+.slot-meta,
+.slot-action {
+  font-size: 8px;
+}
+
+.total-defense {
+  background:
+    url("/ornaments/slot-wreath.svg") calc(100% - 8px) center / 84px 84px no-repeat;
+  border-color: rgba(198, 137, 45, 0.3);
+  margin-top: 25px;
+  min-height: 90px;
+  padding: 20px 17px 20px 0;
+}
+
+.total-defense > span {
+  color: var(--parchment);
+  font-family: var(--font-inscription);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.total-defense strong {
+  color: var(--gold-bright);
+  font-size: 41px;
+  padding-right: 13px;
+  text-shadow: 0 2px 2px #000;
+}
+
+.total-defense small {
+  font-family: var(--font-inscription);
+  font-size: 9px;
+}
+
+.defense-row {
+  border-color: rgba(198, 137, 45, 0.22);
+  padding: 16px 0;
+}
+
+.defense-row strong {
+  color: var(--parchment);
+  font-size: 14px;
+}
+
+.defense-row small {
+  font-size: 9px;
+}
+
+.defense-row b,
+.breakdown-row b,
+.item-list-total,
+.comparison-total strong {
+  color: var(--gold-bright);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.breakdown-row {
+  border-top-color: rgba(198, 137, 45, 0.2);
+  padding-block: 12px;
+}
+
+.breakdown-row strong {
+  font-size: 13px;
+}
+
+.footer {
+  border-top-color: rgba(198, 137, 45, 0.25);
+  color: var(--ink-faint);
+  font-family: var(--font-body);
+  font-size: 11px;
+  min-height: 78px;
+}
+
+.picker-backdrop {
+  background: rgba(7, 5, 4, 0.84);
+}
+
+.picker-panel {
+  background:
+    linear-gradient(90deg, rgba(96, 48, 27, 0.16), transparent 22%),
+    radial-gradient(circle at 82% 0, rgba(121, 106, 72, 0.13), transparent 34rem),
+    #17130f;
+  border-left-color: var(--gold);
+}
+
+.picker-header {
+  background:
+    url("/ornaments/banner-frame.svg") 24px center / 430px 74px no-repeat;
+  border-bottom-color: rgba(198, 137, 45, 0.3);
+  min-height: 104px;
+  padding-left: 54px;
+}
+
+.picker-header h2 {
+  font-size: 27px;
+}
+
+.icon-button,
+.search-field,
+.item-list-row,
+.comparison-total {
+  background-color: rgba(31, 25, 20, 0.92);
+  border-color: rgba(198, 137, 45, 0.28);
+}
+
+.item-list-row {
+  min-height: 64px;
+}
+
+.item-list-row:hover,
+.item-list-row.is-candidate {
+  background: rgba(188, 123, 38, 0.11);
+  border-color: rgba(220, 163, 67, 0.48);
+}
+
+.item-list-row strong,
+.comparison-heading h3,
+.item-stat-name > span:last-child {
+  color: var(--parchment);
+}
+
+.item-list-row strong {
+  font-size: 14px;
+}
+
+.item-list-row small,
+.comparison-heading p,
+.comparison-context,
+.item-stat-head,
+.comparison-total small {
+  font-size: 8px;
+}
+
+.comparison-heading h3 {
+  font-family: var(--font-inscription);
+  letter-spacing: 0.05em;
+}
+
+.comparison-context,
+.item-stat-row,
+.catalogue-column {
+  border-color: rgba(198, 137, 45, 0.22);
+}
+
+.item-stat-name small {
+  font-family: var(--font-body);
+  font-size: 8px;
+}
+
+@media (max-width: 1180px) {
+  .app-shell {
+    padding-inline: 22px;
+  }
+
+  .builder-grid {
+    grid-template-columns: 270px minmax(500px, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-heading > div:first-child {
+    min-width: 0;
+  }
+
+  .build-name {
+    width: min(88vw, 720px);
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    padding-inline: 13px;
+  }
+
+  .app-shell::after {
+    display: none;
+  }
+
+  .topbar {
+    min-height: 76px;
+  }
+
+  .brand-mark {
+    height: 38px;
+    width: 38px;
+  }
+
+  .brand strong {
+    font-size: 15px;
+  }
+
+  .brand em {
+    font-size: 8px;
+  }
+
+  .build-name {
+    font-size: clamp(24px, 8vw, 34px);
+    padding: 15px 34px;
+    width: 100%;
+  }
+
+  .hero-heading p {
+    margin-left: 7px;
+  }
+
+  .panel {
+    padding: 23px 20px;
+  }
+
+  .panel-heading h2,
+  .picker-header h2 {
+    font-size: 22px;
+  }
+
+  .loadout-stage {
+    padding-top: 270px;
+  }
+
+  .equipment-slot {
+    width: 100%;
+  }
+
+  .picker-header {
+    background-size: 330px 66px;
+    padding-left: 34px;
+  }
+}
