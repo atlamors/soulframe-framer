@@ -30,9 +30,14 @@ describe("Avakot armor image manifest", () => {
       expect(image.descriptionUrl).toMatch(
         /^https:\/\/wiki\.avakot\.org\/File:/,
       );
+      expect(image.thumbnailUrl).toMatch(
+        /^https:\/\/static\.wikitide\.net\/soulframewiki\/thumb\//,
+      );
       expect(image.mimeType).toMatch(/^image\//);
       expect(image.width).toBeGreaterThan(0);
       expect(image.height).toBeGreaterThan(0);
+      expect(image.thumbnailWidth).toBe(128);
+      expect(image.thumbnailHeight).toBeGreaterThan(0);
       expect(image.bytes).toBeGreaterThan(0);
       expect(image.sha1).toMatch(/^[0-9a-f]{40}$/);
     }

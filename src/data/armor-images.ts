@@ -8,10 +8,13 @@ export interface ArmorImageAsset {
   pageUrl: string;
   fileName: string;
   imageUrl: string;
+  thumbnailUrl: string;
   descriptionUrl: string;
   mimeType: string;
   width: number;
   height: number;
+  thumbnailWidth: number;
+  thumbnailHeight: number;
   bytes: number;
   sha1: string;
 }

@@ -121,6 +121,7 @@ const getImageInfo = async (fileNames) => {
       formatversion: "2",
       prop: "imageinfo",
       iiprop: "url|mime|size|sha1",
+      iiurlwidth: "128",
       titles: batch.map((fileName) => `File:${fileName}`).join("|"),
     });
 
@@ -136,10 +137,13 @@ const getImageInfo = async (fileNames) => {
 
       result.set(fileName, {
         imageUrl: info.url,
+        thumbnailUrl: info.thumburl,
         descriptionUrl: info.descriptionurl,
         mimeType: info.mime,
         width: info.width,
         height: info.height,
+        thumbnailWidth: info.thumbwidth,
+        thumbnailHeight: info.thumbheight,
         bytes: info.size,
         sha1: info.sha1,
       });

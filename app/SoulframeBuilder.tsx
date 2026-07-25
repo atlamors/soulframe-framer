@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { armorById, armorCatalogue } from "@/src/data/catalogue";
+import { armorImageById } from "@/src/data/armor-images";
 import {
   calculateBuild,
   calculateItemContribution,
@@ -125,6 +126,39 @@ function itemBaseTotal(item: ArmorItem) {
   );
 }
 
+function ArmorArtwork({
+  item,
+  fallback,
+  preview = false,
+  sizes,
+}: {
+  item?: ArmorItem;
+  fallback: string;
+  preview?: boolean;
+  sizes: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  const asset = item ? armorImageById.get(item.id) : undefined;
+
+  if (!asset || failed) {
+    return <span className="armor-art-fallback">{fallback}</span>;
+  }
+
+  return (
+    <Image
+      className="armor-art-image"
+      src={preview ? asset.imageUrl : asset.thumbnailUrl}
+      alt=""
+      aria-hidden="true"
+      width={preview ? asset.width : asset.thumbnailWidth}
+      height={preview ? asset.height : asset.thumbnailHeight}
+      sizes={sizes}
+      unoptimized
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
 function EquipmentSlot({
   slot,
   item,
@@ -146,7 +180,12 @@ function EquipmentSlot({
     >
       <span className="slot-index">{meta.index}</span>
       <span className="slot-art" aria-hidden="true">
-        <span>{meta.index}</span>
+        <ArmorArtwork
+          key={item?.id ?? `${slot}-empty`}
+          item={item}
+          fallback={meta.index}
+          sizes="74px"
+        />
       </span>
       <span className="slot-copy">
         <span className="slot-label">{meta.label}</span>
@@ -257,6 +296,9 @@ function ItemPicker({
   );
   const candidate =
     armorById.get(candidateId) ?? filteredItems[0] ?? compatibleItems[0];
+  const candidateImage = candidate
+    ? armorImageById.get(candidate.id)
+    : undefined;
   const currentContribution = currentItem
     ? calculateItemContribution(currentItem, build.virtues)
     : undefined;
@@ -329,7 +371,13 @@ function ItemPicker({
                     onFocus={() => setCandidateId(item.id)}
                     onMouseEnter={() => setCandidateId(item.id)}
                   >
-                    <span className="item-list-mark">{slotMeta[slot].index}</span>
+                    <span className="item-list-mark" aria-hidden="true">
+                      <ArmorArtwork
+                        item={item}
+                        fallback={slotMeta[slot].index}
+                        sizes="44px"
+                      />
+                    </span>
                     <span>
                       <strong>{item.name}</strong>
                       <small>
@@ -359,7 +407,13 @@ function ItemPicker({
               <>
                 <div className="comparison-heading">
                   <span className="candidate-art" aria-hidden="true">
-                    {slotMeta[slot].index}
+                    <ArmorArtwork
+                      key={candidate.id}
+                      item={candidate}
+                      fallback={slotMeta[slot].index}
+                      preview
+                      sizes="112px"
+                    />
                   </span>
                   <div>
                     <span className="eyebrow">Candidate</span>
@@ -368,6 +422,16 @@ function ItemPicker({
                       Source: {candidate.provenance.sourceSheet}, row{" "}
                       {candidate.provenance.sourceRow}
                     </p>
+                    {candidateImage ? (
+                      <a
+                        className="art-source-link"
+                        href={candidateImage.pageUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Artwork: The Soulframe Wiki ↗
+                      </a>
+                    ) : null}
                   </div>
                   <span className="verified-badge">Verified</span>
                 </div>
