@@ -6,6 +6,8 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
 } from "react";
 import Image from "next/image";
 import { armorById, armorCatalogue } from "@/src/data/catalogue";
@@ -23,6 +25,13 @@ import {
   serializeBuild,
 } from "@/src/domain/serialization";
 import {
+  MAX_VIRTUE_POINTS,
+  distributeVirtueTotal,
+  getVirtueAlignmentPoint,
+  shiftVirtueAlignment,
+  virtuesFromAlignmentPoint,
+} from "@/src/domain/virtue-alignment";
+import {
   ARMOR_SLOTS,
   DEFENSE_IDS,
   VIRTUE_IDS,
@@ -32,6 +41,7 @@ import {
   type ItemContribution,
   type SoulframeBuild,
   type VirtueId,
+  type VirtueValues,
 } from "@/src/domain/types";
 
 const DEFAULT_BUILD: SoulframeBuild = {
@@ -126,22 +136,10 @@ function VirtueAlignment({
   onChange,
 }: {
   virtues: SoulframeBuild["virtues"];
-  onChange: (virtue: VirtueId, value: number) => void;
+  onChange: (virtues: VirtueValues) => void;
 }) {
   const total = VIRTUE_IDS.reduce((sum, virtue) => sum + virtues[virtue], 0);
-  const plottedValues =
-    total === 0 ? { courage: 1, spirit: 1, grace: 1 } : virtues;
-  const plottedTotal = total || 3;
-  const alignmentX =
-    (plottedValues.spirit * 50 +
-      plottedValues.courage * 8 +
-      plottedValues.grace * 92) /
-    plottedTotal;
-  const alignmentY =
-    (plottedValues.spirit * 2 +
-      plottedValues.courage * 90 +
-      plottedValues.grace * 90) /
-    plottedTotal;
+  const alignmentPoint = getVirtueAlignmentPoint(virtues);
   const dominant =
     total === 0
       ? undefined
@@ -149,19 +147,71 @@ function VirtueAlignment({
           virtues[virtue] > virtues[highest] ? virtue : highest,
         );
   const figureStyle = {
-    "--alignment-x": `${alignmentX}%`,
-    "--alignment-y": `${alignmentY}%`,
+    "--alignment-x": `${5 + alignmentPoint.x * 90}%`,
+    "--alignment-y": `${2 + alignmentPoint.y * 88}%`,
   } as CSSProperties;
   const figureOrder: VirtueId[] = ["spirit", "courage", "grace"];
+
+  const updateFromPointer = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width;
+    const y = (event.clientY - bounds.top) / bounds.height;
+    onChange(virtuesFromAlignmentPoint(total, x, y));
+  };
+
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    event.currentTarget.setPointerCapture(event.pointerId);
+    updateFromPointer(event);
+  };
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      updateFromPointer(event);
+    }
+  };
+
+  const handleAlignmentKey = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    const targetByKey: Partial<Record<string, VirtueId>> = {
+      ArrowUp: "spirit",
+      ArrowLeft: "courage",
+      ArrowRight: "grace",
+      c: "courage",
+      C: "courage",
+      s: "spirit",
+      S: "spirit",
+      g: "grace",
+      G: "grace",
+    };
+    const target = targetByKey[event.key];
+    if (!target) return;
+
+    event.preventDefault();
+    onChange(shiftVirtueAlignment(virtues, target));
+  };
 
   return (
     <>
       <div className="virtue-alignment-figure" style={figureStyle}>
-        <div className="alignment-map" aria-hidden="true">
-          <div className="alignment-triangle-frame">
+        <p className="sr-only" id="alignment-instructions">
+          Drag or click within the triangle to distribute the total point pool.
+          Use Arrow Up for Spirit, Arrow Left for Courage, or Arrow Right for
+          Grace.
+        </p>
+        <div className="alignment-map">
+          <div
+            className="alignment-triangle-frame"
+            role="group"
+            aria-roledescription="virtue alignment control"
+            aria-describedby="alignment-instructions"
+            aria-label={`Courage ${virtues.courage}, Spirit ${virtues.spirit}, Grace ${virtues.grace}`}
+            tabIndex={0}
+            onKeyDown={handleAlignmentKey}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+          >
             <span className="alignment-triangle-surface" />
           </div>
-          <span className="alignment-marker">
+          <span className="alignment-marker" aria-hidden="true">
             <i />
           </span>
           {figureOrder.map((virtue) => {
@@ -169,6 +219,7 @@ function VirtueAlignment({
             return (
               <span
                 className={`alignment-node alignment-node-${virtue} tone-${meta.tone}`}
+                aria-hidden="true"
                 key={virtue}
               >
                 <StatIcon src={meta.icon} label={meta.label} size="small" />
@@ -179,52 +230,34 @@ function VirtueAlignment({
               </span>
             );
           })}
+          <label className="alignment-total-control">
+            <small>Total</small>
+            <span>
+              <input
+                type="number"
+                min="0"
+                max={MAX_VIRTUE_POINTS}
+                value={total}
+                aria-label="Total virtue points"
+                onChange={(event) =>
+                  onChange(
+                    distributeVirtueTotal(
+                      Number(event.target.value),
+                      virtues,
+                    ),
+                  )
+                }
+              />
+              <em>points</em>
+            </span>
+          </label>
         </div>
         <span className="alignment-caption">
-          <small>Relative alignment</small>
+          <small>Drag the star to align</small>
           <strong>
             {dominant ? `${virtueMeta[dominant].label} leaning` : "Unaligned"}
           </strong>
         </span>
-      </div>
-
-      <div className="alignment-controls">
-        {VIRTUE_IDS.map((virtue) => {
-          const meta = virtueMeta[virtue];
-          return (
-            <label
-              className={`alignment-control tone-${meta.tone}`}
-              key={virtue}
-            >
-              <StatIcon src={meta.icon} label={meta.label} size="small" />
-              <span className="alignment-control-name">{meta.label}</span>
-              <span className="alignment-value">
-                <input
-                  type="number"
-                  min="0"
-                  max="99"
-                  value={virtues[virtue]}
-                  aria-label={`${meta.label} value`}
-                  onChange={(event) =>
-                    onChange(virtue, Number(event.target.value))
-                  }
-                />
-                <small>/99</small>
-              </span>
-              <input
-                className="alignment-range"
-                type="range"
-                min="0"
-                max="99"
-                value={virtues[virtue]}
-                aria-label={`${meta.label} alignment`}
-                onChange={(event) =>
-                  onChange(virtue, Number(event.target.value))
-                }
-              />
-            </label>
-          );
-        })}
       </div>
     </>
   );
@@ -929,11 +962,10 @@ export function SoulframeBuilder() {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(build));
   }, [build, hydrated]);
 
-  const updateVirtue = (virtue: VirtueId, amount: number) => {
-    const value = Math.min(99, Math.max(0, Math.round(amount || 0)));
+  const updateVirtues = (virtues: VirtueValues) => {
     setBuild((current) => ({
       ...current,
-      virtues: { ...current.virtues, [virtue]: value },
+      virtues,
     }));
   };
 
@@ -1032,10 +1064,10 @@ export function SoulframeBuilder() {
             <span className="panel-number">01</span>
           </div>
           <p className="panel-intro">
-            Shape the balance between Courage, Spirit, and Grace. Your exact
-            values drive every armor attunement below.
+            Set your total point pool, then drag the star to balance Courage,
+            Spirit, and Grace. Every point is conserved.
           </p>
-          <VirtueAlignment virtues={build.virtues} onChange={updateVirtue} />
+          <VirtueAlignment virtues={build.virtues} onChange={updateVirtues} />
           <div className="formula-note">
             <span>Verified rule</span>
             <code>Base + INT(0.12 × weighted pips)</code>
