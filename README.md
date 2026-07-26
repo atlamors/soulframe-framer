@@ -40,7 +40,8 @@ npm install
 npm run dev
 ```
 
-The development server runs at `http://localhost:3000`.
+The development server starts at `http://localhost:3000`. If that port is
+already occupied, it automatically uses the next available port.
 
 ## Verification commands
 
