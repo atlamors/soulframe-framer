@@ -36,10 +36,8 @@ import {
   virtuesFromAlignmentPoint,
 } from "@/src/domain/virtue-alignment";
 import {
-  BASE_AFFINITY_POINTS,
   MAX_ENVOY_RANK,
   PACT_ART_BONUS_BY_RANK,
-  getAffinityBonuses,
   getAllocatableAffinity,
 } from "@/src/domain/affinity";
 import {
@@ -118,6 +116,11 @@ const defenseMeta: Record<
   },
 };
 
+const ENVOY_RANK_OPTIONS = Array.from(
+  { length: MAX_ENVOY_RANK + 1 },
+  (_, rank) => rank,
+);
+
 const slotMeta: Record<
   ArmorSlot,
   { label: string; index: string; prompt: string }
@@ -180,25 +183,23 @@ function VirtueAlignment({
   virtues,
   bonuses,
   sources,
-  talismanBonuses,
   onChange,
   onSourcesChange,
 }: {
   virtues: SoulframeBuild["virtues"];
   bonuses: VirtueValues;
   sources: AffinitySources;
-  talismanBonuses: VirtueValues;
   onChange: (virtues: VirtueValues) => void;
   onSourcesChange: (sources: AffinitySources) => void;
 }) {
   const total = VIRTUE_IDS.reduce((sum, virtue) => sum + virtues[virtue], 0);
   const alignmentPoint = getVirtueAlignmentPoint(virtues);
-  const dominant =
-    total === 0
-      ? undefined
-      : VIRTUE_IDS.reduce((highest, virtue) =>
-          virtues[virtue] > virtues[highest] ? virtue : highest,
-        );
+  const effectiveVirtues = Object.fromEntries(
+    VIRTUE_IDS.map((virtue) => [
+      virtue,
+      virtues[virtue] + bonuses[virtue],
+    ]),
+  ) as VirtueValues;
   const artX =
     TRIQUETRA_BOUNDS.courage.x +
     alignmentPoint.x *
@@ -290,6 +291,11 @@ function VirtueAlignment({
           Use Arrow Up for Spirit, Arrow Left for Courage, or Arrow Right for
           Grace.
         </p>
+        <span className="sr-only" aria-live="polite">
+          Allocated: Courage {virtues.courage}, Spirit {virtues.spirit}, Grace{" "}
+          {virtues.grace}. Effective: Courage {effectiveVirtues.courage},
+          Spirit {effectiveVirtues.spirit}, Grace {effectiveVirtues.grace}.
+        </span>
         <div className="alignment-map">
           <div className="virtue-prism-stack">
             <Image
@@ -448,7 +454,7 @@ function VirtueAlignment({
               role="group"
               aria-roledescription="virtue alignment control"
               aria-describedby="alignment-instructions"
-              aria-label={`Courage ${virtues.courage}, Spirit ${virtues.spirit}, Grace ${virtues.grace}`}
+              aria-label={`Allocated Courage ${virtues.courage}, Spirit ${virtues.spirit}, Grace ${virtues.grace}. Effective Courage ${effectiveVirtues.courage}, Spirit ${effectiveVirtues.spirit}, Grace ${effectiveVirtues.grace}`}
               tabIndex={0}
               onKeyDown={handleAlignmentKey}
               onPointerDown={handlePointerDown}
@@ -462,7 +468,7 @@ function VirtueAlignment({
           </div>
           {figureOrder.map((virtue) => {
             const meta = virtueMeta[virtue];
-            const effective = virtues[virtue] + bonuses[virtue];
+            const effective = effectiveVirtues[virtue];
             return (
               <span
                 className={`alignment-node alignment-node-${virtue} tone-${meta.tone}`}
@@ -483,20 +489,16 @@ function VirtueAlignment({
             );
           })}
           <div className="alignment-total-control">
-            <small>Allocatable</small>
+            <small>Affinity points</small>
             <span>
               <strong>{total}</strong>
               <em>points</em>
             </span>
           </div>
         </div>
-        <span className="alignment-caption">
-          {dominant ? `${virtueMeta[dominant].label} leaning` : "Unaligned"}
-        </span>
       </div>
       <AffinitySourceInputs
         sources={sources}
-        talismanBonuses={talismanBonuses}
         onChange={onSourcesChange}
       />
     </>
@@ -505,24 +507,65 @@ function VirtueAlignment({
 
 function AffinitySourceInputs({
   sources,
-  talismanBonuses,
   onChange,
 }: {
   sources: AffinitySources;
-  talismanBonuses: VirtueValues;
   onChange: (sources: AffinitySources) => void;
 }) {
-  const allocatable = getAllocatableAffinity(sources);
-  const sourceBonuses = getAffinityBonuses(sources);
-  const fixedBonusTotal = VIRTUE_IDS.reduce(
-    (sum, virtue) => sum + sourceBonuses[virtue] + talismanBonuses[virtue],
-    0,
+  type SourcePanel = "rank" | "pact" | "fables";
+
+  const [activePanel, setActivePanel] = useState<SourcePanel>();
+  const sourceMenuRef = useRef<HTMLElement>(null);
+  const rankTriggerRef = useRef<HTMLButtonElement>(null);
+  const pactTriggerRef = useRef<HTMLButtonElement>(null);
+  const fablesTriggerRef = useRef<HTMLButtonElement>(null);
+  const pactSummary = VIRTUE_IDS.map(
+    (virtue) =>
+      `${virtueMeta[virtue].label[0]}${PACT_ART_BONUS_BY_RANK[sources.pactArts[virtue]]}`,
+  ).join(" ");
+  const fableCounts = Object.values(sources.fables).reduce(
+    (counts, virtue) => {
+      if (virtue) counts[virtue] += 1;
+      return counts;
+    },
+    { courage: 0, spirit: 0, grace: 0 } as VirtueValues,
   );
-  const talismanBonusLabel = VIRTUE_IDS.flatMap((virtue) =>
-    talismanBonuses[virtue]
-      ? [`+${talismanBonuses[virtue]} ${virtueMeta[virtue].label}`]
-      : [],
-  ).join(", ");
+  const fableSummary =
+    VIRTUE_IDS.flatMap((virtue) =>
+      fableCounts[virtue]
+        ? [`${virtueMeta[virtue].label[0]}+${fableCounts[virtue]}`]
+        : [],
+    ).join(" ") || "None";
+
+  useEffect(() => {
+    if (!activePanel) return;
+
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (
+        event.target instanceof Node &&
+        !sourceMenuRef.current?.contains(event.target)
+      ) {
+        setActivePanel(undefined);
+      }
+    };
+    const closeOnEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      const activeTrigger = {
+        rank: rankTriggerRef.current,
+        pact: pactTriggerRef.current,
+        fables: fablesTriggerRef.current,
+      }[activePanel];
+      setActivePanel(undefined);
+      window.requestAnimationFrame(() => activeTrigger?.focus());
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [activePanel]);
 
   const updatePactArt = (virtue: VirtueId, rank: PactArtRank) => {
     onChange({
@@ -545,111 +588,145 @@ function AffinitySourceInputs({
   };
 
   return (
-    <section className="affinity-sources" aria-labelledby="affinity-sources-title">
+    <section
+      className="affinity-sources"
+      aria-labelledby="affinity-sources-title"
+      ref={sourceMenuRef}
+    >
       <header>
-        <span id="affinity-sources-title">Affinity sources</span>
-        <strong>
-          {allocatable + fixedBonusTotal}
-          <small> effective</small>
-        </strong>
+        <span id="affinity-sources-title">Sources</span>
       </header>
 
-      <div className="affinity-formula">
-        <span>
-          <small>Base</small>
-          <output>{BASE_AFFINITY_POINTS}</output>
-        </span>
-        <b aria-hidden="true">+</b>
-        <label>
-          <small>Envoy Rank</small>
-          <input
-            type="number"
-            min="0"
-            max={MAX_ENVOY_RANK}
-            value={sources.envoyRank}
-            aria-label="Envoy Rank"
-            onChange={(event) =>
-              onChange({
-                ...sources,
-                envoyRank: Math.min(
-                  MAX_ENVOY_RANK,
-                  Math.max(
-                    0,
-                    Math.round(Number(event.target.value) || 0),
-                  ),
-                ),
-              })
-            }
-          />
-        </label>
-        <b aria-hidden="true">=</b>
-        <span>
-          <small>Allocatable</small>
-          <output>{allocatable}</output>
-        </span>
+      <div className="affinity-source-buttons">
+        <button
+          type="button"
+          ref={rankTriggerRef}
+          aria-expanded={activePanel === "rank"}
+          aria-controls="affinity-rank-panel"
+          onClick={() =>
+            setActivePanel((current) =>
+              current === "rank" ? undefined : "rank",
+            )
+          }
+        >
+          <span>Envoy Rank</span>
+          <strong>{sources.envoyRank}</strong>
+        </button>
+        <button
+          type="button"
+          ref={pactTriggerRef}
+          aria-expanded={activePanel === "pact"}
+          aria-controls="affinity-pact-panel"
+          onClick={() =>
+            setActivePanel((current) =>
+              current === "pact" ? undefined : "pact",
+            )
+          }
+        >
+          <span>Pact Arts</span>
+          <strong className="affinity-source-summary">{pactSummary}</strong>
+        </button>
+        <button
+          type="button"
+          ref={fablesTriggerRef}
+          aria-expanded={activePanel === "fables"}
+          aria-controls="affinity-fables-panel"
+          onClick={() =>
+            setActivePanel((current) =>
+              current === "fables" ? undefined : "fables",
+            )
+          }
+        >
+          <span>Fables</span>
+          <strong className="affinity-source-summary">{fableSummary}</strong>
+        </button>
       </div>
 
-      <div className="affinity-fixed-heading">
-        <span>Fixed bonuses</span>
-        <strong>+{fixedBonusTotal}</strong>
-      </div>
-
-      <fieldset className="pact-art-inputs">
-        <legend>Pact Arts</legend>
-        {VIRTUE_IDS.map((virtue) => (
-          <label key={virtue}>
-            <span>{virtueMeta[virtue].label}</span>
+      {activePanel === "rank" ? (
+        <div
+          className="affinity-popover affinity-popover-rank"
+          id="affinity-rank-panel"
+        >
+          <label>
+            <span>Envoy Rank</span>
             <select
-              value={sources.pactArts[virtue]}
-              aria-label={`${virtueMeta[virtue].label} Pact Art rank`}
+              value={sources.envoyRank}
+              aria-label="Envoy Rank"
               onChange={(event) =>
-                updatePactArt(
-                  virtue,
-                  Number(event.target.value) as PactArtRank,
-                )
+                onChange({
+                  ...sources,
+                  envoyRank: Number(event.target.value),
+                })
               }
             >
-              {PACT_ART_BONUS_BY_RANK.map((bonus, rank) => (
+              {ENVOY_RANK_OPTIONS.map((rank) => (
                 <option value={rank} key={rank}>
-                  {rank === 0 ? "None" : `Rank ${rank} · +${bonus}`}
+                  {rank}
                 </option>
               ))}
             </select>
           </label>
-        ))}
-      </fieldset>
+        </div>
+      ) : null}
 
-      <fieldset className="fable-inputs">
-        <legend>Fables</legend>
-        {(
-          [
-            ["shewolf", "Shewolf Snared"],
-            ["wasteBear", "Waste Bear"],
-          ] as const
-        ).map(([fable, label]) => (
-          <label key={fable}>
-            <span>{label}</span>
-            <select
-              value={sources.fables[fable] ?? ""}
-              aria-label={`${label} Virtue reward`}
-              onChange={(event) => updateFable(fable, event.target.value)}
-            >
-              <option value="">Not earned</option>
-              {VIRTUE_IDS.map((virtue) => (
-                <option value={virtue} key={virtue}>
-                  +1 {virtueMeta[virtue].label}
-                </option>
-              ))}
-            </select>
-          </label>
-        ))}
-      </fieldset>
+      {activePanel === "pact" ? (
+        <div
+          className="affinity-popover affinity-popover-pact"
+          id="affinity-pact-panel"
+        >
+          {VIRTUE_IDS.map((virtue) => (
+            <label key={virtue}>
+              <span>{virtueMeta[virtue].label}</span>
+              <select
+                value={sources.pactArts[virtue]}
+                aria-label={`${virtueMeta[virtue].label} Pact Art rank`}
+                onChange={(event) =>
+                  updatePactArt(
+                    virtue,
+                    Number(event.target.value) as PactArtRank,
+                  )
+                }
+              >
+                {PACT_ART_BONUS_BY_RANK.map((bonus, rank) => (
+                  <option value={rank} key={rank}>
+                    {rank === 0 ? "None" : `Rank ${rank} · +${bonus}`}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ))}
+        </div>
+      ) : null}
 
-      <div className="talisman-affinity-source">
-        <span>Equipped Talisman</span>
-        <strong>{talismanBonusLabel || "No Virtue bonus"}</strong>
-      </div>
-      <p>Fixed bonuses affect requirements, but are not redistributed.</p>
+      {activePanel === "fables" ? (
+        <div
+          className="affinity-popover affinity-popover-fables"
+          id="affinity-fables-panel"
+        >
+          {(
+            [
+              ["shewolf", "Shewolf Snared"],
+              ["wasteBear", "Waste Bear"],
+            ] as const
+          ).map(([fable, label]) => (
+            <label key={fable}>
+              <span>{label}</span>
+              <select
+                value={sources.fables[fable] ?? ""}
+                aria-label={`${label} Virtue reward`}
+                onChange={(event) => updateFable(fable, event.target.value)}
+              >
+                <option value="">Not earned</option>
+                {VIRTUE_IDS.map((virtue) => (
+                  <option value={virtue} key={virtue}>
+                    +1 {virtueMeta[virtue].label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -1701,19 +1778,11 @@ export function SoulframeBuilder() {
         <aside className="alignment-rail">
           <header className="workspace-heading">
             <span>Virtues</span>
-            {calculation.talisman ? <small>Includes Talisman</small> : null}
           </header>
           <VirtueAlignment
             virtues={build.virtues}
             bonuses={calculation.bonusVirtues}
             sources={build.affinitySources}
-            talismanBonuses={
-              calculation.talisman?.virtues ?? {
-                courage: 0,
-                spirit: 0,
-                grace: 0,
-              }
-            }
             onChange={updateVirtues}
             onSourcesChange={updateAffinitySources}
           />

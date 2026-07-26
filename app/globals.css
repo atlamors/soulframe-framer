@@ -3,7 +3,7 @@
 :root {
   --ink: #eadfca;
   --ink-soft: #b9aa8d;
-  --ink-faint: #756c5d;
+  --ink-faint: #8f8575;
   --night: #0c0a08;
   --surface: #15110e;
   --surface-raised: #1d1712;
@@ -16,7 +16,16 @@
   --verdant: #8da273;
   --danger: #d17b67;
   --font-display: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-  --font-body: Georgia, "Times New Roman", serif;
+  --font-ui: var(--font-geist-sans), "Segoe UI", Arial, sans-serif;
+  --font-body: var(--font-ui);
+  --type-eyebrow: 11px;
+  --type-label: 12px;
+  --type-body-sm: 13px;
+  --type-body: 15px;
+  --type-value-sm: 18px;
+  --type-value-md: 24px;
+  --type-heading: clamp(22px, 2vw, 32px);
+  --type-display: clamp(44px, 5vw, 72px);
 }
 
 * {
@@ -37,6 +46,12 @@ body {
   font-family: var(--font-body);
   margin: 0;
   min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font-family: var(--font-ui);
 }
 
 button,
@@ -171,9 +186,9 @@ a:focus-visible,
 
 .brand em {
   color: var(--gold);
-  font-size: 8px;
+  font-size: var(--type-eyebrow);
   font-style: normal;
-  letter-spacing: 0.38em;
+  letter-spacing: 0.24em;
   margin-top: 5px;
   text-transform: uppercase;
 }
@@ -208,12 +223,12 @@ a:focus-visible,
   border: 1px solid transparent;
   cursor: pointer;
   display: inline-flex;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 9px;
+  font-family: var(--font-ui);
+  font-size: var(--type-label);
   font-weight: 700;
   justify-content: center;
-  letter-spacing: 0.12em;
-  min-height: 38px;
+  letter-spacing: 0.08em;
+  min-height: 44px;
   padding: 0 15px;
   text-transform: uppercase;
   transition:
@@ -263,7 +278,7 @@ a:focus-visible,
   border: 0;
   color: var(--gold-bright);
   cursor: pointer;
-  font-size: 9px;
+  font-size: var(--type-label);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -306,20 +321,20 @@ a:focus-visible,
 
 .workspace-heading > span {
   color: var(--ink-soft);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 9px;
+  font-family: var(--font-ui);
+  font-size: var(--type-label);
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .workspace-heading small {
   color: var(--verdant);
-  font-size: 8px;
+  font-size: var(--type-eyebrow);
 }
 
 .virtue-alignment-figure {
-  min-height: 510px;
+  min-height: 400px;
   position: relative;
 }
 
@@ -335,7 +350,7 @@ a:focus-visible,
   isolation: isolate;
   left: 50%;
   position: absolute;
-  top: 2%;
+  top: 5.5%;
   transform: translateX(-50%);
   user-select: none;
   width: 94%;
@@ -470,30 +485,32 @@ a:focus-visible,
 
 .alignment-node small {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .alignment-node strong {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: var(--type-value-md);
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 400;
   line-height: 1;
 }
 
 .alignment-node em {
   color: var(--verdant);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   font-style: normal;
   margin-top: 3px;
+  line-height: 1.25;
 }
 
 .alignment-node-spirit {
   left: 50%;
-  top: 0;
+  top: -18px;
   transform: translateX(-50%);
 }
 
@@ -519,8 +536,8 @@ a:focus-visible,
 
 .alignment-total-control small {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -535,199 +552,185 @@ a:focus-visible,
   color: var(--ink);
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 29px;
+  font-size: 32px;
+  font-variant-numeric: lining-nums tabular-nums;
   padding: 3px 0;
   text-align: center;
 }
 
 .alignment-total-control em {
   color: var(--ink-faint);
-  font-size: 8px;
+  font-size: var(--type-eyebrow);
   font-style: normal;
-}
-
-.alignment-caption {
-  color: var(--ink-faint);
-  display: block;
-  font-size: 10px;
-  font-style: italic;
-  text-align: center;
 }
 
 .affinity-sources {
   border-top: 1px solid var(--line);
   margin-top: 8px;
   padding-top: 16px;
+  position: relative;
 }
 
-.affinity-sources > header,
-.affinity-fixed-heading,
-.talisman-affinity-source {
+.affinity-sources > header {
   align-items: baseline;
   display: flex;
-  justify-content: space-between;
 }
 
-.affinity-sources > header > span,
-.affinity-fixed-heading > span {
+.affinity-sources > header > span {
   color: var(--ink-soft);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.affinity-sources > header > strong {
-  color: var(--gold-bright);
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 400;
-}
-
-.affinity-sources > header > strong small {
-  color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.affinity-formula {
-  align-items: end;
+.affinity-source-buttons {
   display: grid;
-  gap: 5px;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
-  margin: 12px 0 16px;
+  gap: 6px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 10px;
 }
 
-.affinity-formula > span,
-.affinity-formula > label {
-  align-items: center;
-  border-bottom: 1px solid var(--line);
+.affinity-source-buttons button {
+  align-items: flex-start;
+  background: rgba(6, 6, 5, 0.42);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
+  gap: 7px;
+  justify-content: center;
+  min-height: 56px;
   min-width: 0;
-  padding-bottom: 5px;
+  padding: 8px 10px;
+  position: relative;
 }
 
-.affinity-formula small,
-.pact-art-inputs legend,
-.fable-inputs legend {
+.affinity-source-buttons button:hover,
+.affinity-source-buttons button[aria-expanded="true"] {
+  background: rgba(202, 145, 55, 0.08);
+  border-color: var(--line-bright);
+  color: var(--ink);
+}
+
+.affinity-source-buttons button::after {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  content: "⌄";
+  font-size: 12px;
+  line-height: 1;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  transition: transform 150ms ease;
+}
+
+.affinity-source-buttons button[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.affinity-source-buttons button > span {
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  white-space: normal;
+}
+
+.affinity-popover label > span {
+  color: var(--ink-faint);
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.affinity-formula output,
-.affinity-formula input {
-  color: var(--ink);
+.affinity-source-buttons button > strong {
+  color: var(--gold-bright);
   font-family: var(--font-display);
-  font-size: 21px;
-  line-height: 1.2;
-}
-
-.affinity-formula input {
-  appearance: textfield;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  text-align: center;
-  width: 100%;
-}
-
-.affinity-formula input::-webkit-inner-spin-button {
-  appearance: none;
-}
-
-.affinity-formula b {
-  color: var(--ink-faint);
-  font-size: 11px;
-  font-weight: 400;
-  padding-bottom: 10px;
-}
-
-.affinity-fixed-heading {
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 10px;
-  padding-bottom: 7px;
-}
-
-.affinity-fixed-heading strong {
-  color: var(--verdant);
-  font-size: 11px;
+  font-size: var(--type-value-sm);
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 400;
 }
 
-.pact-art-inputs,
-.fable-inputs {
-  border: 0;
+.affinity-source-buttons button > .affinity-source-summary {
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.affinity-popover {
+  background:
+    linear-gradient(180deg, rgba(31, 25, 19, 0.99), rgba(12, 11, 9, 0.99));
+  border: 1px solid var(--line-bright);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.52);
   display: grid;
   gap: 6px;
-  margin: 0 0 12px;
-  padding: 0;
+  left: 0;
+  padding: 9px;
+  position: absolute;
+  top: calc(100% + 7px);
+  width: 100%;
+  z-index: 20;
 }
 
-.pact-art-inputs {
+.affinity-popover::before {
+  background: #1f1913;
+  border-left: 1px solid var(--line-bright);
+  border-top: 1px solid var(--line-bright);
+  content: "";
+  height: 8px;
+  position: absolute;
+  top: -5px;
+  transform: rotate(45deg);
+  width: 8px;
+}
+
+.affinity-popover-rank {
+  grid-template-columns: 1fr;
+  left: 0;
+  width: calc((100% - 12px) / 3);
+}
+
+.affinity-popover-rank::before {
+  left: calc(50% - 4px);
+}
+
+.affinity-popover-pact {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.pact-art-inputs legend,
-.fable-inputs legend {
-  margin-bottom: 6px;
+.affinity-popover-pact::before {
+  left: calc(50% - 4px);
 }
 
-.pact-art-inputs label,
-.fable-inputs label {
+.affinity-popover-fables {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.affinity-popover-fables::before {
+  left: calc(83.333% - 4px);
+}
+
+.affinity-popover label {
   display: grid;
   gap: 4px;
   min-width: 0;
 }
 
-.pact-art-inputs label > span,
-.fable-inputs label > span,
-.talisman-affinity-source > span {
-  color: var(--ink-faint);
-  font-size: 8px;
-}
-
-.pact-art-inputs select,
-.fable-inputs select {
+.affinity-popover select {
   background: rgba(4, 4, 3, 0.5);
   border: 1px solid var(--line);
   color: var(--ink-soft);
-  font-size: 9px;
+  font-size: 14px;
+  min-height: 44px;
   min-width: 0;
-  padding: 6px 5px;
+  padding: 7px 8px;
   width: 100%;
-}
-
-.fable-inputs {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.talisman-affinity-source {
-  border-bottom: 1px solid var(--line);
-  border-top: 1px solid var(--line);
-  gap: 12px;
-  padding: 8px 0;
-}
-
-.talisman-affinity-source strong {
-  color: var(--verdant);
-  font-size: 8px;
-  font-weight: 400;
-  text-align: right;
-}
-
-.affinity-sources > p {
-  color: var(--ink-faint);
-  font-size: 8px;
-  line-height: 1.4;
-  margin: 8px 0 0;
 }
 
 .stat-icon {
@@ -1053,8 +1056,8 @@ a:focus-visible,
 
 .slot-label {
   color: var(--gold);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.14em;
   margin-bottom: 5px;
   text-transform: uppercase;
@@ -1062,7 +1065,7 @@ a:focus-visible,
 
 .slot-copy strong {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1078,8 +1081,8 @@ a:focus-visible,
 
 .slot-talisman-summary {
   color: var(--gold-pale);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 9px;
+  font-family: var(--font-ui);
+  font-size: var(--type-label);
   font-weight: 600;
   line-height: 1.45;
   margin-top: 6px;
@@ -1089,8 +1092,8 @@ a:focus-visible,
   align-items: center;
   color: var(--ink-faint);
   display: inline-flex;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   gap: 4px;
   margin-top: 5px;
   width: fit-content;
@@ -1119,15 +1122,16 @@ a:focus-visible,
 
 .total-defense strong {
   font-family: var(--font-display);
-  font-size: clamp(48px, 5vw, 72px);
+  font-size: var(--type-display);
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 400;
   line-height: 0.9;
 }
 
 .total-defense span {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.14em;
   margin-top: 9px;
   text-transform: uppercase;
@@ -1137,7 +1141,7 @@ a:focus-visible,
   border-left: 2px solid var(--danger);
   display: flex;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ui);
   gap: 4px;
   margin-bottom: 14px;
   padding: 8px 0 8px 10px;
@@ -1145,13 +1149,13 @@ a:focus-visible,
 
 .build-requirement-warning strong {
   color: var(--danger);
-  font-size: 9px;
+  font-size: var(--type-label);
   text-transform: uppercase;
 }
 
 .build-requirement-warning span {
   color: var(--ink-faint);
-  font-size: 8px;
+  font-size: var(--type-eyebrow);
 }
 
 .defense-list {
@@ -1169,13 +1173,14 @@ a:focus-visible,
 
 .defense-row strong {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
 }
 
 .defense-row b {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: var(--type-value-md);
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 400;
 }
 
@@ -1194,8 +1199,8 @@ a:focus-visible,
 
 .secondary-modifiers small {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1215,8 +1220,8 @@ a:focus-visible,
 
 .footer a {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
@@ -1285,9 +1290,9 @@ a:focus-visible,
   display: flex;
   font-family: var(--font-display);
   font-size: 28px;
-  height: 38px;
+  height: 44px;
   justify-content: center;
-  width: 38px;
+  width: 44px;
 }
 
 .icon-button:hover {
@@ -1325,8 +1330,8 @@ a:focus-visible,
 .search-field input {
   background: transparent;
   border: 0;
-  font-size: 12px;
-  min-height: 43px;
+  font-size: 14px;
+  min-height: 44px;
   outline: 0;
   width: 100%;
 }
@@ -1391,7 +1396,7 @@ a:focus-visible,
 
 .item-list-row strong {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1400,8 +1405,8 @@ a:focus-visible,
 
 .item-list-row small {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: uppercase;
@@ -1418,19 +1423,20 @@ a:focus-visible,
   color: var(--ink-soft);
   font-family: var(--font-display);
   font-size: 16px;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .equipped-chip {
   color: var(--verdant);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .item-list-talisman-modifiers {
   color: var(--gold-pale) !important;
-  font-size: 8px !important;
+  font-size: var(--type-eyebrow) !important;
   font-weight: 600;
 }
 
@@ -1456,7 +1462,7 @@ a:focus-visible,
 
 .comparison-heading h3 {
   font-family: var(--font-display);
-  font-size: clamp(23px, 2.5vw, 32px);
+  font-size: var(--type-heading);
   font-weight: 400;
   line-height: 1.05;
   margin: 0;
@@ -1464,8 +1470,8 @@ a:focus-visible,
 
 .comparison-heading p {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.08em;
   margin: 8px 0 0;
   text-transform: uppercase;
@@ -1485,8 +1491,8 @@ a:focus-visible,
 
 .item-stat-head {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.1em;
   padding: 8px 0;
   text-align: right;
@@ -1506,7 +1512,8 @@ a:focus-visible,
 .item-stat-row > span,
 .item-stat-row > strong {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 16px;
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 400;
 }
 
@@ -1520,14 +1527,14 @@ a:focus-visible,
 .item-stat-name > span:last-child {
   display: flex;
   flex-direction: column;
-  font-size: 12px;
+  font-size: 14px;
   gap: 3px;
 }
 
 .item-stat-name small {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
 }
 
 .delta-positive {
@@ -1565,8 +1572,8 @@ a:focus-visible,
 .effective-virtues small,
 .modifier-chip small {
   color: var(--ink-faint);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1574,6 +1581,7 @@ a:focus-visible,
 .comparison-total strong {
   font-family: var(--font-display);
   font-size: 29px;
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 400;
 }
 
@@ -1608,6 +1616,7 @@ a:focus-visible,
 .modifier-chip strong {
   font-family: var(--font-display);
   font-size: 20px;
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 400;
 }
 
@@ -1629,12 +1638,13 @@ a:focus-visible,
 .effective-virtues strong {
   font-family: var(--font-display);
   font-size: 22px;
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 400;
 }
 
 .conditional-note {
   color: var(--danger);
-  font-size: 9px;
+  font-size: var(--type-label);
   margin: 12px 0 0;
 }
 
@@ -1651,8 +1661,8 @@ a:focus-visible,
 
 .talisman-defense-impact > span,
 .talisman-defense-impact small {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1744,7 +1754,7 @@ a:focus-visible,
   }
 
   .virtue-alignment-figure {
-    min-height: 450px;
+    min-height: 400px;
   }
 
   .alignment-map {
@@ -1794,8 +1804,8 @@ a:focus-visible,
   }
 
   .topbar-actions .button {
-    font-size: 8px;
-    min-height: 34px;
+    font-size: var(--type-eyebrow);
+    min-height: 44px;
     padding: 0 10px;
   }
 
@@ -1813,7 +1823,7 @@ a:focus-visible,
   }
 
   .virtue-alignment-figure {
-    min-height: 430px;
+    min-height: 380px;
   }
 
   .alignment-map {
@@ -1907,7 +1917,7 @@ a:focus-visible,
   }
 
   .slot-copy strong {
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .slot-talisman-summary {
@@ -1969,24 +1979,37 @@ a:focus-visible,
     padding: 24px 16px;
   }
 
+  .affinity-popover select {
+    font-size: 16px;
+    min-height: 44px;
+  }
+
   .candidate-art {
     height: 82px;
     width: 82px;
   }
 
+  .item-stat-table {
+    margin-right: -16px;
+    overflow-x: auto;
+    padding-right: 16px;
+    scrollbar-width: thin;
+  }
+
   .item-stat-head,
   .item-stat-row {
-    gap: 4px;
-    grid-template-columns: minmax(110px, 1fr) repeat(4, 34px);
+    gap: 8px;
+    grid-template-columns: minmax(170px, 1fr) repeat(4, 72px);
+    min-width: 540px;
   }
 
   .item-stat-head {
-    font-size: 6px;
+    font-size: var(--type-eyebrow);
   }
 
   .item-stat-row > span,
   .item-stat-row > strong {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .picker-actions {
