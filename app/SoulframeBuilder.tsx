@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import Image from "next/image";
 import { armorById, armorCatalogue } from "@/src/data/catalogue";
 import { armorImageById } from "@/src/data/armor-images";
@@ -112,6 +118,115 @@ function StatIcon({
       />
       <span className="sr-only">{label}</span>
     </span>
+  );
+}
+
+function VirtueAlignment({
+  virtues,
+  onChange,
+}: {
+  virtues: SoulframeBuild["virtues"];
+  onChange: (virtue: VirtueId, value: number) => void;
+}) {
+  const total = VIRTUE_IDS.reduce((sum, virtue) => sum + virtues[virtue], 0);
+  const plottedValues =
+    total === 0 ? { courage: 1, spirit: 1, grace: 1 } : virtues;
+  const plottedTotal = total || 3;
+  const alignmentX =
+    (plottedValues.spirit * 50 +
+      plottedValues.courage * 8 +
+      plottedValues.grace * 92) /
+    plottedTotal;
+  const alignmentY =
+    (plottedValues.spirit * 2 +
+      plottedValues.courage * 90 +
+      plottedValues.grace * 90) /
+    plottedTotal;
+  const dominant =
+    total === 0
+      ? undefined
+      : VIRTUE_IDS.reduce((highest, virtue) =>
+          virtues[virtue] > virtues[highest] ? virtue : highest,
+        );
+  const figureStyle = {
+    "--alignment-x": `${alignmentX}%`,
+    "--alignment-y": `${alignmentY}%`,
+  } as CSSProperties;
+  const figureOrder: VirtueId[] = ["spirit", "courage", "grace"];
+
+  return (
+    <>
+      <div className="virtue-alignment-figure" style={figureStyle}>
+        <div className="alignment-map" aria-hidden="true">
+          <div className="alignment-triangle-frame">
+            <span className="alignment-triangle-surface" />
+          </div>
+          <span className="alignment-marker">
+            <i />
+          </span>
+          {figureOrder.map((virtue) => {
+            const meta = virtueMeta[virtue];
+            return (
+              <span
+                className={`alignment-node alignment-node-${virtue} tone-${meta.tone}`}
+                key={virtue}
+              >
+                <StatIcon src={meta.icon} label={meta.label} size="small" />
+                <span>
+                  <small>{meta.label}</small>
+                  <strong>{virtues[virtue]}</strong>
+                </span>
+              </span>
+            );
+          })}
+        </div>
+        <span className="alignment-caption">
+          <small>Relative alignment</small>
+          <strong>
+            {dominant ? `${virtueMeta[dominant].label} leaning` : "Unaligned"}
+          </strong>
+        </span>
+      </div>
+
+      <div className="alignment-controls">
+        {VIRTUE_IDS.map((virtue) => {
+          const meta = virtueMeta[virtue];
+          return (
+            <label
+              className={`alignment-control tone-${meta.tone}`}
+              key={virtue}
+            >
+              <StatIcon src={meta.icon} label={meta.label} size="small" />
+              <span className="alignment-control-name">{meta.label}</span>
+              <span className="alignment-value">
+                <input
+                  type="number"
+                  min="0"
+                  max="99"
+                  value={virtues[virtue]}
+                  aria-label={`${meta.label} value`}
+                  onChange={(event) =>
+                    onChange(virtue, Number(event.target.value))
+                  }
+                />
+                <small>/99</small>
+              </span>
+              <input
+                className="alignment-range"
+                type="range"
+                min="0"
+                max="99"
+                value={virtues[virtue]}
+                aria-label={`${meta.label} alignment`}
+                onChange={(event) =>
+                  onChange(virtue, Number(event.target.value))
+                }
+              />
+            </label>
+          );
+        })}
+      </div>
+    </>
   );
 }
 
@@ -911,54 +1026,16 @@ export function SoulframeBuilder() {
         <div className="virtues-panel panel">
           <div className="panel-heading">
             <div>
-              <span className="eyebrow">Character inputs</span>
-              <h2>Virtues</h2>
+              <span className="eyebrow">Character virtues</span>
+              <h2>Alignment</h2>
             </div>
             <span className="panel-number">01</span>
           </div>
           <p className="panel-intro">
-            Virtues multiply each armor piece&apos;s attunement pips. They are
-            character inputs—not item bonuses.
+            Shape the balance between Courage, Spirit, and Grace. Your exact
+            values drive every armor attunement below.
           </p>
-          <div className="virtue-controls">
-            {VIRTUE_IDS.map((virtue) => {
-              const meta = virtueMeta[virtue];
-              return (
-                <label className={`virtue-control tone-${meta.tone}`} key={virtue}>
-                  <span className="virtue-name">
-                    <StatIcon src={meta.icon} label={meta.label} size="large" />
-                    <span>
-                      <strong>{meta.label}</strong>
-                      <small>Character value</small>
-                    </span>
-                  </span>
-                  <span className="virtue-input-wrap">
-                    <input
-                      type="number"
-                      min="0"
-                      max="99"
-                      value={build.virtues[virtue]}
-                      onChange={(event) =>
-                        updateVirtue(virtue, Number(event.target.value))
-                      }
-                    />
-                    <span>/ 99</span>
-                  </span>
-                  <input
-                    className="virtue-range"
-                    type="range"
-                    min="0"
-                    max="99"
-                    value={build.virtues[virtue]}
-                    aria-label={`${meta.label} adjustment`}
-                    onChange={(event) =>
-                      updateVirtue(virtue, Number(event.target.value))
-                    }
-                  />
-                </label>
-              );
-            })}
-          </div>
+          <VirtueAlignment virtues={build.virtues} onChange={updateVirtue} />
           <div className="formula-note">
             <span>Verified rule</span>
             <code>Base + INT(0.12 × weighted pips)</code>
