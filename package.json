@@ -14,6 +14,7 @@
     "import:catalogue": "node scripts/import-catalogue.mjs",
     "import:armor-images": "node scripts/import-armor-images.mjs",
     "import:armor-requirements": "node scripts/import-armor-requirements.mjs",
+    "import:talismans": "node scripts/import-talismans.mjs",
     "lint": "eslint . --ignore-pattern .next"
   },
   "dependencies": {

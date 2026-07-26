@@ -9,6 +9,70 @@ export const MAX_VIRTUE_POINTS = 99;
 const clamp = (value: number, minimum: number, maximum: number) =>
   Math.min(maximum, Math.max(minimum, value));
 
+interface AlignmentPoint {
+  x: number;
+  y: number;
+}
+
+const TRIANGLE_VERTICES = [
+  { x: 0.5, y: 0 },
+  { x: 0, y: 1 },
+  { x: 1, y: 1 },
+] as const;
+
+function closestPointOnSegment(
+  point: AlignmentPoint,
+  start: AlignmentPoint,
+  end: AlignmentPoint,
+): AlignmentPoint {
+  const segmentX = end.x - start.x;
+  const segmentY = end.y - start.y;
+  const lengthSquared = segmentX ** 2 + segmentY ** 2;
+  const projection =
+    ((point.x - start.x) * segmentX +
+      (point.y - start.y) * segmentY) /
+    lengthSquared;
+  const amount = clamp(projection, 0, 1);
+
+  return {
+    x: start.x + segmentX * amount,
+    y: start.y + segmentY * amount,
+  };
+}
+
+export function projectVirtueAlignmentPoint(
+  requestedX: number,
+  requestedY: number,
+): AlignmentPoint {
+  const point = {
+    x: Number.isFinite(requestedX) ? requestedX : 0.5,
+    y: Number.isFinite(requestedY) ? requestedY : 2 / 3,
+  };
+  const inside =
+    point.y >= 0 &&
+    point.y <= 1 &&
+    point.x >= 0.5 * (1 - point.y) &&
+    point.x <= 0.5 * (1 + point.y);
+
+  if (inside) return point;
+
+  const candidates = TRIANGLE_VERTICES.map((vertex, index) =>
+    closestPointOnSegment(
+      point,
+      vertex,
+      TRIANGLE_VERTICES[(index + 1) % TRIANGLE_VERTICES.length],
+    ),
+  );
+
+  return candidates.reduce((closest, candidate) => {
+    const closestDistance =
+      (closest.x - point.x) ** 2 + (closest.y - point.y) ** 2;
+    const candidateDistance =
+      (candidate.x - point.x) ** 2 + (candidate.y - point.y) ** 2;
+    return candidateDistance < closestDistance ? candidate : closest;
+  });
+}
+
 function allocateByWeight(
   requestedTotal: number,
   weights: VirtueValues,
@@ -80,10 +144,9 @@ export function virtuesFromAlignmentPoint(
   requestedX: number,
   requestedY: number,
 ): VirtueValues {
-  const y = clamp(requestedY, 0, 1);
+  const { x, y } = projectVirtueAlignmentPoint(requestedX, requestedY);
   const minimumX = 0.5 * (1 - y);
   const maximumX = 0.5 * (1 + y);
-  const x = clamp(requestedX, minimumX, maximumX);
   const weights: VirtueValues = {
     courage: maximumX - x,
     spirit: 1 - y,

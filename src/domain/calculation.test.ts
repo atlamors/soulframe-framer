@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { armorCatalogue } from "../data/catalogue";
+import { talismanCatalogue } from "../data/talismans";
 import {
   calculateBuild,
   calculateDefense,
@@ -36,7 +37,7 @@ describe("armor calculations", () => {
 
   it("aggregates multiple equipped pieces", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 1,
+      schemaVersion: 2,
       name: "Test",
       virtues: { courage: 19, spirit: 12, grace: 12 },
       equipment: {
@@ -45,7 +46,7 @@ describe("armor calculations", () => {
         leggings: "leggings-arbearers-braes",
       },
     };
-    const result = calculateBuild(build, armorCatalogue);
+    const result = calculateBuild(build, armorCatalogue, talismanCatalogue);
     expect(result.items).toHaveLength(3);
     expect(result.total).toBe(
       result.defenses.physicalDefense +
@@ -74,7 +75,7 @@ describe("armor calculations", () => {
 
   it("reports equipped armor with unmet requirements", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 1,
+      schemaVersion: 2,
       name: "Unmet",
       virtues: { courage: 12, spirit: 12, grace: 12 },
       equipment: { helm: "helm-arbearers-mask" },
@@ -87,7 +88,7 @@ describe("armor calculations", () => {
 
   it("reports unknown item ids without crashing", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 1,
+      schemaVersion: 2,
       name: "Unknown",
       virtues: { courage: 12, spirit: 12, grace: 12 },
       equipment: { helm: "helm-does-not-exist" },
@@ -95,5 +96,47 @@ describe("armor calculations", () => {
     expect(calculateBuild(build, armorCatalogue).warnings).toEqual([
       "Unknown item id: helm-does-not-exist",
     ]);
+  });
+
+  it("applies Talisman virtue bonuses before armor requirements and scaling", () => {
+    const build: SoulframeBuild = {
+      schemaVersion: 2,
+      name: "Talisman virtues",
+      virtues: { courage: 18, spirit: 12, grace: 12 },
+      equipment: {
+        helm: "helm-arbearers-mask",
+        talisman: "talisman-wyldings-hilt",
+      },
+    };
+
+    const result = calculateBuild(build, armorCatalogue, talismanCatalogue);
+
+    expect(result.effectiveVirtues).toEqual({
+      courage: 21,
+      spirit: 12,
+      grace: 12,
+    });
+    expect(result.items[0].requirementMet).toBe(true);
+    expect(result.talisman?.virtues.courage).toBe(3);
+  });
+
+  it("adds flat Talisman defense and exposes raw combat modifiers", () => {
+    const build: SoulframeBuild = {
+      schemaVersion: 2,
+      name: "Talisman defense",
+      virtues: { courage: 12, spirit: 12, grace: 12 },
+      equipment: {
+        talisman: "talisman-the-cogah-lorcaan",
+      },
+    };
+
+    const result = calculateBuild(build, armorCatalogue, talismanCatalogue);
+
+    expect(result.defenses.physicalDefense).toBe(2);
+    expect(result.talismanDefense).toBe(2);
+    expect(result.modifiers.attack).toBe(10);
+    expect(result.warnings).toContain(
+      "The Cogah Lorcaan has an encounter-dependent effect that is not included in calculated totals.",
+    );
   });
 });

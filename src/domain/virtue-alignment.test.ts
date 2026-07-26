@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   distributeVirtueTotal,
   getVirtueAlignmentPoint,
+  projectVirtueAlignmentPoint,
   shiftVirtueAlignment,
   virtuesFromAlignmentPoint,
 } from "./virtue-alignment";
@@ -57,6 +58,14 @@ describe("virtue alignment", () => {
     const point = getVirtueAlignmentPoint(virtues);
 
     expect(virtuesFromAlignmentPoint(39, point.x, point.y)).toEqual(virtues);
+  });
+
+  it("projects pointer positions outside the triangle onto its edges", () => {
+    const leftEdge = projectVirtueAlignmentPoint(-0.25, 0.5);
+    expect(leftEdge.x).toBeCloseTo(0.15);
+    expect(leftEdge.y).toBeCloseTo(0.7);
+    expect(projectVirtueAlignmentPoint(2, 2)).toEqual({ x: 1, y: 1 });
+    expect(projectVirtueAlignmentPoint(0.5, -2)).toEqual({ x: 0.5, y: 0 });
   });
 
   it("moves one conserved point toward a keyboard-selected virtue", () => {

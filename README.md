@@ -12,6 +12,7 @@ database, CMS, or runtime dependency on Google Sheets.
 
 - 72 verified armor pieces from the canonical `Soulframe Armor Scaling` sheet
 - Helm, cuirass, and leggings selection
+- 23 Talismans with canonical modifiers and artwork
 - Searchable compatible-item catalogue
 - Candidate-versus-equipped comparisons
 - Physical Defense, Magick Defense, and Stability Increase totals
@@ -68,6 +69,8 @@ Pure domain calculations → UI → localStorage / share URL
 - `src/domain/calculation.ts` contains pure scaling and aggregation functions.
 - `src/domain/serialization.ts` validates and versions saved/shared builds.
 - `src/data/armor-catalogue.generated.json` contains normalized catalogue data.
+- `src/data/talismans.generated.json` contains the Avakot-backed Talisman
+  catalogue, modifiers, artwork, and provenance.
 - `src/data/catalogue-provenance.json` records source identity, checksum, item
   count, icon inventory, and verified formula.
 - `app/SoulframeBuilder.tsx` contains the interactive loadout experience.
@@ -112,16 +115,16 @@ correct the canonical sheet or the importer instead.
 
 ## Build persistence and sharing
 
-Builds use schema version `1` and store only:
+Builds use schema version `2` and store only:
 
 - Build name
 - Character virtue values
-- Stable equipped item IDs
+- Stable armor and Talisman IDs
 
-The active build is stored under `soulframe-framer.build.v1`. A valid `build`
-URL parameter overrides local state and becomes the active persisted build.
-Malformed data, unsupported versions, and unknown item IDs are handled without
-crashing.
+The active build is stored under `soulframe-framer.build.v2`; version `1`
+builds are migrated automatically. A valid `build` URL parameter overrides
+local state and becomes the active persisted build. Malformed data, unsupported
+versions, and unknown item IDs are handled without crashing.
 
 ## Data status
 
@@ -154,6 +157,12 @@ and records dimensions, MIME type, SHA-1, source page, and attribution metadata
 in `src/data/armor-images.generated.json`. The generated artwork is presented
 throughout the equipped slots, catalogue, and candidate comparison.
 
+The interactive virtue control uses Avakot's transparent
+[`VirtueLith.png`](https://wiki.avakot.org/File:VirtueLith.png) beneath a native
+SVG lighting system, selector geometry, and accessible controls. The dynamic
+red, green, and blue fields follow the current PR15 allocation UI rather than
+using the unrelated inventory-style `VirtueStone` artwork.
+
 Verified virtue requirements are imported separately from Avakot's public
 `Module:Data/Armour` source:
 
@@ -164,6 +173,18 @@ npm run import:armor-requirements
 The runtime catalogue merges those thresholds with the workbook-derived defense
 data. Base defenses always apply; attunement scaling is included only when the
 equipped build meets the item's requirement.
+
+Talismans are imported from Avakot's `Category:Talismans` index and the same
+equipment data module:
+
+```bash
+npm run import:talismans
+```
+
+Talisman virtue bonuses contribute to effective virtues before armor
+requirements and scaling are evaluated. Flat defensive modifiers are added to
+the corresponding build defenses. Listed Attack and Stagger modifiers are
+shown without deriving unsupported damage totals.
 
 See [docs/data-migration.md](docs/data-migration.md) for the detailed source
 mapping and remaining ambiguities.

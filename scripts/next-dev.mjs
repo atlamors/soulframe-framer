@@ -1,9 +1,12 @@
 import { spawn } from "node:child_process";
 import { createRequire } from "node:module";
 import net from "node:net";
+import process from "node:process";
 
 const DEFAULT_PORT = 3000;
 const MAX_PORT = 65_535;
+const isMountedWorkspace =
+  process.platform === "linux" && process.cwd().startsWith("/mnt/");
 
 function parsePreferredPort(value) {
   const port = Number.parseInt(value ?? String(DEFAULT_PORT), 10);
@@ -46,8 +49,22 @@ if (port !== preferredPort) {
 
 const require = createRequire(import.meta.url);
 const nextBin = require.resolve("next/dist/bin/next");
-const next = spawn(process.execPath, [nextBin, "dev", "--port", String(port)], {
-  env: process.env,
+const nextArgs = [nextBin, "dev", "--port", String(port)];
+
+if (isMountedWorkspace) {
+  nextArgs.push("--webpack");
+  console.log("Mounted workspace detected; using polling for reliable HMR.");
+}
+
+const next = spawn(process.execPath, nextArgs, {
+  env: {
+    ...process.env,
+    ...(isMountedWorkspace
+      ? {
+          WATCHPACK_POLLING: process.env.WATCHPACK_POLLING ?? "true",
+        }
+      : {}),
+  },
   stdio: "inherit",
 });
 
