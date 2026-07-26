@@ -181,15 +181,18 @@ function RequirementBadge({
 
   const meta = virtueMeta[requirement.virtue];
   const met = meetsArmorRequirement(item, virtues);
+  const current = virtues[requirement.virtue];
+  const accessibleLabel = `Requires ${requirement.value} ${meta.label}; current ${current}; requirement ${
+    met ? "met" : "unmet"
+  }`;
 
   return (
     <span
       className={`requirement-badge tone-${meta.tone} ${
         met ? "requirement-met" : "requirement-unmet"
       }`}
-      title={`${requirement.value} ${meta.label} required — ${
-        met ? "met" : `${virtues[requirement.virtue]} current`
-      }`}
+      aria-label={accessibleLabel}
+      title={accessibleLabel}
     >
       <Image
         src={meta.icon}
@@ -199,7 +202,11 @@ function RequirementBadge({
         height={18}
         unoptimized
       />
-      <span>{compact ? requirement.value : `${requirement.value} ${meta.label}`}</span>
+      <span>
+        {compact
+          ? `${meta.label.slice(0, 1)} ${current}/${requirement.value}`
+          : `${requirement.value} ${meta.label}`}
+      </span>
       <em>{met ? "Met" : "Unmet"}</em>
     </span>
   );
@@ -279,12 +286,28 @@ function EquipmentSlot({
   onOpen: () => void;
 }) {
   const meta = slotMeta[slot];
+  const requirementSummary =
+    item?.requirement && contribution
+      ? ` Requires ${item.requirement.value} ${
+          virtueMeta[item.requirement.virtue].label
+        }; current ${virtues[item.requirement.virtue]}; ${
+          contribution.requirementMet ? "met" : "unmet"
+        }.`
+      : item
+        ? " No virtue requirement."
+        : "";
+  const defenseSummary = contribution
+    ? ` ${contribution.total} total defense.`
+    : "";
+
   return (
     <button
       type="button"
       className={`equipment-slot equipment-slot-${slot}`}
       onClick={onOpen}
-      aria-label={`${meta.label}: ${item?.name ?? "empty"}. Change item.`}
+      aria-label={`${meta.label}: ${
+        item?.name ?? "empty"
+      }.${defenseSummary}${requirementSummary} Change item.`}
     >
       <span className="slot-index">{meta.index}</span>
       <span className="slot-art" aria-hidden="true">
@@ -391,6 +414,7 @@ function ItemPicker({
   onUnequip: () => void;
 }) {
   const searchRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
   const [query, setQuery] = useState("");
   const compatibleItems = useMemo(
     () => armorCatalogue.filter((item) => item.slot === slot),
@@ -418,17 +442,54 @@ function ItemPicker({
     : undefined;
 
   useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     searchRef.current?.focus();
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = Array.from(
+        panelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      ).filter(
+        (element) =>
+          !element.hasAttribute("hidden") && element.offsetParent !== null,
+      );
+
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
+
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus();
+    };
   }, [onClose]);
 
   return (
     <div className="picker-backdrop" role="presentation" onMouseDown={onClose}>
       <section
+        ref={panelRef}
         className="picker-panel"
         role="dialog"
         aria-modal="true"
@@ -449,6 +510,49 @@ function ItemPicker({
             ×
           </button>
         </header>
+
+        {candidate && candidateContribution ? (
+          <div className="picker-mobile-actions">
+            <span className="picker-mobile-summary">
+              <small>Selected armor</small>
+              <strong>{candidate.name}</strong>
+              <span>
+                {candidateContribution.total} defense
+                {currentContribution
+                  ? ` · ${formatDelta(
+                      candidateContribution.total - currentContribution.total,
+                    )} change`
+                  : ""}
+              </span>
+            </span>
+            <RequirementBadge
+              item={candidate}
+              virtues={build.virtues}
+              compact
+            />
+            <span className="picker-mobile-buttons">
+              {currentItem ? (
+                <button
+                  type="button"
+                  className="button button-quiet"
+                  onClick={onUnequip}
+                >
+                  Clear
+                </button>
+              ) : null}
+              <button
+                type="button"
+                className="button button-primary"
+                onClick={() => onEquip(candidate.id)}
+                disabled={candidate.id === currentItem?.id}
+              >
+                {candidate.id === currentItem?.id
+                  ? "Equipped"
+                  : `Equip ${slotMeta[slot].label}`}
+              </button>
+            </span>
+          </div>
+        ) : null}
 
         <div className="picker-body">
           <aside className="catalogue-column">
@@ -480,7 +584,6 @@ function ItemPicker({
                     key={item.id}
                     onClick={() => setCandidateId(item.id)}
                     onFocus={() => setCandidateId(item.id)}
-                    onMouseEnter={() => setCandidateId(item.id)}
                   >
                     <span className="item-list-mark" aria-hidden="true">
                       <ArmorArtwork
@@ -632,6 +735,7 @@ function ItemPicker({
             )}
           </div>
         </div>
+
       </section>
     </div>
   );
@@ -649,6 +753,24 @@ export function SoulframeBuilder() {
   const unmetRequirementCount = calculation.items.filter(
     (item) => !item.requirementMet,
   ).length;
+  const unmetRequirementGroups = VIRTUE_IDS.flatMap((virtue) => {
+    const unmetItems = calculation.items.flatMap((contribution) => {
+      if (contribution.requirementMet) return [];
+      const item = armorById.get(contribution.itemId);
+      return item?.requirement?.virtue === virtue ? [item] : [];
+    });
+    if (!unmetItems.length) return [];
+
+    return [
+      {
+        virtue,
+        itemCount: unmetItems.length,
+        required: Math.max(
+          ...unmetItems.map((item) => item.requirement?.value ?? 0),
+        ),
+      },
+    ];
+  });
 
   useEffect(() => {
     let nextBuild: SoulframeBuild | undefined;
@@ -826,9 +948,9 @@ export function SoulframeBuilder() {
                     className="virtue-range"
                     type="range"
                     min="0"
-                    max="40"
-                    value={Math.min(40, build.virtues[virtue])}
-                    aria-label={`${meta.label} quick adjustment`}
+                    max="99"
+                    value={build.virtues[virtue]}
+                    aria-label={`${meta.label} adjustment`}
                     onChange={(event) =>
                       updateVirtue(virtue, Number(event.target.value))
                     }
@@ -902,7 +1024,14 @@ export function SoulframeBuilder() {
                 {unmetRequirementCount} requirement
                 {unmetRequirementCount === 1 ? "" : "s"} unmet
               </strong>
-              <span>Those pieces currently contribute base defense only.</span>
+              {unmetRequirementGroups.map((group) => (
+                <span key={group.virtue}>
+                  {virtueMeta[group.virtue].label}{" "}
+                  {build.virtues[group.virtue]}/{group.required} ·{" "}
+                  {group.itemCount} piece{group.itemCount === 1 ? "" : "s"}{" "}
+                  base-only
+                </span>
+              ))}
             </div>
           ) : null}
 
