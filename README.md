@@ -16,7 +16,9 @@ database, CMS, or runtime dependency on Google Sheets.
 - Searchable compatible-item catalogue
 - Candidate-versus-equipped comparisons
 - Physical Defense, Magick Defense, and Stability Increase totals
-- Character Courage, Spirit, and Grace controls
+- PR15-style Courage, Spirit, and Grace alignment control
+- Source-based affinity inputs for Envoy Rank, Pact Arts, and permanent Fable
+  rewards
 - Per-item base and scaling breakdowns
 - Verified virtue requirements with met/unmet status
 - Base-only results when an armor requirement is unmet
@@ -115,16 +117,19 @@ correct the canonical sheet or the importer instead.
 
 ## Build persistence and sharing
 
-Builds use schema version `2` and store only:
+Builds use schema version `3` and store only:
 
 - Build name
-- Character virtue values
+- Allocated character Virtue values
+- Envoy Rank, Pact Art ranks, and permanent Fable reward choices
 - Stable armor and Talisman IDs
 
-The active build is stored under `soulframe-framer.build.v2`; version `1`
-builds are migrated automatically. A valid `build` URL parameter overrides
-local state and becomes the active persisted build. Malformed data, unsupported
-versions, and unknown item IDs are handled without crashing.
+The active build is stored under `soulframe-framer.build.v3`; version `1` and
+`2` builds are migrated automatically. For old builds, Envoy Rank is inferred
+from the previous allocatable pool while preserving its allocation ratio. A
+valid `build` URL parameter overrides local state and becomes the active
+persisted build. Malformed data, unsupported versions, and unknown item IDs are
+handled without crashing.
 
 ## Data status
 
@@ -185,6 +190,13 @@ Talisman virtue bonuses contribute to effective virtues before armor
 requirements and scaling are evaluated. Flat defensive modifiers are added to
 the corresponding build defenses. Listed Attack and Stagger modifiers are
 shown without deriving unsupported damage totals.
+
+The affinity model distinguishes between the redistributable pool and fixed
+bonuses. The pool is the Envoy's 16 starting points plus one point per Envoy
+Rank. Pact Art Virtue nodes contribute `+1`, `+3`, or `+6` at ranks 1–3; The
+Shewolf Snared and The Waste Bear can each grant `+1` to a selected Virtue.
+Those fixed bonuses and the equipped Talisman affect requirements and scaling,
+but dragging the triquetra does not redistribute them.
 
 See [docs/data-migration.md](docs/data-migration.md) for the detailed source
 mapping and remaining ambiguities.

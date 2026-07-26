@@ -12,6 +12,10 @@ import {
   type TalismanContribution,
   type VirtueValues,
 } from "./types";
+import {
+  addVirtueValues,
+  getAffinityBonuses,
+} from "./affinity";
 
 export const ARMOR_SCALE = 0.12;
 
@@ -100,12 +104,14 @@ export function calculateBuild(
           equippedTalisman.hasUnmodeledConditionalEffect,
       } satisfies TalismanContribution)
     : undefined;
-  const effectiveVirtues = Object.fromEntries(
-    VIRTUE_IDS.map((virtue) => [
-      virtue,
-      build.virtues[virtue] + (talisman?.virtues[virtue] ?? 0),
-    ]),
-  ) as VirtueValues;
+  const sourceVirtues = getAffinityBonuses(build.affinitySources);
+  const talismanVirtues = talisman?.virtues ?? {
+    courage: 0,
+    spirit: 0,
+    grace: 0,
+  };
+  const bonusVirtues = addVirtueValues(sourceVirtues, talismanVirtues);
+  const effectiveVirtues = addVirtueValues(build.virtues, bonusVirtues);
 
   const items = ARMOR_SLOTS.flatMap((slot) => {
     const itemId = build.equipment[slot];
@@ -142,6 +148,8 @@ export function calculateBuild(
 
   return {
     allocatedVirtues: build.virtues,
+    sourceVirtues,
+    bonusVirtues,
     effectiveVirtues,
     defenses,
     armorDefense,

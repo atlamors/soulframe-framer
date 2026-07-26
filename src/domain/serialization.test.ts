@@ -9,9 +9,14 @@ import {
 import type { SoulframeBuild } from "./types";
 
 const build: SoulframeBuild = {
-  schemaVersion: 2,
+  schemaVersion: 3,
   name: "First Envoy",
   virtues: { courage: 12, spirit: 12, grace: 12 },
+  affinitySources: {
+    envoyRank: 20,
+    pactArts: { courage: 0, spirit: 0, grace: 0 },
+    fables: { shewolf: null, wasteBear: null },
+  },
   equipment: {
     helm: "helm-arbearers-mask",
     talisman: "talisman-wyldings-hilt",
@@ -34,7 +39,7 @@ describe("build serialization", () => {
 
   it("rejects unsupported schema versions", () => {
     const unsupported = Buffer.from(
-      JSON.stringify({ ...build, schemaVersion: 3 }),
+      JSON.stringify({ ...build, schemaVersion: 4 }),
     ).toString("base64url");
     expect(deserializeBuild(unsupported, catalogue)).toEqual({
       ok: false,
@@ -80,7 +85,59 @@ describe("build serialization", () => {
         ...build,
         equipment: { helm: "helm-arbearers-mask" },
       },
-      warnings: ["Legacy build upgraded to include a Talisman slot."],
+      warnings: [
+        "Legacy build upgraded to include a Talisman slot and affinity sources.",
+      ],
+    });
+  });
+
+  it("migrates version 2 builds by inferring Envoy Rank from their pool", () => {
+    const legacy = Buffer.from(
+      JSON.stringify({
+        schemaVersion: 2,
+        name: build.name,
+        virtues: { courage: 15, spirit: 10, grace: 9 },
+        equipment: build.equipment,
+      }),
+    ).toString("base64url");
+    const result = deserializeBuild(legacy, catalogue);
+
+    expect(result).toEqual({
+      ok: true,
+      build: {
+        ...build,
+        virtues: { courage: 15, spirit: 10, grace: 9 },
+        affinitySources: {
+          envoyRank: 18,
+          pactArts: { courage: 0, spirit: 0, grace: 0 },
+          fables: { shewolf: null, wasteBear: null },
+        },
+      },
+      warnings: [
+        "Saved build upgraded with affinity sources inferred from its Virtue pool.",
+      ],
+    });
+  });
+
+  it("normalizes a version 3 allocation to base points plus Envoy Rank", () => {
+    const encoded = Buffer.from(
+      JSON.stringify({
+        ...build,
+        virtues: { courage: 10, spirit: 10, grace: 10 },
+        affinitySources: { ...build.affinitySources, envoyRank: 20 },
+      }),
+    ).toString("base64url");
+    const result = deserializeBuild(encoded, catalogue);
+
+    expect(result).toEqual({
+      ok: true,
+      build: {
+        ...build,
+        virtues: { courage: 12, spirit: 12, grace: 12 },
+      },
+      warnings: [
+        "Virtue allocation was normalized to its 16 base points plus Envoy Rank.",
+      ],
     });
   });
 });

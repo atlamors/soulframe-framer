@@ -83,11 +83,33 @@ manifest has 49 required pieces and 23 pieces without a requirement.
 
 - The workbook calls the C/S/G values attached to each defense “Attunement
   pips,” but it does not define selectable attunement configurations.
-- Courage, Spirit, and Grace are treated as character inputs. The workbook does
-  not establish armor virtue contributions.
+- Courage, Spirit, and Grace affinity sources are modeled from Avakot's
+  `Virtues` and `Pact Arts` references, not from the armor workbook.
 - Armor requirements are excluded from the workbook and therefore sourced from
   Avakot rather than inferred from the scaling sheet.
 - No item artwork, temper data, joinery data, acquisition data, or non-armor
   gear catalogue is present.
 
 No behavior has been inferred for these systems.
+
+## Affinity sources
+
+The PR15 affinity model separates points by whether the in-game alignment
+control can redistribute them:
+
+| Source | Modeled value | Redistributable |
+| --- | --- | --- |
+| New Envoy base | `16` | Yes |
+| Envoy Rank | `+1` per rank | Yes |
+| Pact Art Virtue nodes | `+1` / `+3` / `+6` at ranks 1–3 | No |
+| The Shewolf Snared | `+1` to the selected Virtue | No |
+| The Waste Bear | `+1` to the selected Virtue | No |
+| Equipped Talisman | Catalogued item Virtue values | No |
+
+The triquetra conserves only `16 + Envoy Rank`. Fixed bonuses are applied after
+allocation and before armor requirements and scaling are evaluated.
+
+The general `Pacts` overview still mentions a base aligned-Virtue increase, but
+the individual Pact histories identify the old `+5` bonus as pre-Preludes 13
+behavior and the Pact data module comments those values out. Pact base bonuses
+are therefore intentionally excluded from the current PR15 model.

@@ -25,14 +25,14 @@ describe("virtue alignment", () => {
     ).toEqual({ courage: 10, spirit: 10, grace: 10 });
   });
 
-  it("clamps the total pool to the supported maximum", () => {
+  it("clamps the total pool to base points plus the supported Envoy Rank", () => {
     const result = distributeVirtueTotal(500, {
       courage: 1,
       spirit: 0,
       grace: 0,
     });
 
-    expect(result).toEqual({ courage: 99, spirit: 0, grace: 0 });
+    expect(result).toEqual({ courage: 115, spirit: 0, grace: 0 });
   });
 
   it("maps each triangle corner to its corresponding virtue", () => {

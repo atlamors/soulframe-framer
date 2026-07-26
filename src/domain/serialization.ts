@@ -1,16 +1,30 @@
 import {
   ARMOR_SLOTS,
   VIRTUE_IDS,
+  type AffinitySources,
   type ArmorItem,
   type EquipmentSlot,
+  type PactArtRank,
   type SoulframeBuild,
   type Talisman,
+  type VirtueId,
 } from "./types";
+import {
+  BASE_AFFINITY_POINTS,
+  MAX_ALLOCATABLE_AFFINITY,
+  MAX_ENVOY_RANK,
+  getAllocatableAffinity,
+  inferAffinitySources,
+} from "./affinity";
+import { distributeVirtueTotal } from "./virtue-alignment";
 
-export const BUILD_SCHEMA_VERSION = 2 as const;
-export const STORAGE_KEY = "soulframe-framer.build.v2";
-export const LEGACY_STORAGE_KEY = "soulframe-framer.build.v1";
-const MAX_VIRTUE_VALUE = 99;
+export const BUILD_SCHEMA_VERSION = 3 as const;
+export const STORAGE_KEY = "soulframe-framer.build.v3";
+export const LEGACY_STORAGE_KEYS = [
+  "soulframe-framer.build.v2",
+  "soulframe-framer.build.v1",
+] as const;
+const MAX_VIRTUE_VALUE = MAX_ALLOCATABLE_AFFINITY;
 
 export interface BuildCatalogue {
   armor: readonly ArmorItem[];
@@ -25,12 +39,64 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
+function parseVirtueId(value: unknown): VirtueId | null | undefined {
+  if (value === null) return null;
+  return typeof value === "string" &&
+    VIRTUE_IDS.includes(value as VirtueId)
+    ? (value as VirtueId)
+    : undefined;
+}
+
+function validateAffinitySources(value: unknown): AffinitySources | undefined {
+  if (!isRecord(value)) return undefined;
+  if (
+    typeof value.envoyRank !== "number" ||
+    !Number.isInteger(value.envoyRank) ||
+    value.envoyRank < 0 ||
+    value.envoyRank > MAX_ENVOY_RANK ||
+    !isRecord(value.pactArts) ||
+    !isRecord(value.fables)
+  ) {
+    return undefined;
+  }
+
+  const pactArtValues = value.pactArts;
+  const fableValues = value.fables;
+  const pactArts = Object.fromEntries(
+    VIRTUE_IDS.map((virtue) => {
+      const rank = pactArtValues[virtue];
+      if (
+        typeof rank !== "number" ||
+        !Number.isInteger(rank) ||
+        rank < 0 ||
+        rank > 3
+      ) {
+        throw new Error(`Invalid ${virtue} Pact Art rank.`);
+      }
+      return [virtue, rank as PactArtRank];
+    }),
+  ) as AffinitySources["pactArts"];
+  const shewolf = parseVirtueId(fableValues.shewolf);
+  const wasteBear = parseVirtueId(fableValues.wasteBear);
+  if (shewolf === undefined || wasteBear === undefined) return undefined;
+
+  return {
+    envoyRank: value.envoyRank,
+    pactArts,
+    fables: { shewolf, wasteBear },
+  };
+}
+
 function validateBuild(
   value: unknown,
   catalogue?: BuildCatalogue,
 ): DecodeResult {
   if (!isRecord(value)) return { ok: false, error: "Build data is not an object." };
-  if (value.schemaVersion !== 1 && value.schemaVersion !== BUILD_SCHEMA_VERSION) {
+  if (
+    value.schemaVersion !== 1 &&
+    value.schemaVersion !== 2 &&
+    value.schemaVersion !== BUILD_SCHEMA_VERSION
+  ) {
     return { ok: false, error: "This build uses an unsupported schema version." };
   }
   if (typeof value.name !== "string" || value.name.length > 80) {
@@ -58,18 +124,46 @@ function validateBuild(
   if (!isRecord(value.equipment)) {
     return { ok: false, error: "Equipment data is missing." };
   }
-  const equipment: Partial<Record<EquipmentSlot, string>> = {};
   const warnings: string[] = [];
+  const affinitySources =
+    value.schemaVersion === BUILD_SCHEMA_VERSION
+      ? validateAffinitySources(value.affinitySources)
+      : inferAffinitySources(virtues);
+  if (!affinitySources) {
+    return { ok: false, error: "Affinity sources are invalid." };
+  }
+
+  const allocatablePoints = getAllocatableAffinity(affinitySources);
+  const suppliedTotal = VIRTUE_IDS.reduce(
+    (sum, virtue) => sum + virtues[virtue],
+    0,
+  );
+  const normalizedVirtues =
+    suppliedTotal === allocatablePoints
+      ? virtues
+      : distributeVirtueTotal(allocatablePoints, virtues);
+
+  if (value.schemaVersion === 1) {
+    warnings.push(
+      "Legacy build upgraded to include a Talisman slot and affinity sources.",
+    );
+  } else if (value.schemaVersion === 2) {
+    warnings.push(
+      "Saved build upgraded with affinity sources inferred from its Virtue pool.",
+    );
+  } else if (suppliedTotal !== allocatablePoints) {
+    warnings.push(
+      `Virtue allocation was normalized to its ${BASE_AFFINITY_POINTS} base points plus Envoy Rank.`,
+    );
+  }
+
+  const equipment: Partial<Record<EquipmentSlot, string>> = {};
   const knownArmorIds = catalogue
     ? new Set(catalogue.armor.map((item) => item.id))
     : undefined;
   const knownTalismanIds = catalogue
     ? new Set(catalogue.talismans.map((item) => item.id))
     : undefined;
-
-  if (value.schemaVersion === 1) {
-    warnings.push("Legacy build upgraded to include a Talisman slot.");
-  }
 
   for (const slot of ARMOR_SLOTS) {
     const itemId = value.equipment[slot];
@@ -101,7 +195,8 @@ function validateBuild(
     build: {
       schemaVersion: BUILD_SCHEMA_VERSION,
       name: value.name,
-      virtues,
+      virtues: normalizedVirtues,
+      affinitySources,
       equipment,
     },
     warnings,

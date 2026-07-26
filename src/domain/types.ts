@@ -13,6 +13,16 @@ export type ArmorSlot = (typeof ARMOR_SLOTS)[number];
 export type EquipmentSlot = (typeof EQUIPMENT_SLOTS)[number];
 
 export type VirtueValues = Record<VirtueId, number>;
+export type PactArtRank = 0 | 1 | 2 | 3;
+
+export interface AffinitySources {
+  envoyRank: number;
+  pactArts: Record<VirtueId, PactArtRank>;
+  fables: {
+    shewolf: VirtueId | null;
+    wasteBear: VirtueId | null;
+  };
+}
 
 export interface DefenseProfile {
   base: number;
@@ -69,9 +79,10 @@ export interface Talisman {
 }
 
 export interface SoulframeBuild {
-  schemaVersion: 2;
+  schemaVersion: 3;
   name: string;
   virtues: VirtueValues;
+  affinitySources: AffinitySources;
   equipment: Partial<Record<EquipmentSlot, string>>;
 }
 
@@ -100,6 +111,8 @@ export interface TalismanContribution {
 
 export interface BuildCalculation {
   allocatedVirtues: VirtueValues;
+  sourceVirtues: VirtueValues;
+  bonusVirtues: VirtueValues;
   effectiveVirtues: VirtueValues;
   defenses: Record<DefenseId, number>;
   armorDefense: number;

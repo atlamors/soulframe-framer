@@ -8,6 +8,12 @@ import {
 } from "./calculation";
 import type { SoulframeBuild } from "./types";
 
+const affinitySources: SoulframeBuild["affinitySources"] = {
+  envoyRank: 20,
+  pactArts: { courage: 0, spirit: 0, grace: 0 },
+  fables: { shewolf: null, wasteBear: null },
+};
+
 describe("armor calculations", () => {
   it("matches the workbook formula for an individual defense", () => {
     expect(
@@ -37,9 +43,10 @@ describe("armor calculations", () => {
 
   it("aggregates multiple equipped pieces", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 2,
+      schemaVersion: 3,
       name: "Test",
       virtues: { courage: 19, spirit: 12, grace: 12 },
+      affinitySources,
       equipment: {
         helm: "helm-arbearers-mask",
         cuirass: "cuirass-arbearers-pauncher",
@@ -75,9 +82,10 @@ describe("armor calculations", () => {
 
   it("reports equipped armor with unmet requirements", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 2,
+      schemaVersion: 3,
       name: "Unmet",
       virtues: { courage: 12, spirit: 12, grace: 12 },
+      affinitySources,
       equipment: { helm: "helm-arbearers-mask" },
     };
 
@@ -88,9 +96,10 @@ describe("armor calculations", () => {
 
   it("reports unknown item ids without crashing", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 2,
+      schemaVersion: 3,
       name: "Unknown",
       virtues: { courage: 12, spirit: 12, grace: 12 },
+      affinitySources,
       equipment: { helm: "helm-does-not-exist" },
     };
     expect(calculateBuild(build, armorCatalogue).warnings).toEqual([
@@ -100,9 +109,10 @@ describe("armor calculations", () => {
 
   it("applies Talisman virtue bonuses before armor requirements and scaling", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 2,
+      schemaVersion: 3,
       name: "Talisman virtues",
       virtues: { courage: 18, spirit: 12, grace: 12 },
+      affinitySources,
       equipment: {
         helm: "helm-arbearers-mask",
         talisman: "talisman-wyldings-hilt",
@@ -122,9 +132,10 @@ describe("armor calculations", () => {
 
   it("adds flat Talisman defense and exposes raw combat modifiers", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 2,
+      schemaVersion: 3,
       name: "Talisman defense",
       virtues: { courage: 12, spirit: 12, grace: 12 },
+      affinitySources,
       equipment: {
         talisman: "talisman-the-cogah-lorcaan",
       },
@@ -138,5 +149,37 @@ describe("armor calculations", () => {
     expect(result.warnings).toContain(
       "The Cogah Lorcaan has an encounter-dependent effect that is not included in calculated totals.",
     );
+  });
+
+  it("applies Pact Art and Fable bonuses without changing the allocatable pool", () => {
+    const build: SoulframeBuild = {
+      schemaVersion: 3,
+      name: "Fixed affinity sources",
+      virtues: { courage: 18, spirit: 9, grace: 9 },
+      affinitySources: {
+        envoyRank: 20,
+        pactArts: { courage: 2, spirit: 1, grace: 0 },
+        fables: { shewolf: "courage", wasteBear: "grace" },
+      },
+      equipment: {},
+    };
+
+    const result = calculateBuild(build, armorCatalogue, talismanCatalogue);
+
+    expect(result.allocatedVirtues).toEqual({
+      courage: 18,
+      spirit: 9,
+      grace: 9,
+    });
+    expect(result.sourceVirtues).toEqual({
+      courage: 4,
+      spirit: 1,
+      grace: 1,
+    });
+    expect(result.effectiveVirtues).toEqual({
+      courage: 22,
+      spirit: 10,
+      grace: 10,
+    });
   });
 });

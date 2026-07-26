@@ -3,8 +3,7 @@ import {
   type VirtueId,
   type VirtueValues,
 } from "./types";
-
-export const MAX_VIRTUE_POINTS = 99;
+import { MAX_ALLOCATABLE_AFFINITY } from "./affinity";
 
 const clamp = (value: number, minimum: number, maximum: number) =>
   Math.min(maximum, Math.max(minimum, value));
@@ -80,7 +79,7 @@ function allocateByWeight(
   const total = clamp(
     Math.round(Number.isFinite(requestedTotal) ? requestedTotal : 0),
     0,
-    MAX_VIRTUE_POINTS,
+    MAX_ALLOCATABLE_AFFINITY,
   );
   const weightTotal = VIRTUE_IDS.reduce(
     (sum, virtue) => sum + Math.max(0, weights[virtue]),

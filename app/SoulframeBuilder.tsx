@@ -23,28 +23,36 @@ import {
 } from "@/src/domain/calculation";
 import {
   BUILD_SCHEMA_VERSION,
-  LEGACY_STORAGE_KEY,
+  LEGACY_STORAGE_KEYS,
   STORAGE_KEY,
   deserializeBuild,
   parseStoredBuild,
   serializeBuild,
 } from "@/src/domain/serialization";
 import {
-  MAX_VIRTUE_POINTS,
   distributeVirtueTotal,
   getVirtueAlignmentPoint,
   shiftVirtueAlignment,
   virtuesFromAlignmentPoint,
 } from "@/src/domain/virtue-alignment";
 import {
+  BASE_AFFINITY_POINTS,
+  MAX_ENVOY_RANK,
+  PACT_ART_BONUS_BY_RANK,
+  getAffinityBonuses,
+  getAllocatableAffinity,
+} from "@/src/domain/affinity";
+import {
   ARMOR_SLOTS,
   DEFENSE_IDS,
   VIRTUE_IDS,
+  type AffinitySources,
   type ArmorItem,
   type ArmorSlot,
   type DefenseId,
   type EquipmentSlot,
   type ItemContribution,
+  type PactArtRank,
   type SoulframeBuild,
   type Talisman,
   type VirtueId,
@@ -55,6 +63,11 @@ const DEFAULT_BUILD: SoulframeBuild = {
   schemaVersion: BUILD_SCHEMA_VERSION,
   name: "First Envoy",
   virtues: { courage: 12, spirit: 12, grace: 12 },
+  affinitySources: {
+    envoyRank: 20,
+    pactArts: { courage: 0, spirit: 0, grace: 0 },
+    fables: { shewolf: null, wasteBear: null },
+  },
   equipment: {
     helm: "helm-arbearers-mask",
     cuirass: "cuirass-arbearers-pauncher",
@@ -166,11 +179,17 @@ function StatIcon({
 function VirtueAlignment({
   virtues,
   bonuses,
+  sources,
+  talismanBonuses,
   onChange,
+  onSourcesChange,
 }: {
   virtues: SoulframeBuild["virtues"];
   bonuses: VirtueValues;
+  sources: AffinitySources;
+  talismanBonuses: VirtueValues;
   onChange: (virtues: VirtueValues) => void;
+  onSourcesChange: (sources: AffinitySources) => void;
 }) {
   const total = VIRTUE_IDS.reduce((sum, virtue) => sum + virtues[virtue], 0);
   const alignmentPoint = getVirtueAlignmentPoint(virtues);
@@ -463,33 +482,175 @@ function VirtueAlignment({
               </span>
             );
           })}
-          <label className="alignment-total-control">
-            <small>Total</small>
+          <div className="alignment-total-control">
+            <small>Allocatable</small>
             <span>
-              <input
-                type="number"
-                min="0"
-                max={MAX_VIRTUE_POINTS}
-                value={total}
-                aria-label="Total virtue points"
-                onChange={(event) =>
-                  onChange(
-                    distributeVirtueTotal(
-                      Number(event.target.value),
-                      virtues,
-                    ),
-                  )
-                }
-              />
+              <strong>{total}</strong>
               <em>points</em>
             </span>
-          </label>
+          </div>
         </div>
         <span className="alignment-caption">
           {dominant ? `${virtueMeta[dominant].label} leaning` : "Unaligned"}
         </span>
       </div>
+      <AffinitySourceInputs
+        sources={sources}
+        talismanBonuses={talismanBonuses}
+        onChange={onSourcesChange}
+      />
     </>
+  );
+}
+
+function AffinitySourceInputs({
+  sources,
+  talismanBonuses,
+  onChange,
+}: {
+  sources: AffinitySources;
+  talismanBonuses: VirtueValues;
+  onChange: (sources: AffinitySources) => void;
+}) {
+  const allocatable = getAllocatableAffinity(sources);
+  const sourceBonuses = getAffinityBonuses(sources);
+  const fixedBonusTotal = VIRTUE_IDS.reduce(
+    (sum, virtue) => sum + sourceBonuses[virtue] + talismanBonuses[virtue],
+    0,
+  );
+  const talismanBonusLabel = VIRTUE_IDS.flatMap((virtue) =>
+    talismanBonuses[virtue]
+      ? [`+${talismanBonuses[virtue]} ${virtueMeta[virtue].label}`]
+      : [],
+  ).join(", ");
+
+  const updatePactArt = (virtue: VirtueId, rank: PactArtRank) => {
+    onChange({
+      ...sources,
+      pactArts: { ...sources.pactArts, [virtue]: rank },
+    });
+  };
+
+  const updateFable = (
+    fable: keyof AffinitySources["fables"],
+    value: string,
+  ) => {
+    onChange({
+      ...sources,
+      fables: {
+        ...sources.fables,
+        [fable]: value === "" ? null : (value as VirtueId),
+      },
+    });
+  };
+
+  return (
+    <section className="affinity-sources" aria-labelledby="affinity-sources-title">
+      <header>
+        <span id="affinity-sources-title">Affinity sources</span>
+        <strong>
+          {allocatable + fixedBonusTotal}
+          <small> effective</small>
+        </strong>
+      </header>
+
+      <div className="affinity-formula">
+        <span>
+          <small>Base</small>
+          <output>{BASE_AFFINITY_POINTS}</output>
+        </span>
+        <b aria-hidden="true">+</b>
+        <label>
+          <small>Envoy Rank</small>
+          <input
+            type="number"
+            min="0"
+            max={MAX_ENVOY_RANK}
+            value={sources.envoyRank}
+            aria-label="Envoy Rank"
+            onChange={(event) =>
+              onChange({
+                ...sources,
+                envoyRank: Math.min(
+                  MAX_ENVOY_RANK,
+                  Math.max(
+                    0,
+                    Math.round(Number(event.target.value) || 0),
+                  ),
+                ),
+              })
+            }
+          />
+        </label>
+        <b aria-hidden="true">=</b>
+        <span>
+          <small>Allocatable</small>
+          <output>{allocatable}</output>
+        </span>
+      </div>
+
+      <div className="affinity-fixed-heading">
+        <span>Fixed bonuses</span>
+        <strong>+{fixedBonusTotal}</strong>
+      </div>
+
+      <fieldset className="pact-art-inputs">
+        <legend>Pact Arts</legend>
+        {VIRTUE_IDS.map((virtue) => (
+          <label key={virtue}>
+            <span>{virtueMeta[virtue].label}</span>
+            <select
+              value={sources.pactArts[virtue]}
+              aria-label={`${virtueMeta[virtue].label} Pact Art rank`}
+              onChange={(event) =>
+                updatePactArt(
+                  virtue,
+                  Number(event.target.value) as PactArtRank,
+                )
+              }
+            >
+              {PACT_ART_BONUS_BY_RANK.map((bonus, rank) => (
+                <option value={rank} key={rank}>
+                  {rank === 0 ? "None" : `Rank ${rank} · +${bonus}`}
+                </option>
+              ))}
+            </select>
+          </label>
+        ))}
+      </fieldset>
+
+      <fieldset className="fable-inputs">
+        <legend>Fables</legend>
+        {(
+          [
+            ["shewolf", "Shewolf Snared"],
+            ["wasteBear", "Waste Bear"],
+          ] as const
+        ).map(([fable, label]) => (
+          <label key={fable}>
+            <span>{label}</span>
+            <select
+              value={sources.fables[fable] ?? ""}
+              aria-label={`${label} Virtue reward`}
+              onChange={(event) => updateFable(fable, event.target.value)}
+            >
+              <option value="">Not earned</option>
+              {VIRTUE_IDS.map((virtue) => (
+                <option value={virtue} key={virtue}>
+                  +1 {virtueMeta[virtue].label}
+                </option>
+              ))}
+            </select>
+          </label>
+        ))}
+      </fieldset>
+
+      <div className="talisman-affinity-source">
+        <span>Equipped Talisman</span>
+        <strong>{talismanBonusLabel || "No Virtue bonus"}</strong>
+      </div>
+      <p>Fixed bonuses affect requirements, but are not redistributed.</p>
+    </section>
   );
 }
 
@@ -1420,7 +1581,9 @@ export function SoulframeBuilder() {
     } else {
       const stored =
         window.localStorage.getItem(STORAGE_KEY) ??
-        window.localStorage.getItem(LEGACY_STORAGE_KEY);
+        LEGACY_STORAGE_KEYS.map((key) =>
+          window.localStorage.getItem(key),
+        ).find((value) => value !== null);
       if (stored) {
         const result = parseStoredBuild(stored, {
           armor: armorCatalogue,
@@ -1447,13 +1610,26 @@ export function SoulframeBuilder() {
   useEffect(() => {
     if (!hydrated) return;
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(build));
-    window.localStorage.removeItem(LEGACY_STORAGE_KEY);
+    for (const key of LEGACY_STORAGE_KEYS) {
+      window.localStorage.removeItem(key);
+    }
   }, [build, hydrated]);
 
   const updateVirtues = (virtues: VirtueValues) => {
     setBuild((current) => ({
       ...current,
       virtues,
+    }));
+  };
+
+  const updateAffinitySources = (affinitySources: AffinitySources) => {
+    setBuild((current) => ({
+      ...current,
+      affinitySources,
+      virtues: distributeVirtueTotal(
+        getAllocatableAffinity(affinitySources),
+        current.virtues,
+      ),
     }));
   };
 
@@ -1529,7 +1705,9 @@ export function SoulframeBuilder() {
           </header>
           <VirtueAlignment
             virtues={build.virtues}
-            bonuses={
+            bonuses={calculation.bonusVirtues}
+            sources={build.affinitySources}
+            talismanBonuses={
               calculation.talisman?.virtues ?? {
                 courage: 0,
                 spirit: 0,
@@ -1537,6 +1715,7 @@ export function SoulframeBuilder() {
               }
             }
             onChange={updateVirtues}
+            onSourcesChange={updateAffinitySources}
           />
         </aside>
 
