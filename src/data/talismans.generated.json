@@ -1,0 +1,871 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-26T15:55:22.183Z",
+  "source": {
+    "name": "The Soulframe Wiki Talisman index and equipment data module",
+    "publisher": "Avakot",
+    "pageUrl": "https://wiki.avakot.org/Accessories",
+    "moduleUrl": "https://wiki.avakot.org/Module:Data/Armour",
+    "categoryUrl": "https://wiki.avakot.org/Category:Talismans",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 45247,
+    "revisionTimestamp": "2026-06-15T19:09:05Z"
+  },
+  "coverage": {
+    "categoryItems": 23,
+    "matchedItems": 23,
+    "missingItems": []
+  },
+  "items": [
+    {
+      "id": "talisman-bloomin-bodkin",
+      "name": "Bloomin' Bodkin",
+      "description": "An insignia of sword-sharp petals. With a flick, its retracted blades uncoil like a rose in full bloom.",
+      "rarity": "Uncommon",
+      "accessorySet": "Silent Rose",
+      "armorSet": "Sirin",
+      "tags": [],
+      "imageFile": "RosesBodkin.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 6
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Bloomin'_Bodkin",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/f/f9/RosesBodkin.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f9/RosesBodkin.png/128px-RosesBodkin.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:RosesBodkin.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 112364,
+      "sha1": "75ed7f582efa52cf5ae3cfc35f61ffbfc45005c0"
+    },
+    {
+      "id": "talisman-cardinal-charm",
+      "name": "Cardinal Charm",
+      "description": " The spirit of Thawtide to rest upon your heart. May its cold weight remind you that every Longnight has a dawn.",
+      "rarity": "Common",
+      "accessorySet": "Unique",
+      "armorSet": "Thawtide",
+      "tags": [],
+      "imageFile": "CardinalCharm.png",
+      "stats": {
+        "virtues": {
+          "courage": 1,
+          "spirit": 2,
+          "grace": 1
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Cardinal_Charm",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/1b/CardinalCharm.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1b/CardinalCharm.png/128px-CardinalCharm.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:CardinalCharm.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 106167,
+      "sha1": "e074acf5c5a16ad3f35a9c75a849af9803229ff0"
+    },
+    {
+      "id": "talisman-dawn-pendant",
+      "name": "Dawn Pendant",
+      "description": "Alight with the silent flame of the blue sun. When shaken, the pendant so faintly chimes. As though filled cut diamonds.",
+      "rarity": "Common",
+      "accessorySet": "Circade",
+      "armorSet": "Circade",
+      "tags": [],
+      "imageFile": "DawnPendant.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Dawn_Pendant",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/1e/DawnPendant.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1e/DawnPendant.png/128px-DawnPendant.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:DawnPendant.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 95787,
+      "sha1": "ee100f7e36116100d8193763f0c11af4081d723a"
+    },
+    {
+      "id": "talisman-direskull",
+      "name": "Direskull",
+      "description": "A Moonsteel brooch in the likeness of a lycan skull. A warning snarl upon your chest.",
+      "rarity": "Common",
+      "accessorySet": "Orengall",
+      "armorSet": "Orengall",
+      "tags": [],
+      "imageFile": "Direskull.png",
+      "stats": {
+        "virtues": {
+          "courage": 1,
+          "spirit": 1,
+          "grace": 4
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Direskull",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/a4/Direskull.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a4/Direskull.png/128px-Direskull.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Direskull.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 94874,
+      "sha1": "62e975493794cc8392bedc5ac9ca7a47015ae953"
+    },
+    {
+      "id": "talisman-dusk-pendant",
+      "name": "Dusk Pendant",
+      "description": "Burning with the warm glow of the red sun. The pendant is unreasonably heavy, and somehow, still tacky with the residue of ancient ale.",
+      "rarity": "Common",
+      "accessorySet": "Circade",
+      "armorSet": "Circade",
+      "tags": [
+        "FestivalOfTheCircade"
+      ],
+      "imageFile": "DuskPendant.png",
+      "stats": {
+        "virtues": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Dusk_Pendant",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/0/00/DuskPendant.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/00/DuskPendant.png/128px-DuskPendant.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:DuskPendant.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 94433,
+      "sha1": "1a201b8f23a3a28264388ad708e678edcb4b031e"
+    },
+    {
+      "id": "talisman-medallion-of-mora",
+      "name": "Medallion of Mora",
+      "description": "A golden medal, emblazoned with the face of the red sun. ’Tis almost too hot to touch. Almost.",
+      "rarity": "Common",
+      "accessorySet": "Kith of Kings",
+      "armorSet": "Tethren",
+      "tags": [],
+      "imageFile": "MedallionOfMora.png",
+      "stats": {
+        "virtues": {
+          "courage": 1,
+          "spirit": 0,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Medallion_of_Mora",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/6/6e/MedallionOfMora.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/6e/MedallionOfMora.png/128px-MedallionOfMora.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:MedallionOfMora.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 135215,
+      "sha1": "a66a50e5d21b15dd2de782ec3f834efa9a53fdca"
+    },
+    {
+      "id": "talisman-midnight-pendant",
+      "name": "Midnight Pendant",
+      "description": "Shimmering with the feyish gleam of the green moon. Though it has not eyes, the pendant seems to see you. Like a glare. Like a wink.",
+      "rarity": "Common",
+      "accessorySet": "Circade",
+      "armorSet": "Circade",
+      "tags": [
+        "FestivalOfTheCircade"
+      ],
+      "imageFile": "MidnightPendant.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Midnight_Pendant",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/c/cf/MidnightPendant.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/cf/MidnightPendant.png/128px-MidnightPendant.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:MidnightPendant.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 95314,
+      "sha1": "40fbac497ed62fcb44848447132754024ec768c8"
+    },
+    {
+      "id": "talisman-molten-mora",
+      "name": "Molten Mora",
+      "description": "A fiery amber honour, emblazoned with the face of the red sun. Plunged into the everflame, she emerged, smiling.",
+      "rarity": "Uncommon",
+      "accessorySet": "Kith of Kings",
+      "armorSet": "Tethren",
+      "tags": [],
+      "imageFile": "MedallionOfMora.png",
+      "stats": {
+        "virtues": {
+          "courage": 6,
+          "spirit": 0,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Molten_Mora",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/6/6e/MedallionOfMora.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/6e/MedallionOfMora.png/128px-MedallionOfMora.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:MedallionOfMora.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 135215,
+      "sha1": "a66a50e5d21b15dd2de782ec3f834efa9a53fdca"
+    },
+    {
+      "id": "talisman-orengalls-fang",
+      "name": "Orengall's Fang",
+      "description": "A single pointed canine carved in Omen runes. Dripping red in the paint of her zealots? Or the blood of her foes?",
+      "rarity": "Common",
+      "accessorySet": "Orengall",
+      "armorSet": "Orengall",
+      "tags": [],
+      "imageFile": "OrengallsFang.png",
+      "stats": {
+        "virtues": {
+          "courage": 1,
+          "spirit": 4,
+          "grace": 1
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Orengall's_Fang",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/a6/OrengallsFang.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a6/OrengallsFang.png/128px-OrengallsFang.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:OrengallsFang.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 77252,
+      "sha1": "a4b9e6847ba78fa7ba2c6000f01e1e9a28e764e7"
+    },
+    {
+      "id": "talisman-paragon-periapt",
+      "name": "Paragon Periapt",
+      "description": "Bound together, the pendants of Wyldings three. The sum of all virtues, the Empress' love. Your hilt, your hush, your heart, your Paragon Periapt.",
+      "rarity": "Common",
+      "accessorySet": "Founders",
+      "armorSet": "Founders",
+      "tags": [
+        "Founders"
+      ],
+      "imageFile": "ParagonPeriapt.png",
+      "stats": {
+        "virtues": {
+          "courage": 3,
+          "spirit": 3,
+          "grace": 3
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Paragon_Periapt",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/8/81/ParagonPeriapt.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/81/ParagonPeriapt.png/128px-ParagonPeriapt.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:ParagonPeriapt.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 109046,
+      "sha1": "46768f031c326b31214abb40cc95cd1764522bc9"
+    },
+    {
+      "id": "talisman-prelude-honour",
+      "name": "Prelude Honour",
+      "description": "Lost everything but this lousy Mote... or Talisman, rather.",
+      "rarity": "Common",
+      "accessorySet": "Unique",
+      "armorSet": "Unique",
+      "tags": [],
+      "imageFile": "PreludeHonour.png",
+      "stats": {
+        "virtues": {
+          "courage": 1,
+          "spirit": 1,
+          "grace": 1
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Prelude_Honour",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/ad/PreludeHonour.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/ad/PreludeHonour.png/128px-PreludeHonour.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:PreludeHonour.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 135937,
+      "sha1": "09b2d949546e073ddfac766c81cc9f62d698556b"
+    },
+    {
+      "id": "talisman-roses-bodkin",
+      "name": "Rose's Bodkin",
+      "description": "A brooch of sword-sharp petals. Though delicate, it is strong. One wonders how it’d fare when thrown.",
+      "rarity": "Common",
+      "accessorySet": "Silent Rose",
+      "armorSet": "Sirin",
+      "tags": [],
+      "imageFile": "RosesBodkin.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 1
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Rose's_Bodkin",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/f/f9/RosesBodkin.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f9/RosesBodkin.png/128px-RosesBodkin.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:RosesBodkin.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 112364,
+      "sha1": "75ed7f582efa52cf5ae3cfc35f61ffbfc45005c0"
+    },
+    {
+      "id": "talisman-sproutfolk-seed",
+      "name": "Sproutfolk Seed",
+      "description": "A large seed, smoothed and worn by the passing of many hands. Held to the ear, one may hear a gentle heartbeat.",
+      "rarity": "Common",
+      "accessorySet": "Alca's Children",
+      "armorSet": "Oscelda",
+      "tags": [],
+      "imageFile": "SproutfolkSeed.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Sproutfolk_Seed",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/1e/SproutfolkSeed.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1e/SproutfolkSeed.png/128px-SproutfolkSeed.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:SproutfolkSeed.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 84742,
+      "sha1": "f84c0249fb0672f0fe4fe3a712485b2ed08134b8"
+    },
+    {
+      "id": "talisman-sproutfolk-shoot",
+      "name": "Sproutfolk Shoot",
+      "description": "A germinated seed, blessed by many clasped hands. A heartbeat, once faint, thrums with anticipation. A green shoot seems to dance.",
+      "rarity": "Uncommon",
+      "accessorySet": "Alca's Children",
+      "armorSet": "Oscelda",
+      "tags": [],
+      "imageFile": "SproutfolkSeed.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 6,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Sproutfolk_Shoot",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/1e/SproutfolkSeed.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1e/SproutfolkSeed.png/128px-SproutfolkSeed.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:SproutfolkSeed.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 84742,
+      "sha1": "f84c0249fb0672f0fe4fe3a712485b2ed08134b8"
+    },
+    {
+      "id": "talisman-synods-bell-jar",
+      "name": "Synod's Bell Jar",
+      "description": "Bottled starshine. Lightning in a bell jar. A tiny souvenir of Synod's grand menagerie, far away in castles loft.",
+      "rarity": "Common",
+      "accessorySet": "Unique",
+      "armorSet": "Unique",
+      "tags": [],
+      "imageFile": "SynodsBellJar.png",
+      "stats": {
+        "virtues": {
+          "courage": 4,
+          "spirit": 1,
+          "grace": 1
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Synod's_Bell_Jar",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/9/94/SynodsBellJar.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/94/SynodsBellJar.png/128px-SynodsBellJar.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:SynodsBellJar.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 106788,
+      "sha1": "945dcf0b50d51c03f3922f463c5ec01e450707c9"
+    },
+    {
+      "id": "talisman-the-cogah-creutair",
+      "name": "The Cogah Creutair",
+      "description": "A beastly talisman, a feyish gift for an Agari well-fell. This Creutair carries the blessings of grateful Fey... and a bond, a promise, made blindly. With each Agari felled by the Cogah, this Talisman grows more powerful.",
+      "rarity": "Common",
+      "accessorySet": "Cogah",
+      "armorSet": "Cogah",
+      "tags": [
+        "Cogah"
+      ],
+      "imageFile": "TheCogahCreutair.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 2
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 2
+        },
+        "attack": 0,
+        "stagger": 10
+      },
+      "hasUnmodeledConditionalEffect": true,
+      "pageUrl": "https://wiki.avakot.org/The_Cogah_Creutair",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/9/94/TheCogahCreutair.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/94/TheCogahCreutair.png/128px-TheCogahCreutair.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TheCogahCreutair.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 74323,
+      "sha1": "615bd4e0381cc65dac06afb45d8640fa285ef1b3"
+    },
+    {
+      "id": "talisman-the-cogah-grod",
+      "name": "The Cogah Grod",
+      "description": "A tiny carved replica of the blighted Agari you defeated. Marked for death by the fey... and now killed by devoted Envoy. A rite, an offering, repaid by blessed talisman. With each Agari felled by the Cogah, this Talisman grows more powerful.",
+      "rarity": "Common",
+      "accessorySet": "Cogah",
+      "armorSet": "Cogah",
+      "tags": [
+        "Cogah"
+      ],
+      "imageFile": "TheCogahGrod.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 2,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 2,
+          "stabilityIncrease": 0
+        },
+        "attack": 10,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": true,
+      "pageUrl": "https://wiki.avakot.org/The_Cogah_Grod",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/ae/TheCogahGrod.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/ae/TheCogahGrod.png/128px-TheCogahGrod.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TheCogahGrod.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 92216,
+      "sha1": "94bfbcc9450c47f59f0ae3760a15d7d0b298fe08"
+    },
+    {
+      "id": "talisman-the-cogah-lorcaan",
+      "name": "The Cogah Lorcaan",
+      "description": "Where fell the Agari moments ago... now lies this little Lorcaan. A thank you from 'yond the veil? What gift you gave in exchange, what meaning had The Cogah rite, you know not. With each Agari felled by the Cogah, this Talisman grows more powerful.",
+      "rarity": "Common",
+      "accessorySet": "Cogah",
+      "armorSet": "Cogah",
+      "tags": [
+        "Cogah"
+      ],
+      "imageFile": "TheCogahLorcaan.png",
+      "stats": {
+        "virtues": {
+          "courage": 2,
+          "spirit": 0,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 2,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 10,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": true,
+      "pageUrl": "https://wiki.avakot.org/The_Cogah_Lorcaan",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/e/e9/TheCogahLorcaan.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e9/TheCogahLorcaan.png/128px-TheCogahLorcaan.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TheCogahLorcaan.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 127092,
+      "sha1": "98b54cbc09c60e45e1b9ee5057009d1eedb2ff10"
+    },
+    {
+      "id": "talisman-triune-talisman",
+      "name": "Triune Talisman",
+      "description": "Forged in the wake of the death of The Circade. In the year 639, when at last his body ceased to rise, The Circade was sealed 'way by command of the True Heir Jotar. The Elder Aithbhreac bound the three souls of The Circade to rest within the Triune Talisman. As long as these three Pendants remain intertwined, may his souls remain bound till end of time.",
+      "rarity": "Common",
+      "accessorySet": "Circade",
+      "armorSet": "Circade",
+      "tags": [
+        "FestivalOfTheCircade"
+      ],
+      "imageFile": "TriuneTalisman.png",
+      "stats": {
+        "virtues": {
+          "courage": 3,
+          "spirit": 3,
+          "grace": 3
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Triune_Talisman",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/15/TriuneTalisman.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/15/TriuneTalisman.png/128px-TriuneTalisman.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TriuneTalisman.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 167326,
+      "sha1": "b20476ceba31bbce605960111b2ca6d6ef61a80a"
+    },
+    {
+      "id": "talisman-wazzards-wish",
+      "name": "Wazzard's Wish",
+      "description": "A faint sloshing within this fastened corruption. Be it ichor blood or something sweeter?",
+      "rarity": "Common",
+      "accessorySet": "Unique",
+      "armorSet": "Wazzard",
+      "tags": [],
+      "imageFile": "WazzardsWish.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 1,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 1,
+          "magickDefense": 2,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Wazzard's_Wish",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/c/c0/WazzardsWish.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/c0/WazzardsWish.png/128px-WazzardsWish.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:WazzardsWish.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 96756,
+      "sha1": "172f8aeae84d05af9115fa3f1098ccbfe5acafad"
+    },
+    {
+      "id": "talisman-wyldings-heart",
+      "name": "Wylding's Heart",
+      "description": "A pendant of oak and alder, blooming afresh after so many years. May it fill you with Oscelda's spirit.",
+      "rarity": "Uncommon",
+      "accessorySet": "Founders",
+      "armorSet": "Wyld Oscelda",
+      "tags": [
+        "Founders"
+      ],
+      "imageFile": "WyldingsHeart.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 3,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Wylding's_Heart",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/2/29/WyldingsHeart.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/29/WyldingsHeart.png/128px-WyldingsHeart.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:WyldingsHeart.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 81304,
+      "sha1": "5d77bb166e4e932897d0e03bfab81b1b9cdcc6b1"
+    },
+    {
+      "id": "talisman-wyldings-hilt",
+      "name": "Wylding's Hilt",
+      "description": "A pendant forged in the likeness of The Ivor Blade's hilt. May it grant you the courage of Tethren.",
+      "rarity": "Uncommon",
+      "accessorySet": "Founders",
+      "armorSet": "Wyld Tethren",
+      "tags": [
+        "Founders"
+      ],
+      "imageFile": "WyldingsHilt.png",
+      "stats": {
+        "virtues": {
+          "courage": 3,
+          "spirit": 0,
+          "grace": 0
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Wylding's_Hilt",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/9/9f/WyldingsHilt.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/9f/WyldingsHilt.png/128px-WyldingsHilt.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:WyldingsHilt.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 102067,
+      "sha1": "4efd29f3d86ceaf290915dc0f559b43c4e6baded"
+    },
+    {
+      "id": "talisman-wyldings-hush",
+      "name": "Wylding's Hush",
+      "description": "A pendant of golden finery, like arrow fletching, like fair eyelashes. May you find the grace of Sirin within.",
+      "rarity": "Uncommon",
+      "accessorySet": "Founders",
+      "armorSet": "Wyld Sirin",
+      "tags": [
+        "Founders"
+      ],
+      "imageFile": "WyldingsHush.png",
+      "stats": {
+        "virtues": {
+          "courage": 0,
+          "spirit": 0,
+          "grace": 3
+        },
+        "defenses": {
+          "physicalDefense": 0,
+          "magickDefense": 0,
+          "stabilityIncrease": 0
+        },
+        "attack": 0,
+        "stagger": 0
+      },
+      "hasUnmodeledConditionalEffect": false,
+      "pageUrl": "https://wiki.avakot.org/Wylding's_Hush",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/aa/WyldingsHush.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/aa/WyldingsHush.png/128px-WyldingsHush.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:WyldingsHush.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 97108,
+      "sha1": "457e214a10bbbd99a893f657a11fe8764e35afa3"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import {
+  ARMOR_SLOTS,
   DEFENSE_IDS,
   VIRTUE_IDS,
   type ArmorItem,
@@ -7,6 +8,8 @@ import {
   type DefenseId,
   type ItemContribution,
   type SoulframeBuild,
+  type Talisman,
+  type TalismanContribution,
   type VirtueValues,
 } from "./types";
 
@@ -68,17 +71,51 @@ export function calculateItemContribution(
 export function calculateBuild(
   build: SoulframeBuild,
   catalogue: readonly ArmorItem[],
+  talismans: readonly Talisman[] = [],
 ): BuildCalculation {
   const byId = new Map(catalogue.map((item) => [item.id, item]));
+  const talismanById = new Map(talismans.map((item) => [item.id, item]));
   const warnings: string[] = [];
-  const items = Object.values(build.equipment).flatMap((itemId) => {
+  const equippedTalismanId = build.equipment.talisman;
+  const equippedTalisman = equippedTalismanId
+    ? talismanById.get(equippedTalismanId)
+    : undefined;
+
+  if (equippedTalismanId && !equippedTalisman) {
+    warnings.push(`Unknown Talisman id: ${equippedTalismanId}`);
+  }
+
+  const talisman = equippedTalisman
+    ? ({
+        itemId: equippedTalisman.id,
+        virtues: equippedTalisman.stats.virtues,
+        defenses: equippedTalisman.stats.defenses,
+        attack: equippedTalisman.stats.attack,
+        stagger: equippedTalisman.stats.stagger,
+        totalDefense: DEFENSE_IDS.reduce(
+          (sum, defense) => sum + equippedTalisman.stats.defenses[defense],
+          0,
+        ),
+        hasUnmodeledConditionalEffect:
+          equippedTalisman.hasUnmodeledConditionalEffect,
+      } satisfies TalismanContribution)
+    : undefined;
+  const effectiveVirtues = Object.fromEntries(
+    VIRTUE_IDS.map((virtue) => [
+      virtue,
+      build.virtues[virtue] + (talisman?.virtues[virtue] ?? 0),
+    ]),
+  ) as VirtueValues;
+
+  const items = ARMOR_SLOTS.flatMap((slot) => {
+    const itemId = build.equipment[slot];
     if (!itemId) return [];
     const item = byId.get(itemId);
     if (!item) {
       warnings.push(`Unknown item id: ${itemId}`);
       return [];
     }
-    const contribution = calculateItemContribution(item, build.virtues);
+    const contribution = calculateItemContribution(item, effectiveVirtues);
     if (!contribution.requirementMet && item.requirement) {
       warnings.push(
         `${item.name} needs ${item.requirement.value} ${item.requirement.virtue}; attunement scaling is inactive.`,
@@ -90,14 +127,32 @@ export function calculateBuild(
   const defenses = Object.fromEntries(
     DEFENSE_IDS.map((defense) => [
       defense,
-      items.reduce((sum, item) => sum + item.defenses[defense].total, 0),
+      items.reduce((sum, item) => sum + item.defenses[defense].total, 0) +
+        (talisman?.defenses[defense] ?? 0),
     ]),
   ) as Record<DefenseId, number>;
+  const armorDefense = items.reduce((sum, item) => sum + item.total, 0);
+  const talismanDefense = talisman?.totalDefense ?? 0;
+
+  if (talisman?.hasUnmodeledConditionalEffect && equippedTalisman) {
+    warnings.push(
+      `${equippedTalisman.name} has an encounter-dependent effect that is not included in calculated totals.`,
+    );
+  }
 
   return {
+    allocatedVirtues: build.virtues,
+    effectiveVirtues,
     defenses,
+    armorDefense,
+    talismanDefense,
     total: DEFENSE_IDS.reduce((sum, defense) => sum + defenses[defense], 0),
     items,
+    talisman,
+    modifiers: {
+      attack: talisman?.attack ?? 0,
+      stagger: talisman?.stagger ?? 0,
+    },
     warnings,
   };
 }

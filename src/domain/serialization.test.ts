@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { armorCatalogue } from "../data/catalogue";
+import { talismanCatalogue } from "../data/talismans";
 import {
   deserializeBuild,
   parseStoredBuild,
@@ -8,15 +9,19 @@ import {
 import type { SoulframeBuild } from "./types";
 
 const build: SoulframeBuild = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   name: "First Envoy",
   virtues: { courage: 12, spirit: 12, grace: 12 },
-  equipment: { helm: "helm-arbearers-mask" },
+  equipment: {
+    helm: "helm-arbearers-mask",
+    talisman: "talisman-wyldings-hilt",
+  },
 };
+const catalogue = { armor: armorCatalogue, talismans: talismanCatalogue };
 
 describe("build serialization", () => {
   it("round trips a build", () => {
-    expect(deserializeBuild(serializeBuild(build), armorCatalogue)).toEqual({
+    expect(deserializeBuild(serializeBuild(build), catalogue)).toEqual({
       ok: true,
       build,
       warnings: [],
@@ -24,14 +29,14 @@ describe("build serialization", () => {
   });
 
   it("rejects malformed data", () => {
-    expect(deserializeBuild("not-valid-data", armorCatalogue).ok).toBe(false);
+    expect(deserializeBuild("not-valid-data", catalogue).ok).toBe(false);
   });
 
   it("rejects unsupported schema versions", () => {
     const unsupported = Buffer.from(
-      JSON.stringify({ ...build, schemaVersion: 2 }),
+      JSON.stringify({ ...build, schemaVersion: 3 }),
     ).toString("base64url");
-    expect(deserializeBuild(unsupported, armorCatalogue)).toEqual({
+    expect(deserializeBuild(unsupported, catalogue)).toEqual({
       ok: false,
       error: "This build uses an unsupported schema version.",
     });
@@ -44,7 +49,7 @@ describe("build serialization", () => {
         equipment: { helm: "helm-not-real" },
       }),
     ).toString("base64url");
-    const result = deserializeBuild(encoded, armorCatalogue);
+    const result = deserializeBuild(encoded, catalogue);
     expect(result.ok).toBe(true);
     if (result.ok) {
       expect(result.build.equipment).toEqual({});
@@ -53,9 +58,29 @@ describe("build serialization", () => {
   });
 
   it("rejects malformed local storage data", () => {
-    expect(parseStoredBuild("{", armorCatalogue)).toEqual({
+    expect(parseStoredBuild("{", catalogue)).toEqual({
       ok: false,
       error: "Saved build data is malformed.",
+    });
+  });
+
+  it("migrates version 1 builds without a Talisman", () => {
+    const legacy = Buffer.from(
+      JSON.stringify({
+        ...build,
+        schemaVersion: 1,
+        equipment: { helm: "helm-arbearers-mask" },
+      }),
+    ).toString("base64url");
+    const result = deserializeBuild(legacy, catalogue);
+
+    expect(result).toEqual({
+      ok: true,
+      build: {
+        ...build,
+        equipment: { helm: "helm-arbearers-mask" },
+      },
+      warnings: ["Legacy build upgraded to include a Talisman slot."],
     });
   });
 });
