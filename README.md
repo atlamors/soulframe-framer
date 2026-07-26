@@ -1,8 +1,9 @@
 # Soulframe Framer
 
-Soulframe Framer is a local-first armor build builder for Soulframe. The first
-vertical slice lets a player equip a helm, cuirass, and leggings; enter
-Courage, Spirit, and Grace; and immediately see verified armor-scaling results.
+Soulframe Framer is a native Next.js App Router application and local-first
+armor build builder for Soulframe. The first vertical slice lets a player equip
+a helm, cuirass, and leggings; enter Courage, Spirit, and Grace; and immediately
+see verified armor-scaling results.
 
 The application is intentionally anonymous and client-side. It has no accounts,
 database, CMS, or runtime dependency on Google Sheets.
