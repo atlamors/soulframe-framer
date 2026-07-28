@@ -999,6 +999,47 @@ a:focus-visible,
   color: var(--ink);
 }
 
+.optimization-trigger {
+  align-items: center;
+  background:
+    linear-gradient(180deg, rgba(67, 47, 27, 0.72), rgba(30, 23, 18, 0.88));
+  border: 1px solid rgba(202, 145, 55, 0.42);
+  color: var(--gold-bright);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  gap: 7px;
+  justify-content: center;
+  letter-spacing: 0.06em;
+  min-height: 40px;
+  padding: 0 14px;
+  text-transform: uppercase;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.optimization-trigger:hover,
+.optimization-trigger:focus-visible {
+  background:
+    linear-gradient(180deg, rgba(96, 64, 31, 0.82), rgba(42, 29, 19, 0.94));
+  border-color: rgba(233, 189, 105, 0.76);
+  color: #f3d995;
+}
+
+.optimization-trigger svg {
+  height: 16px;
+  width: 16px;
+}
+
+.optimization-trigger-affinity {
+  margin-top: 12px;
+  width: 100%;
+}
+
 .stat-icon {
   align-items: center;
   background: rgba(234, 223, 202, 0.035);
@@ -1050,6 +1091,18 @@ a:focus-visible,
   position: relative;
 }
 
+.loadout-optimization {
+  bottom: 14px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.optimization-trigger-gear {
+  white-space: nowrap;
+}
+
 .equipment-slot {
   align-items: center;
   background: rgba(16, 13, 10, 0.82);
@@ -1065,7 +1118,7 @@ a:focus-visible,
   transition:
     background 150ms ease,
     transform 150ms ease;
-  width: min(265px, 40%);
+  width: min(290px, 42%);
   z-index: 4;
 }
 
@@ -1134,7 +1187,7 @@ a:focus-visible,
 
 .equipment-slot-cuirass {
   left: 3%;
-  top: 42%;
+  top: 37%;
 }
 
 .equipment-slot-talisman::after,
@@ -1144,18 +1197,18 @@ a:focus-visible,
 }
 
 .equipment-slot-leggings {
-  bottom: 8%;
   left: 3%;
+  top: 66%;
 }
 
 .equipment-slot-weapon-1 {
   right: 3%;
-  top: 42%;
+  top: 37%;
 }
 
 .equipment-slot-weapon-2 {
-  bottom: 8%;
   right: 3%;
+  top: 66%;
 }
 
 .slot-art,
@@ -1753,6 +1806,320 @@ a:focus-visible,
   flex-direction: column;
   max-width: 1040px;
   width: min(92vw, 1040px);
+}
+
+.optimization-backdrop {
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(2, 2, 1, 0.78);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 24px;
+  position: fixed;
+  z-index: 30;
+}
+
+.optimization-dialog {
+  animation: optimization-in 180ms ease-out both;
+  background:
+    url("/textures/parchment-grain.svg?v=2"),
+    radial-gradient(circle at 82% 0, rgba(99, 67, 35, 0.16), transparent 34rem),
+    linear-gradient(180deg, rgba(35, 26, 20, 0.96), rgba(17, 13, 11, 0.97));
+  background-blend-mode: overlay, normal, normal;
+  border: 1px solid var(--line-bright);
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.68),
+    inset 0 0 0 1px rgba(240, 198, 115, 0.06);
+  max-height: min(90vh, 860px);
+  max-width: 900px;
+  overflow-y: auto;
+  position: relative;
+  width: min(100%, 900px);
+}
+
+.optimization-dialog::before {
+  border: 6px solid transparent;
+  border-image-outset: 0;
+  border-image-repeat: repeat;
+  border-image-slice: 16;
+  border-image-source: url("/ornaments/rope-nine-slice.svg");
+  border-image-width: 6px;
+  content: "";
+  inset: -3px;
+  opacity: 0.72;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+@keyframes optimization-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.optimization-header {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 28px 20px;
+}
+
+.optimization-header > div > span {
+  align-items: center;
+  color: var(--gold);
+  display: inline-flex;
+  font-size: var(--type-eyebrow);
+  font-weight: 700;
+  gap: 6px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.optimization-header > div > span svg {
+  height: 14px;
+  width: 14px;
+}
+
+.optimization-header h2 {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 400;
+  line-height: 1;
+  margin: 8px 0 0;
+}
+
+.optimization-header p {
+  color: var(--ink-soft);
+  font-size: var(--type-body-sm);
+  font-weight: 550;
+  margin: 8px 0 0;
+}
+
+.optimization-summary {
+  display: grid;
+  gap: 18px;
+  padding: 22px 28px;
+}
+
+.optimization-affinity-values {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.optimization-affinity-values > div {
+  align-items: center;
+  background: rgba(7, 6, 5, 0.32);
+  border: 1px solid rgba(164, 126, 65, 0.22);
+  display: flex;
+  gap: 9px;
+  min-width: 0;
+  padding: 10px 12px;
+}
+
+.optimization-affinity-values > div > span:last-child {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.optimization-affinity-values small,
+.optimization-metrics small {
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.optimization-affinity-values strong,
+.optimization-metrics strong {
+  align-items: center;
+  color: var(--ink-soft);
+  display: flex;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 400;
+  gap: 7px;
+  line-height: 1.1;
+  margin-top: 3px;
+}
+
+.optimization-affinity-values strong svg,
+.optimization-metrics strong svg {
+  color: var(--ink-faint);
+  height: 14px;
+  width: 14px;
+}
+
+.optimization-affinity-values strong b,
+.optimization-metrics strong b {
+  color: var(--gold-bright);
+  font-weight: 400;
+}
+
+.optimization-metrics {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.optimization-metrics > div {
+  background: rgba(7, 6, 5, 0.22);
+  border-left: 2px solid rgba(202, 145, 55, 0.42);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 10px 14px;
+}
+
+.optimization-metrics > div small {
+  grid-column: 1 / -1;
+}
+
+.optimization-metrics > div em {
+  align-self: end;
+  color: var(--verdant);
+  font-family: var(--font-ui);
+  font-size: var(--type-label);
+  font-style: normal;
+  font-weight: 700;
+  padding-bottom: 1px;
+}
+
+.optimization-armor-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0 28px 24px;
+}
+
+.optimization-armor-card {
+  background:
+    radial-gradient(circle at 28% 25%, rgba(141, 94, 43, 0.12), transparent 54%),
+    rgba(8, 7, 6, 0.36);
+  border: 1px solid rgba(167, 126, 64, 0.28);
+  display: grid;
+  grid-template-rows: 118px minmax(0, 1fr);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.optimization-armor-art {
+  align-items: center;
+  background: radial-gradient(circle, rgba(202, 145, 55, 0.12), transparent 66%);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.optimization-armor-art .armor-art-image {
+  height: 112px;
+  width: 112px;
+}
+
+.optimization-armor-copy {
+  border-top: 1px solid rgba(167, 126, 64, 0.18);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 12px;
+}
+
+.optimization-armor-copy > small {
+  color: var(--gold);
+  font-size: var(--type-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.optimization-armor-copy > strong {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.optimization-armor-copy > span {
+  color: var(--ink-faint);
+  font-size: var(--type-eyebrow);
+  font-weight: 600;
+  margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.optimization-armor-copy > div {
+  align-items: center;
+  display: flex;
+  font-family: var(--font-display);
+  font-size: 17px;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.optimization-armor-copy > div svg {
+  color: var(--ink-faint);
+  height: 13px;
+  width: 13px;
+}
+
+.optimization-armor-copy > div b {
+  color: var(--gold-bright);
+  font-weight: 400;
+}
+
+.optimization-armor-copy > div em {
+  font-family: var(--font-ui);
+  font-size: var(--type-eyebrow);
+  font-style: normal;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.optimization-armor-copy > .optimization-compatible {
+  color: var(--verdant);
+}
+
+.optimization-armor-copy > .optimization-incompatible {
+  color: var(--danger);
+}
+
+.optimization-footer {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  padding: 18px 28px 22px;
+}
+
+.optimization-footer p {
+  color: var(--ink-soft);
+  font-size: var(--type-body-sm);
+  font-weight: 550;
+  margin: 0;
+}
+
+.optimization-footer > div {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
 }
 
 @keyframes picker-in {
@@ -3234,6 +3601,18 @@ a:focus-visible,
     padding: 12px 10px;
   }
 
+  .loadout-optimization {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    inset: auto;
+    position: relative;
+    transform: none;
+  }
+
+  .optimization-trigger-gear {
+    width: 100%;
+  }
+
   .equipment-slot {
     min-height: 82px;
     position: relative;
@@ -3321,6 +3700,59 @@ a:focus-visible,
 
   .picker-panel {
     overflow-y: auto;
+  }
+
+  .optimization-backdrop {
+    align-items: stretch;
+    padding: 8px;
+  }
+
+  .optimization-dialog {
+    max-height: calc(100vh - 16px);
+  }
+
+  .optimization-header {
+    padding: 18px 16px 16px;
+  }
+
+  .optimization-summary {
+    padding: 16px;
+  }
+
+  .optimization-affinity-values,
+  .optimization-metrics,
+  .optimization-armor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .optimization-armor-grid {
+    padding: 0 16px 18px;
+  }
+
+  .optimization-armor-card {
+    grid-template-columns: 108px minmax(0, 1fr);
+    grid-template-rows: minmax(132px, auto);
+  }
+
+  .optimization-armor-art .armor-art-image {
+    height: 100px;
+    width: 100px;
+  }
+
+  .optimization-armor-copy {
+    border-left: 1px solid rgba(167, 126, 64, 0.18);
+    border-top: 0;
+  }
+
+  .optimization-footer {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .optimization-footer > div {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
   }
 
   .picker-header {

@@ -1,0 +1,3996 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-28T04:50:08.320Z",
+  "source": {
+    "name": "The Soulframe Wiki drop-table data module",
+    "publisher": "Avakot",
+    "pageUrl": "https://wiki.avakot.org/Module:Data/DropTables",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 48321,
+    "revisionTimestamp": "2026-07-27T00:35:39Z"
+  },
+  "coverage": {
+    "catalogueItems": 59,
+    "itemsWithDropSources": 49,
+    "itemsWithoutDropSources": 10,
+    "totalSourceRows": 363
+  },
+  "items": [
+    {
+      "itemId": "weapon-avex",
+      "name": "Avex",
+      "sources": [
+        {
+          "tableId": "HunterRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Ruthos (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "HunterSubBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Ruthos",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "NimrodRednightBoss",
+          "category": "Foes",
+          "sourceName": "Discharged Nimrod (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Discharged_Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "NimrodSubBoss",
+          "category": "Foes",
+          "sourceName": "Discharged Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Discharged_Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeDogRednightBoss",
+          "category": "Foes",
+          "sourceName": "Flayed Reaper (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Flayed_Reaper",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeDogSubBoss",
+          "category": "Foes",
+          "sourceName": "Flayed Reaper",
+          "sourceUrl": "https://wiki.avakot.org/Flayed_Reaper",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-baskers-wrest",
+      "name": "Basker's Wrest",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakRareChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Undercity)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Undercity",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-blitzel",
+      "name": "Blitzel",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "HunterSubBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Ruthos",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeDogRednightBoss",
+          "category": "Foes",
+          "sourceName": "Flayed Reaper (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Flayed_Reaper",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeDogSubBoss",
+          "category": "Foes",
+          "sourceName": "Flayed Reaper",
+          "sourceUrl": "https://wiki.avakot.org/Flayed_Reaper",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeHunter",
+          "category": "Foes",
+          "sourceName": "Sinecure Gruulseeker",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Scout",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeHunter",
+          "category": "Foes",
+          "sourceName": "Sinecure Scout",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Scout",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeHunter",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Scout",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Scout",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-bog-myrtle",
+      "name": "Bog & Myrtle",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdePollutionTowerAirdelands",
+          "category": "Operations",
+          "sourceName": "Fuirlands Organ",
+          "sourceUrl": "https://wiki.avakot.org/The_Organ%23Fuirlands_Organ",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdePollutionTowerKearnhold",
+          "category": "Operations",
+          "sourceName": "Kearnhold Lowlands Organ",
+          "sourceUrl": "https://wiki.avakot.org/The_Organ%23Kearnhold_Lowlands_Organ",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-bromius-shield",
+      "name": "Bromius Shield",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-cenotaph",
+      "name": "Cenotaph",
+      "sources": [
+        {
+          "tableId": "DecapedeSubBoss",
+          "category": "Foes",
+          "sourceName": "Rovgot Wyrm",
+          "sourceUrl": "https://wiki.avakot.org/Rovgot_Wyrm",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-clivers",
+      "name": "Clivers",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderRednightBoss",
+          "category": "Foes",
+          "sourceName": "Etheldred The Weaver (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Etheldred_The_Weaver",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderRednightBoss",
+          "category": "Foes",
+          "sourceName": "Seachnall The Widower (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Seachnall_The_Widower",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderSubBoss",
+          "category": "Foes",
+          "sourceName": "Etheldred The Weaver",
+          "sourceUrl": "https://wiki.avakot.org/Etheldred_The_Weaver",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderSubBoss",
+          "category": "Foes",
+          "sourceName": "Seachnall The Widower",
+          "sourceUrl": "https://wiki.avakot.org/Seachnall_The_Widower",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-cobladh",
+      "name": "Cobladh",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-coiled-dawn",
+      "name": "Coiled Dawn",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-dewelion",
+      "name": "Dewelion",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "KearnholdSiegeMissionRewardItemManifest",
+          "category": "Sieges",
+          "sourceName": "Fort Kearnhold Siege",
+          "sourceUrl": "https://wiki.avakot.org/Fort_Kearnhold",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MeleeGreatSwordSubBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Vella",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Vella",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MirifuirCastleSiegeMissionRewardItemManifest",
+          "category": "Sieges",
+          "sourceName": "Mirifuir Siege",
+          "sourceUrl": "https://wiki.avakot.org/Mirifuir",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-duhk-halic",
+      "name": "Duhk Halic",
+      "sources": [
+        {
+          "tableId": "NimrodSubBoss",
+          "category": "Foes",
+          "sourceName": "Discharged Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Discharged_Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-espadarte",
+      "name": "Espadarte",
+      "sources": [
+        {
+          "tableId": "GhostPirateChest",
+          "category": "Containers",
+          "sourceName": "Pigwen Skerry Chest",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Pigwen_Skerry",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MirifuirCastleSiegeMissionRewardItemManifest",
+          "category": "Sieges",
+          "sourceName": "Mirifuir Siege",
+          "sourceUrl": "https://wiki.avakot.org/Mirifuir",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": "Note that Espadarte's Mirifuir drop seems to have been bugged since the start of Preludes 15."
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-esthelle",
+      "name": "Esthelle",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-falx",
+      "name": "Falx",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Gawth (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Gawth",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Sontaro (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Sontaro",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Gawth",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Gawth",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Sontaro",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Sontaro",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeDogRednightBoss",
+          "category": "Foes",
+          "sourceName": "Flayed Reaper (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Flayed_Reaper",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeDogSubBoss",
+          "category": "Foes",
+          "sourceName": "Flayed Reaper",
+          "sourceUrl": "https://wiki.avakot.org/Flayed_Reaper",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Shield)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Vasp-IV)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier (Dual Axes)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Axe)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Mace)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Dual Axes)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-farilwyd",
+      "name": "Farilwyd",
+      "sources": [
+        {
+          "tableId": "MendicantRiderSubBoss",
+          "category": "Foes",
+          "sourceName": "Mendicant Reinbreaker",
+          "sourceUrl": "https://wiki.avakot.org/Mendicant_Reinbreaker",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-gathannan",
+      "name": "Gathannan",
+      "sources": [
+        {
+          "tableId": "VadagarStag",
+          "category": "Foes",
+          "sourceName": "Vadagar Stag",
+          "sourceUrl": "https://wiki.avakot.org/Vadagar_Stag",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-grinn",
+      "name": "Grinn",
+      "sources": [
+        {
+          "tableId": "BanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermarkMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GladesMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "HunterRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Ruthos (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "HunterSubBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Ruthos",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MeleeGreatSwordRednightBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Vella (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Vella",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MeleeGreatSwordSubBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Vella",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Vella",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Nimrod",
+          "category": "Foes",
+          "sourceName": "Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier (Shield)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier (Vasp-IV)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier (Unsula)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Torch-bearer Sinecure Soldier",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Heavy Torch Soldier",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Messenger",
+          "sourceUrl": "https://wiki.avakot.org/Messenger",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Scout (Grinn)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Scout",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OverworldMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "TurretJotarSiegeMissionRewardItemManifest",
+          "category": "Sieges",
+          "sourceName": "Turret Jotar Siege",
+          "sourceUrl": "https://wiki.avakot.org/Turret_Jotar",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-gwylen",
+      "name": "Gwylen",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "StarterGearChest",
+          "category": "Fables",
+          "sourceName": "''Rise, Envoy''",
+          "sourceUrl": "https://wiki.avakot.org/Rise_Envoy",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-igne-mora",
+      "name": "Igne Mora",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakRareChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Undercity)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Undercity",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-ilverac",
+      "name": "Ilverac",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "HunterRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Ruthos (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "HunterSubBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Ruthos",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Gawth (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Gawth",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Sontaro (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Sontaro",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Gawth",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Gawth",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Sontaro",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Sontaro",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MeleeGreatSwordRednightBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Vella (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Vella",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MeleeGreatSwordSubBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Vella",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Vella",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeMaceKnightMiniBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure Officer",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Officer",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-juniper",
+      "name": "Juniper",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GrandpaBow",
+          "category": "Encounters",
+          "sourceName": "Juniper Echo Stones",
+          "sourceUrl": "https://wiki.avakot.org/Echo_Stone%23Juniper",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiritsGift",
+          "category": "Containers",
+          "sourceName": "Echo Stone",
+          "sourceUrl": "https://wiki.avakot.org/Echo_Stone",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiritsRareGift",
+          "category": "Containers",
+          "sourceName": "Echo Stone",
+          "sourceUrl": "https://wiki.avakot.org/Echo_Stone",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-lyke-wake",
+      "name": "Lyke-Wake",
+      "sources": [
+        {
+          "tableId": "MendicantKnight",
+          "category": "Foes",
+          "sourceName": "Mendicant Knight (Ruins)",
+          "sourceUrl": "https://wiki.avakot.org/Mendicant_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKnight",
+          "category": "Foes",
+          "sourceName": "Mendicant Knight (Cleaver)",
+          "sourceUrl": "https://wiki.avakot.org/Mendicant_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKnightBellCleaverRednightBoss",
+          "category": "Foes",
+          "sourceName": "Knell Knight (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Knell_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKnightBellCleaverRednightBoss",
+          "category": "Foes",
+          "sourceName": "Mendicant Knight Duo (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Mendicant_Knight_Duo",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKnightBellCleaverSubBoss",
+          "category": "Foes",
+          "sourceName": "Knell Knight",
+          "sourceUrl": "https://wiki.avakot.org/Knell_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKnightBellCleaverSubBoss",
+          "category": "Foes",
+          "sourceName": "Mendicant Knight Duo",
+          "sourceUrl": "https://wiki.avakot.org/Mendicant_Knight_Duo",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-maestro",
+      "name": "Maestro",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "FactionTalesTreasureChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Alca's Bounty)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Alca's_Bounty",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdePollutionTowerAirdelands",
+          "category": "Operations",
+          "sourceName": "Fuirlands Organ",
+          "sourceUrl": "https://wiki.avakot.org/The_Organ%23Fuirlands_Organ",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdePollutionTowerOdell",
+          "category": "Operations",
+          "sourceName": "Fortress O'Dell Organ",
+          "sourceUrl": "https://wiki.avakot.org/The_Organ%23Fortress_O'Dell_Organ",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechRednightBoss",
+          "category": "Foes",
+          "sourceName": "Kabocha (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Kabocha",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gourdo (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gourdo",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechSubBoss",
+          "category": "Foes",
+          "sourceName": "Kabocha",
+          "sourceUrl": "https://wiki.avakot.org/Kabocha",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechSubBoss",
+          "category": "Foes",
+          "sourceName": "Gourdo",
+          "sourceUrl": "https://wiki.avakot.org/Gourdo",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-marrows-bane",
+      "name": "Marrow's Bane",
+      "sources": [
+        {
+          "tableId": "VadagarBromius",
+          "category": "Foes",
+          "sourceName": "Vadagar Bear",
+          "sourceUrl": "https://wiki.avakot.org/Vadagar_Bear",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-mendicant-mace",
+      "name": "Mendicant Mace",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-navalha",
+      "name": "Navalha",
+      "sources": [
+        {
+          "tableId": "GhostPirateChest",
+          "category": "Containers",
+          "sourceName": "Pigwen Skerry Chest",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Pigwen_Skerry",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GhostPirateFencer",
+          "category": "Foes",
+          "sourceName": "Blue Ribbon Crew",
+          "sourceUrl": "https://wiki.avakot.org/Blue_Ribbon_Crew",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-needleseye",
+      "name": "Needleseye",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "Avakot's Stocks",
+          "sourceUrl": "https://wiki.avakot.org/Avakot's_Stocks",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "A Hidden Harvest",
+          "sourceUrl": "https://wiki.avakot.org/A_Hidden_Harvest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "FactionTalesTreasureChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Alca's Bounty)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Alca's_Bounty",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdePollutionTowerKearnhold",
+          "category": "Operations",
+          "sourceName": "Kearnhold Lowlands Organ",
+          "sourceUrl": "https://wiki.avakot.org/The_Organ%23Kearnhold_Lowlands_Organ",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdePollutionTowerOdell",
+          "category": "Operations",
+          "sourceName": "Fortress O'Dell Organ",
+          "sourceUrl": "https://wiki.avakot.org/The_Organ%23Fortress_O'Dell_Organ",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "WishingWellChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Oro's Well)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Oro's_Well",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-nettle",
+      "name": "Nettle",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DendriaRareChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Midrath)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Midrath",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-nurash",
+      "name": "Nurash",
+      "sources": [
+        {
+          "tableId": "GladesRareChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Glades)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Glades",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeriesHusks",
+          "category": "Foes",
+          "sourceName": "Deadwood Mockery",
+          "sourceUrl": "https://wiki.avakot.org/Deadwood_Mockery",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeriesHusks",
+          "category": "Foes",
+          "sourceName": "Deadwood Mockery (Female)",
+          "sourceUrl": "https://wiki.avakot.org/Deadwood_Mockery",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeriesHusks",
+          "category": "Foes",
+          "sourceName": "Armoured Mockery",
+          "sourceUrl": "https://wiki.avakot.org/Armoured_Mockery",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeryRednightBoss",
+          "category": "Foes",
+          "sourceName": "Thrice-bound Impidh (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockerySubBoss",
+          "category": "Foes",
+          "sourceName": "Thrice-bound Impidh",
+          "sourceUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-odiac",
+      "name": "Odiac",
+      "sources": [
+        {
+          "tableId": "BanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermarkMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GladesMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Nimrod",
+          "category": "Foes",
+          "sourceName": "Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeCaster",
+          "category": "Foes",
+          "sourceName": "Ode'n Starcaster",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Starcaster",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeCaster",
+          "category": "Foes",
+          "sourceName": "Elite Ode'n Starcaster",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Starcaster",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeCaster",
+          "category": "Foes",
+          "sourceName": "Ode'n Conductor",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Starcaster",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeChestRare",
+          "category": "Containers",
+          "sourceName": "Ode Chest",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OverworldMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-orst-iii",
+      "name": "Orst-III",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Gawth",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Gawth",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Sontaro",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Sontaro",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeMaceKnightMiniBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure Officer",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Officer",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Axe)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Mace)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Sword)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Shield)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Ichorous Wardog",
+          "sourceUrl": "https://wiki.avakot.org/Ichorous_Wardog",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-oryn-umbr",
+      "name": "Oryn-Umbr",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Shield)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Vasp-IV)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier (Dual Axes)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Axe)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Mace)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Dual Axes)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-precklies",
+      "name": "Precklies",
+      "sources": [
+        {
+          "tableId": "BanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermarkMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GladesMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Nimrod",
+          "category": "Foes",
+          "sourceName": "Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeHunter",
+          "category": "Foes",
+          "sourceName": "Sinecure Gruulseeker",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Scout",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeHunter",
+          "category": "Foes",
+          "sourceName": "Sinecure Scout",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Scout",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeHunter",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Scout",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Scout",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OverworldMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-purity",
+      "name": "Purity",
+      "sources": [
+        {
+          "tableId": "MendicantKing",
+          "category": "Foes",
+          "sourceName": "The Mendicant King",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKing",
+          "category": "Foes",
+          "sourceName": "Mendicant King",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKingRednightBoss",
+          "category": "Foes",
+          "sourceName": "The Mendicant King (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKingRednightBoss",
+          "category": "Foes",
+          "sourceName": "Mendicant King (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-rivt-ii",
+      "name": "Rivt-II",
+      "sources": [
+        {
+          "tableId": "BanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermarkMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GladesMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Nimrod",
+          "category": "Foes",
+          "sourceName": "Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OverworldMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-rook",
+      "name": "Rook",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GladesRareChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Glades)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Glades",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-rostrum",
+      "name": "Rostrum",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DendriaRareChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Midrath)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Midrath",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechRednightBoss",
+          "category": "Foes",
+          "sourceName": "Kabocha (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Kabocha",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gourdo (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gourdo",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechSubBoss",
+          "category": "Foes",
+          "sourceName": "Kabocha",
+          "sourceUrl": "https://wiki.avakot.org/Kabocha",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechSubBoss",
+          "category": "Foes",
+          "sourceName": "Gourdo",
+          "sourceUrl": "https://wiki.avakot.org/Gourdo",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-seathorn",
+      "name": "Seathorn",
+      "sources": [
+        {
+          "tableId": "CryptCoffinDrops",
+          "category": "Containers",
+          "sourceName": "Crypt Sarcophagus",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Sarcophagus",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-silistavf",
+      "name": "Silistavf",
+      "sources": [
+        {
+          "tableId": "MirifuirCastleSiegeMissionRewardItemManifest",
+          "category": "Sieges",
+          "sourceName": "Mirifuir Siege",
+          "sourceUrl": "https://wiki.avakot.org/Mirifuir",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-ski-lter",
+      "name": "Skílter",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeEventChestDrops",
+          "category": "",
+          "sourceName": "Circade Sarcophagus",
+          "sourceUrl": "https://wiki.avakot.org/Festival_of_the_Circade%23Circade_Armour_Set",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "HunterRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Ruthos (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "HunterSubBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Ruthos",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-sollos-i",
+      "name": "Sollos-I",
+      "sources": [
+        {
+          "tableId": "BanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermarkMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GladesMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Nimrod",
+          "category": "Foes",
+          "sourceName": "Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OverworldMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-stultin",
+      "name": "Stultin",
+      "sources": [
+        {
+          "tableId": "GladesRareChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Glades)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Glades",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeriesHusks",
+          "category": "Foes",
+          "sourceName": "Deadwood Mockery",
+          "sourceUrl": "https://wiki.avakot.org/Deadwood_Mockery",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeriesHusks",
+          "category": "Foes",
+          "sourceName": "Deadwood Mockery (Female)",
+          "sourceUrl": "https://wiki.avakot.org/Deadwood_Mockery",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeriesHusks",
+          "category": "Foes",
+          "sourceName": "Armoured Mockery",
+          "sourceUrl": "https://wiki.avakot.org/Armoured_Mockery",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeryRednightBoss",
+          "category": "Foes",
+          "sourceName": "Thrice-bound Impidh (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockerySubBoss",
+          "category": "Foes",
+          "sourceName": "Thrice-bound Impidh",
+          "sourceUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-tessard",
+      "name": "Tessard",
+      "sources": [
+        {
+          "tableId": "GladesRareChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Glades)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Glades",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeriesHusks",
+          "category": "Foes",
+          "sourceName": "Deadwood Mockery",
+          "sourceUrl": "https://wiki.avakot.org/Deadwood_Mockery",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeriesHusks",
+          "category": "Foes",
+          "sourceName": "Deadwood Mockery (Female)",
+          "sourceUrl": "https://wiki.avakot.org/Deadwood_Mockery",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeriesHusks",
+          "category": "Foes",
+          "sourceName": "Armoured Mockery",
+          "sourceUrl": "https://wiki.avakot.org/Armoured_Mockery",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockeryRednightBoss",
+          "category": "Foes",
+          "sourceName": "Thrice-bound Impidh (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MockerySubBoss",
+          "category": "Foes",
+          "sourceName": "Thrice-bound Impidh",
+          "sourceUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-the-alder",
+      "name": "The Alder",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-the-erstroot",
+      "name": "The Erstroot",
+      "sources": [
+        {
+          "tableId": "WazzardRednightBoss",
+          "category": "Foes",
+          "sourceName": "Wraith of Wastes (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Wraith_of_Wastes",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "WazzardSubBoss",
+          "category": "Foes",
+          "sourceName": "Wraith of Wastes",
+          "sourceUrl": "https://wiki.avakot.org/Wraith_of_Wastes",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-the-ivor",
+      "name": "The Ivor",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-the-paragon",
+      "name": "The Paragon",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-the-royal-tines",
+      "name": "The Royal Tines",
+      "sources": [
+        {
+          "tableId": "VadagarStag",
+          "category": "Foes",
+          "sourceName": "Vadagar Stag",
+          "sourceUrl": "https://wiki.avakot.org/Vadagar_Stag",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-the-starling",
+      "name": "The Starling",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-thistle",
+      "name": "Thistle",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "StarterGearChest",
+          "category": "Fables",
+          "sourceName": "''Rise, Envoy''",
+          "sourceUrl": "https://wiki.avakot.org/Rise_Envoy",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-thrice-spurns",
+      "name": "Thrice Spurns",
+      "sources": []
+    },
+    {
+      "itemId": "weapon-unsula",
+      "name": "Unsula",
+      "sources": [
+        {
+          "tableId": "BanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermarkMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GladesMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MeleeGreatSwordRednightBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Vella (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Vella",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MeleeGreatSwordSubBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Vella",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Vella",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Nimrod",
+          "category": "Foes",
+          "sourceName": "Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "NimrodRednightBoss",
+          "category": "Foes",
+          "sourceName": "Discharged Nimrod (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Discharged_Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "NimrodSubBoss",
+          "category": "Foes",
+          "sourceName": "Discharged Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Discharged_Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Shield)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Vasp-IV)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier (Dual Axes)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Axe)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Mace)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeEliteSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Elite Soldier (Dual Axes)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OverworldMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "TurretJotarSiegeMissionRewardItemManifest",
+          "category": "Sieges",
+          "sourceName": "Turret Jotar Siege",
+          "sourceUrl": "https://wiki.avakot.org/Turret_Jotar",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-vasp-iv",
+      "name": "Vasp-IV",
+      "sources": [
+        {
+          "tableId": "BanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Fore-Feller Hewyl",
+          "sourceUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermarkMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "GladesMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Nimrod",
+          "category": "Foes",
+          "sourceName": "Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OverworldMiniBoss",
+          "category": "Foes",
+          "sourceName": "Gruulseeker Selvins",
+          "sourceUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-veilk",
+      "name": "Veilk",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Gawth (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Gawth",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Sontaro (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Sontaro",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure-errant Gawth",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure-errant_Gawth",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MaceBanneretSubBoss",
+          "category": "Foes",
+          "sourceName": "Gruul Seeker Sontaro",
+          "sourceUrl": "https://wiki.avakot.org/Gruul_Seeker_Sontaro",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "NimrodRednightBoss",
+          "category": "Foes",
+          "sourceName": "Discharged Nimrod (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Discharged_Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "NimrodSubBoss",
+          "category": "Foes",
+          "sourceName": "Discharged Nimrod",
+          "sourceUrl": "https://wiki.avakot.org/Discharged_Nimrod",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeMaceKnightMiniBoss",
+          "category": "Foes",
+          "sourceName": "Sinecure Officer",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Officer",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Axe)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Mace)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Sword)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Shield)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Ichorous Wardog",
+          "sourceUrl": "https://wiki.avakot.org/Ichorous_Wardog",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-vetch",
+      "name": "Vetch",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "FactionTalesTreasureChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Alca's Bounty)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Alca's_Bounty",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderRednightBoss",
+          "category": "Foes",
+          "sourceName": "Etheldred The Weaver (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Etheldred_The_Weaver",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderRednightBoss",
+          "category": "Foes",
+          "sourceName": "Seachnall The Widower (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Seachnall_The_Widower",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderSubBoss",
+          "category": "Foes",
+          "sourceName": "Etheldred The Weaver",
+          "sourceUrl": "https://wiki.avakot.org/Etheldred_The_Weaver",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderSubBoss",
+          "category": "Foes",
+          "sourceName": "Seachnall The Widower",
+          "sourceUrl": "https://wiki.avakot.org/Seachnall_The_Widower",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-virdigris",
+      "name": "Virdigris",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DendriaRareChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Midrath)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Midrath",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdePollutionTowerAirdelands",
+          "category": "Operations",
+          "sourceName": "Fuirlands Organ",
+          "sourceUrl": "https://wiki.avakot.org/The_Organ%23Fuirlands_Organ",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdePollutionTowerKearnhold",
+          "category": "Operations",
+          "sourceName": "Kearnhold Lowlands Organ",
+          "sourceUrl": "https://wiki.avakot.org/The_Organ%23Kearnhold_Lowlands_Organ",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdePollutionTowerOdell",
+          "category": "Operations",
+          "sourceName": "Fortress O'Dell Organ",
+          "sourceUrl": "https://wiki.avakot.org/The_Organ%23Fortress_O'Dell_Organ",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderRednightBoss",
+          "category": "Foes",
+          "sourceName": "Etheldred The Weaver (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Etheldred_The_Weaver",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderRednightBoss",
+          "category": "Foes",
+          "sourceName": "Seachnall The Widower (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Seachnall_The_Widower",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderSubBoss",
+          "category": "Foes",
+          "sourceName": "Etheldred The Weaver",
+          "sourceUrl": "https://wiki.avakot.org/Etheldred_The_Weaver",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderSubBoss",
+          "category": "Foes",
+          "sourceName": "Seachnall The Widower",
+          "sourceUrl": "https://wiki.avakot.org/Seachnall_The_Widower",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "WishingWellChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Oro's Well)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Oro's_Well",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-vrusht-ix",
+      "name": "Vrusht-IX",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBuriedChest",
+          "category": "Containers",
+          "sourceName": "Ode Chest (Rovgot)",
+          "sourceUrl": "https://wiki.avakot.org/Ode_Chest",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier (Shield)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier (Vasp-IV)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Soldier (Unsula)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Torch-bearer Sinecure Soldier",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Heavy Torch Soldier",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Messenger",
+          "sourceUrl": "https://wiki.avakot.org/Messenger",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierGrunt",
+          "category": "Foes",
+          "sourceName": "Sinecure Scout (Grinn)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Scout",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Axe)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Mace)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Sword)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Sinecure Knight (Shield)",
+          "sourceUrl": "https://wiki.avakot.org/Sinecure_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSoldierHeavy",
+          "category": "Foes",
+          "sourceName": "Ichorous Wardog",
+          "sourceUrl": "https://wiki.avakot.org/Ichorous_Wardog",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeWeaponRack",
+          "category": "Containers",
+          "sourceName": "Ode'n Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-witan",
+      "name": "Witan",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "NeathunsSproutMech",
+          "category": "Foes",
+          "sourceName": "Rotted Sproutfolk",
+          "sourceUrl": "https://wiki.avakot.org/Rotted_Sproutfolk",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderRednightBoss",
+          "category": "Foes",
+          "sourceName": "Etheldred The Weaver (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Etheldred_The_Weaver",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderRednightBoss",
+          "category": "Foes",
+          "sourceName": "Seachnall The Widower (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Seachnall_The_Widower",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderSubBoss",
+          "category": "Foes",
+          "sourceName": "Etheldred The Weaver",
+          "sourceUrl": "https://wiki.avakot.org/Etheldred_The_Weaver",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SpiderSubBoss",
+          "category": "Foes",
+          "sourceName": "Seachnall The Widower",
+          "sourceUrl": "https://wiki.avakot.org/Seachnall_The_Widower",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechRednightBoss",
+          "category": "Foes",
+          "sourceName": "Kabocha (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Kabocha",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechRednightBoss",
+          "category": "Foes",
+          "sourceName": "Gourdo (Cogah)",
+          "sourceUrl": "https://wiki.avakot.org/Gourdo",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechSubBoss",
+          "category": "Foes",
+          "sourceName": "Kabocha",
+          "sourceUrl": "https://wiki.avakot.org/Kabocha",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "SproutMechSubBoss",
+          "category": "Foes",
+          "sourceName": "Gourdo",
+          "sourceUrl": "https://wiki.avakot.org/Gourdo",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "WishingWellChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Oro's Well)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Oro's_Well",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "weapon-wulder",
+      "name": "Wulder",
+      "sources": [
+        {
+          "tableId": "BreakableOdeBalloons",
+          "category": "Containers",
+          "sourceName": "Skylantern Crate",
+          "sourceUrl": "https://wiki.avakot.org/Skylantern_Crate",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Crypt Crawler",
+          "sourceUrl": "https://wiki.avakot.org/Crypt_Crawler",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "Ghost Knight",
+          "sourceUrl": "https://wiki.avakot.org/Ghost_Knight",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CircadeGhostKnight",
+          "category": "Foes",
+          "sourceName": "The Circade",
+          "sourceUrl": "https://wiki.avakot.org/The_Circade",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "DermakWeaponRack",
+          "category": "Containers",
+          "sourceName": "Dendrit Weapon Rack",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "StarterGearChest",
+          "category": "Fables",
+          "sourceName": "''Rise, Envoy''",
+          "sourceUrl": "https://wiki.avakot.org/Rise_Envoy",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

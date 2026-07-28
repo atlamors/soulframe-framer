@@ -18,6 +18,7 @@
     "import:progression": "node scripts/import-progression.mjs",
     "import:talismans": "node scripts/import-talismans.mjs",
     "import:weapons": "node scripts/import-weapons.mjs",
+    "import:weapon-drops": "node scripts/import-weapon-drops.mjs",
     "lint": "eslint . --ignore-pattern .next"
   },
   "dependencies": {

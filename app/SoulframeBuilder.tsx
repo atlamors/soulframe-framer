@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import {
   ArrowDownAZ,
+  ArrowRight,
   ArrowUpAZ,
   ArrowUpDown,
   ChevronDown,
@@ -20,6 +21,7 @@ import {
   Gauge,
   Hammer,
   ListFilter,
+  Sparkles,
   Sword,
 } from "lucide-react";
 import { armorById, armorCatalogue } from "@/src/data/catalogue";
@@ -34,6 +36,7 @@ import {
   weaponById,
   weaponCatalogue,
 } from "@/src/data/weapons";
+import { weaponDropById } from "@/src/data/weapon-drops";
 import {
   calculateBuild,
   calculateItemContribution,
@@ -58,6 +61,12 @@ import {
   PACT_ART_BONUS_BY_RANK,
   getAllocatableAffinity,
 } from "@/src/domain/affinity";
+import {
+  optimizeAffinityForArmor,
+  optimizeArmorForAffinity,
+  type AffinityOptimization,
+  type ArmorOptimization,
+} from "@/src/domain/optimization";
 import {
   ARMOR_SLOTS,
   DEFENSE_IDS,
@@ -216,12 +225,14 @@ function VirtueAlignment({
   sources,
   onChange,
   onSourcesChange,
+  onOptimize,
 }: {
   virtues: SoulframeBuild["virtues"];
   bonuses: VirtueValues;
   sources: AffinitySources;
   onChange: (virtues: VirtueValues) => void;
   onSourcesChange: (sources: AffinitySources) => void;
+  onOptimize: () => void;
 }) {
   const total = VIRTUE_IDS.reduce((sum, virtue) => sum + virtues[virtue], 0);
   const alignmentPoint = getVirtueAlignmentPoint(virtues);
@@ -531,6 +542,14 @@ function VirtueAlignment({
         sources={sources}
         onChange={onSourcesChange}
       />
+      <button
+        type="button"
+        className="optimization-trigger optimization-trigger-affinity"
+        onClick={onOptimize}
+      >
+        <Sparkles aria-hidden="true" />
+        Optimize for Gear
+      </button>
     </>
   );
 }
@@ -2004,6 +2023,8 @@ function WeaponPicker({
                   </div>
                 </details>
 
+                <WeaponDropTable item={candidate} />
+
                 <p className="weapon-description">{candidate.description}</p>
 
                 <div className="picker-actions">
@@ -2181,6 +2202,60 @@ function ArmorDropTable({ item }: { item: ArmorItem }) {
       ) : (
         <p className="armor-drop-empty">
           No drop source is currently recorded by Avakot.
+        </p>
+      )}
+    </section>
+  );
+}
+
+function WeaponDropTable({ item }: { item: Weapon }) {
+  const sources = weaponDropById.get(item.id)?.sources ?? [];
+
+  return (
+    <section className="armor-drop-section" aria-labelledby="weapon-drop-title">
+      <header>
+        <h4 id="weapon-drop-title">Drop Locations</h4>
+        <small>{sources.length ? `${sources.length} recorded` : "Avakot"}</small>
+      </header>
+      {sources.length ? (
+        <div
+          className="armor-drop-table"
+          role="table"
+          aria-label="Weapon drop locations"
+        >
+          <div className="armor-drop-row armor-drop-head" role="row">
+            <span role="columnheader">Location / Source</span>
+            <span role="columnheader">Type</span>
+            <span role="columnheader">Drop</span>
+          </div>
+          {sources.map((source) => (
+            <div
+              className="armor-drop-row"
+              role="row"
+              key={`${source.tableId}-${source.sourceName}-${source.level}`}
+            >
+              <a
+                href={source.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                role="cell"
+              >
+                {source.sourceName}
+                <ExternalLink aria-hidden="true" />
+              </a>
+              <span role="cell">{source.category || "Source"}</span>
+              <span role="cell">
+                {source.fragment ? "Fragment" : "Weapon"}
+                {source.quantity !== "1" ? ` ×${source.quantity}` : ""}
+                {source.level ? ` · Lv ${source.level}` : ""}
+                {source.note ? <small>{source.note}</small> : null}
+              </span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="armor-drop-empty">
+          No drop location is currently recorded by Avakot.
         </p>
       )}
     </section>
@@ -2591,10 +2666,6 @@ function ItemPicker({
             <div className="item-list" role="listbox" aria-label="Compatible armor">
               {filteredItems.map((item) => {
                 const isCandidate = item.id === candidate?.id;
-                const result = calculateItemContribution(
-                  item,
-                  buildCalculation.effectiveVirtues,
-                );
                 return (
                   <button
                     type="button"
@@ -2994,11 +3065,252 @@ function TalismanPicker({
   );
 }
 
+type OptimizationResult = AffinityOptimization | ArmorOptimization;
+
+function OptimizationLightbox({
+  result,
+  onApply,
+  onClose,
+}: {
+  result: OptimizationResult;
+  onApply: () => void;
+  onClose: () => void;
+}) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const isAffinity = result.kind === "affinity";
+  const title = isAffinity ? "Optimize for Gear" : "Optimize for Affinity";
+  const currentMetRequirements = result.currentCalculation.items.filter(
+    (item) => item.requirementMet,
+  ).length;
+  const recommendedMetRequirements =
+    result.recommendedCalculation.items.filter(
+      (item) => item.requirementMet,
+    ).length;
+  const armorRows = ARMOR_SLOTS.flatMap((slot) => {
+    const currentItemId = result.currentBuild.equipment[slot];
+    const recommendedItemId = result.recommendedBuild.equipment[slot];
+    const recommendedItem = recommendedItemId
+      ? armorById.get(recommendedItemId)
+      : undefined;
+    if (!recommendedItem) return [];
+    const currentItem = currentItemId ? armorById.get(currentItemId) : undefined;
+    const currentTotal = currentItem
+      ? calculateItemContribution(
+          currentItem,
+          result.currentCalculation.effectiveVirtues,
+        ).total
+      : 0;
+    const recommendedContribution = calculateItemContribution(
+      recommendedItem,
+      result.recommendedCalculation.effectiveVirtues,
+    );
+
+    return [
+      {
+        slot,
+        currentItem,
+        recommendedItem,
+        currentTotal,
+        recommendedTotal: recommendedContribution.total,
+        requirementMet: recommendedContribution.requirementMet,
+      },
+    ];
+  });
+
+  useEffect(() => {
+    const previouslyFocused =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+
+    const onKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus();
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="optimization-backdrop"
+      role="presentation"
+      onMouseDown={onClose}
+    >
+      <section
+        className="optimization-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="optimization-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <header className="optimization-header">
+          <div>
+            <span>
+              <Sparkles aria-hidden="true" />
+              Armor only
+            </span>
+            <h2 id="optimization-title">{title}</h2>
+            <p>
+              {isAffinity
+                ? "Recommended base affinity for your equipped armor."
+                : "Recommended armor for your current effective affinity."}
+            </p>
+          </div>
+          <button
+            ref={closeRef}
+            type="button"
+            className="icon-button"
+            aria-label="Close optimization preview"
+            onClick={onClose}
+          >
+            ×
+          </button>
+        </header>
+
+        <div className="optimization-summary">
+          {isAffinity ? (
+            <div className="optimization-affinity-values">
+              {VIRTUE_IDS.map((virtue) => (
+                <div className={`tone-${virtueMeta[virtue].tone}`} key={virtue}>
+                  <StatIcon
+                    src={virtueMeta[virtue].icon}
+                    label={virtueMeta[virtue].label}
+                    size="small"
+                  />
+                  <span>
+                    <small>{virtueMeta[virtue].label}</small>
+                    <strong>
+                      {result.currentBuild.virtues[virtue]}
+                      <ArrowRight aria-hidden="true" />
+                      <b>{result.recommendedBuild.virtues[virtue]}</b>
+                    </strong>
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="optimization-metrics">
+            <div>
+              <small>Armor Defense</small>
+              <strong>
+                {result.currentCalculation.armorDefense}
+                <ArrowRight aria-hidden="true" />
+                <b>{result.recommendedCalculation.armorDefense}</b>
+              </strong>
+              <em>
+                {formatDelta(
+                  result.recommendedCalculation.armorDefense -
+                    result.currentCalculation.armorDefense,
+                )}
+              </em>
+            </div>
+            <div>
+              <small>Requirements Met</small>
+              <strong>
+                {currentMetRequirements}
+                <ArrowRight aria-hidden="true" />
+                <b>{recommendedMetRequirements}</b>
+              </strong>
+              <em>of {armorRows.length}</em>
+            </div>
+          </div>
+        </div>
+
+        <div className="optimization-armor-grid">
+          {armorRows.map((row) => {
+            const changed = row.currentItem?.id !== row.recommendedItem.id;
+            const delta = row.recommendedTotal - row.currentTotal;
+            return (
+              <article className="optimization-armor-card" key={row.slot}>
+                <div className="optimization-armor-art">
+                  <ArmorArtwork
+                    item={row.recommendedItem}
+                    fallback={slotMeta[row.slot].index}
+                    sizes="120px"
+                  />
+                </div>
+                <div className="optimization-armor-copy">
+                  <small>{slotMeta[row.slot].label}</small>
+                  <strong>{row.recommendedItem.name}</strong>
+                  {changed && row.currentItem ? (
+                    <span>Replaces {row.currentItem.name}</span>
+                  ) : (
+                    <span>{changed ? "Fills empty slot" : "Keep equipped"}</span>
+                  )}
+                  <div>
+                    <span>{row.currentTotal}</span>
+                    <ArrowRight aria-hidden="true" />
+                    <b>{row.recommendedTotal}</b>
+                    <em className={delta > 0 ? "delta-positive" : "delta-neutral"}>
+                      {formatDelta(delta)}
+                    </em>
+                  </div>
+                  <span
+                    className={
+                      row.requirementMet
+                        ? "optimization-compatible"
+                        : "optimization-incompatible"
+                    }
+                  >
+                    {row.requirementMet ? "Compatible" : "Base defense only"}
+                  </span>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <footer className="optimization-footer">
+          <p>
+            {result.changed
+              ? isAffinity
+                ? "Only base affinity allocation will change."
+                : "Weapons and Talismans will not change."
+              : "Your current build already matches this recommendation."}
+          </p>
+          <div>
+            <button
+              type="button"
+              className="button button-quiet"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              className="button button-primary"
+              disabled={!result.changed}
+              onClick={onApply}
+            >
+              {result.changed
+                ? isAffinity
+                  ? "Apply Affinity"
+                  : "Equip Recommended Armor"
+                : "Already Optimized"}
+            </button>
+          </div>
+        </footer>
+      </section>
+    </div>
+  );
+}
+
 export function SoulframeBuilder() {
   const [build, setBuild] = useState<SoulframeBuild>(DEFAULT_BUILD);
   const [buildNameDraft, setBuildNameDraft] = useState(DEFAULT_BUILD.name);
   const [isEditingBuildName, setIsEditingBuildName] = useState(false);
   const [activeSlot, setActiveSlot] = useState<EquipmentSlot>();
+  const [optimizationMode, setOptimizationMode] = useState<
+    "affinity" | "armor"
+  >();
   const [hydrated, setHydrated] = useState(false);
   const [notice, setNotice] = useState<string>();
   const buildNameInputRef = useRef<HTMLInputElement>(null);
@@ -3006,6 +3318,23 @@ export function SoulframeBuilder() {
     () => calculateBuild(build, armorCatalogue, talismanCatalogue),
     [build],
   );
+  const optimizationResult = useMemo<OptimizationResult | undefined>(() => {
+    if (optimizationMode === "affinity") {
+      return optimizeAffinityForArmor(
+        build,
+        armorCatalogue,
+        talismanCatalogue,
+      );
+    }
+    if (optimizationMode === "armor") {
+      return optimizeArmorForAffinity(
+        build,
+        armorCatalogue,
+        talismanCatalogue,
+      );
+    }
+    return undefined;
+  }, [build, optimizationMode]);
   const unmetRequirementCount = calculation.items.filter(
     (item) => !item.requirementMet,
   ).length;
@@ -3256,10 +3585,21 @@ export function SoulframeBuilder() {
             sources={build.affinitySources}
             onChange={updateVirtues}
             onSourcesChange={updateAffinitySources}
+            onOptimize={() => setOptimizationMode("affinity")}
           />
         </aside>
 
         <div className="loadout-stage">
+          <div className="loadout-optimization">
+            <button
+              type="button"
+              className="optimization-trigger optimization-trigger-gear"
+              onClick={() => setOptimizationMode("armor")}
+            >
+              <Sparkles aria-hidden="true" />
+              Optimize for Affinity
+            </button>
+          </div>
           {ARMOR_SLOTS.map((slot) => {
             const itemId = build.equipment[slot];
             const item = itemId ? armorById.get(itemId) : undefined;
@@ -3500,6 +3840,22 @@ export function SoulframeBuilder() {
               return { ...current, equipment };
             });
             setActiveSlot(undefined);
+          }}
+        />
+      ) : null}
+
+      {optimizationResult ? (
+        <OptimizationLightbox
+          result={optimizationResult}
+          onClose={() => setOptimizationMode(undefined)}
+          onApply={() => {
+            setBuild(optimizationResult.recommendedBuild);
+            setOptimizationMode(undefined);
+            setNotice(
+              optimizationResult.kind === "affinity"
+                ? "Affinity optimized for the equipped armor."
+                : "Recommended armor equipped. Weapons and Talismans were preserved.",
+            );
           }}
         />
       ) : null}
