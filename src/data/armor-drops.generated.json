@@ -1,0 +1,1154 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-27T22:17:12.707Z",
+  "source": {
+    "name": "The Soulframe Wiki drop-table data module",
+    "publisher": "Avakot",
+    "pageUrl": "https://wiki.avakot.org/Module:Data/DropTables",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 48321,
+    "revisionTimestamp": "2026-07-27T00:35:39Z"
+  },
+  "coverage": {
+    "catalogueItems": 72,
+    "itemsWithDropSources": 42,
+    "itemsWithoutDropSources": 30,
+    "totalSourceRows": 73
+  },
+  "items": [
+    {
+      "itemId": "helm-arbearers-mask",
+      "name": "Arbearer's Mask",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "VadagarBromius",
+          "category": "Foes",
+          "sourceName": "Vadagar Bear",
+          "sourceUrl": "https://wiki.avakot.org/Vadagar_Bear",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-armet-of-orengall",
+      "name": "Armet of Orengall",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-bascinet-of-the-mendicant-king",
+      "name": "Bascinet of The Mendicant King",
+      "sources": [
+        {
+          "tableId": "MendicantKing",
+          "category": "Foes",
+          "sourceName": "The Mendicant King",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKing",
+          "category": "Foes",
+          "sourceName": "Mendicant King",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-brazen-lung",
+      "name": "Brazen Lung",
+      "sources": []
+    },
+    {
+      "itemId": "helm-circades-helm-of-deceit",
+      "name": "Circade's Helm of Deceit",
+      "sources": [
+        {
+          "tableId": "CircadeEventChestDrops",
+          "category": "",
+          "sourceName": "Circade Sarcophagus",
+          "sourceUrl": "https://wiki.avakot.org/Festival_of_the_Circade%23Circade_Armour_Set",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-crone-cucurbita-mask",
+      "name": "Crone Cucurbita Mask",
+      "sources": [
+        {
+          "tableId": "Scarecrow",
+          "category": "Containers",
+          "sourceName": "Crone Cucurbita Tattie-bogle",
+          "sourceUrl": "https://wiki.avakot.org/Tattie-bogle",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-duelo-ribbon",
+      "name": "Duelo Ribbon",
+      "sources": []
+    },
+    {
+      "itemId": "helm-forgetfire-visard",
+      "name": "Forgetfire Visard",
+      "sources": [
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "Avakot's Stocks",
+          "sourceUrl": "https://wiki.avakot.org/Avakot's_Stocks",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "A Hidden Harvest",
+          "sourceUrl": "https://wiki.avakot.org/A_Hidden_Harvest",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-garrens-crown-of-grace",
+      "name": "Garren's Crown of Grace",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "VadagarStag",
+          "category": "Foes",
+          "sourceName": "Vadagar Stag",
+          "sourceUrl": "https://wiki.avakot.org/Vadagar_Stag",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-great-helm-of-the-fire-king",
+      "name": "Great Helm of The Fire King",
+      "sources": []
+    },
+    {
+      "itemId": "helm-helmless",
+      "name": "Helmless",
+      "sources": []
+    },
+    {
+      "itemId": "helm-lil-zook-mask",
+      "name": "Lil' Zook Mask",
+      "sources": [
+        {
+          "tableId": "ScarecrowAvarot",
+          "category": "Containers",
+          "sourceName": "Lil' Zook Tattie-bogle",
+          "sourceUrl": "https://wiki.avakot.org/Tattie-bogle",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-mestras-helm",
+      "name": "Mestra's Helm",
+      "sources": [
+        {
+          "tableId": "FencerSubBoss",
+          "category": "Foes",
+          "sourceName": "Mestra Carmo",
+          "sourceUrl": "https://wiki.avakot.org/Mestra_Carmo_(Boss)",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-mockery-ilk",
+      "name": "Mockery Ilk",
+      "sources": [
+        {
+          "tableId": "MockerySubBoss",
+          "category": "Foes",
+          "sourceName": "Thrice-bound Impidh",
+          "sourceUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-osceldas-diadem",
+      "name": "Oscelda's Diadem",
+      "sources": []
+    },
+    {
+      "itemId": "helm-pensives-bonnet",
+      "name": "Pensive's Bonnet",
+      "sources": [
+        {
+          "tableId": "AGrandFable",
+          "category": "Quests",
+          "sourceName": "''A Grand Fable''",
+          "sourceUrl": "https://wiki.avakot.org/A_Grand_Fable",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-poppa-pepo-mask",
+      "name": "Poppa Pepo Mask",
+      "sources": [
+        {
+          "tableId": "ScarecrowTal",
+          "category": "Containers",
+          "sourceName": "Poppa Pepo Tattie-bogle",
+          "sourceUrl": "https://wiki.avakot.org/Tattie-bogle",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-regents-veil",
+      "name": "Regent's Veil",
+      "sources": []
+    },
+    {
+      "itemId": "helm-sirins-shroud",
+      "name": "Sirin's Shroud",
+      "sources": []
+    },
+    {
+      "itemId": "helm-steelsingers-circlet",
+      "name": "Steelsinger's Circlet",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-tempest-visard",
+      "name": "Tempest Visard",
+      "sources": [
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "Avakot's Stocks",
+          "sourceUrl": "https://wiki.avakot.org/Avakot's_Stocks",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "A Hidden Harvest",
+          "sourceUrl": "https://wiki.avakot.org/A_Hidden_Harvest",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "FactionTalesTreasureChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Alca's Bounty)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Alca's_Bounty",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-tethrens-cap",
+      "name": "Tethren's Cap",
+      "sources": []
+    },
+    {
+      "itemId": "helm-thawtide-grimguise",
+      "name": "Thawtide Grimguise",
+      "sources": [
+        {
+          "tableId": "Undercover Gruulseekers",
+          "category": "Foes",
+          "sourceName": "Undercover Gruulseeker",
+          "sourceUrl": "https://wiki.avakot.org/Undercover_Gruulseeker",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-thawtide-meltcap",
+      "name": "Thawtide Meltcap",
+      "sources": [
+        {
+          "tableId": "Undercover Gruulseekers",
+          "category": "Foes",
+          "sourceName": "Undercover Gruulseeker",
+          "sourceUrl": "https://wiki.avakot.org/Undercover_Gruulseeker",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-wazzards-bycoket",
+      "name": "Wazzard's Bycoket",
+      "sources": [
+        {
+          "tableId": "WazzardSubBoss",
+          "category": "Foes",
+          "sourceName": "Wraith of Wastes",
+          "sourceUrl": "https://wiki.avakot.org/Wraith_of_Wastes",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "helm-wyld-osceldas-exhalt",
+      "name": "Wyld Oscelda's Exhalt",
+      "sources": []
+    },
+    {
+      "itemId": "helm-wyld-sirins-feignmask",
+      "name": "Wyld Sirin's Feignmask",
+      "sources": []
+    },
+    {
+      "itemId": "helm-wyld-tethrens-hornhelm",
+      "name": "Wyld Tethren's Hornhelm",
+      "sources": []
+    },
+    {
+      "itemId": "cuirass-arbearers-pauncher",
+      "name": "Arbearer's Pauncher",
+      "sources": [
+        {
+          "tableId": "VadagarBromius",
+          "category": "Foes",
+          "sourceName": "Vadagar Bear",
+          "sourceUrl": "https://wiki.avakot.org/Vadagar_Bear",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-circades-gutguard",
+      "name": "Circade's Gutguard",
+      "sources": [
+        {
+          "tableId": "CircadeEventChestDrops",
+          "category": "",
+          "sourceName": "Circade Sarcophagus",
+          "sourceUrl": "https://wiki.avakot.org/Festival_of_the_Circade%23Circade_Armour_Set",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-fire-kings-plackart",
+      "name": "Fire King's Plackart",
+      "sources": []
+    },
+    {
+      "itemId": "cuirass-forgetfire-leathers",
+      "name": "Forgetfire Leathers",
+      "sources": [
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "Avakot's Stocks",
+          "sourceUrl": "https://wiki.avakot.org/Avakot's_Stocks",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "A Hidden Harvest",
+          "sourceUrl": "https://wiki.avakot.org/A_Hidden_Harvest",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-laid-bare",
+      "name": "Laid Bare",
+      "sources": []
+    },
+    {
+      "itemId": "cuirass-mendicant-kings-suit-of-rancor",
+      "name": "Mendicant King's Suit of Rancor",
+      "sources": [
+        {
+          "tableId": "MendicantKing",
+          "category": "Foes",
+          "sourceName": "The Mendicant King",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKing",
+          "category": "Foes",
+          "sourceName": "Mendicant King",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-mestras-furbelow",
+      "name": "Mestra's Furbelow",
+      "sources": [
+        {
+          "tableId": "FencerSubBoss",
+          "category": "Foes",
+          "sourceName": "Mestra Carmo",
+          "sourceUrl": "https://wiki.avakot.org/Mestra_Carmo_(Boss)",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-mockery-binds",
+      "name": "Mockery Binds",
+      "sources": [
+        {
+          "tableId": "MockerySubBoss",
+          "category": "Foes",
+          "sourceName": "Thrice-bound Impidh",
+          "sourceUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-orengalls-cuirass",
+      "name": "Orengall's Cuirass",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-osceldas-blues",
+      "name": "Oscelda's Blues",
+      "sources": []
+    },
+    {
+      "itemId": "cuirass-pensives-cloak",
+      "name": "Pensive's Cloak",
+      "sources": [
+        {
+          "tableId": "ABicameralsBiography",
+          "category": "Quests",
+          "sourceName": "''A Bicameral's Biography''",
+          "sourceUrl": "https://wiki.avakot.org/Orlick%23Bonding",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-regalia-of-garren-rood",
+      "name": "Regalia of Garren Rood",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "VadagarStag",
+          "category": "Foes",
+          "sourceName": "Vadagar Stag",
+          "sourceUrl": "https://wiki.avakot.org/Vadagar_Stag",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-regents-shell",
+      "name": "Regent's Shell",
+      "sources": []
+    },
+    {
+      "itemId": "cuirass-sirins-plainhide",
+      "name": "Sirin's Plainhide",
+      "sources": []
+    },
+    {
+      "itemId": "cuirass-steelsingers-stithywicks",
+      "name": "Steelsinger's Stithywicks",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-tempest-leathers",
+      "name": "Tempest Leathers",
+      "sources": [
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "Avakot's Stocks",
+          "sourceUrl": "https://wiki.avakot.org/Avakot's_Stocks",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "A Hidden Harvest",
+          "sourceUrl": "https://wiki.avakot.org/A_Hidden_Harvest",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "FactionTalesTreasureChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Alca's Bounty)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Alca's_Bounty",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "RunneroftheRose",
+          "category": "Mini-Quests",
+          "sourceName": "''Runner of the Rose''",
+          "sourceUrl": "https://wiki.avakot.org/Runner_of_the_Rose",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-tethrens-tunic",
+      "name": "Tethren's Tunic",
+      "sources": []
+    },
+    {
+      "itemId": "cuirass-thawtide-thermals",
+      "name": "Thawtide Thermals",
+      "sources": [
+        {
+          "tableId": "Undercover Gruulseekers",
+          "category": "Foes",
+          "sourceName": "Undercover Gruulseeker",
+          "sourceUrl": "https://wiki.avakot.org/Undercover_Gruulseeker",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-wazzards-robes",
+      "name": "Wazzard's Robes",
+      "sources": [
+        {
+          "tableId": "WazzardSubBoss",
+          "category": "Foes",
+          "sourceName": "Wraith of Wastes",
+          "sourceUrl": "https://wiki.avakot.org/Wraith_of_Wastes",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "cuirass-wyld-oscelda-pendelveil",
+      "name": "Wyld Oscelda Pendelveil",
+      "sources": []
+    },
+    {
+      "itemId": "cuirass-wyld-sirin-finery",
+      "name": "Wyld Sirin Finery",
+      "sources": []
+    },
+    {
+      "itemId": "cuirass-wyld-tethren-solist-shield",
+      "name": "Wyld Tethren Solist Shield",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-arbearers-braes",
+      "name": "Arbearer's Braes",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "VadagarBromius",
+          "category": "Foes",
+          "sourceName": "Vadagar Bear",
+          "sourceUrl": "https://wiki.avakot.org/Vadagar_Bear",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-circades-greaves",
+      "name": "Circade's Greaves",
+      "sources": [
+        {
+          "tableId": "CircadeEventChestDrops",
+          "category": "",
+          "sourceName": "Circade Sarcophagus",
+          "sourceUrl": "https://wiki.avakot.org/Festival_of_the_Circade%23Circade_Armour_Set",
+          "quantity": "1",
+          "fragment": false,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-fire-kings-kilt",
+      "name": "Fire King's Kilt",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-forgetfire-braes",
+      "name": "Forgetfire Braes",
+      "sources": [
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "Avakot's Stocks",
+          "sourceUrl": "https://wiki.avakot.org/Avakot's_Stocks",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "A Hidden Harvest",
+          "sourceUrl": "https://wiki.avakot.org/A_Hidden_Harvest",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-forsaken-rags",
+      "name": "Forsaken Rags",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-garrens-cloven-hosen",
+      "name": "Garren's Cloven Hosen",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "VadagarStag",
+          "category": "Foes",
+          "sourceName": "Vadagar Stag",
+          "sourceUrl": "https://wiki.avakot.org/Vadagar_Stag",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-mendicant-kings-sabatons",
+      "name": "Mendicant King's Sabatons",
+      "sources": [
+        {
+          "tableId": "MendicantKing",
+          "category": "Foes",
+          "sourceName": "The Mendicant King",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "MendicantKing",
+          "category": "Foes",
+          "sourceName": "Mendicant King",
+          "sourceUrl": "https://wiki.avakot.org/The_Mendicant_King",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-mestras-breeches",
+      "name": "Mestra's Breeches",
+      "sources": [
+        {
+          "tableId": "FencerSubBoss",
+          "category": "Foes",
+          "sourceName": "Mestra Carmo",
+          "sourceUrl": "https://wiki.avakot.org/Mestra_Carmo_(Boss)",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-mockery-douthrot",
+      "name": "Mockery Douthrot",
+      "sources": [
+        {
+          "tableId": "MockerySubBoss",
+          "category": "Foes",
+          "sourceName": "Thrice-bound Impidh",
+          "sourceUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-orengalls-greaves",
+      "name": "Orengall's Greaves",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-osceldas-featherbinds",
+      "name": "Oscelda's Featherbinds",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-pensives-pantaloons",
+      "name": "Pensive's Pantaloons",
+      "sources": [
+        {
+          "tableId": "ATitle",
+          "category": "Quests",
+          "sourceName": "''A Title''",
+          "sourceUrl": "https://wiki.avakot.org/Orlick%23Bonding",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-regents-drapery",
+      "name": "Regent's Drapery",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-sirins-stalks",
+      "name": "Sirin's Stalks",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-steelsingers-shreds",
+      "name": "Steelsinger's Shreds",
+      "sources": [
+        {
+          "tableId": "CollectorBoxEncounter",
+          "category": "Containers",
+          "sourceName": "Collector Crate",
+          "sourceUrl": "https://wiki.avakot.org/Collector_Crate",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "CollectorEncounter",
+          "category": "Operations",
+          "sourceName": "Hark, The Collector",
+          "sourceUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "OdeSiegeEngine",
+          "category": "Foes",
+          "sourceName": "Bisulcam",
+          "sourceUrl": "https://wiki.avakot.org/Bisulcam",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-tempest-braes",
+      "name": "Tempest Braes",
+      "sources": [
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "Avakot's Stocks",
+          "sourceUrl": "https://wiki.avakot.org/Avakot's_Stocks",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "Encounter",
+          "category": "Dungeon Deeds",
+          "sourceName": "A Hidden Harvest",
+          "sourceUrl": "https://wiki.avakot.org/A_Hidden_Harvest",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        },
+        {
+          "tableId": "FactionTalesTreasureChest",
+          "category": "Containers",
+          "sourceName": "Dendrit Chest (Alca's Bounty)",
+          "sourceUrl": "https://wiki.avakot.org/Dendrit_Chest%23Alca's_Bounty",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-tethrens-roots",
+      "name": "Tethren's Roots",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-thawtide-shingles",
+      "name": "Thawtide Shingles",
+      "sources": [
+        {
+          "tableId": "Undercover Gruulseekers",
+          "category": "Foes",
+          "sourceName": "Undercover Gruulseeker",
+          "sourceUrl": "https://wiki.avakot.org/Undercover_Gruulseeker",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-wazzards-trunks",
+      "name": "Wazzard's Trunks",
+      "sources": [
+        {
+          "tableId": "WazzardSubBoss",
+          "category": "Foes",
+          "sourceName": "Wraith of Wastes",
+          "sourceUrl": "https://wiki.avakot.org/Wraith_of_Wastes",
+          "quantity": "1",
+          "fragment": true,
+          "level": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "itemId": "leggings-wyld-oscelda-beltolls",
+      "name": "Wyld Oscelda Beltolls",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-wyld-sirin-wevetbelt",
+      "name": "Wyld Sirin Wevetbelt",
+      "sources": []
+    },
+    {
+      "itemId": "leggings-wyld-tethren-flamefoot",
+      "name": "Wyld Tethren Flamefoot",
+      "sources": []
+    }
+  ]
+}

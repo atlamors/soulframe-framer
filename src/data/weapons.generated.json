@@ -1,0 +1,3952 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-27T21:13:42.809Z",
+  "source": {
+    "name": "The Soulframe Wiki weapon index and data module",
+    "publisher": "Avakot",
+    "pageUrl": "https://wiki.avakot.org/Weapons",
+    "moduleUrl": "https://wiki.avakot.org/Module:Data/Weapons",
+    "categoryUrl": "https://wiki.avakot.org/Category:Weapons",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 48354,
+    "revisionTimestamp": "2026-07-27T18:30:19Z"
+  },
+  "coverage": {
+    "categoryItems": 59,
+    "matchedItems": 59,
+    "missingItems": []
+  },
+  "items": [
+    {
+      "id": "weapon-avex",
+      "name": "Avex",
+      "dataStatus": "verified",
+      "description": "A steel-studded boundbow of Ode’n technology. Spider wire bound tight ‘round orbiting pulleys. Clicking cranks spin with the power of planets. Sinecure hunters boast of Avex’s charged shot, powerful enough to puncture through a doe to kill the fawn behind her, with arrows so sturdy they are wielded as daggers.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Bow",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 13,
+        "spirit": 0,
+        "grace": 11
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Avex.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P14: The Duelo",
+      "lastUpdated": "P13H5: Envoy Forge",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 45,
+          "chargedShot": 113,
+          "stagger": 36
+        },
+        "level30": {
+          "attack": 93,
+          "chargedShot": 161,
+          "stagger": 66
+        },
+        "damageCaps": {
+          "lightAttack": 161,
+          "chargedShotAttack": 329
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Avex",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/7/7c/Avex.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/7c/Avex.png/192px-Avex.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Avex.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 69992,
+      "sha1": "754c4484e7409728298d7298d05b089b745f38c3"
+    },
+    {
+      "id": "weapon-baskers-wrest",
+      "name": "Basker's Wrest",
+      "dataStatus": "verified",
+      "description": "The dread gauntlets of The Fire King’s army. Channeling magicks from the inset orbs of Moranite, these gauntlets were wielded against the Cassid occupation in the year 603. Not knights but rebels, vigilantes of the undercity, called upon the red sun. They called themselves the Baskers, forging her courage into armlets of scrap. They cried flames across their homelands, lost. They burned the collaborators. And The Fire King, Fenn Jotar, could only watch.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Uncommon",
+      "combatArt": "Magick",
+      "damageType": "Arcanic",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 7,
+        "spirit": 8,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "BaskersWrest.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P13: A Triquetra of Virtues",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 34,
+          "fullChargedCast": 102,
+          "stagger": 10
+        },
+        "level30": {
+          "attack": 82,
+          "fullChargedCast": 150,
+          "stagger": 40
+        },
+        "damageCaps": {
+          "lightAttack": 133,
+          "chargedHeavyAttack": 303
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Basker's_Wrest",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/1c/BaskersWrest.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1c/BaskersWrest.png/192px-BaskersWrest.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:BaskersWrest.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 109309,
+      "sha1": "1d6367aa2209ca188d1271715e32be56ff1dcdac"
+    },
+    {
+      "id": "weapon-blitzel",
+      "name": "Blitzel",
+      "dataStatus": "verified",
+      "description": "A finely balanced bow of Ode'n make. Invented shortly after the Alcan conquest. Taking amusement from the Dendrit hunters' primitive weapon of choice, Ode'n blademakers crafted the Blitzel from the many discarded bows littering the late battlefield. Thus, a new addition to the Sinecure Armamentarium.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Bow",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 12
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Blitzel.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P1.3",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 50",
+          "numerator": 1,
+          "denominator": 50,
+          "percent": 2
+        },
+        "arrowHail": 21,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 47,
+          "chargedShot": 118,
+          "stagger": 24
+        },
+        "level30": {
+          "attack": 95,
+          "chargedShot": 166,
+          "stagger": 54
+        },
+        "damageCaps": {
+          "lightAttack": 166,
+          "chargedShotAttack": 342
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Blitzel",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/6/63/Blitzel.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/63/Blitzel.png/192px-Blitzel.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Blitzel.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 25737,
+      "sha1": "d53c99a7483b73b5479a2508508de0ef2aea7133"
+    },
+    {
+      "id": "weapon-bog-myrtle",
+      "name": "Bog & Myrtle",
+      "dataStatus": "verified",
+      "description": "Myrtle, a sword as swift as a pricking thorn. Wide of girth, she whistles fair with every swing. The weapon of a Dendrit commoner, but that does not make her so. Bog, a round and rusted shield. Dented and scarred by more wars than one. To mistress Myrtle, ever-bound. Once battle-lost, now Envoy-found.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Shield",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 11,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Bog&Myrtle.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P7",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 50",
+          "numerator": 1,
+          "denominator": 50,
+          "percent": 2
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 42,
+          "perfectThrow": 126,
+          "chargedAttack": 84,
+          "stagger": 26,
+          "throw": 63
+        },
+        "level30": {
+          "attack": 96,
+          "perfectThrow": 180,
+          "chargedAttack": 138,
+          "stagger": 86,
+          "throw": 117
+        },
+        "damageCaps": {
+          "lightAttack": 159,
+          "chargedHeavyAttack": 264,
+          "throw": 212,
+          "perfectThrow": 369
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Bog_%26_Myrtle",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/a6/Bog%26Myrtle.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a6/Bog%26Myrtle.png/192px-Bog%26Myrtle.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Bog%26Myrtle.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 166273,
+      "sha1": "96391c7184e820481e293c87e1a38abf806b97d8"
+    },
+    {
+      "id": "weapon-bromius-shield",
+      "name": "Bromius Shield",
+      "dataStatus": "verified",
+      "description": "A mighty guard, a fearsome limb. The menacing warhammer and shield of the Arbearer, Bromius. Wield this weapon by the Arbearer's deal: to protect the old roots yet to heal- or to pick your teeth after good meal. An upcoming sword and shield arriving in a future update.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Unreleased",
+      "damageType": "Blunt",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "BromiusShieldModel.png",
+      "tags": [
+        "Upcoming"
+      ],
+      "isUpcoming": true,
+      "introduced": "",
+      "lastUpdated": "",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "",
+          "numerator": null,
+          "denominator": null,
+          "percent": null
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {},
+        "level30": {},
+        "damageCaps": {}
+      },
+      "pageUrl": "https://wiki.avakot.org/Bromius_Shield",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/6/6a/BromiusShieldModel.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/6a/BromiusShieldModel.png/192px-BromiusShieldModel.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:BromiusShieldModel.png",
+      "mimeType": "image/png",
+      "width": 1280,
+      "height": 1383,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 207,
+      "bytes": 1466845,
+      "sha1": "ac2a069dd2a36182ebfeb6e8a16e9484caaee826"
+    },
+    {
+      "id": "weapon-cenotaph",
+      "name": "Cenotaph",
+      "dataStatus": "verified",
+      "description": "A twisted baneblade dug from grave. One cannot tell where steel ends and ichor begins. Was Cenotaph buried a curvèd samshir? Or was it Ode'n rot that twisted this blade into so sharp a shape? Both corroded and fortified, wyrm-eaten yet bastioned, this haunted blade is made stronger in its corruption. Much like the Mendicant who wields it. A second life at the cost of the first. A Cenotaph.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 14,
+        "spirit": 9,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "CorruptedScimitar.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P14: The Duelo",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "3 in 100",
+          "numerator": 3,
+          "denominator": 100,
+          "percent": 3
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 53,
+          "perfectThrow": 159,
+          "chargedAttack": 106,
+          "stagger": 40,
+          "throw": 80
+        },
+        "level30": {
+          "attack": 107,
+          "perfectThrow": 213,
+          "chargedAttack": 160,
+          "stagger": 100,
+          "throw": 134
+        },
+        "damageCaps": {
+          "lightAttack": 187,
+          "chargedHeavyAttack": 319,
+          "throw": 253,
+          "perfectThrow": 452
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Cenotaph",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/d/d7/CorruptedScimitar.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/d7/CorruptedScimitar.png/192px-CorruptedScimitar.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:CorruptedScimitar.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 118657,
+      "sha1": "f5d5b303427a305dde64c9411ff9d8d8cf0f9b8e"
+    },
+    {
+      "id": "weapon-clivers",
+      "name": "Clivers",
+      "dataStatus": "verified",
+      "description": "The magnetic twinblades of the Dendrit Knightmaidens. Two feather-light sidearms, mirrored and merciless. Inspired by an herb of the same name, a magnetic alloy pulls the dual swords together, binding them like burr to wool. Knightmaidens of old famously entered battlefields with two Clivers bound, disguised as a single blade. The discovery of the swords’ sticky nature was the last many foes ever made.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Common",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 12
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Clivers.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P13: A Triquetra of Virtues",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 25,
+          "perfectThrow": 120,
+          "chargedAttack": 50,
+          "stagger": 15,
+          "throw": 60
+        },
+        "level30": {
+          "attack": 52,
+          "perfectThrow": 147,
+          "chargedAttack": 77,
+          "stagger": 75,
+          "throw": 87
+        },
+        "damageCaps": {
+          "lightAttack": 90,
+          "chargedHeavyAttack": 152,
+          "throw": 177,
+          "perfectThrow": 327
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Clivers",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/6/6f/Clivers.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/6f/Clivers.png/192px-Clivers.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Clivers.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 91427,
+      "sha1": "7676d5734ca06f81081b2e8d187bd756cc860b8e"
+    },
+    {
+      "id": "weapon-cobladh",
+      "name": "Cobladh",
+      "dataStatus": "verified",
+      "description": "The stolen dagger of Wyld Sirin. In the wake of the Felling, the trickster Sirin snuck an enchanted flame blade from Tethren's own mantle. With delicate archer's hands, he snaked a moonstone into its hilt, marking it as his own Cobladh Dagger. It was stolen from him by his daughter, and from her by her son. And now... It is yours.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Uncommon",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 7
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Cobladh.png",
+      "tags": [
+        "Founders"
+      ],
+      "isUpcoming": false,
+      "introduced": "P12: Wylds",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 41,
+          "perfectThrow": 123,
+          "chargedAttack": 82,
+          "stagger": 26,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 95,
+          "perfectThrow": 177,
+          "chargedAttack": 136,
+          "stagger": 86,
+          "throw": 116
+        },
+        "damageCaps": {
+          "lightAttack": 157,
+          "chargedHeavyAttack": 259,
+          "throw": 208,
+          "perfectThrow": 362
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Cobladh",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/8/81/Cobladh.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/81/Cobladh.png/192px-Cobladh.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Cobladh.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 60602,
+      "sha1": "227841f19f4a57b8bacb7b3f96ae822b9416537d"
+    },
+    {
+      "id": "weapon-coiled-dawn",
+      "name": "Coiled Dawn",
+      "dataStatus": "partial",
+      "description": "An upcoming Mendicant greatsword: the Ichor-corrupted sword of the Envoy's mother.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Unknown",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "GripTypeLongbladeNoBacker.png",
+      "tags": [
+        "Upcoming"
+      ],
+      "isUpcoming": true,
+      "introduced": "Preludes 16",
+      "lastUpdated": "",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "",
+          "numerator": null,
+          "denominator": null,
+          "percent": null
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {},
+        "level30": {},
+        "damageCaps": {}
+      },
+      "pageUrl": "https://wiki.avakot.org/Coiled_Dawn",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/b/b8/GripTypeLongbladeNoBacker.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/b/b8/GripTypeLongbladeNoBacker.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:GripTypeLongbladeNoBacker.png",
+      "mimeType": "image/png",
+      "width": 128,
+      "height": 128,
+      "thumbnailWidth": 128,
+      "thumbnailHeight": 128,
+      "bytes": 5750,
+      "sha1": "26262ade036ab32bf830c53fdeef18b596183d92"
+    },
+    {
+      "id": "weapon-dewelion",
+      "name": "Dewelion",
+      "dataStatus": "verified",
+      "description": "A Fey warrior's gloryblade. Dewelion is a word of the ancient Fey tongue. It means something like 'horizon;' a confluence of opposites; where day and night may meet. For a human steelsinger to have sung these delicate pieces back to former glory... An impossible confluence indeed.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 19
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 2,
+        "grace": 3
+      },
+      "imageFile": "Dewelion.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P11: The Waste Bear",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 48,
+          "perfectThrow": 144,
+          "chargedAttack": 96,
+          "stagger": 32,
+          "throw": 72
+        },
+        "level30": {
+          "attack": 102,
+          "perfectThrow": 198,
+          "chargedAttack": 150,
+          "stagger": 92,
+          "throw": 126
+        },
+        "damageCaps": {
+          "lightAttack": 174,
+          "chargedHeavyAttack": 294,
+          "throw": 234,
+          "perfectThrow": 414
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Dewelion",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/f/fb/Dewelion.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/fb/Dewelion.png/192px-Dewelion.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Dewelion.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 79679,
+      "sha1": "0beabfb7c0063b4ada7ac23d312ff0d32e7c0ec2"
+    },
+    {
+      "id": "weapon-duhk-halic",
+      "name": "Duhk Halic",
+      "dataStatus": "verified",
+      "description": "Forged of fever, wrought of wrath. The Ode'n lance, Duhk Halic. An Ode'n instrument of corruption. Even the Nimrod who wields it suffers from its venomous touch. Whether Omen beast or sacred tree, wherever Duhk Halic finds its mark, a wound spews ichor. Though... your weaver ways seem to have purged this wretched lance of corruption... For now.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Polearm",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 12,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "DuhkHalic.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P9",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 66,
+          "perfectThrow": 198,
+          "chargedAttack": 132,
+          "stagger": 46,
+          "throw": 99
+        },
+        "level30": {
+          "attack": 120,
+          "perfectThrow": 252,
+          "chargedAttack": 186,
+          "stagger": 106,
+          "throw": 153
+        },
+        "damageCaps": {
+          "lightAttack": 219,
+          "chargedHeavyAttack": 384,
+          "throw": 302,
+          "perfectThrow": 549
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Duhk_Halic",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/DuhkHalic.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/DuhkHalic.png/192px-DuhkHalic.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:DuhkHalic.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 48426,
+      "sha1": "aef1e42034322126a0fa4c358b0ba74c89f5b885"
+    },
+    {
+      "id": "weapon-espadarte",
+      "name": "Espadarte",
+      "dataStatus": "verified",
+      "description": "The curvèd cutlass of the old Mestre. Espadarte takes its namesake from the swordfish of salty depths. Mestre thought these creatures strong in their silence. No want but hunger in those glassy eyes. Like he, so he thought. Had he never seen the swordfish flocks make their great migrations? Their dance across the currents, their yearning for warmer tides? Perhaps he always knew. Perhaps 'twas this denial that killed him.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Cassid",
+      "requirements": {
+        "courage": 6,
+        "spirit": 0,
+        "grace": 8
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "PirateFencingSword.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P14: The Duelo",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "1 in 50",
+          "numerator": 1,
+          "denominator": 50,
+          "percent": 2
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 46,
+          "perfectThrow": 138,
+          "chargedAttack": 92,
+          "stagger": 26,
+          "throw": 69
+        },
+        "level30": {
+          "attack": 100,
+          "perfectThrow": 192,
+          "chargedAttack": 146,
+          "stagger": 86,
+          "throw": 123
+        },
+        "damageCaps": {
+          "lightAttack": 169,
+          "chargedHeavyAttack": 284,
+          "throw": 227,
+          "perfectThrow": 399
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Espadarte",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/16/PirateFencingSword.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/16/PirateFencingSword.png/192px-PirateFencingSword.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:PirateFencingSword.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 124484,
+      "sha1": "1180c6e321e65865e77ae59889c6b4d34da8d1e5"
+    },
+    {
+      "id": "weapon-esthelle",
+      "name": "Esthelle",
+      "dataStatus": "verified",
+      "description": "The magick globes of Wyld Oscelda. Alca's magicks, distilled into globes of the witch's own conjuring. 'Tis said when the Felling fires were quenched, Oscelda retreated to her wevetroot study. So guilt-stricken was she, so desperate to cast a spell that would right her wrongs, she conjured Esthelle. Three orbs, three amends, should she ever meet the Empress again. Of course, she would not.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Uncommon",
+      "combatArt": "Magick",
+      "damageType": "Arcanic",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 7,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "Esthelle.png",
+      "tags": [
+        "Founders"
+      ],
+      "isUpcoming": false,
+      "introduced": "P12: Wylds",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 34,
+          "fullChargedCast": 153,
+          "stagger": 10
+        },
+        "level30": {
+          "attack": 82,
+          "fullChargedCast": 201,
+          "stagger": 40
+        },
+        "damageCaps": {
+          "lightAttack": 133,
+          "chargedHeavyAttack": 431
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Esthelle",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/7/7d/Esthelle.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/7d/Esthelle.png/192px-Esthelle.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Esthelle.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 89967,
+      "sha1": "d800fcb010403eab69a65e8ffe45619bcfddf8cf"
+    },
+    {
+      "id": "weapon-falx",
+      "name": "Falx",
+      "dataStatus": "verified",
+      "description": "The curved arcblade of a Sinecure soldier. Three spire studs push through the sharp blade’s edge. What began as an error, molten metal seeping from the injection points of this sword’s manufacturing mould, became its finest strength. A warning of the sharp arc they precede. A glitter of starlight through the dark void of night.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 12,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "Falx.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P13H5: Envoy Forge",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 54,
+          "perfectThrow": 162,
+          "chargedAttack": 108,
+          "stagger": 34,
+          "throw": 81
+        },
+        "level30": {
+          "attack": 108,
+          "perfectThrow": 216,
+          "chargedAttack": 162,
+          "stagger": 94,
+          "throw": 135
+        },
+        "damageCaps": {
+          "lightAttack": 189,
+          "chargedHeavyAttack": 324,
+          "throw": 257,
+          "perfectThrow": 459
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Falx",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/2/24/Falx.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/24/Falx.png/192px-Falx.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Falx.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 63961,
+      "sha1": "39f71cb60fee995242d9755ecbb1f7c518f618b7"
+    },
+    {
+      "id": "weapon-farilwyd",
+      "name": "Farilwyd",
+      "dataStatus": "verified",
+      "description": "An ichorous lance wielded by the Mendicant Reinbreaker. Its histories are lost - for a time...",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Polearm",
+      "damageType": "Sharp",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 12,
+        "spirit": 0,
+        "grace": 10
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Farilywd.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Preludes 15",
+      "lastUpdated": "Preludes 15",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 68,
+          "stagger": 52
+        },
+        "level30": {},
+        "damageCaps": {}
+      },
+      "pageUrl": "https://wiki.avakot.org/Farilwyd",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/9/9d/Farilywd.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/9d/Farilywd.png/192px-Farilywd.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Farilywd.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 76154,
+      "sha1": "b854c0c4885fc77c7b383310b2ca8ecb70c5eaf5"
+    },
+    {
+      "id": "weapon-gathannan",
+      "name": "Gathannan",
+      "dataStatus": "verified",
+      "description": "The ere pronged Glaive of Garren Rood. No mortal weapons has points so fine nor plenty as the Omen Beast's own crown. Though this charger's lance comes close. Dual spires are cast of gold as old as the line of Rood. The oaken staff is freshly bound and still smells of forest.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Polearm",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 19,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "Gathannan.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P7",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 69,
+          "perfectThrow": 207,
+          "chargedAttack": 138,
+          "stagger": 52,
+          "throw": 104
+        },
+        "level30": {
+          "attack": 123,
+          "perfectThrow": 261,
+          "chargedAttack": 192,
+          "stagger": 112,
+          "throw": 158
+        },
+        "damageCaps": {
+          "lightAttack": 227,
+          "chargedHeavyAttack": 399,
+          "throw": 313,
+          "perfectThrow": 572
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Gathannan",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/5/51/Gathannan.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/51/Gathannan.png/192px-Gathannan.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Gathannan.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 91876,
+      "sha1": "7121f05fc7407911b050ddbb3dd94911380f3481"
+    },
+    {
+      "id": "weapon-grinn",
+      "name": "Grinn",
+      "dataStatus": "verified",
+      "description": "The toothed sawblade of Sinecure trappers. Hooked and barbed like wardog teeth, Grinn finds the grip of any so ruthless. Though the Ode prefer to hunt in legions, 'tis custom to carry such a sawblade on solitary journeys. Tucked close to it's master's side, Grinn makes for a fierce companion with a ripping bite... Near drooling for prey.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Uncommon",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 14
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Grinn.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P10H5",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 41,
+          "perfectThrow": 123,
+          "chargedAttack": 82,
+          "stagger": 26,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 95,
+          "perfectThrow": 177,
+          "chargedAttack": 136,
+          "stagger": 86,
+          "throw": 116
+        },
+        "damageCaps": {
+          "lightAttack": 157,
+          "chargedHeavyAttack": 259,
+          "throw": 208,
+          "perfectThrow": 362
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Grinn",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/c/c7/Grinn.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/c7/Grinn.png/192px-Grinn.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Grinn.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 55765,
+      "sha1": "1a969fbabdfa871bb4c7af125a45a1c2de53fffa"
+    },
+    {
+      "id": "weapon-gwylen",
+      "name": "Gwylen",
+      "dataStatus": "verified",
+      "description": "A witching-staff of alder. Though its curling boughs look natural as wind, Gwylen was hand-shaped by Aureli jardiniers. Not carved, but grown into delicate curves- finely tuned to facilitate the flow of magic. To grow a single wand takes years. A staff like Gwylen, a lifetime.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Magick",
+      "damageType": "Arcanic",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 1,
+        "grace": 0
+      },
+      "imageFile": "Gwylen.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P10",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 40,
+          "fullChargedCast": 180,
+          "stagger": 8
+        },
+        "level30": {
+          "attack": 88,
+          "fullChargedCast": 228,
+          "stagger": 38
+        },
+        "damageCaps": {
+          "lightAttack": 128,
+          "chargedHeavyAttack": 408
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Gwylen",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/5/53/Gwylen.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/53/Gwylen.png/192px-Gwylen.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Gwylen.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 92019,
+      "sha1": "2cce943ce6e27dc25f47781296bb3fbd541e9d1c"
+    },
+    {
+      "id": "weapon-igne-mora",
+      "name": "Igne Mora",
+      "dataStatus": "verified",
+      "description": "The Steelsinger Kane wrought two flaming blades from the fire of the binary suns - Mora and Saphene. For four summers, his young pupil Fenn toiled under master Kane to forge the Sun blades. Pleading each passing year to take one for himself, Kane refused to strike them complete. So smaller of hilt yet finer of point, Fenn stole Igne Mora away in the night and bade never to return. By legend, Kane returned the forsaken twin to the fire with a curse that would grant the impatient prince no peace thereafter.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 9,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "IgneMora.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Vanilla",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 100",
+          "numerator": 1,
+          "denominator": 100,
+          "percent": 1
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 49,
+          "perfectThrow": 147,
+          "chargedAttack": 98,
+          "stagger": 30,
+          "throw": 74
+        },
+        "level30": {
+          "attack": 103,
+          "perfectThrow": 201,
+          "chargedAttack": 152,
+          "stagger": 90,
+          "throw": 128
+        },
+        "damageCaps": {
+          "lightAttack": 177,
+          "chargedHeavyAttack": 299,
+          "throw": 238,
+          "perfectThrow": 422
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Igne_Mora",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/e/eb/IgneMora.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/eb/IgneMora.png/192px-IgneMora.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:IgneMora.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 75627,
+      "sha1": "44ada82b6285b0a1901c6376241eb5fb340bef79"
+    },
+    {
+      "id": "weapon-ilverac",
+      "name": "Ilverac",
+      "dataStatus": "verified",
+      "description": "An Ode'n longsword, wielded by Elite Sinecure Soldiers. Its histories are lost - for a time...",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 12,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "Ilverac.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Preludes 15",
+      "lastUpdated": "Preludes 15",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "2 in 25",
+          "numerator": 2,
+          "denominator": 25,
+          "percent": 8
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 52,
+          "perfectThrow": 156,
+          "chargedAttack": 104,
+          "stagger": 34,
+          "throw": 78
+        },
+        "level30": {
+          "attack": 106,
+          "perfectThrow": 210,
+          "chargedAttack": 158,
+          "stagger": 94,
+          "throw": 132
+        },
+        "damageCaps": {
+          "lightAttack": 184,
+          "chargedHeavyAttack": 314,
+          "throw": 249,
+          "perfectThrow": 444
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Ilverac",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/6/6d/Ilverac.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/6d/Ilverac.png/192px-Ilverac.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Ilverac.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 81292,
+      "sha1": "a7aa7e8ebc65eb0188dd1123a5cb8f429629971c"
+    },
+    {
+      "id": "weapon-juniper",
+      "name": "Juniper",
+      "dataStatus": "verified",
+      "description": "Grandfather's bow. So named after the sacred tree from which she was hewn. She is twisted fair of living wood like her sister bow, Dhonu. Even her quiver breaths life. Charmed, she grows arrows near as fast as Grandfather can loose them. Though these days, they both grow slower. On either end, the curling boughs wrap 'round a Salz Agate. This precious stone was once believed to bridge the realms between man and Fey. Much like their master.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Bow",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 5,
+        "grace": 7
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 2,
+        "grace": 2
+      },
+      "imageFile": "Juniper.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P7",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": 21,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 45,
+          "chargedShot": 113,
+          "stagger": 24
+        },
+        "level30": {
+          "attack": 93,
+          "chargedShot": 161,
+          "stagger": 54
+        },
+        "damageCaps": {
+          "lightAttack": 161,
+          "chargedShotAttack": 329
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Juniper",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/9/9a/Juniper.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/9a/Juniper.png/192px-Juniper.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Juniper.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 95588,
+      "sha1": "299a680de666bd08a52416166b4ed8f457b3da60"
+    },
+    {
+      "id": "weapon-lyke-wake",
+      "name": "Lyke-Wake",
+      "dataStatus": "verified",
+      "description": "The sword of a Mendicant lost. The shield of a love that endures. You are the fire in my veins, Who lit my path to shore; And in my dreams you call my name, I ask of you, no more. Your faltered husk that lumbers still, Left trapped within your plight; Just as you pledged your heart and will, So shall I be your knight.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Shield",
+      "damageType": "Sharp",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 12,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "MendicantSwordAndBoard.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P14: The Duelo",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 41,
+          "perfectThrow": 123,
+          "chargedAttack": 82,
+          "stagger": 26,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 95,
+          "perfectThrow": 177,
+          "chargedAttack": 136,
+          "stagger": 86,
+          "throw": 116
+        },
+        "damageCaps": {
+          "lightAttack": 157,
+          "chargedHeavyAttack": 259,
+          "throw": 208,
+          "perfectThrow": 362
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Lyke-Wake",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/19/MendicantSwordAndBoard.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/19/MendicantSwordAndBoard.png/192px-MendicantSwordAndBoard.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:MendicantSwordAndBoard.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 196170,
+      "sha1": "b039441e500d802e3330316303120532666e3f05"
+    },
+    {
+      "id": "weapon-maestro",
+      "name": "Maestro",
+      "dataStatus": "verified",
+      "description": "A ceremonial bow of the Dendrit Thawtide tradition. Maestro is a hunter's bow, simple in make but for its uniquely carved arrows. When plucked and loosed just so, the wind whistles through the fletching to mimic the call of the Cardinal. Each year, just before Thawtide's final dawn, ‘tis the hunter's rite to summon the flock to darkest sky. One long whistle to cue the chorus. For it is the Cardinals’ morning song that wakes Mora from her longest slumber.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Bow",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 13
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 2,
+        "grace": 2
+      },
+      "imageFile": "Maestro.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P12: Thawtide",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": 20,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 45,
+          "chargedShot": 113,
+          "stagger": 24
+        },
+        "level30": {
+          "attack": 93,
+          "chargedShot": 161,
+          "stagger": 54
+        },
+        "damageCaps": {
+          "lightAttack": 161,
+          "chargedShotAttack": 329
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Maestro",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/f/fa/Maestro.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/fa/Maestro.png/192px-Maestro.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Maestro.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 36664,
+      "sha1": "80129c1d1e67e42b0b217fa68b12ead8e365931c"
+    },
+    {
+      "id": "weapon-marrows-bane",
+      "name": "Marrow's Bane",
+      "dataStatus": "verified",
+      "description": "A mighty claw, a dripping maw. The menacing cleaver of the Arbearer, Bromius. Five sharpened spires glint in the pale Neath'uns light. Be they the teeth of Marrow's Bane? Or the claws of the great Omen Bear himself? Wield this weapon by the Arbearer's deal: to protect the old roots yet to heal- or to pick your teeth after good meal.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 21,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 4,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "MarrowsBane.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P11: The Waste Bear",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 54,
+          "perfectThrow": 162,
+          "chargedAttack": 108,
+          "stagger": 40,
+          "throw": 81
+        },
+        "level30": {
+          "attack": 108,
+          "perfectThrow": 216,
+          "chargedAttack": 162,
+          "stagger": 100,
+          "throw": 135
+        },
+        "damageCaps": {
+          "lightAttack": 189,
+          "chargedHeavyAttack": 324,
+          "throw": 257,
+          "perfectThrow": 459
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Marrow's_Bane",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/4/40/MarrowsBane.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/40/MarrowsBane.png/192px-MarrowsBane.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:MarrowsBane.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 175872,
+      "sha1": "b9577dac8b57354f9f9f82a0e79cce7a72050d1d"
+    },
+    {
+      "id": "weapon-mendicant-mace",
+      "name": "Mendicant Mace",
+      "dataStatus": "verified",
+      "description": "An upcoming greatmace arriving in a future update.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Unreleased",
+      "damageType": "Blunt",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "MendicantMaceModel.jpg",
+      "tags": [
+        "Upcoming"
+      ],
+      "isUpcoming": true,
+      "introduced": "",
+      "lastUpdated": "",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "",
+          "numerator": null,
+          "denominator": null,
+          "percent": null
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {},
+        "level30": {},
+        "damageCaps": {}
+      },
+      "pageUrl": "https://wiki.avakot.org/Mendicant_Mace",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/6/6a/MendicantMaceModel.jpg",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/6a/MendicantMaceModel.jpg/192px-MendicantMaceModel.jpg",
+      "descriptionUrl": "https://wiki.avakot.org/File:MendicantMaceModel.jpg",
+      "mimeType": "image/jpeg",
+      "width": 1920,
+      "height": 1080,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 108,
+      "bytes": 542967,
+      "sha1": "d2f445c420e4b039f613498315835600c8237f5a"
+    },
+    {
+      "id": "weapon-navalha",
+      "name": "Navalha",
+      "dataStatus": "verified",
+      "description": "The slender rapier of the new Mestra. The swirling flourishes engraved upon its hilt are of the kind once reviled by the Mestra. Weakness etched into that which should be without. 'Twas only when she bore her heart to the world that she learned where true strength lies.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Cassid",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 14
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 3
+      },
+      "imageFile": "SeedRapier.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P14: The Duelo",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 39,
+          "perfectThrow": 117,
+          "chargedAttack": 78,
+          "stagger": 26,
+          "throw": 59
+        },
+        "level30": {
+          "attack": 93,
+          "perfectThrow": 171,
+          "chargedAttack": 132,
+          "stagger": 86,
+          "throw": 113
+        },
+        "damageCaps": {
+          "lightAttack": 152,
+          "chargedHeavyAttack": 249,
+          "throw": 200,
+          "perfectThrow": 347
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Navalha",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/a0/SeedRapier.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a0/SeedRapier.png/192px-SeedRapier.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:SeedRapier.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 31758,
+      "sha1": "d33cd42b8b0f54e7e0ccd5ed2c9e7480bc573ec3"
+    },
+    {
+      "id": "weapon-needleseye",
+      "name": "Needleseye",
+      "dataStatus": "verified",
+      "description": "The unusual greatsword of the Child-Queen Muireall Jotar. Though small for her age, 11 year-old Muireall insisted that her ritual coronation blade should be a greatsword. The court steelsinger forged the hilt in the likeness of Muireall's dear cat, Fleabert, and hollowed the blade so that her tiny majesty might be able to lift it. Amused by the shape, she named it Needleseye, and swung the great thing one-handed.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Heavy",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 18,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "Needleseye.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P12: Wylds",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "5,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 66,
+          "perfectThrow": 198,
+          "chargedAttack": 132,
+          "stagger": 74,
+          "throw": 99
+        },
+        "level30": {
+          "attack": 120,
+          "perfectThrow": 252,
+          "chargedAttack": 186,
+          "stagger": 134,
+          "throw": 153
+        },
+        "damageCaps": {
+          "lightAttack": 219,
+          "chargedHeavyAttack": 384,
+          "throw": 302,
+          "perfectThrow": 549
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Needleseye",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/5/5e/Needleseye.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/5e/Needleseye.png/192px-Needleseye.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Needleseye.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 66632,
+      "sha1": "e47e73e4669ec5568f82ecc4396f5bfc7834bcf9"
+    },
+    {
+      "id": "weapon-nettle",
+      "name": "Nettle",
+      "dataStatus": "verified",
+      "description": "Naught more than an overlarge paper knife. But this cunning blade seeks a cunning hand. An ornamental dirk of Skelflandish make. Held in the bookbinder's grip, Nettle is designed to slice open the delicate edges of a folded page. 'Twas tween these bounds that Skelflandish tradition sealed secret messages. And a word, as much as any blade, can cut deep.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Common",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 1
+      },
+      "imageFile": "Nettle.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P10",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 100",
+          "numerator": 3,
+          "denominator": 100,
+          "percent": 3
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 41,
+          "perfectThrow": 123,
+          "chargedAttack": 82,
+          "stagger": 20,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 95,
+          "perfectThrow": 177,
+          "chargedAttack": 136,
+          "stagger": 80,
+          "throw": 116
+        },
+        "damageCaps": {
+          "lightAttack": 136,
+          "chargedHeavyAttack": 218,
+          "throw": 177,
+          "perfectThrow": 300
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Nettle",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/4/40/Nettle.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/40/Nettle.png/192px-Nettle.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Nettle.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 62076,
+      "sha1": "bef55b5abc9976cc8936ff526ef535c87cb513f9"
+    },
+    {
+      "id": "weapon-nurash",
+      "name": "Nurash",
+      "dataStatus": "verified",
+      "description": "A cleaver, a heaver, of tarnish and rust. What strange shapes mar the teeth of this ancient sawblade? What thousand-year tale leads it to mockery hands? Nurash is surely the oldest weapon you've ever held, yet the violet runes glow with fresh life. A new chapter carved in this perpetual fable.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 15,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Nurash.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P11: The Waste Bear",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 54,
+          "perfectThrow": 162,
+          "chargedAttack": 108,
+          "stagger": 34,
+          "throw": 81
+        },
+        "level30": {
+          "attack": 108,
+          "perfectThrow": 216,
+          "chargedAttack": 162,
+          "stagger": 94,
+          "throw": 135
+        },
+        "damageCaps": {
+          "lightAttack": 189,
+          "chargedHeavyAttack": 324,
+          "throw": 257,
+          "perfectThrow": 459
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Nurash",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/5/5f/Nurash.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/5f/Nurash.png/192px-Nurash.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Nurash.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 119121,
+      "sha1": "9d51dbf80058bd7d822077c6cbb3f62bf1771443"
+    },
+    {
+      "id": "weapon-odiac",
+      "name": "Odiac",
+      "dataStatus": "verified",
+      "description": "The crackle of lightning, bottled up one's sleeve. Odiac is the mechanical power source of Ode'n casters. Fixed upon the wrists, its rapidly oscillating spheres generate voltaic charge. With no more than a gesture, its master may cast homing bolts of lightning and summon Lectric Shields at will.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Uncommon",
+      "combatArt": "Magick",
+      "damageType": "Voltaic",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 6,
+        "spirit": 6,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "Odiac.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P9",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 35,
+          "fullChargedCast": 158,
+          "stagger": 10
+        },
+        "level30": {
+          "attack": 83,
+          "fullChargedCast": 206,
+          "stagger": 40
+        },
+        "damageCaps": {
+          "lightAttack": 136,
+          "chargedHeavyAttack": 442
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Odiac",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/3/30/Odiac.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/3/30/Odiac.png/192px-Odiac.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Odiac.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 111824,
+      "sha1": "dd362ef5b39ca1c4da31b8349c12aa02e8a150bb"
+    },
+    {
+      "id": "weapon-orst-iii",
+      "name": "Orst-III",
+      "dataStatus": "verified",
+      "description": "A mace of entwined alloys flowing gracefully into jagged steel. An armament in the midst of the Ode'n refinement process. In search of the most brutal designs, countless revisions are measured against one another in battle. Every variant of Orst differs from the last, disparate bludgeons forged in search of uniform truth.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Heavy",
+      "damageType": "Blunt",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 12,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "Orst-III.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P14.5: Ode'n Tempers",
+      "lastUpdated": "P14.5: Ode'n Tempers",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 50",
+          "numerator": 1,
+          "denominator": 50,
+          "percent": 2
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 76,
+          "perfectThrow": 228,
+          "chargedAttack": 152,
+          "stagger": 74,
+          "throw": 114
+        },
+        "level30": {
+          "attack": 130,
+          "perfectThrow": 282,
+          "chargedAttack": 206,
+          "stagger": 134,
+          "throw": 168
+        },
+        "damageCaps": {
+          "lightAttack": 244,
+          "chargedHeavyAttack": 434,
+          "throw": 339,
+          "perfectThrow": 624
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Orst-III",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/c/c2/Orst-III.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/c2/Orst-III.png/192px-Orst-III.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Orst-III.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 82693,
+      "sha1": "b66bbf66836ea099754a146b9e668f7d1038007b"
+    },
+    {
+      "id": "weapon-oryn-umbr",
+      "name": "Oryn-Umbr",
+      "dataStatus": "verified",
+      "description": "Oryn, an Ode'n short sword tipped by an eclipse. Its hollowed blade lightens the Sinecure swing, so it may be wielded by only one hand. Umbr, a shield aglow with Ode'n sigil. Skytowers loft are mapped in blue upon its tempered face. Cast in lightweight alloys, Umbr is forged to be thrown as a starnshot blazing.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Shield",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 13,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "OrynUmbr.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P5",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 41,
+          "perfectThrow": 123,
+          "chargedAttack": 82,
+          "stagger": 26,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 95,
+          "perfectThrow": 177,
+          "chargedAttack": 136,
+          "stagger": 86,
+          "throw": 116
+        },
+        "damageCaps": {
+          "lightAttack": 157,
+          "chargedHeavyAttack": 259,
+          "throw": 208,
+          "perfectThrow": 362
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Oryn-Umbr",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/5/57/OrynUmbr.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/57/OrynUmbr.png/192px-OrynUmbr.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:OrynUmbr.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 120000,
+      "sha1": "ecfdf7ed16db9549542dc83e8caea5817f7bc07d"
+    },
+    {
+      "id": "weapon-precklies",
+      "name": "Precklies",
+      "dataStatus": "verified",
+      "description": "A full set of three Precklies. Part of a traditional Dendrit game called Preck. The rules are simple- each player has three chances to strike a target with these small but mighty blades. These Precklies are child-sized, likely a bloomsday gift for a knightmaiden in training. As such, they are surely well accustomed to meeting their mark.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Common",
+      "combatArt": "Flyblade",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 1
+      },
+      "imageFile": "Precklies.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P10H3",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 31,
+          "chargedAttack": 108,
+          "stagger": 4,
+          "orbit": 4
+        },
+        "level30": {
+          "attack": 79,
+          "chargedAttack": 156,
+          "stagger": 34,
+          "orbit": 28
+        },
+        "damageCaps": {
+          "lightAttack": 110,
+          "chargedHeavyAttack": 264
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Precklies",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/b/b5/Precklies.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/b5/Precklies.png/192px-Precklies.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Precklies.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 77767,
+      "sha1": "ec0a234928b2c73709a19c57d0e497aeabeeb04a"
+    },
+    {
+      "id": "weapon-purity",
+      "name": "Purity",
+      "dataStatus": "verified",
+      "description": "The undead greatsword of a Mendicant knight. Named for the owner's intentions, Purity was there in the Fonnish Charge, tucked into her scabbard. Though her knight, like most others on that wretched march, perished before he could draw his sword. She waited in her scabbard. Eras rose and fell. Until at last, her knight climbed from the grave to draw her at last.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Heavy",
+      "damageType": "Sharp",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 17,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "Purity.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P12: Wylds",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "5,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 68,
+          "perfectThrow": 204,
+          "chargedAttack": 136,
+          "stagger": 66,
+          "throw": 102
+        },
+        "level30": {
+          "attack": 122,
+          "perfectThrow": 258,
+          "chargedAttack": 190,
+          "stagger": 126,
+          "throw": 156
+        },
+        "damageCaps": {
+          "lightAttack": 224,
+          "chargedHeavyAttack": 394,
+          "throw": 309,
+          "perfectThrow": 564
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Purity",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/Purity.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/Purity.png/192px-Purity.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Purity.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 97512,
+      "sha1": "ef4ab2c83cacb919b0cf867afcd99ca91be37795"
+    },
+    {
+      "id": "weapon-rivt-ii",
+      "name": "Rivt-II",
+      "dataStatus": "verified",
+      "description": "An Ode'n Splitsword cast of foreign ore from distant orbits. The centering sphere is marked by the symbol of Culveer, the constellation of destruction. In battle, the blade is split in two. By Culveer's essence, one right insists upon another, and thus the twin blades slice enemies to fractions.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 13
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 3
+      },
+      "imageFile": "RivtII.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Vanilla",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 26,
+          "perfectThrow": 125,
+          "chargedAttack": 52,
+          "stagger": 13,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 53,
+          "perfectThrow": 152,
+          "chargedAttack": 79,
+          "stagger": 73,
+          "throw": 89
+        },
+        "damageCaps": {
+          "lightAttack": 92,
+          "chargedHeavyAttack": 157,
+          "throw": 183,
+          "perfectThrow": 339
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Rivt-II",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/2/2b/RivtII.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/2b/RivtII.png/192px-RivtII.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:RivtII.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 79852,
+      "sha1": "e8e24b33630e3864ea0ea584424763f245e2a218"
+    },
+    {
+      "id": "weapon-rook",
+      "name": "Rook",
+      "dataStatus": "verified",
+      "description": "<b>The wrought iron rookblade is both club and spear.</b> A favourite amongst the towering Knightmaidens, such polearms littered the fields of Dendria after the dread song rang. Now they are held by the Thrall.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Polearm",
+      "damageType": "Blunt",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 11,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "Rook.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Vanilla",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 50",
+          "numerator": 1,
+          "denominator": 50,
+          "percent": 2
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 65,
+          "perfectThrow": 195,
+          "chargedAttack": 130,
+          "stagger": 60,
+          "throw": 98
+        },
+        "level30": {
+          "attack": 119,
+          "perfectThrow": 249,
+          "chargedAttack": 184,
+          "stagger": 120,
+          "throw": 152
+        },
+        "damageCaps": {
+          "lightAttack": 217,
+          "chargedHeavyAttack": 379,
+          "throw": 298,
+          "perfectThrow": 542
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Rook",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/1b/Rook.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1b/Rook.png/192px-Rook.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Rook.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 41645,
+      "sha1": "c285d2d4a9dbe077f0642e9c8ad1736b9fada1e2"
+    },
+    {
+      "id": "weapon-rostrum",
+      "name": "Rostrum",
+      "dataStatus": "verified",
+      "description": "A ritual dagger of the Dendrit Thawtide tradition. Rostrum is a hunter's blade, named for the beak of the bird it protects. While most would have sheathed this Dagger as a Sidearm, the Longnight Elders wielded Rostrum as a favoured blade for close-quarters combat. 'Twas ill omened to end a life on the Longnight ‘fore Thawtide. Rostrum would only strike to defend the Cardinal flock, close enough to whisper passing rites to the one who dared endanger it.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 12
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 2,
+        "grace": 2
+      },
+      "imageFile": "Rostrum.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P12: Thawtide",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 41,
+          "perfectThrow": 123,
+          "chargedAttack": 82,
+          "stagger": 26,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 95,
+          "perfectThrow": 177,
+          "chargedAttack": 136,
+          "stagger": 86,
+          "throw": 116
+        },
+        "damageCaps": {
+          "lightAttack": 157,
+          "chargedHeavyAttack": 259,
+          "throw": 208,
+          "perfectThrow": 362
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Rostrum",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/d/d4/Rostrum.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/d4/Rostrum.png/192px-Rostrum.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Rostrum.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 56482,
+      "sha1": "44de4e98f0559556cbf6abd94f73b7616e16ee4b"
+    },
+    {
+      "id": "weapon-seathorn",
+      "name": "Seathorn",
+      "dataStatus": "verified",
+      "description": "A witching-staff fresh from the Salz. Forged of driftwood and waldglass, this staff still smells of salt and sea. Crafted by a follower of Oro, Seathorn’s magicks lie in the tiny barnacles latched upon its orb. Old fables label these tiny living sea thorns as Oro’s countless lidless eyes. Do him proud, Envoy, for a seasage you shall be.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Magick",
+      "damageType": "Arcanic",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 18,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 3,
+        "grace": 2
+      },
+      "imageFile": "Seathorn.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P13: A Triquetra of Virtues",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 50",
+          "numerator": 1,
+          "denominator": 50,
+          "percent": 2
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 44,
+          "fullChargedCast": 198,
+          "stagger": 16
+        },
+        "level30": {
+          "attack": 92,
+          "fullChargedCast": 246,
+          "stagger": 46
+        },
+        "damageCaps": {
+          "lightAttack": 158,
+          "chargedHeavyAttack": 543
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Seathorn",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/9/95/Seathorn.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/95/Seathorn.png/192px-Seathorn.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Seathorn.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 49602,
+      "sha1": "387f02fad26685d2ca609959931f5cec38332657"
+    },
+    {
+      "id": "weapon-silistavf",
+      "name": "Silistavf",
+      "dataStatus": "verified",
+      "description": "A staff gifted to accomplished Ode'n Starcasters. Within its hollow, the cosmos itself has been rendered in miniature. A pallid imitation. The Silistavf may be used to channel Voltaic magic in place of the stars, if of their influence its wielder is bereft. The burden of such mimicry crests even Ode'n capabilities, a single stavf requiring years of effort to forge.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Magick",
+      "damageType": "Arcanic",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 8,
+        "spirit": 15,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "OdeStaff.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P14: The Duelo",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "3 in 100",
+          "numerator": 3,
+          "denominator": 100,
+          "percent": 3
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 47,
+          "fullChargedCast": 141,
+          "stagger": 16
+        },
+        "level30": {
+          "attack": 95,
+          "fullChargedCast": 189,
+          "stagger": 46
+        },
+        "damageCaps": {
+          "lightAttack": 166,
+          "chargedHeavyAttack": 401
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Silistavf",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/af/OdeStaff.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/af/OdeStaff.png/192px-OdeStaff.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:OdeStaff.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 81674,
+      "sha1": "a5d3f50431e0045b360c45852b884201b824dad7"
+    },
+    {
+      "id": "weapon-ski-lter",
+      "name": "Skílter",
+      "dataStatus": "verified",
+      "description": "An Ode'n flyblade. Forged in the molten star Volhal, this air-light knife is foiled in multiplicity. Skílter can be thrown across a skytower while never leaving its master's hand. Such blades are common gifts to honour superiors and say more about status than utility. Yet those of Grace may fly death upon her tiny wings.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Common",
+      "combatArt": "Flyblade",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 7,
+        "spirit": 0,
+        "grace": 6
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Skílter.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P10",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 100",
+          "numerator": 3,
+          "denominator": 100,
+          "percent": 3
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 33,
+          "chargedAttack": 110,
+          "stagger": 6,
+          "orbit": 5
+        },
+        "level30": {
+          "attack": 81,
+          "chargedAttack": 158,
+          "stagger": 36
+        },
+        "damageCaps": {
+          "lightAttack": 131,
+          "chargedHeavyAttack": 323
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Sk%C3%ADlter",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/a4/Sk%C3%ADlter.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a4/Sk%C3%ADlter.png/192px-Sk%C3%ADlter.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Sk%C3%ADlter.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 115631,
+      "sha1": "c5a31fd4ffbf789f0ef0b51c76aed721afe5f67f"
+    },
+    {
+      "id": "weapon-sollos-i",
+      "name": "Sollos-I",
+      "dataStatus": "verified",
+      "description": "A standard issue broadsword for Ode'n Gruul-Seekers. Though this model is outdated, its blade remains finely pointed. The worn handholds on either side of the hilt indicate two wielders. The first carried the Sollos-I in their right hand, the other, likely a new recruit using a retired sword to train, swung it in their left.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 13,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "SollosI.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Vanilla",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 47,
+          "perfectThrow": 141,
+          "chargedAttack": 94,
+          "stagger": 30,
+          "throw": 71
+        },
+        "level30": {
+          "attack": 101,
+          "perfectThrow": 195,
+          "chargedAttack": 148,
+          "stagger": 90,
+          "throw": 125
+        },
+        "damageCaps": {
+          "lightAttack": 172,
+          "chargedHeavyAttack": 289,
+          "throw": 230,
+          "perfectThrow": 407
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Sollos-I",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/e/e3/SollosI.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e3/SollosI.png/192px-SollosI.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:SollosI.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 55032,
+      "sha1": "8439349ddb8c5ec67bd47d7b0bb2c4006d4523e8"
+    },
+    {
+      "id": "weapon-stultin",
+      "name": "Stultin",
+      "dataStatus": "verified",
+      "description": "A cut and rusted sword from an era long forgotten. Stultin, the ancient arm of a fallen mockery. The steel blade was fractured in some unremembered battle, then filed flat in falchion style. The wooden hilt has rotted and dried, near petrified. But the glowing runes... Seemingly etched anew into well-settled rust.\"",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 16,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "Stultin.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P11: The Waste Bear",
+      "lastUpdated": "P13H5: Envoy Forge",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 100",
+          "numerator": 3,
+          "denominator": 100,
+          "percent": 3
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 53,
+          "perfectThrow": 159,
+          "chargedAttack": 106,
+          "stagger": 34,
+          "throw": 80
+        },
+        "level30": {
+          "attack": 107,
+          "perfectThrow": 213,
+          "chargedAttack": 160,
+          "stagger": 94,
+          "throw": 134
+        },
+        "damageCaps": {
+          "lightAttack": 187,
+          "chargedHeavyAttack": 319,
+          "throw": 253,
+          "perfectThrow": 452
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Stultin",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/7/76/Stultin.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/76/Stultin.png/192px-Stultin.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Stultin.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 109521,
+      "sha1": "ce555149af2781e556590d7448f957b31bcc7d96"
+    },
+    {
+      "id": "weapon-tessard",
+      "name": "Tessard",
+      "dataStatus": "verified",
+      "description": "A serpentine sword that hisses when swung. Perhaps an ornamental blade for a hearth-rack of yesteryear. Or a ceremonial sword for an occult order long lost. Whatever purpose she once held, Tessard today is no more than a mockery. What strange runes have carved their way into her ancient face?",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 14,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "Tessard.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P11: The Waste Bear",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 50",
+          "numerator": 1,
+          "denominator": 50,
+          "percent": 2
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 48,
+          "perfectThrow": 144,
+          "chargedAttack": 96,
+          "stagger": 30,
+          "throw": 72
+        },
+        "level30": {
+          "attack": 102,
+          "perfectThrow": 198,
+          "chargedAttack": 150,
+          "stagger": 90,
+          "throw": 126
+        },
+        "damageCaps": {
+          "lightAttack": 174,
+          "chargedHeavyAttack": 294,
+          "throw": 234,
+          "perfectThrow": 414
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Tessard",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/4/4f/Tessard.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/4f/Tessard.png/192px-Tessard.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Tessard.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 109223,
+      "sha1": "49496d1e515f31529fbf44ae24abbc4e2747b9ba"
+    },
+    {
+      "id": "weapon-the-alder",
+      "name": "The Alder",
+      "dataStatus": "verified",
+      "description": "The sacred staff of Wyld legend. A finger snapped from the tender hand of the Empress Alora, from the sacred arm of her Alder tree. Arcing branches dipped in gold, hold an orb of glowing moonstone like so many clasped hands. Enchanted by the spirit of the witch, Oscelda, and the sacrifice of the Empress of Eldveil, both. Wield your ancestral arm with power, child of Oscelda.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Magick",
+      "damageType": "Arcanic",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 7,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 2,
+        "grace": 0
+      },
+      "imageFile": "TheAlder.png",
+      "tags": [
+        "Founders"
+      ],
+      "isUpcoming": false,
+      "introduced": "P12: Wylds",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 41,
+          "fullChargedCast": 185,
+          "stagger": 12
+        },
+        "level30": {
+          "attack": 89,
+          "fullChargedCast": 233,
+          "stagger": 42
+        },
+        "damageCaps": {
+          "lightAttack": 151,
+          "chargedHeavyAttack": 509
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/The_Alder",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/f/f9/TheAlder.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f9/TheAlder.png/192px-TheAlder.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TheAlder.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 107777,
+      "sha1": "56d99079fa2604699b4841a60bf128b94271737c"
+    },
+    {
+      "id": "weapon-the-erstroot",
+      "name": "The Erstroot",
+      "dataStatus": "verified",
+      "description": "A witching-staff of Wevetroot. Plucked from the Wastegraves by the Wazzard's own hand, a creeping root steeped in ichor. Be it Ode'n corruption that grants it such power? The darkened trace of magick sap? Or an ancient curse from the Waste Wraith himself?",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Magick",
+      "damageType": "Arcanic",
+      "origin": "Mendicant",
+      "requirements": {
+        "courage": 0,
+        "spirit": 16,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 3,
+        "grace": 0
+      },
+      "imageFile": "TheErstroot.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P11: The Waste Bear",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 40,
+          "fullChargedCast": 180,
+          "stagger": 12
+        },
+        "level30": {
+          "attack": 88,
+          "fullChargedCast": 228,
+          "stagger": 42
+        },
+        "damageCaps": {
+          "lightAttack": 148,
+          "chargedHeavyAttack": 498
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/The_Erstroot",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/8/84/TheErstroot.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/84/TheErstroot.png/192px-TheErstroot.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TheErstroot.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 119625,
+      "sha1": "3ef2bd32739b4cf6e22eb856285725b072906976"
+    },
+    {
+      "id": "weapon-the-ivor",
+      "name": "The Ivor",
+      "dataStatus": "verified",
+      "description": "The flameblade of Wyld legend. Forged from the femur of the Empress Alora, of alloys dug from the deepest of hollow hills. Marrow binds the Ivor Blade. The snaking sword curls like eager flame, stoked by the burning orb of Moranite embedded within. Enchanted by the courage of the warrior, Tethren, and the sacrifice of the Empress of Eldveil, both. Wield your ancestral arm with pride, child of Tethren.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 7,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "TheIvor.png",
+      "tags": [
+        "Founders"
+      ],
+      "isUpcoming": false,
+      "introduced": "P12: Wylds",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 47,
+          "perfectThrow": 141,
+          "chargedAttack": 94,
+          "stagger": 30,
+          "throw": 71
+        },
+        "level30": {
+          "attack": 101,
+          "perfectThrow": 195,
+          "chargedAttack": 148,
+          "stagger": 90,
+          "throw": 125
+        },
+        "damageCaps": {
+          "lightAttack": 172,
+          "chargedHeavyAttack": 289,
+          "throw": 230,
+          "perfectThrow": 407
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/The_Ivor",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/7/71/TheIvor.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/71/TheIvor.png/192px-TheIvor.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TheIvor.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 68082,
+      "sha1": "9d13042c8d1baffd1bfed9bc4c6e012865bb0bbe"
+    },
+    {
+      "id": "weapon-the-paragon",
+      "name": "The Paragon",
+      "dataStatus": "verified",
+      "description": "The master greatsword of Wyld legend. Not forged of marrow, nor plucked of lash. Not snapped from sacred tree. The Paragon greatsword was sung into being by the Empress of Eldveil. Her voice carved its curves, shaped it sharp. Within the hilt, the virtues of Wylds three... Within the blade, something even more powerful. You are the second Envoy to wield it. The first etched a threat upon the blade: \"Return to Bayor.\"",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Rare",
+      "combatArt": "Heavy",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 2,
+        "grace": 2
+      },
+      "imageFile": "TheParagon.png",
+      "tags": [
+        "Founders"
+      ],
+      "isUpcoming": false,
+      "introduced": "P12: Wylds",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "7 in 100",
+          "numerator": 7,
+          "denominator": 100,
+          "percent": 7
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 64,
+          "perfectThrow": 192,
+          "chargedAttack": 128,
+          "stagger": 74,
+          "throw": 96
+        },
+        "level30": {
+          "attack": 118,
+          "perfectThrow": 246,
+          "chargedAttack": 182,
+          "stagger": 134,
+          "throw": 150
+        },
+        "damageCaps": {
+          "lightAttack": 214,
+          "chargedHeavyAttack": 374,
+          "throw": 294,
+          "perfectThrow": 534
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/The_Paragon",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/7/7c/TheParagon.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/7c/TheParagon.png/192px-TheParagon.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TheParagon.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 109136,
+      "sha1": "f3ecfaf5d3584ac84c81da4f0960c05461524cf0"
+    },
+    {
+      "id": "weapon-the-royal-tines",
+      "name": "The Royal Tines",
+      "dataStatus": "verified",
+      "description": "Antler blades forged of alloyed steel and bone trace. Conceived in homage to the great Omen Stag, Garren Rood. An anonymous tome from The Pensives' archives recounts the weapon's first sighting as such: \"Twas the Stag's grace upon the Silvern we saw then. Cruel points aglow, fallow curves, so fraught. Hear these bellows of longing for my pelted loves? My losses, their indignities. Each charge shall wet the soil with the wine of their rebirth.\"",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 10
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 2,
+        "grace": 2
+      },
+      "imageFile": "TheRoyalTines.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Vanilla",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 26,
+          "perfectThrow": 125,
+          "chargedAttack": 52,
+          "stagger": 13,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 53,
+          "perfectThrow": 152,
+          "chargedAttack": 79,
+          "stagger": 73,
+          "throw": 89
+        },
+        "damageCaps": {
+          "lightAttack": 92,
+          "chargedHeavyAttack": 157,
+          "throw": 183,
+          "perfectThrow": 339
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/The_Royal_Tines",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/6/68/TheRoyalTines.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/68/TheRoyalTines.png/192px-TheRoyalTines.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TheRoyalTines.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 110540,
+      "sha1": "c8975346c4c588dab3ce5e144e2a781256d65425"
+    },
+    {
+      "id": "weapon-the-starling",
+      "name": "The Starling",
+      "dataStatus": "verified",
+      "description": "The feybow of Wyld legend. Strung taut with the golden eyelash of the Empress Alora, of spider silk weaver-wound. Stolen way 'fore it could be gifted. Such is the grace of the Starling Bow, its wind blades guarding the Sappheline orb from those who may steal it back. Enchanted by the grace of the rogue, Sirin, and the sacrifice of the Empress of Eldveil, both. Wield your ancestral arm with pride, child of Sirin.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Bow",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 7
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "TheStarling.png",
+      "tags": [
+        "Founders"
+      ],
+      "isUpcoming": false,
+      "introduced": "P12: Wylds",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "3 in 50",
+          "numerator": 3,
+          "denominator": 50,
+          "percent": 6
+        },
+        "arrowHail": 23,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 45,
+          "chargedShot": 113,
+          "stagger": 24
+        },
+        "level30": {
+          "attack": 93,
+          "chargedShot": 161,
+          "stagger": 54
+        },
+        "damageCaps": {
+          "lightAttack": 161,
+          "chargedShotAttack": 329
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/The_Starling",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/16/TheStarling.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/16/TheStarling.png/192px-TheStarling.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:TheStarling.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 80399,
+      "sha1": "488ba90cc6f5b4bcd561f756e0b12d4e596546cf"
+    },
+    {
+      "id": "weapon-thistle",
+      "name": "Thistle",
+      "dataStatus": "verified",
+      "description": "A well-worn hunter's bow. Lightweight and well-balanced despite its age, Thistle has the mark of a Roods craftsman. The handle is grooved around your fingertips like an old friend. You've much in common with whoever held it last. Of that, you are certain.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Bow",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 1
+      },
+      "imageFile": "Thistle.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P9",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": 18,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 44,
+          "chargedShot": 110,
+          "stagger": 18
+        },
+        "level30": {
+          "attack": 92,
+          "chargedShot": 158,
+          "stagger": 48
+        },
+        "damageCaps": {
+          "lightAttack": 136,
+          "chargedShotAttack": 268
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Thistle",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/1/1a/Thistle.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1a/Thistle.png/192px-Thistle.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Thistle.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 31824,
+      "sha1": "fa568b4883b204465cba61f94112cc44eb5c7eae"
+    },
+    {
+      "id": "weapon-thrice-spurns",
+      "name": "Thrice Spurns",
+      "dataStatus": "verified",
+      "description": "The thrice spurned flyblades of Wyld Tethren. Crafted by the hero's own half-brother, Pothus, after the great Felling war. Thrice spurned was the Empress of Eldveil, one blade for each of her Wyld betrayers. From holster to hilts, these ceremonial flyblades were forged, etched, and gifted to Tethren in complete silence.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Uncommon",
+      "combatArt": "Flyblade",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 7,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "ThriceSpurns.png",
+      "tags": [
+        "Founders"
+      ],
+      "isUpcoming": false,
+      "introduced": "P12: Wylds",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "3 in 100",
+          "numerator": 3,
+          "denominator": 100,
+          "percent": 3
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 32,
+          "chargedAttack": 106,
+          "stagger": 6,
+          "orbit": 6
+        },
+        "level30": {
+          "attack": 80,
+          "chargedAttack": 154,
+          "stagger": 36,
+          "orbit": 30
+        },
+        "damageCaps": {
+          "lightAttack": 128,
+          "chargedHeavyAttack": 314
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Thrice_Spurns",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/d/d7/ThriceSpurns.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/d7/ThriceSpurns.png/192px-ThriceSpurns.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:ThriceSpurns.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 57572,
+      "sha1": "bd250f0d590ff8bc255fac7dc959961a4b315a52"
+    },
+    {
+      "id": "weapon-unsula",
+      "name": "Unsula",
+      "dataStatus": "verified",
+      "description": "The binary blades of Sinecure mercenaries. Each Unsulum dagger is cast in a measured arc. Some liken it to a broken orbit, others to a pinching claw. Together, the Unsula are precisely formed to strike soundlessly through Alcan atmosphere.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 10
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Unsula.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P7",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 26,
+          "perfectThrow": 125,
+          "chargedAttack": 52,
+          "stagger": 13,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 53,
+          "perfectThrow": 152,
+          "chargedAttack": 79,
+          "stagger": 73,
+          "throw": 89
+        },
+        "damageCaps": {
+          "lightAttack": 92,
+          "chargedHeavyAttack": 157,
+          "throw": 183,
+          "perfectThrow": 339
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Unsula",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/b/b7/Unsula.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/b7/Unsula.png/192px-Unsula.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Unsula.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 121950,
+      "sha1": "f580a5345b93ab28df627972ee067f9eb78a4d3b"
+    },
+    {
+      "id": "weapon-vasp-iv",
+      "name": "Vasp-IV",
+      "dataStatus": "verified",
+      "description": "A deadly Ode'n Halberd lost to the Sinecure ranks not long ago. Though the blade is rusted slightly, it is only for the Ode'n alloys, untreated for humid Alcan air. Assuredly, it is no less sharp, nor acutely balanced, than the night of its extraction from Ode'n mould.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Polearm",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 13,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "VaspIV.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Vanilla",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 65,
+          "perfectThrow": 195,
+          "chargedAttack": 130,
+          "stagger": 46,
+          "throw": 98
+        },
+        "level30": {
+          "attack": 119,
+          "perfectThrow": 249,
+          "chargedAttack": 184,
+          "stagger": 106,
+          "throw": 152
+        },
+        "damageCaps": {
+          "lightAttack": 217,
+          "chargedHeavyAttack": 379,
+          "throw": 298,
+          "perfectThrow": 542
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Vasp-IV",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/c/c0/VaspIV.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/c0/VaspIV.png/192px-VaspIV.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:VaspIV.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 51429,
+      "sha1": "47d76dc67d601e896639093f768a0d6b1114995b"
+    },
+    {
+      "id": "weapon-veilk",
+      "name": "Veilk",
+      "dataStatus": "verified",
+      "description": "An Ode'n poleaxe, wielded by Sinecure Axe Knights. Its histories are lost - for a time...",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Uncommon",
+      "combatArt": "Polearm",
+      "damageType": "Sharp",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 13,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "Veilk.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Preludes 15",
+      "lastUpdated": "Preludes 15",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 59,
+          "perfectThrow": 177,
+          "chargedAttack": 118,
+          "stagger": 60,
+          "throw": 89
+        },
+        "level30": {
+          "attack": 113,
+          "perfectThrow": 231,
+          "chargedAttack": 172,
+          "stagger": 120,
+          "throw": 143
+        },
+        "damageCaps": {
+          "lightAttack": 202,
+          "chargedHeavyAttack": 349,
+          "throw": 275,
+          "perfectThrow": 497
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Veilk",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/a1/Veilk.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a1/Veilk.png/192px-Veilk.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Veilk.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 63747,
+      "sha1": "752d84d24c1c48c778bc05dbf9ac3e4adaf46c89"
+    },
+    {
+      "id": "weapon-vetch",
+      "name": "Vetch",
+      "dataStatus": "verified",
+      "description": "The swiftsword Vetch. Slender and pliant, this sword is of the Dendrit weapon class 'Illanfeoir' meaning blade of grass. Vetch is unadorned but for a single blue crystal embedded in its hilt- a Tear of Iridis. Likely a weapon wrought in the name of a loved one lost.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 11,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 2,
+        "spirit": 0,
+        "grace": 2
+      },
+      "imageFile": "Vetch.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P7",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 100",
+          "numerator": 3,
+          "denominator": 100,
+          "percent": 3
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 48,
+          "perfectThrow": 144,
+          "chargedAttack": 96,
+          "stagger": 30,
+          "throw": 72
+        },
+        "level30": {
+          "attack": 102,
+          "perfectThrow": 198,
+          "chargedAttack": 150,
+          "stagger": 90,
+          "throw": 126
+        },
+        "damageCaps": {
+          "lightAttack": 174,
+          "chargedHeavyAttack": 294,
+          "throw": 234,
+          "perfectThrow": 414
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Vetch",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/3/39/Vetch.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/3/39/Vetch.png/192px-Vetch.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Vetch.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 44154,
+      "sha1": "9339f117ad19ee643a8deb2d789feaafa31ce454"
+    },
+    {
+      "id": "weapon-virdigris",
+      "name": "Virdigris",
+      "dataStatus": "verified",
+      "description": "A ritual dagger, aglow with moonlight. A fine point, more handle than blade, Virdigris seeks sacrifice. She is wrought with copper, a cleansing metal meant to protect the holder from what vengeful spirit may lurch from its mark. The innermost ring of Iridis is her namesake. May that be the fate of your fallen.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Common",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 12
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 2,
+        "grace": 2
+      },
+      "imageFile": "Virdigris.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P10",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 25",
+          "numerator": 1,
+          "denominator": 25,
+          "percent": 4
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 41,
+          "perfectThrow": 123,
+          "chargedAttack": 82,
+          "stagger": 26,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 95,
+          "perfectThrow": 177,
+          "chargedAttack": 136,
+          "stagger": 86,
+          "throw": 116
+        },
+        "damageCaps": {
+          "lightAttack": 157,
+          "chargedHeavyAttack": 259,
+          "throw": 208,
+          "perfectThrow": 362
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Virdigris",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/0/0b/Virdigris.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/0b/Virdigris.png/192px-Virdigris.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Virdigris.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 71247,
+      "sha1": "1a9dd3a7dcddd810afcdfdf93f41d7f3afed8798"
+    },
+    {
+      "id": "weapon-vrusht-ix",
+      "name": "Vrusht-IX",
+      "dataStatus": "verified",
+      "description": "An Ode'n morningstar, wielded by Elite Sinecure Mace Soldiers. Its histories are lost - for a time...",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Heavy",
+      "damageType": "Blunt",
+      "origin": "Ode'n",
+      "requirements": {
+        "courage": 18,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 3,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "Vrusht-IX.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "Preludes 15",
+      "lastUpdated": "Preludes 15",
+      "sellable": "",
+      "stats": {
+        "smite": {
+          "display": "2 in 25",
+          "numerator": 2,
+          "denominator": 25,
+          "percent": 8
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 63,
+          "perfectThrow": 189,
+          "chargedAttack": 126,
+          "stagger": 60,
+          "throw": 95
+        },
+        "level30": {
+          "attack": 117,
+          "perfectThrow": 243,
+          "chargedAttack": 180,
+          "stagger": 120,
+          "throw": 149
+        },
+        "damageCaps": {
+          "lightAttack": 212,
+          "chargedHeavyAttack": 369,
+          "throw": 290,
+          "perfectThrow": 527
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Vrusht-IX",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/0/0b/Vrusht-IX.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/0b/Vrusht-IX.png/192px-Vrusht-IX.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Vrusht-IX.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 107890,
+      "sha1": "f4eb225365319361509347e0b7fc6b6139149550"
+    },
+    {
+      "id": "weapon-witan",
+      "name": "Witan",
+      "dataStatus": "verified",
+      "description": "Childblade to the glorious Dewelion. Our oldest tales tell of sacred unions between human and fey-kind. Of children who are neither, yet both. Witan was forged for such a child, its wooden hilt enchanted to grow in pace. Though... It is clear this childblade never reached its full size.",
+      "slot": "offHand",
+      "sourceSlot": "Sidearm",
+      "rarity": "Uncommon",
+      "combatArt": "Short Blade",
+      "damageType": "Sharp",
+      "origin": "Feykin",
+      "requirements": {
+        "courage": 0,
+        "spirit": 6,
+        "grace": 6
+      },
+      "attunement": {
+        "courage": 0,
+        "spirit": 2,
+        "grace": 2
+      },
+      "imageFile": "Witan.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P11: The Waste Bear",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "1 in 20",
+          "numerator": 1,
+          "denominator": 20,
+          "percent": 5
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 41,
+          "perfectThrow": 123,
+          "chargedAttack": 82,
+          "stagger": 26,
+          "throw": 62
+        },
+        "level30": {
+          "attack": 95,
+          "perfectThrow": 177,
+          "chargedAttack": 136,
+          "stagger": 86,
+          "throw": 116
+        },
+        "damageCaps": {
+          "lightAttack": 157,
+          "chargedHeavyAttack": 259,
+          "throw": 208,
+          "perfectThrow": 362
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Witan",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/a/a1/Witan.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a1/Witan.png/192px-Witan.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Witan.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 97460,
+      "sha1": "7311b737b6b10551167698a8cb06bdfd3d3bfe37"
+    },
+    {
+      "id": "weapon-wulder",
+      "name": "Wulder",
+      "dataStatus": "verified",
+      "description": "A hefty training sword, forged many generations ago. Though its hilt has known many young soldiers to be, Wulder is not so worn as it is old. You imagine this broadsword respectfully retired. A mantlepiece hung above a Curlailan hearth. Warming. Waiting. For the fated hand of its final student.",
+      "slot": "mainHand",
+      "sourceSlot": "Weapon",
+      "rarity": "Common",
+      "combatArt": "Long Blade",
+      "damageType": "Sharp",
+      "origin": "Dendrit",
+      "requirements": {
+        "courage": 0,
+        "spirit": 0,
+        "grace": 0
+      },
+      "attunement": {
+        "courage": 1,
+        "spirit": 0,
+        "grace": 0
+      },
+      "imageFile": "Wulder.png",
+      "tags": [],
+      "isUpcoming": false,
+      "introduced": "P10",
+      "lastUpdated": "P14: The Duelo",
+      "sellable": "1,000",
+      "stats": {
+        "smite": {
+          "display": "3 in 100",
+          "numerator": 3,
+          "denominator": 100,
+          "percent": 3
+        },
+        "arrowHail": null,
+        "virtueAttuneCap": null,
+        "level0": {
+          "attack": 46,
+          "perfectThrow": 138,
+          "chargedAttack": 92,
+          "stagger": 24,
+          "throw": 69
+        },
+        "level30": {
+          "attack": 100,
+          "perfectThrow": 192,
+          "chargedAttack": 146,
+          "stagger": 84,
+          "throw": 123
+        },
+        "damageCaps": {
+          "lightAttack": 146,
+          "chargedHeavyAttack": 238,
+          "throw": 192,
+          "perfectThrow": 330
+        }
+      },
+      "pageUrl": "https://wiki.avakot.org/Wulder",
+      "imageUrl": "https://static.wikitide.net/soulframewiki/f/fb/Wulder.png",
+      "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/fb/Wulder.png/192px-Wulder.png",
+      "descriptionUrl": "https://wiki.avakot.org/File:Wulder.png",
+      "mimeType": "image/png",
+      "width": 512,
+      "height": 512,
+      "thumbnailWidth": 192,
+      "thumbnailHeight": 192,
+      "bytes": 64526,
+      "sha1": "dd460f6a453842eb98f5adfa915c176cb053cab5"
+    }
+  ]
+}

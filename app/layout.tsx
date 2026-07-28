@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Atkinson_Hyperlegible_Next, Geist_Mono } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const atkinsonSans = Atkinson_Hyperlegible_Next({
+  variable: "--font-atkinson-sans",
   subsets: ["latin"],
+  weight: "variable",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -61,7 +63,7 @@ export default async function RootLayout({
         <meta name="twitter:image" content={socialImage} />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${atkinsonSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>

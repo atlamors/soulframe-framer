@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 20" role="img" aria-labelledby="title">
+  <title id="title">Soulframe input right folded-leaf clasp</title>
+  <g transform="translate(25 0) scale(-1 1)">
+    <path d="M8.5 10 10.5 3c4.3.2 8.5 2.1 12.5 5.5L18.5 11Z" fill="#b49f7e" stroke="#212121" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M8.5 10 10.5 17.5c4.3-.2 8.5-2.1 12.5-5.8L18.5 9Z" fill="#b49f7e" stroke="#212121" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M16 10 9 5.5C5 5.5 1.8 7 .5 10c1.3 3 4.5 4.5 8.5 4.5Z" fill="#b49f7e" stroke="#212121" stroke-width="2.5" stroke-linejoin="round"/>
+  </g>
+</svg>

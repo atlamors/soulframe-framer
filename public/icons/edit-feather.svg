@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 48" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Edit</title>
+  <desc id="desc">A hand-painted golden feather matching Soulframe's loadout edit icon.</desc>
+  <defs>
+    <linearGradient id="feather-gold" x1="11.4" y1="44.8" x2="34.2" y2="18.4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B96E0D"/>
+      <stop offset=".24" stop-color="#E89A19"/>
+      <stop offset=".55" stop-color="#FFC13B"/>
+      <stop offset=".82" stop-color="#F0A021"/>
+      <stop offset="1" stop-color="#D98612"/>
+    </linearGradient>
+    <linearGradient id="shaft-gold" x1="10.2" y1="45.8" x2="33.4" y2="19.3" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8C4E0A"/>
+      <stop offset=".38" stop-color="#ECA128"/>
+      <stop offset=".72" stop-color="#FFE078"/>
+      <stop offset="1" stop-color="#C7770E"/>
+    </linearGradient>
+    <filter id="paint-shadow" x="-24%" y="-18%" width="158%" height="158%" color-interpolation-filters="sRGB">
+      <feDropShadow dx=".65" dy="1" stdDeviation=".6" flood-color="#100A06" flood-opacity=".78"/>
+    </filter>
+  </defs>
+
+  <!-- Broad, asymmetrical silhouette traced from the in-game pixels. -->
+  <path
+    d="
+      M10.75 45.55
+      12.15 41.75 13.25 40.85
+      13.05 38.65 14.15 37.65
+      13.85 34.25 15.1 33.45
+      14.95 31.75 16.9 30.55
+      17.45 28.55 19.15 27.45
+      19.6 24.85 22.95 24.15
+      24.05 22.5 26.95 21.4
+      30.85 20.8 32.15 18.55
+      33.45 18.8 34.05 20.35
+      34.1 22.25 33.5 24.25
+      32.1 28.25 30.05 30.85
+      28.65 32.45 26.1 34.35
+      25 37.25 22.35 38.65
+      20.85 40.75 18.75 41.8
+      14.15 42.1 12.45 45.55
+      10.75 45.55 Z
+    "
+    fill="url(#feather-gold)"
+    stroke="#5B3713"
+    stroke-width="1.05"
+    stroke-linejoin="round"
+    filter="url(#paint-shadow)"
+  />
+
+  <!-- A few soft separations reproduce the source's broad painted vanes. -->
+  <path d="m13.45 40.25 5.05-3.15-2.25 2.55-3 1.25Z" fill="#805010" opacity=".68"/>
+  <path d="m14.35 36.6 6.25-3.45-2.75 2.7-3.55 1.3Z" fill="#71440E" opacity=".7"/>
+  <path d="m15.7 32.75 6.9-3.25-3.05 2.6-3.85 1.25Z" fill="#72450E" opacity=".66"/>
+  <path d="m18.15 29.05 6.5-2.75-3.1 2.3-3.4 1Z" fill="#7C4B0F" opacity=".58"/>
+  <path d="m20.25 25.5 6.55-2.15-3.25 1.85-3.3.85Z" fill="#824F10" opacity=".54"/>
+
+  <path d="m18.05 39 4.45-3.4-1.3 1.95-3.7 2.15Z" fill="#9C6213" opacity=".57"/>
+  <path d="m20.5 35.25 6-4.15-1.8 2.45-4.6 2.4Z" fill="#8D5610" opacity=".61"/>
+  <path d="m23 31.15 6.45-4.2-2 2.55-4.75 2.35Z" fill="#905711" opacity=".58"/>
+  <path d="m25.8 26.9 6.45-3.65-2.15 2.45-4.65 1.95Z" fill="#985D12" opacity=".54"/>
+
+  <!-- The rachis is dark and slightly kinked, but does not divide the feather in half. -->
+  <path
+    d="M10.75 45.15c3.45-4.5 6.5-8.55 9.55-12.15 4.05-4.75 8-9.05 13-14.1"
+    stroke="#6B410E"
+    stroke-width="1.18"
+    stroke-linecap="round"
+  />
+  <path
+    d="M11.05 44.7c3.45-4.5 6.45-8.45 9.5-12 3.95-4.65 7.75-8.75 12.35-13.45"
+    stroke="url(#shaft-gold)"
+    stroke-width=".46"
+    stroke-linecap="round"
+  />
+
+  <path d="m14.9 38.35 2.3-1.45" stroke="#FFD45C" stroke-width=".55" stroke-linecap="round" opacity=".68"/>
+  <path d="m18 33.75 2.55-1.55" stroke="#FFD867" stroke-width=".52" stroke-linecap="round" opacity=".64"/>
+  <path d="m21.3 29.15 2.7-1.55" stroke="#FFE17A" stroke-width=".48" stroke-linecap="round" opacity=".62"/>
+  <path d="m25.15 24.75 2.35-1" stroke="#FFD45C" stroke-width=".46" stroke-linecap="round" opacity=".58"/>
+</svg>

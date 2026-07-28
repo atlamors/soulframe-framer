@@ -8,14 +8,32 @@ import {
   type CSSProperties,
   type KeyboardEvent as ReactKeyboardEvent,
   type PointerEvent as ReactPointerEvent,
+  type ReactNode,
 } from "react";
 import Image from "next/image";
+import {
+  ArrowDownAZ,
+  ArrowUpAZ,
+  ArrowUpDown,
+  ChevronDown,
+  ExternalLink,
+  Gauge,
+  Hammer,
+  ListFilter,
+  Sword,
+} from "lucide-react";
 import { armorById, armorCatalogue } from "@/src/data/catalogue";
+import { armorDropById } from "@/src/data/armor-drops";
 import { armorImageById } from "@/src/data/armor-images";
 import {
   talismanById,
   talismanCatalogue,
 } from "@/src/data/talismans";
+import {
+  releasedWeaponCatalogue,
+  weaponById,
+  weaponCatalogue,
+} from "@/src/data/weapons";
 import {
   calculateBuild,
   calculateItemContribution,
@@ -53,6 +71,9 @@ import {
   type PactArtRank,
   type SoulframeBuild,
   type Talisman,
+  type Weapon,
+  type WeaponHandSlot,
+  type WeaponLevelStats,
   type VirtueId,
   type VirtueValues,
 } from "@/src/domain/types";
@@ -60,9 +81,9 @@ import {
 const DEFAULT_BUILD: SoulframeBuild = {
   schemaVersion: BUILD_SCHEMA_VERSION,
   name: "First Envoy",
-  virtues: { courage: 12, spirit: 12, grace: 12 },
+  virtues: { courage: 12, spirit: 11, grace: 11 },
   affinitySources: {
-    envoyRank: 20,
+    envoyRank: 18,
     pactArts: { courage: 0, spirit: 0, grace: 0 },
     fables: { shewolf: null, wasteBear: null },
   },
@@ -71,6 +92,8 @@ const DEFAULT_BUILD: SoulframeBuild = {
     cuirass: "cuirass-arbearers-pauncher",
     leggings: "leggings-arbearers-braes",
     talisman: "talisman-prelude-honour",
+    mainHand: "weapon-farilwyd",
+    offHand: "weapon-precklies",
   },
 };
 
@@ -128,6 +151,14 @@ const slotMeta: Record<
   helm: { label: "Helm", index: "I", prompt: "Frame the crown" },
   cuirass: { label: "Cuirass", index: "II", prompt: "Frame the core" },
   leggings: { label: "Leggings", index: "III", prompt: "Frame the stride" },
+};
+
+const weaponSlotMeta: Record<
+  WeaponHandSlot,
+  { label: string; index: string; prompt: string }
+> = {
+  mainHand: { label: "Main Hand", index: "I", prompt: "Choose primary weapon" },
+  offHand: { label: "Off Hand", index: "II", prompt: "Choose sidearm" },
 };
 
 const TRIQUETRA_VIEWBOX_SIZE = 512;
@@ -478,21 +509,20 @@ function VirtueAlignment({
                 <StatIcon src={meta.icon} label={meta.label} size="small" />
                 <span>
                   <small>{meta.label}</small>
-                  <strong>{effective}</strong>
-                  {bonuses[virtue] > 0 ? (
-                    <em>
-                      {virtues[virtue]} + {bonuses[virtue]}
-                    </em>
-                  ) : null}
+                  <span className="alignment-node-value">
+                    <strong>{effective}</strong>
+                    {bonuses[virtue] > 0 ? (
+                      <em>(+{bonuses[virtue]})</em>
+                    ) : null}
+                  </span>
                 </span>
               </span>
             );
           })}
           <div className="alignment-total-control">
-            <small>Affinity points</small>
+            <small>Base Affinity Points</small>
             <span>
               <strong>{total}</strong>
-              <em>points</em>
             </span>
           </div>
         </div>
@@ -512,11 +542,10 @@ function AffinitySourceInputs({
   sources: AffinitySources;
   onChange: (sources: AffinitySources) => void;
 }) {
-  type SourcePanel = "rank" | "pact" | "fables";
+  type SourcePanel = "pact" | "fables";
 
   const [activePanel, setActivePanel] = useState<SourcePanel>();
   const sourceMenuRef = useRef<HTMLElement>(null);
-  const rankTriggerRef = useRef<HTMLButtonElement>(null);
   const pactTriggerRef = useRef<HTMLButtonElement>(null);
   const fablesTriggerRef = useRef<HTMLButtonElement>(null);
   const pactSummary = VIRTUE_IDS.map(
@@ -551,7 +580,6 @@ function AffinitySourceInputs({
     const closeOnEscape = (event: globalThis.KeyboardEvent) => {
       if (event.key !== "Escape") return;
       const activeTrigger = {
-        rank: rankTriggerRef.current,
         pact: pactTriggerRef.current,
         fables: fablesTriggerRef.current,
       }[activePanel];
@@ -594,24 +622,29 @@ function AffinitySourceInputs({
       ref={sourceMenuRef}
     >
       <header>
-        <span id="affinity-sources-title">Sources</span>
+        <span id="affinity-sources-title">Affinity Sources</span>
       </header>
 
       <div className="affinity-source-buttons">
-        <button
-          type="button"
-          ref={rankTriggerRef}
-          aria-expanded={activePanel === "rank"}
-          aria-controls="affinity-rank-panel"
-          onClick={() =>
-            setActivePanel((current) =>
-              current === "rank" ? undefined : "rank",
-            )
-          }
-        >
+        <label className="affinity-rank-source">
           <span>Envoy Rank</span>
-          <strong>{sources.envoyRank}</strong>
-        </button>
+          <select
+            value={sources.envoyRank}
+            aria-label={`Envoy Rank, current maximum ${MAX_ENVOY_RANK}`}
+            onChange={(event) =>
+              onChange({
+                ...sources,
+                envoyRank: Number(event.target.value),
+              })
+            }
+          >
+            {ENVOY_RANK_OPTIONS.map((rank) => (
+              <option value={rank} key={rank}>
+                {rank}
+              </option>
+            ))}
+          </select>
+        </label>
         <button
           type="button"
           ref={pactTriggerRef}
@@ -641,33 +674,6 @@ function AffinitySourceInputs({
           <strong className="affinity-source-summary">{fableSummary}</strong>
         </button>
       </div>
-
-      {activePanel === "rank" ? (
-        <div
-          className="affinity-popover affinity-popover-rank"
-          id="affinity-rank-panel"
-        >
-          <label>
-            <span>Envoy Rank</span>
-            <select
-              value={sources.envoyRank}
-              aria-label="Envoy Rank"
-              onChange={(event) =>
-                onChange({
-                  ...sources,
-                  envoyRank: Number(event.target.value),
-                })
-              }
-            >
-              {ENVOY_RANK_OPTIONS.map((rank) => (
-                <option value={rank} key={rank}>
-                  {rank}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-      ) : null}
 
       {activePanel === "pact" ? (
         <div
@@ -796,6 +802,299 @@ function TalismanArtwork({
   );
 }
 
+function WeaponArtwork({
+  item,
+  preview = false,
+  sizes,
+  fallback,
+}: {
+  item?: Weapon;
+  preview?: boolean;
+  sizes: string;
+  fallback: string;
+}) {
+  if (!item) {
+    return <span className="armor-art-fallback">{fallback}</span>;
+  }
+
+  return (
+    <Image
+      className="armor-art-image weapon-art-image"
+      src={preview ? item.imageUrl : item.thumbnailUrl}
+      alt=""
+      aria-hidden="true"
+      width={preview ? item.width : item.thumbnailWidth}
+      height={preview ? item.height : item.thumbnailHeight}
+      sizes={sizes}
+      unoptimized
+    />
+  );
+}
+
+function getChargedWeaponStat(stats: WeaponLevelStats) {
+  const candidates: Array<[keyof WeaponLevelStats, string]> = [
+    ["chargedAttack", "Charged Attack"],
+    ["chargedShot", "Charged Shot"],
+    ["fullChargedCast", "Charged Cast"],
+    ["perfectThrow", "Perfect Throw"],
+    ["throw", "Throw"],
+    ["orbit", "Orbit"],
+  ];
+  for (const [key, label] of candidates) {
+    if (stats[key] !== undefined) {
+      return { key, label, value: stats[key] };
+    }
+  }
+
+  // Farilwyd is currently the only released Avakot record whose secondary
+  // attack is absent. Its in-game panel displays the standard 2× heavy value.
+  return stats.attack === undefined
+    ? {
+        key: "chargedAttack" as const,
+        label: "Charged Attack",
+        value: undefined,
+      }
+    : {
+        key: "chargedAttack" as const,
+        label: "Charged Attack",
+        value: stats.attack * 2,
+      };
+}
+
+function meetsWeaponRequirements(item: Weapon, virtues: VirtueValues) {
+  return VIRTUE_IDS.every(
+    (virtue) => virtues[virtue] >= item.requirements[virtue],
+  );
+}
+
+function getWeaponDamage(item: Weapon, virtues: VirtueValues) {
+  const baseAttack = item.stats.level0.attack;
+  const charged = getChargedWeaponStat(item.stats.level0);
+  const naturalGracePips =
+    item.attunement.grace > 0 ? item.attunement.grace + 0.6 : 0;
+  const rawAttunement =
+    0.5 *
+    (virtues.courage * item.attunement.courage +
+      virtues.spirit * item.attunement.spirit +
+      virtues.grace * naturalGracePips);
+  const rarityMultiplier =
+    item.rarity === "Common" &&
+    !["Vasp-IV", "Rivt-II", "Clivers"].includes(item.name)
+      ? 1
+      : 1.5;
+  const requirementMet = meetsWeaponRequirements(item, virtues);
+  const primaryBonus =
+    requirementMet && baseAttack !== undefined
+      ? Math.floor(Math.min(rawAttunement, baseAttack * rarityMultiplier))
+      : 0;
+  let secondaryBonus = 0;
+
+  if (requirementMet && baseAttack !== undefined) {
+    if (charged.key === "chargedAttack") {
+      secondaryBonus = primaryBonus * 2;
+    } else {
+      const capMultiplier =
+        charged.key === "chargedShot"
+          ? 2.5
+          : charged.key === "fullChargedCast"
+            ? 4.5
+            : 1.5;
+      secondaryBonus = Math.floor(
+        Math.min(
+          rawAttunement,
+          baseAttack * capMultiplier * rarityMultiplier,
+        ),
+      );
+    }
+  }
+
+  return {
+    requirementMet,
+    primary: {
+      base: baseAttack,
+      bonus: primaryBonus,
+      total:
+        baseAttack === undefined ? undefined : baseAttack + primaryBonus,
+    },
+    secondary: {
+      key: charged.key,
+      label: charged.label,
+      base: charged.value,
+      bonus: secondaryBonus,
+      total:
+        charged.value === undefined
+          ? undefined
+          : charged.value + secondaryBonus,
+    },
+    stagger: item.stats.level0.stagger,
+  };
+}
+
+function getWeaponDamageRows(item?: Weapon, virtues?: VirtueValues) {
+  const stats = item?.stats.level0;
+  const calculated =
+    item && virtues ? getWeaponDamage(item, virtues) : undefined;
+  const charged = stats
+    ? getChargedWeaponStat(stats)
+    : { label: "Charged Attack", value: undefined };
+
+  return [
+    {
+      id: "attack",
+      label: "Attack",
+      bonus: calculated?.primary.bonus,
+      value: calculated?.primary.total ?? stats?.attack,
+    },
+    {
+      id: "charged",
+      label: calculated?.secondary.label ?? charged.label,
+      bonus: calculated?.secondary.bonus,
+      value: calculated?.secondary.total ?? charged.value,
+    },
+    {
+      id: "stagger",
+      label: "Stagger",
+      bonus: undefined,
+      value: calculated?.stagger ?? stats?.stagger,
+    },
+    {
+      id: "smite",
+      label: "Smite",
+      bonus: undefined,
+      value: item?.stats.smite.display || undefined,
+    },
+  ];
+}
+
+function VirtuePipStrip({
+  values,
+  className = "",
+}: {
+  values: VirtueValues;
+  className?: string;
+}) {
+  const pips = VIRTUE_IDS.flatMap((virtue) =>
+    Array.from({ length: values[virtue] }, (_, index) => ({
+      virtue,
+      id: `${virtue}-${index}`,
+    })),
+  );
+
+  return (
+    <span
+      className={`virtue-pip-strip ${className}`.trim()}
+      aria-label={formatVirtueVector(values) || "No pips"}
+    >
+      {pips.length ? (
+        pips.map(({ virtue, id }) => (
+          <span
+            className={`armor-pip is-${virtue}`}
+            key={id}
+            title={`${virtueMeta[virtue].label} pip`}
+          >
+            <Image
+              src={virtueMeta[virtue].icon}
+              alt=""
+              width={18}
+              height={18}
+              unoptimized
+            />
+          </span>
+        ))
+      ) : (
+        <span className="armor-no-pips">—</span>
+      )}
+    </span>
+  );
+}
+
+function WeaponPrimaryHud({
+  item,
+  virtues,
+}: {
+  item: Weapon;
+  virtues: VirtueValues;
+}) {
+  const damage = getWeaponDamage(item, virtues);
+  const requirementText = VIRTUE_IDS.flatMap((virtue) =>
+    item.requirements[virtue] > 0
+      ? `${item.requirements[virtue]} ${virtueMeta[virtue].label}`
+      : [],
+  ).join(" · ");
+  const stats = [
+    {
+      id: "primary",
+      label: "Attack",
+      icon: <Sword aria-hidden="true" />,
+      base: damage.primary.base,
+      bonus: damage.primary.bonus,
+      value: damage.primary.total,
+    },
+    {
+      id: "secondary",
+      label: damage.secondary.label,
+      icon: <Hammer aria-hidden="true" />,
+      base: damage.secondary.base,
+      bonus: damage.secondary.bonus,
+      value: damage.secondary.total,
+    },
+    {
+      id: "stagger",
+      label: "Stagger",
+      icon: <Gauge aria-hidden="true" />,
+      base: damage.stagger,
+      bonus: 0,
+      value: damage.stagger,
+    },
+  ];
+
+  return (
+    <section className="weapon-primary-hud" aria-label="Current weapon damage">
+      <header>
+        <span>Weapon Damage</span>
+        <span>Current Virtues</span>
+      </header>
+      <div className="weapon-primary-grid">
+        {stats.map((stat) => (
+          <div className="weapon-primary-stat" key={stat.id}>
+            <small>{stat.label}</small>
+            <span className="weapon-primary-value">
+              <span className="weapon-primary-icon">{stat.icon}</span>
+              <strong>{stat.value ?? "—"}</strong>
+            </span>
+            <em>
+              Base {stat.base ?? "—"}
+              {stat.bonus ? ` · +${stat.bonus} Virtue` : ""}
+            </em>
+          </div>
+        ))}
+      </div>
+      <footer className="weapon-primary-meta">
+        <span>
+          <small>Attunement Pips</small>
+          <VirtuePipStrip values={item.attunement} />
+        </span>
+        <span>
+          <small>Requirement</small>
+          <strong
+            className={
+              damage.requirementMet
+                ? "weapon-requirement-met"
+                : "weapon-requirement-unmet"
+            }
+          >
+            {requirementText ? `Requires ${requirementText}` : "None"}
+          </strong>
+        </span>
+        <span>
+          <small>Smite</small>
+          <strong>{item.stats.smite.display || "—"}</strong>
+        </span>
+      </footer>
+    </section>
+  );
+}
+
 function talismanModifiers(item: Talisman) {
   const modifiers: Array<{
     id: string;
@@ -897,7 +1196,7 @@ function RequirementBadge({
       <span>
         {compact
           ? `${meta.label.slice(0, 1)} ${current}/${requirement.value}`
-          : `${requirement.value} ${meta.label}`}
+          : `Requires ${requirement.value} ${meta.label}`}
       </span>
       {!met ? <em>Unmet</em> : null}
     </span>
@@ -909,12 +1208,14 @@ function EquipmentSlot({
   item,
   contribution,
   virtues,
+  isActive,
   onOpen,
 }: {
   slot: ArmorSlot;
   item?: ArmorItem;
   contribution?: ItemContribution;
   virtues: SoulframeBuild["virtues"];
+  isActive: boolean;
   onOpen: () => void;
 }) {
   const meta = slotMeta[slot];
@@ -929,7 +1230,7 @@ function EquipmentSlot({
         ? " No virtue requirement."
         : "";
   const defenseSummary = contribution
-    ? ` ${contribution.total} total defense.`
+    ? ` Physical defense ${contribution.defenses.physicalDefense.total}, magick defense ${contribution.defenses.magickDefense.total}, stability increase ${contribution.defenses.stabilityIncrease.total}; ${contribution.total} total defense.`
     : "";
 
   return (
@@ -937,6 +1238,8 @@ function EquipmentSlot({
       type="button"
       className={`equipment-slot equipment-slot-${slot}`}
       onClick={onOpen}
+      aria-expanded={isActive}
+      aria-haspopup="dialog"
       aria-label={`${meta.label}: ${
         item?.name ?? "empty"
       }.${defenseSummary}${requirementSummary} Change item.`}
@@ -946,14 +1249,31 @@ function EquipmentSlot({
           key={item?.id ?? `${slot}-empty`}
           item={item}
           fallback={meta.index}
-          sizes="74px"
+          sizes="(max-width: 680px) 58px, 78px"
         />
       </span>
       <span className="slot-copy">
         <span className="slot-label">{meta.label}</span>
         <strong>{item?.name ?? meta.prompt}</strong>
         {contribution ? (
-          <span className="slot-meta">{contribution.total}</span>
+          <span className="slot-defense-stats" aria-hidden="true">
+            {DEFENSE_IDS.map((defense) => (
+              <span
+                className="slot-defense-stat"
+                title={defenseMeta[defense].label}
+                key={defense}
+              >
+                <Image
+                  src={defenseMeta[defense].icon}
+                  alt=""
+                  width={18}
+                  height={18}
+                  unoptimized
+                />
+                <b>{contribution.defenses[defense].total}</b>
+              </span>
+            ))}
+          </span>
         ) : null}
         {item && contribution && !contribution.requirementMet ? (
           <RequirementBadge item={item} virtues={virtues} compact />
@@ -965,9 +1285,11 @@ function EquipmentSlot({
 
 function TalismanEquipmentSlot({
   item,
+  isActive,
   onOpen,
 }: {
   item?: Talisman;
+  isActive: boolean;
   onOpen: () => void;
 }) {
   return (
@@ -975,6 +1297,8 @@ function TalismanEquipmentSlot({
       type="button"
       className="equipment-slot equipment-slot-talisman"
       onClick={onOpen}
+      aria-expanded={isActive}
+      aria-haspopup="dialog"
       aria-label={`Talisman: ${item?.name ?? "empty"}. ${
         item ? formatTalismanSummary(item) : "Choose a Talisman"
       }. Change item.`}
@@ -995,24 +1319,726 @@ function TalismanEquipmentSlot({
   );
 }
 
-function WeaponEquipmentPlaceholder({ index }: { index: 1 | 2 }) {
+function WeaponEquipmentSlot({
+  slot,
+  item,
+  isActive,
+  onOpen,
+}: {
+  slot: WeaponHandSlot;
+  item?: Weapon;
+  isActive: boolean;
+  onOpen: () => void;
+}) {
+  const meta = weaponSlotMeta[slot];
+  const attack = item?.stats.level0.attack;
+
   return (
-    <div
-      className={`equipment-slot equipment-slot-weapon-${index} equipment-slot-static`}
-      aria-label={`Weapon ${index} slot. Coming soon.`}
+    <button
+      type="button"
+      className={`equipment-slot equipment-slot-${
+        slot === "mainHand" ? "weapon-1" : "weapon-2"
+      }`}
+      onClick={onOpen}
+      aria-expanded={isActive}
+      aria-haspopup="dialog"
+      aria-label={`${meta.label}: ${item?.name ?? "empty"}. Change weapon.`}
     >
-      <span className="slot-art weapon-placeholder-art" aria-hidden="true">
-        {index === 1 ? "I" : "II"}
+      <span className="slot-art" aria-hidden="true">
+        <WeaponArtwork
+          item={item}
+          fallback={meta.index}
+          sizes="(max-width: 680px) 58px, 78px"
+        />
       </span>
       <span className="slot-copy">
-        <span className="slot-label">Weapon {index}</span>
-        <strong>Coming soon</strong>
+        <span className="slot-label">{meta.label}</span>
+        <strong>{item?.name ?? meta.prompt}</strong>
+        {item ? (
+          <span className="slot-weapon-summary">
+            {item.combatArt}
+            {attack !== undefined ? ` · ${attack} attack` : ""}
+          </span>
+        ) : null}
       </span>
+    </button>
+  );
+}
+
+function WeaponDamagePanel({
+  hand,
+  index,
+  item,
+  virtues,
+}: {
+  hand: "Main Hand" | "Off Hand";
+  index: 1 | 2;
+  item?: Weapon;
+  virtues: VirtueValues;
+}) {
+  const stats = getWeaponDamageRows(item, virtues);
+
+  return (
+    <section
+      className="weapon-damage-panel"
+      aria-label={`${hand} damage for ${item?.name ?? "an empty slot"}.`}
+    >
+      <header className="weapon-damage-header">
+        <span>{hand}</span>
+        <strong>{item?.name ?? "Unframed"}</strong>
+        <span className="weapon-damage-rank" aria-hidden="true">
+          <small>✦ ✦ ✦</small>
+          <b>{item ? 0 : index === 1 ? "I" : "II"}</b>
+        </span>
+      </header>
+      <div className="weapon-damage-stats">
+        {stats.map((stat) => (
+          <div className="weapon-damage-row" key={stat.id}>
+            <span>{stat.label}</span>
+            <em aria-hidden="true">
+              {stat.bonus ? `(+${stat.bonus})` : ""}
+            </em>
+            <strong>{stat.value ?? "—"}</strong>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function formatVirtueVector(values: VirtueValues) {
+  return VIRTUE_IDS.flatMap((virtue) =>
+    values[virtue] > 0
+      ? `${virtueMeta[virtue].label.slice(0, 1)}${values[virtue]}`
+      : [],
+  ).join(" · ");
+}
+
+function CatalogueContextMenu({
+  idPrefix,
+  activeFilterCount,
+  filteredCount,
+  totalCount,
+  onClearFilters,
+  filters,
+  sort,
+}: {
+  idPrefix: string;
+  activeFilterCount: number;
+  filteredCount: number;
+  totalCount: number;
+  onClearFilters: () => void;
+  filters: ReactNode;
+  sort: ReactNode;
+}) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [openMenu, setOpenMenu] = useState<"filters" | "sort" | null>(null);
+
+  useEffect(() => {
+    if (!openMenu) return;
+
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) {
+        setOpenMenu(null);
+      }
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsidePointer, true);
+    return () =>
+      document.removeEventListener("pointerdown", closeOnOutsidePointer, true);
+  }, [openMenu]);
+
+  return (
+    <div
+      className="catalogue-context-menu"
+      ref={rootRef}
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && openMenu) {
+          event.preventDefault();
+          event.stopPropagation();
+          setOpenMenu(null);
+        }
+      }}
+    >
+      <div className="catalogue-context-toolbar">
+        <button
+          type="button"
+          className={openMenu === "filters" ? "is-active" : ""}
+          aria-expanded={openMenu === "filters"}
+          aria-controls={`${idPrefix}-filters`}
+          onClick={() =>
+            setOpenMenu((current) =>
+              current === "filters" ? null : "filters",
+            )
+          }
+        >
+          <ListFilter aria-hidden="true" />
+          <span>Filter</span>
+          {activeFilterCount ? (
+            <b aria-label={`${activeFilterCount} active filters`}>
+              {activeFilterCount}
+            </b>
+          ) : null}
+        </button>
+        <button
+          type="button"
+          className={openMenu === "sort" ? "is-active" : ""}
+          aria-expanded={openMenu === "sort"}
+          aria-controls={`${idPrefix}-sort`}
+          onClick={() =>
+            setOpenMenu((current) => (current === "sort" ? null : "sort"))
+          }
+        >
+          <ArrowUpDown aria-hidden="true" />
+          <span>Sort</span>
+        </button>
+        <small>
+          {filteredCount} of {totalCount}
+        </small>
+      </div>
+
+      {openMenu === "filters" ? (
+        <div
+          className="catalogue-controls catalogue-context-popover"
+          id={`${idPrefix}-filters`}
+          role="dialog"
+          aria-label="Filter options"
+        >
+          <div className="catalogue-control-heading">
+            <span>
+              <ListFilter aria-hidden="true" />
+              Filters
+            </span>
+            <button
+              type="button"
+              className="catalogue-clear"
+              onClick={onClearFilters}
+              disabled={activeFilterCount === 0}
+            >
+              Clear
+            </button>
+          </div>
+          {filters}
+        </div>
+      ) : null}
+
+      {openMenu === "sort" ? (
+        <div
+          className="catalogue-controls catalogue-context-popover is-sort"
+          id={`${idPrefix}-sort`}
+          role="dialog"
+          aria-label="Sort options"
+        >
+          <div className="catalogue-sort-heading">
+            <ArrowUpDown aria-hidden="true" />
+            Sort
+          </div>
+          {sort}
+        </div>
+      ) : null}
     </div>
   );
 }
 
-function ItemStatDetails({
+function WeaponPicker({
+  slot,
+  build,
+  onClose,
+  onEquip,
+  onUnequip,
+}: {
+  slot: WeaponHandSlot;
+  build: SoulframeBuild;
+  onClose: () => void;
+  onEquip: (itemId: string) => void;
+  onUnequip: () => void;
+}) {
+  const searchRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
+  const [query, setQuery] = useState("");
+  const [pipFilter, setPipFilter] = useState<"all" | VirtueId>("all");
+  const [requirementFilter, setRequirementFilter] = useState<
+    "all" | "met" | "unmet" | "none"
+  >("all");
+  const [artFilter, setArtFilter] = useState("all");
+  const [rarityFilter, setRarityFilter] = useState("all");
+  const [originFilter, setOriginFilter] = useState("all");
+  const [sortKey, setSortKey] = useState<
+    "name" | "primary" | "secondary" | "stagger" | "art" | "rarity" | "origin"
+  >("name");
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+  const compatibleItems = useMemo(
+    () => releasedWeaponCatalogue.filter((item) => item.slot === slot),
+    [slot],
+  );
+  const buildCalculation = calculateBuild(
+    build,
+    armorCatalogue,
+    talismanCatalogue,
+  );
+  const currentItem = build.equipment[slot]
+    ? weaponById.get(build.equipment[slot]!)
+    : undefined;
+  const [candidateId, setCandidateId] = useState(
+    currentItem?.id ?? compatibleItems[0]?.id,
+  );
+  const artOptions = [...new Set(compatibleItems.map((item) => item.combatArt))]
+    .sort();
+  const rarityOptions = [
+    ...new Set(compatibleItems.map((item) => item.rarity)),
+  ].sort();
+  const originOptions = [...new Set(compatibleItems.map((item) => item.origin))]
+    .sort();
+  const rarityRank: Record<string, number> = {
+    Unknown: 0,
+    Common: 1,
+    Uncommon: 2,
+    Rare: 3,
+  };
+  const filteredItems = compatibleItems
+    .filter((item) => {
+      const search = query.trim().toLowerCase();
+      const requirementMet = meetsWeaponRequirements(
+        item,
+        buildCalculation.effectiveVirtues,
+      );
+      const hasRequirement = VIRTUE_IDS.some(
+        (virtue) => item.requirements[virtue] > 0,
+      );
+      return (
+        (item.name.toLowerCase().includes(search) ||
+          item.combatArt.toLowerCase().includes(search) ||
+          item.origin.toLowerCase().includes(search)) &&
+        (pipFilter === "all" || item.attunement[pipFilter] > 0) &&
+        (artFilter === "all" || item.combatArt === artFilter) &&
+        (rarityFilter === "all" || item.rarity === rarityFilter) &&
+        (originFilter === "all" || item.origin === originFilter) &&
+        (requirementFilter === "all" ||
+          (requirementFilter === "none" && !hasRequirement) ||
+          (requirementFilter === "met" && hasRequirement && requirementMet) ||
+          (requirementFilter === "unmet" && hasRequirement && !requirementMet))
+      );
+    })
+    .sort((left, right) => {
+      if (left.id === currentItem?.id) return -1;
+      if (right.id === currentItem?.id) return 1;
+
+      const leftDamage = getWeaponDamage(
+        left,
+        buildCalculation.effectiveVirtues,
+      );
+      const rightDamage = getWeaponDamage(
+        right,
+        buildCalculation.effectiveVirtues,
+      );
+      const values = {
+        name: [left.name, right.name],
+        primary: [leftDamage.primary.total ?? -1, rightDamage.primary.total ?? -1],
+        secondary: [
+          leftDamage.secondary.total ?? -1,
+          rightDamage.secondary.total ?? -1,
+        ],
+        stagger: [leftDamage.stagger ?? -1, rightDamage.stagger ?? -1],
+        art: [left.combatArt, right.combatArt],
+        rarity: [rarityRank[left.rarity] ?? 0, rarityRank[right.rarity] ?? 0],
+        origin: [left.origin, right.origin],
+      }[sortKey];
+      const comparison =
+        typeof values[0] === "number" && typeof values[1] === "number"
+          ? values[0] - values[1]
+          : String(values[0]).localeCompare(String(values[1]));
+      return sortDirection === "asc" ? comparison : -comparison;
+    });
+  const candidate =
+    filteredItems.find((item) => item.id === candidateId) ?? filteredItems[0];
+  const activeFilterCount = [
+    pipFilter,
+    requirementFilter,
+    artFilter,
+    rarityFilter,
+    originFilter,
+  ].filter((value) => value !== "all").length;
+  const clearFilters = () => {
+    setPipFilter("all");
+    setRequirementFilter("all");
+    setArtFilter("all");
+    setRarityFilter("all");
+    setOriginFilter("all");
+  };
+  const changeSort = (value: typeof sortKey) => {
+    setSortKey(value);
+    setSortDirection(
+      ["name", "art", "origin"].includes(value) ? "asc" : "desc",
+    );
+  };
+  const weaponSortValue = (item: Weapon) => {
+    const damage = getWeaponDamage(item, buildCalculation.effectiveVirtues);
+    switch (sortKey) {
+      case "primary":
+        return damage.primary.total ?? "—";
+      case "secondary":
+        return damage.secondary.total ?? "—";
+      case "stagger":
+        return damage.stagger ?? "—";
+      case "art":
+        return item.combatArt;
+      case "rarity":
+        return item.rarity;
+      case "origin":
+        return item.origin;
+      default:
+        return damage.primary.total ?? "—";
+    }
+  };
+
+  useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    searchRef.current?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const focusable = Array.from(
+        panelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      ).filter(
+        (element) =>
+          !element.hasAttribute("hidden") && element.offsetParent !== null,
+      );
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus();
+    };
+  }, [onClose]);
+
+  const level0Rows = candidate ? getWeaponDamageRows(candidate) : [];
+  const level30Rows = candidate
+    ? getWeaponDamageRows({
+        ...candidate,
+        stats: {
+          ...candidate.stats,
+          level0: candidate.stats.level30,
+        },
+      })
+    : [];
+
+  return (
+    <div className="picker-backdrop" role="presentation" onMouseDown={onClose}>
+      <section
+        ref={panelRef}
+        className="picker-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="weapon-picker-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <header className="picker-header">
+          <h2 id="weapon-picker-title">
+            Choose {weaponSlotMeta[slot].label}
+          </h2>
+          <button
+            type="button"
+            className="icon-button"
+            onClick={onClose}
+            aria-label="Close weapon picker"
+          >
+            ×
+          </button>
+        </header>
+
+        <div className="picker-body">
+          <aside className="catalogue-column">
+            <label className="search-field">
+              <span aria-hidden="true">⌕</span>
+              <span className="sr-only">Search weapons</span>
+              <input
+                ref={searchRef}
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder={`Search ${compatibleItems.length} ${
+                  slot === "mainHand" ? "weapons" : "sidearms"
+                }`}
+              />
+            </label>
+            <CatalogueContextMenu
+              idPrefix="weapon-catalogue"
+              activeFilterCount={activeFilterCount}
+              filteredCount={filteredItems.length}
+              totalCount={compatibleItems.length}
+              onClearFilters={clearFilters}
+              filters={
+                <div className="catalogue-filters">
+                <select
+                  aria-label="Filter weapons by Attunement Virtue"
+                  value={pipFilter}
+                  onChange={(event) =>
+                    setPipFilter(event.target.value as "all" | VirtueId)
+                  }
+                >
+                  <option value="all">All pips</option>
+                  {VIRTUE_IDS.map((virtue) => (
+                    <option value={virtue} key={virtue}>
+                      {virtueMeta[virtue].label} pips
+                    </option>
+                  ))}
+                </select>
+                <select
+                  aria-label="Filter weapons by Combat Art"
+                  value={artFilter}
+                  onChange={(event) => setArtFilter(event.target.value)}
+                >
+                  <option value="all">All arts</option>
+                  {artOptions.map((art) => (
+                    <option value={art} key={art}>
+                      {art}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  aria-label="Filter weapons by rarity"
+                  value={rarityFilter}
+                  onChange={(event) => setRarityFilter(event.target.value)}
+                >
+                  <option value="all">All rarities</option>
+                  {rarityOptions.map((rarity) => (
+                    <option value={rarity} key={rarity}>
+                      {rarity}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  aria-label="Filter weapons by origin"
+                  value={originFilter}
+                  onChange={(event) => setOriginFilter(event.target.value)}
+                >
+                  <option value="all">All origins</option>
+                  {originOptions.map((origin) => (
+                    <option value={origin} key={origin}>
+                      {origin}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  aria-label="Filter weapons by requirement status"
+                  value={requirementFilter}
+                  onChange={(event) =>
+                    setRequirementFilter(
+                      event.target.value as typeof requirementFilter,
+                    )
+                  }
+                >
+                  <option value="all">All requirements</option>
+                  <option value="met">Requirement met</option>
+                  <option value="unmet">Requirement unmet</option>
+                  <option value="none">No requirement</option>
+                </select>
+                </div>
+              }
+              sort={
+                <div className="catalogue-sort">
+                <select
+                  aria-label="Sort weapons"
+                  value={sortKey}
+                  onChange={(event) =>
+                    changeSort(event.target.value as typeof sortKey)
+                  }
+                >
+                  <option value="name">Name</option>
+                  <option value="primary">Current light damage</option>
+                  <option value="secondary">Current heavy damage</option>
+                  <option value="stagger">Stagger</option>
+                  <option value="art">Combat Art</option>
+                  <option value="rarity">Rarity</option>
+                  <option value="origin">Origin</option>
+                </select>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setSortDirection((current) =>
+                      current === "asc" ? "desc" : "asc",
+                    )
+                  }
+                  aria-label={`Sort ${
+                    sortDirection === "asc" ? "descending" : "ascending"
+                  }`}
+                  title={`Sort ${
+                    sortDirection === "asc" ? "descending" : "ascending"
+                  }`}
+                >
+                  {sortDirection === "asc" ? (
+                    <ArrowUpAZ aria-hidden="true" />
+                  ) : (
+                    <ArrowDownAZ aria-hidden="true" />
+                  )}
+                </button>
+                </div>
+              }
+            />
+            <div className="item-list" role="listbox" aria-label="Weapons">
+              {filteredItems.map((item) => {
+                const isCandidate = item.id === candidate?.id;
+                return (
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={isCandidate}
+                    className={`item-list-row ${
+                      isCandidate ? "is-candidate" : ""
+                    }`}
+                    key={item.id}
+                    onClick={() => setCandidateId(item.id)}
+                    onFocus={() => setCandidateId(item.id)}
+                  >
+                    <span className="item-list-mark" aria-hidden="true">
+                      <WeaponArtwork
+                        item={item}
+                        fallback={weaponSlotMeta[slot].index}
+                        sizes="44px"
+                      />
+                    </span>
+                    <span>
+                      <strong>{item.name}</strong>
+                      <small>
+                        {item.combatArt} · {item.origin}
+                      </small>
+                    </span>
+                    <span className="item-list-side">
+                      <span className="item-list-total">
+                        {weaponSortValue(item)}
+                      </span>
+                      {item.id === currentItem?.id ? (
+                        <span className="equipped-chip">Equipped</span>
+                      ) : null}
+                    </span>
+                  </button>
+                );
+              })}
+              {filteredItems.length === 0 ? (
+                <div className="empty-search">
+                  <strong>No weapons found</strong>
+                </div>
+              ) : null}
+            </div>
+          </aside>
+
+          <div className="comparison-column">
+            {candidate ? (
+              <>
+                <div className="comparison-heading">
+                  <span className="candidate-art" aria-hidden="true">
+                    <WeaponArtwork
+                      item={candidate}
+                      fallback={weaponSlotMeta[slot].index}
+                      preview
+                      sizes="112px"
+                    />
+                  </span>
+                  <div className="armor-comparison-copy">
+                    <h3>{candidate.name}</h3>
+                    <p>
+                      {candidate.rarity} · {candidate.combatArt} ·{" "}
+                      {candidate.damageType}
+                    </p>
+                    <a
+                      className="avakot-item-link"
+                      href={candidate.pageUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View on Avakot
+                      <ExternalLink aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+
+                <WeaponPrimaryHud
+                  item={candidate}
+                  virtues={buildCalculation.effectiveVirtues}
+                />
+
+                <details className="armor-breakdown-disclosure weapon-breakdown-disclosure">
+                  <summary>
+                    <span>
+                      <strong>Level Progression</strong>
+                      <small>Base damage at rank 0 and rank 30</small>
+                    </span>
+                    <ChevronDown aria-hidden="true" />
+                  </summary>
+                  <div className="weapon-stat-table">
+                    <div className="weapon-stat-head">
+                      <span>Damage</span>
+                      <span>Lvl 0</span>
+                      <span>Lvl 30</span>
+                    </div>
+                    {level0Rows.map((row, rowIndex) => (
+                      <div className="weapon-stat-row" key={row.id}>
+                        <span>{row.label}</span>
+                        <strong>{row.value ?? "—"}</strong>
+                        <strong>{level30Rows[rowIndex]?.value ?? "—"}</strong>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+
+                <p className="weapon-description">{candidate.description}</p>
+
+                <div className="picker-actions">
+                  {currentItem ? (
+                    <button
+                      type="button"
+                      className="button button-quiet"
+                      onClick={onUnequip}
+                    >
+                      Clear slot
+                    </button>
+                  ) : (
+                    <span />
+                  )}
+                  <button
+                    type="button"
+                    className="button button-primary"
+                    onClick={() => onEquip(candidate.id)}
+                    disabled={candidate.id === currentItem?.id}
+                  >
+                    {candidate.id === currentItem?.id
+                      ? "Currently equipped"
+                      : `Equip ${weaponSlotMeta[slot].label}`}
+                  </button>
+                </div>
+              </>
+            ) : null}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ArmorBaseOverview({
   item,
   contribution,
   comparison,
@@ -1021,17 +2047,163 @@ function ItemStatDetails({
   contribution: ItemContribution;
   comparison?: ItemContribution;
 }) {
+  const totalDelta = comparison
+    ? contribution.total - comparison.total
+    : undefined;
+
+  return (
+    <section className="armor-base-overview" aria-label="Base armor and pips">
+      <header>
+        <span>Armor Defense</span>
+      </header>
+      <div className="armor-base-grid">
+        {DEFENSE_IDS.map((defense) => {
+          const profile = item.defenses[defense];
+          const result = contribution.defenses[defense];
+          const pips = VIRTUE_IDS.flatMap((virtue) =>
+            Array.from({ length: profile.pips[virtue] }, (_, index) => ({
+              virtue,
+              id: `${virtue}-${index}`,
+            })),
+          );
+
+          return (
+            <div className="armor-base-stat" key={defense}>
+              <small className="armor-stat-label">
+                {defenseMeta[defense].shortLabel}
+              </small>
+              <span className="armor-stat-value">
+                <StatIcon
+                  src={defenseMeta[defense].icon}
+                  label={defenseMeta[defense].label}
+                  size="regular"
+                />
+                <strong>{result.total}</strong>
+              </span>
+              <em>
+                Base {result.base} · +{result.scaling} Virtue
+              </em>
+              <span
+                className="armor-pip-strip"
+                aria-label={formatVirtueVector(profile.pips) || "No pips"}
+              >
+                {pips.length ? (
+                  pips.map(({ virtue, id }) => (
+                    <span
+                      className={`armor-pip is-${virtue}`}
+                      key={id}
+                      title={`${virtueMeta[virtue].label} pip`}
+                    >
+                      <Image
+                        src={virtueMeta[virtue].icon}
+                        alt=""
+                        width={18}
+                        height={18}
+                        unoptimized
+                      />
+                    </span>
+                  ))
+                ) : (
+                  <span className="armor-no-pips">—</span>
+                )}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+      <footer className="armor-overview-total">
+        <span>
+          <small>Total Armor</small>
+          <strong>{contribution.total}</strong>
+        </span>
+        {totalDelta !== undefined && totalDelta !== 0 ? (
+          <span>
+            <small>Overall Change</small>
+            <strong
+              className={
+                totalDelta > 0
+                  ? "delta-positive"
+                  : totalDelta < 0
+                    ? "delta-negative"
+                    : "delta-neutral"
+              }
+            >
+              {formatDelta(totalDelta)}
+            </strong>
+          </span>
+        ) : null}
+      </footer>
+    </section>
+  );
+}
+
+function ArmorDropTable({ item }: { item: ArmorItem }) {
+  const sources = armorDropById.get(item.id)?.sources ?? [];
+
+  return (
+    <section className="armor-drop-section" aria-labelledby="armor-drop-title">
+      <header>
+        <h4 id="armor-drop-title">Drop Sources</h4>
+        <small>{sources.length ? `${sources.length} recorded` : "Avakot"}</small>
+      </header>
+      {sources.length ? (
+        <div className="armor-drop-table" role="table" aria-label="Drop sources">
+          <div className="armor-drop-row armor-drop-head" role="row">
+            <span role="columnheader">Source</span>
+            <span role="columnheader">Type</span>
+            <span role="columnheader">Drop</span>
+          </div>
+          {sources.map((source) => (
+            <div
+              className="armor-drop-row"
+              role="row"
+              key={`${source.tableId}-${source.sourceName}-${source.level}`}
+            >
+              <a
+                href={source.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                role="cell"
+              >
+                {source.sourceName}
+                <ExternalLink aria-hidden="true" />
+              </a>
+              <span role="cell">{source.category || "Source"}</span>
+              <span role="cell">
+                {source.fragment ? "Fragment" : "Item"}
+                {source.quantity !== "1" ? ` ×${source.quantity}` : ""}
+                {source.level ? ` · Lv ${source.level}` : ""}
+                {source.note ? <small>{source.note}</small> : null}
+              </span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="armor-drop-empty">
+          No drop source is currently recorded by Avakot.
+        </p>
+      )}
+    </section>
+  );
+}
+
+function ItemStatDetails({
+  contribution,
+  comparison,
+}: {
+  contribution: ItemContribution;
+  comparison?: ItemContribution;
+}) {
   return (
     <div className="item-stat-table">
       <div className="item-stat-head">
         <span>Defense</span>
         <span>Base</span>
-        <span>Scaling</span>
+        <span>Virtue</span>
         <span>Final</span>
         {comparison ? <span>Δ</span> : null}
       </div>
       {DEFENSE_IDS.map((defense) => {
-        const profile = item.defenses[defense];
         const result = contribution.defenses[defense];
         const delta = comparison
           ? result.total - comparison.defenses[defense].total
@@ -1044,13 +2216,7 @@ function ItemStatDetails({
                 label={defenseMeta[defense].label}
                 size="small"
               />
-              <span>
-                {defenseMeta[defense].shortLabel}
-                <small>
-                  C{profile.pips.courage} · S{profile.pips.spirit} · G
-                  {profile.pips.grace}
-                </small>
-              </span>
+              <span>{defenseMeta[defense].shortLabel}</span>
             </span>
             <span>{result.base}</span>
             <span>+{result.scaling}</span>
@@ -1091,9 +2257,24 @@ function ItemPicker({
   const searchRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLElement>(null);
   const [query, setQuery] = useState("");
+  const [pipFilter, setPipFilter] = useState<"all" | VirtueId>("all");
+  const [requirementFilter, setRequirementFilter] = useState<
+    "all" | "met" | "unmet" | "none"
+  >("all");
+  const [rarityFilter, setRarityFilter] = useState("all");
+  const [armorSetFilter, setArmorSetFilter] = useState("all");
+  const [sortKey, setSortKey] = useState<
+    "name" | "total" | DefenseId | "rarity" | "armorSet"
+  >("name");
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
   const compatibleItems = useMemo(
     () => armorCatalogue.filter((item) => item.slot === slot),
     [slot],
+  );
+  const buildCalculation = calculateBuild(
+    build,
+    armorCatalogue,
+    talismanCatalogue,
   );
   const currentItem = build.equipment[slot]
     ? armorById.get(build.equipment[slot]!)
@@ -1101,16 +2282,115 @@ function ItemPicker({
   const [candidateId, setCandidateId] = useState(
     currentItem?.id ?? compatibleItems[0]?.id,
   );
-  const filteredItems = compatibleItems.filter((item) =>
-    item.name.toLowerCase().includes(query.trim().toLowerCase()),
+  const rarityOptions = [
+    ...new Set(compatibleItems.map((item) => item.rarity)),
+  ].sort();
+  const armorSetOptions = [
+    ...new Set(compatibleItems.map((item) => item.armorSet)),
+  ].sort();
+  const rarityRank: Record<string, number> = {
+    Unknown: 0,
+    Common: 1,
+    Uncommon: 2,
+    Rare: 3,
+  };
+  const contributionById = new Map(
+    compatibleItems.map((item) => [
+      item.id,
+      calculateItemContribution(item, buildCalculation.effectiveVirtues),
+    ]),
   );
+  const filteredItems = compatibleItems
+    .filter((item) => {
+      const requirementMet = meetsArmorRequirement(
+        item,
+        buildCalculation.effectiveVirtues,
+      );
+      return (
+        item.name.toLowerCase().includes(query.trim().toLowerCase()) &&
+        (pipFilter === "all" ||
+          DEFENSE_IDS.some(
+            (defense) => item.defenses[defense].pips[pipFilter] > 0,
+          )) &&
+        (rarityFilter === "all" || item.rarity === rarityFilter) &&
+        (armorSetFilter === "all" || item.armorSet === armorSetFilter) &&
+        (requirementFilter === "all" ||
+          (requirementFilter === "none" && item.requirement === null) ||
+          (requirementFilter === "met" &&
+            item.requirement !== null &&
+            requirementMet) ||
+          (requirementFilter === "unmet" &&
+            item.requirement !== null &&
+            !requirementMet))
+      );
+    })
+    .sort((left, right) => {
+      if (left.id === currentItem?.id) return -1;
+      if (right.id === currentItem?.id) return 1;
+
+      const leftContribution = contributionById.get(left.id)!;
+      const rightContribution = contributionById.get(right.id)!;
+      const values = {
+        name: [left.name, right.name],
+        total: [leftContribution.total, rightContribution.total],
+        physicalDefense: [
+          leftContribution.defenses.physicalDefense.total,
+          rightContribution.defenses.physicalDefense.total,
+        ],
+        magickDefense: [
+          leftContribution.defenses.magickDefense.total,
+          rightContribution.defenses.magickDefense.total,
+        ],
+        stabilityIncrease: [
+          leftContribution.defenses.stabilityIncrease.total,
+          rightContribution.defenses.stabilityIncrease.total,
+        ],
+        rarity: [rarityRank[left.rarity] ?? 0, rarityRank[right.rarity] ?? 0],
+        armorSet: [left.armorSet, right.armorSet],
+      }[sortKey];
+      const comparison =
+        typeof values[0] === "number" && typeof values[1] === "number"
+          ? values[0] - values[1]
+          : String(values[0]).localeCompare(String(values[1]));
+      return sortDirection === "asc" ? comparison : -comparison;
+    });
   const candidate =
-    armorById.get(candidateId) ?? filteredItems[0] ?? compatibleItems[0];
-  const buildCalculation = calculateBuild(
-    build,
-    armorCatalogue,
-    talismanCatalogue,
-  );
+    filteredItems.find((item) => item.id === candidateId) ?? filteredItems[0];
+  const activeFilterCount = [
+    pipFilter,
+    requirementFilter,
+    rarityFilter,
+    armorSetFilter,
+  ].filter((value) => value !== "all").length;
+  const clearFilters = () => {
+    setPipFilter("all");
+    setRequirementFilter("all");
+    setRarityFilter("all");
+    setArmorSetFilter("all");
+  };
+  const changeSort = (value: typeof sortKey) => {
+    setSortKey(value);
+    setSortDirection(
+      ["name", "armorSet"].includes(value) ? "asc" : "desc",
+    );
+  };
+  const armorSortValue = (item: ArmorItem) => {
+    const contribution = contributionById.get(item.id)!;
+    switch (sortKey) {
+      case "total":
+        return contribution.total;
+      case "physicalDefense":
+      case "magickDefense":
+      case "stabilityIncrease":
+        return contribution.defenses[sortKey].total;
+      case "rarity":
+        return item.rarity;
+      case "armorSet":
+        return item.armorSet;
+      default:
+        return contribution.total;
+    }
+  };
   const currentContribution = currentItem
     ? calculateItemContribution(currentItem, buildCalculation.effectiveVirtues)
     : undefined;
@@ -1119,6 +2399,9 @@ function ItemPicker({
         candidate,
         buildCalculation.effectiveVirtues,
       )
+    : undefined;
+  const candidatePageUrl = candidate
+    ? armorImageById.get(candidate.id)?.pageUrl
     : undefined;
 
   useEffect(() => {
@@ -1203,6 +2486,108 @@ function ItemPicker({
                 placeholder={`Search ${compatibleItems.length} ${slotMeta[slot].label.toLowerCase()} options`}
               />
             </label>
+            <CatalogueContextMenu
+              idPrefix="armor-catalogue"
+              activeFilterCount={activeFilterCount}
+              filteredCount={filteredItems.length}
+              totalCount={compatibleItems.length}
+              onClearFilters={clearFilters}
+              filters={
+                <div className="catalogue-filters">
+                <select
+                  aria-label="Filter armor by pip Virtue"
+                  value={pipFilter}
+                  onChange={(event) =>
+                    setPipFilter(event.target.value as "all" | VirtueId)
+                  }
+                >
+                  <option value="all">All pips</option>
+                  {VIRTUE_IDS.map((virtue) => (
+                    <option value={virtue} key={virtue}>
+                      {virtueMeta[virtue].label} pips
+                    </option>
+                  ))}
+                </select>
+                <select
+                  aria-label="Filter armor by rarity"
+                  value={rarityFilter}
+                  onChange={(event) => setRarityFilter(event.target.value)}
+                >
+                  <option value="all">All rarities</option>
+                  {rarityOptions.map((rarity) => (
+                    <option value={rarity} key={rarity}>
+                      {rarity}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  aria-label="Filter armor by set"
+                  value={armorSetFilter}
+                  onChange={(event) => setArmorSetFilter(event.target.value)}
+                >
+                  <option value="all">All sets</option>
+                  {armorSetOptions.map((armorSet) => (
+                    <option value={armorSet} key={armorSet}>
+                      {armorSet}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  aria-label="Filter armor by requirement status"
+                  value={requirementFilter}
+                  onChange={(event) =>
+                    setRequirementFilter(
+                      event.target.value as typeof requirementFilter,
+                    )
+                  }
+                >
+                  <option value="all">All requirements</option>
+                  <option value="met">Requirement met</option>
+                  <option value="unmet">Requirement unmet</option>
+                  <option value="none">No requirement</option>
+                </select>
+                </div>
+              }
+              sort={
+                <div className="catalogue-sort">
+                <select
+                  aria-label="Sort armor"
+                  value={sortKey}
+                  onChange={(event) =>
+                    changeSort(event.target.value as typeof sortKey)
+                  }
+                >
+                  <option value="name">Name</option>
+                  <option value="total">Current total defense</option>
+                  <option value="physicalDefense">Current physical</option>
+                  <option value="magickDefense">Current magick</option>
+                  <option value="stabilityIncrease">Current stability</option>
+                  <option value="rarity">Rarity</option>
+                  <option value="armorSet">Armor Set</option>
+                </select>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setSortDirection((current) =>
+                      current === "asc" ? "desc" : "asc",
+                    )
+                  }
+                  aria-label={`Sort ${
+                    sortDirection === "asc" ? "descending" : "ascending"
+                  }`}
+                  title={`Sort ${
+                    sortDirection === "asc" ? "descending" : "ascending"
+                  }`}
+                >
+                  {sortDirection === "asc" ? (
+                    <ArrowUpAZ aria-hidden="true" />
+                  ) : (
+                    <ArrowDownAZ aria-hidden="true" />
+                  )}
+                </button>
+                </div>
+              }
+            />
             <div className="item-list" role="listbox" aria-label="Compatible armor">
               {filteredItems.map((item) => {
                 const isCandidate = item.id === candidate?.id;
@@ -1229,7 +2614,9 @@ function ItemPicker({
                     </span>
                     <span>
                       <strong>{item.name}</strong>
-                      <small>{result.total} defense</small>
+                      <small>
+                        {item.rarity} · {item.armorSet}
+                      </small>
                     </span>
                     <span className="item-list-side">
                       {!meetsArmorRequirement(
@@ -1242,11 +2629,12 @@ function ItemPicker({
                           compact
                         />
                       ) : null}
+                      <span className="item-list-total">
+                        {armorSortValue(item)}
+                      </span>
                       {item.id === currentItem?.id ? (
                         <span className="equipped-chip">Equipped</span>
-                      ) : (
-                        <span className="item-list-total">{result.total}</span>
-                      )}
+                      ) : null}
                     </span>
                   </button>
                 );
@@ -1274,49 +2662,49 @@ function ItemPicker({
                       sizes="112px"
                     />
                   </span>
-                  <div>
+                  <div className="armor-comparison-copy">
                     <h3>{candidate.name}</h3>
-                    <RequirementBadge
-                      item={candidate}
-                      virtues={buildCalculation.effectiveVirtues}
-                    />
+                    <div className="armor-heading-actions">
+                      <RequirementBadge
+                        item={candidate}
+                        virtues={buildCalculation.effectiveVirtues}
+                      />
+                      {candidatePageUrl ? (
+                        <a
+                          className="avakot-item-link"
+                          href={candidatePageUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          View on Avakot
+                          <ExternalLink aria-hidden="true" />
+                        </a>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
 
-                <ItemStatDetails
+                <ArmorBaseOverview
                   item={candidate}
                   contribution={candidateContribution}
                   comparison={currentContribution}
                 />
 
-                <div className="comparison-total">
-                  <span>
-                    <small>Candidate total</small>
-                    <strong>{candidateContribution.total}</strong>
-                  </span>
-                  {currentContribution ? (
+                <details className="armor-breakdown-disclosure">
+                  <summary>
                     <span>
-                      <small>Overall change</small>
-                      <strong
-                        className={
-                          candidateContribution.total - currentContribution.total >
-                          0
-                            ? "delta-positive"
-                            : candidateContribution.total -
-                                  currentContribution.total <
-                                0
-                              ? "delta-negative"
-                              : "delta-neutral"
-                        }
-                      >
-                        {formatDelta(
-                          candidateContribution.total -
-                            currentContribution.total,
-                        )}
-                      </strong>
+                      <strong>Calculation Breakdown</strong>
+                      <small>Base armor + virtue scaling</small>
                     </span>
-                  ) : null}
-                </div>
+                    <ChevronDown aria-hidden="true" />
+                  </summary>
+                  <ItemStatDetails
+                    contribution={candidateContribution}
+                    comparison={currentContribution}
+                  />
+                </details>
+
+                <ArmorDropTable item={candidate} />
 
                 <div className="picker-actions">
                   {currentItem ? (
@@ -1608,9 +2996,12 @@ function TalismanPicker({
 
 export function SoulframeBuilder() {
   const [build, setBuild] = useState<SoulframeBuild>(DEFAULT_BUILD);
+  const [buildNameDraft, setBuildNameDraft] = useState(DEFAULT_BUILD.name);
+  const [isEditingBuildName, setIsEditingBuildName] = useState(false);
   const [activeSlot, setActiveSlot] = useState<EquipmentSlot>();
   const [hydrated, setHydrated] = useState(false);
   const [notice, setNotice] = useState<string>();
+  const buildNameInputRef = useRef<HTMLInputElement>(null);
   const calculation = useMemo(
     () => calculateBuild(build, armorCatalogue, talismanCatalogue),
     [build],
@@ -1645,6 +3036,7 @@ export function SoulframeBuilder() {
       const result = deserializeBuild(shared, {
         armor: armorCatalogue,
         talismans: talismanCatalogue,
+        weapons: weaponCatalogue,
       });
       if (result.ok) {
         nextBuild = result.build;
@@ -1665,6 +3057,7 @@ export function SoulframeBuilder() {
         const result = parseStoredBuild(stored, {
           armor: armorCatalogue,
           talismans: talismanCatalogue,
+          weapons: weaponCatalogue,
         });
         if (result.ok) {
           nextBuild = result.build;
@@ -1692,6 +3085,12 @@ export function SoulframeBuilder() {
     }
   }, [build, hydrated]);
 
+  useEffect(() => {
+    if (!isEditingBuildName) return;
+    buildNameInputRef.current?.focus();
+    buildNameInputRef.current?.select();
+  }, [isEditingBuildName]);
+
   const updateVirtues = (virtues: VirtueValues) => {
     setBuild((current) => ({
       ...current,
@@ -1708,6 +3107,25 @@ export function SoulframeBuilder() {
         current.virtues,
       ),
     }));
+  };
+
+  const commitBuildName = () => {
+    setBuild((current) => ({ ...current, name: buildNameDraft }));
+    setIsEditingBuildName(false);
+  };
+
+  const handleBuildNameKeyDown = (
+    event: ReactKeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      commitBuildName();
+    }
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setBuildNameDraft(build.name);
+      setIsEditingBuildName(false);
+    }
   };
 
   const shareBuild = async () => {
@@ -1729,28 +3147,81 @@ export function SoulframeBuilder() {
 
   return (
     <main className="app-shell">
-      <div className="ambient ambient-one" />
-      <div className="ambient ambient-two" />
-
       <header className="topbar">
         <a className="brand" href="#" aria-label="Soulframe Framer home">
-          <span className="brand-mark" aria-hidden="true">
-            SF
-          </span>
-          <span>
-            <strong>Soulframe</strong>
-            <em>Framer</em>
-          </span>
+          <h1>
+            <Image
+              className="brand-wordmark"
+              src="/brand/framer-wordmark-v2.png"
+              alt="Framer"
+              width={2017}
+              height={780}
+              priority
+              unoptimized
+            />
+          </h1>
+          <p>The Soulframe build planner</p>
         </a>
-        <input
-          className="build-name"
-          value={build.name}
-          maxLength={80}
-          aria-label="Build name"
-          onChange={(event) =>
-            setBuild((current) => ({ ...current, name: event.target.value }))
-          }
-        />
+        <div
+          className={`build-name-control ${
+            isEditingBuildName ? "is-editing" : ""
+          }`}
+        >
+          <div className="build-name-frame">
+            {isEditingBuildName ? (
+              <input
+                ref={buildNameInputRef}
+                id="build-name-value"
+                className="build-name"
+                value={buildNameDraft}
+                maxLength={80}
+                aria-label="Build name"
+                onBlur={commitBuildName}
+                onChange={(event) => setBuildNameDraft(event.target.value)}
+                onKeyDown={handleBuildNameKeyDown}
+              />
+            ) : (
+              <span
+                id="build-name-value"
+                className="build-name-display"
+                title={build.name}
+              >
+                {build.name}
+              </span>
+            )}
+          </div>
+          <button
+            type="button"
+            className="build-name-edit"
+            aria-controls="build-name-value"
+            aria-label={
+              isEditingBuildName
+                ? "Finish editing build name"
+                : "Edit build name"
+            }
+            aria-pressed={isEditingBuildName}
+            onMouseDown={(event) => {
+              if (isEditingBuildName) event.preventDefault();
+            }}
+            onClick={() => {
+              if (isEditingBuildName) {
+                commitBuildName();
+              } else {
+                setBuildNameDraft(build.name);
+                setIsEditingBuildName(true);
+              }
+            }}
+          >
+            <Image
+              src="/icons/edit-feather.svg"
+              alt=""
+              aria-hidden="true"
+              width={40}
+              height={48}
+              unoptimized
+            />
+          </button>
+        </div>
         <div className="topbar-actions">
           <button type="button" className="button button-quiet" onClick={resetBuild}>
             Reset
@@ -1789,21 +3260,6 @@ export function SoulframeBuilder() {
         </aside>
 
         <div className="loadout-stage">
-          <div className="stage-orbit stage-orbit-one" />
-          <div className="stage-orbit stage-orbit-two" />
-          <div
-            className="character-focus"
-            aria-label="Neutral character placeholder"
-          >
-            <div className="character-rune">SF</div>
-            <div className="character-silhouette" aria-hidden="true">
-              <span className="silhouette-head" />
-              <span className="silhouette-body" />
-              <span className="silhouette-leg silhouette-leg-left" />
-              <span className="silhouette-leg silhouette-leg-right" />
-            </div>
-          </div>
-
           {ARMOR_SLOTS.map((slot) => {
             const itemId = build.equipment[slot];
             const item = itemId ? armorById.get(itemId) : undefined;
@@ -1817,6 +3273,7 @@ export function SoulframeBuilder() {
                 item={item}
                 contribution={contribution}
                 virtues={calculation.effectiveVirtues}
+                isActive={activeSlot === slot}
                 onOpen={() => setActiveSlot(slot)}
               />
             );
@@ -1828,19 +3285,77 @@ export function SoulframeBuilder() {
                 ? talismanById.get(build.equipment.talisman)
                 : undefined
             }
+            isActive={activeSlot === "talisman"}
             onOpen={() => setActiveSlot("talisman")}
           />
-          <WeaponEquipmentPlaceholder index={1} />
-          <WeaponEquipmentPlaceholder index={2} />
+          {(["mainHand", "offHand"] as const).map((slot) => (
+            <WeaponEquipmentSlot
+              key={slot}
+              slot={slot}
+              item={
+                build.equipment[slot]
+                  ? weaponById.get(build.equipment[slot]!)
+                  : undefined
+              }
+              isActive={activeSlot === slot}
+              onOpen={() => setActiveSlot(slot)}
+            />
+          ))}
         </div>
 
         <aside className="stats-rail">
           <header className="workspace-heading">
             <span>Build defense</span>
           </header>
-          <div className="total-defense">
-            <strong>{calculation.total}</strong>
-            <span>Total defense</span>
+          <div
+            className="defense-hud"
+            aria-label={`${calculation.total} total defense`}
+          >
+            <div className="defense-hud-plaque">
+              {DEFENSE_IDS.map((defense) => (
+                <div
+                  className="defense-hud-stat"
+                  title={defenseMeta[defense].label}
+                  key={defense}
+                >
+                  <Image
+                    src={defenseMeta[defense].icon}
+                    alt=""
+                    aria-hidden="true"
+                    width={32}
+                    height={32}
+                    unoptimized
+                  />
+                  <span className="sr-only">
+                    {defenseMeta[defense].label}
+                  </span>
+                  <strong>{calculation.defenses[defense]}</strong>
+                </div>
+              ))}
+            </div>
+
+            <div className="defense-hud-crest" aria-hidden="true">
+              {[
+                "shield-bg",
+                "shield-bg-art",
+                "shield-border",
+                "filigree",
+              ].map((layer) => (
+                <Image
+                  className={`defense-hud-layer defense-hud-layer-${layer}`}
+                  src={`/icons/armor-crest/${layer}.svg`}
+                  alt=""
+                  width={160}
+                  height={180}
+                  unoptimized
+                  draggable={false}
+                  key={layer}
+                />
+              ))}
+              <strong className="defense-hud-total">
+                {calculation.total}
+              </strong>
+            </div>
           </div>
 
           {unmetRequirementCount > 0 ? (
@@ -1861,21 +3376,33 @@ export function SoulframeBuilder() {
             </div>
           ) : null}
 
-          <div className="defense-list">
-            {DEFENSE_IDS.map((defense) => (
-              <div className="defense-row" key={defense}>
-                <StatIcon
-                  src={defenseMeta[defense].icon}
-                  label={defenseMeta[defense].label}
-                  size="regular"
-                />
-                <span>
-                  <strong>{defenseMeta[defense].label}</strong>
-                </span>
-                <b>{calculation.defenses[defense]}</b>
-              </div>
-            ))}
-          </div>
+          <section className="build-damage">
+            <header className="workspace-heading build-damage-heading">
+              <span>Build damage</span>
+            </header>
+            <div className="build-damage-panels">
+              <WeaponDamagePanel
+                hand="Main Hand"
+                index={1}
+                virtues={calculation.effectiveVirtues}
+                item={
+                  build.equipment.mainHand
+                    ? weaponById.get(build.equipment.mainHand)
+                    : undefined
+                }
+              />
+              <WeaponDamagePanel
+                hand="Off Hand"
+                index={2}
+                virtues={calculation.effectiveVirtues}
+                item={
+                  build.equipment.offHand
+                    ? weaponById.get(build.equipment.offHand)
+                    : undefined
+                }
+              />
+            </div>
+          </section>
 
           {calculation.modifiers.attack > 0 ||
           calculation.modifiers.stagger > 0 ? (
@@ -1898,13 +3425,42 @@ export function SoulframeBuilder() {
       </section>
 
       <footer className="footer">
-        <a href="https://wiki.avakot.org/Armour" target="_blank" rel="noreferrer">
-          Sources ↗
-        </a>
+        <span>
+          <a href="https://wiki.avakot.org/Armour" target="_blank" rel="noreferrer">
+            Armour
+          </a>
+          {" · "}
+          <a href="https://wiki.avakot.org/Weapons" target="_blank" rel="noreferrer">
+            Weapons ↗
+          </a>
+        </span>
       </footer>
 
-      {activeSlot && activeSlot !== "talisman" ? (
+      {activeSlot && ARMOR_SLOTS.includes(activeSlot as ArmorSlot) ? (
         <ItemPicker
+          slot={activeSlot as ArmorSlot}
+          build={build}
+          onClose={() => setActiveSlot(undefined)}
+          onEquip={(itemId) => {
+            setBuild((current) => ({
+              ...current,
+              equipment: { ...current.equipment, [activeSlot]: itemId },
+            }));
+            setActiveSlot(undefined);
+          }}
+          onUnequip={() => {
+            setBuild((current) => {
+              const equipment = { ...current.equipment };
+              delete equipment[activeSlot];
+              return { ...current, equipment };
+            });
+            setActiveSlot(undefined);
+          }}
+        />
+      ) : null}
+
+      {activeSlot === "mainHand" || activeSlot === "offHand" ? (
+        <WeaponPicker
           slot={activeSlot}
           build={build}
           onClose={() => setActiveSlot(undefined)}

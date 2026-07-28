@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 60" role="img" aria-labelledby="title">
+  <title id="title">Soulframe input frame right stitched rail</title>
+  <defs>
+    <pattern id="stitch" width="4" height="5" patternUnits="userSpaceOnUse">
+      <rect width="4" height="5" fill="#212121"/>
+      <path d="M.8.5h2.7v3H.8z" fill="#a89570"/>
+      <path d="M2.4 1H3v2.2h-.6z" fill="#c9b78e" opacity=".48"/>
+    </pattern>
+  </defs>
+  <g transform="translate(14 0) scale(-1 1)">
+    <path d="M1.5 0H14v60H1.5Z" fill="#212121" stroke="#212121" stroke-width="2"/>
+    <path d="M3.5 0H14v60H3.5Z" fill="#443f36"/>
+    <path d="M2 0h4v60H2Z" fill="url(#stitch)"/>
+    <path d="M6.5 0v60" stroke="#212121" stroke-width="4"/>
+    <path d="M8.5 0v60" stroke="#756951" stroke-width="4"/>
+    <path d="M8.5 0v60" stroke="#b49f7e" stroke-width="2"/>
+    <path d="M11 0v60" stroke="#212121" stroke-width="1.5"/>
+    <path d="M11.75 0H14v60h-2.25Z" fill="#392d27"/>
+  </g>
+</svg>

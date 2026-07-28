@@ -4,9 +4,10 @@ import {
   type VirtueId,
   type VirtueValues,
 } from "./types";
+import { progression } from "../data/progression";
 
 export const BASE_AFFINITY_POINTS = 16;
-export const MAX_ENVOY_RANK = 99;
+export const MAX_ENVOY_RANK = progression.maximumEnvoyRank;
 export const MAX_ALLOCATABLE_AFFINITY =
   BASE_AFFINITY_POINTS + MAX_ENVOY_RANK;
 export const PACT_ART_BONUS_BY_RANK = [0, 1, 3, 6] as const;

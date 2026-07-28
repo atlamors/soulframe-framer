@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480">
+  <filter id="parchment-grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence
+      type="fractalNoise"
+      baseFrequency=".014 .068"
+      numOctaves="4"
+      seed="37"
+      stitchTiles="stitch"
+      result="fine-fibers"
+    />
+    <feTurbulence
+      type="fractalNoise"
+      baseFrequency=".004 .018"
+      numOctaves="3"
+      seed="19"
+      stitchTiles="stitch"
+      result="broad-fibers"
+    />
+    <feBlend in="fine-fibers" in2="broad-fibers" mode="multiply"/>
+    <feColorMatrix
+      type="matrix"
+      values="
+        .32 0 0 0 .30
+        0 .25 0 0 .22
+        0 0 .18 0 .15
+        0 0 0 .19 0
+      "
+    />
+  </filter>
+  <rect width="480" height="480" filter="url(#parchment-grain)"/>
+</svg>

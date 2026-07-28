@@ -9,14 +9,14 @@ import {
 
 describe("virtue alignment", () => {
   it("preserves the requested total while retaining the current ratio", () => {
-    const result = distributeVirtueTotal(47, {
+    const result = distributeVirtueTotal(34, {
       courage: 12,
       spirit: 12,
       grace: 12,
     });
 
-    expect(result).toEqual({ courage: 16, spirit: 16, grace: 15 });
-    expect(result.courage + result.spirit + result.grace).toBe(47);
+    expect(result).toEqual({ courage: 12, spirit: 11, grace: 11 });
+    expect(result.courage + result.spirit + result.grace).toBe(34);
   });
 
   it("uses a balanced ratio when increasing an empty pool", () => {
@@ -32,32 +32,32 @@ describe("virtue alignment", () => {
       grace: 0,
     });
 
-    expect(result).toEqual({ courage: 115, spirit: 0, grace: 0 });
+    expect(result).toEqual({ courage: 34, spirit: 0, grace: 0 });
   });
 
   it("maps each triangle corner to its corresponding virtue", () => {
-    expect(virtuesFromAlignmentPoint(45, 0.5, 0)).toEqual({
+    expect(virtuesFromAlignmentPoint(34, 0.5, 0)).toEqual({
       courage: 0,
-      spirit: 45,
+      spirit: 34,
       grace: 0,
     });
-    expect(virtuesFromAlignmentPoint(45, 0, 1)).toEqual({
-      courage: 45,
+    expect(virtuesFromAlignmentPoint(34, 0, 1)).toEqual({
+      courage: 34,
       spirit: 0,
       grace: 0,
     });
-    expect(virtuesFromAlignmentPoint(45, 1, 1)).toEqual({
+    expect(virtuesFromAlignmentPoint(34, 1, 1)).toEqual({
       courage: 0,
       spirit: 0,
-      grace: 45,
+      grace: 34,
     });
   });
 
   it("round-trips a virtue ratio through the alignment point", () => {
-    const virtues = { courage: 18, spirit: 9, grace: 12 };
+    const virtues = { courage: 16, spirit: 8, grace: 10 };
     const point = getVirtueAlignmentPoint(virtues);
 
-    expect(virtuesFromAlignmentPoint(39, point.x, point.y)).toEqual(virtues);
+    expect(virtuesFromAlignmentPoint(34, point.x, point.y)).toEqual(virtues);
   });
 
   it("projects pointer positions outside the triangle onto its edges", () => {
@@ -71,9 +71,9 @@ describe("virtue alignment", () => {
   it("moves one conserved point toward a keyboard-selected virtue", () => {
     expect(
       shiftVirtueAlignment(
-        { courage: 12, spirit: 12, grace: 12 },
+        { courage: 12, spirit: 11, grace: 11 },
         "spirit",
       ),
-    ).toEqual({ courage: 11, spirit: 13, grace: 12 });
+    ).toEqual({ courage: 11, spirit: 12, grace: 11 });
   });
 });

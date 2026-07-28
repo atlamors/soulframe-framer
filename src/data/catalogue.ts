@@ -15,6 +15,8 @@ export const armorCatalogue = generatedCatalogue.map((item) => {
   return {
     ...item,
     requirement: requirement.requirement,
+    rarity: requirement.rarity,
+    armorSet: requirement.armorSet,
   };
 }) as ArmorItem[];
 

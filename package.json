@@ -14,10 +14,14 @@
     "import:catalogue": "node scripts/import-catalogue.mjs",
     "import:armor-images": "node scripts/import-armor-images.mjs",
     "import:armor-requirements": "node scripts/import-armor-requirements.mjs",
+    "import:armor-drops": "node scripts/import-armor-drops.mjs",
+    "import:progression": "node scripts/import-progression.mjs",
     "import:talismans": "node scripts/import-talismans.mjs",
+    "import:weapons": "node scripts/import-weapons.mjs",
     "lint": "eslint . --ignore-pattern .next"
   },
   "dependencies": {
+    "lucide-react": "^1.27.0",
     "next": "16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6"

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" role="img" aria-labelledby="title desc">
+  <title id="title">Soulframe login input frame vector component sheet</title>
+  <desc id="desc">Neutral and focused assembled frames followed by the ten modular leaf, corner, and repeating edge SVG assets.</desc>
+  <defs>
+    <linearGradient id="backdrop" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#afd5cf"/>
+      <stop offset="1" stop-color="#88b7b2"/>
+    </linearGradient>
+    <filter id="panel-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#17201e" flood-opacity=".2"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="650" fill="url(#backdrop)"/>
+  <path d="M0 570c90-62 160-18 242-74 71-49 124-38 190 2 78 47 155-15 243 3 104 21 172 80 325 17v132H0Z" fill="#547f77" opacity=".18"/>
+  <g fill="#2f2922" font-family="Georgia, serif">
+    <text x="60" y="52" font-size="28" letter-spacing="3">SOULFRAME LOGIN FRAME</text>
+    <text x="60" y="78" font-family="Arial, sans-serif" font-size="12" letter-spacing="2" opacity=".68">VECTOR COMPONENT SHEET</text>
+  </g>
+
+  <g filter="url(#panel-shadow)">
+    <image href="input-frame-neutral.svg" x="68" y="109" width="864" height="116"/>
+    <image href="input-frame-focused.svg" x="68" y="251" width="864" height="116"/>
+  </g>
+  <g fill="#3a3229" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">
+    <text x="60" y="103">NEUTRAL</text>
+    <text x="60" y="245">FOCUSED</text>
+  </g>
+
+  <g fill="#dbe8e3" stroke="#5f8c84" stroke-width="1">
+    <rect x="60" y="415" width="100" height="110" rx="4"/>
+    <rect x="175" y="415" width="100" height="110" rx="4"/>
+    <rect x="290" y="415" width="100" height="110" rx="4"/>
+    <rect x="405" y="415" width="100" height="110" rx="4"/>
+    <rect x="520" y="415" width="100" height="110" rx="4"/>
+    <rect x="635" y="415" width="100" height="110" rx="4"/>
+    <rect x="750" y="415" width="190" height="50" rx="4"/>
+    <rect x="750" y="475" width="190" height="50" rx="4"/>
+    <rect x="750" y="535" width="80" height="90" rx="4"/>
+    <rect x="860" y="535" width="80" height="90" rx="4"/>
+  </g>
+
+  <image href="leaf-left.svg" x="82" y="435" width="56" height="45"/>
+  <image href="leaf-right.svg" x="197" y="435" width="56" height="45"/>
+  <image href="corner-top-left.svg" x="314" y="432" width="52" height="43"/>
+  <image href="corner-top-right.svg" x="429" y="432" width="52" height="43"/>
+  <image href="corner-bottom-left.svg" x="544" y="432" width="52" height="43"/>
+  <image href="corner-bottom-right.svg" x="659" y="432" width="52" height="43"/>
+  <image href="pattern-top.svg" x="770" y="427" width="150" height="35"/>
+  <image href="pattern-bottom.svg" x="770" y="487" width="150" height="35"/>
+  <image href="pattern-left.svg" x="775" y="540" width="17" height="78"/>
+  <image href="pattern-right.svg" x="892" y="540" width="17" height="78"/>
+
+  <g fill="#3a3229" font-family="Arial, sans-serif" font-size="10" font-weight="700" text-anchor="middle" letter-spacing=".8">
+    <text x="110" y="512">LEAF LEFT</text>
+    <text x="225" y="512">LEAF RIGHT</text>
+    <text x="340" y="512">TOP LEFT</text>
+    <text x="455" y="512">TOP RIGHT</text>
+    <text x="570" y="512">BOTTOM LEFT</text>
+    <text x="685" y="512">BOTTOM RIGHT</text>
+    <text x="845" y="408">TOP PATTERN</text>
+    <text x="845" y="473">BOTTOM PATTERN</text>
+    <text x="790" y="642">LEFT</text>
+    <text x="900" y="642">RIGHT</text>
+  </g>
+</svg>

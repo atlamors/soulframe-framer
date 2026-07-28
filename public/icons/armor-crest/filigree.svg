@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Armor crest leafy filigree</title>
+  <desc id="desc">Asymmetrical dark-green laurel branches, curled stems, and veined leaves surrounding the armor shield.</desc>
+  <defs>
+    <linearGradient id="vine-green" x1="18" y1="35" x2="130" y2="157" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#304737"/>
+      <stop offset=".4" stop-color="#1a3027"/>
+      <stop offset=".74" stop-color="#10221b"/>
+      <stop offset="1" stop-color="#293d2e"/>
+    </linearGradient>
+    <linearGradient id="leaf-green" x1="1" y1="-11" x2="17" y2="3" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#324b39"/>
+      <stop offset=".55" stop-color="#1d3528"/>
+      <stop offset="1" stop-color="#10221a"/>
+    </linearGradient>
+    <filter id="filigree-shadow" x="-14%" y="-12%" width="132%" height="136%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="1.3" dy="2" stdDeviation="1.5" flood-color="#090b08" flood-opacity=".9"/>
+    </filter>
+    <g id="leaf-wide">
+      <path d="M0 0C4.2-8.7 12-13.2 20.8-11.5 18.3-3.8 11.8 2.4 1.2 3.3Z" fill="url(#leaf-green)" stroke="#101b16" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M1.2 1.1C7.5-2.1 12.5-6.1 18.5-9.7" stroke="#5c725f" stroke-width=".85" stroke-linecap="round" opacity=".36"/>
+      <path d="m7.1-2.1 1.2-4.3m3.1 2.2 1.4-4.2" stroke="#19352a" stroke-width=".7" stroke-linecap="round"/>
+    </g>
+    <g id="leaf-narrow">
+      <path d="M0 0C3.1-9.4 8.1-15.5 14.5-17.4 15.4-8.2 11.1-.6 1.2 3Z" fill="url(#leaf-green)" stroke="#101b16" stroke-width="2.35" stroke-linejoin="round"/>
+      <path d="M1.3 1.1C6.2-4.6 9.9-10.5 13.2-15" stroke="#5c725f" stroke-width=".8" stroke-linecap="round" opacity=".34"/>
+      <path d="m6.4-4.7-1-4.2m4.4.2-.8-4.1" stroke="#19352a" stroke-width=".65" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <g filter="url(#filigree-shadow)" transform="translate(11.2 12.6) scale(.86)">
+    <!-- Black underdrawing keeps every branch legible over the shield rim. -->
+    <path d="M80 29C57 17 34 28 22 48 7 72 11 105 27 128c13 19 32 33 54 40" stroke="#0d1612" stroke-width="10" stroke-linecap="round"/>
+    <path d="M80 29c23-10 46 2 58 23 14 25 9 58-8 81-13 17-30 29-50 35" stroke="#0d1612" stroke-width="10" stroke-linecap="round"/>
+    <path d="M80 29C57 17 34 28 22 48 7 72 11 105 27 128c13 19 32 33 54 40" stroke="url(#vine-green)" stroke-width="5.8" stroke-linecap="round"/>
+    <path d="M80 29c23-10 46 2 58 23 14 25 9 58-8 81-13 17-30 29-50 35" stroke="url(#vine-green)" stroke-width="5.8" stroke-linecap="round"/>
+    <path d="M80 29C57 17 34 28 22 48 7 72 11 105 27 128c13 19 32 33 54 40" stroke="#607763" stroke-width=".8" stroke-linecap="round" opacity=".32"/>
+    <path d="M80 29c23-10 46 2 58 23 14 25 9 58-8 81-13 17-30 29-50 35" stroke="#607763" stroke-width=".8" stroke-linecap="round" opacity=".3"/>
+
+    <!-- Irregular crown branches. -->
+    <path d="M72 28C59 18 50 9 38 8c6 8 13 13 25 15M58 24C47 21 35 22 24 27c9 2 18 1 28-2M92 28c8-9 11-18 9-27 8 6 11 15 9 25M104 31c12-8 19-18 18-28 7 8 7 18 1 29M119 38c11-5 20-4 27 2-9 3-17 3-26 1" stroke="#101b16" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M72 28C59 18 50 9 38 8c6 8 13 13 25 15M58 24C47 21 35 22 24 27c9 2 18 1 28-2M92 28c8-9 11-18 9-27 8 6 11 15 9 25M104 31c12-8 19-18 18-28 7 8 7 18 1 29M119 38c11-5 20-4 27 2-9 3-17 3-26 1" stroke="url(#vine-green)" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- The right-hand tendril is a distinctive open curl in the reference. -->
+    <path d="M132 43c14-6 23 2 20 13-2 8-12 12-18 7-4-3-3-9 1-11 4-2 8 1 7 5" stroke="#0d1612" stroke-width="8" stroke-linecap="round"/>
+    <path d="M132 43c14-6 23 2 20 13-2 8-12 12-18 7-4-3-3-9 1-11 4-2 8 1 7 5" stroke="url(#vine-green)" stroke-width="4.2" stroke-linecap="round"/>
+
+    <!-- Left laurel. -->
+    <use href="#leaf-wide" transform="translate(57 25) rotate(159) scale(.9)"/>
+    <use href="#leaf-wide" transform="translate(44 25) rotate(174) scale(.92 .86)"/>
+    <use href="#leaf-wide" transform="translate(31 36) rotate(190) scale(.9)"/>
+    <use href="#leaf-narrow" transform="translate(22 51) rotate(203) scale(.92)"/>
+    <use href="#leaf-wide" transform="translate(17 69) rotate(207) scale(.88)"/>
+    <use href="#leaf-narrow" transform="translate(16 89) rotate(198) scale(.95)"/>
+    <use href="#leaf-wide" transform="translate(19 108) rotate(188) scale(.94)"/>
+    <use href="#leaf-wide" transform="translate(27 127) rotate(169) scale(.92)"/>
+    <use href="#leaf-narrow" transform="translate(39 143) rotate(148) scale(.92)"/>
+    <use href="#leaf-wide" transform="translate(55 155) rotate(137) scale(.9)"/>
+    <use href="#leaf-wide" transform="translate(73 164) rotate(119) scale(.83)"/>
+
+    <!-- Right laurel, deliberately not mirrored. -->
+    <use href="#leaf-narrow" transform="translate(91 27) rotate(23) scale(.82)"/>
+    <use href="#leaf-wide" transform="translate(105 29) rotate(4) scale(.86)"/>
+    <use href="#leaf-narrow" transform="translate(121 36) rotate(10) scale(.92)"/>
+    <use href="#leaf-wide" transform="translate(135 50) rotate(-14) scale(.88)"/>
+    <use href="#leaf-narrow" transform="translate(143 72) rotate(-18) scale(.95)"/>
+    <use href="#leaf-wide" transform="translate(143 94) rotate(-22) scale(.93)"/>
+    <use href="#leaf-narrow" transform="translate(137 116) rotate(-35) scale(.96)"/>
+    <use href="#leaf-wide" transform="translate(128 134) rotate(-48) scale(.92)"/>
+    <use href="#leaf-wide" transform="translate(114 148) rotate(-62) scale(.9)"/>
+    <use href="#leaf-narrow" transform="translate(98 159) rotate(-76) scale(.9)"/>
+    <use href="#leaf-wide" transform="translate(82 166) rotate(-103) scale(.82)"/>
+
+    <!-- Bottom crossing stems and clipped twig ends. -->
+    <path d="M31 145c13 12 30 20 50 24 18-3 34-10 48-22" stroke="#0d1612" stroke-width="8" stroke-linecap="round"/>
+    <path d="M31 145c13 12 30 20 50 24 18-3 34-10 48-22" stroke="#284635" stroke-width="4.4" stroke-linecap="round"/>
+    <path d="m69 166 7 9m18-10-4 10m29-23 10 2m-96-5-10 4" stroke="#111b16" stroke-width="4.2" stroke-linecap="round"/>
+  </g>
+</svg>

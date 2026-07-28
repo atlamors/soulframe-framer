@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" role="img" aria-labelledby="title desc">
+  <title id="title">Soulframe armor crest</title>
+  <desc id="desc">Composite preview of the four independently traced armor crest layers.</desc>
+  <image href="shield-bg.svg" width="160" height="180"/>
+  <image href="shield-bg-art.svg" width="160" height="180"/>
+  <image href="shield-border.svg" width="160" height="180"/>
+  <image href="filigree.svg" width="160" height="180"/>
+</svg>

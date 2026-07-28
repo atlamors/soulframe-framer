@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 20" role="img" aria-labelledby="title">
+  <title id="title">Soulframe input frame bottom-right corner</title>
+  <defs>
+    <pattern id="h" width="5" height="4" patternUnits="userSpaceOnUse"><rect width="5" height="4" fill="#212121"/><path d="M1.5.8h3v2.7h-3z" fill="#a89570"/></pattern>
+    <pattern id="v" width="4" height="5" patternUnits="userSpaceOnUse"><rect width="4" height="5" fill="#212121"/><path d="M.8 1.5h2.7v3H.8z" fill="#a89570"/></pattern>
+  </defs>
+  <g transform="translate(24 20) scale(-1 -1)">
+    <path d="M5.5 1.5H24V20H1.5V5.5a4 4 0 0 1 4-4Z" fill="#212121" stroke="#212121" stroke-width="2"/>
+    <path d="M5.5 3.5H24V20H3.5V5.5a2 2 0 0 1 2-2Z" fill="#443f36" stroke="#7e7057"/>
+    <path d="M3 3h21v4H3Z" fill="url(#h)"/><path d="M2 7h4v13H2Z" fill="url(#v)"/>
+    <path d="M6.5 20V7.5H24" fill="none" stroke="#212121" stroke-width="4"/>
+    <path d="M8.5 20V9.5H24" fill="none" stroke="#756951" stroke-width="4"/>
+    <path d="M8.5 20V9.5H24" fill="none" stroke="#b49f7e" stroke-width="2"/>
+    <path d="M11 20V12H24" fill="#392d27" stroke="#212121" stroke-width="1.5"/>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-27T23:39:26.627Z",
+  "source": {
+    "name": "The Soulframe Wiki Mastery page",
+    "publisher": "Avakot",
+    "pageUrl": "https://wiki.avakot.org/Mastery",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 47350,
+    "revisionTimestamp": "2026-07-06T00:53:29Z"
+  },
+  "progression": {
+    "maximumMastery": 18.8,
+    "maximumEnvoyRank": 18,
+    "asOf": "Preludes 15",
+    "scope": "Paragon Founders"
+  }
+}

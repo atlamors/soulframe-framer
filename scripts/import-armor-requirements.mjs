@@ -71,36 +71,44 @@ const getSourceRevision = async () => {
   };
 };
 
-const parseRequirements = (moduleSource) => {
-  const requirements = new Map();
+const parseArmourMetadata = (moduleSource) => {
+  const metadata = new Map();
   const entryPattern =
     /^\s*\["([^"]+)"\]\s*=\s*\{([\s\S]*?)(?=^\s*\["|^\})/gm;
 
   for (const match of moduleSource.matchAll(entryPattern)) {
+    const block = match[2];
     const rawRequirement = match[2].match(
       /VirtueReq\s*=\s*(?:"([^"]*)"|nil)/,
     )?.[1];
     const normalized = rawRequirement?.trim();
+    const rarity =
+      block.match(/Rarity\s*=\s*"([^"]*)"/)?.[1]?.trim() || "Unknown";
+    const armorSet =
+      block.match(/ArmorSet\s*=\s*"([^"]*)"/)?.[1]?.trim() || "Unknown";
+    let requirement = null;
 
-    if (!normalized) {
-      requirements.set(match[1], null);
-      continue;
+    if (normalized) {
+      const requirementMatch = normalized.match(/^(\d+)\s+([CSG])$/);
+      if (!requirementMatch) {
+        throw new Error(
+          `Unsupported requirement "${normalized}" for ${match[1]}.`,
+        );
+      }
+      requirement = {
+        virtue: virtueByCode[requirementMatch[2]],
+        value: Number(requirementMatch[1]),
+      };
     }
 
-    const requirementMatch = normalized.match(/^(\d+)\s+([CSG])$/);
-    if (!requirementMatch) {
-      throw new Error(
-        `Unsupported requirement "${normalized}" for ${match[1]}.`,
-      );
-    }
-
-    requirements.set(match[1], {
-      virtue: virtueByCode[requirementMatch[2]],
-      value: Number(requirementMatch[1]),
+    metadata.set(match[1], {
+      requirement,
+      rarity,
+      armorSet,
     });
   }
 
-  return requirements;
+  return metadata;
 };
 
 const catalogue = JSON.parse(await readFile(CATALOGUE_PATH, "utf8"));
@@ -108,8 +116,8 @@ const [moduleSource, sourceRevision] = await Promise.all([
   getModuleSource(),
   getSourceRevision(),
 ]);
-const requirements = parseRequirements(moduleSource);
-const missing = catalogue.filter((item) => !requirements.has(item.name));
+const metadata = parseArmourMetadata(moduleSource);
+const missing = catalogue.filter((item) => !metadata.has(item.name));
 
 if (missing.length) {
   throw new Error(
@@ -119,12 +127,17 @@ if (missing.length) {
   );
 }
 
-const items = catalogue.map((item) => ({
-  itemId: item.id,
-  name: item.name,
-  slot: item.slot,
-  requirement: requirements.get(item.name),
-}));
+const items = catalogue.map((item) => {
+  const source = metadata.get(item.name);
+  return {
+    itemId: item.id,
+    name: item.name,
+    slot: item.slot,
+    requirement: source.requirement,
+    rarity: source.rarity,
+    armorSet: source.armorSet,
+  };
+});
 const withRequirement = items.filter((item) => item.requirement !== null).length;
 
 const output = {

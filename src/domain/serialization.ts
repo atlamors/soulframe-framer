@@ -1,5 +1,6 @@
 import {
   ARMOR_SLOTS,
+  WEAPON_HAND_SLOTS,
   VIRTUE_IDS,
   type AffinitySources,
   type ArmorItem,
@@ -7,6 +8,7 @@ import {
   type PactArtRank,
   type SoulframeBuild,
   type Talisman,
+  type Weapon,
   type VirtueId,
 } from "./types";
 import {
@@ -25,10 +27,12 @@ export const LEGACY_STORAGE_KEYS = [
   "soulframe-framer.build.v1",
 ] as const;
 const MAX_VIRTUE_VALUE = MAX_ALLOCATABLE_AFFINITY;
+const LEGACY_MAX_ENVOY_RANK = 99;
 
 export interface BuildCatalogue {
   armor: readonly ArmorItem[];
   talismans: readonly Talisman[];
+  weapons: readonly Weapon[];
 }
 
 export type DecodeResult =
@@ -53,7 +57,7 @@ function validateAffinitySources(value: unknown): AffinitySources | undefined {
     typeof value.envoyRank !== "number" ||
     !Number.isInteger(value.envoyRank) ||
     value.envoyRank < 0 ||
-    value.envoyRank > MAX_ENVOY_RANK ||
+    value.envoyRank > LEGACY_MAX_ENVOY_RANK ||
     !isRecord(value.pactArts) ||
     !isRecord(value.fables)
   ) {
@@ -81,7 +85,7 @@ function validateAffinitySources(value: unknown): AffinitySources | undefined {
   if (shewolf === undefined || wasteBear === undefined) return undefined;
 
   return {
-    envoyRank: value.envoyRank,
+    envoyRank: Math.min(MAX_ENVOY_RANK, value.envoyRank),
     pactArts,
     fables: { shewolf, wasteBear },
   };
@@ -132,6 +136,20 @@ function validateBuild(
   if (!affinitySources) {
     return { ok: false, error: "Affinity sources are invalid." };
   }
+  const suppliedEnvoyRank =
+    value.schemaVersion === BUILD_SCHEMA_VERSION &&
+    isRecord(value.affinitySources) &&
+    typeof value.affinitySources.envoyRank === "number"
+      ? value.affinitySources.envoyRank
+      : undefined;
+  if (
+    suppliedEnvoyRank !== undefined &&
+    suppliedEnvoyRank > MAX_ENVOY_RANK
+  ) {
+    warnings.push(
+      `Envoy Rank was capped at the current maximum of ${MAX_ENVOY_RANK}.`,
+    );
+  }
 
   const allocatablePoints = getAllocatableAffinity(affinitySources);
   const suppliedTotal = VIRTUE_IDS.reduce(
@@ -164,6 +182,9 @@ function validateBuild(
   const knownTalismanIds = catalogue
     ? new Set(catalogue.talismans.map((item) => item.id))
     : undefined;
+  const knownWeaponIds = catalogue
+    ? new Set(catalogue.weapons.map((item) => item.id))
+    : undefined;
 
   for (const slot of ARMOR_SLOTS) {
     const itemId = value.equipment[slot];
@@ -188,6 +209,26 @@ function validateBuild(
     } else {
       equipment.talisman = talismanId;
     }
+  }
+
+  for (const slot of WEAPON_HAND_SLOTS) {
+    const itemId = value.equipment[slot];
+    if (itemId === undefined) continue;
+    if (typeof itemId !== "string" || itemId.length > 120) {
+      return { ok: false, error: `Invalid item id for ${slot}.` };
+    }
+    const weapon = knownWeaponIds
+      ? catalogue?.weapons.find((item) => item.id === itemId)
+      : undefined;
+    if (knownWeaponIds && !knownWeaponIds.has(itemId)) {
+      warnings.push(`Unknown ${slot} item "${itemId}" was ignored.`);
+      continue;
+    }
+    if (weapon && weapon.slot !== slot) {
+      warnings.push(`Incompatible ${slot} item "${itemId}" was ignored.`);
+      continue;
+    }
+    equipment[slot] = itemId;
   }
 
   return {

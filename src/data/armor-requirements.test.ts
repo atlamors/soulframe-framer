@@ -31,9 +31,12 @@ describe("Avakot armor requirements", () => {
   it("is merged into the runtime catalogue", () => {
     for (const item of generatedRequirements.items) {
       expect(
-        armorCatalogue.find((catalogueItem) => catalogueItem.id === item.itemId)
-          ?.requirement,
-      ).toEqual(item.requirement);
+        armorCatalogue.find((catalogueItem) => catalogueItem.id === item.itemId),
+      ).toMatchObject({
+        requirement: item.requirement,
+        rarity: item.rarity,
+        armorSet: item.armorSet,
+      });
     }
   });
 });

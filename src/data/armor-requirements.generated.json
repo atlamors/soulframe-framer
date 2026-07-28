@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-25T21:22:34.659Z",
+  "generatedAt": "2026-07-27T21:40:22.990Z",
   "source": {
     "name": "The Soulframe Wiki Armour data module",
     "publisher": "Avakot",
@@ -26,7 +26,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 19
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Arbearer"
     },
     {
       "itemId": "helm-armet-of-orengall",
@@ -35,7 +37,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 17
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Orengall"
     },
     {
       "itemId": "helm-bascinet-of-the-mendicant-king",
@@ -44,13 +48,17 @@
       "requirement": {
         "virtue": "courage",
         "value": 17
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Mendicant King"
     },
     {
       "itemId": "helm-brazen-lung",
       "name": "Brazen Lung",
       "slot": "helm",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Forgetfire"
     },
     {
       "itemId": "helm-circades-helm-of-deceit",
@@ -59,7 +67,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 11
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Circade"
     },
     {
       "itemId": "helm-crone-cucurbita-mask",
@@ -68,13 +78,17 @@
       "requirement": {
         "virtue": "spirit",
         "value": 9
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Cucurbita"
     },
     {
       "itemId": "helm-duelo-ribbon",
       "name": "Duelo Ribbon",
       "slot": "helm",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Mestra"
     },
     {
       "itemId": "helm-forgetfire-visard",
@@ -83,7 +97,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 9
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Forgetfire"
     },
     {
       "itemId": "helm-garrens-crown-of-grace",
@@ -92,7 +108,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Garren"
     },
     {
       "itemId": "helm-great-helm-of-the-fire-king",
@@ -101,13 +119,17 @@
       "requirement": {
         "virtue": "courage",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Fire King"
     },
     {
       "itemId": "helm-helmless",
       "name": "Helmless",
       "slot": "helm",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Underwear"
     },
     {
       "itemId": "helm-lil-zook-mask",
@@ -116,7 +138,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 9
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Cucurbita"
     },
     {
       "itemId": "helm-mestras-helm",
@@ -125,7 +149,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Mestra"
     },
     {
       "itemId": "helm-mockery-ilk",
@@ -134,13 +160,17 @@
       "requirement": {
         "virtue": "grace",
         "value": 17
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Mockery"
     },
     {
       "itemId": "helm-osceldas-diadem",
       "name": "Oscelda's Diadem",
       "slot": "helm",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Oscelda"
     },
     {
       "itemId": "helm-pensives-bonnet",
@@ -149,7 +179,9 @@
       "requirement": {
         "virtue": "spirit",
         "value": 6
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Pensive"
     },
     {
       "itemId": "helm-poppa-pepo-mask",
@@ -158,7 +190,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 9
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Cucurbita"
     },
     {
       "itemId": "helm-regents-veil",
@@ -167,13 +201,17 @@
       "requirement": {
         "virtue": "courage",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Regent"
     },
     {
       "itemId": "helm-sirins-shroud",
       "name": "Sirin's Shroud",
       "slot": "helm",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Sirin"
     },
     {
       "itemId": "helm-steelsingers-circlet",
@@ -182,7 +220,9 @@
       "requirement": {
         "virtue": "spirit",
         "value": 11
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Steelsinger"
     },
     {
       "itemId": "helm-tempest-visard",
@@ -191,13 +231,17 @@
       "requirement": {
         "virtue": "grace",
         "value": 7
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Tempest"
     },
     {
       "itemId": "helm-tethrens-cap",
       "name": "Tethren's Cap",
       "slot": "helm",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Tethren"
     },
     {
       "itemId": "helm-thawtide-grimguise",
@@ -206,7 +250,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 13
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Thawtide"
     },
     {
       "itemId": "helm-thawtide-meltcap",
@@ -215,7 +261,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 14
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Thawtide"
     },
     {
       "itemId": "helm-wazzards-bycoket",
@@ -224,25 +272,33 @@
       "requirement": {
         "virtue": "spirit",
         "value": 19
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Wazzard"
     },
     {
       "itemId": "helm-wyld-osceldas-exhalt",
       "name": "Wyld Oscelda's Exhalt",
       "slot": "helm",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Wyld Oscelda"
     },
     {
       "itemId": "helm-wyld-sirins-feignmask",
       "name": "Wyld Sirin's Feignmask",
       "slot": "helm",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Wyld Sirin"
     },
     {
       "itemId": "helm-wyld-tethrens-hornhelm",
       "name": "Wyld Tethren's Hornhelm",
       "slot": "helm",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Wyld Tethren"
     },
     {
       "itemId": "cuirass-arbearers-pauncher",
@@ -251,7 +307,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 19
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Arbearer"
     },
     {
       "itemId": "cuirass-circades-gutguard",
@@ -260,7 +318,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 11
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Circade"
     },
     {
       "itemId": "cuirass-fire-kings-plackart",
@@ -269,7 +329,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Fire King"
     },
     {
       "itemId": "cuirass-forgetfire-leathers",
@@ -278,13 +340,17 @@
       "requirement": {
         "virtue": "courage",
         "value": 9
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Forgetfire"
     },
     {
       "itemId": "cuirass-laid-bare",
       "name": "Laid Bare",
       "slot": "cuirass",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Underwear"
     },
     {
       "itemId": "cuirass-mendicant-kings-suit-of-rancor",
@@ -293,7 +359,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 17
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Mendicant King"
     },
     {
       "itemId": "cuirass-mestras-furbelow",
@@ -302,7 +370,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Mestra"
     },
     {
       "itemId": "cuirass-mockery-binds",
@@ -311,7 +381,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 17
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Mockery"
     },
     {
       "itemId": "cuirass-orengalls-cuirass",
@@ -320,13 +392,17 @@
       "requirement": {
         "virtue": "grace",
         "value": 17
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Orengall"
     },
     {
       "itemId": "cuirass-osceldas-blues",
       "name": "Oscelda's Blues",
       "slot": "cuirass",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Oscelda"
     },
     {
       "itemId": "cuirass-pensives-cloak",
@@ -335,7 +411,9 @@
       "requirement": {
         "virtue": "spirit",
         "value": 6
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Pensive"
     },
     {
       "itemId": "cuirass-regalia-of-garren-rood",
@@ -344,7 +422,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Garren"
     },
     {
       "itemId": "cuirass-regents-shell",
@@ -353,13 +433,17 @@
       "requirement": {
         "virtue": "courage",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Regent"
     },
     {
       "itemId": "cuirass-sirins-plainhide",
       "name": "Sirin's Plainhide",
       "slot": "cuirass",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Sirin"
     },
     {
       "itemId": "cuirass-steelsingers-stithywicks",
@@ -368,7 +452,9 @@
       "requirement": {
         "virtue": "spirit",
         "value": 11
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Steelsinger"
     },
     {
       "itemId": "cuirass-tempest-leathers",
@@ -377,13 +463,17 @@
       "requirement": {
         "virtue": "grace",
         "value": 7
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Tempest"
     },
     {
       "itemId": "cuirass-tethrens-tunic",
       "name": "Tethren's Tunic",
       "slot": "cuirass",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Tethren"
     },
     {
       "itemId": "cuirass-thawtide-thermals",
@@ -392,7 +482,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 14
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Thawtide"
     },
     {
       "itemId": "cuirass-wazzards-robes",
@@ -401,25 +493,33 @@
       "requirement": {
         "virtue": "spirit",
         "value": 19
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Wazzard"
     },
     {
       "itemId": "cuirass-wyld-oscelda-pendelveil",
       "name": "Wyld Oscelda Pendelveil",
       "slot": "cuirass",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Wyld Oscelda"
     },
     {
       "itemId": "cuirass-wyld-sirin-finery",
       "name": "Wyld Sirin Finery",
       "slot": "cuirass",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Wyld Sirin"
     },
     {
       "itemId": "cuirass-wyld-tethren-solist-shield",
       "name": "Wyld Tethren Solist Shield",
       "slot": "cuirass",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Wyld Tethren"
     },
     {
       "itemId": "leggings-arbearers-braes",
@@ -428,7 +528,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 19
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Arbearer"
     },
     {
       "itemId": "leggings-circades-greaves",
@@ -437,7 +539,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 11
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Circade"
     },
     {
       "itemId": "leggings-fire-kings-kilt",
@@ -446,7 +550,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Fire King"
     },
     {
       "itemId": "leggings-forgetfire-braes",
@@ -455,13 +561,17 @@
       "requirement": {
         "virtue": "courage",
         "value": 9
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Forgetfire"
     },
     {
       "itemId": "leggings-forsaken-rags",
       "name": "Forsaken Rags",
       "slot": "leggings",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Underwear"
     },
     {
       "itemId": "leggings-garrens-cloven-hosen",
@@ -470,7 +580,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Garren"
     },
     {
       "itemId": "leggings-mendicant-kings-sabatons",
@@ -479,7 +591,9 @@
       "requirement": {
         "virtue": "courage",
         "value": 17
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Mendicant King"
     },
     {
       "itemId": "leggings-mestras-breeches",
@@ -488,7 +602,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Mestra"
     },
     {
       "itemId": "leggings-mockery-douthrot",
@@ -497,7 +613,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 17
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Mockery"
     },
     {
       "itemId": "leggings-orengalls-greaves",
@@ -506,13 +624,17 @@
       "requirement": {
         "virtue": "grace",
         "value": 17
-      }
+      },
+      "rarity": "Rare",
+      "armorSet": "Orengall"
     },
     {
       "itemId": "leggings-osceldas-featherbinds",
       "name": "Oscelda's Featherbinds",
       "slot": "leggings",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Oscelda"
     },
     {
       "itemId": "leggings-pensives-pantaloons",
@@ -521,7 +643,9 @@
       "requirement": {
         "virtue": "spirit",
         "value": 6
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Pensive"
     },
     {
       "itemId": "leggings-regents-drapery",
@@ -530,13 +654,17 @@
       "requirement": {
         "virtue": "courage",
         "value": 12
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Regent"
     },
     {
       "itemId": "leggings-sirins-stalks",
       "name": "Sirin's Stalks",
       "slot": "leggings",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Sirin"
     },
     {
       "itemId": "leggings-steelsingers-shreds",
@@ -545,7 +673,9 @@
       "requirement": {
         "virtue": "spirit",
         "value": 11
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Steelsinger"
     },
     {
       "itemId": "leggings-tempest-braes",
@@ -554,13 +684,17 @@
       "requirement": {
         "virtue": "grace",
         "value": 7
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Tempest"
     },
     {
       "itemId": "leggings-tethrens-roots",
       "name": "Tethren's Roots",
       "slot": "leggings",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Common",
+      "armorSet": "Tethren"
     },
     {
       "itemId": "leggings-thawtide-shingles",
@@ -569,7 +703,9 @@
       "requirement": {
         "virtue": "grace",
         "value": 14
-      }
+      },
+      "rarity": "Common",
+      "armorSet": "Thawtide"
     },
     {
       "itemId": "leggings-wazzards-trunks",
@@ -578,25 +714,33 @@
       "requirement": {
         "virtue": "spirit",
         "value": 19
-      }
+      },
+      "rarity": "Uncommon",
+      "armorSet": "Wazzard"
     },
     {
       "itemId": "leggings-wyld-oscelda-beltolls",
       "name": "Wyld Oscelda Beltolls",
       "slot": "leggings",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Wyld Oscelda"
     },
     {
       "itemId": "leggings-wyld-sirin-wevetbelt",
       "name": "Wyld Sirin Wevetbelt",
       "slot": "leggings",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Wyld Sirin"
     },
     {
       "itemId": "leggings-wyld-tethren-flamefoot",
       "name": "Wyld Tethren Flamefoot",
       "slot": "leggings",
-      "requirement": null
+      "requirement": null,
+      "rarity": "Uncommon",
+      "armorSet": "Wyld Tethren"
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { armorCatalogue } from "../data/catalogue";
 import { talismanCatalogue } from "../data/talismans";
+import { weaponCatalogue } from "../data/weapons";
 import {
   deserializeBuild,
   parseStoredBuild,
@@ -11,18 +12,24 @@ import type { SoulframeBuild } from "./types";
 const build: SoulframeBuild = {
   schemaVersion: 3,
   name: "First Envoy",
-  virtues: { courage: 12, spirit: 12, grace: 12 },
+  virtues: { courage: 12, spirit: 11, grace: 11 },
   affinitySources: {
-    envoyRank: 20,
+    envoyRank: 18,
     pactArts: { courage: 0, spirit: 0, grace: 0 },
     fables: { shewolf: null, wasteBear: null },
   },
   equipment: {
     helm: "helm-arbearers-mask",
     talisman: "talisman-wyldings-hilt",
+    mainHand: "weapon-farilwyd",
+    offHand: "weapon-precklies",
   },
 };
-const catalogue = { armor: armorCatalogue, talismans: talismanCatalogue };
+const catalogue = {
+  armor: armorCatalogue,
+  talismans: talismanCatalogue,
+  weapons: weaponCatalogue,
+};
 
 describe("build serialization", () => {
   it("round trips a build", () => {
@@ -124,7 +131,7 @@ describe("build serialization", () => {
       JSON.stringify({
         ...build,
         virtues: { courage: 10, spirit: 10, grace: 10 },
-        affinitySources: { ...build.affinitySources, envoyRank: 20 },
+        affinitySources: { ...build.affinitySources, envoyRank: 18 },
       }),
     ).toString("base64url");
     const result = deserializeBuild(encoded, catalogue);
@@ -133,9 +140,29 @@ describe("build serialization", () => {
       ok: true,
       build: {
         ...build,
-        virtues: { courage: 12, spirit: 12, grace: 12 },
+        virtues: { courage: 12, spirit: 11, grace: 11 },
       },
       warnings: [
+        "Virtue allocation was normalized to its 16 base points plus Envoy Rank.",
+      ],
+    });
+  });
+
+  it("caps builds saved before the current Envoy Rank maximum", () => {
+    const encoded = Buffer.from(
+      JSON.stringify({
+        ...build,
+        virtues: { courage: 12, spirit: 12, grace: 12 },
+        affinitySources: { ...build.affinitySources, envoyRank: 20 },
+      }),
+    ).toString("base64url");
+    const result = deserializeBuild(encoded, catalogue);
+
+    expect(result).toEqual({
+      ok: true,
+      build,
+      warnings: [
+        "Envoy Rank was capped at the current maximum of 18.",
         "Virtue allocation was normalized to its 16 base points plus Envoy Rank.",
       ],
     });
