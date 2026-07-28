@@ -1,0 +1,996 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-28T06:04:45.556Z",
+  "source": {
+    "name": "Avakot source pages and Soulmap location links",
+    "publisher": "Avakot",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "mapUrl": "https://soulmap.avakot.org/",
+    "mapVersion": "P15",
+    "mapHash": "1665527eb0ee62db2f8c8887837f155e18fa1e613a02735f45b4b7c682bcdeb6",
+    "mapAssetUrl": "/maps/soulmap-p15.webp",
+    "markerAssets": {
+      "agari": "/maps/markers/5ed24d14d304.png",
+      "dungeon": "/maps/markers/fa67243e401b.png",
+      "cogah": "/maps/markers/cogah.webp"
+    },
+    "mapCoordinateSize": 7168,
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights"
+  },
+  "coverage": {
+    "sourcePages": 70,
+    "pagesWithMapLocations": 23,
+    "pagesWithoutMapLocations": 47,
+    "totalMapLocations": 37,
+    "mapLocationsWithImages": 14,
+    "mapLocationsWithCoordinates": 35
+  },
+  "items": [
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/A_Grand_Fable",
+      "sourcePageTitle": "A Grand Fable",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/A_Hidden_Harvest",
+      "sourcePageTitle": "A Hidden Harvest",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Armoured_Mockery",
+      "sourcePageTitle": "Armoured Mockery",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Avakot's_Stocks",
+      "sourcePageTitle": "Avakot's Stocks",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Bisulcam",
+      "sourcePageTitle": "Bisulcam",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Blue_Ribbon_Crew",
+      "sourcePageTitle": "Blue Ribbon Crew",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Collector_Crate",
+      "sourcePageTitle": "Collector Crate",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Crypt_Crawler",
+      "sourcePageTitle": "Crypt Crawler",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Crypt_Sarcophagus",
+      "sourcePageTitle": "Crypt Sarcophagus",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Deadwood_Mockery",
+      "sourcePageTitle": "Deadwood Mockery",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Dendrit_Chest%23Alca's_Bounty",
+      "sourcePageTitle": "Dendrit Chest",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Dendrit_Chest%23Glades",
+      "sourcePageTitle": "Dendrit Chest",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Dendrit_Chest%23Midrath",
+      "sourcePageTitle": "Dendrit Chest",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Dendrit_Chest%23Oro's_Well",
+      "sourcePageTitle": "Dendrit Chest",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Dendrit_Chest%23Pigwen_Skerry",
+      "sourcePageTitle": "Dendrit Chest",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Dendrit_Chest%23Undercity",
+      "sourcePageTitle": "Dendrit Chest",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Dendrit_Weapon_Rack",
+      "sourcePageTitle": "Dendrit Weapon Rack",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Discharged_Nimrod",
+      "sourcePageTitle": "Discharged Nimrod",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Echo_Stone",
+      "sourcePageTitle": "Echo Stone",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=juniper-fragment&index=1",
+          "imageFile": "",
+          "coordinateId": "635fca99-81a2-4c1b-9504-27c3550a4b9b",
+          "coordinateName": "Juniper Fragment (1)",
+          "markerName": "Juniper Fragment",
+          "categoryName": "Juniper Echo Stones",
+          "markerIconUrl": "/maps/markers/01948067c911.png",
+          "x": 3234,
+          "y": 3889,
+          "xPercent": 45.1172,
+          "yPercent": 45.745,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=juniper-fragment&index=2",
+          "imageFile": "",
+          "coordinateId": "0dddda0d-22dd-4256-b7b4-c68d8815c94f",
+          "coordinateName": "Juniper Fragment (2)",
+          "markerName": "Juniper Fragment",
+          "categoryName": "Juniper Echo Stones",
+          "markerIconUrl": "/maps/markers/01948067c911.png",
+          "x": 1666,
+          "y": 3087,
+          "xPercent": 23.2422,
+          "yPercent": 56.9336,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=juniper-fragment&index=3",
+          "imageFile": "",
+          "coordinateId": "b29a8a51-3d94-4cd8-81c6-8c37e84ba071",
+          "coordinateName": "Juniper Fragment (3)",
+          "markerName": "Juniper Fragment",
+          "categoryName": "Juniper Echo Stones",
+          "markerIconUrl": "/maps/markers/01948067c911.png",
+          "x": 2468,
+          "y": 3044,
+          "xPercent": 34.4308,
+          "yPercent": 57.5335,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=A+Witch+Withdrawn&index=1",
+          "imageFile": "",
+          "coordinateId": "ad3485b0-38b9-4c86-b4bc-5d75d6ba6f37",
+          "coordinateName": "A Witch Withdrawn",
+          "markerName": "A Witch Withdrawn",
+          "categoryName": "Ancestor - Progress",
+          "markerIconUrl": "/maps/markers/461955f49522.png",
+          "x": 3382,
+          "y": 2758,
+          "xPercent": 47.1819,
+          "yPercent": 61.5234,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Echo_Stone%23Juniper",
+      "sourcePageTitle": "Echo Stone",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=juniper-fragment&index=1",
+          "imageFile": "",
+          "coordinateId": "635fca99-81a2-4c1b-9504-27c3550a4b9b",
+          "coordinateName": "Juniper Fragment (1)",
+          "markerName": "Juniper Fragment",
+          "categoryName": "Juniper Echo Stones",
+          "markerIconUrl": "/maps/markers/01948067c911.png",
+          "x": 3234,
+          "y": 3889,
+          "xPercent": 45.1172,
+          "yPercent": 45.745,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=juniper-fragment&index=2",
+          "imageFile": "",
+          "coordinateId": "0dddda0d-22dd-4256-b7b4-c68d8815c94f",
+          "coordinateName": "Juniper Fragment (2)",
+          "markerName": "Juniper Fragment",
+          "categoryName": "Juniper Echo Stones",
+          "markerIconUrl": "/maps/markers/01948067c911.png",
+          "x": 1666,
+          "y": 3087,
+          "xPercent": 23.2422,
+          "yPercent": 56.9336,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=juniper-fragment&index=3",
+          "imageFile": "",
+          "coordinateId": "b29a8a51-3d94-4cd8-81c6-8c37e84ba071",
+          "coordinateName": "Juniper Fragment (3)",
+          "markerName": "Juniper Fragment",
+          "categoryName": "Juniper Echo Stones",
+          "markerIconUrl": "/maps/markers/01948067c911.png",
+          "x": 2468,
+          "y": 3044,
+          "xPercent": 34.4308,
+          "yPercent": 57.5335,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=A+Witch+Withdrawn&index=1",
+          "imageFile": "",
+          "coordinateId": "ad3485b0-38b9-4c86-b4bc-5d75d6ba6f37",
+          "coordinateName": "A Witch Withdrawn",
+          "markerName": "A Witch Withdrawn",
+          "categoryName": "Ancestor - Progress",
+          "markerIconUrl": "/maps/markers/461955f49522.png",
+          "x": 3382,
+          "y": 2758,
+          "xPercent": 47.1819,
+          "yPercent": 61.5234,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Etheldred_The_Weaver",
+      "sourcePageTitle": "Etheldred The Weaver",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=etheldred-the-weaver",
+          "imageFile": "Etheldred's den.png",
+          "coordinateId": "d312da29-5be5-47bf-84a3-87fc1c66ae7d",
+          "coordinateName": "Etheldred the Weaver",
+          "markerName": "Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/5ed24d14d304.png",
+          "x": 3070,
+          "y": 4927,
+          "xPercent": 42.8292,
+          "yPercent": 31.264,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/3/3d/Etheldred%27s_den.png",
+          "width": 466,
+          "height": 377
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Festival_of_the_Circade%23Circade_Armour_Set",
+      "sourcePageTitle": "Festival of the Circade",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Flayed_Reaper",
+      "sourcePageTitle": "Flayed Reaper",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=Flayed",
+          "imageFile": "ReaperLoc.png",
+          "coordinateId": "ed2e2527-4a21-40a4-935f-c0e722d940e1",
+          "coordinateName": "Flayed Reaper",
+          "markerName": "Dungeon Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/fa67243e401b.png",
+          "x": 5619,
+          "y": 5291,
+          "xPercent": 78.3901,
+          "yPercent": 26.1858,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/9/91/ReaperLoc.png",
+          "width": 658,
+          "height": 493
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Fore-Feller_Hewyl",
+      "sourcePageTitle": "Fore-Feller Hewyl",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=hewyl",
+          "imageFile": "HewylLoc.png",
+          "coordinateId": "c326d4ac-1983-4d9f-946f-115d63d8f12e",
+          "coordinateName": "Fore-Feller Hewyl",
+          "markerName": "Dungeon Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/fa67243e401b.png",
+          "x": 4191,
+          "y": 1885,
+          "xPercent": 58.4682,
+          "yPercent": 73.7026,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/2/28/HewylLoc.png",
+          "width": 461,
+          "height": 461
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Fort_Kearnhold",
+      "sourcePageTitle": "Fort Kearnhold",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=fort-kearnhold",
+          "imageFile": "",
+          "coordinateId": "6d741971-5a6c-49e2-a00d-44a2c44c8dbc",
+          "coordinateName": "Fort Kearnhold",
+          "markerName": "Locations",
+          "categoryName": "Locations",
+          "markerIconUrl": "/maps/markers/3d722da37f14.png",
+          "x": 4374,
+          "y": 3588,
+          "xPercent": 61.0212,
+          "yPercent": 49.9442,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Ghost_Knight",
+      "sourcePageTitle": "Ghost Knight",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Gourdo",
+      "sourcePageTitle": "Gourdo",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=Agari&index=5",
+          "imageFile": "GourdoLoc.png",
+          "coordinateId": "7623b79a-b53b-494a-8a84-70916c07301b",
+          "coordinateName": "Mendicant King",
+          "markerName": "Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/5ed24d14d304.png",
+          "x": 1734,
+          "y": 1672,
+          "xPercent": 24.1908,
+          "yPercent": 76.6741,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/8/84/GourdoLoc.png",
+          "width": 644,
+          "height": 644
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Gruul_Seeker_Ruthos",
+      "sourcePageTitle": "Gruul Seeker Ruthos",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=gruul-seeker-ruthos",
+          "imageFile": "RuthosLoc.png",
+          "coordinateId": "52dc9215-9c40-4fa4-8e80-6f7885f61197",
+          "coordinateName": "Gruul Seeker Ruthos",
+          "markerName": "Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/5ed24d14d304.png",
+          "x": 5666,
+          "y": 6134,
+          "xPercent": 79.0458,
+          "yPercent": 14.4252,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a4/RuthosLoc.png/720px-RuthosLoc.png",
+          "width": 720,
+          "height": 522
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Gruul_Seeker_Sontaro",
+      "sourcePageTitle": "Gruul Seeker Sontaro",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=Dungeon+Agari&index=2",
+          "imageFile": "SontaroLoc.png",
+          "coordinateId": "0aa78593-ed4a-45d4-a689-cb517d6e873f",
+          "coordinateName": "Gruul Seeker Sontaro",
+          "markerName": "Dungeon Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/fa67243e401b.png",
+          "x": 3638,
+          "y": 3702,
+          "xPercent": 50.7533,
+          "yPercent": 48.3538,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/8/87/SontaroLoc.png",
+          "width": 714,
+          "height": 714
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Gruulseeker_Selvins",
+      "sourcePageTitle": "Gruulseeker Selvins",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Hark%2C_The_Collector",
+      "sourcePageTitle": "Hark, The Collector",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Ichorous_Wardog",
+      "sourcePageTitle": "Ichorous Wardog",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Kabocha",
+      "sourcePageTitle": "Kabocha",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Knell_Knight",
+      "sourcePageTitle": "Knell Knight",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=knell-knight",
+          "imageFile": "KnellKnightLoc.png",
+          "coordinateId": "5e631868-7ac2-475d-87d0-24a91b912abe",
+          "coordinateName": "Knell Knight",
+          "markerName": "Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/5ed24d14d304.png",
+          "x": 3676,
+          "y": 5218,
+          "xPercent": 51.2835,
+          "yPercent": 27.2042,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ed/KnellKnightLoc.png/720px-KnellKnightLoc.png",
+          "width": 720,
+          "height": 462
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Mendicant_Knight",
+      "sourcePageTitle": "Mendicant Knight",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Mendicant_Knight_Duo",
+      "sourcePageTitle": "Mendicant Knight Duo",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Mendicant_Reinbreaker",
+      "sourcePageTitle": "Mendicant Reinbreaker",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Messenger",
+      "sourcePageTitle": "Messenger",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Mestra_Carmo_(Boss)",
+      "sourcePageTitle": "Mestra Carmo (Boss)",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Mirifuir",
+      "sourcePageTitle": "Mirifuir",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=Mirifuir",
+          "imageFile": "",
+          "coordinateId": "95632aac-5567-44c0-9175-5f9e0af8ca9e",
+          "coordinateName": "Mirifuir",
+          "markerName": "Locations",
+          "categoryName": "Locations",
+          "markerIconUrl": "/maps/markers/3d722da37f14.png",
+          "x": 5090,
+          "y": 6515,
+          "xPercent": 71.01,
+          "yPercent": 9.1099,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Nimrod",
+      "sourcePageTitle": "Nimrod",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Ode'n_Starcaster",
+      "sourcePageTitle": "Ode'n Starcaster",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Ode'n_Weapon_Rack",
+      "sourcePageTitle": "Ode'n Weapon Rack",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Ode_Chest",
+      "sourcePageTitle": "Ode Chest",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Orlick%23Bonding",
+      "sourcePageTitle": "Orlick",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Rise_Envoy",
+      "sourcePageTitle": "Rise Envoy",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Rotted_Sproutfolk",
+      "sourcePageTitle": "Rotted Sproutfolk",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Rovgot_Wyrm",
+      "sourcePageTitle": "Rovgot Wyrm",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Runner_of_the_Rose",
+      "sourcePageTitle": "Runner of the Rose",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Seachnall_The_Widower",
+      "sourcePageTitle": "Seachnall The Widower",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=Agari&index=12",
+          "imageFile": "SeachnallLoc.png",
+          "coordinateId": "b1279aaa-2f74-408a-ac07-ab1f18c3005f",
+          "coordinateName": "Reinbreaker",
+          "markerName": "Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/5ed24d14d304.png",
+          "x": 4966,
+          "y": 1327,
+          "xPercent": 69.2801,
+          "yPercent": 81.4872,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/1/1b/SeachnallLoc.png",
+          "width": 710,
+          "height": 710
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Sinecure-errant_Gawth",
+      "sourcePageTitle": "Sinecure-errant Gawth",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=Gawth",
+          "imageFile": "GawthLoc.png",
+          "coordinateId": "fc80ea7b-91a9-4dd7-b8f4-c33543baff82",
+          "coordinateName": "Sinecure-errant Gawth",
+          "markerName": "Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/5ed24d14d304.png",
+          "x": 3356,
+          "y": 4982,
+          "xPercent": 46.8192,
+          "yPercent": 30.4967,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/thumb/f/fb/GawthLoc.png/720px-GawthLoc.png",
+          "width": 720,
+          "height": 443
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Sinecure-errant_Vella",
+      "sourcePageTitle": "Sinecure-errant Vella",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=vella",
+          "imageFile": "VellaLoc.png",
+          "coordinateId": "af25a0cd-c0d4-4a28-902b-b5199b358811",
+          "coordinateName": "Sinecure-errant Vella",
+          "markerName": "Dungeon Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/fa67243e401b.png",
+          "x": 5229,
+          "y": 4105,
+          "xPercent": 72.9492,
+          "yPercent": 42.7316,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/thumb/6/67/VellaLoc.png/720px-VellaLoc.png",
+          "width": 720,
+          "height": 720
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Sinecure_Elite_Soldier",
+      "sourcePageTitle": "Sinecure Elite Soldier",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Sinecure_Knight",
+      "sourcePageTitle": "Sinecure Knight",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Sinecure_Officer",
+      "sourcePageTitle": "Sinecure Officer",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Sinecure_Scout",
+      "sourcePageTitle": "Sinecure Scout",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Sinecure_Soldier",
+      "sourcePageTitle": "Sinecure Soldier",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Skylantern_Crate",
+      "sourcePageTitle": "Skylantern Crate",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Tattie-bogle",
+      "sourcePageTitle": "Tattie-bogle",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/The_Circade",
+      "sourcePageTitle": "The Circade",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/The_Mendicant_King",
+      "sourcePageTitle": "The Mendicant King",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=mendicant-king",
+          "imageFile": "MkingLoc.png",
+          "coordinateId": "7623b79a-b53b-494a-8a84-70916c07301b",
+          "coordinateName": "Mendicant King",
+          "markerName": "Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/5ed24d14d304.png",
+          "x": 1734,
+          "y": 1672,
+          "xPercent": 24.1908,
+          "yPercent": 76.6741,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f5/MkingLoc.png/720px-MkingLoc.png",
+          "width": 720,
+          "height": 464
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/The_Organ%23Fortress_O'Dell_Organ",
+      "sourcePageTitle": "The Organ",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=the-organ&index=1",
+          "imageFile": "",
+          "coordinateId": "2f561c95-aefa-4399-954a-64d6e4bbbb10",
+          "coordinateName": "Skelfies Organ",
+          "markerName": "The Organ",
+          "categoryName": "The Organ",
+          "markerIconUrl": "/maps/markers/14a884e8a2c6.png",
+          "x": 5072,
+          "y": 5579,
+          "xPercent": 70.7589,
+          "yPercent": 22.168,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=the-organ&index=2",
+          "imageFile": "",
+          "coordinateId": "f4964ca7-400c-4946-97a9-68e6b1e68b32",
+          "coordinateName": "Kairness Organ",
+          "markerName": "The Organ",
+          "categoryName": "The Organ",
+          "markerIconUrl": "/maps/markers/14a884e8a2c6.png",
+          "x": 4792,
+          "y": 2856,
+          "xPercent": 66.8527,
+          "yPercent": 60.1563,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=the-organ&index=3",
+          "imageFile": "",
+          "coordinateId": "f0895995-55bc-4caa-9c2a-48891dc7c98c",
+          "coordinateName": "Kearnhold Organ",
+          "markerName": "The Organ",
+          "categoryName": "The Organ",
+          "markerIconUrl": "/maps/markers/14a884e8a2c6.png",
+          "x": 4087,
+          "y": 1286,
+          "xPercent": 57.0173,
+          "yPercent": 82.0592,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/The_Organ%23Fuirlands_Organ",
+      "sourcePageTitle": "The Organ",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=the-organ&index=1",
+          "imageFile": "",
+          "coordinateId": "2f561c95-aefa-4399-954a-64d6e4bbbb10",
+          "coordinateName": "Skelfies Organ",
+          "markerName": "The Organ",
+          "categoryName": "The Organ",
+          "markerIconUrl": "/maps/markers/14a884e8a2c6.png",
+          "x": 5072,
+          "y": 5579,
+          "xPercent": 70.7589,
+          "yPercent": 22.168,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=the-organ&index=2",
+          "imageFile": "",
+          "coordinateId": "f4964ca7-400c-4946-97a9-68e6b1e68b32",
+          "coordinateName": "Kairness Organ",
+          "markerName": "The Organ",
+          "categoryName": "The Organ",
+          "markerIconUrl": "/maps/markers/14a884e8a2c6.png",
+          "x": 4792,
+          "y": 2856,
+          "xPercent": 66.8527,
+          "yPercent": 60.1563,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=the-organ&index=3",
+          "imageFile": "",
+          "coordinateId": "f0895995-55bc-4caa-9c2a-48891dc7c98c",
+          "coordinateName": "Kearnhold Organ",
+          "markerName": "The Organ",
+          "categoryName": "The Organ",
+          "markerIconUrl": "/maps/markers/14a884e8a2c6.png",
+          "x": 4087,
+          "y": 1286,
+          "xPercent": 57.0173,
+          "yPercent": 82.0592,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/The_Organ%23Kearnhold_Lowlands_Organ",
+      "sourcePageTitle": "The Organ",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=the-organ&index=1",
+          "imageFile": "",
+          "coordinateId": "2f561c95-aefa-4399-954a-64d6e4bbbb10",
+          "coordinateName": "Skelfies Organ",
+          "markerName": "The Organ",
+          "categoryName": "The Organ",
+          "markerIconUrl": "/maps/markers/14a884e8a2c6.png",
+          "x": 5072,
+          "y": 5579,
+          "xPercent": 70.7589,
+          "yPercent": 22.168,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=the-organ&index=2",
+          "imageFile": "",
+          "coordinateId": "f4964ca7-400c-4946-97a9-68e6b1e68b32",
+          "coordinateName": "Kairness Organ",
+          "markerName": "The Organ",
+          "categoryName": "The Organ",
+          "markerIconUrl": "/maps/markers/14a884e8a2c6.png",
+          "x": 4792,
+          "y": 2856,
+          "xPercent": 66.8527,
+          "yPercent": 60.1563,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=the-organ&index=3",
+          "imageFile": "",
+          "coordinateId": "f0895995-55bc-4caa-9c2a-48891dc7c98c",
+          "coordinateName": "Kearnhold Organ",
+          "markerName": "The Organ",
+          "categoryName": "The Organ",
+          "markerIconUrl": "/maps/markers/14a884e8a2c6.png",
+          "x": 4087,
+          "y": 1286,
+          "xPercent": 57.0173,
+          "yPercent": 82.0592,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Thrice-bound_Impidh",
+      "sourcePageTitle": "Thrice-bound Impidh",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=Agari&index=8",
+          "imageFile": "ImpidhLoc.png",
+          "coordinateId": "14a1b6b0-b62e-4006-b36c-b6f2e30b52f3",
+          "coordinateName": "Thrice-Bound Impidh - Overworld",
+          "markerName": "Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/5ed24d14d304.png",
+          "x": 4451,
+          "y": 4282,
+          "xPercent": 62.0954,
+          "yPercent": 40.2623,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/9/9f/ImpidhLoc.png",
+          "width": 714,
+          "height": 714
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=Dungeon+Agari&index=6",
+          "imageFile": "ImpidhLoc2.png",
+          "coordinateId": "881c92a7-880b-4877-9d83-21fccd736b2b",
+          "coordinateName": "Thrice-Bound Impidh - Glades",
+          "markerName": "Dungeon Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/fa67243e401b.png",
+          "x": 4227,
+          "y": 2793,
+          "xPercent": 58.9704,
+          "yPercent": 61.0352,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/0/07/ImpidhLoc2.png",
+          "width": 714,
+          "height": 714
+        },
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=glades-of-andurin&index=4",
+          "imageFile": "",
+          "coordinateId": "7d8f4b31-530f-4ea2-b608-ad83be1a96d6",
+          "coordinateName": "Glades of Andurin - Central Forest",
+          "markerName": "Glades of Andurin",
+          "categoryName": "Glades of Andurin",
+          "markerIconUrl": "/maps/markers/ff6bb1c6ae9e.png",
+          "x": 4226,
+          "y": 2778,
+          "xPercent": 58.9565,
+          "yPercent": 61.2444,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Turret_Jotar",
+      "sourcePageTitle": "Turret Jotar",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=Turret+Jotar",
+          "imageFile": "",
+          "coordinateId": "b50d1d81-137f-4c4f-a245-900664f407c8",
+          "coordinateName": "Turret Jotar",
+          "markerName": "Locations",
+          "categoryName": "Locations",
+          "markerIconUrl": "/maps/markers/3d722da37f14.png",
+          "x": 2714,
+          "y": 2503,
+          "xPercent": 37.8627,
+          "yPercent": 65.0809,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Undercover_Gruulseeker",
+      "sourcePageTitle": "Undercover Gruulseeker",
+      "locations": []
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Vadagar_Bear",
+      "sourcePageTitle": "Vadagar Bear",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=vadagar-bear",
+          "imageFile": "",
+          "coordinateId": "",
+          "coordinateName": "",
+          "markerName": "",
+          "categoryName": "",
+          "markerIconUrl": "",
+          "x": null,
+          "y": null,
+          "xPercent": null,
+          "yPercent": null,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Vadagar_Stag",
+      "sourcePageTitle": "Vadagar Stag",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=vadagar-stag",
+          "imageFile": "",
+          "coordinateId": "",
+          "coordinateName": "",
+          "markerName": "",
+          "categoryName": "",
+          "markerIconUrl": "",
+          "x": null,
+          "y": null,
+          "xPercent": null,
+          "yPercent": null,
+          "imageUrl": "",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    {
+      "sourcePageUrl": "https://wiki.avakot.org/Wraith_of_Wastes",
+      "sourcePageTitle": "Wraith of Wastes",
+      "locations": [
+        {
+          "mapUrl": "https://soulmap.avakot.org/?loc=wraith-of-wastes",
+          "imageFile": "Northern Sidae's Stake.png",
+          "coordinateId": "6c2622de-f93c-4347-b94d-6d2e1f007dcb",
+          "coordinateName": "Wraith of Wastes",
+          "markerName": "Agari",
+          "categoryName": "Agari",
+          "markerIconUrl": "/maps/markers/5ed24d14d304.png",
+          "x": 3701,
+          "y": 2545,
+          "xPercent": 51.6323,
+          "yPercent": 64.495,
+          "imageUrl": "https://static.wikitide.net/soulframewiki/c/cc/Northern_Sidae%27s_Stake.png",
+          "width": 362,
+          "height": 271
+        }
+      ]
+    }
+  ]
+}

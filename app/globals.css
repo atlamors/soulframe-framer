@@ -1093,14 +1093,15 @@ a:focus-visible,
 
 .loadout-optimization {
   bottom: 14px;
-  left: 50%;
+  left: 3%;
   position: absolute;
-  transform: translateX(-50%);
+  width: min(290px, 42%);
   z-index: 5;
 }
 
 .optimization-trigger-gear {
   white-space: nowrap;
+  width: 100%;
 }
 
 .equipment-slot {
@@ -3156,8 +3157,7 @@ a:focus-visible,
   padding: 10px 3px;
 }
 
-.armor-drop-row > span,
-.armor-drop-row > a {
+.armor-drop-row > span {
   color: var(--ink-soft);
   font-family: var(--font-ui);
   font-size: 12px;
@@ -3165,7 +3165,16 @@ a:focus-visible,
   line-height: 1.35;
 }
 
-.armor-drop-row > a {
+.drop-source-cell {
+  align-items: center;
+  display: inline-flex;
+  gap: 4px;
+  min-width: 0;
+  position: relative;
+  width: fit-content;
+}
+
+.drop-source-cell > a {
   align-items: center;
   color: var(--gold-pale);
   display: inline-flex;
@@ -3173,16 +3182,355 @@ a:focus-visible,
   text-decoration: none;
 }
 
-.armor-drop-row > a:hover,
-.armor-drop-row > a:focus-visible {
+.drop-source-cell > a:hover,
+.drop-source-cell > a:focus-visible {
   color: var(--gold-bright);
 }
 
-.armor-drop-row > a svg {
+.drop-source-cell > a svg {
   flex: 0 0 auto;
   height: 11px;
   stroke-width: 1.5;
   width: 11px;
+}
+
+.drop-map-trigger {
+  align-items: center;
+  background: rgba(169, 119, 44, 0.1);
+  border: 1px solid rgba(205, 153, 65, 0.32);
+  border-radius: 50%;
+  color: var(--gold);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 23px;
+  justify-content: center;
+  margin: -4px 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 23px;
+}
+
+.drop-map-trigger:hover,
+.drop-map-trigger:focus-visible,
+.drop-map-trigger[aria-expanded="true"] {
+  background: rgba(205, 153, 65, 0.2);
+  border-color: var(--gold-bright);
+  color: var(--gold-bright);
+  outline: 0;
+}
+
+.drop-map-trigger img {
+  object-fit: contain;
+  padding: 3px;
+}
+
+.drop-location-cell {
+  width: 100%;
+}
+
+.drop-location-trigger {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--gold-pale);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 650;
+  gap: 6px;
+  line-height: 1.25;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.drop-location-trigger:hover,
+.drop-location-trigger:focus-visible,
+.drop-location-trigger[aria-expanded="true"] {
+  color: var(--gold-bright);
+  outline: 0;
+}
+
+.drop-location-trigger > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drop-location-marker {
+  background: rgba(169, 119, 44, 0.1);
+  border: 1px solid rgba(205, 153, 65, 0.32);
+  border-radius: 50%;
+  flex: 0 0 auto;
+  height: 23px;
+  overflow: hidden;
+  position: relative;
+  width: 23px;
+}
+
+.drop-location-trigger:hover .drop-location-marker,
+.drop-location-trigger:focus-visible .drop-location-marker,
+.drop-location-trigger[aria-expanded="true"] .drop-location-marker {
+  background: rgba(205, 153, 65, 0.2);
+  border-color: var(--gold-bright);
+}
+
+.drop-location-marker img {
+  object-fit: contain;
+  padding: 3px;
+}
+
+.drop-location-unmapped {
+  color: var(--ink-muted) !important;
+  font-style: italic;
+}
+
+.drop-map-tooltip {
+  animation: drop-map-in 150ms ease-out both;
+  backdrop-filter: blur(18px);
+  background:
+    linear-gradient(rgba(21, 15, 12, 0.86), rgba(15, 11, 9, 0.94)),
+    url("/textures/parchment-grain.svg?v=2");
+  border: 1px solid rgba(205, 153, 65, 0.56);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.58),
+    inset 0 0 0 1px rgba(255, 221, 159, 0.05);
+  color: var(--ink);
+  padding: 9px;
+  pointer-events: none;
+  position: fixed;
+  width: 320px;
+  z-index: 80;
+}
+
+.drop-map-tooltip > header {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 1px 3px 8px;
+}
+
+.drop-map-tooltip > header span {
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.drop-map-tooltip > header strong {
+  color: var(--gold-pale);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.drop-map-frame {
+  aspect-ratio: 1;
+  background:
+    radial-gradient(circle at center, rgba(130, 91, 53, 0.25), transparent 55%),
+    #100d0b;
+  border: 1px solid rgba(171, 129, 68, 0.34);
+  overflow: hidden;
+  position: relative;
+}
+
+.drop-map-canvas {
+  position: absolute;
+}
+
+.drop-map-canvas > img {
+  object-fit: fill;
+}
+
+.drop-map-pin {
+  background: rgba(22, 14, 9, 0.88);
+  border: 2px solid #e0a041;
+  border-radius: 50%;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 0 0 2px rgba(35, 18, 8, 0.72);
+  filter:
+    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.95))
+    drop-shadow(0 0 6px rgba(236, 154, 47, 0.9));
+  height: 34px;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 34px;
+  z-index: 2;
+}
+
+.drop-map-pin img {
+  object-fit: contain;
+  padding: 3px;
+}
+
+.drop-map-tooltip > small {
+  color: var(--ink-faint);
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  padding: 8px 3px 1px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.drop-map-lightbox-backdrop {
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: rgba(3, 2, 1, 0.82);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 22px;
+  position: fixed;
+  z-index: 70;
+}
+
+.drop-map-lightbox {
+  animation: optimization-in 180ms ease-out both;
+  background:
+    linear-gradient(rgba(28, 20, 15, 0.96), rgba(15, 11, 9, 0.98)),
+    url("/textures/parchment-grain.svg?v=2");
+  border: 1px solid var(--line-bright);
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, 0.68),
+    inset 0 0 0 1px rgba(255, 220, 154, 0.05);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 44px);
+  padding: 14px;
+  width: min(760px, calc(100vw - 44px));
+}
+
+.drop-map-lightbox > header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 5px 13px 8px;
+}
+
+.drop-map-lightbox > header > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drop-map-lightbox > header span {
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.drop-map-lightbox > header h2 {
+  color: var(--gold-pale);
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 31px);
+  font-weight: 400;
+  margin: 0;
+}
+
+.drop-map-lightbox-map {
+  align-self: center;
+  max-height: calc(100vh - 190px);
+  width: min(100%, 66vh);
+}
+
+.drop-map-lightbox > footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 42px;
+  padding: 11px 4px 0;
+}
+
+.drop-map-lightbox > footer > div {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+
+.drop-map-lightbox > footer small {
+  color: var(--ink-faint);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+}
+
+.drop-map-lightbox > footer a {
+  align-items: center;
+  color: var(--gold-pale);
+  display: inline-flex;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 700;
+  gap: 5px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.drop-map-lightbox > footer a:hover,
+.drop-map-lightbox > footer a:focus-visible {
+  color: var(--gold-bright);
+}
+
+.drop-map-lightbox > footer a svg {
+  height: 11px;
+  stroke-width: 1.6;
+  width: 11px;
+}
+
+.drop-map-pages {
+  display: flex;
+  gap: 4px;
+}
+
+.drop-map-pages button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid rgba(171, 129, 68, 0.28);
+  color: var(--ink-faint);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  height: 22px;
+  justify-content: center;
+  padding: 0;
+  width: 22px;
+}
+
+.drop-map-pages button:hover,
+.drop-map-pages button:focus-visible,
+.drop-map-pages button.is-active {
+  border-color: var(--gold-bright);
+  color: var(--gold-bright);
+  outline: 0;
+}
+
+@keyframes drop-map-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .armor-drop-row > span:last-child {
@@ -3602,15 +3950,18 @@ a:focus-visible,
   }
 
   .loadout-optimization {
-    grid-column: 1 / -1;
+    grid-column: 1;
     grid-row: 4;
     inset: auto;
     position: relative;
-    transform: none;
+    width: 100%;
   }
 
   .optimization-trigger-gear {
-    width: 100%;
+    font-size: 10px;
+    letter-spacing: 0.035em;
+    padding-inline: 8px;
+    white-space: normal;
   }
 
   .equipment-slot {
@@ -3935,6 +4286,32 @@ a:focus-visible,
     bottom: 0;
     padding: 16px 0 4px;
     position: sticky;
+  }
+
+  .drop-map-lightbox-backdrop {
+    padding: 10px;
+  }
+
+  .drop-map-lightbox {
+    max-height: calc(100vh - 20px);
+    padding: 10px;
+    width: calc(100vw - 20px);
+  }
+
+  .drop-map-lightbox-map {
+    max-height: calc(100vh - 178px);
+    width: min(100%, 62vh);
+  }
+
+  .drop-map-lightbox > footer {
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .drop-map-lightbox > footer > div {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 3px;
   }
 }
 

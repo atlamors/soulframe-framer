@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import Image from "next/image";
+import { createPortal } from "react-dom";
 import {
   ArrowDownAZ,
   ArrowRight,
@@ -27,6 +28,12 @@ import {
 import { armorById, armorCatalogue } from "@/src/data/catalogue";
 import { armorDropById } from "@/src/data/armor-drops";
 import { armorImageById } from "@/src/data/armor-images";
+import {
+  dropLocationMapAsset,
+  dropLocationMapBySourceUrl,
+  dropLocationMapCuratedIcons,
+  type DropLocationMap,
+} from "@/src/data/drop-location-maps";
 import {
   talismanById,
   talismanCatalogue,
@@ -1583,7 +1590,14 @@ function WeaponPicker({
   const [rarityFilter, setRarityFilter] = useState("all");
   const [originFilter, setOriginFilter] = useState("all");
   const [sortKey, setSortKey] = useState<
-    "name" | "primary" | "secondary" | "stagger" | "art" | "rarity" | "origin"
+    | "name"
+    | "primary"
+    | "secondary"
+    | "stagger"
+    | "smite"
+    | "art"
+    | "rarity"
+    | "origin"
   >("name");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
   const compatibleItems = useMemo(
@@ -1658,6 +1672,10 @@ function WeaponPicker({
           rightDamage.secondary.total ?? -1,
         ],
         stagger: [leftDamage.stagger ?? -1, rightDamage.stagger ?? -1],
+        smite: [
+          left.stats.smite.percent ?? -1,
+          right.stats.smite.percent ?? -1,
+        ],
         art: [left.combatArt, right.combatArt],
         rarity: [rarityRank[left.rarity] ?? 0, rarityRank[right.rarity] ?? 0],
         origin: [left.origin, right.origin],
@@ -1699,6 +1717,10 @@ function WeaponPicker({
         return damage.secondary.total ?? "—";
       case "stagger":
         return damage.stagger ?? "—";
+      case "smite":
+        return item.stats.smite.percent === null
+          ? "—"
+          : `${item.stats.smite.percent}%`;
       case "art":
         return item.combatArt;
       case "rarity":
@@ -1890,6 +1912,7 @@ function WeaponPicker({
                   <option value="primary">Current light damage</option>
                   <option value="secondary">Current heavy damage</option>
                   <option value="stagger">Stagger</option>
+                  <option value="smite">Smite chance</option>
                   <option value="art">Combat Art</option>
                   <option value="rarity">Rarity</option>
                   <option value="origin">Origin</option>
@@ -2180,15 +2203,10 @@ function ArmorDropTable({ item }: { item: ArmorItem }) {
               role="row"
               key={`${source.tableId}-${source.sourceName}-${source.level}`}
             >
-              <a
-                href={source.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
-                role="cell"
-              >
-                {source.sourceName}
-                <ExternalLink aria-hidden="true" />
-              </a>
+              <DropLocationLink
+                sourceName={source.sourceName}
+                sourceUrl={source.sourceUrl}
+              />
               <span role="cell">{source.category || "Source"}</span>
               <span role="cell">
                 {source.fragment ? "Fragment" : "Item"}
@@ -2224,9 +2242,9 @@ function WeaponDropTable({ item }: { item: Weapon }) {
           aria-label="Weapon drop locations"
         >
           <div className="armor-drop-row armor-drop-head" role="row">
-            <span role="columnheader">Location / Source</span>
+            <span role="columnheader">Source</span>
             <span role="columnheader">Type</span>
-            <span role="columnheader">Drop</span>
+            <span role="columnheader">Location</span>
           </div>
           {sources.map((source) => (
             <div
@@ -2234,22 +2252,18 @@ function WeaponDropTable({ item }: { item: Weapon }) {
               role="row"
               key={`${source.tableId}-${source.sourceName}-${source.level}`}
             >
-              <a
-                href={source.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
-                role="cell"
-              >
-                {source.sourceName}
-                <ExternalLink aria-hidden="true" />
-              </a>
-              <span role="cell">{source.category || "Source"}</span>
-              <span role="cell">
-                {source.fragment ? "Fragment" : "Weapon"}
-                {source.quantity !== "1" ? ` ×${source.quantity}` : ""}
-                {source.level ? ` · Lv ${source.level}` : ""}
-                {source.note ? <small>{source.note}</small> : null}
+              <span className="drop-source-cell" role="cell">
+                <a href={source.sourceUrl} target="_blank" rel="noreferrer">
+                  {source.sourceName}
+                  <ExternalLink aria-hidden="true" />
+                </a>
               </span>
+              <span role="cell">{source.category || "Source"}</span>
+              <DropLocationLink
+                sourceName={source.sourceName}
+                sourceUrl={source.sourceUrl}
+                display="location"
+              />
             </div>
           ))}
         </div>
@@ -2259,6 +2273,301 @@ function WeaponDropTable({ item }: { item: Weapon }) {
         </p>
       )}
     </section>
+  );
+}
+
+function DropLocationLink({
+  sourceName,
+  sourceUrl,
+  display = "source",
+}: {
+  sourceName: string;
+  sourceUrl: string;
+  display?: "source" | "location";
+}) {
+  const mapLocations =
+    dropLocationMapBySourceUrl
+      .get(sourceUrl)
+      ?.locations.filter(
+        (location) =>
+          location.xPercent !== null && location.yPercent !== null,
+      ) ?? [];
+  const [selectedLocation, setSelectedLocation] = useState(0);
+  const [hoverPoint, setHoverPoint] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const location = mapLocations[selectedLocation] ?? mapLocations[0];
+  const tooltipPosition =
+    hoverPoint && typeof window !== "undefined"
+      ? {
+          left: Math.max(
+            12,
+            Math.min(hoverPoint.x + 16, window.innerWidth - 332),
+          ),
+          top:
+            hoverPoint.y + 16 + 354 > window.innerHeight
+              ? Math.max(12, hoverPoint.y - 366)
+              : hoverPoint.y + 16,
+        }
+      : null;
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") setLightboxOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [lightboxOpen]);
+
+  const updateHoverPoint = (event: ReactPointerEvent<HTMLElement>) => {
+    if (event.pointerType !== "mouse" || !mapLocations.length) return;
+    setHoverPoint({ x: event.clientX, y: event.clientY });
+  };
+  const locationLabel = location?.coordinateName || location?.markerName;
+
+  return (
+    <span
+      className={`drop-source-cell ${
+        display === "location" ? "drop-location-cell" : ""
+      }`}
+      role="cell"
+      onPointerEnter={updateHoverPoint}
+      onPointerMove={updateHoverPoint}
+      onPointerLeave={() => setHoverPoint(null)}
+    >
+      {display === "source" ? (
+        <a href={sourceUrl} target="_blank" rel="noreferrer">
+          {sourceName}
+          <ExternalLink aria-hidden="true" />
+        </a>
+      ) : null}
+      {location ? (
+        <>
+          <button
+            type="button"
+            className={
+              display === "location"
+                ? "drop-location-trigger"
+                : "drop-map-trigger"
+            }
+            aria-label={`Open ${sourceName} location map`}
+            aria-expanded={lightboxOpen}
+            onClick={() => {
+              setHoverPoint(null);
+              setLightboxOpen(true);
+            }}
+            onFocus={(event) => {
+              const rect = event.currentTarget.getBoundingClientRect();
+              setHoverPoint({ x: rect.right, y: rect.bottom });
+            }}
+            onBlur={() => setHoverPoint(null)}
+          >
+            {display === "location" ? (
+              <>
+                <span className="drop-location-marker" aria-hidden="true">
+                  <DropMarkerIcon location={location} sourceName={sourceName} />
+                </span>
+                <span>
+                  {locationLabel}
+                  {mapLocations.length > 1
+                    ? ` +${mapLocations.length - 1}`
+                    : ""}
+                </span>
+              </>
+            ) : (
+              <DropMarkerIcon location={location} sourceName={sourceName} />
+            )}
+          </button>
+          {tooltipPosition && hoverPoint && !lightboxOpen
+            ? createPortal(
+                <aside
+                  className="drop-map-tooltip"
+                  role="tooltip"
+                  style={tooltipPosition}
+                >
+                  <header>
+                    <span>{location.markerName || "Location Map"}</span>
+                    <strong>{location.coordinateName || sourceName}</strong>
+                  </header>
+                  <LocalMapView
+                    location={location}
+                    sourceName={sourceName}
+                    zoom={4.5}
+                    className="drop-map-tooltip-map"
+                  />
+                  <small>Click the marker to expand</small>
+                </aside>,
+                document.body,
+              )
+            : null}
+          {lightboxOpen
+            ? createPortal(
+                <div
+                  className="drop-map-lightbox-backdrop"
+                  role="presentation"
+                  onMouseDown={() => setLightboxOpen(false)}
+                >
+                  <section
+                    className="drop-map-lightbox"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="drop-map-lightbox-title"
+                    onMouseDown={(event) => event.stopPropagation()}
+                  >
+                    <header>
+                      <div>
+                        <span>{location.markerName || "Location Map"}</span>
+                        <h2 id="drop-map-lightbox-title">
+                          {location.coordinateName || sourceName}
+                        </h2>
+                      </div>
+                      <button
+                        type="button"
+                        className="icon-button"
+                        aria-label="Close location map"
+                        onClick={() => setLightboxOpen(false)}
+                      >
+                        ×
+                      </button>
+                    </header>
+                    <LocalMapView
+                      location={location}
+                      sourceName={sourceName}
+                      zoom={2.4}
+                      className="drop-map-lightbox-map"
+                    />
+                    <footer>
+                      {mapLocations.length > 1 ? (
+                        <span
+                          className="drop-map-pages"
+                          aria-label="Map locations"
+                        >
+                          {mapLocations.map((mapLocation, index) => (
+                            <button
+                              type="button"
+                              className={
+                                index === selectedLocation ? "is-active" : ""
+                              }
+                              key={mapLocation.mapUrl}
+                              aria-label={`Show location ${index + 1}`}
+                              onClick={() => setSelectedLocation(index)}
+                            >
+                              {index + 1}
+                            </button>
+                          ))}
+                        </span>
+                      ) : (
+                        <span />
+                      )}
+                      <div>
+                        <small>
+                          {Math.round(location.x ?? 0)},{" "}
+                          {Math.round(location.y ?? 0)}
+                        </small>
+                        <a
+                          href={location.mapUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          View source map
+                          <ExternalLink aria-hidden="true" />
+                        </a>
+                      </div>
+                    </footer>
+                  </section>
+                </div>,
+                document.body,
+              )
+            : null}
+        </>
+      ) : display === "location" ? (
+        <span className="drop-location-unmapped">Not mapped</span>
+      ) : null}
+    </span>
+  );
+}
+
+function getDropMarkerIcon(
+  location: DropLocationMap,
+  sourceName: string,
+) {
+  if (sourceName.toLowerCase().includes("cogah")) {
+    return dropLocationMapCuratedIcons.cogah;
+  }
+  return location.markerIconUrl || dropLocationMapCuratedIcons.agari;
+}
+
+function DropMarkerIcon({
+  location,
+  sourceName,
+}: {
+  location: DropLocationMap;
+  sourceName: string;
+}) {
+  return (
+    <Image
+      src={getDropMarkerIcon(location, sourceName)}
+      alt=""
+      fill
+      sizes="32px"
+    />
+  );
+}
+
+function LocalMapView({
+  location,
+  sourceName,
+  zoom,
+  className,
+}: {
+  location: DropLocationMap;
+  sourceName: string;
+  zoom: number;
+  className: string;
+}) {
+  const x = (location.xPercent ?? 50) / 100;
+  const y = (location.yPercent ?? 50) / 100;
+  const canvasSize = zoom * 100;
+  const left = Math.min(0, Math.max(100 - canvasSize, 50 - x * canvasSize));
+  const top = Math.min(0, Math.max(100 - canvasSize, 50 - y * canvasSize));
+
+  return (
+    <div className={`drop-map-frame ${className}`}>
+      <div
+        className="drop-map-canvas"
+        style={{
+          height: `${canvasSize}%`,
+          left: `${left}%`,
+          top: `${top}%`,
+          width: `${canvasSize}%`,
+        }}
+      >
+        <Image
+          src={dropLocationMapAsset}
+          alt=""
+          fill
+          sizes={className.includes("lightbox") ? "900px" : "480px"}
+        />
+        <span
+          className="drop-map-pin"
+          style={{
+            left: `${location.xPercent}%`,
+            top: `${location.yPercent}%`,
+          }}
+          aria-label={location.coordinateName || sourceName}
+        >
+          <DropMarkerIcon location={location} sourceName={sourceName} />
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -3078,7 +3387,9 @@ function OptimizationLightbox({
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const isAffinity = result.kind === "affinity";
-  const title = isAffinity ? "Optimize for Gear" : "Optimize for Affinity";
+  const title = isAffinity
+    ? "Optimize for Gear"
+    : "Optimize Armor for Affinity";
   const currentMetRequirements = result.currentCalculation.items.filter(
     (item) => item.requirementMet,
   ).length;
@@ -3597,7 +3908,7 @@ export function SoulframeBuilder() {
               onClick={() => setOptimizationMode("armor")}
             >
               <Sparkles aria-hidden="true" />
-              Optimize for Affinity
+              Optimize Armor for Affinity
             </button>
           </div>
           {ARMOR_SLOTS.map((slot) => {
