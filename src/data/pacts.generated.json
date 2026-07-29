@@ -1,0 +1,2236 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-28T18:15:41.354Z",
+  "source": {
+    "publisher": "Avakot",
+    "moduleUrl": "https://wiki.avakot.org/Module:Data/Pacts",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 47788,
+    "revisionTimestamp": "2026-07-17T11:38:35Z"
+  },
+  "items": [
+    {
+      "id": "pact-bromius",
+      "name": "Bromius",
+      "basePact": "Bromius",
+      "variant": "normal",
+      "description": "When giants fall, when fail our brutes, 'Tis strength to turn to severed roots. And bear to look within for truce. Bear the burly pact of the Arbearer, Bromius. Be ward of the Wevetwood, regent of the Neath'uns' roots. Mighty, you must be. Of heft and heart alike.",
+      "iconFile": "BromiusPact.png",
+      "abilityIds": [
+        "pact-ability-rump-thump",
+        "pact-ability-wevetroot",
+        "pact-ability-song-of-growth",
+        "pact-ability-barkbare",
+        "pact-ability-canopys-blessing"
+      ],
+      "virtueOrder": [
+        "spirit",
+        "grace",
+        "courage"
+      ],
+      "introduced": "P11",
+      "pageUrl": "https://wiki.avakot.org/Bromius",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/13/BromiusPact.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/13/BromiusPact.png/192px-BromiusPact.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BromiusPact.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 92240,
+        "sha1": "d745adcbd68aca0e05416193f657a9cb67d5fb45"
+      }
+    },
+    {
+      "id": "pact-duelo",
+      "name": "Duelo",
+      "basePact": "Duelo",
+      "variant": "normal",
+      "description": "A swordstress strums 'pon splintered grave. By Mestra's Helm, her curse relayed. A soul, a self, learned by the blade. Don the pact of Mestra Carmo. Break Duelo's pledge, and lead mutiny 'cross Silvern Sea. By dint of blade may you carve out a life of your own.",
+      "iconFile": "FencerPact.png",
+      "abilityIds": [
+        "pact-ability-flintlock",
+        "pact-ability-bravada",
+        "pact-ability-duo-duelo",
+        "pact-ability-chamariz",
+        "pact-ability-olho-por-olho"
+      ],
+      "virtueOrder": [],
+      "introduced": "P14",
+      "pageUrl": "https://wiki.avakot.org/Duelo",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/03/FencerPact.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/03/FencerPact.png/192px-FencerPact.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FencerPact.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 129620,
+        "sha1": "ec45b282f973a5131f182d09a2ad8b0b00aa53a5"
+      }
+    },
+    {
+      "id": "pact-garren-rood",
+      "name": "Garren Rood",
+      "basePact": "Garren Rood",
+      "variant": "normal",
+      "description": "Royal tines thus graced in blue, Skyward bent to Mora true. Take ye the pact of Garren Rood, the great spirit stag of the Andurin Glades. Bear blessing and burden of the Dendrit herds through bounty of seedtime and hollow of frostfall, both.",
+      "iconFile": "GarrenRood.png",
+      "abilityIds": [
+        "pact-ability-torment",
+        "pact-ability-behest",
+        "pact-ability-stampede",
+        "pact-ability-healheart",
+        "pact-ability-righteous"
+      ],
+      "virtueOrder": [
+        "spirit",
+        "grace",
+        "courage"
+      ],
+      "introduced": "",
+      "pageUrl": "https://wiki.avakot.org/Garren_Rood",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/4/4e/GarrenRood.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/4e/GarrenRood.png/192px-GarrenRood.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:GarrenRood.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 89889,
+        "sha1": "3de15a37fd1919cd49dd10c22ffb3020a12ee59b"
+      }
+    },
+    {
+      "id": "pact-moras-hand",
+      "name": "Mora's Hand",
+      "basePact": "Mora's Hand",
+      "variant": "normal",
+      "description": "Her ever-flame will she impart, To braving souls with burning hearts. Not life nor death will do you part. Take Mora's Hand, Envoy. Make a pact with the red sun. An honour once held only by the mighty Kings and Queens of Midrath is yours. Do not sully her flame.",
+      "iconFile": "Pacts-FennJotar.png",
+      "abilityIds": [
+        "pact-ability-ignus-wroth",
+        "pact-ability-ember",
+        "pact-ability-inferno",
+        "pact-ability-hungry-flame",
+        "pact-ability-smolder"
+      ],
+      "virtueOrder": [
+        "courage",
+        "spirit",
+        "grace"
+      ],
+      "introduced": "P9",
+      "pageUrl": "https://wiki.avakot.org/Mora's_Hand",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ef/Pacts-FennJotar.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ef/Pacts-FennJotar.png/192px-Pacts-FennJotar.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Pacts-FennJotar.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 110731,
+        "sha1": "596b80e70277789649577d3a3e215bcc589ca816"
+      }
+    },
+    {
+      "id": "pact-ode-tempest",
+      "name": "Ode Tempest",
+      "basePact": "Ode Tempest",
+      "variant": "normal",
+      "description": "Lightning cracks where thunder bodes. Voltaics strike against their own. Rebind your arm to Tempest Ode. Harness the power of Ode'n technology. Though freed you are, your Tempest training may prove useful still. May they rue the day they stole your frame.",
+      "iconFile": "OdeTempest.png",
+      "abilityIds": [
+        "pact-ability-seismor",
+        "pact-ability-astra-sphere",
+        "pact-ability-atmos-sphere",
+        "pact-ability-lightning-strike",
+        "pact-ability-gravitate"
+      ],
+      "virtueOrder": [
+        "courage",
+        "spirit",
+        "grace"
+      ],
+      "introduced": "",
+      "pageUrl": "https://wiki.avakot.org/Ode_Tempest",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/d/df/OdeTempest.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/df/OdeTempest.png/192px-OdeTempest.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:OdeTempest.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 105032,
+        "sha1": "fa44a2981c9019fc9fb8c6349128c8a9c245712f"
+      }
+    },
+    {
+      "id": "pact-orengall",
+      "name": "Orengall",
+      "basePact": "Orengall",
+      "variant": "normal",
+      "description": "Sleek as silvern, sharp as bone. Hear ye howls and know ye're home. For by her pact, no wolf be lone. Be one with the Pack of the Omen shewolf Orengall. Prowl the Furthing packlands by light of Iridis, a silent assassin of fang and claw. May your bite be fierce and your love be fiercer.",
+      "iconFile": "OrengallPact.png",
+      "abilityIds": [
+        "pact-ability-werewalker",
+        "pact-ability-packhunter",
+        "pact-ability-howl",
+        "pact-ability-soulbound",
+        "pact-ability-feral"
+      ],
+      "virtueOrder": [
+        "spirit",
+        "grace",
+        "courage"
+      ],
+      "introduced": "P8",
+      "pageUrl": "https://wiki.avakot.org/Orengall",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f4/OrengallPact.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f4/OrengallPact.png/192px-OrengallPact.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:OrengallPact.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100413,
+        "sha1": "643b7678ee49a1868e13db43ad13c5faf022ff2d"
+      }
+    },
+    {
+      "id": "pact-oscelda",
+      "name": "Oscelda",
+      "basePact": "Oscelda",
+      "variant": "normal",
+      "description": "Roused by rain, was she, a new witch abloom in the garden of Eldveil. Share the pact of the Fey healer, Oscelda. Fend the thriving, tend the ailing, and mend the damned. Have Spirit, Envoy. For all of us living share the same breath. Forget it is so, and choke.",
+      "iconFile": "OsceldaP12.png",
+      "abilityIds": [
+        "pact-ability-bestone",
+        "pact-ability-elderbloom",
+        "pact-ability-phantom-flock",
+        "pact-ability-tendril",
+        "pact-ability-vernal-pool"
+      ],
+      "virtueOrder": [
+        "grace",
+        "spirit",
+        "courage"
+      ],
+      "introduced": "P9",
+      "pageUrl": "https://wiki.avakot.org/Oscelda",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/9/90/OsceldaP12.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/90/OsceldaP12.png/192px-OsceldaP12.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:OsceldaP12.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 50379,
+        "sha1": "2b8f8a818aac5380cf08a0190edf4f9dd2bb0ca5"
+      }
+    },
+    {
+      "id": "pact-sirin",
+      "name": "Sirin",
+      "basePact": "Sirin",
+      "variant": "normal",
+      "description": "Borne of a moonlight pond, was he, with an arrow ready-nocked. Take the pact of the Fey assassin, Sirin. Learn the trickster's glamour, wear the ranger's shroud. Have Grace, Envoy. For a well-aimed bolt may end a world. It has done so once before.",
+      "iconFile": "SirinP12.png",
+      "abilityIds": [
+        "pact-ability-picktrix-powder",
+        "pact-ability-trick-of-the-light",
+        "pact-ability-glamour",
+        "pact-ability-shrouded",
+        "pact-ability-pickpocket"
+      ],
+      "virtueOrder": [
+        "grace",
+        "spirit",
+        "courage"
+      ],
+      "introduced": "P9",
+      "pageUrl": "https://wiki.avakot.org/Sirin",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/8/85/SirinP12.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/85/SirinP12.png/192px-SirinP12.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SirinP12.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 33289,
+        "sha1": "a0a6d3e65a418d3e1daa71ab0bd422d71a8a5e0c"
+      }
+    },
+    {
+      "id": "pact-tethren",
+      "name": "Tethren",
+      "basePact": "Tethren",
+      "variant": "normal",
+      "description": "Chief of the Solist Warriors, was she, wreathed in flame and fury. Claim the pact of the Fey champion, Tethren. Raise your sword to sun, howl the Felling song. Have Courage, Envoy. For a warrior's heart is weapon and relief. And a human heart can crack.",
+      "iconFile": "TethrenP12.png",
+      "abilityIds": [
+        "pact-ability-fellust",
+        "pact-ability-call-of-the-ancients",
+        "pact-ability-clash",
+        "pact-ability-conquerer",
+        "pact-ability-last-stand"
+      ],
+      "virtueOrder": [
+        "grace",
+        "spirit",
+        "courage"
+      ],
+      "introduced": "P9",
+      "pageUrl": "https://wiki.avakot.org/Tethren",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/8/87/TethrenP12.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/87/TethrenP12.png/192px-TethrenP12.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:TethrenP12.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 57464,
+        "sha1": "ba8fd65e09921c72cc47edeb8270b875f54d768d"
+      }
+    },
+    {
+      "id": "pact-wyld-oscelda",
+      "name": "Wyld Oscelda",
+      "basePact": "Oscelda",
+      "variant": "wyld",
+      "description": "Wyld soul from dolmen grave. Oscelda bless this Envoy frame. By finger snapped, in magick's name. Share the pact of the Wyld witch, Oscelda. Fend the thriving, tend the ailing, and mend the damned. Have Spirit, Envoy. For all of us living share the same breath. Forget it is so, and choke.",
+      "iconFile": "WyldOscelda.png",
+      "abilityIds": [
+        "pact-ability-bestone",
+        "pact-ability-elderbloom",
+        "pact-ability-phantom-flock",
+        "pact-ability-tendril",
+        "pact-ability-vernal-pool"
+      ],
+      "virtueOrder": [
+        "grace",
+        "spirit",
+        "courage"
+      ],
+      "introduced": "P12",
+      "pageUrl": "https://wiki.avakot.org/Wyld_Oscelda",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ed/WyldOscelda.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ed/WyldOscelda.png/192px-WyldOscelda.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:WyldOscelda.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 52829,
+        "sha1": "f6259d5321972ac8054654d3a3821df998bc25ad"
+      }
+    },
+    {
+      "id": "pact-wyld-sirin",
+      "name": "Wyld Sirin",
+      "basePact": "Sirin",
+      "variant": "wyld",
+      "description": "Wyld soul from dolmen grave. Sirin grace this Envoy frame. By plucked lash, by archer's aim. Take the pact of the Wyld assassin, Sirin. Learn the trickster's glamour, wear the ranger's shroud. Have Grace, Envoy. For a well-aimed bolt may end a world. It has done so once before.",
+      "iconFile": "WyldSirin.png",
+      "abilityIds": [
+        "pact-ability-picktrix-powder",
+        "pact-ability-trick-of-the-light",
+        "pact-ability-glamour",
+        "pact-ability-shrouded",
+        "pact-ability-pickpocket"
+      ],
+      "virtueOrder": [
+        "grace",
+        "spirit",
+        "courage"
+      ],
+      "introduced": "P12",
+      "pageUrl": "https://wiki.avakot.org/Wyld_Sirin",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/c/c5/WyldSirin.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/c5/WyldSirin.png/192px-WyldSirin.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:WyldSirin.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 58899,
+        "sha1": "2254906b7855c32bea7a7b5ab757410c1532fc08"
+      }
+    },
+    {
+      "id": "pact-wyld-tethren",
+      "name": "Wyld Tethren",
+      "basePact": "Tethren",
+      "variant": "wyld",
+      "description": "Wyld soul from dolmen grave, Tethren brave this Envoy frame. By marrowed femur wreathed in flame. Claim the pact of the Wyld warrior, Tethren. Raise your sword to sun, howl the Felling song. Have Courage, Envoy. For a warrior's heart is weapon and relief. And a human heart can crack.",
+      "iconFile": "WyldTethren.png",
+      "abilityIds": [
+        "pact-ability-fellust",
+        "pact-ability-call-of-the-ancients",
+        "pact-ability-clash",
+        "pact-ability-conquerer",
+        "pact-ability-last-stand"
+      ],
+      "virtueOrder": [
+        "grace",
+        "spirit",
+        "courage"
+      ],
+      "introduced": "P12",
+      "pageUrl": "https://wiki.avakot.org/Wyld_Tethren",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/70/WyldTethren.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/70/WyldTethren.png/192px-WyldTethren.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:WyldTethren.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 57562,
+        "sha1": "69edfce9d7937eb87ab750eaca75f97149d627b5"
+      }
+    }
+  ],
+  "abilities": [
+    {
+      "id": "pact-ability-astra-sphere",
+      "name": "Astra Sphere",
+      "pact": "Ode Tempest",
+      "assignedVirtue": "spirit",
+      "description": "A storm in a sphere. Enemies in the storm take extra Voltaic damage. Amped by Atmos Sphere.",
+      "effect": "Creates a zone that renders enemies more vulnerable to stagger damage.",
+      "iconFile": "ShockBallNoBacker.png",
+      "imageFile": "ShockBall.png",
+      "unlockLevel": 5,
+      "cooldown": 44,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE",
+        "AoE Debuff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/8/87/ShockBallNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/87/ShockBallNoBacker.png/192px-ShockBallNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:ShockBallNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 39370,
+        "sha1": "8274f48a8fbffec4c8fd7b6116eff0c29358b68f"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/58/ShockBall.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/58/ShockBall.png/192px-ShockBall.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:ShockBall.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 61423,
+        "sha1": "6712aad9b232f1b753c4d44006aaac738f5b2445"
+      }
+    },
+    {
+      "id": "pact-ability-atmos-sphere",
+      "name": "Atmos Sphere",
+      "pact": "Ode Tempest",
+      "assignedVirtue": "grace",
+      "description": "A covert device of Ode'n armour. Orbited by Atmos, you are shielded from strikes. Amped by Astra Sphere.",
+      "effect": "Summons an orbiting Ode'n sphere, which grants protection to the Envoy and nearby allies.",
+      "iconFile": "PersonalShieldNoBacker.png",
+      "imageFile": "PersonalShield.png",
+      "unlockLevel": 10,
+      "cooldown": 45,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Buff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/b/b9/PersonalShieldNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/b9/PersonalShieldNoBacker.png/192px-PersonalShieldNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PersonalShieldNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 11907,
+        "sha1": "06b03602ccc554979e23dde5df2efc2411f88bc5"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/9/9a/PersonalShield.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/9a/PersonalShield.png/192px-PersonalShield.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PersonalShield.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 60840,
+        "sha1": "191a27d3d714dd97e43f6d6fa4d67c8e4f6fe7fe"
+      }
+    },
+    {
+      "id": "pact-ability-barkbare",
+      "name": "Barkbare",
+      "pact": "Bromius",
+      "assignedVirtue": null,
+      "description": "Like granting tree bark. Chance to steal armour strength from target on every attack.",
+      "effect": "Chance to steal Physical and Magick defense from Foes on strike, and grant it to oneself.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-behest",
+      "name": "Behest",
+      "pact": "Garren Rood",
+      "assignedVirtue": "spirit",
+      "description": "Make them kneel. Enemies take damage at your command. Rend them weakened with lowered defenses.",
+      "effect": "Incapacitates nearby enemies, rendering them vulnerable to damage.",
+      "iconFile": "BlindingLightNoBacker.png",
+      "imageFile": "BlindingLight.png",
+      "unlockLevel": 5,
+      "cooldown": 52,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Debuff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/6/69/BlindingLightNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/69/BlindingLightNoBacker.png/192px-BlindingLightNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BlindingLightNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 45706,
+        "sha1": "0db007b4a9c868832d3479e4a3711702546ad043"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/b/b8/BlindingLight.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/b8/BlindingLight.png/192px-BlindingLight.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BlindingLight.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 62794,
+        "sha1": "697d0b22acfa6b292484b2788d4bd635a6771826"
+      }
+    },
+    {
+      "id": "pact-ability-bestone",
+      "name": "Bestone",
+      "pact": "Oscelda",
+      "assignedVirtue": "courage",
+      "description": "Cement your Enemies to stone... for time. Apt to shatter under strikes or be free all the sooner.",
+      "effect": "Petrifies enemies near point of impact. Attack petrified enemies to break CC early and deal extra damage.",
+      "iconFile": "TurnToStoneNoBacker.png",
+      "imageFile": "TurnToStone.png",
+      "unlockLevel": 10,
+      "cooldown": 26,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Projectile",
+        "AoE Debuff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/b/b6/TurnToStoneNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/b6/TurnToStoneNoBacker.png/192px-TurnToStoneNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:TurnToStoneNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 50984,
+        "sha1": "8e4c4424fa928fdb6ea7a9ceda8b1c22b04e67e4"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/79/TurnToStone.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/79/TurnToStone.png/192px-TurnToStone.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:TurnToStone.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 64447,
+        "sha1": "afceb4057b38c177bafb99d757f1c8413a096542"
+      }
+    },
+    {
+      "id": "pact-ability-bravada",
+      "name": "Bravada",
+      "pact": "Duelo",
+      "assignedVirtue": "spirit",
+      "description": "Invoke The Duelo. Boost allies' highest virtues while slowing enemies in range.",
+      "effect": "Boosts the highest Virtue stat of each Party member within range, and inflicts a slow effect on nearby enemies.",
+      "iconFile": "BravadaNoBacker.png",
+      "imageFile": "Bravada.png",
+      "unlockLevel": null,
+      "cooldown": 58,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Buff",
+        "AoE Debuff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/c/ca/BravadaNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/ca/BravadaNoBacker.png/192px-BravadaNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BravadaNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 48034,
+        "sha1": "0d6e7e8b18de2f787adee01238c2d72076c1aeb5"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/5b/Bravada.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/5b/Bravada.png/192px-Bravada.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Bravada.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 61697,
+        "sha1": "81ef076271e9371b0a28bd2a7a5fdc3b2e608513"
+      }
+    },
+    {
+      "id": "pact-ability-call-of-the-ancients",
+      "name": "Call of the Ancients",
+      "pact": "Tethren",
+      "assignedVirtue": "spirit",
+      "description": "Sing the auld warsong. Attract attention from nearby enemies. Increased damage. Increased defense.",
+      "effect": "Aggroes nearby enemies, and buffs the Envoy's Weapon Damage and Damage Reduction.",
+      "iconFile": "RageNoBacker.png",
+      "imageFile": "Rage.png",
+      "unlockLevel": 5,
+      "cooldown": 42,
+      "cooldownType": "When Over",
+      "types": [
+        "Self Buff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/b/ba/RageNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/ba/RageNoBacker.png/192px-RageNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RageNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 38579,
+        "sha1": "dfefb7ac7f54f7fe10c74ce7af5a25b42b9349f3"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/2/27/Rage.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/27/Rage.png/192px-Rage.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Rage.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 63627,
+        "sha1": "46f1b1d5d78596ab389d1402d4ce64c5e852de1a"
+      }
+    },
+    {
+      "id": "pact-ability-chamariz",
+      "name": "Chamariz",
+      "pact": "Duelo",
+      "assignedVirtue": null,
+      "description": "A free spirit's allure. A perfect dodge spawns a decoy that will keep enemy attention for a short time.",
+      "effect": "Dodges following a Perfect Dodge will leave behind clones of the Envoy, attracting enemy aggro for a number of seconds.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-canopys-blessing",
+      "name": "Canopy's Blessing",
+      "pact": "Bromius",
+      "assignedVirtue": null,
+      "description": "The trees sing in your favour. Small amount of damage blocked by armour is dealt to attacker.",
+      "effect": "Reflects a small amount of damage blocked by armour back to the enemy.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-clash",
+      "name": "Clash",
+      "pact": "Tethren",
+      "assignedVirtue": "grace",
+      "description": "Sound your ensign. Stagger and Stun Enemies within your shockwave. Increased defense against Stagger.",
+      "effect": "Creates a shockwave that deals Stagger to nearby enemies, and increases the Envoy's Stability.",
+      "iconFile": "SteadyFeetNoBacker.png",
+      "imageFile": "SteadyFeet.png",
+      "unlockLevel": 10,
+      "cooldown": 28,
+      "cooldownType": "When Over",
+      "types": [
+        "Self Buff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e2/SteadyFeetNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e2/SteadyFeetNoBacker.png/192px-SteadyFeetNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SteadyFeetNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 48642,
+        "sha1": "37ddb2da1c470eec8fcf650af04624e1f9089ddf"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/5e/SteadyFeet.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/5e/SteadyFeet.png/192px-SteadyFeet.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SteadyFeet.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 65665,
+        "sha1": "68311866e4c1cf155f0272ba04b29aae88c5e4e0"
+      }
+    },
+    {
+      "id": "pact-ability-conquerer",
+      "name": "Conquerer",
+      "pact": "Tethren",
+      "assignedVirtue": null,
+      "description": "Each battle, a drop in the well of war. Absorb a small amount of Life from Enemies you fell.",
+      "effect": "Restores a small amount of Life with each foe slain.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-duo-duelo",
+      "name": "Duo Duelo",
+      "pact": "Duelo",
+      "assignedVirtue": "grace",
+      "description": "Her past, His future, as one. Spawn a ghostly clone that matches every attack you make.",
+      "effect": "All attacks made for the duration of Duo Duelo will strike twice, though at a slightly lower damage than the original attack.",
+      "iconFile": "DuoDueloNoBacker.png",
+      "imageFile": "DuoDuelo.png",
+      "unlockLevel": null,
+      "cooldown": 39,
+      "cooldownType": "When Over",
+      "types": [
+        "Self Buff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/73/DuoDueloNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/73/DuoDueloNoBacker.png/192px-DuoDueloNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:DuoDueloNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 43697,
+        "sha1": "a2f0f12d1a997da6490684492bf600e2f40a1daf"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e8/DuoDuelo.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e8/DuoDuelo.png/192px-DuoDuelo.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:DuoDuelo.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 65410,
+        "sha1": "2cf920b6ef4b9a6a41df6d2d8294dce4bfe3b4ea"
+      }
+    },
+    {
+      "id": "pact-ability-elderbloom",
+      "name": "Elderbloom",
+      "pact": "Oscelda",
+      "assignedVirtue": "spirit",
+      "description": "Reap the long-sowed seed of the Elderbloom. Restore Life to all Envoys within the puff of pollen.",
+      "effect": "Places a plant on the ground that heals all Envoys within range every half second.",
+      "iconFile": "HealingWardNoBacker.png",
+      "imageFile": "HealingWard.png",
+      "unlockLevel": 0,
+      "cooldown": 28,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Heal"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/13/HealingWardNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/13/HealingWardNoBacker.png/192px-HealingWardNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:HealingWardNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 41250,
+        "sha1": "e3653760c58c9e494da7f5fb51a1de8899a0ed2f"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/77/HealingWard.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/77/HealingWard.png/192px-HealingWard.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:HealingWard.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 66949,
+        "sha1": "370246857c6dcc3cf18716a20ed35023d7774c65"
+      }
+    },
+    {
+      "id": "pact-ability-ember",
+      "name": "Ember",
+      "pact": "Mora's Hand",
+      "assignedVirtue": "spirit",
+      "description": "Do not stoke the quiet ember. Enemies that dare attack trigger a blast of defensive flame.",
+      "effect": "Getting hit triggers an Area of Effect (AoE) attack around the Envoy.",
+      "iconFile": "BlazingArmorNoBacker.png",
+      "imageFile": "BlazingArmor.png",
+      "unlockLevel": 5,
+      "cooldown": 60,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE",
+        "Self Buff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/2/26/BlazingArmorNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/26/BlazingArmorNoBacker.png/192px-BlazingArmorNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BlazingArmorNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 35685,
+        "sha1": "92babb463a4d9be48ac4a7c87e2626e2f661f14c"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/8/8f/BlazingArmor.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/8f/BlazingArmor.png/192px-BlazingArmor.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BlazingArmor.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 65026,
+        "sha1": "2d094d918b85b59f896cf689e746393143e4ae41"
+      }
+    },
+    {
+      "id": "pact-ability-fellust",
+      "name": "Fellust",
+      "pact": "Tethren",
+      "assignedVirtue": "courage",
+      "description": "Summon the wrath of The Felling. Consecutive melee strikes deal accumulative damage.",
+      "effect": "Every successful weapon strike increases weapon damage.",
+      "iconFile": "BloodlustNoBacker.png",
+      "imageFile": "Bloodlust.png",
+      "unlockLevel": 0,
+      "cooldown": 38,
+      "cooldownType": "When Over",
+      "types": [
+        "Self Buff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/7a/BloodlustNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/7a/BloodlustNoBacker.png/192px-BloodlustNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BloodlustNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 37089,
+        "sha1": "d4bcf2acd0bf07476a0210d88c6d3391bae8a48e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/11/Bloodlust.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/11/Bloodlust.png/192px-Bloodlust.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Bloodlust.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 64938,
+        "sha1": "b325b07d8b4e3863ce624a3862b81f8b72f21999"
+      }
+    },
+    {
+      "id": "pact-ability-feral",
+      "name": "Feral",
+      "pact": "Orengall",
+      "assignedVirtue": null,
+      "description": "Mother loves fiercely. Orengall leaps into combat. Increase chance with each point spent.",
+      "effect": "Orengall randomly appears to take down an enemy, killing them instantly before leaving.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-flintlock",
+      "name": "Flintlock",
+      "pact": "Duelo",
+      "assignedVirtue": "courage",
+      "description": "Break the rules of old. Fire a single shot from your flintlock pistol that pierces enemies and explodes on impact.",
+      "effect": "Draw a flintlock pistol and take aim. Upon release, fires a powerful single projectile which will pierce through multiple enemies.",
+      "iconFile": "FlintlockNoBacker.png",
+      "imageFile": "Flintlock.png",
+      "unlockLevel": null,
+      "cooldown": 20,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Projectile"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/7c/FlintlockNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/7c/FlintlockNoBacker.png/192px-FlintlockNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FlintlockNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 42421,
+        "sha1": "a001cfda512ec4f7531fece75d6b29879f070846"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/5b/Flintlock.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/5b/Flintlock.png/192px-Flintlock.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Flintlock.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 62672,
+        "sha1": "a8cd945f6d7820909381564ca012a1c10ec56453"
+      }
+    },
+    {
+      "id": "pact-ability-glamour",
+      "name": "Glamour",
+      "pact": "Sirin",
+      "assignedVirtue": "grace",
+      "description": "Cast a veil of magicks to hide you from your foes. Float like a nightmoth and sting to kill.",
+      "effect": "Become a flight of butterflies, turning invisible to enemies.",
+      "iconFile": "InvisibilityNoBacker.png",
+      "imageFile": "Invisibility.png",
+      "unlockLevel": 0,
+      "cooldown": 36,
+      "cooldownType": "When Over",
+      "types": [
+        "Transformation"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/10/InvisibilityNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/10/InvisibilityNoBacker.png/192px-InvisibilityNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:InvisibilityNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 40602,
+        "sha1": "7ed86e416e34352f4c060538314090a565ed3f44"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e5/Invisibility.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e5/Invisibility.png/192px-Invisibility.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Invisibility.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 61081,
+        "sha1": "60cb5e0b967833d17b09ba3433f328de62a1a26a"
+      }
+    },
+    {
+      "id": "pact-ability-gravitate",
+      "name": "Gravitate",
+      "pact": "Ode Tempest",
+      "assignedVirtue": null,
+      "description": "Latch onto your target with Synsylk thread. Fly forth and strike to deal additional Voltaic damage.",
+      "effect": "Kick whilst facing an enemy at range to grapple towards them, charging the Envoy's next melee or thrown attack with additional Voltaic damage.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-healheart",
+      "name": "Healheart",
+      "pact": "Garren Rood",
+      "assignedVirtue": null,
+      "description": "Your heartbeat quickens. Heal while your Rune recharges to speed up recharge time.",
+      "effect": "Upon healing via Regain or Torment, gain an additional hidden charge for the equipped Rune which is revealed upon activation.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-howl",
+      "name": "Howl",
+      "pact": "Orengall",
+      "assignedVirtue": "grace",
+      "description": "Sing your bloodsong. Increased Grace and chance of Smite for you and your party. Ode'n dogs turn on their masters.",
+      "effect": "Buffs Grace and Smite Chance for the Envoy and nearby allies. Nearby enemy dogs are temporarily befriended.",
+      "iconFile": "WhiteNoBacker-WolfHowl.png",
+      "imageFile": "WolfHowl.png",
+      "unlockLevel": 10,
+      "cooldown": 46,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Buff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/WhiteNoBacker-WolfHowl.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/WhiteNoBacker-WolfHowl.png/192px-WhiteNoBacker-WolfHowl.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:WhiteNoBacker-WolfHowl.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 46606,
+        "sha1": "b7a960ce259f55a23152dd515adddae038dbe606"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/b/b7/WolfHowl.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/b7/WolfHowl.png/192px-WolfHowl.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:WolfHowl.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 61580,
+        "sha1": "91f6989446baad55c7e346d617a0da174e655b42"
+      }
+    },
+    {
+      "id": "pact-ability-hungry-flame",
+      "name": "Hungry Flame",
+      "pact": "Mora's Hand",
+      "assignedVirtue": null,
+      "description": "The fire within burns ever brighter. Taking fire damage increases Weapon damage.",
+      "effect": "Taking fire damage temporarily buffs the Envoy's Weapon Damage.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-ignus-wroth",
+      "name": "Ignus Wroth",
+      "pact": "Mora's Hand",
+      "assignedVirtue": "courage",
+      "description": "Wake the old flame, set the earth ablaze. Enemies in area of effect take fire damage.",
+      "effect": "Strike the ground, creating a rupture that sends out trails of fire in different directions over several seconds. Trails deal Flame damage and can set foes alight.",
+      "iconFile": "FieryFissureNoBacker.png",
+      "imageFile": "FieryFissure.png",
+      "unlockLevel": 0,
+      "cooldown": 40,
+      "cooldownType": "On Cast",
+      "types": [
+        "AoE"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/b/b4/FieryFissureNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/b4/FieryFissureNoBacker.png/192px-FieryFissureNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FieryFissureNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 51252,
+        "sha1": "5b8b79cb784eb71cfbcc27df4079dee0e0e2a653"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/d/d6/FieryFissure.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/d6/FieryFissure.png/192px-FieryFissure.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FieryFissure.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 68274,
+        "sha1": "51947d4be83f866e91d58f21c0ca2dc2f42f9479"
+      }
+    },
+    {
+      "id": "pact-ability-inferno",
+      "name": "Inferno",
+      "pact": "Mora's Hand",
+      "assignedVirtue": "grace",
+      "description": "Cast an arc of inferno. Bonus damage if the target is already on fire.",
+      "effect": "Casts a fireball that deals more damage to enemies who are on fire.",
+      "iconFile": "PyroBlastNoBacker.png",
+      "imageFile": "PyroBlast.png",
+      "unlockLevel": 10,
+      "cooldown": 20,
+      "cooldownType": "On Cast",
+      "types": [
+        "AoE Projectile"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/4/49/PyroBlastNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/49/PyroBlastNoBacker.png/192px-PyroBlastNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PyroBlastNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 28968,
+        "sha1": "502bbae56384be1992f3c8b9c25ebe838656fb7f"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/6/6b/PyroBlast.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/6b/PyroBlast.png/192px-PyroBlast.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PyroBlast.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 66236,
+        "sha1": "4f6517a559830d6631e00dc001efae51259f7e74"
+      }
+    },
+    {
+      "id": "pact-ability-last-stand",
+      "name": "Last Stand",
+      "pact": "Tethren",
+      "assignedVirtue": null,
+      "description": "Hold your ground. Low Life triggers increased attack speed.",
+      "effect": "Increased attack speed while below 45% Life.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-lightning-strike",
+      "name": "Lightning Strike",
+      "pact": "Ode Tempest",
+      "assignedVirtue": null,
+      "description": "Pound the earth with meteoric force. Deal additional Voltaic damage on downed Enemies.",
+      "effect": "The first strike of a ground finisher deals an additional instance of damage.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-olho-por-olho",
+      "name": "Olho por Olho",
+      "pact": "Duelo",
+      "assignedVirtue": null,
+      "description": "An eye for an eye. Dodging gives attacks the chance to cause bleed.",
+      "effect": "The next three hits after a dodge have a chance to inflict a Bleed proc upon damaged Foes.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-packhunter",
+      "name": "Packhunter",
+      "pact": "Orengall",
+      "assignedVirtue": "spirit",
+      "description": "Call upon Orengall&apos;s spirit Pack. Wolves deal damage and draw fire before retreating to Silvern.",
+      "effect": "Summons a spectral wolf to fight alongside the Envoy and draw aggro until it expires or is slain.",
+      "iconFile": "WhiteNoBacker-WolfPack.png",
+      "imageFile": "WolfPack.png",
+      "unlockLevel": 5,
+      "cooldown": 46,
+      "cooldownType": "On Cast",
+      "types": [
+        "Summon"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/c/cf/WhiteNoBacker-WolfPack.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/cf/WhiteNoBacker-WolfPack.png/192px-WhiteNoBacker-WolfPack.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:WhiteNoBacker-WolfPack.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 41022,
+        "sha1": "85f38c5056dfe294a32f42155c358eaf0ccde6a4"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f3/WolfPack.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f3/WolfPack.png/192px-WolfPack.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:WolfPack.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 60483,
+        "sha1": "ab20a5796aebd465fc09e9794e65325ce4640a72"
+      }
+    },
+    {
+      "id": "pact-ability-phantom-flock",
+      "name": "Phantom Flock",
+      "pact": "Oscelda",
+      "assignedVirtue": "grace",
+      "description": "Hail Alca’s winged children. A flock of phantom songbirds attack your target. Singing revenge.",
+      "effect": "Summons birds which deal tick damage and stagger to both the target, and enemies near it.",
+      "iconFile": "RazorFlockNoBacker.png",
+      "imageFile": "RazorFlock.png",
+      "unlockLevel": 5,
+      "cooldown": 40,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Projectile"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/0b/RazorFlockNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/0b/RazorFlockNoBacker.png/192px-RazorFlockNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RazorFlockNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 41988,
+        "sha1": "5eb7bc1b265875f928cd9928857a400c626f82ee"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/c/c1/RazorFlock.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/c1/RazorFlock.png/192px-RazorFlock.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RazorFlock.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 62558,
+        "sha1": "de587e23d9f0e945c760c8da54b41087009f3ddc"
+      }
+    },
+    {
+      "id": "pact-ability-pickpocket",
+      "name": "Pickpocket",
+      "pact": "Sirin",
+      "assignedVirtue": null,
+      "description": "Use your Glamour to sneak up on enemies and steal loot from their pockets.",
+      "effect": "Unalerted enemies drop loot if the Envoy stays next to them.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-picktrix-powder",
+      "name": "Picktrix Powder",
+      "pact": "Sirin",
+      "assignedVirtue": "courage",
+      "description": "Cast a cloud of magick dust leaving enemies blinded.",
+      "effect": "CCs enemies near point of impact, and debuffs them to take more stagger.",
+      "iconFile": "PocketSandNoBacker.png",
+      "imageFile": "PocketSand.png",
+      "unlockLevel": 10,
+      "cooldown": 30,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Projectile",
+        "AoE Debuff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f2/PocketSandNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f2/PocketSandNoBacker.png/192px-PocketSandNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PocketSandNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 38170,
+        "sha1": "e89f4d9ba3b7b8f597c1b9ac7ea09e890bc576ae"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/3/3a/PocketSand.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/3/3a/PocketSand.png/192px-PocketSand.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PocketSand.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 63026,
+        "sha1": "01e1751478d2045ac08902748c497407d36c0a3d"
+      }
+    },
+    {
+      "id": "pact-ability-righteous",
+      "name": "Righteous",
+      "pact": "Garren Rood",
+      "assignedVirtue": null,
+      "description": "Your rule is supreme. Regain Arcanic power to cast Behest more quickly.",
+      "effect": "Reduces the base cooldown duration of the Behest arcanic.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-rump-thump",
+      "name": "Rump Thump",
+      "pact": "Bromius",
+      "assignedVirtue": "courage",
+      "description": "Leap... And thump! Enemies in area of effect take damage. Nearby enemies are Staggered.",
+      "effect": "A slam ability that can be cast on the ground to leap and slam, or whilst airborne to slam directly.",
+      "iconFile": "CannonBallNoBacker.png",
+      "imageFile": "CannonBall.png",
+      "unlockLevel": 0,
+      "cooldown": 25,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/70/CannonBallNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/70/CannonBallNoBacker.png/192px-CannonBallNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:CannonBallNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 41116,
+        "sha1": "a6d9e0ae0b919782e8b0cff5b4d145334e0b4773"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e4/CannonBall.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e4/CannonBall.png/192px-CannonBall.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:CannonBall.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 56967,
+        "sha1": "8a5a8c6e4c8300f5685b5e81ee975f1c76615be9"
+      }
+    },
+    {
+      "id": "pact-ability-seismor",
+      "name": "Seismor",
+      "pact": "Ode Tempest",
+      "assignedVirtue": "courage",
+      "description": "Bowl down foes with a Seismor. Raze the earth with a rolling ball of destruction.",
+      "effect": "Sends forth an Ode'n sphere that carries enemies in its path, exploding at the end.",
+      "iconFile": "ShockwaveNoBacker.png",
+      "imageFile": "Shockwave.png",
+      "unlockLevel": 0,
+      "cooldown": 34,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/6/68/ShockwaveNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/68/ShockwaveNoBacker.png/192px-ShockwaveNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:ShockwaveNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 53734,
+        "sha1": "7688367baa2720b0ad0dee353b9cb02bc3904018"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/6/65/Shockwave.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/65/Shockwave.png/192px-Shockwave.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Shockwave.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 64624,
+        "sha1": "9ddd98727e4c97faf61e4288cc042a77c1eb601a"
+      }
+    },
+    {
+      "id": "pact-ability-shrouded",
+      "name": "Shrouded",
+      "pact": "Sirin",
+      "assignedVirtue": null,
+      "description": "Child of the shadow. Threats glow clearly in the dark.",
+      "effect": "Able to see enemies through walls whilst using Spectral Sight.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-smolder",
+      "name": "Smolder",
+      "pact": "Mora's Hand",
+      "assignedVirtue": null,
+      "description": "Targeted enemy heats up under your gaze, taking increasing fire damage till they burst into flame!",
+      "effect": "Targeted enemy takes ever-increasing tick damage and is eventually set on fire.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-song-of-growth",
+      "name": "Song of Growth",
+      "pact": "Bromius",
+      "assignedVirtue": "grace",
+      "description": "By sacred song, seeds turn into saplings. Increased armour strength for you and nearby allies.",
+      "effect": "Buffs armour for the Envoy and their allies in an aura around the caster.",
+      "iconFile": "ArmourPlatingNoBacker.png",
+      "imageFile": "ArmourPlating.png",
+      "unlockLevel": 10,
+      "cooldown": 30,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Buff"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/c/c3/ArmourPlatingNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/c3/ArmourPlatingNoBacker.png/192px-ArmourPlatingNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:ArmourPlatingNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 28525,
+        "sha1": "1966244ac33616fdf5df9c9988c99e5fc9ec426f"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/c/c4/ArmourPlating.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/c4/ArmourPlating.png/192px-ArmourPlating.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:ArmourPlating.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 55340,
+        "sha1": "94049e9a02dd702ffe7c8df2cfd67f068833640c"
+      }
+    },
+    {
+      "id": "pact-ability-soulbound",
+      "name": "Soulbound",
+      "pact": "Orengall",
+      "assignedVirtue": null,
+      "description": "Strength in numbers. Melee damage increases when an ally is in range. Can stack.",
+      "effect": "Weapon damage increased per nearby ally.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-stampede",
+      "name": "Stampede",
+      "pact": "Garren Rood",
+      "assignedVirtue": "grace",
+      "description": "Call forth the Stampede of Rood to charge through Enemies, stunning and doing damage.",
+      "effect": "Conjures up a stampede of spectral stags, which charge in a column from where they were cast.",
+      "iconFile": "StampedeNoBacker.png",
+      "imageFile": "Stampede.png",
+      "unlockLevel": 10,
+      "cooldown": 48,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/0a/StampedeNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/0a/StampedeNoBacker.png/192px-StampedeNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:StampedeNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 32473,
+        "sha1": "ba5b3e2e1d422dd98601b4930aad9fec25d211a8"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Stampede.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Stampede.png/192px-Stampede.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Stampede.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 61380,
+        "sha1": "1ef0bf7d6a47070ffcb00e5f55afbe5abc42fc77"
+      }
+    },
+    {
+      "id": "pact-ability-tendril",
+      "name": "Tendril",
+      "pact": "Oscelda",
+      "assignedVirtue": null,
+      "description": "Alca defends her children. Enemy attacks may be met with creeping Tendrils, which slow movement and deal damage over time.",
+      "effect": "Chance to ensnare enemies who attack the Envoy, freezing them in place for several seconds.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-torment",
+      "name": "Torment",
+      "pact": "Garren Rood",
+      "assignedVirtue": "courage",
+      "description": "A memory of corruption. Torment leeches Life from your foes and redistributes it to your allies.",
+      "effect": "Drains a portion of an enemy's Life, and heals the Envoy or their allies.",
+      "iconFile": "SapNoBacker.png",
+      "imageFile": "Sap.png",
+      "unlockLevel": 0,
+      "cooldown": 42,
+      "cooldownType": "On Cast",
+      "types": [
+        "AoE Heal",
+        "Single Target"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/d/d2/SapNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/d2/SapNoBacker.png/192px-SapNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SapNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 74572,
+        "sha1": "af57e6dc39a12f9382cffd1aa3f23ca6739a4aa1"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/73/Sap.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/73/Sap.png/192px-Sap.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Sap.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 61926,
+        "sha1": "847cb8e5ae73895d9c56d4666076cd21b0620bfa"
+      }
+    },
+    {
+      "id": "pact-ability-trick-of-the-light",
+      "name": "Trick of the Light",
+      "pact": "Sirin",
+      "assignedVirtue": "spirit",
+      "description": "Set free your trickster shadow. A decoy draws enemy fire and explodes when foes get too close.",
+      "effect": "An explosive decoy is summoned at the point of impact. Decoy aggroes nearby enemies, making them open for backstabs.",
+      "iconFile": "DecoyNoBacker.png",
+      "imageFile": "Decoy.png",
+      "unlockLevel": 5,
+      "cooldown": 30,
+      "cooldownType": "When Over",
+      "types": [
+        "AoE Projectile"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/9/98/DecoyNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/98/DecoyNoBacker.png/192px-DecoyNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:DecoyNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 36830,
+        "sha1": "cc5110ebda89c57b4d71a0caa024368b3b5d3e03"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/b/bb/Decoy.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/bb/Decoy.png/192px-Decoy.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Decoy.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 69051,
+        "sha1": "3f78df168c97fed37b963a08fbc6f71838969299"
+      }
+    },
+    {
+      "id": "pact-ability-vernal-pool",
+      "name": "Vernal Pool",
+      "pact": "Oscelda",
+      "assignedVirtue": null,
+      "description": "Water is life. Arcanic powers recharge more quickly when standing in water.",
+      "effect": "Cooldown reduction for all abilities while standing in/on water.",
+      "iconFile": "PowerFlowerNoBacker.png",
+      "imageFile": "PowerFlower.png",
+      "unlockLevel": null,
+      "cooldown": null,
+      "cooldownType": "",
+      "types": [
+        "Passive"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ec/PowerFlowerNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ec/PowerFlowerNoBacker.png/192px-PowerFlowerNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlowerNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 23433,
+        "sha1": "3fb118298da4dc40fe06017499de89ea1d0afa4e"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/12/PowerFlower.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/12/PowerFlower.png/192px-PowerFlower.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:PowerFlower.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 13525,
+        "sha1": "a6de39e65b791801442eecbdb81765ece9523cef"
+      }
+    },
+    {
+      "id": "pact-ability-werewalker",
+      "name": "Werewalker",
+      "pact": "Orengall",
+      "assignedVirtue": "courage",
+      "description": "Run free your silvern soul. Prowl ahead undetected, while your frame is left vulnerable.",
+      "effect": "Turn into a wolf with increased movespeed, temporarily leaving your Envoy form behind. Attack an enemy to perform a finisher.",
+      "iconFile": "BecomeWolf.png",
+      "imageFile": "WolfForm.png",
+      "unlockLevel": 0,
+      "cooldown": 31,
+      "cooldownType": "When Over",
+      "types": [
+        "Transformation"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/8/83/BecomeWolf.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/83/BecomeWolf.png/192px-BecomeWolf.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BecomeWolf.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 28179,
+        "sha1": "213f54efe3713c1fbf2525903345c0847dfc53d3"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/72/WolfForm.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/72/WolfForm.png/192px-WolfForm.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:WolfForm.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 63543,
+        "sha1": "c8f188a8d444aa5a781f88e31f8595b2e375a548"
+      }
+    },
+    {
+      "id": "pact-ability-wevetroot",
+      "name": "Wevetroot",
+      "pact": "Bromius",
+      "assignedVirtue": "spirit",
+      "description": "Rouse the ancient Wevetroots. Enemies are caught in the thorns, taking damage over time.",
+      "effect": "Projects a line of thorns to ensnare enemies and deal damage over time.",
+      "iconFile": "RootSpikeNoBacker.png",
+      "imageFile": "RootSpike.png",
+      "unlockLevel": 5,
+      "cooldown": 36,
+      "cooldownType": "On Cast",
+      "types": [
+        "AoE"
+      ],
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/1c/RootSpikeNoBacker.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1c/RootSpikeNoBacker.png/192px-RootSpikeNoBacker.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RootSpikeNoBacker.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 44778,
+        "sha1": "0ff6deb4a34ae1fe5c70af1f85e362fd62edd8e2"
+      },
+      "artImage": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/1c/RootSpike.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1c/RootSpike.png/192px-RootSpike.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RootSpike.png",
+        "mimeType": "image/png",
+        "width": 256,
+        "height": 256,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 62943,
+        "sha1": "be601da1eb8deed0a987dd719d6a11a77c0afa40"
+      }
+    }
+  ],
+  "abilitySource": {
+    "publisher": "Avakot",
+    "moduleUrl": "https://wiki.avakot.org/Module:Data/PactAbilities",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 47656,
+    "revisionTimestamp": "2026-07-12T07:54:24Z"
+  }
+}

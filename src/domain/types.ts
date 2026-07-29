@@ -20,6 +20,7 @@ export type EquipmentSlot = (typeof EQUIPMENT_SLOTS)[number];
 
 export type VirtueValues = Record<VirtueId, number>;
 export type PactArtRank = 0 | 1 | 2 | 3;
+export type EnhancementRank = 0 | 1 | 2 | 3;
 
 export interface AffinitySources {
   envoyRank: number;
@@ -150,12 +151,119 @@ export interface Weapon {
   sha1: string;
 }
 
+export interface CatalogueImage {
+  imageUrl: string;
+  thumbnailUrl: string;
+  descriptionUrl: string;
+  mimeType: string;
+  width: number;
+  height: number;
+  thumbnailWidth: number;
+  thumbnailHeight: number;
+  bytes: number;
+  sha1: string;
+}
+
+export interface PactAbility {
+  id: string;
+  name: string;
+  pact: string;
+  assignedVirtue: VirtueId | null;
+  description: string;
+  effect: string;
+  iconFile: string;
+  imageFile: string;
+  unlockLevel: number | null;
+  cooldown: number | null;
+  cooldownType: string;
+  types: string[];
+  image: CatalogueImage | null;
+  artImage: CatalogueImage | null;
+}
+
+export interface Pact {
+  id: string;
+  name: string;
+  basePact: string;
+  variant: "normal" | "wyld";
+  description: string;
+  iconFile: string;
+  abilityIds: string[];
+  virtueOrder: VirtueId[];
+  introduced: string;
+  pageUrl: string;
+  image: CatalogueImage | null;
+}
+
+export interface RuneStat {
+  effect: string;
+  ranks: string[];
+}
+
+export interface Rune {
+  id: string;
+  name: string;
+  description: string;
+  functionality: string;
+  maxRankDescription: string;
+  weaponArt: string;
+  addedSlot: VirtueId | null;
+  iconFile: string;
+  internalId: string;
+  rarity: string;
+  introduced: string;
+  tags: string[];
+  stats: RuneStat[];
+  pageUrl: string;
+  image: CatalogueImage | null;
+}
+
+export interface Totem {
+  id: string;
+  name: string;
+  animal: string;
+  enhances: string;
+  description: string;
+  effect: string;
+  iconFile: string;
+  rankValues: Array<Array<number | null>>;
+  gripRankValues: Array<Array<number | null>>;
+  hasUnknownGripValues: boolean;
+  pageUrl: string;
+  image: CatalogueImage | null;
+}
+
+export interface RankedEnhancement {
+  itemId: string;
+  rank: EnhancementRank;
+}
+
+export interface TotemSelection extends RankedEnhancement {
+  virtue: VirtueId;
+  variant: "universal" | "combatArt";
+}
+
+export interface WeaponEnhancements {
+  rune: RankedEnhancement | null;
+  totems: [
+    TotemSelection | null,
+    TotemSelection | null,
+    TotemSelection | null,
+    TotemSelection | null,
+  ];
+}
+
 export interface SoulframeBuild {
-  schemaVersion: 3;
+  schemaVersion: 4;
   name: string;
   virtues: VirtueValues;
   affinitySources: AffinitySources;
   equipment: Partial<Record<EquipmentSlot, string>>;
+  pact: {
+    itemId: string | null;
+    rank: number;
+  };
+  weaponEnhancements: Record<WeaponHandSlot, WeaponEnhancements>;
 }
 
 export interface DefenseContribution {

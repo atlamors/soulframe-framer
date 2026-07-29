@@ -22,8 +22,10 @@ import {
   Gauge,
   Hammer,
   ListFilter,
+  Search,
   Sparkles,
   Sword,
+  X,
 } from "lucide-react";
 import { armorById, armorCatalogue } from "@/src/data/catalogue";
 import { armorDropById } from "@/src/data/armor-drops";
@@ -43,6 +45,17 @@ import {
   weaponById,
   weaponCatalogue,
 } from "@/src/data/weapons";
+import {
+  pactAbilityById,
+  pactById,
+  pactCatalogue,
+} from "@/src/data/pacts";
+import {
+  getRuneDisplayName,
+  runeById,
+  runeCatalogue,
+} from "@/src/data/runes";
+import { totemById, totemCatalogue } from "@/src/data/totems";
 import { weaponDropById } from "@/src/data/weapon-drops";
 import {
   calculateBuild,
@@ -75,19 +88,34 @@ import {
   type ArmorOptimization,
 } from "@/src/domain/optimization";
 import {
+  canEquipTotemInSlot,
+  createEmptyWeaponEnhancements,
+  formatTotemEffect,
+  getTotemSlotVirtue,
+  getTotemRankValues,
+  isRuneCompatible,
+  normalizeWeaponEnhancements,
+} from "@/src/domain/enchantments";
+import {
   ARMOR_SLOTS,
   DEFENSE_IDS,
   VIRTUE_IDS,
+  WEAPON_HAND_SLOTS,
   type AffinitySources,
   type ArmorItem,
   type ArmorSlot,
   type DefenseId,
   type EquipmentSlot,
   type ItemContribution,
+  type Pact,
   type PactArtRank,
+  type Rune,
   type SoulframeBuild,
   type Talisman,
+  type Totem,
+  type TotemSelection,
   type Weapon,
+  type WeaponEnhancements,
   type WeaponHandSlot,
   type WeaponLevelStats,
   type VirtueId,
@@ -110,6 +138,20 @@ const DEFAULT_BUILD: SoulframeBuild = {
     talisman: "talisman-prelude-honour",
     mainHand: "weapon-farilwyd",
     offHand: "weapon-precklies",
+  },
+  pact: {
+    itemId: "pact-orengall",
+    rank: 30,
+  },
+  weaponEnhancements: {
+    mainHand: {
+      rune: null,
+      totems: [null, null, null, null],
+    },
+    offHand: {
+      rune: null,
+      totems: [null, null, null, null],
+    },
   },
 };
 
@@ -1348,46 +1390,1147 @@ function TalismanEquipmentSlot({
 function WeaponEquipmentSlot({
   slot,
   item,
+  enhancements,
   isActive,
-  onOpen,
+  onOpenWeapon,
+  onOpenRune,
+  onOpenTotem,
 }: {
   slot: WeaponHandSlot;
   item?: Weapon;
+  enhancements: WeaponEnhancements;
   isActive: boolean;
-  onOpen: () => void;
+  onOpenWeapon: () => void;
+  onOpenRune: () => void;
+  onOpenTotem: (index: number) => void;
 }) {
   const meta = weaponSlotMeta[slot];
   const attack = item?.stats.level0.attack;
+  const rune = enhancements.rune
+    ? runeById.get(enhancements.rune.itemId)
+    : undefined;
 
   return (
-    <button
-      type="button"
+    <div
       className={`equipment-slot equipment-slot-${
         slot === "mainHand" ? "weapon-1" : "weapon-2"
       }`}
+      aria-expanded={isActive}
+    >
+      <button
+        type="button"
+        className="weapon-slot-main"
+        onClick={onOpenWeapon}
+        aria-haspopup="dialog"
+        aria-label={`${meta.label}: ${item?.name ?? "empty"}. Change weapon.`}
+      >
+        <span className="slot-art" aria-hidden="true">
+          <WeaponArtwork
+            item={item}
+            fallback={meta.index}
+            sizes="(max-width: 680px) 58px, 78px"
+          />
+        </span>
+        <span className="slot-copy">
+          <span className="slot-label">{meta.label}</span>
+          <strong>{item?.name ?? meta.prompt}</strong>
+          {item ? (
+            <span className="slot-weapon-summary">
+              {item.combatArt}
+              {attack !== undefined ? ` · ${attack} attack` : ""}
+            </span>
+          ) : null}
+        </span>
+      </button>
+      <span className="weapon-enchantment-strip" aria-label="Weapon enhancements">
+        <button
+          type="button"
+          className={`enchantment-socket rune-socket ${
+            rune ? `is-${rune.addedSlot ?? "neutral"}` : ""
+          }`}
+          onClick={onOpenRune}
+          aria-label={rune ? `Rune: ${getRuneDisplayName(rune)}` : "Choose Rune"}
+          title={rune ? getRuneDisplayName(rune) : "Choose Rune"}
+          disabled={!item}
+        >
+          {rune?.image ? (
+            <Image
+              src={rune.image.thumbnailUrl}
+              alt=""
+              width={32}
+              height={32}
+              unoptimized
+            />
+          ) : (
+            <span aria-hidden="true">ᚱ</span>
+          )}
+        </button>
+        {enhancements.totems.map((selection, index) => {
+          const totem = selection ? totemById.get(selection.itemId) : undefined;
+          const isLocked = index === 3 && !rune;
+          const slotVirtue = getTotemSlotVirtue(index, rune);
+          return (
+            <button
+              type="button"
+              className={`enchantment-socket totem-socket ${
+                slotVirtue ? `is-${slotVirtue}` : ""
+              } ${isLocked ? "is-locked" : ""}`}
+              onClick={() => onOpenTotem(index)}
+              aria-label={
+                isLocked
+                  ? "Fourth Totem slot requires a Rune"
+                  : totem
+                    ? `Totem ${index + 1}: ${totem.name}`
+                    : `Choose Totem ${index + 1}`
+              }
+              title={
+                isLocked
+                  ? "Equip a Rune to unlock"
+                  : totem?.name ?? `Choose Totem ${index + 1}`
+              }
+              disabled={!item || isLocked}
+              key={index}
+            >
+              {totem?.image ? (
+                <Image
+                  src={totem.image.thumbnailUrl}
+                  alt=""
+                  width={28}
+                  height={28}
+                  unoptimized
+                />
+              ) : (
+                <span aria-hidden="true">{isLocked ? "×" : "◇"}</span>
+              )}
+            </button>
+          );
+        })}
+      </span>
+    </div>
+  );
+}
+
+function PactBanner({
+  pact,
+  rank,
+  isActive,
+  onOpen,
+}: {
+  pact?: Pact;
+  rank: number;
+  isActive: boolean;
+  onOpen: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      className="pact-banner"
       onClick={onOpen}
       aria-expanded={isActive}
       aria-haspopup="dialog"
-      aria-label={`${meta.label}: ${item?.name ?? "empty"}. Change weapon.`}
     >
-      <span className="slot-art" aria-hidden="true">
-        <WeaponArtwork
-          item={item}
-          fallback={meta.index}
-          sizes="(max-width: 680px) 58px, 78px"
-        />
+      <span className="pact-banner-art" aria-hidden="true">
+        {pact?.image ? (
+          <Image
+            src={pact.image.thumbnailUrl}
+            alt=""
+            width={72}
+            height={72}
+            unoptimized
+          />
+        ) : (
+          <span>✦</span>
+        )}
       </span>
-      <span className="slot-copy">
-        <span className="slot-label">{meta.label}</span>
-        <strong>{item?.name ?? meta.prompt}</strong>
-        {item ? (
-          <span className="slot-weapon-summary">
-            {item.combatArt}
-            {attack !== undefined ? ` · ${attack} attack` : ""}
+      <span className="pact-banner-copy">
+        <small>Envoy Pact</small>
+        <strong>{pact?.name ?? "Choose a Pact"}</strong>
+        <span>
+          {pact
+            ? `${pact.variant === "wyld" ? "Wyld Pact" : "Pact"} · Rank ${rank}`
+            : "Frame your abilities"}
           </span>
-        ) : null}
+      </span>
+      <span className="pact-banner-abilities" aria-hidden="true">
+        {pact?.abilityIds.map((abilityId) => {
+          const ability = pactAbilityById.get(abilityId);
+          return (
+            <span
+              className={
+                ability?.assignedVirtue
+                  ? `is-${ability.assignedVirtue}`
+                  : "is-passive"
+              }
+              key={abilityId}
+            >
+              {ability?.image ? (
+                <Image
+                  src={ability.image.thumbnailUrl}
+                  alt=""
+                  width={30}
+                  height={30}
+                  unoptimized
+                />
+              ) : (
+                "•"
+              )}
+            </span>
+          );
+        })}
       </span>
     </button>
+  );
+}
+
+function PickerTabs({
+  active,
+  onChange,
+}: {
+  active: "weapon" | "rune" | "totems";
+  onChange: (tab: "weapon" | "rune" | "totems") => void;
+}) {
+  return (
+    <nav className="weapon-config-tabs" aria-label="Weapon configuration">
+      {(["weapon", "rune", "totems"] as const).map((tab) => (
+        <button
+          type="button"
+          className={active === tab ? "is-active" : ""}
+          onClick={() => onChange(tab)}
+          aria-current={active === tab ? "page" : undefined}
+          key={tab}
+        >
+          {tab === "weapon" ? "Weapon" : tab === "rune" ? "Rune" : "Totems"}
+        </button>
+      ))}
+    </nav>
+  );
+}
+
+function WeaponLoadoutHud({
+  slot,
+  build,
+  active,
+  activeTotemSlot = 0,
+  inline = false,
+  onNavigate,
+}: {
+  slot: WeaponHandSlot;
+  build: SoulframeBuild;
+  active: "weapon" | "rune" | "totems";
+  activeTotemSlot?: number;
+  inline?: boolean;
+  onNavigate: (
+    tab: "weapon" | "rune" | "totems",
+    totemSlot?: number,
+  ) => void;
+}) {
+  const weaponId = build.equipment[slot];
+  const weapon = weaponId ? weaponById.get(weaponId) : undefined;
+  const enhancements = build.weaponEnhancements[slot];
+  const rune = enhancements.rune
+    ? runeById.get(enhancements.rune.itemId)
+    : undefined;
+
+  return (
+    <section
+      className={`weapon-loadout-hud ${inline ? "is-inline" : ""}`}
+      aria-label={`Current ${weaponSlotMeta[slot].label} loadout`}
+    >
+      <div className="weapon-loadout-track">
+        <button
+          type="button"
+          className={`loadout-hud-segment loadout-hud-weapon ${
+            active === "weapon" ? "is-active" : ""
+          }`}
+          onClick={() => onNavigate("weapon")}
+          title={weapon?.name ?? "Choose a weapon"}
+        >
+          <span className="loadout-hud-art" aria-hidden="true">
+            <WeaponArtwork
+              item={weapon}
+              fallback={weaponSlotMeta[slot].index}
+              sizes="52px"
+            />
+          </span>
+          <span className="loadout-hud-copy">
+            <small>Weapon</small>
+            <strong>{weapon?.name ?? "Unframed"}</strong>
+            <em>{weapon?.combatArt ?? "Choose a weapon"}</em>
+          </span>
+        </button>
+        <span className="loadout-hud-connector" aria-hidden="true">
+          <ArrowRight />
+        </span>
+        <button
+          type="button"
+          className={`loadout-hud-segment loadout-hud-rune ${
+            active === "rune" ? "is-active" : ""
+          } ${rune ? "is-filled" : ""}`}
+          onClick={() => onNavigate("rune")}
+          disabled={!weapon}
+          title={rune ? getRuneDisplayName(rune) : "Choose a Rune"}
+        >
+          <span
+            className={`loadout-hud-art ${
+              rune?.addedSlot ? `is-${rune.addedSlot}` : ""
+            }`}
+            aria-hidden="true"
+          >
+            {rune?.image ? (
+              <Image
+                src={rune.image.thumbnailUrl}
+                alt=""
+                width={42}
+                height={42}
+                unoptimized
+              />
+            ) : (
+              "ᚱ"
+            )}
+          </span>
+          <span className="loadout-hud-copy">
+            <small>Rune</small>
+            <strong>{rune ? getRuneDisplayName(rune) : "Empty"}</strong>
+            <em>{enhancements.rune ? `Rank ${enhancements.rune.rank}` : "Next"}</em>
+          </span>
+        </button>
+        <span className="loadout-hud-connector" aria-hidden="true">
+          <ArrowRight />
+        </span>
+        <div className="loadout-hud-totems">
+          {enhancements.totems.map((selection, index) => {
+            const totem = selection ? totemById.get(selection.itemId) : undefined;
+            const isLocked = index === 3 && !rune;
+            const slotVirtue = getTotemSlotVirtue(index, rune);
+            return (
+              <button
+                type="button"
+                className={`loadout-hud-segment ${
+                  active === "totems" && activeTotemSlot === index
+                    ? "is-active"
+                    : ""
+                } ${selection ? "is-filled" : ""} ${
+                  isLocked ? "is-locked" : ""
+                } ${slotVirtue ? `is-${slotVirtue}` : ""}`}
+                onClick={() => onNavigate("totems", index)}
+                disabled={!weapon || isLocked}
+                title={
+                  isLocked
+                    ? "Equip a Rune to unlock"
+                    : totem?.name ?? `Choose Totem ${index + 1}`
+                }
+                key={index}
+              >
+                <span
+                  className={`loadout-hud-art ${
+                    slotVirtue ? `is-${slotVirtue}` : ""
+                  }`}
+                  aria-hidden="true"
+                >
+                  {totem?.image ? (
+                    <Image
+                      src={totem.image.thumbnailUrl}
+                      alt=""
+                      width={38}
+                      height={38}
+                      unoptimized
+                    />
+                  ) : (
+                    <span>{isLocked ? "×" : index + 1}</span>
+                  )}
+                </span>
+                <span className="loadout-hud-copy">
+                  <small>Totem {index + 1}</small>
+                  <strong>{totem?.name ?? (isLocked ? "Locked" : "Empty")}</strong>
+                  <em>{selection ? `Rank ${selection.rank}` : index === 0 ? "Next" : "—"}</em>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PactPicker({
+  currentId,
+  rank,
+  onClose,
+  onEquip,
+  onRankChange,
+}: {
+  currentId: string | null;
+  rank: number;
+  onClose: () => void;
+  onEquip: (itemId: string) => void;
+  onRankChange: (rank: number) => void;
+}) {
+  const [candidateId, setCandidateId] = useState(
+    currentId ?? pactCatalogue[0]?.id,
+  );
+  const [query, setQuery] = useState("");
+  const candidate =
+    pactById.get(candidateId) ??
+    pactCatalogue.find((pact) =>
+      pact.name.toLowerCase().includes(query.trim().toLowerCase()),
+    );
+  const filtered = pactCatalogue.filter((pact) =>
+    [pact.name, pact.basePact, pact.variant]
+      .join(" ")
+      .toLowerCase()
+      .includes(query.trim().toLowerCase()),
+  );
+
+  return (
+    <div className="picker-backdrop" role="presentation" onMouseDown={onClose}>
+      <section
+        className="picker-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="pact-picker-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <header className="picker-header">
+          <div>
+            <small className="picker-kicker">Envoy identity</small>
+            <h2 id="pact-picker-title">Choose Pact</h2>
+          </div>
+          <button
+            type="button"
+            className="icon-button"
+            onClick={onClose}
+            aria-label="Close Pact picker"
+          >
+            ×
+          </button>
+        </header>
+        <div className="picker-body pact-picker-body">
+          <aside className="catalogue-column">
+            <CatalogueContextMenu
+              idPrefix="pact-catalogue"
+              search={
+                <ExpandableSearch
+                  value={query}
+                  onChange={setQuery}
+                  label="Search Pacts"
+                  placeholder={`Search ${pactCatalogue.length} Pacts`}
+                />
+              }
+              activeFilterCount={0}
+              filteredCount={filtered.length}
+              totalCount={pactCatalogue.length}
+            />
+            <div className="item-list" role="listbox" aria-label="Pacts">
+              {filtered.map((pact) => (
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={candidate?.id === pact.id}
+                  className={`item-list-row ${
+                    candidate?.id === pact.id ? "is-candidate" : ""
+                  }`}
+                  onClick={() => setCandidateId(pact.id)}
+                  key={pact.id}
+                >
+                  <span className="item-list-mark" aria-hidden="true">
+                    {pact.image ? (
+                      <Image
+                        src={pact.image.thumbnailUrl}
+                        alt=""
+                        width={48}
+                        height={48}
+                        unoptimized
+                      />
+                    ) : (
+                      "✦"
+                    )}
+                  </span>
+                  <span>
+                    <strong>{pact.name}</strong>
+                    <small>
+                      {pact.variant === "wyld" ? "Wyld Pact" : "Pact"}
+                    </small>
+                  </span>
+                  {pact.id === currentId ? (
+                    <span className="equipped-chip">Equipped</span>
+                  ) : null}
+                </button>
+              ))}
+            </div>
+          </aside>
+          <div className="comparison-column">
+            {candidate ? (
+              <>
+                <div className="comparison-heading pact-comparison-heading">
+                  <span className="candidate-art" aria-hidden="true">
+                    {candidate.image ? (
+                      <Image
+                        src={candidate.image.thumbnailUrl}
+                        alt=""
+                        width={112}
+                        height={112}
+                        unoptimized
+                      />
+                    ) : (
+                      "✦"
+                    )}
+                  </span>
+                  <div className="armor-comparison-copy">
+                    <small>
+                      {candidate.variant === "wyld" ? "Wyld Pact" : "Pact"}
+                    </small>
+                    <h3>{candidate.name}</h3>
+                    <a
+                      className="avakot-item-link"
+                      href={candidate.pageUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View on Avakot
+                      <ExternalLink aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+                <p className="pact-description">{candidate.description}</p>
+                <div className="pact-rank-control">
+                  <label htmlFor="pact-rank">Pact Rank</label>
+                  <select
+                    id="pact-rank"
+                    value={rank}
+                    onChange={(event) => onRankChange(Number(event.target.value))}
+                  >
+                    {Array.from({ length: 31 }, (_, value) => (
+                      <option value={value} key={value}>
+                        {value}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <section className="pact-ability-section">
+                  <header>
+                    <span>Arcanics & Passives</span>
+                    <small>Rank {rank}</small>
+                  </header>
+                  <div className="pact-ability-grid">
+                    {candidate.abilityIds.map((abilityId) => {
+                      const ability = pactAbilityById.get(abilityId);
+                      if (!ability) return null;
+                      return (
+                        <article
+                          className={`pact-ability-card ${
+                            ability.assignedVirtue
+                              ? `is-${ability.assignedVirtue}`
+                              : "is-passive"
+                          } ${
+                            ability.unlockLevel !== null &&
+                            rank < ability.unlockLevel
+                              ? "is-locked"
+                              : ""
+                          }`}
+                          key={ability.id}
+                        >
+                          <span aria-hidden="true">
+                            {ability.image ? (
+                              <Image
+                                src={ability.image.thumbnailUrl}
+                                alt=""
+                                width={46}
+                                height={46}
+                                unoptimized
+                              />
+                            ) : (
+                              "✦"
+                            )}
+                          </span>
+                          <div>
+                            <small>
+                              {ability.unlockLevel !== null &&
+                              rank < ability.unlockLevel
+                                ? `Unlocks at Rank ${ability.unlockLevel}`
+                                : ability.assignedVirtue
+                                  ? virtueMeta[ability.assignedVirtue].label
+                                  : "Passive"}
+                            </small>
+                            <strong>{ability.name}</strong>
+                            <p>{ability.effect || ability.description}</p>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </section>
+                <div className="picker-actions">
+                  <span />
+                  <button
+                    type="button"
+                    className="button button-primary"
+                    onClick={() => {
+                      onEquip(candidate.id);
+                      onClose();
+                    }}
+                    disabled={candidate.id === currentId}
+                  >
+                    {candidate.id === currentId
+                      ? "Currently equipped"
+                      : "Bind Pact"}
+                  </button>
+                </div>
+              </>
+            ) : null}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function WeaponEnhancementPicker({
+  slot,
+  tab,
+  selectedTotemSlot,
+  build,
+  onClose,
+  onTabChange,
+  onChange,
+}: {
+  slot: WeaponHandSlot;
+  tab: "rune" | "totems";
+  selectedTotemSlot: number;
+  build: SoulframeBuild;
+  onClose: () => void;
+  onTabChange: (
+    tab: "weapon" | "rune" | "totems",
+    totemSlot?: number,
+  ) => void;
+  onChange: (enhancements: WeaponEnhancements) => void;
+}) {
+  const weaponId = build.equipment[slot];
+  const weapon = weaponId ? weaponById.get(weaponId) : undefined;
+  const enhancements = build.weaponEnhancements[slot];
+  const currentRune = enhancements.rune
+    ? runeById.get(enhancements.rune.itemId)
+    : undefined;
+  const compatibleRunes = runeCatalogue.filter((rune) =>
+    isRuneCompatible(rune, weapon),
+  );
+  const [runeCandidateId, setRuneCandidateId] = useState(
+    currentRune?.id ?? compatibleRunes[0]?.id,
+  );
+  const [totemSlot, setTotemSlot] = useState(
+    Math.min(3, Math.max(0, selectedTotemSlot)),
+  );
+  const currentTotem = enhancements.totems[totemSlot];
+  const [totemCandidateId, setTotemCandidateId] = useState(
+    currentTotem?.itemId ?? totemCatalogue[0]?.id,
+  );
+  const [query, setQuery] = useState("");
+  const [animal, setAnimal] = useState("all");
+  const [enhances, setEnhances] = useState("all");
+  const runeCandidate = runeCandidateId
+    ? runeById.get(runeCandidateId)
+    : undefined;
+  const usedTotemIds = new Set(
+    enhancements.totems.flatMap((selection, index) =>
+      selection && index !== totemSlot ? [selection.itemId] : [],
+    ),
+  );
+  const animalOptions = [...new Set(totemCatalogue.map((item) => item.animal))].sort();
+  const enhanceOptions = [
+    ...new Set(totemCatalogue.map((item) => item.enhances)),
+  ].sort();
+  const filteredTotems = totemCatalogue.filter(
+    (totem) =>
+      !usedTotemIds.has(totem.id) &&
+      (animal === "all" || totem.animal === animal) &&
+      (enhances === "all" || totem.enhances === enhances) &&
+      [totem.name, totem.animal, totem.enhances]
+        .join(" ")
+        .toLowerCase()
+        .includes(query.trim().toLowerCase()),
+  );
+  const selectedTotemCandidate = totemCandidateId
+    ? totemById.get(totemCandidateId)
+    : undefined;
+  const totemCandidate =
+    selectedTotemCandidate &&
+    canEquipTotemInSlot(enhancements, selectedTotemCandidate.id, totemSlot)
+      ? selectedTotemCandidate
+      : filteredTotems[0];
+  const selection = currentTotem ?? {
+    itemId: totemCandidate?.id ?? "",
+    rank: 3,
+    virtue: "courage" as VirtueId,
+    variant: "universal" as const,
+  };
+  const effectValues = totemCandidate
+    ? getTotemRankValues(
+        { ...selection, itemId: totemCandidate.id },
+        totemCandidate.rankValues,
+        totemCandidate.gripRankValues,
+      )
+    : [];
+
+  const setRune = (rune: Rune | null, rank = 3) => {
+    const next = {
+      ...enhancements,
+      rune: rune ? { itemId: rune.id, rank: rank as 0 | 1 | 2 | 3 } : null,
+      totems: [...enhancements.totems] as WeaponEnhancements["totems"],
+    };
+    if (!rune) next.totems[3] = null;
+    onChange(next);
+  };
+  const setTotem = (totem: Totem, nextSelection: TotemSelection) => {
+    if (!canEquipTotemInSlot(enhancements, totem.id, totemSlot)) return;
+
+    const totems = [...enhancements.totems] as WeaponEnhancements["totems"];
+    totems[totemSlot] = { ...nextSelection, itemId: totem.id };
+    onChange({ ...enhancements, totems });
+  };
+  const navigate = (
+    nextTab: "weapon" | "rune" | "totems",
+    nextTotemSlot?: number,
+  ) => {
+    if (nextTab === "totems" && nextTotemSlot !== undefined) {
+      setTotemSlot(nextTotemSlot);
+      const equipped = enhancements.totems[nextTotemSlot];
+      if (equipped) setTotemCandidateId(equipped.itemId);
+    }
+    onTabChange(nextTab, nextTotemSlot);
+  };
+
+  return (
+    <div className="picker-backdrop" role="presentation" onMouseDown={onClose}>
+      <section
+        className="picker-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="enhancement-picker-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <header className="picker-header weapon-picker-header">
+          <h2 id="enhancement-picker-title">
+            {weaponSlotMeta[slot].label}
+          </h2>
+          <WeaponLoadoutHud
+            slot={slot}
+            build={build}
+            active={tab}
+            activeTotemSlot={totemSlot}
+            inline
+            onNavigate={navigate}
+          />
+          <button
+            type="button"
+            className="icon-button"
+            onClick={onClose}
+            aria-label="Close weapon configuration"
+          >
+            ×
+          </button>
+        </header>
+        <PickerTabs active={tab} onChange={navigate} />
+        {tab === "rune" ? (
+          <div className="picker-body enhancement-picker-body">
+            <aside className="catalogue-column">
+              <div className="enhancement-compatibility">
+                <small>Compatible with</small>
+                <strong>{weapon?.combatArt ?? "Select a weapon"}</strong>
+              </div>
+              <div className="item-list" role="listbox" aria-label="Runes">
+                {compatibleRunes.map((rune) => (
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={runeCandidate?.id === rune.id}
+                    className={`item-list-row ${
+                      runeCandidate?.id === rune.id ? "is-candidate" : ""
+                    }`}
+                    onClick={() => setRuneCandidateId(rune.id)}
+                    key={rune.id}
+                  >
+                    <span className="item-list-mark">
+                      {rune.image ? (
+                        <Image
+                          src={rune.image.thumbnailUrl}
+                          alt=""
+                          width={48}
+                          height={48}
+                          unoptimized
+                        />
+                      ) : (
+                        "ᚱ"
+                      )}
+                    </span>
+                    <span>
+                      <strong>{getRuneDisplayName(rune)}</strong>
+                      <small>
+                        {rune.addedSlot
+                          ? `Unlocks ${virtueMeta[rune.addedSlot].label} slot`
+                          : rune.weaponArt}
+                      </small>
+                    </span>
+                    {rune.id === currentRune?.id ? (
+                      <span className="equipped-chip">Equipped</span>
+                    ) : null}
+                  </button>
+                ))}
+                {!compatibleRunes.length ? (
+                  <div className="empty-search">
+                    <strong>No compatible Runes</strong>
+                    <span>Choose a weapon first.</span>
+                  </div>
+                ) : null}
+              </div>
+            </aside>
+            <div className="comparison-column">
+              {runeCandidate ? (
+                <>
+                  <div className="comparison-heading">
+                    <span className="candidate-art">
+                      {runeCandidate.image ? (
+                        <Image
+                          src={runeCandidate.image.thumbnailUrl}
+                          alt=""
+                          width={112}
+                          height={112}
+                          unoptimized
+                        />
+                      ) : (
+                        "ᚱ"
+                      )}
+                    </span>
+                    <div className="armor-comparison-copy">
+                      <small>{runeCandidate.weaponArt} Rune</small>
+                      <h3>{getRuneDisplayName(runeCandidate)}</h3>
+                      <p>{runeCandidate.maxRankDescription}</p>
+                      <a
+                        className="avakot-item-link"
+                        href={runeCandidate.pageUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View on Avakot
+                        <ExternalLink aria-hidden="true" />
+                      </a>
+                    </div>
+                  </div>
+                  <p className="pact-description">
+                    {runeCandidate.functionality}
+                  </p>
+                  <div className="enhancement-rank-row">
+                    <span>Rune Rank</span>
+                    <div>
+                      {[0, 1, 2, 3].map((rank) => (
+                        <button
+                          type="button"
+                          className={
+                            currentRune?.id === runeCandidate.id &&
+                            enhancements.rune?.rank === rank
+                              ? "is-active"
+                              : ""
+                          }
+                          onClick={() => setRune(runeCandidate, rank)}
+                          key={rank}
+                        >
+                          {rank}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <section className="enhancement-effect-card">
+                    <small>Rune Effect</small>
+                    <strong>{runeCandidate.stats[0]?.effect}</strong>
+                    <span>
+                      {runeCandidate.stats[0]?.ranks.join(" · ")}
+                    </span>
+                  </section>
+                  <div className="picker-actions">
+                    <button
+                      type="button"
+                      className="button button-quiet"
+                      onClick={() => setRune(null)}
+                      disabled={!currentRune}
+                    >
+                      Clear Rune
+                    </button>
+                    <button
+                      type="button"
+                      className="button button-primary"
+                      onClick={() => {
+                        setRune(runeCandidate);
+                        navigate("totems", 0);
+                      }}
+                    >
+                      Equip &amp; Choose Totems
+                    </button>
+                  </div>
+                </>
+              ) : null}
+            </div>
+          </div>
+        ) : (
+          <div className="picker-body enhancement-picker-body">
+            <aside className="catalogue-column">
+              <div className="totem-slot-tabs" aria-label="Totem slots">
+                {enhancements.totems.map((totem, index) => {
+                  const slotVirtue = getTotemSlotVirtue(index, currentRune);
+                  return (
+                    <button
+                      type="button"
+                      className={`${totemSlot === index ? "is-active" : ""} ${
+                        slotVirtue ? `is-${slotVirtue}` : ""
+                      }`}
+                    onClick={() => {
+                      setTotemSlot(index);
+                      if (totem) setTotemCandidateId(totem.itemId);
+                    }}
+                    disabled={index === 3 && !enhancements.rune}
+                      key={index}
+                    >
+                      {index + 1}
+                      {totem ? <span aria-hidden="true">•</span> : null}
+                    </button>
+                  );
+                })}
+              </div>
+              <CatalogueContextMenu
+                idPrefix={`${slot}-totem-catalogue`}
+                search={
+                  <ExpandableSearch
+                    value={query}
+                    onChange={setQuery}
+                    label="Search Totems"
+                    placeholder={`Search ${totemCatalogue.length} Totems`}
+                  />
+                }
+                activeFilterCount={[animal, enhances].filter(
+                  (value) => value !== "all",
+                ).length}
+                filteredCount={filteredTotems.length}
+                totalCount={totemCatalogue.length}
+                onClearFilters={() => {
+                  setAnimal("all");
+                  setEnhances("all");
+                }}
+                filters={
+                  <div className="totem-filter-row">
+                    <select
+                      value={animal}
+                      onChange={(event) => setAnimal(event.target.value)}
+                      aria-label="Filter Totems by animal"
+                    >
+                      <option value="all">All animals</option>
+                      {animalOptions.map((option) => (
+                        <option value={option} key={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    <select
+                      value={enhances}
+                      onChange={(event) => setEnhances(event.target.value)}
+                      aria-label="Filter Totems by effect"
+                    >
+                      <option value="all">All effects</option>
+                      {enhanceOptions.map((option) => (
+                        <option value={option} key={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                }
+              />
+              <div className="item-list" role="listbox" aria-label="Totems">
+                {filteredTotems.map((totem) => (
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={totemCandidate?.id === totem.id}
+                    className={`item-list-row ${
+                      totemCandidate?.id === totem.id ? "is-candidate" : ""
+                    }`}
+                    onClick={() => setTotemCandidateId(totem.id)}
+                    key={totem.id}
+                  >
+                    <span className="item-list-mark">
+                      {totem.image ? (
+                        <Image
+                          src={totem.image.thumbnailUrl}
+                          alt=""
+                          width={48}
+                          height={48}
+                          unoptimized
+                        />
+                      ) : (
+                        "◇"
+                      )}
+                    </span>
+                    <span>
+                      <strong>{totem.name}</strong>
+                      <small>
+                        {totem.animal} · {totem.enhances}
+                      </small>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </aside>
+            <div className="comparison-column">
+              {totemCandidate ? (
+                <>
+                  <div className="comparison-heading">
+                    <span className="candidate-art">
+                      {totemCandidate.image ? (
+                        <Image
+                          src={totemCandidate.image.thumbnailUrl}
+                          alt=""
+                          width={112}
+                          height={112}
+                          unoptimized
+                        />
+                      ) : (
+                        "◇"
+                      )}
+                    </span>
+                    <div className="armor-comparison-copy">
+                      <small>{totemCandidate.animal} Totem</small>
+                      <h3>{totemCandidate.name}</h3>
+                      <p>{totemCandidate.enhances}</p>
+                      <a
+                        className="avakot-item-link"
+                        href={totemCandidate.pageUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        View on Avakot
+                        <ExternalLink aria-hidden="true" />
+                      </a>
+                    </div>
+                  </div>
+                  <p className="pact-description">
+                    {totemCandidate.description}
+                  </p>
+                  <div className="totem-config-grid">
+                    <label>
+                      Rank
+                      <select
+                        value={selection.rank}
+                        onChange={(event) =>
+                          setTotem(totemCandidate, {
+                            ...selection,
+                            itemId: totemCandidate.id,
+                            rank: Number(event.target.value) as 0 | 1 | 2 | 3,
+                          })
+                        }
+                      >
+                        {[0, 1, 2, 3].map((rank) => (
+                          <option value={rank} key={rank}>
+                            {rank}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label>
+                      Attunement
+                      <select
+                        value={selection.virtue}
+                        onChange={(event) =>
+                          setTotem(totemCandidate, {
+                            ...selection,
+                            itemId: totemCandidate.id,
+                            virtue: event.target.value as VirtueId,
+                          })
+                        }
+                      >
+                        {VIRTUE_IDS.map((virtue) => (
+                          <option value={virtue} key={virtue}>
+                            {virtueMeta[virtue].label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label>
+                      Variant
+                      <select
+                        value={selection.variant}
+                        onChange={(event) =>
+                          setTotem(totemCandidate, {
+                            ...selection,
+                            itemId: totemCandidate.id,
+                            variant: event.target.value as
+                              | "universal"
+                              | "combatArt",
+                          })
+                        }
+                      >
+                        <option value="universal">Universal</option>
+                        <option value="combatArt">
+                          {weapon?.combatArt ?? "Combat Art"}
+                        </option>
+                      </select>
+                    </label>
+                  </div>
+                  <section className="enhancement-effect-card">
+                    <small>Active at Rank {selection.rank}</small>
+                    <strong>
+                      {formatTotemEffect(totemCandidate.effect, effectValues)}
+                    </strong>
+                    {selection.variant === "combatArt" &&
+                    totemCandidate.hasUnknownGripValues &&
+                    effectValues.includes(null) ? (
+                      <span>Some grip-specific values are not yet published.</span>
+                    ) : null}
+                  </section>
+                  <div className="picker-actions">
+                    <button
+                      type="button"
+                      className="button button-quiet"
+                      disabled={!currentTotem}
+                      onClick={() => {
+                        const totems = [
+                          ...enhancements.totems,
+                        ] as WeaponEnhancements["totems"];
+                        totems[totemSlot] = null;
+                        onChange({ ...enhancements, totems });
+                      }}
+                    >
+                      Clear Slot
+                    </button>
+                    <button
+                      type="button"
+                      className="button button-primary"
+                      onClick={() => {
+                        setTotem(totemCandidate, {
+                          ...selection,
+                          itemId: totemCandidate.id,
+                        });
+                        const nextSlot =
+                          totemSlot < 3 &&
+                          (totemSlot < 2 || enhancements.rune)
+                            ? totemSlot + 1
+                            : undefined;
+                        if (nextSlot === undefined) {
+                          onClose();
+                        } else {
+                          navigate("totems", nextSlot);
+                        }
+                      }}
+                    >
+                      {totemSlot < 3 &&
+                      (totemSlot < 2 || enhancements.rune)
+                        ? "Equip & Continue"
+                        : "Equip & Finish"}
+                    </button>
+                  </div>
+                </>
+              ) : null}
+            </div>
+          </div>
+        )}
+      </section>
+    </div>
   );
 }
 
@@ -1442,6 +2585,7 @@ function formatVirtueVector(values: VirtueValues) {
 
 function CatalogueContextMenu({
   idPrefix,
+  search,
   activeFilterCount,
   filteredCount,
   totalCount,
@@ -1450,12 +2594,13 @@ function CatalogueContextMenu({
   sort,
 }: {
   idPrefix: string;
+  search?: ReactNode;
   activeFilterCount: number;
   filteredCount: number;
   totalCount: number;
-  onClearFilters: () => void;
-  filters: ReactNode;
-  sort: ReactNode;
+  onClearFilters?: () => void;
+  filters?: ReactNode;
+  sort?: ReactNode;
 }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [openMenu, setOpenMenu] = useState<"filters" | "sort" | null>(null);
@@ -1487,37 +2632,42 @@ function CatalogueContextMenu({
       }}
     >
       <div className="catalogue-context-toolbar">
-        <button
-          type="button"
-          className={openMenu === "filters" ? "is-active" : ""}
-          aria-expanded={openMenu === "filters"}
-          aria-controls={`${idPrefix}-filters`}
-          onClick={() =>
-            setOpenMenu((current) =>
-              current === "filters" ? null : "filters",
-            )
-          }
-        >
-          <ListFilter aria-hidden="true" />
-          <span>Filter</span>
-          {activeFilterCount ? (
-            <b aria-label={`${activeFilterCount} active filters`}>
-              {activeFilterCount}
-            </b>
-          ) : null}
-        </button>
-        <button
-          type="button"
-          className={openMenu === "sort" ? "is-active" : ""}
-          aria-expanded={openMenu === "sort"}
-          aria-controls={`${idPrefix}-sort`}
-          onClick={() =>
-            setOpenMenu((current) => (current === "sort" ? null : "sort"))
-          }
-        >
-          <ArrowUpDown aria-hidden="true" />
-          <span>Sort</span>
-        </button>
+        {search}
+        {filters ? (
+          <button
+            type="button"
+            className={openMenu === "filters" ? "is-active" : ""}
+            aria-expanded={openMenu === "filters"}
+            aria-controls={`${idPrefix}-filters`}
+            onClick={() =>
+              setOpenMenu((current) =>
+                current === "filters" ? null : "filters",
+              )
+            }
+          >
+            <ListFilter aria-hidden="true" />
+            <span>Filter</span>
+            {activeFilterCount ? (
+              <b aria-label={`${activeFilterCount} active filters`}>
+                {activeFilterCount}
+              </b>
+            ) : null}
+          </button>
+        ) : null}
+        {sort ? (
+          <button
+            type="button"
+            className={openMenu === "sort" ? "is-active" : ""}
+            aria-expanded={openMenu === "sort"}
+            aria-controls={`${idPrefix}-sort`}
+            onClick={() =>
+              setOpenMenu((current) => (current === "sort" ? null : "sort"))
+            }
+          >
+            <ArrowUpDown aria-hidden="true" />
+            <span>Sort</span>
+          </button>
+        ) : null}
         <small>
           {filteredCount} of {totalCount}
         </small>
@@ -1566,20 +2716,100 @@ function CatalogueContextMenu({
   );
 }
 
+function ExpandableSearch({
+  value,
+  onChange,
+  placeholder,
+  label,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  label: string;
+}) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [isOpen, setIsOpen] = useState(Boolean(value));
+
+  const open = () => {
+    setIsOpen(true);
+    window.requestAnimationFrame(() => inputRef.current?.focus());
+  };
+
+  return (
+    <div
+      ref={rootRef}
+      className={`expandable-search ${isOpen ? "is-open" : ""}`}
+      onBlur={(event) => {
+        if (
+          !value &&
+          !rootRef.current?.contains(event.relatedTarget as Node | null)
+        ) {
+          setIsOpen(false);
+        }
+      }}
+    >
+      <button
+        type="button"
+        className="expandable-search-trigger"
+        onClick={() => {
+          if (isOpen) {
+            inputRef.current?.focus();
+          } else {
+            open();
+          }
+        }}
+        aria-label={isOpen ? `${label} field` : label}
+        aria-expanded={isOpen}
+      >
+        <Search aria-hidden="true" />
+      </button>
+      <input
+        ref={inputRef}
+        type="text"
+        inputMode="search"
+        value={value}
+        tabIndex={isOpen ? 0 : -1}
+        aria-label={label}
+        placeholder={placeholder}
+        onFocus={() => setIsOpen(true)}
+        onChange={(event) => onChange(event.target.value)}
+      />
+      {isOpen && value ? (
+        <button
+          type="button"
+          className="expandable-search-clear"
+          onClick={() => {
+            onChange("");
+            inputRef.current?.focus();
+          }}
+          aria-label={`Clear ${label.toLowerCase()}`}
+        >
+          <X aria-hidden="true" />
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 function WeaponPicker({
   slot,
   build,
   onClose,
+  onConfigure,
   onEquip,
   onUnequip,
 }: {
   slot: WeaponHandSlot;
   build: SoulframeBuild;
   onClose: () => void;
+  onConfigure: (
+    tab: "weapon" | "rune" | "totems",
+    totemSlot?: number,
+  ) => void;
   onEquip: (itemId: string) => void;
   onUnequip: () => void;
 }) {
-  const searchRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLElement>(null);
   const [query, setQuery] = useState("");
   const [pipFilter, setPipFilter] = useState<"all" | VirtueId>("all");
@@ -1736,7 +2966,9 @@ function WeaponPicker({
     const previouslyFocused = document.activeElement as HTMLElement | null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    searchRef.current?.focus();
+    panelRef.current
+      ?.querySelector<HTMLElement>(".expandable-search-trigger")
+      ?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -1796,10 +3028,17 @@ function WeaponPicker({
         aria-labelledby="weapon-picker-title"
         onMouseDown={(event) => event.stopPropagation()}
       >
-        <header className="picker-header">
+        <header className="picker-header weapon-picker-header">
           <h2 id="weapon-picker-title">
-            Choose {weaponSlotMeta[slot].label}
+            {weaponSlotMeta[slot].label}
           </h2>
+          <WeaponLoadoutHud
+            slot={slot}
+            build={build}
+            active="weapon"
+            inline
+            onNavigate={onConfigure}
+          />
           <button
             type="button"
             className="icon-button"
@@ -1809,24 +3048,22 @@ function WeaponPicker({
             ×
           </button>
         </header>
+        <PickerTabs active="weapon" onChange={onConfigure} />
 
         <div className="picker-body">
           <aside className="catalogue-column">
-            <label className="search-field">
-              <span aria-hidden="true">⌕</span>
-              <span className="sr-only">Search weapons</span>
-              <input
-                ref={searchRef}
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={`Search ${compatibleItems.length} ${
-                  slot === "mainHand" ? "weapons" : "sidearms"
-                }`}
-              />
-            </label>
             <CatalogueContextMenu
               idPrefix="weapon-catalogue"
+              search={
+                <ExpandableSearch
+                  value={query}
+                  onChange={setQuery}
+                  label="Search weapons"
+                  placeholder={`Search ${compatibleItems.length} ${
+                    slot === "mainHand" ? "weapons" : "sidearms"
+                  }`}
+                />
+              }
               activeFilterCount={activeFilterCount}
               filteredCount={filteredItems.length}
               totalCount={compatibleItems.length}
@@ -2065,12 +3302,16 @@ function WeaponPicker({
                   <button
                     type="button"
                     className="button button-primary"
-                    onClick={() => onEquip(candidate.id)}
-                    disabled={candidate.id === currentItem?.id}
+                    onClick={() => {
+                      if (candidate.id !== currentItem?.id) {
+                        onEquip(candidate.id);
+                      }
+                      onConfigure("rune");
+                    }}
                   >
                     {candidate.id === currentItem?.id
-                      ? "Currently equipped"
-                      : `Equip ${weaponSlotMeta[slot].label}`}
+                      ? "Continue to Rune"
+                      : "Equip & Choose Rune"}
                   </button>
                 </div>
               </>
@@ -2079,6 +3320,69 @@ function WeaponPicker({
         </div>
       </section>
     </div>
+  );
+}
+
+function ActiveBuildEffects({ build }: { build: SoulframeBuild }) {
+  const effects = WEAPON_HAND_SLOTS.flatMap((slot) => {
+    const label = weaponSlotMeta[slot].label;
+    const enhancements = build.weaponEnhancements[slot];
+    const rune = enhancements.rune
+      ? runeById.get(enhancements.rune.itemId)
+      : undefined;
+    const runeEffects =
+      rune && enhancements.rune
+        ? rune.stats.map((stat) => ({
+            id: `${slot}-${rune.id}-${stat.effect}`,
+            source: `${label} · ${getRuneDisplayName(rune)}`,
+            text: stat.effect.replaceAll(
+              "$1",
+              stat.ranks[enhancements.rune!.rank] ?? "Unknown",
+            ),
+          }))
+        : [];
+    const totemEffects = enhancements.totems.flatMap((selection, index) => {
+      if (!selection) return [];
+      const totem = totemById.get(selection.itemId);
+      if (!totem) return [];
+      const values = getTotemRankValues(
+        selection,
+        totem.rankValues,
+        totem.gripRankValues,
+      );
+      return [
+        {
+          id: `${slot}-${index}-${totem.id}`,
+          source: `${label} · ${totem.name}`,
+          text: formatTotemEffect(totem.effect, values),
+        },
+      ];
+    });
+    return [...runeEffects, ...totemEffects];
+  });
+
+  return (
+    <details className="active-build-effects">
+      <summary>
+        <span>Active Build Effects</span>
+        <strong>{effects.length}</strong>
+        <ChevronDown aria-hidden="true" />
+      </summary>
+      {effects.length ? (
+        <div>
+          {effects.map((effect) => (
+            <p key={effect.id}>
+              <small>{effect.source}</small>
+              <span>{effect.text}</span>
+            </p>
+          ))}
+        </div>
+      ) : (
+        <p className="active-build-effects-empty">
+          Equip Runes and Totems to frame weapon effects.
+        </p>
+      )}
+    </details>
   );
 }
 
@@ -2638,7 +3942,6 @@ function ItemPicker({
   onEquip: (itemId: string) => void;
   onUnequip: () => void;
 }) {
-  const searchRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLElement>(null);
   const [query, setQuery] = useState("");
   const [pipFilter, setPipFilter] = useState<"all" | VirtueId>("all");
@@ -2792,7 +4095,9 @@ function ItemPicker({
     const previouslyFocused = document.activeElement as HTMLElement | null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    searchRef.current?.focus();
+    panelRef.current
+      ?.querySelector<HTMLElement>(".expandable-search-trigger")
+      ?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -2859,19 +4164,16 @@ function ItemPicker({
 
         <div className="picker-body">
           <aside className="catalogue-column">
-            <label className="search-field">
-              <span aria-hidden="true">⌕</span>
-              <span className="sr-only">Search compatible armor</span>
-              <input
-                ref={searchRef}
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={`Search ${compatibleItems.length} ${slotMeta[slot].label.toLowerCase()} options`}
-              />
-            </label>
             <CatalogueContextMenu
               idPrefix="armor-catalogue"
+              search={
+                <ExpandableSearch
+                  value={query}
+                  onChange={setQuery}
+                  label="Search compatible armor"
+                  placeholder={`Search ${compatibleItems.length} ${slotMeta[slot].label.toLowerCase()} options`}
+                />
+              }
               activeFilterCount={activeFilterCount}
               filteredCount={filteredItems.length}
               totalCount={compatibleItems.length}
@@ -3135,7 +4437,6 @@ function TalismanPicker({
   onEquip: (itemId: string) => void;
   onUnequip: () => void;
 }) {
-  const searchRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLElement>(null);
   const [query, setQuery] = useState("");
   const currentItem = build.equipment.talisman
@@ -3169,7 +4470,9 @@ function TalismanPicker({
     const previouslyFocused = document.activeElement as HTMLElement | null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    searchRef.current?.focus();
+    panelRef.current
+      ?.querySelector<HTMLElement>(".expandable-search-trigger")
+      ?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -3232,17 +4535,20 @@ function TalismanPicker({
 
         <div className="picker-body">
           <aside className="catalogue-column">
-            <label className="search-field">
-              <span aria-hidden="true">⌕</span>
-              <span className="sr-only">Search Talismans</span>
-              <input
-                ref={searchRef}
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={`Search ${talismanCatalogue.length} Talismans`}
-              />
-            </label>
+            <CatalogueContextMenu
+              idPrefix="talisman-catalogue"
+              search={
+                <ExpandableSearch
+                  value={query}
+                  onChange={setQuery}
+                  label="Search Talismans"
+                  placeholder={`Search ${talismanCatalogue.length} Talismans`}
+                />
+              }
+              activeFilterCount={0}
+              filteredCount={filteredItems.length}
+              totalCount={talismanCatalogue.length}
+            />
             <div className="item-list" role="listbox" aria-label="Talismans">
               {filteredItems.map((item) => {
                 const isCandidate = item.id === candidate?.id;
@@ -3619,6 +4925,11 @@ export function SoulframeBuilder() {
   const [buildNameDraft, setBuildNameDraft] = useState(DEFAULT_BUILD.name);
   const [isEditingBuildName, setIsEditingBuildName] = useState(false);
   const [activeSlot, setActiveSlot] = useState<EquipmentSlot>();
+  const [isPactPickerOpen, setIsPactPickerOpen] = useState(false);
+  const [weaponConfigTab, setWeaponConfigTab] = useState<
+    "weapon" | "rune" | "totems"
+  >("weapon");
+  const [selectedTotemSlot, setSelectedTotemSlot] = useState(0);
   const [optimizationMode, setOptimizationMode] = useState<
     "affinity" | "armor"
   >();
@@ -3677,6 +4988,9 @@ export function SoulframeBuilder() {
         armor: armorCatalogue,
         talismans: talismanCatalogue,
         weapons: weaponCatalogue,
+        pacts: pactCatalogue,
+        runes: runeCatalogue,
+        totems: totemCatalogue,
       });
       if (result.ok) {
         nextBuild = result.build;
@@ -3698,6 +5012,9 @@ export function SoulframeBuilder() {
           armor: armorCatalogue,
           talismans: talismanCatalogue,
           weapons: weaponCatalogue,
+          pacts: pactCatalogue,
+          runes: runeCatalogue,
+          totems: totemCatalogue,
         });
         if (result.ok) {
           nextBuild = result.build;
@@ -3901,6 +5218,16 @@ export function SoulframeBuilder() {
         </aside>
 
         <div className="loadout-stage">
+          <PactBanner
+            pact={
+              build.pact.itemId
+                ? pactById.get(build.pact.itemId)
+                : undefined
+            }
+            rank={build.pact.rank}
+            isActive={isPactPickerOpen}
+            onOpen={() => setIsPactPickerOpen(true)}
+          />
           <div className="loadout-optimization">
             <button
               type="button"
@@ -3948,8 +5275,21 @@ export function SoulframeBuilder() {
                   ? weaponById.get(build.equipment[slot]!)
                   : undefined
               }
+              enhancements={build.weaponEnhancements[slot]}
               isActive={activeSlot === slot}
-              onOpen={() => setActiveSlot(slot)}
+              onOpenWeapon={() => {
+                setWeaponConfigTab("weapon");
+                setActiveSlot(slot);
+              }}
+              onOpenRune={() => {
+                setWeaponConfigTab("rune");
+                setActiveSlot(slot);
+              }}
+              onOpenTotem={(index) => {
+                setSelectedTotemSlot(index);
+                setWeaponConfigTab("totems");
+                setActiveSlot(slot);
+              }}
             />
           ))}
         </div>
@@ -4055,6 +5395,8 @@ export function SoulframeBuilder() {
             </div>
           </section>
 
+          <ActiveBuildEffects build={build} />
+
           {calculation.modifiers.attack > 0 ||
           calculation.modifiers.stagger > 0 ? (
             <div className="secondary-modifiers">
@@ -4110,26 +5452,98 @@ export function SoulframeBuilder() {
         />
       ) : null}
 
-      {activeSlot === "mainHand" || activeSlot === "offHand" ? (
+      {(activeSlot === "mainHand" || activeSlot === "offHand") &&
+      weaponConfigTab === "weapon" ? (
         <WeaponPicker
           slot={activeSlot}
           build={build}
           onClose={() => setActiveSlot(undefined)}
+          onConfigure={(tab, totemSlot) => {
+            if (totemSlot !== undefined) setSelectedTotemSlot(totemSlot);
+            setWeaponConfigTab(tab);
+          }}
           onEquip={(itemId) => {
-            setBuild((current) => ({
-              ...current,
-              equipment: { ...current.equipment, [activeSlot]: itemId },
-            }));
-            setActiveSlot(undefined);
+            setBuild((current) => {
+              const weapon = weaponById.get(itemId);
+              const normalized = normalizeWeaponEnhancements(
+                current.weaponEnhancements[activeSlot],
+                weapon,
+                runeById,
+              );
+              if (normalized.changed) {
+                setNotice(
+                  "Incompatible Rune or Totem selections were cleared for the new weapon.",
+                );
+              }
+              return {
+                ...current,
+                equipment: { ...current.equipment, [activeSlot]: itemId },
+                weaponEnhancements: {
+                  ...current.weaponEnhancements,
+                  [activeSlot]: normalized.value,
+                },
+              };
+            });
           }}
           onUnequip={() => {
             setBuild((current) => {
               const equipment = { ...current.equipment };
               delete equipment[activeSlot];
-              return { ...current, equipment };
+              return {
+                ...current,
+                equipment,
+                weaponEnhancements: {
+                  ...current.weaponEnhancements,
+                  [activeSlot]: createEmptyWeaponEnhancements(),
+                },
+              };
             });
             setActiveSlot(undefined);
           }}
+        />
+      ) : null}
+
+      {(activeSlot === "mainHand" || activeSlot === "offHand") &&
+      weaponConfigTab !== "weapon" ? (
+        <WeaponEnhancementPicker
+          slot={activeSlot}
+          tab={weaponConfigTab}
+          selectedTotemSlot={selectedTotemSlot}
+          build={build}
+          onClose={() => setActiveSlot(undefined)}
+          onTabChange={(tab, totemSlot) => {
+            if (totemSlot !== undefined) setSelectedTotemSlot(totemSlot);
+            setWeaponConfigTab(tab);
+          }}
+          onChange={(enhancements) =>
+            setBuild((current) => ({
+              ...current,
+              weaponEnhancements: {
+                ...current.weaponEnhancements,
+                [activeSlot]: enhancements,
+              },
+            }))
+          }
+        />
+      ) : null}
+
+      {isPactPickerOpen ? (
+        <PactPicker
+          currentId={build.pact.itemId}
+          rank={build.pact.rank}
+          onClose={() => setIsPactPickerOpen(false)}
+          onEquip={(itemId) =>
+            setBuild((current) => ({
+              ...current,
+              pact: { ...current.pact, itemId },
+            }))
+          }
+          onRankChange={(rank) =>
+            setBuild((current) => ({
+              ...current,
+              pact: { ...current.pact, rank },
+            }))
+          }
         />
       ) : null}
 

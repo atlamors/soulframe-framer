@@ -1,0 +1,1101 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-28T18:15:41.355Z",
+  "source": {
+    "publisher": "Avakot",
+    "moduleUrl": "https://wiki.avakot.org/Module:Data/Totems",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 48153,
+    "revisionTimestamp": "2026-07-24T02:47:19Z"
+  },
+  "items": [
+    {
+      "id": "totem-armour-coat",
+      "name": "Armour Coat",
+      "animal": "Beaver",
+      "enhances": "Runes (Passive)",
+      "description": "Sheltered by thick hide",
+      "effect": "Increase Physical Armour by +$1 per Rune Charge",
+      "iconFile": "BeaverTotem.png",
+      "rankValues": [
+        [
+          2,
+          2,
+          3,
+          3
+        ]
+      ],
+      "gripRankValues": [
+        [
+          3,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hasUnknownGripValues": true,
+      "pageUrl": "https://wiki.avakot.org/Armour_Coat",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/9/92/BeaverTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/92/BeaverTotem.png/192px-BeaverTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BeaverTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 271461,
+        "sha1": "52cc754232e267da22936ee3b1d1a60746432629"
+      }
+    },
+    {
+      "id": "totem-stocky-lodge",
+      "name": "Stocky Lodge",
+      "animal": "Beaver",
+      "enhances": "Rune Activation",
+      "description": "Tough of tooth and paw",
+      "effect": "+$1 Armour upon unleashing Rune",
+      "iconFile": "BeaverTotem.png",
+      "rankValues": [
+        [
+          8,
+          9,
+          10,
+          12
+        ]
+      ],
+      "gripRankValues": [
+        [
+          8,
+          10,
+          12,
+          14
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Stocky_Lodge",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/9/92/BeaverTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/92/BeaverTotem.png/192px-BeaverTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BeaverTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 271461,
+        "sha1": "52cc754232e267da22936ee3b1d1a60746432629"
+      }
+    },
+    {
+      "id": "totem-rivers-revive",
+      "name": "Rivers Revive",
+      "animal": "Beaver",
+      "enhances": "Rune Activation",
+      "description": "Mended by webbed paw",
+      "effect": "Restore +$1 Life per second for $2 seconds upon unleashing a Rune",
+      "iconFile": "BeaverTotem.png",
+      "rankValues": [
+        [
+          15,
+          16,
+          18,
+          20
+        ],
+        [
+          8,
+          8,
+          8,
+          8
+        ]
+      ],
+      "gripRankValues": [
+        [
+          15,
+          null,
+          null,
+          null
+        ],
+        [
+          6,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hasUnknownGripValues": true,
+      "pageUrl": "https://wiki.avakot.org/Rivers_Revive",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/9/92/BeaverTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/92/BeaverTotem.png/192px-BeaverTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BeaverTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 271461,
+        "sha1": "52cc754232e267da22936ee3b1d1a60746432629"
+      }
+    },
+    {
+      "id": "totem-draft-dam",
+      "name": "Draft Dam",
+      "animal": "Beaver",
+      "enhances": "Rune Activation",
+      "description": "Restraining current's flow",
+      "effect": "Reduce Rune drain by $1 %",
+      "iconFile": "BeaverTotem.png",
+      "rankValues": [
+        [
+          10,
+          15,
+          20,
+          25
+        ]
+      ],
+      "gripRankValues": [
+        [
+          15,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hasUnknownGripValues": true,
+      "pageUrl": "https://wiki.avakot.org/Draft_Dam",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/9/92/BeaverTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/92/BeaverTotem.png/192px-BeaverTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BeaverTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 271461,
+        "sha1": "52cc754232e267da22936ee3b1d1a60746432629"
+      }
+    },
+    {
+      "id": "totem-thunder-tail",
+      "name": "Thunder Tail",
+      "animal": "Beaver",
+      "enhances": "Rune Activation",
+      "description": "Laid low by flat tail",
+      "effect": "Unleashing a Rune deals +$1 Stagger damage within $2 m",
+      "iconFile": "BeaverTotem.png",
+      "rankValues": [
+        [
+          70,
+          90,
+          110,
+          130
+        ],
+        [
+          5,
+          6,
+          8,
+          10
+        ]
+      ],
+      "gripRankValues": [
+        [
+          80,
+          100,
+          120,
+          150
+        ],
+        [
+          5,
+          8,
+          10,
+          12
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Thunder_Tail",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/9/92/BeaverTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/92/BeaverTotem.png/192px-BeaverTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BeaverTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 271461,
+        "sha1": "52cc754232e267da22936ee3b1d1a60746432629"
+      }
+    },
+    {
+      "id": "totem-cervid-ward",
+      "name": "Cervid Ward",
+      "animal": "Fawn",
+      "enhances": "Runes (Passive)",
+      "description": "Protection of cloven hoof",
+      "effect": "Increase Magick Armour by +$1 per Rune Charge",
+      "iconFile": "FawnTotem.png",
+      "rankValues": [
+        [
+          2,
+          2,
+          3,
+          3
+        ]
+      ],
+      "gripRankValues": [
+        [
+          3,
+          3,
+          4,
+          5
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Cervid_Ward",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/2/23/FawnTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/23/FawnTotem.png/192px-FawnTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FawnTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 241002,
+        "sha1": "beebd6a446e2e4e9888f0ff07182bd8d04358701"
+      }
+    },
+    {
+      "id": "totem-hollowed-herd",
+      "name": "Hollowed Herd",
+      "animal": "Fawn",
+      "enhances": "Pull Smite",
+      "description": "No fawn grazes alone",
+      "effect": "Create a Decoy for $1 seconds on Pull Smite",
+      "iconFile": "FawnTotem.png",
+      "rankValues": [
+        [
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "gripRankValues": [
+        [
+          2,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hasUnknownGripValues": true,
+      "pageUrl": "https://wiki.avakot.org/Hollowed_Herd",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/2/23/FawnTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/23/FawnTotem.png/192px-FawnTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FawnTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 241002,
+        "sha1": "beebd6a446e2e4e9888f0ff07182bd8d04358701"
+      }
+    },
+    {
+      "id": "totem-moving-musk",
+      "name": "Moving Musk",
+      "animal": "Fawn",
+      "enhances": "Pull Smite",
+      "description": "The scent of fearful prey",
+      "effect": "Drag enemies towards the Envoy on Pull Smite dealing +$1 damage",
+      "iconFile": "FawnTotem.png",
+      "rankValues": [
+        [
+          20,
+          40,
+          60,
+          80
+        ]
+      ],
+      "gripRankValues": [
+        [
+          30,
+          60,
+          90,
+          120
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Moving_Musk",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/2/23/FawnTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/23/FawnTotem.png/192px-FawnTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FawnTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 241002,
+        "sha1": "beebd6a446e2e4e9888f0ff07182bd8d04358701"
+      }
+    },
+    {
+      "id": "totem-smiting-stag",
+      "name": "Smiting Stag",
+      "animal": "Fawn",
+      "enhances": "Runes (Passive)",
+      "description": "Charged forth in bone wreath",
+      "effect": "Increase Smite Chance by $1 % per Rune Charge",
+      "iconFile": "FawnTotem.png",
+      "rankValues": [
+        [
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "gripRankValues": [
+        [
+          2,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hasUnknownGripValues": true,
+      "pageUrl": "https://wiki.avakot.org/Smiting_Stag",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/2/23/FawnTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/23/FawnTotem.png/192px-FawnTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FawnTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 241002,
+        "sha1": "beebd6a446e2e4e9888f0ff07182bd8d04358701"
+      }
+    },
+    {
+      "id": "totem-turn-tusk",
+      "name": "Turn Tusk",
+      "animal": "Fawn",
+      "enhances": "Pull Smite",
+      "description": "Mesmerized by tail's flick",
+      "effect": "Temporarily turn enemies into allies for $1 seconds on Pull Smite",
+      "iconFile": "FawnTotem.png",
+      "rankValues": [
+        [
+          2,
+          3,
+          3,
+          4
+        ]
+      ],
+      "gripRankValues": [
+        [
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Turn_Tusk",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/2/23/FawnTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/23/FawnTotem.png/192px-FawnTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FawnTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 241002,
+        "sha1": "beebd6a446e2e4e9888f0ff07182bd8d04358701"
+      }
+    },
+    {
+      "id": "totem-dabble-dredge",
+      "name": "Dabble Dredge",
+      "animal": "Duck",
+      "enhances": "Pull Smite",
+      "description": "Squirming prey, freshly caught",
+      "effect": "Restore +$1 Life on Pull Smite",
+      "iconFile": "DuckTotem.png",
+      "rankValues": [
+        [
+          50,
+          125,
+          175,
+          200
+        ]
+      ],
+      "gripRankValues": [
+        [
+          75,
+          100,
+          175,
+          250
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Dabble_Dredge",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/7e/DuckTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/7e/DuckTotem.png/192px-DuckTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:DuckTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 253236,
+        "sha1": "1d5fca640ea50ef635a634e4326bf2b7f2ef60c1"
+      }
+    },
+    {
+      "id": "totem-far-foul",
+      "name": "Far Foul",
+      "animal": "Duck",
+      "enhances": "Pull Smite",
+      "description": "Within feather's reach",
+      "effect": "Increase Pull Smite Range by +$1 m",
+      "iconFile": "DuckTotem.png",
+      "rankValues": [
+        [
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "gripRankValues": [
+        [
+          3,
+          4,
+          6,
+          8
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Far_Foul",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/7e/DuckTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/7e/DuckTotem.png/192px-DuckTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:DuckTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 253236,
+        "sha1": "1d5fca640ea50ef635a634e4326bf2b7f2ef60c1"
+      }
+    },
+    {
+      "id": "totem-diving-drake",
+      "name": "Diving Drake",
+      "animal": "Duck",
+      "enhances": "Pull Smite",
+      "description": "Dredged from the mud",
+      "effect": "Pull Smite deals +$1 additional damage",
+      "iconFile": "DuckTotem.png",
+      "rankValues": [
+        [
+          30,
+          50,
+          80,
+          100
+        ]
+      ],
+      "gripRankValues": [
+        [
+          50,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hasUnknownGripValues": true,
+      "pageUrl": "https://wiki.avakot.org/Diving_Drake",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/7e/DuckTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/7e/DuckTotem.png/192px-DuckTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:DuckTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 253236,
+        "sha1": "1d5fca640ea50ef635a634e4326bf2b7f2ef60c1"
+      }
+    },
+    {
+      "id": "totem-heal-preens",
+      "name": "Heal Preens",
+      "animal": "Duck",
+      "enhances": "Pull Smite",
+      "description": "A flock alight in rippling waves",
+      "effect": "Heals all allies within $1 m for +$2 Life on Pull Smite",
+      "iconFile": "DuckTotem.png",
+      "rankValues": [
+        [
+          8,
+          10,
+          12,
+          15
+        ],
+        [
+          50,
+          75,
+          100,
+          125
+        ]
+      ],
+      "gripRankValues": [
+        [
+          8,
+          10,
+          12,
+          15
+        ],
+        [
+          50,
+          100,
+          125,
+          150
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Heal_Preens",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/7e/DuckTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/7e/DuckTotem.png/192px-DuckTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:DuckTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 253236,
+        "sha1": "1d5fca640ea50ef635a634e4326bf2b7f2ef60c1"
+      }
+    },
+    {
+      "id": "totem-binky-kick",
+      "name": "Binky Kick",
+      "animal": "Rabbit",
+      "enhances": "Pull Smite",
+      "description": "Swift thud by rabbit foot",
+      "effect": "Pull Smite causes a +$1 damage explosion $2 m around the Envoy",
+      "iconFile": "RabbitTotem.png",
+      "rankValues": [
+        [
+          50,
+          75,
+          100,
+          125
+        ],
+        [
+          5,
+          7,
+          9,
+          10
+        ]
+      ],
+      "gripRankValues": [
+        [
+          75,
+          100,
+          125,
+          150
+        ],
+        [
+          8,
+          9,
+          10,
+          12
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Binky_Kick",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f3/RabbitTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f3/RabbitTotem.png/192px-RabbitTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RabbitTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 260940,
+        "sha1": "126365dbee541f2bbac1fb4a93330457eb1c1d36"
+      }
+    },
+    {
+      "id": "totem-dewclawer",
+      "name": "Dewclawer",
+      "animal": "Rabbit",
+      "enhances": "Runes (Passive)",
+      "description": "Soft paw, fierce claw",
+      "effect": "Runes deal $1 % additional damage",
+      "iconFile": "RabbitTotem.png",
+      "rankValues": [
+        [
+          5,
+          8,
+          10,
+          15
+        ]
+      ],
+      "gripRankValues": [
+        [
+          8,
+          10,
+          15,
+          23
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Dewclawer",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f3/RabbitTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f3/RabbitTotem.png/192px-RabbitTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RabbitTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 260940,
+        "sha1": "126365dbee541f2bbac1fb4a93330457eb1c1d36"
+      }
+    },
+    {
+      "id": "totem-hare-harms",
+      "name": "Hare Harms",
+      "animal": "Rabbit",
+      "enhances": "Pull Smite",
+      "description": "Tremors 'neath rabbit foot",
+      "effect": "Pull Smite causes +$1 damage explosion $2 m around the Enemy",
+      "iconFile": "RabbitTotem.png",
+      "rankValues": [
+        [
+          30,
+          40,
+          50,
+          80
+        ],
+        [
+          5,
+          6,
+          8,
+          12
+        ]
+      ],
+      "gripRankValues": [
+        [
+          50,
+          75,
+          100,
+          125
+        ],
+        [
+          6,
+          8,
+          10,
+          12
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Hare_Harms",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f3/RabbitTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f3/RabbitTotem.png/192px-RabbitTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RabbitTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 260940,
+        "sha1": "126365dbee541f2bbac1fb4a93330457eb1c1d36"
+      }
+    },
+    {
+      "id": "totem-sprout-spring",
+      "name": "Sprout Spring",
+      "animal": "Rabbit",
+      "enhances": "Pull Smite",
+      "description": "One field feeds many",
+      "effect": "Effects of Pull Smite has a $1 % chance of spreading to all allies",
+      "iconFile": "RabbitTotem.png",
+      "rankValues": [
+        [
+          20,
+          33.3,
+          33.3,
+          50
+        ]
+      ],
+      "gripRankValues": [
+        [
+          20,
+          33.3,
+          33.3,
+          50
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Sprout_Spring",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f3/RabbitTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f3/RabbitTotem.png/192px-RabbitTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RabbitTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 260940,
+        "sha1": "126365dbee541f2bbac1fb4a93330457eb1c1d36"
+      }
+    },
+    {
+      "id": "totem-arcanic-gnaws",
+      "name": "Arcanic Gnaws",
+      "animal": "Rat",
+      "enhances": "Smite Proc",
+      "description": "Just a nibble",
+      "effect": "Increases Arcanic damage by +$1 on Smite",
+      "iconFile": "RatTotem.png",
+      "rankValues": [
+        [
+          5,
+          15,
+          20,
+          25
+        ]
+      ],
+      "gripRankValues": [
+        [
+          10,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hasUnknownGripValues": true,
+      "pageUrl": "https://wiki.avakot.org/Arcanic_Gnaws",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a6/RatTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a6/RatTotem.png/192px-RatTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RatTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 247773,
+        "sha1": "4c106117790e47beea7090696d7bfcdbb8442399"
+      }
+    },
+    {
+      "id": "totem-bandicota-blast",
+      "name": "Bandicota Blast",
+      "animal": "Rat",
+      "enhances": "Smite Proc",
+      "description": "Small and stout",
+      "effect": "Smite creates a blast that Staggers and deals +$1 Stagger damage to nearby enemies",
+      "iconFile": "RatTotem.png",
+      "rankValues": [
+        [
+          100,
+          125,
+          150,
+          200
+        ]
+      ],
+      "gripRankValues": [
+        [
+          125,
+          150,
+          175,
+          225
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Bandicota_Blast",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a6/RatTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a6/RatTotem.png/192px-RatTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RatTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 247773,
+        "sha1": "4c106117790e47beea7090696d7bfcdbb8442399"
+      }
+    },
+    {
+      "id": "totem-lingering-litter",
+      "name": "Lingering Litter",
+      "animal": "Rat",
+      "enhances": "Smite Proc",
+      "description": "Tracked by beady eyes",
+      "effect": "Increase Smite duration by +$1 seconds",
+      "iconFile": "RatTotem.png",
+      "rankValues": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "gripRankValues": [
+        [
+          2,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hasUnknownGripValues": true,
+      "pageUrl": "https://wiki.avakot.org/Lingering_Litter",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a6/RatTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a6/RatTotem.png/192px-RatTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RatTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 247773,
+        "sha1": "4c106117790e47beea7090696d7bfcdbb8442399"
+      }
+    },
+    {
+      "id": "totem-noble-nestling",
+      "name": "Noble Nestling",
+      "animal": "Rat",
+      "enhances": "Pull Smite",
+      "description": "Beady dignity",
+      "effect": "Buff Virtue $1 % associated with enemy soul colour on Pull Smite",
+      "iconFile": "RatTotem.png",
+      "rankValues": [
+        [
+          5,
+          8,
+          10,
+          12
+        ]
+      ],
+      "gripRankValues": [
+        [
+          5,
+          null,
+          null,
+          null
+        ]
+      ],
+      "hasUnknownGripValues": true,
+      "pageUrl": "https://wiki.avakot.org/Noble_Nestling",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a6/RatTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a6/RatTotem.png/192px-RatTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RatTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 247773,
+        "sha1": "4c106117790e47beea7090696d7bfcdbb8442399"
+      }
+    },
+    {
+      "id": "totem-blinding-bite",
+      "name": "Blinding Bite",
+      "animal": "Squirrel",
+      "enhances": "Smite Proc",
+      "description": "Shining luster in buck teeth",
+      "effect": "Create a bright flash that blinds enemies in a $1 m radius",
+      "iconFile": "SquirrelTotem.png",
+      "rankValues": [
+        [
+          4,
+          5,
+          5,
+          6
+        ]
+      ],
+      "gripRankValues": [
+        [
+          4,
+          5,
+          5,
+          6
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Blinding_Bite",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/52/SquirrelTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/52/SquirrelTotem.png/192px-SquirrelTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SquirrelTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 282885,
+        "sha1": "b61e9dac1851629b4a0b2a97ce9f7d23d984a8c4"
+      }
+    },
+    {
+      "id": "totem-quick-drey",
+      "name": "Quick Drey",
+      "animal": "Squirrel",
+      "enhances": "Pull Smite",
+      "description": "Razor-quick from nest's embrace",
+      "effect": "Increase attack speed by $1 % on Pull Smite",
+      "iconFile": "SquirrelTotem.png",
+      "rankValues": [
+        [
+          10,
+          12,
+          14,
+          16
+        ]
+      ],
+      "gripRankValues": [
+        [
+          10,
+          12,
+          14,
+          16
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Quick_Drey",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/52/SquirrelTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/52/SquirrelTotem.png/192px-SquirrelTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SquirrelTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 282885,
+        "sha1": "b61e9dac1851629b4a0b2a97ce9f7d23d984a8c4"
+      }
+    },
+    {
+      "id": "totem-spreading-sploot",
+      "name": "Spreading Sploot",
+      "animal": "Squirrel",
+      "enhances": "Pull Smite",
+      "description": "Unfurled and ready",
+      "effect": "$1 % chance to Smite other enemies within $2 m of Smite",
+      "iconFile": "SquirrelTotem.png",
+      "rankValues": [
+        [
+          10,
+          12.5,
+          16.7,
+          20
+        ],
+        [
+          10,
+          12,
+          17,
+          20
+        ]
+      ],
+      "gripRankValues": [
+        [
+          12.5,
+          14.3,
+          20,
+          25
+        ],
+        [
+          13,
+          15,
+          20,
+          23
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Spreading_Sploot",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/52/SquirrelTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/52/SquirrelTotem.png/192px-SquirrelTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SquirrelTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 282885,
+        "sha1": "b61e9dac1851629b4a0b2a97ce9f7d23d984a8c4"
+      }
+    },
+    {
+      "id": "totem-voltaic-scurry",
+      "name": "Voltaic Scurry",
+      "animal": "Squirrel",
+      "enhances": "Smite Proc",
+      "description": "Lightning quick pitter-patter",
+      "effect": "Increase Voltaic Damage by +$1 on Smitten enemies",
+      "iconFile": "SquirrelTotem.png",
+      "rankValues": [
+        [
+          5,
+          15,
+          20,
+          25
+        ]
+      ],
+      "gripRankValues": [
+        [
+          10,
+          20,
+          25,
+          35
+        ]
+      ],
+      "hasUnknownGripValues": false,
+      "pageUrl": "https://wiki.avakot.org/Voltaic_Scurry",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/52/SquirrelTotem.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/52/SquirrelTotem.png/192px-SquirrelTotem.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SquirrelTotem.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 282885,
+        "sha1": "b61e9dac1851629b4a0b2a97ce9f7d23d984a8c4"
+      }
+    }
+  ]
+}

@@ -6,9 +6,14 @@ import {
   type ArmorItem,
   type EquipmentSlot,
   type PactArtRank,
+  type Pact,
+  type Rune,
   type SoulframeBuild,
   type Talisman,
+  type Totem,
+  type TotemSelection,
   type Weapon,
+  type WeaponEnhancements,
   type VirtueId,
 } from "./types";
 import {
@@ -19,10 +24,15 @@ import {
   inferAffinitySources,
 } from "./affinity";
 import { distributeVirtueTotal } from "./virtue-alignment";
+import {
+  createEmptyWeaponEnhancements,
+  normalizeWeaponEnhancements,
+} from "./enchantments";
 
-export const BUILD_SCHEMA_VERSION = 3 as const;
-export const STORAGE_KEY = "soulframe-framer.build.v3";
+export const BUILD_SCHEMA_VERSION = 4 as const;
+export const STORAGE_KEY = "soulframe-framer.build.v4";
 export const LEGACY_STORAGE_KEYS = [
+  "soulframe-framer.build.v3",
   "soulframe-framer.build.v2",
   "soulframe-framer.build.v1",
 ] as const;
@@ -33,6 +43,9 @@ export interface BuildCatalogue {
   armor: readonly ArmorItem[];
   talismans: readonly Talisman[];
   weapons: readonly Weapon[];
+  pacts?: readonly Pact[];
+  runes?: readonly Rune[];
+  totems?: readonly Totem[];
 }
 
 export type DecodeResult =
@@ -99,6 +112,7 @@ function validateBuild(
   if (
     value.schemaVersion !== 1 &&
     value.schemaVersion !== 2 &&
+    value.schemaVersion !== 3 &&
     value.schemaVersion !== BUILD_SCHEMA_VERSION
   ) {
     return { ok: false, error: "This build uses an unsupported schema version." };
@@ -130,14 +144,14 @@ function validateBuild(
   }
   const warnings: string[] = [];
   const affinitySources =
-    value.schemaVersion === BUILD_SCHEMA_VERSION
+    value.schemaVersion === 3 || value.schemaVersion === BUILD_SCHEMA_VERSION
       ? validateAffinitySources(value.affinitySources)
       : inferAffinitySources(virtues);
   if (!affinitySources) {
     return { ok: false, error: "Affinity sources are invalid." };
   }
   const suppliedEnvoyRank =
-    value.schemaVersion === BUILD_SCHEMA_VERSION &&
+    (value.schemaVersion === 3 || value.schemaVersion === BUILD_SCHEMA_VERSION) &&
     isRecord(value.affinitySources) &&
     typeof value.affinitySources.envoyRank === "number"
       ? value.affinitySources.envoyRank
@@ -168,6 +182,10 @@ function validateBuild(
   } else if (value.schemaVersion === 2) {
     warnings.push(
       "Saved build upgraded with affinity sources inferred from its Virtue pool.",
+    );
+  } else if (value.schemaVersion === 3) {
+    warnings.push(
+      "Saved build upgraded with Pact, Rune, and Totem configuration.",
     );
   } else if (suppliedTotal !== allocatablePoints) {
     warnings.push(
@@ -231,6 +249,133 @@ function validateBuild(
     equipment[slot] = itemId;
   }
 
+  const knownPactIds = catalogue?.pacts
+    ? new Set(catalogue.pacts.map((item) => item.id))
+    : undefined;
+  const pactValue =
+    value.schemaVersion === BUILD_SCHEMA_VERSION && isRecord(value.pact)
+      ? value.pact
+      : undefined;
+  let pactItemId: string | null = null;
+  let pactRank = 30;
+  if (pactValue) {
+    if (
+      pactValue.itemId !== null &&
+      (typeof pactValue.itemId !== "string" || pactValue.itemId.length > 120)
+    ) {
+      return { ok: false, error: "Selected Pact is invalid." };
+    }
+    if (
+      typeof pactValue.rank !== "number" ||
+      !Number.isInteger(pactValue.rank) ||
+      pactValue.rank < 0 ||
+      pactValue.rank > 30
+    ) {
+      return { ok: false, error: "Pact rank is invalid." };
+    }
+    if (
+      typeof pactValue.itemId === "string" &&
+      knownPactIds &&
+      !knownPactIds.has(pactValue.itemId)
+    ) {
+      warnings.push(`Unknown Pact "${pactValue.itemId}" was ignored.`);
+    } else {
+      pactItemId = pactValue.itemId as string | null;
+    }
+    pactRank = pactValue.rank;
+  }
+
+  const knownRuneIds = catalogue?.runes
+    ? new Set(catalogue.runes.map((item) => item.id))
+    : undefined;
+  const knownTotemIds = catalogue?.totems
+    ? new Set(catalogue.totems.map((item) => item.id))
+    : undefined;
+  const runeById = new Map((catalogue?.runes ?? []).map((item) => [item.id, item]));
+  const rawEnhancements =
+    value.schemaVersion === BUILD_SCHEMA_VERSION &&
+    isRecord(value.weaponEnhancements)
+      ? value.weaponEnhancements
+      : {};
+  const weaponEnhancements = Object.fromEntries(
+    WEAPON_HAND_SLOTS.map((slot) => {
+      const empty = createEmptyWeaponEnhancements();
+      const raw = rawEnhancements[slot];
+      if (!isRecord(raw)) return [slot, empty];
+
+      let rune: WeaponEnhancements["rune"] = null;
+      if (raw.rune !== null && raw.rune !== undefined) {
+        if (
+          !isRecord(raw.rune) ||
+          typeof raw.rune.itemId !== "string" ||
+          raw.rune.itemId.length > 120 ||
+          typeof raw.rune.rank !== "number" ||
+          !Number.isInteger(raw.rune.rank) ||
+          raw.rune.rank < 0 ||
+          raw.rune.rank > 3
+        ) {
+          throw new Error(`Invalid Rune selection for ${slot}.`);
+        }
+        if (!knownRuneIds || knownRuneIds.has(raw.rune.itemId)) {
+          rune = { itemId: raw.rune.itemId, rank: raw.rune.rank as 0 | 1 | 2 | 3 };
+        } else {
+          warnings.push(`Unknown ${slot} Rune "${raw.rune.itemId}" was ignored.`);
+        }
+      }
+
+      const sourceTotems = Array.isArray(raw.totems) ? raw.totems : [];
+      const totems = Array.from({ length: 4 }, (_, index) => {
+        const candidate = sourceTotems[index];
+        if (candidate === null || candidate === undefined) return null;
+        if (
+          !isRecord(candidate) ||
+          typeof candidate.itemId !== "string" ||
+          candidate.itemId.length > 120 ||
+          typeof candidate.rank !== "number" ||
+          !Number.isInteger(candidate.rank) ||
+          candidate.rank < 0 ||
+          candidate.rank > 3 ||
+          typeof candidate.virtue !== "string" ||
+          !VIRTUE_IDS.includes(candidate.virtue as VirtueId) ||
+          (candidate.variant !== "universal" &&
+            candidate.variant !== "combatArt")
+        ) {
+          throw new Error(`Invalid Totem selection for ${slot}.`);
+        }
+        if (knownTotemIds && !knownTotemIds.has(candidate.itemId)) {
+          warnings.push(
+            `Unknown ${slot} Totem "${candidate.itemId}" was ignored.`,
+          );
+          return null;
+        }
+        return {
+          itemId: candidate.itemId,
+          rank: candidate.rank as 0 | 1 | 2 | 3,
+          virtue: candidate.virtue,
+          variant: candidate.variant,
+        } as TotemSelection;
+      }) as WeaponEnhancements["totems"];
+
+      const selectedWeaponId = equipment[slot];
+      const selectedWeapon = selectedWeaponId
+        ? catalogue?.weapons.find((weapon) => weapon.id === selectedWeaponId)
+        : undefined;
+      const normalized = catalogue
+        ? normalizeWeaponEnhancements(
+            { rune, totems },
+            selectedWeapon,
+            runeById,
+          )
+        : { value: { rune, totems }, changed: false };
+      if (normalized.changed) {
+        warnings.push(
+          `${slot === "mainHand" ? "Main Hand" : "Off Hand"} enchantments were normalized for compatibility.`,
+        );
+      }
+      return [slot, normalized.value];
+    }),
+  ) as SoulframeBuild["weaponEnhancements"];
+
   return {
     ok: true,
     build: {
@@ -239,6 +384,8 @@ function validateBuild(
       virtues: normalizedVirtues,
       affinitySources,
       equipment,
+      pact: { itemId: pactItemId, rank: pactRank },
+      weaponEnhancements,
     },
     warnings,
   };

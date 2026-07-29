@@ -13,6 +13,13 @@ const affinitySources: SoulframeBuild["affinitySources"] = {
   pactArts: { courage: 0, spirit: 0, grace: 0 },
   fables: { shewolf: null, wasteBear: null },
 };
+const additionalBuildSystems = {
+  pact: { itemId: null, rank: 30 },
+  weaponEnhancements: {
+    mainHand: { rune: null, totems: [null, null, null, null] },
+    offHand: { rune: null, totems: [null, null, null, null] },
+  },
+} satisfies Pick<SoulframeBuild, "pact" | "weaponEnhancements">;
 
 describe("armor calculations", () => {
   it("matches the workbook formula for an individual defense", () => {
@@ -43,7 +50,8 @@ describe("armor calculations", () => {
 
   it("aggregates multiple equipped pieces", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 3,
+      schemaVersion: 4,
+      ...additionalBuildSystems,
       name: "Test",
       virtues: { courage: 19, spirit: 12, grace: 12 },
       affinitySources,
@@ -82,7 +90,8 @@ describe("armor calculations", () => {
 
   it("reports equipped armor with unmet requirements", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 3,
+      schemaVersion: 4,
+      ...additionalBuildSystems,
       name: "Unmet",
       virtues: { courage: 12, spirit: 12, grace: 12 },
       affinitySources,
@@ -96,7 +105,8 @@ describe("armor calculations", () => {
 
   it("reports unknown item ids without crashing", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 3,
+      schemaVersion: 4,
+      ...additionalBuildSystems,
       name: "Unknown",
       virtues: { courage: 12, spirit: 12, grace: 12 },
       affinitySources,
@@ -109,7 +119,8 @@ describe("armor calculations", () => {
 
   it("applies Talisman virtue bonuses before armor requirements and scaling", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 3,
+      schemaVersion: 4,
+      ...additionalBuildSystems,
       name: "Talisman virtues",
       virtues: { courage: 18, spirit: 12, grace: 12 },
       affinitySources,
@@ -132,7 +143,8 @@ describe("armor calculations", () => {
 
   it("adds flat Talisman defense and exposes raw combat modifiers", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 3,
+      schemaVersion: 4,
+      ...additionalBuildSystems,
       name: "Talisman defense",
       virtues: { courage: 12, spirit: 12, grace: 12 },
       affinitySources,
@@ -153,7 +165,8 @@ describe("armor calculations", () => {
 
   it("applies Pact Art and Fable bonuses without changing the allocatable pool", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 3,
+      schemaVersion: 4,
+      ...additionalBuildSystems,
       name: "Fixed affinity sources",
       virtues: { courage: 18, spirit: 9, grace: 9 },
       affinitySources: {

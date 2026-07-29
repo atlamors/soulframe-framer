@@ -48,7 +48,7 @@ function build(
   equipment: SoulframeBuild["equipment"],
 ): SoulframeBuild {
   return {
-    schemaVersion: 3,
+    schemaVersion: 4,
     name: "Optimizer Test",
     virtues,
     affinitySources: {
@@ -57,6 +57,11 @@ function build(
       fables: { shewolf: null, wasteBear: null },
     },
     equipment,
+    pact: { itemId: null, rank: 30 },
+    weaponEnhancements: {
+      mainHand: { rune: null, totems: [null, null, null, null] },
+      offHand: { rune: null, totems: [null, null, null, null] },
+    },
   };
 }
 

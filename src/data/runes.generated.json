@@ -1,0 +1,675 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-28T18:15:41.355Z",
+  "source": {
+    "publisher": "Avakot",
+    "moduleUrl": "https://wiki.avakot.org/Module:Data/Runes",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 47432,
+    "revisionTimestamp": "2026-07-07T14:51:45Z"
+  },
+  "items": [
+    {
+      "id": "rune-alcas-breath",
+      "name": "Alca's Breath",
+      "description": "The rune of stirring Magicks, ever flowing.",
+      "functionality": "Performs a Charged Shot imbued with an additional instance of Arcanic damage.",
+      "maxRankDescription": "Deal +150% Arcanic damage",
+      "weaponArt": "Bow",
+      "addedSlot": "grace",
+      "iconFile": "AlcaCourage005.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Bow/StarterRune",
+      "rarity": "Unknown",
+      "introduced": "P11",
+      "tags": [],
+      "stats": [
+        {
+          "effect": "$1 Arcanic Damage Bonus",
+          "ranks": [
+            "90%",
+            "110%",
+            "130%",
+            "150%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Alca's_Breath",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/13/AlcaCourage005.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/13/AlcaCourage005.png/192px-AlcaCourage005.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage005.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 79094,
+        "sha1": "79f742193f2d8658a93e896a6f53c9647c7780ae"
+      }
+    },
+    {
+      "id": "rune-archstorm",
+      "name": "Archstorm",
+      "description": "The rune of the erst storm, the root of all rain.",
+      "functionality": "Performs a Charged Cast imbued with additional Arcanic damage.",
+      "maxRankDescription": "Deal +200% Arcanic damage",
+      "weaponArt": "Magick",
+      "addedSlot": "spirit",
+      "iconFile": "AlcaCourage002.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Magiks/StarterRune",
+      "rarity": "Unknown",
+      "introduced": "P11",
+      "tags": [],
+      "stats": [
+        {
+          "effect": "$1 Arcanic Damage Bonus",
+          "ranks": [
+            "125%",
+            "150%",
+            "175%",
+            "200%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Archstorm",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/19/AlcaCourage002.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/19/AlcaCourage002.png/192px-AlcaCourage002.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage002.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 111643,
+        "sha1": "5d3bab063261ba276b6089c14ae5c356b9869f51"
+      }
+    },
+    {
+      "id": "rune-emberaught",
+      "name": "Emberaught",
+      "description": "The rune of the ember, ready to be stoked.",
+      "functionality": "Performs a Heavy Strike imbued with an additional instance of Flame damage. Capable of igniting Foes, and may create explosions on hit.",
+      "maxRankDescription": "Deal +250% Flame damage",
+      "weaponArt": "Short Blade",
+      "addedSlot": "courage",
+      "iconFile": "AlcaCourage011.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Dagger/StarterRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [],
+      "stats": [
+        {
+          "effect": "$1 Flame Damage Bonus",
+          "ranks": [
+            "100%",
+            "150%",
+            "200%",
+            "250%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Emberaught",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/d/d9/AlcaCourage011.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/d9/AlcaCourage011.png/192px-AlcaCourage011.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage011.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 85409,
+        "sha1": "eadff90db511fc268d50224aab03a761a54d204c"
+      }
+    },
+    {
+      "id": "rune-everflame-heavy",
+      "name": "Everflame (Heavy)",
+      "description": "The rune of the eternal flame, never to be stifled.",
+      "functionality": "Performs a Heavy Strike imbued with an additional instance of Flame damage. Capable of igniting Foes, and may create explosions on hit.",
+      "maxRankDescription": "Deal +250% Flame damage",
+      "weaponArt": "Heavy",
+      "addedSlot": "courage",
+      "iconFile": "AlcaCourage010.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/GreatSword/StarterRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [],
+      "stats": [
+        {
+          "effect": "$1 Flame Damage Bonus",
+          "ranks": [
+            "100%",
+            "150%",
+            "200%",
+            "250%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Everflame_(Heavy)",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/4/40/AlcaCourage010.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/40/AlcaCourage010.png/192px-AlcaCourage010.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage010.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 84849,
+        "sha1": "104e77e1dfb179fbf19f9842ae7cdd4e7d9d38c7"
+      }
+    },
+    {
+      "id": "rune-everflame-long-blade",
+      "name": "Everflame (Long Blade)",
+      "description": "The rune of the eternal flame, never to be stifled.",
+      "functionality": "Performs a Heavy Strike imbued with an additional instance of Flame damage. Capable of igniting Foes, and may create explosions on hit.",
+      "maxRankDescription": "Deal +250% Flame damage",
+      "weaponArt": "Long Blade",
+      "addedSlot": "courage",
+      "iconFile": "AlcaCourage006.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/LongBlade/StarterRune",
+      "rarity": "Unknown",
+      "introduced": "P11",
+      "tags": [],
+      "stats": [
+        {
+          "effect": "$1 Flame Damage Bonus",
+          "ranks": [
+            "100%",
+            "150%",
+            "200%",
+            "250%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Everflame_(Long_Blade)",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/4/4b/AlcaCourage006.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/4b/AlcaCourage006.png/192px-AlcaCourage006.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage006.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 51810,
+        "sha1": "5d200f1a2710cd32529b504b0acc46b0970b84b4"
+      }
+    },
+    {
+      "id": "rune-forburn",
+      "name": "Forburn",
+      "description": "The rune of the Fey Torch, alight 'yond the veil.",
+      "functionality": "Performs a Heavy Strike imbued with an additional instance of Flame damage. Capable of igniting Foes, and may create explosions on hit.",
+      "maxRankDescription": "Deal +250% Flame damage",
+      "weaponArt": "Shield",
+      "addedSlot": "courage",
+      "iconFile": "AlcaCourage012.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Shield/StarterRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [],
+      "stats": [
+        {
+          "effect": "$1 Flame Damage Bonus",
+          "ranks": [
+            "100%",
+            "150%",
+            "200%",
+            "250%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Forburn",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/72/AlcaCourage012.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/72/AlcaCourage012.png/192px-AlcaCourage012.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage012.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 69324,
+        "sha1": "d5b43b486d9f95ade858151b105013f728dd0903"
+      }
+    },
+    {
+      "id": "rune-hurlwind",
+      "name": "Hurlwind",
+      "description": "The rune of the gusts ever-whirling.",
+      "functionality": "Launches a single, powerful blast of Voltaic energy towards the target.",
+      "maxRankDescription": "Deal +100% Voltaic damage",
+      "weaponArt": "Flyblade",
+      "addedSlot": "spirit",
+      "iconFile": "AlcaCourage013.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Flyblade/StarterRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [],
+      "stats": [
+        {
+          "effect": "$1 Voltaic Damage Bonus",
+          "ranks": [
+            "40%",
+            "60%",
+            "80%",
+            "100%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Hurlwind",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/9/92/AlcaCourage013.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/9/92/AlcaCourage013.png/192px-AlcaCourage013.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage013.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 60202,
+        "sha1": "62b461dda4a07450db59b326b3c53c030e6a44c5"
+      }
+    },
+    {
+      "id": "rune-the-durglint",
+      "name": "The Durglint",
+      "description": "The rune of sharp reflections.",
+      "functionality": "For 8 seconds, blocking fires a beam of energy which deals 125 damage and increases damage dealt on the next melee attack.",
+      "maxRankDescription": "Your shield is set alight for 8 seconds, dealing 125 damage and increasing the power of the next melee attack",
+      "weaponArt": "Shield",
+      "addedSlot": "spirit",
+      "iconFile": "AlcaGrace008.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Shield/SBLaserRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [
+        "Cogah"
+      ],
+      "stats": [
+        {
+          "effect": "$1 Beam Damage",
+          "ranks": [
+            "75",
+            "100",
+            "125",
+            "125"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/The_Durglint",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/6/6b/AlcaGrace008.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/6b/AlcaGrace008.png/192px-AlcaGrace008.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaGrace008.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 138811,
+        "sha1": "edf3e108d033f07619822bcabf2b7d6e9d56d39e"
+      }
+    },
+    {
+      "id": "rune-the-flitsmoke",
+      "name": "The Flitsmoke",
+      "description": "The rune of smoke ephemeral.",
+      "functionality": "Grants invisibility on activation. Stealth kills while active extend the duration.",
+      "maxRankDescription": "You are cloaked in shadow for 6 seconds. Each stealth kill increases shadow duration by 3 seconds",
+      "weaponArt": "Short Blade",
+      "addedSlot": "grace",
+      "iconFile": "AlcaGrace001.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Dagger/ShortBladeInvisRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [
+        "Cogah"
+      ],
+      "stats": [
+        {
+          "effect": "$1 Duration",
+          "ranks": [
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/The_Flitsmoke",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/07/AlcaGrace001.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/07/AlcaGrace001.png/192px-AlcaGrace001.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaGrace001.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 112760,
+        "sha1": "9216ebfcb8342face0953eb8b116b7497cb4417b"
+      }
+    },
+    {
+      "id": "rune-the-hollowing",
+      "name": "The Hollowing",
+      "description": "The rune of held breath bursting free.",
+      "functionality": "Marks foes on hit. Once marked enemies are struck a sufficient number of times, they trigger a radial explosion dealing damage to nearby foes.",
+      "maxRankDescription": "Mark a foe for Hollowing. 3 attacks on the marked foe releases an explosion dealing 300% damage",
+      "weaponArt": "Magick",
+      "addedSlot": "courage",
+      "iconFile": "AlcaCourage004.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Magiks/ExplosiveBuildUpRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [
+        "Cogah"
+      ],
+      "stats": [
+        {
+          "effect": "$1 Explosion Damage",
+          "ranks": [
+            "200%",
+            "235%",
+            "265%",
+            "300%"
+          ]
+        },
+        {
+          "effect": "$1 Subsequent Attacks",
+          "ranks": [
+            "6",
+            "5",
+            "4",
+            "3"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/The_Hollowing",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/c/c8/AlcaCourage004.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/c8/AlcaCourage004.png/192px-AlcaCourage004.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage004.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 116646,
+        "sha1": "4d2062283a814e10473bb35a4ca5c471ac1ae7ca"
+      }
+    },
+    {
+      "id": "rune-the-mistgale",
+      "name": "The Mistgale",
+      "description": "The rune of the phantoms formed in mist.",
+      "functionality": "Sends forth a wave of energy, passing through and dealing damage to all foes in its path.",
+      "maxRankDescription": "Cast a magick gale dealing +200% Damage and +300% Stagger",
+      "weaponArt": "Long Blade",
+      "addedSlot": "grace",
+      "iconFile": "AlcaCourage008.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/LongBlade/LongbladeProjectileRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [
+        "Cogah"
+      ],
+      "stats": [
+        {
+          "effect": "$1 Projectile Damage Bonus",
+          "ranks": [
+            "125%",
+            "150%",
+            "175%",
+            "200%"
+          ]
+        },
+        {
+          "effect": "$1 Stagger Bonus",
+          "ranks": [
+            "150%",
+            "200%",
+            "250%",
+            "300%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/The_Mistgale",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/50/AlcaCourage008.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/50/AlcaCourage008.png/192px-AlcaCourage008.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage008.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 83564,
+        "sha1": "d8049553dbacc68ae8d97f7520c33160c9034535"
+      }
+    },
+    {
+      "id": "rune-picktrix",
+      "name": "Picktrix",
+      "description": "The rune of the Picktrix, swarming smells of blood.",
+      "functionality": "Releases a flock of four seeking sprites that strike nearby foes.",
+      "maxRankDescription": "A flock of 4 seeking sprites deal 120% damage",
+      "weaponArt": "Flyblade",
+      "addedSlot": "spirit",
+      "iconFile": "AlcaCourage017.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Flyblade/FlybladeSeekingRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [
+        "Cogah"
+      ],
+      "stats": [
+        {
+          "effect": "$1 Projectile Damage",
+          "ranks": [
+            "60%",
+            "80%",
+            "100%",
+            "120%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Picktrix",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/fb/AlcaCourage017.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/fb/AlcaCourage017.png/192px-AlcaCourage017.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage017.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 95982,
+        "sha1": "7df0e47f6661468ce4677901be63624035c352fd"
+      }
+    },
+    {
+      "id": "rune-splitbolt",
+      "name": "Splitbolt",
+      "description": "The rune of forked lightning, strengthened in its fragmentation.",
+      "functionality": "Calls down a barrage of spears, which strike in an area of effect around the target.",
+      "maxRankDescription": "A barrage of spears is summoned, dealing 100% weapon damage each",
+      "weaponArt": "Polearm",
+      "addedSlot": "grace",
+      "iconFile": "AlcaCourage015.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Polearm/PolearmMultiThrowRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [
+        "Cogah"
+      ],
+      "stats": [
+        {
+          "effect": "$1 Projectile Damage",
+          "ranks": [
+            "40%",
+            "60%",
+            "80%",
+            "100%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Splitbolt",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/ae/AlcaCourage015.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/ae/AlcaCourage015.png/192px-AlcaCourage015.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage015.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 118786,
+        "sha1": "ae0d344631c95c06a5e42aec23907b76c159e00c"
+      }
+    },
+    {
+      "id": "rune-the-torrent",
+      "name": "The Torrent",
+      "description": "The rune of the mighty hail.",
+      "functionality": "Summon a volley of arrows from the sky where The Torrent strikes.",
+      "maxRankDescription": "A volley of arrows rains from the sky dealing 80% damage",
+      "weaponArt": "Bow",
+      "addedSlot": "courage",
+      "iconFile": "AlcaSpirit008.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Bow/RainRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [
+        "Cogah"
+      ],
+      "stats": [
+        {
+          "effect": "$1 Damage",
+          "ranks": [
+            "50%",
+            "60%",
+            "70%",
+            "80%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/The_Torrent",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/b/bc/AlcaSpirit008.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/bc/AlcaSpirit008.png/192px-AlcaSpirit008.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaSpirit008.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 129964,
+        "sha1": "ee9b1895133acf29b3fff59ed5591e367d77cd2e"
+      }
+    },
+    {
+      "id": "rune-torcheternal",
+      "name": "Torcheternal",
+      "description": "The rune of the Fey Torch, alight 'yond the veil.",
+      "functionality": "Performs a Heavy Strike imbued with an additional instance of Flame damage. Capable of igniting Foes, and may create explosions on hit.",
+      "maxRankDescription": "Deal +250% Flame damage",
+      "weaponArt": "Polearm",
+      "addedSlot": "courage",
+      "iconFile": "AlcaCourage014.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/Polearm/StarterRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [],
+      "stats": [
+        {
+          "effect": "$1 Flame Damage Bonus",
+          "ranks": [
+            "100%",
+            "150%",
+            "200%",
+            "250%"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Torcheternal",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/1/1e/AlcaCourage014.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/1/1e/AlcaCourage014.png/192px-AlcaCourage014.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage014.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100120,
+        "sha1": "116a6f0865e05662f4b694bbac3a5b609a85145d"
+      }
+    },
+    {
+      "id": "rune-treefell",
+      "name": "Treefell",
+      "description": "The rune of the falling tree, heavy yet rapid.",
+      "functionality": "Enhances the range, charge rate, and armour piercing of charged Heavy Attacks.",
+      "maxRankDescription": "Treefell begins. For 8 seconds, heavy attacks charge 100% quicker, have a longer reach, and strike through 70 Defence. Treefell duration resets with each enemy slain",
+      "weaponArt": "Heavy",
+      "addedSlot": "courage",
+      "iconFile": "AlcaCourage016.png",
+      "internalId": "/SF/Upgrades/Runes/Weapon/GreatSword/GreatSwordRangeRune",
+      "rarity": "Unknown",
+      "introduced": "P12",
+      "tags": [
+        "Cogah"
+      ],
+      "stats": [
+        {
+          "effect": "Charge Speed",
+          "ranks": [
+            "40%",
+            "60%",
+            "80%",
+            "100%"
+          ]
+        },
+        {
+          "effect": "Duration",
+          "ranks": [
+            "5s",
+            "6s",
+            "7s",
+            "8s"
+          ]
+        },
+        {
+          "effect": "$1 Armour Penetration",
+          "ranks": [
+            "10",
+            "30",
+            "50",
+            "70"
+          ]
+        }
+      ],
+      "pageUrl": "https://wiki.avakot.org/Treefell",
+      "image": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/c/cc/AlcaCourage016.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/c/cc/AlcaCourage016.png/192px-AlcaCourage016.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AlcaCourage016.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 93535,
+        "sha1": "7b42fa9ac89ee057a370fb0526f1647d4237d2a0"
+      }
+    }
+  ]
+}
