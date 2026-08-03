@@ -1,0 +1,137 @@
+@theme {
+  --breakpoint-narrow: 361px;
+  --breakpoint-mobile-wide: 521px;
+  --breakpoint-tablet: 681px;
+  --breakpoint-compact-desktop: 961px;
+  --breakpoint-wide-desktop: 1367px;
+
+  --spacing-safe-inline: max(0.75rem, env(safe-area-inset-left), env(safe-area-inset-right));
+  --spacing-mobile-safe-top: env(safe-area-inset-top);
+  --spacing-mobile-header: calc(4rem + env(safe-area-inset-top));
+  --spacing-mobile-drawer: 88vw;
+  --spacing-mobile-drawer-max: 22.5rem;
+  --spacing-mobile-affinity-bottom: max(3.875rem, calc(2.75rem + env(safe-area-inset-bottom)));
+  --spacing-mobile-stats-sheet: 72dvh;
+
+  --container-overlay-lg: 1040px;
+  --container-overlay-md: 920px;
+  --container-overlay-sm: 760px;
+  --container-control: 270px;
+
+  --aspect-defense-hud: 261 / 185;
+
+  --grid-template-columns-item-stats:
+    minmax(135px, 1fr) repeat(4, minmax(36px, 0.34fr));
+  --grid-template-columns-item-stats-mobile:
+    minmax(170px, 1fr) repeat(4, 72px);
+  --grid-template-columns-picker:
+    minmax(min(320px, 37.5vw), 0.76fr) minmax(min(450px, 61.5vw), 1.24fr);
+  --grid-template-columns-picker-detail:
+    minmax(min(300px, 33.5vw), 0.68fr) minmax(min(470px, 65.5vw), 1.32fr);
+  --grid-template-columns-pact-banner:
+    68px minmax(0, 1fr) auto;
+  --grid-template-columns-pact-banner-compact:
+    56px minmax(0, 1fr) auto;
+  --grid-template-columns-pact-banner-mobile:
+    80px minmax(0, 1fr) 80px;
+  --grid-template-columns-drop-sources:
+    minmax(0, 1fr) max-content max-content max-content;
+  --grid-template-columns-weapon-loadout:
+    minmax(190px, 1.4fr) 16px minmax(145px, 1fr) 16px
+    minmax(360px, 2.65fr);
+
+  --spacing-safe-top: max(1rem, env(safe-area-inset-top));
+  --spacing-safe-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  --spacing-overlay-gutter: clamp(1rem, 4vw, 3rem);
+  --spacing-overlay-max: calc(100dvh - 1rem);
+  --spacing-picker-catalogue-mobile: min(24rem, 43dvh);
+  --spacing-ornament-edge: 6px;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes popover-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes tooltip-in {
+    from {
+      opacity: 0;
+      transform: translateY(3px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes mobile-overlay-surface-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes mobile-overlay-surface-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes mobile-overlay-stage-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes mobile-overlay-stage-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+}
+
+@theme inline {
+  --spacing-mobile-affinity-panel: var(--mobile-affinity-panel-height, 0px);
+}
