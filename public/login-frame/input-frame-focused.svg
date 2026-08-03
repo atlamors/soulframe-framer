@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 58" role="img" aria-labelledby="title desc">
   <title id="title">Soulframe login input frame, focused state</title>
-  <desc id="desc">A dark brown field inside a narrow amber stitched rail with green folded leaf clasps at each side.</desc>
+  <desc id="desc">A narrow amber stitched rail with inner linework and a transparent center.</desc>
   <defs>
     <pattern id="stitch-h" width="5" height="4" patternUnits="userSpaceOnUse">
       <rect width="5" height="4" fill="#17120f"/>
@@ -15,30 +15,22 @@
     <filter id="shadow" x="-3%" y="-12%" width="106%" height="130%">
       <feDropShadow dx="0" dy="1" stdDeviation=".8" flood-color="#11100f" flood-opacity=".72"/>
     </filter>
-    <g id="leaf-left">
-      <path d="M8.5 29 10.5 22c4.3.2 8.5 2.1 12.5 5.5L18.5 30Z" fill="#5d785d" stroke="#17120f" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M8.5 29 10.5 36.5c4.3-.2 8.5-2.1 12.5-5.8L18.5 28Z" fill="#5d785d" stroke="#17120f" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M16 29 9 24.5C5 24.5 1.8 26 .5 29c1.3 3 4.5 4.5 8.5 4.5Z" fill="#5d785d" stroke="#17120f" stroke-width="2.5" stroke-linejoin="round"/>
-    </g>
   </defs>
 
   <g filter="url(#shadow)">
-    <rect x="7.5" y="1.5" width="417" height="55" rx="3.5" fill="#17120f" stroke="#17120f" stroke-width="2"/>
-    <rect x="9.5" y="3.5" width="413" height="51" rx="2" fill="#332311" stroke="#aa7428" stroke-width="1"/>
+    <rect x="7.5" y="1.5" width="417" height="55" rx="3.5" fill="none" stroke="#17120f" stroke-width="2"/>
+    <rect x="9.5" y="3.5" width="413" height="51" rx="2" fill="none" stroke="#aa7428" stroke-width="1"/>
 
     <rect x="9" y="3" width="414" height="4" fill="url(#stitch-h)"/>
     <rect x="9" y="51" width="414" height="4" fill="url(#stitch-h)"/>
     <rect x="8" y="7" width="4" height="44" fill="url(#stitch-v)"/>
     <rect x="420" y="7" width="4" height="44" fill="url(#stitch-v)"/>
 
-    <path d="M12.5 7.5h407v43h-407z" fill="#17120f" stroke="#17120f" stroke-width="2"/>
-    <path d="M14.5 9.5h403v39h-403z" fill="#211813" stroke="#956629" stroke-width="4"/>
+    <path d="M12.5 7.5h407v43h-407z" fill="none" stroke="#17120f" stroke-width="2"/>
+    <path d="M14.5 9.5h403v39h-403z" fill="none" stroke="#956629" stroke-width="4"/>
     <path d="M14.5 9.5h403v39h-403z" fill="none" stroke="#f1ac40" stroke-width="2"/>
     <path d="M17 12h398v34H17z" fill="none" stroke="#17120f" stroke-width="1.5"/>
 
     <path d="M9 7V5h5M423 7V5h-5M9 51v2h5M423 51v2h-5" fill="none" stroke="#f1ac40" stroke-width=".7" opacity=".78"/>
-
-    <use href="#leaf-left"/>
-    <g transform="translate(432 0) scale(-1 1)"><use href="#leaf-left"/></g>
   </g>
 </svg>

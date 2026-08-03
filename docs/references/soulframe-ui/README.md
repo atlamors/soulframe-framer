@@ -16,6 +16,8 @@ interaction design, but must not be loaded by the production application.
 | `item-tooltip-panel.png` | 1062 × 468 | Leaf corner ornament, heading placement, dense descriptive typography |
 | `player-hud-bar.png` | 790 × 157 | Rank medallion, player-name hierarchy, resource alignment, end flourish |
 | `item-details-panel.png` | 635 × 833 | Equipment-stat hierarchy, icons, section spacing, temper slots |
+| `interaction-prompt-key.png` | 106 × 164 | Parchment interaction tile, black/red folk ornament, and attached keyboard prompt |
+| `quest-entry-framed-emblem.png` | 482 × 145 | Square illustrated emblem frame paired with serif quest-title and level typography |
 
 ## Usage
 
@@ -26,4 +28,4 @@ interaction design, but must not be loaded by the production application.
   component or pull-request notes so future revisions can be compared against
   the same source.
 
-Captured from user-provided clipboard images on 2026-07-26.
+Captured from user-provided clipboard images on 2026-07-26 and 2026-07-31.

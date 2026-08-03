@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 68 56" fill="none" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="rail-shadow" x="-8%" y="-10%" width="116%" height="124%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="1" stdDeviation=".7" flood-color="#0d0a08" flood-opacity=".8"/>
+    </filter>
+  </defs>
+
+  <g stroke-linejoin="round">
+    <!-- Uneven outer binding follows the stitched edit slot in the loadout selector. -->
+    <path
+      d="M8 2.5 59 3.4 64.7 7.8 65.6 48.2 61.4 54.8 8.1 55.5 2.7 51.1 2.2 8.2Z"
+      stroke="#15110e"
+      stroke-width="4.5"
+    />
+    <path
+      d="M8 2.5 59 3.4 64.7 7.8 65.6 48.2 61.4 54.8 8.1 55.5 2.7 51.1 2.2 8.2Z"
+      stroke="#6d5939"
+      stroke-width="1.35"
+    />
+
+    <!-- Short bright stitches sit inside the dark outer binding. -->
+    <path
+      d="M8.8 3.62 57.7 4.18 61.7 7.94 62.5 48.44 59.6 53.52 9.1 54.27 5.8 51.14 5.3 8.05Z"
+      stroke="#c9973d"
+      stroke-width="2.2"
+      stroke-linecap="square"
+      stroke-dasharray="1.3 3.05"
+    />
+    <path
+      d="M9 3.24 57.4 3.92 60.8 7.45 61.5 48.95 59 53.85 9.5 54.65 6.7 51.69 6.2 7.57Z"
+      stroke="#f0ad3f"
+      stroke-width=".65"
+      stroke-linecap="square"
+      stroke-dasharray="1.3 3.05"
+      opacity=".78"
+    />
+
+    <!-- A second irregular rail leaves the feather opening fully transparent. -->
+    <g filter="url(#rail-shadow)">
+      <path
+        d="M12 9.5 55.1 10.2 58.5 12.6 59 44.2 56.7 47.9 12.2 48.5 9.3 46.1 8.9 12.5Z"
+        stroke="#17120f"
+        stroke-width="5"
+      />
+      <path
+        d="M12 9.5 55.1 10.2 58.5 12.6 59 44.2 56.7 47.9 12.2 48.5 9.3 46.1 8.9 12.5Z"
+        stroke="#b77c28"
+        stroke-width="2"
+      />
+      <path
+        d="M13.4 12.2 53.8 12.8 55.8 14.5 56.3 42.8 54.8 45.1 13.6 45.7 12.1 44.1 11.7 14.2Z"
+        stroke="#e5a03a"
+        stroke-width=".9"
+        opacity=".9"
+      />
+    </g>
+
+    <!-- Broken corner ticks keep the rail hand-built rather than mechanically rectangular. -->
+    <path d="m3.5 14.2 4-2.1M60.7 10.3l3.5 3.1M63.4 44.2l-3.7 2.4M7.9 49.2l-3.5-2.7" stroke="#8b6d3f" stroke-width="1.1"/>
+  </g>
+</svg>

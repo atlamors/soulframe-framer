@@ -16,6 +16,7 @@ import {
   addVirtueValues,
   getAffinityBonuses,
 } from "./affinity";
+import { getPactVirtueArtRanks } from "./arts";
 
 export const ARMOR_SCALE = 0.12;
 
@@ -104,7 +105,15 @@ export function calculateBuild(
           equippedTalisman.hasUnmodeledConditionalEffect,
       } satisfies TalismanContribution)
     : undefined;
-  const sourceVirtues = getAffinityBonuses(build.affinitySources);
+  const sourceVirtues = getAffinityBonuses({
+    ...build.affinitySources,
+    pactArts: build.pact.itemId
+      ? getPactVirtueArtRanks(
+          build.pact.itemId,
+          build.pact.artAllocation,
+        )
+      : build.affinitySources.pactArts,
+  });
   const talismanVirtues = talisman?.virtues ?? {
     courage: 0,
     spirit: 0,

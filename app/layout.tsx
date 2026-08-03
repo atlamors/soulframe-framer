@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Atkinson_Hyperlegible_Next, Geist_Mono } from "next/font/google";
+import { Atkinson_Hyperlegible_Next } from "next/font/google";
 import { headers } from "next/headers";
+import { AlertsProvider } from "./alerts/AlertsProvider";
 import "./globals.css";
 
 const atkinsonSans = Atkinson_Hyperlegible_Next({
@@ -10,10 +11,12 @@ const atkinsonSans = Atkinson_Hyperlegible_Next({
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+type RootLayoutElement = "body";
+
+const ROOT_LAYOUT_CLASS_NAMES = {
+  body:
+    "min-h-screen min-w-0 scheme-dark bg-canvas bg-fixed font-sans text-ink antialiased selection:bg-gold/30 selection:text-ink",
+} as const satisfies Record<RootLayoutElement, string>;
 
 const description =
   "Frame a Soulframe armor loadout, tune Courage, Spirit, and Grace, and compare verified defense scaling.";
@@ -22,8 +25,8 @@ export const metadata: Metadata = {
   title: "Soulframe Framer — Armor Build Builder",
   description,
   icons: {
-    icon: "/icons/courage.png",
-    shortcut: "/icons/courage.png",
+    icon: "/brand/nightfold-favicon.png",
+    shortcut: "/brand/nightfold-favicon.png",
   },
 };
 
@@ -45,7 +48,7 @@ export default async function RootLayout({
   const socialImage = `${protocol}://${host}/og.png`;
 
   return (
-    <html lang="en">
+    <html lang="en" className={atkinsonSans.variable}>
       <head>
         <meta property="og:title" content="Soulframe Framer" />
         <meta property="og:description" content={description} />
@@ -62,10 +65,8 @@ export default async function RootLayout({
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={socialImage} />
       </head>
-      <body
-        className={`${atkinsonSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={ROOT_LAYOUT_CLASS_NAMES.body}>
+        <AlertsProvider>{children}</AlertsProvider>
       </body>
     </html>
   );

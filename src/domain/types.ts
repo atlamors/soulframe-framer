@@ -22,6 +22,42 @@ export type VirtueValues = Record<VirtueId, number>;
 export type PactArtRank = 0 | 1 | 2 | 3;
 export type EnhancementRank = 0 | 1 | 2 | 3;
 
+export type ArtAllocation = Record<string, number>;
+export type ArtScope = "pact" | "combat";
+export type ArtNodeKind = "virtue" | "general" | "passive" | "combat";
+export type ArtMechanicStatus = "modeled" | "descriptive";
+
+export interface ArtNodeDefinition {
+  id: string;
+  name: string;
+  description: string;
+  scope: ArtScope;
+  kind: ArtNodeKind;
+  maxRank: number;
+  rankCosts: number[];
+  rankValues?: Array<number | string>;
+  mechanicStatus: ArtMechanicStatus;
+  virtue?: VirtueId;
+  abilityId?: string;
+}
+
+export interface PactArtTreeDefinition {
+  pactId: string;
+  nodes: ArtNodeDefinition[];
+}
+
+export interface CombatArtDefinition {
+  name: string;
+  nodes: ArtNodeDefinition[];
+}
+
+export interface ArtSourceRevision {
+  page: "Pact Arts" | "Combat Arts";
+  revisionId: number;
+  timestamp: string;
+  pageUrl: string;
+}
+
 export interface AffinitySources {
   envoyRank: number;
   pactArts: Record<VirtueId, PactArtRank>;
@@ -254,15 +290,16 @@ export interface WeaponEnhancements {
 }
 
 export interface SoulframeBuild {
-  schemaVersion: 4;
+  schemaVersion: 5;
   name: string;
   virtues: VirtueValues;
   affinitySources: AffinitySources;
   equipment: Partial<Record<EquipmentSlot, string>>;
   pact: {
     itemId: string | null;
-    rank: number;
+    artAllocation: ArtAllocation;
   };
+  combatArts: Record<string, ArtAllocation>;
   weaponEnhancements: Record<WeaponHandSlot, WeaponEnhancements>;
 }
 
