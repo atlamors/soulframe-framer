@@ -1,0 +1,350 @@
+@theme {
+  --color-ink: #ddd7c8;
+  --color-ink-soft: #979c98;
+  --color-ink-faint: #758081;
+  --color-night: #0d1011;
+  --color-surface: #111416;
+  --color-surface-raised: #191d1f;
+  --color-surface-deep: #0c0f10;
+  --color-surface-overlay: rgb(5 7 8 / 80%);
+  --color-line: rgb(146 125 90 / 16%);
+  --color-line-bright: rgb(124 136 138 / 42%);
+  --color-frame-line: #927d5a;
+  --color-frame-line-bright: #7b8789;
+  --color-gold: #927d5a;
+  --color-gold-bright: #ddb866;
+  --color-gold-pale: #d5c595;
+  --color-ember: #a86b5d;
+  --color-aether: #789aa0;
+  --color-verdant: #809685;
+  --color-danger: #bb655a;
+
+  --font-sans:
+    var(--font-atkinson-sans), "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-display:
+    "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+
+  --text-2xs: 10px;
+  --text-counter: 11px;
+  --text-label: 13px;
+  --text-pact-name: 23px;
+  --text-mobile-stat-name: 18px;
+  --text-mobile-stat-name-initial: 19.8px;
+  --text-heading: clamp(1.375rem, 2vw, 2rem);
+  --text-display: clamp(2.75rem, 5vw, 4.5rem);
+  --text-affinity-total: clamp(1.4375rem, 2.775vw, 2.4375rem);
+
+  --background-image-canvas:
+    radial-gradient(
+      ellipse at 50% -12%,
+      rgb(61 70 72 / 17%),
+      transparent 46rem
+    ),
+    radial-gradient(
+      ellipse at 4% 58%,
+      rgb(12 15 16 / 20%),
+      transparent 44rem
+    ),
+    radial-gradient(
+      ellipse at 96% 72%,
+      rgb(12 15 16 / 22%),
+      transparent 48rem
+    ),
+    linear-gradient(180deg, #191d1f 0%, #111416 52%, #111416 100%);
+  --background-image-surface:
+    linear-gradient(180deg, rgb(25 29 31 / 98%), rgb(14 17 18 / 98%));
+  --background-image-surface-hover:
+    linear-gradient(180deg, rgb(35 41 43 / 98%), rgb(17 20 22 / 98%));
+  --background-image-control:
+    linear-gradient(180deg, rgb(32 37 39 / 72%), rgb(32 37 39 / 88%));
+  --background-image-control-hover:
+    linear-gradient(180deg, rgb(45 53 55 / 82%), rgb(35 41 43 / 94%));
+  --background-image-aura-gold:
+    radial-gradient(circle, rgb(200 154 69 / 13%), transparent 66%);
+  --background-image-loadout-card:
+    radial-gradient(
+      circle at 16% 42%,
+      rgb(118 95 55 / 13%),
+      transparent 42%
+    ),
+    linear-gradient(180deg, rgb(24 29 31 / 96%), rgb(12 15 16 / 97%));
+  --background-image-loadout-card-hover:
+    radial-gradient(
+      circle at 16% 42%,
+      rgb(200 154 69 / 18%),
+      transparent 44%
+    ),
+    linear-gradient(180deg, rgb(32 38 40 / 97%), rgb(13 16 17 / 98%));
+  --background-image-hud-track:
+    radial-gradient(
+      circle at 14% 50%,
+      rgb(111 91 55 / 12%),
+      transparent 28rem
+    ),
+    linear-gradient(180deg, rgb(17 20 22 / 88%), rgb(7 9 10 / 78%));
+  --background-image-weapon-primary:
+    linear-gradient(135deg, rgb(60 69 71 / 30%), rgb(21 25 27 / 48%)),
+    linear-gradient(rgb(25 30 32 / 72%), rgb(15 18 20 / 72%));
+  --background-image-stat-sheet:
+    radial-gradient(
+      circle at 82% 4%,
+      rgb(117 96 57 / 10%),
+      transparent 19rem
+    ),
+    linear-gradient(180deg, rgb(25 29 31), rgb(11 14 15));
+  --color-stat-sheet-desktop-body: #221b18;
+  --background-image-stat-sheet-divider:
+    url("https://www-static.soulframe.com/images/homepage/rough-brown-border.png");
+  --color-stat-sheet-header-base: #59472c;
+  --background-image-stat-sheet-header-floral:
+    url("/textures/themes/nightframe/stat-sheet/soulframe-floral-pattern.png");
+  --background-image-stat-sheet-header-overlay:
+    linear-gradient(
+      90deg,
+      #59472c 0%,
+      rgb(89 71 44 / 98%) 28%,
+      rgb(89 71 44 / 70%) 48%,
+      rgb(89 71 44 / 20%) 72%,
+      transparent 100%
+    );
+  --color-stat-sheet-header-pattern: #b58a49;
+  --color-stat-sheet-header-title: #e3cf98;
+  --color-stat-sheet-on-dark: #ddd7c8;
+  --color-stat-sheet-on-dark-soft: #979c98;
+  --color-stat-sheet-on-dark-faint: #70797a;
+  --color-stat-sheet-on-dark-gold: #c89a45;
+  --color-stat-sheet-on-dark-gold-bright: #ddb866;
+  --color-stat-sheet-on-dark-gold-pale: #d5c595;
+  --color-stat-sheet-damage-bonus: #e2b94f;
+  --color-stat-sheet-on-dark-line: rgb(76 85 87 / 16%);
+  --color-stat-sheet-on-dark-line-bright: rgb(124 136 138 / 42%);
+  --color-stat-sheet-on-dark-frame: #4c5557;
+  --color-stat-sheet-on-dark-frame-bright: #7b8789;
+  --background-image-picker-panel:
+    radial-gradient(
+      circle at 84% 0,
+      rgb(72 82 84 / 17%),
+      transparent 34rem
+    ),
+    linear-gradient(180deg, #1c2123 0%, #111416 48%, #0f1213 100%);
+  --background-image-picker-header:
+    linear-gradient(180deg, rgb(35 41 43 / 82%), rgb(17 20 22 / 72%));
+  --background-image-picker-catalogue:
+    radial-gradient(
+      circle at 10% 20%,
+      rgb(74 84 85 / 10%),
+      transparent 22rem
+    ),
+    linear-gradient(180deg, rgb(13 16 18 / 82%), rgb(9 11 12 / 74%));
+  --background-image-picker-detail:
+    radial-gradient(
+      circle at 74% 8%,
+      rgb(82 91 91 / 9%),
+      transparent 28rem
+    ),
+    linear-gradient(180deg, rgb(21 25 27 / 48%), rgb(13 16 17 / 24%));
+  --background-image-picker-row-hover:
+    linear-gradient(90deg, rgb(58 68 70 / 38%), rgb(28 33 35 / 72%));
+  --background-image-picker-row-selected:
+    radial-gradient(
+      circle at 14% 50%,
+      rgb(200 154 69 / 17%),
+      transparent 11rem
+    ),
+    linear-gradient(90deg, rgb(48 57 59 / 76%), rgb(21 25 27 / 94%));
+  --background-image-picker-popover:
+    linear-gradient(180deg, rgb(31 37 39 / 98%), rgb(14 17 19 / 99%));
+
+  /* Envoy Pact ceremonial stitched frame */
+  --background-image-pact-frame-surface:
+    radial-gradient(
+      circle at 16% 42%,
+      rgb(169 162 144 / 12%),
+      transparent 42%
+    ),
+    linear-gradient(180deg, rgb(27 32 34 / 97%), rgb(13 16 17 / 98%));
+  --background-image-pact-frame-surface-active:
+    radial-gradient(
+      circle at 16% 42%,
+      rgb(202 193 171 / 17%),
+      transparent 44%
+    ),
+    linear-gradient(180deg, rgb(36 43 45 / 98%), rgb(15 18 19 / 99%));
+  --background-image-pact-frame-neutral-corner-top-left:
+    url("/ornaments/themes/nightframe/pact-frame-neutral-corner-top-left.png");
+  --background-image-pact-frame-neutral-corner-top-right:
+    url("/ornaments/themes/nightframe/pact-frame-neutral-corner-top-right.png");
+  --background-image-pact-frame-neutral-corner-bottom-left:
+    url("/ornaments/themes/nightframe/pact-frame-neutral-corner-bottom-left.png");
+  --background-image-pact-frame-neutral-corner-bottom-right:
+    url("/ornaments/themes/nightframe/pact-frame-neutral-corner-bottom-right.png");
+  --background-image-pact-frame-neutral-rail-top:
+    url("/ornaments/themes/nightframe/pact-frame-neutral-rail-top.png");
+  --background-image-pact-frame-neutral-rail-bottom:
+    url("/ornaments/themes/nightframe/pact-frame-neutral-rail-bottom.png");
+  --background-image-pact-frame-neutral-rail-left:
+    url("/ornaments/themes/nightframe/pact-frame-neutral-rail-left.png");
+  --background-image-pact-frame-neutral-rail-right:
+    url("/ornaments/themes/nightframe/pact-frame-neutral-rail-right.png");
+  --background-image-pact-frame-active-corner-top-left:
+    url("/ornaments/themes/nightframe/pact-frame-active-corner-top-left.png");
+  --background-image-pact-frame-active-corner-top-right:
+    url("/ornaments/themes/nightframe/pact-frame-active-corner-top-right.png");
+  --background-image-pact-frame-active-corner-bottom-left:
+    url("/ornaments/themes/nightframe/pact-frame-active-corner-bottom-left.png");
+  --background-image-pact-frame-active-corner-bottom-right:
+    url("/ornaments/themes/nightframe/pact-frame-active-corner-bottom-right.png");
+  --background-image-pact-frame-active-rail-top:
+    url("/ornaments/themes/nightframe/pact-frame-active-rail-top.png");
+  --background-image-pact-frame-active-rail-bottom:
+    url("/ornaments/themes/nightframe/pact-frame-active-rail-bottom.png");
+  --background-image-pact-frame-active-rail-left:
+    url("/ornaments/themes/nightframe/pact-frame-active-rail-left.png");
+  --background-image-pact-frame-active-rail-right:
+    url("/ornaments/themes/nightframe/pact-frame-active-rail-right.png");
+  --color-pact-frame-line: #918c80;
+  --color-pact-frame-line-bright: #c8bea7;
+  --shadow-pact-frame-surface:
+    inset 0 0 0 1px rgb(226 214 188 / 4%),
+    inset 0 -14px 24px rgb(0 0 0 / 20%),
+    0 7px 18px rgb(0 0 0 / 28%);
+  --shadow-pact-frame-surface-active:
+    inset 0 0 0 1px rgb(226 214 188 / 8%),
+    inset 0 -14px 24px rgb(0 0 0 / 20%),
+    0 0 0 2px rgb(200 190 167 / 12%),
+    0 9px 22px rgb(0 0 0 / 36%);
+  --shadow-pact-frame-focus:
+    0 0 0 1px #111617,
+    0 0 0 3px #c8bea7;
+
+  --background-image-rope-active-horizontal:
+    url("/ornaments/themes/nightframe/rope-active-horizontal.svg");
+  --background-image-rope-active-vertical:
+    url("/ornaments/themes/nightframe/rope-active-vertical.svg");
+  --background-image-rope-context-horizontal:
+    url("/ornaments/themes/nightframe/rope-context-horizontal.svg");
+  --background-image-rope-context-vertical:
+    url("/ornaments/themes/nightframe/rope-context-vertical.svg");
+  --background-image-rope-inactive-horizontal:
+    url("/ornaments/rope-inactive-horizontal.svg");
+  --background-image-rope-inactive-vertical:
+    url("/ornaments/rope-inactive-vertical.svg");
+  --background-image-damage-rank:
+    radial-gradient(
+      circle at 50% 42%,
+      rgb(221 184 102 / 18%),
+      rgb(24 29 31 / 92%) 56%,
+      rgb(9 11 12 / 98%) 72%
+    );
+  --background-image-fade-bottom:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgb(17 20 22 / 82%) 48%,
+      #111416 74%
+    );
+  --background-image-scrim:
+    linear-gradient(rgb(5 7 8 / 80%), rgb(5 7 8 / 80%));
+  --background-image-frame:
+    radial-gradient(
+      circle at center,
+      rgb(85 96 97 / 25%),
+      transparent 55%
+    ),
+    linear-gradient(#0c0f10, #0c0f10);
+  --background-image-overlay:
+    radial-gradient(
+      circle at 82% 0,
+      rgb(68 78 80 / 16%),
+      transparent 34rem
+    ),
+    linear-gradient(180deg, rgb(29 34 36 / 96%), rgb(14 17 19 / 97%));
+
+  --shadow-panel: 0 16px 34px rgb(0 0 0 / 52%);
+  --shadow-overlay:
+    0 32px 100px rgb(0 0 0 / 68%),
+    inset 0 0 0 1px rgb(216 195 146 / 6%);
+  --shadow-popover:
+    inset 0 0 0 1px rgb(215 199 158 / 4%),
+    0 12px 34px rgb(6 8 9 / 36%);
+  --shadow-control:
+    inset 0 1px rgb(221 215 200 / 4%),
+    inset 0 -12px 18px rgb(0 0 0 / 16%);
+  --shadow-control-active:
+    inset 0 1px rgb(221 215 200 / 6%),
+    inset 0 -12px 18px rgb(0 0 0 / 16%),
+    0 0 0 2px rgb(200 154 69 / 16%);
+  --shadow-loadout-card:
+    inset 0 0 0 1px rgb(221 215 200 / 3%),
+    inset 0 -14px 24px rgb(0 0 0 / 18%),
+    0 7px 18px rgb(0 0 0 / 26%);
+  --shadow-loadout-card-active:
+    inset 0 0 0 1px rgb(221 215 200 / 8%),
+    inset 0 -14px 24px rgb(0 0 0 / 18%),
+    0 0 0 2px rgb(200 154 69 / 12%),
+    0 9px 22px rgb(0 0 0 / 34%);
+  --shadow-picker-panel:
+    -28px 0 80px rgb(0 0 0 / 50%),
+    inset 1px 0 rgb(221 215 200 / 4%);
+  --shadow-picker-row:
+    inset 0 1px rgb(221 215 200 / 3%),
+    inset 0 -12px 18px rgb(0 0 0 / 12%);
+  --shadow-picker-row-active:
+    inset 3px 0 #c89a45,
+    inset 0 1px rgb(221 215 200 / 6%),
+    0 6px 18px rgb(0 0 0 / 26%);
+  --shadow-picker-art:
+    inset 0 0 0 1px rgb(221 215 200 / 5%),
+    0 8px 22px rgb(0 0 0 / 38%);
+  --shadow-focus: 0 0 0 1px #111416, 0 0 0 3px #ddb866;
+  --shadow-affinity-marker:
+    0 0 0 2px rgb(14 17 19 / 92%),
+    0 0 10px rgb(221 184 102 / 65%),
+    0 3px 8px rgb(0 0 0 / 72%);
+  --shadow-affinity-marker-focus:
+    0 0 0 2px #111416,
+    0 0 0 4px #ddb866,
+    0 0 14px rgb(221 184 102 / 72%);
+  --shadow-damage-rank:
+    inset 0 0 0 1px rgb(221 184 102 / 24%),
+    inset 0 0 14px rgb(200 154 69 / 16%),
+    0 7px 18px rgb(0 0 0 / 58%);
+  --shadow-inset-accent: inset 2px 0 #c89a45;
+  --shadow-pin:
+    0 2px 4px rgb(0 0 0 / 90%),
+    0 0 0 2px rgb(62 42 39 / 72%);
+
+  --text-shadow-display: 0 2px 1px rgb(0 0 0 / 80%);
+  --text-shadow-defense-total: 0 4px 0 rgb(0 0 0 / 94%);
+  --text-shadow-affinity-total:
+    0 1px 0 rgb(221 215 200 / 16%),
+    0 2px 2px rgb(0 0 0 / 88%),
+    0 0 12px rgb(200 154 69 / 22%);
+  --text-shadow-value: 0 1px 1px rgb(0 0 0 / 72%);
+  --drop-shadow-art: 0 5px 8px rgb(0 0 0 / 60%);
+  --drop-shadow-art-strong:
+    0 7px 10px rgb(0 0 0 / 68%),
+    0 0 8px rgb(200 154 69 / 8%);
+  --drop-shadow-menu-glyph-outline: 0 0 0.5px var(--color-night);
+  --drop-shadow-pin: 0 0 6px rgb(198 137 61 / 90%);
+
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-fade-up: fade-up 200ms ease-out both;
+  --animate-slide-in: slide-in 200ms ease-out both;
+  --animate-popover-in: popover-in 150ms ease-out both;
+  --animate-tooltip-in: tooltip-in 150ms ease-out both;
+  --animate-mobile-overlay-surface-in:
+    mobile-overlay-surface-in 320ms ease-out both;
+  --animate-mobile-overlay-surface-out:
+    mobile-overlay-surface-out 320ms ease-out both;
+  --animate-mobile-overlay-stage-first-in:
+    mobile-overlay-stage-in 180ms ease-out 80ms both;
+  --animate-mobile-overlay-stage-second-in:
+    mobile-overlay-stage-in 180ms ease-out 140ms both;
+  --animate-mobile-overlay-stage-third-in:
+    mobile-overlay-stage-in 180ms ease-out 200ms both;
+  --animate-mobile-overlay-stage-fourth-in:
+    mobile-overlay-stage-in 180ms ease-out 260ms both;
+  --animate-mobile-overlay-stage-out:
+    mobile-overlay-stage-out 140ms ease-out both;
+}

@@ -514,14 +514,10 @@ export function ItemPicker({
                       </small>
                     </span>
                     <span className={PICKER_LAYOUT_CLASS_NAMES.itemSide}>
-                      {!meetsArmorRequirement(
-                        item,
-                        buildCalculation.effectiveVirtues,
-                      ) ? (
+                      {item.requirement ? (
                         <RequirementBadge
                           item={item}
                           virtues={buildCalculation.effectiveVirtues}
-                          compact
                         />
                       ) : null}
                       <span className={PICKER_LAYOUT_CLASS_NAMES.itemTotal}>
@@ -578,6 +574,7 @@ export function ItemPicker({
                         item={candidate}
                         virtues={buildCalculation.effectiveVirtues}
                         placement="heading"
+                        showNoRequirement
                       />
                       {candidatePageUrl ? (
                         <a

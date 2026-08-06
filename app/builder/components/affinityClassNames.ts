@@ -43,7 +43,7 @@ export const VIRTUE_ALIGNMENT_CLASS_NAMES = {
     "inline-flex items-center gap-0.75 font-display text-sm leading-none font-normal lining-nums tabular-nums text-gold-pale",
   mobileControls: "contents",
   mobileTotal:
-    "hidden max-tablet:col-start-2 max-tablet:row-start-2 max-tablet:flex max-tablet:min-w-0 max-tablet:self-start max-tablet:flex-col max-tablet:items-center max-tablet:border-b max-tablet:border-line max-tablet:px-0.5 max-tablet:pt-0.5 max-tablet:pb-2.5",
+    "hidden max-tablet:col-start-2 max-tablet:row-start-2 max-tablet:flex max-tablet:min-w-0 max-tablet:self-start max-tablet:flex-col max-tablet:items-center max-tablet:px-0.5 max-tablet:pt-0.5 max-tablet:pb-2.5",
   mobileTotalLabel:
     "text-center font-sans text-2xs font-bold leading-tight uppercase tracking-wider text-ink-soft",
   mobileTotalValue:
@@ -73,14 +73,14 @@ export const ALIGNMENT_NODE_CLASS_NAMES = {
 
 export const AFFINITY_SOURCE_CLASS_NAMES = {
   section:
-    "relative isolate mt-2 border-t border-line pt-4 compact-desktop:max-wide-desktop:mt-1 compact-desktop:max-wide-desktop:pt-3 max-tablet:contents",
+    "relative isolate mt-2 pt-4 compact-desktop:max-wide-desktop:mt-1 compact-desktop:max-wide-desktop:pt-3 max-tablet:contents",
   header: "flex items-baseline max-tablet:hidden",
   title:
     "font-sans text-2xs font-bold uppercase tracking-wider text-ink-soft",
   triggerRow:
     "mt-2.5 grid grid-cols-2 gap-1.5 compact-desktop:max-wide-desktop:mt-2 compact-desktop:max-wide-desktop:gap-1 max-tablet:col-start-2 max-tablet:row-start-2 max-tablet:mt-0 max-tablet:self-end max-tablet:grid-cols-1",
   trigger:
-    "group group/source relative isolate flex min-h-14 min-w-0 cursor-pointer flex-col items-start justify-center gap-1 border-0 bg-surface-deep/70 bg-aura-gold py-1.75 pr-7 pl-2.5 text-left text-ink-soft shadow-control transition-colors duration-150 ease-out hover:bg-surface-raised hover:text-ink focus-visible:bg-surface-raised focus-visible:text-ink focus-visible:outline-none focus-visible:shadow-focus aria-expanded:bg-surface-raised aria-expanded:text-ink compact-desktop:max-wide-desktop:min-h-12 compact-desktop:max-wide-desktop:pl-1.75 max-tablet:min-h-11 max-tablet:pl-2.25 motion-reduce:transition-none",
+    "group group/source relative isolate flex min-h-14 min-w-0 cursor-pointer flex-col items-start justify-center gap-1 border-0 bg-surface-deep/65 py-1.75 pr-7 pl-2.5 text-left text-ink-soft shadow-control transition-colors duration-150 ease-out hover:bg-surface-raised hover:text-ink focus-visible:bg-surface-raised focus-visible:text-ink focus-visible:outline-none focus-visible:shadow-focus aria-expanded:bg-surface-raised aria-expanded:text-ink compact-desktop:max-wide-desktop:min-h-12 compact-desktop:max-wide-desktop:pl-1.75 max-tablet:min-h-11 max-tablet:pl-2.25 motion-reduce:transition-none",
   triggerTitle:
     "relative z-2 font-sans text-2xs font-bold uppercase leading-none tracking-wider text-ink-soft",
   summary:
@@ -90,7 +90,7 @@ export const AFFINITY_SOURCE_CLASS_NAMES = {
   triggerArrow:
     "pointer-events-none absolute top-1/2 right-2 z-2 flex h-1.25 w-2.5 -translate-y-1/2 items-center justify-center transition-transform duration-150 ease-out group-aria-expanded/source:rotate-180 motion-reduce:transition-none",
   panel:
-    "mt-1.75 grid w-full min-w-0 gap-2 border border-line-bright bg-surface p-2.25 shadow-popover animate-popover-in max-tablet:col-span-full max-tablet:col-start-1 max-tablet:row-start-3 motion-reduce:animate-none",
+    "relative isolate mt-1.75 grid w-full min-w-0 gap-2 border border-line-bright bg-surface p-2.25 shadow-popover animate-popover-in max-tablet:col-span-full max-tablet:col-start-1 max-tablet:row-start-3 motion-reduce:animate-none",
   rankControls:
     "grid min-w-0 grid-cols-[minmax(0,1fr)_4rem] items-center gap-2",
   rankRange:

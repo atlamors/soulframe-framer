@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import type { SoulframeBuild } from "@/src/domain/types";
 import type { MobileStatsState } from "../components/mobileWorkspaceClassNames";
@@ -19,13 +20,28 @@ import { getActiveBuildEffects } from "../lib/build-effects";
 type ActiveBuildEffectsProps = {
   build: SoulframeBuild;
   mobileStatsState: MobileStatsState;
+  onOpenChange?: (isOpen: boolean) => void;
 };
 
 export function ActiveBuildEffects({
   build,
   mobileStatsState,
+  onOpenChange,
 }: ActiveBuildEffectsProps) {
   const effects = getActiveBuildEffects(build);
+  const isOpenRef = useRef(false);
+  const onOpenChangeRef = useRef(onOpenChange);
+
+  useEffect(() => {
+    onOpenChangeRef.current = onOpenChange;
+  }, [onOpenChange]);
+
+  useEffect(
+    () => () => {
+      if (isOpenRef.current) onOpenChangeRef.current?.(false);
+    },
+    [],
+  );
 
   return (
     <details
@@ -35,6 +51,10 @@ export function ActiveBuildEffects({
         ]
       }`}
       data-active-build-effects=""
+      onToggle={(event) => {
+        isOpenRef.current = event.currentTarget.open;
+        onOpenChange?.(event.currentTarget.open);
+      }}
     >
       <summary
         className={

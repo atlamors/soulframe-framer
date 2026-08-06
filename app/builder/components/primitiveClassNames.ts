@@ -14,28 +14,33 @@ export const STAT_ICON_CLASS_NAMES = {
 export const STAT_ICON_IMAGE_CLASS_NAME =
   "block size-3/4 object-contain saturate-75 brightness-110";
 
-type RequirementBadgeVariant =
-  | "defaultMet"
-  | "defaultUnmet"
-  | "headingMet"
-  | "headingUnmet";
+type RequirementBadgePlacement =
+  | "default"
+  | "dense"
+  | "detail"
+  | "heading";
 
 export const REQUIREMENT_BADGE_CLASS_NAMES = {
-  defaultMet:
-    "mt-1.25 inline-flex w-fit items-center gap-1 font-sans text-xs font-semibold text-ink-faint",
-  defaultUnmet:
-    "mt-1.25 inline-flex w-fit items-center gap-1 font-sans text-xs font-semibold text-danger",
-  headingMet:
-    "inline-flex min-h-7 w-fit items-center gap-1 font-sans text-xs font-semibold text-ink-faint",
-  headingUnmet:
-    "inline-flex min-h-7 w-fit items-center gap-1 font-sans text-xs font-semibold text-danger",
-} as const satisfies Record<RequirementBadgeVariant, string>;
+  default:
+    "mt-1.25 inline-flex w-fit flex-wrap items-center gap-x-1.5 gap-y-0.5 font-sans text-xs font-semibold text-ink-faint",
+  dense:
+    "inline-flex w-fit flex-wrap items-center gap-x-1.5 gap-y-0.5 font-sans text-xs font-semibold text-ink-faint max-tablet:text-2xs",
+  detail:
+    "inline-flex w-fit flex-wrap items-center gap-x-1.5 gap-y-0.5 font-sans text-xs font-semibold leading-tight text-ink-faint",
+  heading:
+    "inline-flex min-h-7 w-fit flex-wrap items-center gap-x-1.5 gap-y-0.5 font-sans text-xs font-semibold text-ink-faint",
+} as const satisfies Record<RequirementBadgePlacement, string>;
+
+export const REQUIREMENT_BADGE_SEGMENT_CLASS_NAMES = {
+  met: "inline-flex items-center gap-1 text-ink-faint",
+  unmet: "inline-flex items-center gap-1 text-danger",
+} as const satisfies Record<"met" | "unmet", string>;
 
 export const REQUIREMENT_BADGE_ICON_CLASS_NAME =
   "size-3.5";
 
 export const REQUIREMENT_BADGE_UNMET_LABEL_CLASS_NAME =
-  "not-italic uppercase text-danger";
+  "inline-flex items-center gap-1 not-italic text-danger";
 
 type DeltaTone = "positive" | "negative" | "neutral";
 

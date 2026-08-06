@@ -33,7 +33,9 @@ function snapshotLayout(dock: HTMLElement): MobileStatsLayoutSnapshot {
     arrowRotation: arrow ? window.getComputedStyle(arrow).rotate : "none",
     blocks: new Map(
       Array.from(
-        dock.querySelectorAll<HTMLElement>("[data-mobile-stats-block]"),
+        dock.querySelectorAll<HTMLElement>(
+          "[data-mobile-stats-block], [data-mobile-stats-shield]",
+        ),
       ).map((element) => [element, element.getBoundingClientRect()]),
     ),
     dockRect: dock.getBoundingClientRect(),
@@ -267,26 +269,86 @@ export function useMobileStatsMotion(build: SoulframeBuild) {
           const baseRect = baseLayout.blocks.get(element);
           const targetRect = targetLayout.blocks.get(element);
           if (!baseRect || !targetRect || !element.isConnected) return;
-          const startTranslateX =
+          if (
+            currentRect.width === 0 ||
+            currentRect.height === 0 ||
+            baseRect.width === 0 ||
+            baseRect.height === 0 ||
+            targetRect.width === 0 ||
+            targetRect.height === 0
+          ) {
+            return;
+          }
+          let startTranslateX =
             currentRect.left - currentLayout.dockRect.left -
             (baseRect.left - baseLayout.dockRect.left);
-          const startTranslateY =
+          let startTranslateY =
             currentRect.top - currentLayout.dockRect.top -
             (baseRect.top - baseLayout.dockRect.top);
-          const endTranslateX =
+          let endTranslateX =
             targetRect.left - targetLayout.dockRect.left -
             (baseRect.left - baseLayout.dockRect.left);
-          const endTranslateY =
+          let endTranslateY =
             targetRect.top - targetLayout.dockRect.top -
             (baseRect.top - baseLayout.dockRect.top);
+          const isShield = element.hasAttribute("data-mobile-stats-shield");
+          const trackedAncestor = isShield
+            ? element.closest<HTMLElement>("[data-mobile-stats-block]")
+            : null;
+          const currentAncestorRect = trackedAncestor
+            ? currentLayout.blocks.get(trackedAncestor)
+            : undefined;
+          const baseAncestorRect = trackedAncestor
+            ? baseLayout.blocks.get(trackedAncestor)
+            : undefined;
+          const targetAncestorRect = trackedAncestor
+            ? targetLayout.blocks.get(trackedAncestor)
+            : undefined;
+          if (
+            currentAncestorRect &&
+            baseAncestorRect &&
+            targetAncestorRect
+          ) {
+            startTranslateX =
+              currentRect.left -
+              currentAncestorRect.left -
+              (baseRect.left - baseAncestorRect.left);
+            startTranslateY =
+              currentRect.top -
+              currentAncestorRect.top -
+              (baseRect.top - baseAncestorRect.top);
+            endTranslateX =
+              targetRect.left -
+              targetAncestorRect.left -
+              (baseRect.left - baseAncestorRect.left);
+            endTranslateY =
+              targetRect.top -
+              targetAncestorRect.top -
+              (baseRect.top - baseAncestorRect.top);
+          }
+          const startKeyframe: Keyframe = {
+            translate: `${startTranslateX}px ${startTranslateY}px`,
+          };
+          const endKeyframe: Keyframe = {
+            translate: `${endTranslateX}px ${endTranslateY}px`,
+          };
+          if (
+            isShield &&
+            baseRect.width > 0 &&
+            baseRect.height > 0
+          ) {
+            startKeyframe.scale = `${currentRect.width / baseRect.width} ${
+              currentRect.height / baseRect.height
+            }`;
+            endKeyframe.scale = `${targetRect.width / baseRect.width} ${
+              targetRect.height / baseRect.height
+            }`;
+            startKeyframe.transformOrigin = "top left";
+            endKeyframe.transformOrigin = "top left";
+          }
           geometryAnimations.push(
             element.animate(
-              [
-                {
-                  translate: `${startTranslateX}px ${startTranslateY}px`,
-                },
-                { translate: `${endTranslateX}px ${endTranslateY}px` },
-              ],
+              [startKeyframe, endKeyframe],
               MOBILE_STATS_MORPH_OPTIONS,
             ),
           );

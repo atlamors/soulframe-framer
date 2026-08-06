@@ -1,7 +1,7 @@
 @theme {
   --breakpoint-narrow: 361px;
   --breakpoint-mobile-wide: 521px;
-  --breakpoint-tablet: 681px;
+  --breakpoint-tablet: 961px;
   --breakpoint-compact-desktop: 961px;
   --breakpoint-wide-desktop: 1367px;
 
@@ -10,7 +10,7 @@
   --spacing-mobile-header: calc(4rem + env(safe-area-inset-top));
   --spacing-mobile-drawer: 88vw;
   --spacing-mobile-drawer-max: 22.5rem;
-  --spacing-mobile-affinity-bottom: max(3.875rem, calc(2.75rem + env(safe-area-inset-bottom)));
+  --spacing-mobile-affinity-bottom: max(6rem, calc(5.5rem + env(safe-area-inset-bottom)));
   --spacing-mobile-stats-sheet: 72dvh;
 
   --container-overlay-lg: 1040px;

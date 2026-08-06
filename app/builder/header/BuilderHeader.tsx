@@ -8,7 +8,6 @@ import { HEADER_CLASS_NAMES } from "../components/headerClassNames";
 import {
   MOBILE_TOP_HEADER_MENU_GLYPH_CLASS_NAME,
   MOBILE_TOP_HEADER_MENU_ICON_FRAME_CLASS_NAME,
-  MOBILE_TOP_HEADER_MENU_SHELL_CLASS_NAME,
   MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME,
   MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES,
   MOBILE_TOP_HEADER_MENU_TRIGGER_CLASS_NAME,
@@ -92,9 +91,7 @@ export function BuilderHeader({
           >
             <span
               className={HEADER_CLASS_NAMES.nonAlertActions}
-              inert={
-                isAlertCenterOpen || isOptimizationOpen ? true : undefined
-              }
+              inert={isAlertCenterOpen ? true : undefined}
             >
               <button
                 type="button"
@@ -106,7 +103,6 @@ export function BuilderHeader({
                 }
                 aria-expanded={isOptimizationOpen}
                 aria-controls="builder-optimization"
-                tabIndex={isOptimizationOpen ? -1 : undefined}
                 onClick={
                   isOptimizationOpen
                     ? onCloseOptimization
@@ -158,14 +154,6 @@ export function BuilderHeader({
               className={MOBILE_TOP_HEADER_MENU_ICON_FRAME_CLASS_NAME}
               aria-hidden="true"
             >
-              <Image
-                className={MOBILE_TOP_HEADER_MENU_SHELL_CLASS_NAME}
-                src="/icons/game-ui/burger-menu-shell.svg"
-                alt=""
-                width={40}
-                height={40}
-                unoptimized
-              />
               <span className={MOBILE_TOP_HEADER_MENU_GLYPH_CLASS_NAME}>
                 <span
                   className={`${MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME} ${

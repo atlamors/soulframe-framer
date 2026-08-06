@@ -1,4 +1,4 @@
-export const MOBILE_WORKSPACE_MEDIA_QUERY = "(max-width: 680px)";
+export const MOBILE_WORKSPACE_MEDIA_QUERY = "(max-width: 960px)";
 
 export const MOBILE_STATS_MORPH_OPTIONS = {
   duration: 320,

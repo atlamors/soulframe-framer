@@ -9,7 +9,6 @@ type WeaponPrimaryElement =
   | "meta"
   | "metaLabel";
 type WeaponPrimaryStatPosition = "default" | "last";
-type WeaponRequirementState = "met" | "unmet";
 
 export const WEAPON_PRIMARY_CLASS_NAMES = {
   root:
@@ -42,10 +41,3 @@ export const WEAPON_PRIMARY_META_ROW_CLASS_NAMES = {
   default:
     "flex min-w-0 flex-col gap-1.25",
 } as const;
-
-export const WEAPON_REQUIREMENT_CLASS_NAMES = {
-  met:
-    "font-sans text-xs leading-tight font-semibold text-ink",
-  unmet:
-    "font-sans text-xs leading-tight font-semibold text-danger",
-} as const satisfies Record<WeaponRequirementState, string>;

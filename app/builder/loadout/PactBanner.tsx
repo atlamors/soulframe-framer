@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { RopeFrame } from "../components/RopeFrame";
+import { PactFrame } from "../components/PactFrame";
 import {
   PACT_BANNER_ABILITIES_CLASS_NAME,
   PACT_BANNER_ABILITY_CLASS_NAMES,
@@ -48,7 +48,7 @@ export function PactBanner({
       aria-expanded={isActive}
       aria-haspopup="dialog"
     >
-      <RopeFrame appearance={isActive ? "active" : "interactive"} />
+      <PactFrame appearance={isActive ? "active" : "interactive"} />
       <span className={PACT_BANNER_ART_CLASS_NAME} aria-hidden="true">
         {pact?.image ? (
           <Image

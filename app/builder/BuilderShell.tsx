@@ -4,8 +4,10 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { armorById, armorCatalogue } from "@/src/data/catalogue";
 import {
@@ -65,6 +67,7 @@ import {
   type AffinitySources,
   type ArtAllocation,
   type ArmorSlot,
+  type DefenseId,
   type EquipmentSlot,
   type SoulframeBuild,
   type VirtueValues,
@@ -79,7 +82,6 @@ import {
   MOBILE_DEFENSE_SHORT_LABEL_CLASS_NAMES,
 } from "./components/accessibilityClassNames";
 import {
-  BUILD_REQUIREMENT_CLASS_NAMES,
   BUILDER_SHELL_CLASS_NAMES,
   FOOTER_CLASS_NAMES,
   SECONDARY_MODIFIER_CLASS_NAMES,
@@ -88,25 +90,47 @@ import {
 import { MOBILE_TOP_HEADER_MENU_SHELL_CLASS_NAME } from "./components/mobileHeaderClassNames";
 import {
   MOBILE_BUILD_DAMAGE_CLASS_NAMES,
-  MOBILE_BUILD_DAMAGE_HEADING_CLASS_NAMES,
   MOBILE_BUILD_DAMAGE_PANELS_CLASS_NAMES,
-  MOBILE_BUILD_REQUIREMENT_CLASS_NAMES,
   MOBILE_DEFENSE_CREST_CLASS_NAMES,
+  MOBILE_DEFENSE_BACKDROP_CLASS_NAME,
   MOBILE_DEFENSE_FILIGREE_CLASS_NAMES,
   MOBILE_DEFENSE_HUD_CLASS_NAMES,
   MOBILE_DEFENSE_LAYER_CLASS_NAMES,
   MOBILE_DEFENSE_PLAQUE_CLASS_NAMES,
   MOBILE_DEFENSE_PLAQUE_DECORATION_CLASS_NAMES,
   MOBILE_DEFENSE_STAT_CLASS_NAMES,
+  MOBILE_DEFENSE_STAT_CONTEXT_ACTIVE_CLASS_NAME,
+  MOBILE_DEFENSE_STAT_CONTEXT_CLASS_NAME,
+  MOBILE_DEFENSE_STAT_CONTEXT_COPY_CLASS_NAME,
+  MOBILE_DEFENSE_STAT_CONTEXT_TITLE_CLASS_NAME,
+  MOBILE_DEFENSE_STAT_INFO_GLYPH_CLASS_NAME,
+  MOBILE_DEFENSE_STAT_INFO_CLASS_NAME,
   MOBILE_DEFENSE_STAT_IMAGE_CLASS_NAMES,
   MOBILE_DEFENSE_STAT_VALUE_CLASS_NAMES,
   MOBILE_DEFENSE_TOTAL_CLASS_NAMES,
   MOBILE_DEFENSE_TOTAL_LABEL_CLASS_NAMES,
   MOBILE_STATS_DOCK_CLASS_NAMES,
+  MOBILE_STATS_COMPACT_CLASS_NAMES,
+  MOBILE_STATS_COMPACT_CREST_CLASS_NAME,
+  MOBILE_STATS_COMPACT_CREST_LAYER_CLASS_NAME,
+  MOBILE_STATS_COMPACT_DEFENSE_CLASS_NAME,
+  MOBILE_STATS_COMPACT_DEFENSE_ITEM_CLASS_NAME,
+  MOBILE_STATS_COMPACT_DEFENSE_VALUES_CLASS_NAME,
+  MOBILE_STATS_COMPACT_GROUP_CLASS_NAME,
+  MOBILE_STATS_COMPACT_GROUP_LABEL_CLASS_NAME,
+  MOBILE_STATS_COMPACT_METRIC_CLASS_NAME,
+  MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME,
+  MOBILE_STATS_COMPACT_METRICS_CLASS_NAME,
+  MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME,
+  MOBILE_STATS_COMPACT_TOTAL_CLASS_NAME,
+  MOBILE_STATS_EXPANDED_CONTENT_CLASS_NAMES,
+  MOBILE_STATS_HEADING_DIVIDER_CLASS_NAME,
   MOBILE_STATS_HEADING_CLASS_NAMES,
   MOBILE_STATS_PANEL_CLASS_NAMES,
   MOBILE_STATS_RAIL_CLASS_NAMES,
   MOBILE_STATS_SUMMARY_CLASS_NAMES,
+  MOBILE_STATS_TITLE_CLASS_NAMES,
+  MOBILE_STATS_TITLE_HEADING_CLASS_NAMES,
   MOBILE_STATS_TRIGGER_CLASS_NAMES,
   MOBILE_STATS_TRIGGER_ICON_CLASS_NAMES,
   MOBILE_STATS_TRIGGER_ICON_SHELL_CLASS_NAMES,
@@ -132,9 +156,13 @@ import { WeaponEnhancementPicker as BuilderWeaponEnhancementPicker } from "./pic
 import { WeaponPicker as BuilderWeaponPicker } from "./pickers/weapon/WeaponPicker";
 import { ActiveBuildEffects } from "./stats/ActiveBuildEffects";
 import { WeaponDamagePanel } from "./stats/WeaponDamagePanel";
-import { getWeaponDamageRows } from "./lib/weapon-damage";
+import {
+  getWeaponDamageRows,
+  meetsWeaponRequirements,
+} from "./lib/weapon-damage";
 import { useMobileWorkspace } from "./hooks/useMobileWorkspace";
 import { BuilderHeader } from "./header/BuilderHeader";
+import { BuildNameControl } from "./header/BuildNameControl";
 import { MobileHeaderDrawer } from "./header/MobileHeaderDrawer";
 import { useAlerts } from "../alerts/AlertsProvider";
 import { useMobileHistoryLayer } from "../hooks/useMobileHistoryLayer";
@@ -144,6 +172,11 @@ const PACT_ART_LIBRARY_KEY = "soulframe-framer.pact-arts.v1";
 const COMBAT_ART_LIBRARY_KEY = "soulframe-framer.combat-arts.v1";
 
 type ArtLibrary = Record<string, ArtAllocation>;
+
+type DefenseContextPosition = {
+  left: number;
+  top: number;
+};
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -276,6 +309,12 @@ const MOBILE_DEFENSE_SHORT_LABELS = {
   stabilityIncrease: "STAB",
 } as const satisfies Record<(typeof DEFENSE_IDS)[number], string>;
 
+const DEFENSE_CONTEXT_COPY: Record<DefenseId, string> = {
+  physicalDefense: "Helps reduce incoming physical damage.",
+  magickDefense: "Helps reduce incoming Magick damage.",
+  stabilityIncrease: "Helps reduce stagger buildup and resist knockdowns.",
+};
+
 export function BuilderShell() {
   const {
     closeAlertCenter,
@@ -294,12 +333,25 @@ export function BuilderShell() {
     "weapon" | "arts" | "rune" | "totems"
   >("weapon");
   const [selectedTotemSlot, setSelectedTotemSlot] = useState(0);
+  const [activeDefenseContext, setActiveDefenseContext] =
+    useState<DefenseId>();
+  const [defenseContextPosition, setDefenseContextPosition] =
+    useState<DefenseContextPosition>();
+  const defenseContextTriggerRefs = useRef(
+    new Map<DefenseId, HTMLButtonElement>(),
+  );
+  const defenseContextPopoverRef = useRef<HTMLDivElement>(null);
+  const defensePointerDownWasActiveRef = useRef(false);
+  const [isActiveBuildEffectsOpen, setIsActiveBuildEffectsOpen] =
+    useState(false);
+  const mobileStatsScrollTopBeforeEffectsRef = useRef(0);
   const [optimizationMode, setOptimizationMode] = useState<
     "choose" | "affinity" | "armor"
   >();
   const isBuilderModalLayerOpen =
     Boolean(activeSlot) || isPactPickerOpen || optimizationMode !== undefined;
   const isOptimizationOpen = optimizationMode !== undefined;
+
   const dismissBuilderModalLayer = useCallback(() => {
     setActiveSlot(undefined);
     setIsPactPickerOpen(false);
@@ -355,6 +407,112 @@ export function BuilderShell() {
     mobileStatsPresentationState === "collapsed"
       ? "collapsed"
       : "expanded";
+  const showDefenseContext = useCallback((defense: DefenseId) => {
+    setActiveDefenseContext(defense);
+  }, []);
+  const hideDefenseContext = useCallback(() => {
+    setActiveDefenseContext(undefined);
+  }, []);
+  const handleActiveBuildEffectsOpenChange = useCallback(
+    (isOpen: boolean) => {
+      const panel = mobileStatsPanelRef.current;
+      if (isOpen) {
+        mobileStatsScrollTopBeforeEffectsRef.current = panel?.scrollTop ?? 0;
+        setIsActiveBuildEffectsOpen(true);
+        return;
+      }
+
+      setIsActiveBuildEffectsOpen(false);
+      window.requestAnimationFrame(() => {
+        if (mobileStatsPanelRef.current) {
+          mobileStatsPanelRef.current.scrollTop =
+            mobileStatsScrollTopBeforeEffectsRef.current;
+        }
+      });
+    },
+    [mobileStatsPanelRef],
+  );
+
+  useEffect(() => {
+    if (!isMobileViewport || isMobileStatsExpanded) return;
+    const timer = window.setTimeout(hideDefenseContext, 0);
+    return () => window.clearTimeout(timer);
+  }, [hideDefenseContext, isMobileStatsExpanded, isMobileViewport]);
+
+  useEffect(() => {
+    if (!activeDefenseContext) return;
+
+    const dismissOnPointerDown = (event: PointerEvent) => {
+      if (!(event.target instanceof Node)) return;
+      const trigger = defenseContextTriggerRefs.current.get(
+        activeDefenseContext,
+      );
+      if (
+        trigger?.contains(event.target) ||
+        defenseContextPopoverRef.current?.contains(event.target)
+      ) {
+        return;
+      }
+      hideDefenseContext();
+    };
+    const dismissOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      event.stopPropagation();
+      hideDefenseContext();
+    };
+
+    document.addEventListener("pointerdown", dismissOnPointerDown);
+    document.addEventListener("keydown", dismissOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", dismissOnPointerDown);
+      document.removeEventListener("keydown", dismissOnEscape);
+    };
+  }, [activeDefenseContext, hideDefenseContext]);
+
+  useEffect(() => {
+    if (!activeDefenseContext || !hydrated) return;
+
+    const updatePosition = () => {
+      const trigger = defenseContextTriggerRefs.current.get(
+        activeDefenseContext,
+      );
+      const popover = defenseContextPopoverRef.current;
+      if (!trigger || !popover) return;
+
+      const margin = 12;
+      const gap = 8;
+      const triggerRect = trigger.getBoundingClientRect();
+      const popoverRect = popover.getBoundingClientRect();
+      const viewportWidth = document.documentElement.clientWidth;
+      const viewportHeight = window.innerHeight;
+      const centeredLeft =
+        triggerRect.left + triggerRect.width / 2 - popoverRect.width / 2;
+      const left = Math.min(
+        Math.max(centeredLeft, margin),
+        Math.max(margin, viewportWidth - popoverRect.width - margin),
+      );
+      const below = triggerRect.bottom + gap;
+      const above = triggerRect.top - popoverRect.height - gap;
+      const top =
+        below + popoverRect.height <= viewportHeight - margin || above < margin
+          ? Math.min(below, viewportHeight - popoverRect.height - margin)
+          : above;
+
+      setDefenseContextPosition({ left, top: Math.max(margin, top) });
+    };
+
+    updatePosition();
+    const resizeObserver = new ResizeObserver(updatePosition);
+    resizeObserver.observe(defenseContextPopoverRef.current!);
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
+    };
+  }, [activeDefenseContext, hydrated]);
   const calculation = useMemo(
     () => calculateBuild(build, armorCatalogue, talismanCatalogue),
     [build],
@@ -376,45 +534,66 @@ export function BuilderShell() {
     }
     return undefined;
   }, [build, optimizationMode]);
-  const unmetRequirementCount = calculation.items.filter(
-    (item) => !item.requirementMet,
-  ).length;
-  const mobileMainHandAttack = getWeaponDamageRows(
+  const unmetArmorItems = calculation.items.flatMap((contribution) => {
+    if (contribution.requirementMet) return [];
+    const item = armorById.get(contribution.itemId);
+    return item ? [item] : [];
+  });
+  const unmetWeaponItems = (["mainHand", "offHand"] as const).flatMap(
+    (slot) => {
+      const itemId = build.equipment[slot];
+      const item = itemId ? weaponById.get(itemId) : undefined;
+      return item &&
+        !meetsWeaponRequirements(item, calculation.effectiveVirtues)
+        ? [item]
+        : [];
+    },
+  );
+  const unmetRequirementCount =
+    unmetArmorItems.length + unmetWeaponItems.length;
+  const mobileMainHandDamage = getWeaponDamageRows(
     build.equipment.mainHand
       ? weaponById.get(build.equipment.mainHand)
       : undefined,
     calculation.effectiveVirtues,
-  )
-    .find((stat) => stat.id === "attack")?.value ?? "—";
-  const mobileOffHandAttack = getWeaponDamageRows(
+  );
+  const mobileOffHandDamage = getWeaponDamageRows(
     build.equipment.offHand
       ? weaponById.get(build.equipment.offHand)
       : undefined,
     calculation.effectiveVirtues,
-  )
-    .find((stat) => stat.id === "attack")?.value ?? "—";
+  );
+  const mobileMainHandAttack =
+    mobileMainHandDamage.find((stat) => stat.id === "attack")?.value ?? "—";
+  const mobileMainHandCharged =
+    mobileMainHandDamage.find((stat) => stat.id === "charged")?.value ?? "—";
+  const mobileOffHandAttack =
+    mobileOffHandDamage.find((stat) => stat.id === "attack")?.value ?? "—";
+  const mobileOffHandCharged =
+    mobileOffHandDamage.find((stat) => stat.id === "charged")?.value ?? "—";
   const unmetRequirementGroups = VIRTUE_IDS.flatMap((virtue) => {
-    const unmetItems = calculation.items.flatMap((contribution) => {
-      if (contribution.requirementMet) return [];
-      const item = armorById.get(contribution.itemId);
-      return item?.requirement?.virtue === virtue ? [item] : [];
+    const armorRequirements = unmetArmorItems.flatMap((item) =>
+      item.requirement?.virtue === virtue ? [item.requirement.value] : [],
+    );
+    const weaponRequirements = unmetWeaponItems.flatMap((item) => {
+      const required = item.requirements[virtue];
+      return calculation.effectiveVirtues[virtue] < required ? [required] : [];
     });
-    if (!unmetItems.length) return [];
+    const requirements = [...armorRequirements, ...weaponRequirements];
+    if (!requirements.length) return [];
 
     return [
       {
         virtue,
-        itemCount: unmetItems.length,
-        required: Math.max(
-          ...unmetItems.map((item) => item.requirement?.value ?? 0),
-        ),
+        itemCount: requirements.length,
+        required: Math.max(...requirements),
       },
     ];
   });
   const unmetRequirementDescription = unmetRequirementGroups
     .map(
       (group) =>
-        `${virtueMeta[group.virtue].label} ${calculation.effectiveVirtues[group.virtue]}/${group.required} · ${group.itemCount} piece${group.itemCount === 1 ? "" : "s"} base-only`,
+        `${virtueMeta[group.virtue].label} ${calculation.effectiveVirtues[group.virtue]}/${group.required} · ${group.itemCount} item${group.itemCount === 1 ? "" : "s"} base-only`,
     )
     .join(". ");
   const unmetRequirementImpact =
@@ -824,87 +1003,113 @@ export function BuilderShell() {
           }}
         />
 
-        <aside className={BUILDER_SHELL_CLASS_NAMES.alignmentRail}>
-          <header className={WORKSPACE_HEADING_CLASS_NAMES.alignment}>
-            <span className={BUILDER_SHELL_CLASS_NAMES.workspaceHeadingLabel}>
-              Virtues
-            </span>
-          </header>
-          <BuilderVirtueAlignment
-            virtues={build.virtues}
-            bonuses={calculation.bonusVirtues}
-            sources={build.affinitySources}
-            onChange={updateVirtues}
-            onSourcesChange={updateAffinitySources}
-          />
-        </aside>
+        <div className={BUILDER_SHELL_CLASS_NAMES.mainRegion}>
+          <aside className={BUILDER_SHELL_CLASS_NAMES.alignmentRail}>
+            <header className={WORKSPACE_HEADING_CLASS_NAMES.alignment}>
+              <span className={BUILDER_SHELL_CLASS_NAMES.workspaceHeadingLabel}>
+                Virtues
+              </span>
+            </header>
+            <BuilderVirtueAlignment
+              virtues={build.virtues}
+              bonuses={calculation.bonusVirtues}
+              sources={build.affinitySources}
+              onChange={updateVirtues}
+              onSourcesChange={updateAffinitySources}
+            />
+          </aside>
 
-        <div className={BUILDER_SHELL_CLASS_NAMES.loadoutStage}>
-          <BuilderPactBanner
-            pact={
-              build.pact.itemId
-                ? pactById.get(build.pact.itemId)
-                : undefined
-            }
-            artAllocation={build.pact.artAllocation}
-            isActive={isPactPickerOpen}
-            onOpen={() => setIsPactPickerOpen(true)}
-          />
-          {ARMOR_SLOTS.map((slot) => {
-            const itemId = build.equipment[slot];
-            const item = itemId ? armorById.get(itemId) : undefined;
-            const contribution = calculation.items.find(
-              (entry) => entry.itemId === itemId,
-            );
-            return (
-              <BuilderEquipmentSlot
-                key={slot}
-                slot={slot}
-                item={item}
-                contribution={contribution}
-                virtues={calculation.effectiveVirtues}
-                isActive={activeSlot === slot}
-                onOpen={() => setActiveSlot(slot)}
-              />
-            );
-          })}
-
-          <BuilderTalismanEquipmentSlot
-            item={
-              build.equipment.talisman
-                ? talismanById.get(build.equipment.talisman)
-                : undefined
-            }
-            isActive={activeSlot === "talisman"}
-            onOpen={() => setActiveSlot("talisman")}
-          />
-          {(["offHand", "mainHand"] as const).map((slot) => (
-            <BuilderWeaponEquipmentSlot
-              key={slot}
-              slot={slot}
-              item={
-                build.equipment[slot]
-                  ? weaponById.get(build.equipment[slot]!)
+          <div className={BUILDER_SHELL_CLASS_NAMES.loadoutStage}>
+            <BuilderPactBanner
+              pact={
+                build.pact.itemId
+                  ? pactById.get(build.pact.itemId)
                   : undefined
               }
-              enhancements={build.weaponEnhancements[slot]}
-              isActive={activeSlot === slot}
-              onOpenWeapon={() => {
-                setWeaponConfigTab("weapon");
-                setActiveSlot(slot);
-              }}
-              onOpenRune={() => {
-                setWeaponConfigTab("rune");
-                setActiveSlot(slot);
-              }}
-              onOpenTotem={(index) => {
-                setSelectedTotemSlot(index);
-                setWeaponConfigTab("totems");
-                setActiveSlot(slot);
-              }}
+              artAllocation={build.pact.artAllocation}
+              isActive={isPactPickerOpen}
+              onOpen={() => setIsPactPickerOpen(true)}
             />
-          ))}
+            {ARMOR_SLOTS.map((slot) => {
+              const itemId = build.equipment[slot];
+              const item = itemId ? armorById.get(itemId) : undefined;
+              const contribution = calculation.items.find(
+                (entry) => entry.itemId === itemId,
+              );
+              return (
+                <BuilderEquipmentSlot
+                  key={slot}
+                  slot={slot}
+                  item={item}
+                  contribution={contribution}
+                  virtues={calculation.effectiveVirtues}
+                  isActive={activeSlot === slot}
+                  onOpen={() => setActiveSlot(slot)}
+                />
+              );
+            })}
+
+            <BuilderTalismanEquipmentSlot
+              item={
+                build.equipment.talisman
+                  ? talismanById.get(build.equipment.talisman)
+                  : undefined
+              }
+              isActive={activeSlot === "talisman"}
+              onOpen={() => setActiveSlot("talisman")}
+            />
+            {(["offHand", "mainHand"] as const).map((slot) => (
+              <BuilderWeaponEquipmentSlot
+                key={slot}
+                slot={slot}
+                item={
+                  build.equipment[slot]
+                    ? weaponById.get(build.equipment[slot]!)
+                    : undefined
+                }
+                enhancements={build.weaponEnhancements[slot]}
+                virtues={calculation.effectiveVirtues}
+                isActive={activeSlot === slot}
+                onOpenWeapon={() => {
+                  setWeaponConfigTab("weapon");
+                  setActiveSlot(slot);
+                }}
+                onOpenRune={() => {
+                  setWeaponConfigTab("rune");
+                  setActiveSlot(slot);
+                }}
+                onOpenTotem={(index) => {
+                  setSelectedTotemSlot(index);
+                  setWeaponConfigTab("totems");
+                  setActiveSlot(slot);
+                }}
+              />
+            ))}
+          </div>
+
           <MobileSupportZone />
+
+          <footer className={FOOTER_CLASS_NAMES.root}>
+            <span>
+              <a
+                className={FOOTER_CLASS_NAMES.link}
+                href="https://wiki.avakot.org/Armour"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Armour
+              </a>
+              {" · "}
+              <a
+                className={FOOTER_CLASS_NAMES.link}
+                href="https://wiki.avakot.org/Weapons"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Weapons ↗
+              </a>
+            </span>
+          </footer>
         </div>
 
         <section
@@ -916,6 +1121,9 @@ export function BuilderShell() {
             ref={mobileStatsPanelRef}
             className={MOBILE_STATS_PANEL_CLASS_NAMES[mobileStatsGeometryState]}
             data-mobile-state={mobileStatsPresentationState}
+            data-active-build-effects-open={
+              isActiveBuildEffectsOpen ? "true" : undefined
+            }
             id="mobile-stats-panel"
           >
             <aside
@@ -924,6 +1132,12 @@ export function BuilderShell() {
             >
               <div
                 className={BUILDER_SHELL_CLASS_NAMES.statSheetSurface}
+                data-mobile-state={mobileStatsGeometryState}
+                style={
+                  mobileStatsPresentationState === "closing"
+                    ? { backgroundColor: "transparent" }
+                    : undefined
+                }
               >
                 <div
                   className={MOBILE_STATS_SUMMARY_CLASS_NAMES[mobileStatsGeometryState]}
@@ -935,7 +1149,7 @@ export function BuilderShell() {
                     className={MOBILE_STATS_TRIGGER_CLASS_NAMES[mobileStatsGeometryState]}
                     aria-expanded={isMobileStatsExpanded}
                     aria-controls="mobile-stats-panel"
-                    aria-label={`${isMobileStatsExpanded ? "Collapse" : "Expand"} stat sheet. ${calculation.total} total defense. Main ${mobileMainHandAttack} attack. Sidearm ${mobileOffHandAttack} attack.`}
+                    aria-label={`${isMobileStatsExpanded ? "Collapse" : "Expand"} stat sheet. ${calculation.total} total defense. Sidearm ${mobileOffHandAttack} attack and ${mobileOffHandCharged} charged attack. Weapon ${mobileMainHandAttack} attack and ${mobileMainHandCharged} charged attack.`}
                     onClick={toggleMobileStats}
                   >
                     <span
@@ -964,18 +1178,159 @@ export function BuilderShell() {
                   <header
                     className={MOBILE_STATS_HEADING_CLASS_NAMES[mobileStatsGeometryState]}
                   >
-                    <span className={BUILDER_SHELL_CLASS_NAMES.workspaceHeadingLabel}>
-                      Stat Sheet
-                    </span>
-                    <small className={BUILDER_SHELL_CLASS_NAMES.workspaceHeadingMeta}>
-                      {calculation.total} defense
-                    </small>
+                    <span
+                      className={BUILDER_SHELL_CLASS_NAMES.statSheetHeaderFloral}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className={BUILDER_SHELL_CLASS_NAMES.statSheetHeaderOverlay}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className={MOBILE_STATS_HEADING_DIVIDER_CLASS_NAME}
+                      data-mobile-state={mobileStatsPresentationState}
+                      aria-hidden="true"
+                    />
+                    <Image
+                      className={BUILDER_SHELL_CLASS_NAMES.statSheetHeaderVine}
+                      src="/ornaments/themes/nightframe/stat-sheet/stat-sheet-corner-vine-2x.png"
+                      alt=""
+                      width={1254}
+                      height={1254}
+                      unoptimized
+                      aria-hidden="true"
+                    />
+                    <h2
+                      className={`${BUILDER_SHELL_CLASS_NAMES.statSheetBuildName} ${MOBILE_STATS_TITLE_HEADING_CLASS_NAMES[mobileStatsGeometryState]} compact-desktop:hidden`}
+                    >
+                      <span
+                        className={
+                          MOBILE_STATS_TITLE_CLASS_NAMES[mobileStatsGeometryState]
+                        }
+                      >
+                        Stat Sheet
+                      </span>
+                    </h2>
+                    <BuildNameControl
+                      appearance="statSheet"
+                      buildName={build.name}
+                      controlId="stat-sheet-build-name-value"
+                      isActive={!isOptimizationOpen}
+                      onNameChange={(name) =>
+                        setBuild((current) => ({ ...current, name }))
+                      }
+                    />
                   </header>
                   <div
-                    className={MOBILE_DEFENSE_HUD_CLASS_NAMES[mobileStatsGeometryState]}
-                    aria-label={`${calculation.total} total defense`}
-                    data-mobile-stats-block="defense"
+                    className={
+                      MOBILE_STATS_COMPACT_CLASS_NAMES[
+                        mobileStatsPresentationState
+                      ]
+                    }
+                    aria-hidden="true"
+                    data-mobile-stats-compact
                   >
+                    <div className={MOBILE_STATS_COMPACT_DEFENSE_CLASS_NAME}>
+                      <span className={MOBILE_STATS_COMPACT_CREST_CLASS_NAME}>
+                        <Image
+                          className={MOBILE_STATS_COMPACT_CREST_LAYER_CLASS_NAME}
+                          src="/icons/armor-crest/desktop-shield-nightframe-rear-filigree-v3.png"
+                          alt=""
+                          width={160}
+                          height={180}
+                          unoptimized
+                          draggable={false}
+                        />
+                        <strong className={MOBILE_STATS_COMPACT_TOTAL_CLASS_NAME}>
+                          {calculation.total}
+                        </strong>
+                      </span>
+                      <span
+                        className={MOBILE_STATS_COMPACT_DEFENSE_VALUES_CLASS_NAME}
+                      >
+                        {DEFENSE_IDS.map((defense) => (
+                          <span
+                            className={MOBILE_STATS_COMPACT_DEFENSE_ITEM_CLASS_NAME}
+                            key={defense}
+                          >
+                            <Image
+                              src={defenseMeta[defense].icon}
+                              alt=""
+                              width={12}
+                              height={12}
+                              unoptimized
+                            />
+                            <strong>{calculation.defenses[defense]}</strong>
+                          </span>
+                        ))}
+                      </span>
+                    </div>
+                    <div className={MOBILE_STATS_COMPACT_GROUP_CLASS_NAME}>
+                      <span className={MOBILE_STATS_COMPACT_GROUP_LABEL_CLASS_NAME}>
+                        Sidearm
+                      </span>
+                      <span className={MOBILE_STATS_COMPACT_METRICS_CLASS_NAME}>
+                        <span className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}>
+                          <small className={MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME}>
+                            Atk
+                          </small>
+                          <strong className={MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME}>
+                            {mobileOffHandAttack}
+                          </strong>
+                        </span>
+                        <span className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}>
+                          <small className={MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME}>
+                            Chg
+                          </small>
+                          <strong className={MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME}>
+                            {mobileOffHandCharged}
+                          </strong>
+                        </span>
+                      </span>
+                    </div>
+                    <div className={MOBILE_STATS_COMPACT_GROUP_CLASS_NAME}>
+                      <span className={MOBILE_STATS_COMPACT_GROUP_LABEL_CLASS_NAME}>
+                        Weapon
+                      </span>
+                      <span className={MOBILE_STATS_COMPACT_METRICS_CLASS_NAME}>
+                        <span className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}>
+                          <small className={MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME}>
+                            Atk
+                          </small>
+                          <strong className={MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME}>
+                            {mobileMainHandAttack}
+                          </strong>
+                        </span>
+                        <span className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}>
+                          <small className={MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME}>
+                            Chg
+                          </small>
+                          <strong className={MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME}>
+                            {mobileMainHandCharged}
+                          </strong>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    className={
+                      MOBILE_STATS_EXPANDED_CONTENT_CLASS_NAMES[
+                        mobileStatsPresentationState
+                      ]
+                    }
+                    aria-hidden={
+                      mobileStatsPresentationState === "closing"
+                        ? true
+                        : undefined
+                    }
+                    inert={mobileStatsPresentationState === "closing"}
+                  >
+                  <div className={MOBILE_DEFENSE_BACKDROP_CLASS_NAME}>
+                    <div
+                      className={MOBILE_DEFENSE_HUD_CLASS_NAMES[mobileStatsGeometryState]}
+                      aria-label={`${calculation.total} total defense`}
+                      data-mobile-stats-block="defense"
+                    >
                     <div
                       className={MOBILE_DEFENSE_PLAQUE_CLASS_NAMES[mobileStatsGeometryState]}
                     >
@@ -1025,7 +1380,6 @@ export function BuilderShell() {
                           className={
                             MOBILE_DEFENSE_STAT_CLASS_NAMES[mobileStatsGeometryState]
                           }
-                          title={defenseMeta[defense].label}
                           data-mobile-stats-detail
                           key={defense}
                         >
@@ -1068,15 +1422,88 @@ export function BuilderShell() {
                           >
                             {calculation.defenses[defense]}
                           </strong>
+                          <button
+                            ref={(element) => {
+                              if (element) {
+                                defenseContextTriggerRefs.current.set(
+                                  defense,
+                                  element,
+                                );
+                              } else {
+                                defenseContextTriggerRefs.current.delete(defense);
+                              }
+                            }}
+                            className={MOBILE_DEFENSE_STAT_INFO_CLASS_NAME}
+                            type="button"
+                            aria-label={`Explain ${defenseMeta[defense].label}`}
+                            aria-describedby={
+                              activeDefenseContext === defense
+                                ? `defense-context-${defense}`
+                                : undefined
+                            }
+                            aria-expanded={activeDefenseContext === defense}
+                            onPointerEnter={(event) => {
+                              if (event.pointerType === "mouse") {
+                                showDefenseContext(defense);
+                              }
+                            }}
+                            onPointerLeave={(event) => {
+                              if (
+                                event.pointerType === "mouse" &&
+                                document.activeElement !== event.currentTarget
+                              ) {
+                                hideDefenseContext();
+                              }
+                            }}
+                            onPointerDown={() => {
+                              defensePointerDownWasActiveRef.current =
+                                activeDefenseContext === defense;
+                            }}
+                            onFocus={() => showDefenseContext(defense)}
+                            onBlur={() => hideDefenseContext()}
+                            onKeyDown={(event) => {
+                              if (event.key !== "Enter" && event.key !== " ") {
+                                return;
+                              }
+                              event.preventDefault();
+                              setActiveDefenseContext((current) =>
+                                current === defense ? undefined : defense,
+                              );
+                            }}
+                            onClick={(event) => {
+                              if (event.detail === 0) return;
+                              if (defensePointerDownWasActiveRef.current) {
+                                hideDefenseContext();
+                              } else {
+                                showDefenseContext(defense);
+                              }
+                            }}
+                          >
+                            <span
+                              className={MOBILE_DEFENSE_STAT_INFO_GLYPH_CLASS_NAME}
+                              aria-hidden="true"
+                            >
+                              i
+                            </span>
+                          </button>
                         </div>
                       ))}
                     </div>
 
-                    <div
-                      className={MOBILE_DEFENSE_CREST_CLASS_NAMES[mobileStatsGeometryState]}
-                      aria-hidden="true"
-                      data-mobile-stats-shield
-                    >
+                      <div
+                        className={MOBILE_DEFENSE_CREST_CLASS_NAMES[mobileStatsGeometryState]}
+                        aria-hidden="true"
+                        data-mobile-stats-shield
+                      >
+                      <Image
+                        className={`${MOBILE_DEFENSE_LAYER_CLASS_NAMES[mobileStatsGeometryState]} block max-tablet:scale-[1.2] compact-desktop:scale-[1.2]`}
+                        src="/icons/armor-crest/desktop-shield-nightframe-rear-filigree-v3.png"
+                        alt=""
+                        width={160}
+                        height={180}
+                        unoptimized
+                        draggable={false}
+                      />
                       {[
                         "shield-bg",
                         "shield-bg-art",
@@ -1084,7 +1511,7 @@ export function BuilderShell() {
                         "filigree",
                       ].map((layer) => (
                         <Image
-                          className={`${MOBILE_DEFENSE_LAYER_CLASS_NAMES[mobileStatsGeometryState]} ${
+                          className={`${MOBILE_DEFENSE_LAYER_CLASS_NAMES[mobileStatsGeometryState]} hidden ${
                             layer === "filigree"
                               ? MOBILE_DEFENSE_FILIGREE_CLASS_NAMES[mobileStatsGeometryState]
                               : ""
@@ -1116,92 +1543,53 @@ export function BuilderShell() {
                       >
                         {calculation.total}
                       </strong>
+                      </div>
                     </div>
                   </div>
-
-                  {unmetRequirementCount > 0 ? (
-                    <div
-                      className={
-                        MOBILE_BUILD_REQUIREMENT_CLASS_NAMES[mobileStatsGeometryState]
-                      }
-                      role="status"
-                    >
-                      <strong className={BUILD_REQUIREMENT_CLASS_NAMES.title}>
-                        {unmetRequirementCount} requirement
-                        {unmetRequirementCount === 1 ? "" : "s"} unmet
-                      </strong>
-                      {unmetRequirementGroups.map((group) => (
-                        <span
-                          className={BUILD_REQUIREMENT_CLASS_NAMES.detail}
-                          key={group.virtue}
-                        >
-                          {virtueMeta[group.virtue].label}{" "}
-                          {calculation.effectiveVirtues[group.virtue]}/{group.required}
-                        {" · "}
-                        {group.itemCount} piece{group.itemCount === 1 ? "" : "s"}{" "}
-                        base-only
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
 
                   <section
                     className={MOBILE_BUILD_DAMAGE_CLASS_NAMES[mobileStatsGeometryState]}
                   >
-                  <header
-                    className={
-                      MOBILE_BUILD_DAMAGE_HEADING_CLASS_NAMES[mobileStatsGeometryState]
-                    }
-                  >
-                    <span
-                      className={BUILDER_SHELL_CLASS_NAMES.workspaceHeadingLabel}
-                    >
-                      Weapon Damage
-                    </span>
-                    <small
-                      className={`${BUILDER_SHELL_CLASS_NAMES.workspaceHeadingMeta} max-tablet:hidden`}
-                    >
-                      Current loadout
-                    </small>
-                  </header>
-                  <div
-                    className={
-                      MOBILE_BUILD_DAMAGE_PANELS_CLASS_NAMES[mobileStatsGeometryState]
-                    }
-                  >
-                    <WeaponDamagePanel
-                      hand="Main Hand"
-                      index={1}
-                      mobileHand="Main"
-                      mobileStatsState={mobileStatsGeometryState}
-                      morphKey="main"
-                      virtues={calculation.effectiveVirtues}
-                      item={
-                        build.equipment.mainHand
-                          ? weaponById.get(build.equipment.mainHand)
-                          : undefined
+                    <div
+                      className={
+                        MOBILE_BUILD_DAMAGE_PANELS_CLASS_NAMES[mobileStatsGeometryState]
                       }
-                    />
-                    <WeaponDamagePanel
-                      hand="Off Hand"
-                      index={2}
-                      mobileHand="Sidearm"
-                      mobileStatsState={mobileStatsGeometryState}
-                      morphKey="sidearm"
-                      virtues={calculation.effectiveVirtues}
-                      item={
-                        build.equipment.offHand
-                          ? weaponById.get(build.equipment.offHand)
-                          : undefined
-                      }
-                    />
+                    >
+                      <WeaponDamagePanel
+                        hand="Sidearm"
+                        index={2}
+                        mobileHand="Sidearm"
+                        mobileStatsState={mobileStatsGeometryState}
+                        morphKey="sidearm"
+                        virtues={calculation.effectiveVirtues}
+                        item={
+                          build.equipment.offHand
+                            ? weaponById.get(build.equipment.offHand)
+                            : undefined
+                        }
+                      />
+                      <WeaponDamagePanel
+                        hand="Weapon"
+                        index={1}
+                        mobileHand="Weapon"
+                        mobileStatsState={mobileStatsGeometryState}
+                        morphKey="main"
+                        virtues={calculation.effectiveVirtues}
+                        item={
+                          build.equipment.mainHand
+                            ? weaponById.get(build.equipment.mainHand)
+                            : undefined
+                        }
+                      />
                     </div>
                   </section>
+                  </div>
                 </div>
 
                 <ActiveBuildEffects
                   build={build}
                   mobileStatsState={mobileStatsDetailState}
+                  onOpenChange={handleActiveBuildEffectsOpenChange}
                 />
 
                 {calculation.modifiers.attack > 0 ||
@@ -1233,33 +1621,63 @@ export function BuilderShell() {
                     ) : null}
                   </div>
                 ) : null}
+                <Image
+                  className={BUILDER_SHELL_CLASS_NAMES.statSheetBottomRightVine}
+                  src="/ornaments/themes/nightframe/stat-sheet/stat-sheet-corner-vine-v2.png"
+                  alt=""
+                  width={1254}
+                  height={1254}
+                  unoptimized
+                  aria-hidden="true"
+                />
               </div>
             </aside>
           </div>
+          <Image
+            className={BUILDER_SHELL_CLASS_NAMES.statSheetMobileDockVine}
+            src="/ornaments/themes/nightframe/stat-sheet/stat-sheet-corner-vine-2x.png"
+            alt=""
+            width={1254}
+            height={1254}
+            unoptimized
+            aria-hidden="true"
+            data-mobile-state={mobileStatsGeometryState}
+          />
         </section>
       </section>
 
-      <footer className={FOOTER_CLASS_NAMES.root}>
-        <span>
-          <a
-            className={FOOTER_CLASS_NAMES.link}
-            href="https://wiki.avakot.org/Armour"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Armour
-          </a>
-          {" · "}
-          <a
-            className={FOOTER_CLASS_NAMES.link}
-            href="https://wiki.avakot.org/Weapons"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Weapons ↗
-          </a>
-        </span>
-      </footer>
+      {hydrated && activeDefenseContext
+        ? createPortal(
+            <div
+              ref={defenseContextPopoverRef}
+              className={`${MOBILE_DEFENSE_STAT_CONTEXT_CLASS_NAME} ${MOBILE_DEFENSE_STAT_CONTEXT_ACTIVE_CLASS_NAME}`}
+              id={`defense-context-${activeDefenseContext}`}
+              role="tooltip"
+              style={
+                defenseContextPosition
+                  ? {
+                      left: defenseContextPosition.left,
+                      top: defenseContextPosition.top,
+                    }
+                  : { left: 0, top: 0, visibility: "hidden" }
+              }
+            >
+              <strong className={MOBILE_DEFENSE_STAT_CONTEXT_TITLE_CLASS_NAME}>
+                {defenseMeta[activeDefenseContext].label}
+              </strong>
+              <span className={MOBILE_DEFENSE_STAT_CONTEXT_COPY_CLASS_NAME}>
+                {DEFENSE_CONTEXT_COPY[activeDefenseContext]}
+              </span>
+              <span className={MOBILE_DEFENSE_STAT_CONTEXT_COPY_CLASS_NAME}>
+                Each armor piece contributes its base value plus floor(12% × the
+                sum of its attunement pips × your effective Virtues). Unmet
+                requirements disable that piece&apos;s scaling; flat Talisman
+                defense is added last.
+              </span>
+            </div>,
+            document.body,
+          )
+        : null}
 
       {activeSlot && ARMOR_SLOTS.includes(activeSlot as ArmorSlot) ? (
         <BuilderArmorPicker

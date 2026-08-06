@@ -19,6 +19,7 @@ import {
   BUILD_NAME_INPUT_CLASS_NAMES,
   BUILD_NAME_ORNAMENT_CLASS_NAMES,
   BUILD_NAME_ORNAMENT_SOURCES,
+  STAT_SHEET_BUILD_NAME_EDIT_VISUAL_CLASS_NAME,
   type BuildNameControlAppearance,
   type BuildNameEditingState,
 } from "../components/headerClassNames";
@@ -86,7 +87,7 @@ export function BuildNameControl({
   }, [buildName, isActive]);
 
   const handleBuildNameBlur = () => {
-    if (appearance === "header") commitBuildName(false);
+    if (appearance !== "drawer") commitBuildName(false);
   };
 
   const handleBuildNameKeyDown = (
@@ -109,53 +110,81 @@ export function BuildNameControl({
       className={BUILD_NAME_CONTROL_CLASS_NAMES[appearance][editingState]}
       data-build-name-state={editingState}
     >
-      <div
-        className={BUILD_NAME_FRAME_CLASS_NAMES[appearance][editingState]}
-      >
-        <span
-          className={BUILD_NAME_FRAME_ART_CLASS_NAMES[editingState]}
-          aria-hidden="true"
-        />
-        <Image
-          className={BUILD_NAME_ORNAMENT_CLASS_NAMES[appearance].left}
-          src={BUILD_NAME_ORNAMENT_SOURCES[editingState].left}
-          alt=""
-          aria-hidden="true"
-          width={25}
-          height={20}
-          unoptimized
-        />
-        <Image
-          className={BUILD_NAME_ORNAMENT_CLASS_NAMES[appearance].right}
-          src={BUILD_NAME_ORNAMENT_SOURCES[editingState].right}
-          alt=""
-          aria-hidden="true"
-          width={25}
-          height={20}
-          unoptimized
-        />
-        {isEditingBuildName ? (
-          <input
-            ref={buildNameInputRef}
-            id={controlId}
-            className={BUILD_NAME_INPUT_CLASS_NAMES[appearance]}
-            value={buildNameDraft}
-            maxLength={80}
-            aria-label="Build name"
-            onBlur={handleBuildNameBlur}
-            onChange={(event) => setBuildNameDraft(event.target.value)}
-            onKeyDown={handleBuildNameKeyDown}
-          />
-        ) : (
+      {appearance === "statSheet" ? (
+        <h2
+          className={BUILD_NAME_FRAME_CLASS_NAMES[appearance][editingState]}
+        >
+          {isEditingBuildName ? (
+            <input
+              ref={buildNameInputRef}
+              id={controlId}
+              className={BUILD_NAME_INPUT_CLASS_NAMES[appearance]}
+              value={buildNameDraft}
+              maxLength={80}
+              aria-label="Build name"
+              onBlur={handleBuildNameBlur}
+              onChange={(event) => setBuildNameDraft(event.target.value)}
+              onKeyDown={handleBuildNameKeyDown}
+            />
+          ) : (
+            <span
+              id={controlId}
+              className={BUILD_NAME_DISPLAY_CLASS_NAMES[appearance]}
+              title={buildName}
+            >
+              {buildName}
+            </span>
+          )}
+        </h2>
+      ) : (
+        <div
+          className={BUILD_NAME_FRAME_CLASS_NAMES[appearance][editingState]}
+        >
           <span
-            id={controlId}
-            className={BUILD_NAME_DISPLAY_CLASS_NAMES[appearance]}
-            title={buildName}
-          >
-            {buildName}
-          </span>
-        )}
-      </div>
+            className={BUILD_NAME_FRAME_ART_CLASS_NAMES[editingState]}
+            aria-hidden="true"
+          />
+          <Image
+            className={BUILD_NAME_ORNAMENT_CLASS_NAMES[appearance].left}
+            src={BUILD_NAME_ORNAMENT_SOURCES[editingState].left}
+            alt=""
+            aria-hidden="true"
+            width={25}
+            height={20}
+            unoptimized
+          />
+          <Image
+            className={BUILD_NAME_ORNAMENT_CLASS_NAMES[appearance].right}
+            src={BUILD_NAME_ORNAMENT_SOURCES[editingState].right}
+            alt=""
+            aria-hidden="true"
+            width={25}
+            height={20}
+            unoptimized
+          />
+          {isEditingBuildName ? (
+            <input
+              ref={buildNameInputRef}
+              id={controlId}
+              className={BUILD_NAME_INPUT_CLASS_NAMES[appearance]}
+              value={buildNameDraft}
+              maxLength={80}
+              aria-label="Build name"
+              onBlur={handleBuildNameBlur}
+              onChange={(event) => setBuildNameDraft(event.target.value)}
+              onKeyDown={handleBuildNameKeyDown}
+            />
+          ) : (
+            <span
+              id={controlId}
+              className={BUILD_NAME_DISPLAY_CLASS_NAMES[appearance]}
+              title={buildName}
+            >
+              {buildName}
+            </span>
+          )}
+        </div>
+      )}
       <button
         ref={buildNameEditRef}
         type="button"
@@ -166,6 +195,13 @@ export function BuildNameControl({
           isEditingBuildName
             ? "Finish editing build name"
             : "Edit build name"
+        }
+        title={
+          appearance === "statSheet"
+            ? isEditingBuildName
+              ? "Finish editing build name"
+              : "Edit build name"
+            : undefined
         }
         aria-pressed={isEditingBuildName}
         onMouseDown={(event) => {
@@ -180,24 +216,50 @@ export function BuildNameControl({
           }
         }}
       >
-        <Image
-          className={BUILD_NAME_EDIT_FRAME_CLASS_NAMES[appearance]}
-          src={BUILD_NAME_EDIT_FRAME_SOURCES[editingState]}
-          alt=""
-          aria-hidden="true"
-          width={68}
-          height={56}
-          unoptimized
-        />
-        <Image
-          className={BUILD_NAME_EDIT_IMAGE_CLASS_NAMES[appearance]}
-          src="/icons/edit-feather.svg"
-          alt=""
-          aria-hidden="true"
-          width={40}
-          height={48}
-          unoptimized
-        />
+        {appearance === "statSheet" ? (
+          <span
+            className={STAT_SHEET_BUILD_NAME_EDIT_VISUAL_CLASS_NAME}
+            aria-hidden="true"
+          >
+            <Image
+              className={BUILD_NAME_EDIT_FRAME_CLASS_NAMES[appearance]}
+              src="/icons/game-ui/burger-menu-shell.svg"
+              alt=""
+              width={64}
+              height={64}
+              unoptimized
+            />
+            <Image
+              className={BUILD_NAME_EDIT_IMAGE_CLASS_NAMES[appearance]}
+              src="/icons/edit-feather.svg"
+              alt=""
+              width={40}
+              height={48}
+              unoptimized
+            />
+          </span>
+        ) : (
+          <>
+            <Image
+              className={BUILD_NAME_EDIT_FRAME_CLASS_NAMES[appearance]}
+              src={BUILD_NAME_EDIT_FRAME_SOURCES[editingState]}
+              alt=""
+              aria-hidden="true"
+              width={68}
+              height={56}
+              unoptimized
+            />
+            <Image
+              className={BUILD_NAME_EDIT_IMAGE_CLASS_NAMES[appearance]}
+              src="/icons/edit-feather.svg"
+              alt=""
+              aria-hidden="true"
+              width={40}
+              height={48}
+              unoptimized
+            />
+          </>
+        )}
       </button>
     </div>
   );

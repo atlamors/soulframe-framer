@@ -18,6 +18,7 @@ import {
 } from "@/src/domain/types";
 import {
   ArmorArtwork,
+  RequirementBadge,
   TalismanArtwork,
   WeaponArtwork,
 } from "../components/primitives";
@@ -25,7 +26,7 @@ import {
   VIRTUE_PIP_CLASS_NAMES,
   VIRTUE_PIP_IMAGE_CLASS_NAME,
 } from "../components/virtuePipClassNames";
-import { RopeFrame } from "../components/RopeFrame";
+import { ItemFrame } from "../components/ItemFrame";
 import {
   defenseMeta,
   slotMeta,
@@ -44,6 +45,7 @@ import {
   EQUIPMENT_SLOT_DEFENSE_STAT_CLASS_NAME,
   EQUIPMENT_SLOT_DEFENSE_STATS_CLASS_NAME,
   EQUIPMENT_SLOT_DEFENSE_VALUE_CLASS_NAME,
+  EQUIPMENT_SLOT_ENCHANTMENT_REQUIREMENT_CLASS_NAME,
   EQUIPMENT_SLOT_ENCHANTMENT_STRIP_CLASS_NAME,
   EQUIPMENT_SLOT_LABEL_CLASS_NAME,
   EQUIPMENT_SLOT_NAME_CLASS_NAME,
@@ -55,9 +57,7 @@ import {
   EQUIPMENT_SLOT_TALISMAN_STAT_VALUE_CLASS_NAME,
   EQUIPMENT_SLOT_STANDARD_BOTTOM_PADDING_CLASS_NAME,
   EQUIPMENT_SLOT_STANDARD_FOOTER_CLASS_NAMES,
-  EQUIPMENT_SLOT_REQUIREMENT_CLASS_NAMES,
   EQUIPMENT_SLOT_REQUIREMENT_EMPTY_CLASS_NAME,
-  EQUIPMENT_SLOT_REQUIREMENT_ICON_CLASS_NAME,
   EQUIPMENT_SLOT_WEAPON_MAIN_CLASS_NAME,
   EQUIPMENT_SLOT_WEAPON_SUMMARY_DEFAULT_CLASS_NAME,
   EQUIPMENT_SLOT_WEAPON_SUMMARY_MOBILE_CLASS_NAME,
@@ -66,7 +66,7 @@ import {
 
 function EquipmentSlotDecoration({ state }: { state: EquipmentSlotVisualState }) {
   return (
-    <RopeFrame appearance={state === "active" ? "active" : "interactive"} />
+    <ItemFrame appearance={state === "active" ? "active" : "interactive"} />
   );
 }
 
@@ -88,11 +88,12 @@ export function EquipmentSlot({
   const meta = slotMeta[slot];
   const slotState = isActive ? "active" : "default";
   const fillState = item ? "filled" : "empty";
+  const hasRequirementFooter = Boolean(item?.requirement) || !item;
   const requirementSummary =
     item?.requirement && contribution
-      ? ` Requires ${item.requirement.value} ${
-          virtueMeta[item.requirement.virtue].label
-        }; current ${virtues[item.requirement.virtue]}; ${
+      ? ` ${virtueMeta[item.requirement.virtue].label} ${
+          virtues[item.requirement.virtue]
+        }/${item.requirement.value}; requirement ${
           contribution.requirementMet ? "met" : "unmet"
         }.`
       : item
@@ -105,7 +106,11 @@ export function EquipmentSlot({
   return (
     <button
       type="button"
-      className={`${EQUIPMENT_SLOT_CLASS_NAMES[slot][slotState]} ${EQUIPMENT_SLOT_STANDARD_BOTTOM_PADDING_CLASS_NAME}`}
+      className={`${EQUIPMENT_SLOT_CLASS_NAMES[slot][slotState]}${
+        hasRequirementFooter
+          ? ` ${EQUIPMENT_SLOT_STANDARD_BOTTOM_PADDING_CLASS_NAME}`
+          : ""
+      }`}
       onClick={onOpen}
       aria-expanded={isActive}
       aria-haspopup="dialog"
@@ -158,36 +163,23 @@ export function EquipmentSlot({
           </span>
         ) : null}
       </span>
-      <span className={EQUIPMENT_SLOT_STANDARD_FOOTER_CLASS_NAMES.requirement}>
-        {item?.requirement && contribution ? (
-          <span
-            className={
-              EQUIPMENT_SLOT_REQUIREMENT_CLASS_NAMES[
-                contribution.requirementMet ? "met" : "unmet"
-              ]
-            }
-            aria-hidden="true"
-          >
-            <Image
-              className={EQUIPMENT_SLOT_REQUIREMENT_ICON_CLASS_NAME}
-              src={virtueMeta[item.requirement.virtue].icon}
-              alt=""
-              width={18}
-              height={18}
-              unoptimized
+      {hasRequirementFooter ? (
+        <span
+          className={EQUIPMENT_SLOT_STANDARD_FOOTER_CLASS_NAMES.requirement}
+        >
+          {item?.requirement ? (
+            <RequirementBadge
+              item={item}
+              virtues={virtues}
+              placement="dense"
             />
-            <span>
-              {contribution.requirementMet
-                ? `${item.requirement.value} required`
-                : `${virtues[item.requirement.virtue]}/${item.requirement.value} requirement unmet`}
+          ) : (
+            <span className={EQUIPMENT_SLOT_REQUIREMENT_EMPTY_CLASS_NAME}>
+              No armour selected
             </span>
-          </span>
-        ) : (
-          <span className={EQUIPMENT_SLOT_REQUIREMENT_EMPTY_CLASS_NAME}>
-            {item ? "No requirement" : "No armour selected"}
-          </span>
-        )}
-      </span>
+          )}
+        </span>
+      ) : null}
     </button>
   );
 }
@@ -300,6 +292,7 @@ export function WeaponEquipmentSlot({
   slot,
   item,
   enhancements,
+  virtues,
   isActive,
   onOpenWeapon,
   onOpenRune,
@@ -308,6 +301,7 @@ export function WeaponEquipmentSlot({
   slot: WeaponHandSlot;
   item?: Weapon;
   enhancements: WeaponEnhancements;
+  virtues: SoulframeBuild["virtues"];
   isActive: boolean;
   onOpenWeapon: () => void;
   onOpenRune: () => void;
@@ -322,6 +316,21 @@ export function WeaponEquipmentSlot({
     ? runeById.get(enhancements.rune.itemId)
     : undefined;
   const runeVirtue = rune?.addedSlot ?? "neutral";
+  const weaponRequirements = item
+    ? VIRTUE_IDS.flatMap((virtue) => {
+        const required = item.requirements[virtue];
+        return required > 0 ? [{ required, virtue }] : [];
+      })
+    : [];
+  const requirementMet = weaponRequirements.every(
+    ({ required, virtue }) => virtues[virtue] >= required,
+  );
+  const requirementSummary = weaponRequirements
+    .map(
+      ({ required, virtue }) =>
+        `${virtueMeta[virtue].label} ${virtues[virtue]}/${required}`,
+    )
+    .join(", ");
 
   return (
     <div
@@ -364,10 +373,8 @@ export function WeaponEquipmentSlot({
             <span
               className={EQUIPMENT_SLOT_WEAPON_SUMMARY_MOBILE_CLASS_NAME}
             >
-              <span>
-                {attack !== undefined ? `${attack} Attack` : "Attack —"}
-              </span>
-              <span>Smite {item.stats.smite.display || "—"}</span>
+              <span>{item.combatArt}</span>
+              {attack !== undefined ? <span>{attack} attack</span> : null}
             </span>
           ) : null}
         </span>
@@ -376,6 +383,27 @@ export function WeaponEquipmentSlot({
         className={EQUIPMENT_SLOT_ENCHANTMENT_STRIP_CLASS_NAME}
         aria-label="Weapon enhancements"
       >
+        {item && weaponRequirements.length > 0 ? (
+          <button
+            type="button"
+            className={EQUIPMENT_SLOT_ENCHANTMENT_REQUIREMENT_CLASS_NAME}
+            onClick={onOpenWeapon}
+            aria-haspopup="dialog"
+            aria-label={`${requirementSummary}. Requirements ${
+              requirementMet ? "met" : "unmet"
+            }. Change weapon.`}
+            title={`${requirementSummary}. Requirements ${
+              requirementMet ? "met" : "unmet"
+            }.`}
+            data-requirement-state={requirementMet ? "met" : "unmet"}
+          >
+            <RequirementBadge
+              item={item}
+              virtues={virtues}
+              placement="dense"
+            />
+          </button>
+        ) : null}
         <button
           type="button"
           className={

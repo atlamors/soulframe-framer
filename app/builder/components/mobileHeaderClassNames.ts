@@ -18,7 +18,7 @@ export const MOBILE_HEADER_CLASS_NAMES = {
   visible:
     "hidden max-tablet:fixed max-tablet:inset-x-0 max-tablet:top-0 max-tablet:z-55 max-tablet:flex max-tablet:h-mobile-header max-tablet:translate-y-0 max-tablet:items-end max-tablet:bg-surface max-tablet:bg-none max-tablet:pt-mobile-safe-top max-tablet:opacity-100 max-tablet:visible max-tablet:pointer-events-auto max-tablet:shadow-panel max-tablet:transition max-tablet:duration-200 max-tablet:ease-out motion-reduce:transition-none",
   drawerOpen:
-    "hidden max-tablet:fixed max-tablet:inset-x-0 max-tablet:top-0 max-tablet:z-55 max-tablet:flex max-tablet:h-mobile-header max-tablet:translate-y-0 max-tablet:items-end max-tablet:bg-surface max-tablet:bg-none max-tablet:pt-mobile-safe-top max-tablet:opacity-100 max-tablet:visible max-tablet:pointer-events-none max-tablet:shadow-panel max-tablet:transition max-tablet:duration-200 max-tablet:ease-out motion-reduce:transition-none",
+    "hidden max-tablet:fixed max-tablet:inset-x-0 max-tablet:top-0 max-tablet:z-55 max-tablet:flex max-tablet:h-mobile-header max-tablet:translate-y-0 max-tablet:items-end max-tablet:bg-surface max-tablet:bg-none max-tablet:pt-mobile-safe-top max-tablet:opacity-100 max-tablet:visible max-tablet:pointer-events-auto max-tablet:shadow-panel max-tablet:transition max-tablet:duration-200 max-tablet:ease-out motion-reduce:transition-none",
   suppressed: "hidden",
 } as const satisfies Record<MobileHeaderVisibilityState, string>;
 
@@ -34,15 +34,15 @@ export const MOBILE_HEADER_BUILD_NAME_CLASS_NAME =
   "min-w-0 flex-1 truncate font-display text-base leading-none text-ink text-shadow-value";
 
 export const MOBILE_HEADER_ALERT_TRIGGER_CLASS_NAME =
-  "relative inline-flex size-11 flex-none cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 text-ink-soft shadow-none outline-none transition-colors hover:text-gold-bright focus-visible:shadow-focus motion-reduce:transition-none";
+  "pointer-events-auto relative inline-flex size-11 flex-none cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 text-gold shadow-none outline-none transition-colors hover:text-gold-bright focus-visible:shadow-focus motion-reduce:transition-none";
 
-export const MOBILE_HEADER_ALERT_ICON_CLASS_NAME = "size-5";
+export const MOBILE_HEADER_ALERT_ICON_CLASS_NAME = "size-5.5";
 
 export const MOBILE_HEADER_ALERT_BADGE_CLASS_NAME =
   "absolute top-0 right-0 inline-flex min-h-4.5 min-w-4.5 items-center justify-center bg-danger px-1 font-sans text-3xs font-bold leading-none tabular-nums text-night shadow-control";
 
 export const MOBILE_HEADER_MENU_TRIGGER_CLASS_NAME =
-  "group inline-flex size-11 flex-none cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 shadow-none outline-none focus-visible:outline-none";
+  "group pointer-events-auto inline-flex size-11 flex-none cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 shadow-none outline-none focus-visible:outline-none";
 
 export const MOBILE_TOP_HEADER_MENU_TRIGGER_CLASS_NAME =
   "group pointer-events-auto inline-flex size-11 flex-none cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 shadow-none outline-none focus-visible:outline-none";
@@ -60,19 +60,19 @@ export const MOBILE_TOP_HEADER_MENU_GLYPH_CLASS_NAME =
   "absolute inset-0 drop-shadow-menu-glyph-outline";
 
 export const MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME =
-  "absolute top-1/2 left-1/2 origin-center bg-ink transition-all duration-200 ease-out motion-reduce:transition-none";
+  "absolute top-1/2 left-1/2 origin-center bg-gold transition-all duration-200 ease-out motion-reduce:transition-none";
 
 export const MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES = {
   topClosed:
-    "h-0.75 w-4.5 -translate-x-1/2 -translate-y-2 rotate-1 opacity-100",
+    "h-0.75 w-5 -translate-x-1/2 -translate-y-2 rotate-1 opacity-100",
   topOpen:
     "h-0.75 w-5.5 -translate-x-1/2 -translate-y-1/2 rotate-45 opacity-100",
   middleClosed:
-    "h-0.75 w-4.5 -translate-x-1/2 -translate-y-1/2 -rotate-1 opacity-100",
+    "h-0.75 w-5 -translate-x-1/2 -translate-y-1/2 -rotate-1 opacity-100",
   middleOpen:
     "h-0.75 w-4.5 -translate-x-1/2 -translate-y-1/2 scale-x-0 opacity-0",
   bottomClosed:
-    "h-0.75 w-4.5 -translate-x-1/2 translate-y-1 rotate-1 opacity-100",
+    "h-0.75 w-5 -translate-x-1/2 translate-y-1 rotate-1 opacity-100",
   bottomOpen:
     "h-0.75 w-5.5 -translate-x-1/2 -translate-y-1/2 -rotate-45 opacity-100",
 } as const;

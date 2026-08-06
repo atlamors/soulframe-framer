@@ -7,16 +7,16 @@ export const ACTIVE_EFFECTS_AVAILABILITY_CLASS_NAMES = {
 
 export const ACTIVE_EFFECTS_CLASS_NAMES = {
   collapsed:
-    "group mt-3.5 border border-frame-line/32 bg-surface-deep/24 shadow-control max-tablet:hidden tablet:max-compact-desktop:col-span-7 tablet:max-compact-desktop:col-start-6 tablet:max-compact-desktop:row-start-5 tablet:max-compact-desktop:mx-2.5 tablet:max-compact-desktop:self-start",
+    "group relative z-10 isolate mt-3.5 border border-frame-line/32 shadow-control open:z-40 max-tablet:hidden tablet:max-compact-desktop:col-span-7 tablet:max-compact-desktop:col-start-6 tablet:max-compact-desktop:row-start-5 tablet:max-compact-desktop:mx-2.5 tablet:max-compact-desktop:self-start",
   expanded:
-    "group mt-3.5 border border-frame-line/38 bg-surface-deep/24 shadow-control max-tablet:order-last max-tablet:mt-1.5 max-tablet:w-full max-tablet:rounded-sm max-tablet:border max-tablet:border-frame-line/38 max-tablet:bg-transparent max-tablet:shadow-none tablet:max-compact-desktop:col-span-7 tablet:max-compact-desktop:col-start-6 tablet:max-compact-desktop:row-start-5 tablet:max-compact-desktop:mx-2.5 tablet:max-compact-desktop:self-start",
+    "group relative z-10 isolate mt-3.5 border border-frame-line/38 shadow-control open:z-40 max-tablet:order-last max-tablet:mt-1.5 max-tablet:w-full max-tablet:rounded-sm max-tablet:border max-tablet:border-frame-line/38 max-tablet:bg-transparent max-tablet:shadow-none tablet:max-compact-desktop:col-span-7 tablet:max-compact-desktop:col-start-6 tablet:max-compact-desktop:row-start-5 tablet:max-compact-desktop:mx-2.5 tablet:max-compact-desktop:self-start",
 } as const satisfies Record<MobileStatsState, string>;
 
 export const ACTIVE_EFFECTS_SUMMARY_CLASS_NAMES = {
   collapsed:
-    "flex min-h-10.5 cursor-pointer appearance-none list-none items-center gap-2 bg-gold/4 px-2.75 py-2 focus-visible:outline-none focus-visible:shadow-focus max-tablet:min-h-10 max-tablet:flex-col max-tablet:items-center max-tablet:justify-center max-tablet:gap-0.25 max-tablet:bg-transparent max-tablet:p-0 max-tablet:pointer-events-none",
+    "flex min-h-10.5 cursor-pointer appearance-none list-none items-center gap-2 px-2.75 py-2 focus-visible:outline-none focus-visible:shadow-focus max-tablet:min-h-10 max-tablet:flex-col max-tablet:items-center max-tablet:justify-center max-tablet:gap-0.25 max-tablet:bg-transparent max-tablet:p-0 max-tablet:pointer-events-none",
   expanded:
-    "flex min-h-10.5 cursor-pointer appearance-none list-none items-center gap-2 bg-gold/4 px-2.75 py-2 transition-colors duration-150 ease-out hover:bg-gold/7 focus-visible:outline-none focus-visible:shadow-focus max-tablet:min-h-11 max-tablet:border max-tablet:border-frame-line/24 max-tablet:bg-gold/4 motion-reduce:transition-none",
+    "flex min-h-10.5 cursor-pointer appearance-none list-none items-center gap-2 px-2.75 py-2 transition-colors duration-150 ease-out hover:bg-gold/7 focus-visible:outline-none focus-visible:shadow-focus max-tablet:min-h-11 max-tablet:border max-tablet:border-frame-line/24 motion-reduce:transition-none",
 } as const satisfies Record<MobileStatsState, string>;
 
 export const ACTIVE_EFFECTS_LABEL_CLASS_NAMES = {
@@ -42,9 +42,9 @@ export const ACTIVE_EFFECTS_DISCLOSURE_CLASS_NAMES = {
 
 export const ACTIVE_EFFECTS_CONTENT_CLASS_NAMES = {
   collapsed:
-    "border-t border-frame-line/24 px-2.75 pt-1.25 pb-2.5 max-tablet:hidden",
+    "absolute inset-x-[-1px] bottom-[calc(100%+0.25rem)] z-50 max-h-[min(70dvh,28rem)] overflow-y-auto border border-frame-line/38 bg-stat-sheet-desktop-body px-2.75 pt-1.25 pb-2.5 shadow-popover animate-fade-up max-tablet:hidden max-tablet:max-h-[min(64dvh,25rem)] motion-reduce:animate-none",
   expanded:
-    "border-t border-frame-line/24 px-2.75 pt-1.25 pb-2.5 max-tablet:border-t-0 max-tablet:px-0",
+    "absolute inset-x-[-1px] bottom-[calc(100%+0.25rem)] z-50 max-h-[min(70dvh,28rem)] overflow-y-auto border border-frame-line/38 bg-stat-sheet-desktop-body px-2.75 pt-1.25 pb-2.5 shadow-popover animate-fade-up max-tablet:max-h-[min(64dvh,25rem)] motion-reduce:animate-none",
 } as const satisfies Record<MobileStatsState, string>;
 
 export const ACTIVE_EFFECTS_ROW_CLASS_NAMES = {
@@ -70,7 +70,7 @@ export const ACTIVE_EFFECTS_TEXT_CLASS_NAMES = {
 
 export const ACTIVE_EFFECTS_EMPTY_CLASS_NAMES = {
   collapsed:
-    "m-0 border-t border-frame-line/24 px-2.75 py-2.5 font-sans text-counter font-semibold leading-snug text-ink-faint max-tablet:hidden",
+    "absolute inset-x-[-1px] bottom-[calc(100%+0.25rem)] z-50 m-0 max-h-[min(70dvh,28rem)] overflow-y-auto border border-frame-line/38 bg-stat-sheet-desktop-body px-2.75 py-2.5 font-sans text-counter font-semibold leading-snug text-ink-faint shadow-popover animate-fade-up max-tablet:hidden max-tablet:max-h-[min(64dvh,25rem)] motion-reduce:animate-none",
   expanded:
-    "m-0 border-t border-frame-line/24 px-2.75 py-2.5 font-sans text-counter font-semibold leading-snug text-ink-faint max-tablet:border-t-0 max-tablet:px-0",
+    "absolute inset-x-[-1px] bottom-[calc(100%+0.25rem)] z-50 m-0 max-h-[min(70dvh,28rem)] overflow-y-auto border border-frame-line/38 bg-stat-sheet-desktop-body px-2.75 py-2.5 font-sans text-counter font-semibold leading-snug text-ink-faint shadow-popover animate-fade-up max-tablet:max-h-[min(64dvh,25rem)] motion-reduce:animate-none",
 } as const satisfies Record<MobileStatsState, string>;

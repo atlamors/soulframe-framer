@@ -126,9 +126,7 @@ export function AffinitySourceInputs({
           aria-controls="affinity-rank-panel"
           onClick={() => togglePanel("rank")}
         >
-          <RopeFrame
-            appearance={activePanel === "rank" ? "active" : "interactive"}
-          />
+          <RopeFrame appearance="context" />
           <span className={AFFINITY_SOURCE_CLASS_NAMES.triggerTitle}>
             Envoy Rank
           </span>
@@ -157,9 +155,7 @@ export function AffinitySourceInputs({
           aria-controls="affinity-fables-panel"
           onClick={() => togglePanel("fables")}
         >
-          <RopeFrame
-            appearance={activePanel === "fables" ? "active" : "interactive"}
-          />
+          <RopeFrame appearance="context" />
           <span className={AFFINITY_SOURCE_CLASS_NAMES.triggerTitle}>
             Fables
           </span>
@@ -215,6 +211,7 @@ export function AffinitySourceInputs({
               : "Fable affinity rewards"
           }
         >
+          <RopeFrame appearance="context" />
           {activePanel === "rank" ? (
             <div className={AFFINITY_SOURCE_CLASS_NAMES.rankControls}>
               <input

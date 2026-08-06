@@ -1,18 +1,15 @@
 "use client";
 
+import type { VirtueValues, Weapon } from "@/src/domain/types";
 import {
-  VIRTUE_IDS,
-  type VirtueValues,
-  type Weapon,
-} from "@/src/domain/types";
-import { virtueMeta } from "../constants";
-import { VirtuePipStrip } from "../components/primitives";
+  RequirementBadge,
+  VirtuePipStrip,
+} from "../components/primitives";
 import { getWeaponDamage } from "../lib/weapon-damage";
 import {
   WEAPON_PRIMARY_CLASS_NAMES,
   WEAPON_PRIMARY_META_ROW_CLASS_NAMES,
   WEAPON_PRIMARY_STAT_CLASS_NAMES,
-  WEAPON_REQUIREMENT_CLASS_NAMES,
 } from "./weaponPrimaryHudClassNames";
 
 export function WeaponPrimaryHud({
@@ -23,11 +20,6 @@ export function WeaponPrimaryHud({
   virtues: VirtueValues;
 }) {
   const damage = getWeaponDamage(item, virtues);
-  const requirementText = VIRTUE_IDS.flatMap((virtue) =>
-    item.requirements[virtue] > 0
-      ? `${item.requirements[virtue]} ${virtueMeta[virtue].label}`
-      : [],
-  ).join(" · ");
   const stats = [
     {
       id: "primary",
@@ -54,8 +46,6 @@ export function WeaponPrimaryHud({
       value: item.stats.smite.display || null,
     },
   ];
-  const requirementState = damage.requirementMet ? "met" : "unmet";
-
   return (
     <section
       className={WEAPON_PRIMARY_CLASS_NAMES.root}
@@ -101,12 +91,12 @@ export function WeaponPrimaryHud({
           <small className={WEAPON_PRIMARY_CLASS_NAMES.metaLabel}>
             Requirement
           </small>
-          <strong
-            className={WEAPON_REQUIREMENT_CLASS_NAMES[requirementState]}
-            data-requirement-state={requirementState}
-          >
-            {requirementText ? `Requires ${requirementText}` : "None"}
-          </strong>
+          <RequirementBadge
+            item={item}
+            virtues={virtues}
+            placement="detail"
+            showNoRequirement
+          />
         </span>
       </footer>
     </section>

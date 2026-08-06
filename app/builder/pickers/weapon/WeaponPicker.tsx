@@ -20,7 +20,10 @@ import {
 } from "@/src/domain/types";
 import { ACTION_BUTTON_CLASS_NAMES } from "../../components/actionClassNames";
 import { IllustratedCloseButton } from "../../components/IllustratedCloseButton";
-import { WeaponArtwork } from "../../components/primitives";
+import {
+  RequirementBadge,
+  WeaponArtwork,
+} from "../../components/primitives";
 import { virtueMeta, weaponSlotMeta } from "../../constants";
 import { usePickerDialog as useBuilderPickerDialog } from "../../hooks/usePickerDialog";
 import { WeaponLoadoutHud as BuilderWeaponLoadoutHud } from "../../loadout/WeaponLoadoutHud";
@@ -483,6 +486,14 @@ export function WeaponPicker({
                       </small>
                     </span>
                     <span className={PICKER_LAYOUT_CLASS_NAMES.itemSide}>
+                      {VIRTUE_IDS.some(
+                        (virtue) => item.requirements[virtue] > 0,
+                      ) ? (
+                        <RequirementBadge
+                          item={item}
+                          virtues={buildCalculation.effectiveVirtues}
+                        />
+                      ) : null}
                       <span className={PICKER_LAYOUT_CLASS_NAMES.itemTotal}>
                         {weaponSortValue(item)}
                       </span>

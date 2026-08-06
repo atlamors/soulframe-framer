@@ -22,6 +22,21 @@ The primary chat is the design and acceptance authority. It should remain availa
 
 Do not move product decisions into implementation agents when the user is actively collaborating on them.
 
+## First-principles design workflow
+
+For product, system, architecture, and visual-design discussions:
+
+1. Define the desired outcome and who it serves.
+2. Establish the smallest set of relevant first principles.
+3. Discuss applicable reference architectures as patterns, not templates.
+4. Identify motifs, stylistic constraints, and non-negotiable boundaries.
+5. Find the foundational problem whose resolution informs downstream decisions.
+6. Propose the smallest test that can validate the foundation.
+
+Keep the initial reasoning simple and elegant. Do not produce an end-to-end
+design before the foundational premise is agreed upon. Introduce complexity only
+when the problem demonstrates that it is necessary.
+
 ## Implementation intake and routing
 
 Before implementation begins, the primary chat must declare:

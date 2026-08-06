@@ -5,6 +5,25 @@ import type {
   WeaponLevelStats,
 } from "@/src/domain/types";
 
+const FARILWYD_RANK_30_FALLBACK = {
+  attack: 122,
+  chargedAttack: 190,
+  stagger: 112,
+} as const satisfies WeaponLevelStats;
+
+function getRank30WeaponStats(item: Weapon): WeaponLevelStats {
+  const stats = item.stats.level30;
+  if (item.name !== "Farilwyd") return stats;
+
+  return {
+    ...stats,
+    attack: stats.attack ?? FARILWYD_RANK_30_FALLBACK.attack,
+    chargedAttack:
+      stats.chargedAttack ?? FARILWYD_RANK_30_FALLBACK.chargedAttack,
+    stagger: stats.stagger ?? FARILWYD_RANK_30_FALLBACK.stagger,
+  };
+}
+
 export function getChargedWeaponStat(stats: WeaponLevelStats) {
   const candidates: Array<[keyof WeaponLevelStats, string]> = [
     ["chargedAttack", "Charged Attack"],
@@ -37,8 +56,9 @@ export function meetsWeaponRequirements(
 }
 
 export function getWeaponDamage(item: Weapon, virtues: VirtueValues) {
-  const baseAttack = item.stats.level30.attack;
-  const charged = getChargedWeaponStat(item.stats.level30);
+  const level30Stats = getRank30WeaponStats(item);
+  const baseAttack = level30Stats.attack;
+  const charged = getChargedWeaponStat(level30Stats);
   const naturalGracePips =
     item.attunement.grace > 0 ? item.attunement.grace + 0.6 : 0;
   const rawAttunement =
@@ -99,7 +119,7 @@ export function getWeaponDamage(item: Weapon, virtues: VirtueValues) {
           ? undefined
           : charged.value + secondaryBonus,
     },
-    stagger: item.stats.level30.stagger,
+    stagger: level30Stats.stagger,
   };
 }
 
@@ -107,7 +127,7 @@ export function getWeaponDamageRows(
   item?: Weapon,
   virtues?: VirtueValues,
 ) {
-  const stats = item?.stats.level30;
+  const stats = item ? getRank30WeaponStats(item) : undefined;
   const calculated =
     item && virtues ? getWeaponDamage(item, virtues) : undefined;
   const charged = stats
@@ -124,10 +144,7 @@ export function getWeaponDamageRows(
     {
       id: "charged",
       label: calculated?.secondary.label ?? charged.label,
-      bonus:
-        calculated?.secondary.base === undefined
-          ? undefined
-          : calculated.secondary.bonus,
+      bonus: calculated?.secondary.bonus,
       value: calculated?.secondary.total ?? charged.value,
     },
     {

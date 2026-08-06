@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { armorImageById } from "@/src/data/armor-images";
-import { meetsArmorRequirement } from "@/src/domain/calculation";
 import {
   VIRTUE_IDS,
   type ArmorItem,
@@ -17,6 +16,7 @@ import { formatVirtueVector } from "../lib/formatters";
 import {
   REQUIREMENT_BADGE_CLASS_NAMES,
   REQUIREMENT_BADGE_ICON_CLASS_NAME,
+  REQUIREMENT_BADGE_SEGMENT_CLASS_NAMES,
   REQUIREMENT_BADGE_UNMET_LABEL_CLASS_NAME,
   STAT_ICON_CLASS_NAMES,
   STAT_ICON_IMAGE_CLASS_NAME,
@@ -211,70 +211,91 @@ export function VirtuePipStrip({
 export function RequirementBadge({
   item,
   virtues,
-  compact = false,
   placement = "default",
+  showNoRequirement = false,
 }: {
-  item: ArmorItem;
+  item: ArmorItem | Weapon;
   virtues: SoulframeBuild["virtues"];
-  compact?: boolean;
-  placement?: "default" | "heading";
+  placement?: "default" | "dense" | "detail" | "heading";
+  showNoRequirement?: boolean;
 }) {
-  const requirement = item.requirement;
+  const requirements =
+    "requirements" in item
+      ? VIRTUE_IDS.flatMap((virtue) => {
+          const required = item.requirements[virtue];
+          return required > 0 ? [{ required, virtue }] : [];
+        })
+      : item.requirement
+        ? [
+            {
+              required: item.requirement.value,
+              virtue: item.requirement.virtue,
+            },
+          ]
+        : [];
 
-  if (!requirement) {
-    return null;
+  if (requirements.length === 0) {
+    return showNoRequirement ? (
+      <span className={REQUIREMENT_BADGE_CLASS_NAMES[placement]}>
+        No requirement
+      </span>
+    ) : null;
   }
 
-  const meta = virtueMeta[requirement.virtue];
-  const met = meetsArmorRequirement(item, virtues);
-  const current = virtues[requirement.virtue];
-  const accessibleLabel = [
-    "Requires ",
-    requirement.value,
-    " ",
-    meta.label,
-    "; current ",
-    current,
-    "; requirement ",
-    met ? "met" : "unmet",
-  ].join("");
+  const unmet = requirements.some(
+    ({ required, virtue }) => virtues[virtue] < required,
+  );
+  const accessibleLabel = `${requirements
+    .map(({ required, virtue }) => {
+      const current = virtues[virtue];
+      return `${virtueMeta[virtue].label} ${current}/${required}, ${
+        current >= required ? "met" : "unmet"
+      }`;
+    })
+    .join("; ")}. Item requirement${requirements.length === 1 ? "" : "s"} ${
+    unmet ? "unmet" : "met"
+  }.`;
 
   return (
     <span
-      className={
-        placement === "heading"
-          ? met
-            ? REQUIREMENT_BADGE_CLASS_NAMES.headingMet
-            : REQUIREMENT_BADGE_CLASS_NAMES.headingUnmet
-          : met
-            ? REQUIREMENT_BADGE_CLASS_NAMES.defaultMet
-            : REQUIREMENT_BADGE_CLASS_NAMES.defaultUnmet
-      }
+      className={REQUIREMENT_BADGE_CLASS_NAMES[placement]}
       aria-label={accessibleLabel}
       title={accessibleLabel}
+      data-requirement-state={unmet ? "unmet" : "met"}
     >
-      <Image
-        className={REQUIREMENT_BADGE_ICON_CLASS_NAME}
-        src={meta.icon}
-        alt=""
-        aria-hidden="true"
-        width={18}
-        height={18}
-        unoptimized
-      />
-      <span>
-        {compact
-          ? [
-              meta.label.slice(0, 1),
-              " ",
-              current,
-              "/",
-              requirement.value,
-            ].join("")
-          : ["Requires ", requirement.value, " ", meta.label].join("")}
-      </span>
-      {!met ? (
-        <em className={REQUIREMENT_BADGE_UNMET_LABEL_CLASS_NAME}>Unmet</em>
+      {requirements.map(({ required, virtue }) => {
+        const current = virtues[virtue];
+        const state = current >= required ? "met" : "unmet";
+        const meta = virtueMeta[virtue];
+
+        return (
+          <span
+            className={REQUIREMENT_BADGE_SEGMENT_CLASS_NAMES[state]}
+            aria-hidden="true"
+            key={virtue}
+          >
+            <Image
+              className={REQUIREMENT_BADGE_ICON_CLASS_NAME}
+              src={meta.icon}
+              alt=""
+              width={18}
+              height={18}
+              unoptimized
+            />
+            <span className="lining-nums tabular-nums">
+              {current}/{required}
+            </span>
+          </span>
+        );
+      })}
+      {unmet ? (
+        <em
+          className={REQUIREMENT_BADGE_UNMET_LABEL_CLASS_NAME}
+          aria-hidden="true"
+        >
+          <span>·</span>
+          Unmet
+        </em>
       ) : null}
     </span>
   );

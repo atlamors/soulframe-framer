@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef } from "react";
 
-const MOBILE_HISTORY_MEDIA_QUERY = "(max-width: 680px)";
+const MOBILE_HISTORY_MEDIA_QUERY = "(max-width: 960px)";
 const MOBILE_HISTORY_STATE_KEY = "__soulframeMobileHistoryLayer";
 
 type MobileHistoryMarker = {

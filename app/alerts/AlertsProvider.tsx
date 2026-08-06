@@ -126,7 +126,7 @@ export function AlertCenterTrigger({
     >
       <Bell className={classNames.icon} aria-hidden="true" />
       {activeCount > 0 ? (
-        <span className={classNames.badge} aria-hidden="true">
+        <span className={`${classNames.badge} rounded-full`} aria-hidden="true">
           {activeCount > 99 ? "99+" : activeCount}
         </span>
       ) : null}

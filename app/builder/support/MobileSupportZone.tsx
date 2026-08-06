@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
+import { DoubleRopeFrame } from "../components/DoubleRopeFrame";
 import { MOBILE_SUPPORT_ZONE_CLASS_NAMES } from "./mobileSupportZoneClassNames";
 
 function PatreonMark() {
@@ -64,12 +65,12 @@ export function MobileSupportZone() {
   return (
     <section
       className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.root}
-      aria-label="Support Framer"
+      aria-label="Advertisement and support options"
     >
       <div
         className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.adPlaceholder}
         role="img"
-        aria-label="Placeholder for a 300 by 250 advertisement"
+        aria-label="Responsive advertisement placeholder: 300 by 250 on mobile, up to 728 by 90 on larger screens, and up to 970 by 90 on wide screens"
       >
         <Image
           className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.adFrame}
@@ -77,14 +78,25 @@ export function MobileSupportZone() {
           alt=""
           aria-hidden="true"
           fill
-          sizes="300px"
+          sizes="(max-width: 680px) 300px, (min-width: 1367px) min(970px, 71vw), min(728px, 100vw)"
           unoptimized
+        />
+        <DoubleRopeFrame
+          className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.adDesktopFrame}
         />
         <span className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.adEyebrow}>
           Advertisement
         </span>
         <strong className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.adSize}>
-          300 × 250
+          <span className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.adSizeMobile}>
+            300 × 250
+          </span>
+          <span className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.adSizeDesktop}>
+            Up to 728 × 90
+          </span>
+          <span className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.adSizeWide}>
+            Up to 970 × 90
+          </span>
         </strong>
         <span className={MOBILE_SUPPORT_ZONE_CLASS_NAMES.adNote}>
           Responsive AdSense placement

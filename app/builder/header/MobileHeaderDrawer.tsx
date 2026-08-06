@@ -40,9 +40,12 @@ import {
   MOBILE_HEADER_BUILD_NAME_CLASS_NAME,
   MOBILE_HEADER_CLASS_NAMES,
   MOBILE_HEADER_INNER_CLASS_NAME,
-  MOBILE_HEADER_MENU_ICON_CLASS_NAME,
   MOBILE_HEADER_MENU_TRIGGER_CLASS_NAME,
   MOBILE_HEADER_WORDMARK_CLASS_NAME,
+  MOBILE_TOP_HEADER_MENU_GLYPH_CLASS_NAME,
+  MOBILE_TOP_HEADER_MENU_ICON_FRAME_CLASS_NAME,
+  MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME,
+  MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES,
   type MobileHeaderVisibilityState,
 } from "../components/mobileHeaderClassNames";
 import { BuildNameControl } from "./BuildNameControl";
@@ -107,6 +110,7 @@ export function MobileHeaderDrawer({
         : "visible"
       : "hidden";
   const isHeaderInteractive = headerState === "visible";
+  const isHeaderRepresented = isHeaderInteractive || isDrawerInteractive;
 
   const closeDrawer = () => {
     if (isResetPending) closeResetConfirmation();
@@ -131,14 +135,15 @@ export function MobileHeaderDrawer({
       <header
         className={MOBILE_HEADER_CLASS_NAMES[headerState]}
         data-mobile-header-state={headerState}
-        aria-hidden={!isHeaderInteractive}
-        inert={!isHeaderInteractive ? true : undefined}
+        aria-hidden={!isHeaderRepresented}
+        inert={!isHeaderRepresented ? true : undefined}
       >
         <div className={MOBILE_HEADER_INNER_CLASS_NAME}>
           <a
             className={MOBILE_HEADER_BRAND_CLASS_NAME}
             href="#"
             aria-label="Nightfold home"
+            inert={!isHeaderInteractive ? true : undefined}
             tabIndex={isHeaderInteractive ? undefined : -1}
           >
             <Image
@@ -153,6 +158,7 @@ export function MobileHeaderDrawer({
           <strong
             className={MOBILE_HEADER_BUILD_NAME_CLASS_NAME}
             title={buildName}
+            aria-hidden={!isHeaderInteractive}
           >
             {buildName}
           </strong>
@@ -160,6 +166,7 @@ export function MobileHeaderDrawer({
             type="button"
             className={MOBILE_HEADER_ALERT_TRIGGER_CLASS_NAME}
             aria-label="Open optimization"
+            inert={!isHeaderInteractive ? true : undefined}
             tabIndex={isHeaderInteractive ? undefined : -1}
             onClick={onOpenOptimization}
           >
@@ -168,32 +175,58 @@ export function MobileHeaderDrawer({
               aria-hidden="true"
             />
           </button>
-          <AlertCenterTrigger
-            classNames={{
-              root: MOBILE_HEADER_ALERT_TRIGGER_CLASS_NAME,
-              icon: MOBILE_HEADER_ALERT_ICON_CLASS_NAME,
-              badge: MOBILE_HEADER_ALERT_BADGE_CLASS_NAME,
-            }}
-            tabIndex={isHeaderInteractive ? undefined : -1}
-          />
+          <span
+            className="contents"
+            inert={!isHeaderInteractive ? true : undefined}
+          >
+            <AlertCenterTrigger
+              classNames={{
+                root: MOBILE_HEADER_ALERT_TRIGGER_CLASS_NAME,
+                icon: MOBILE_HEADER_ALERT_ICON_CLASS_NAME,
+                badge: MOBILE_HEADER_ALERT_BADGE_CLASS_NAME,
+              }}
+              tabIndex={isHeaderInteractive ? undefined : -1}
+            />
+          </span>
           <button
             ref={menuTriggerRef}
             type="button"
             className={MOBILE_HEADER_MENU_TRIGGER_CLASS_NAME}
             aria-label={isDrawerOpen ? "Close builder menu" : "Open builder menu"}
+            aria-haspopup="dialog"
             aria-expanded={isDrawerOpen}
             aria-controls="builder-menu-drawer"
-            tabIndex={isHeaderInteractive ? undefined : -1}
+            tabIndex={isHeaderRepresented ? undefined : -1}
             onClick={(event) => onToggleDrawer(event.currentTarget)}
           >
-            <Image
-              className={MOBILE_HEADER_MENU_ICON_CLASS_NAME}
-              src="/icons/game-ui/burger-menu.svg"
-              alt=""
-              width={40}
-              height={40}
-              unoptimized
-            />
+            <span
+              className={MOBILE_TOP_HEADER_MENU_ICON_FRAME_CLASS_NAME}
+              aria-hidden="true"
+            >
+              <span className={MOBILE_TOP_HEADER_MENU_GLYPH_CLASS_NAME}>
+                <span
+                  className={`${MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME} ${
+                    isDrawerOpen
+                      ? MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.topOpen
+                      : MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.topClosed
+                  }`}
+                />
+                <span
+                  className={`${MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME} ${
+                    isDrawerOpen
+                      ? MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.middleOpen
+                      : MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.middleClosed
+                  }`}
+                />
+                <span
+                  className={`${MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME} ${
+                    isDrawerOpen
+                      ? MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.bottomOpen
+                      : MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.bottomClosed
+                  }`}
+                />
+              </span>
+            </span>
           </button>
         </div>
       </header>
