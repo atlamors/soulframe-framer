@@ -19,10 +19,10 @@ const ROOT_LAYOUT_CLASS_NAMES = {
 } as const satisfies Record<RootLayoutElement, string>;
 
 const description =
-  "Frame a Soulframe armor loadout, tune Courage, Spirit, and Grace, and compare verified defense scaling.";
+  "Plan, publish, and explore game builds with Nightfold.";
 
 export const metadata: Metadata = {
-  title: "Soulframe Framer — Armor Build Builder",
+  title: "Nightfold",
   description,
   icons: {
     icon: "/brand/nightfold-favicon.png",
@@ -50,7 +50,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={atkinsonSans.variable}>
       <head>
-        <meta property="og:title" content="Soulframe Framer" />
+        <meta property="og:title" content="Nightfold" />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={socialImage} />
@@ -58,10 +58,10 @@ export default async function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta
           property="og:image:alt"
-          content="Soulframe Framer armor build builder"
+          content="Nightfold build planning and publishing"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Soulframe Framer" />
+        <meta name="twitter:title" content="Nightfold" />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={socialImage} />
       </head>

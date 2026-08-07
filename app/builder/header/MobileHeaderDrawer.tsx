@@ -7,13 +7,11 @@ import {
   useState,
   type RefObject,
 } from "react";
-import Image from "next/image";
-import { Copy, ExternalLink, Sparkles } from "lucide-react";
+import { Copy, ExternalLink } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useMobileHistoryLayer } from "@/app/hooks/useMobileHistoryLayer";
 import { MobileFullscreenOverlay } from "@/app/components/MobileFullscreenOverlay";
 import { MOBILE_FULLSCREEN_OVERLAY_STAGE_CLASS_NAMES } from "@/app/components/mobileFullscreenOverlayClassNames";
-import { AlertCenterTrigger } from "../../alerts/AlertsProvider";
 import {
   MOBILE_DRAWER_ACTION_ROW_CLASS_NAME,
   MOBILE_DRAWER_ACCESSIBLE_LABEL_CLASS_NAME,
@@ -33,56 +31,35 @@ import {
   MOBILE_DRAWER_RESOURCE_LIST_CLASS_NAME,
   MOBILE_DRAWER_SECTION_CLASS_NAME,
   MOBILE_DRAWER_SECTION_HEADING_CLASS_NAME,
-  MOBILE_HEADER_BRAND_CLASS_NAME,
-  MOBILE_HEADER_ALERT_BADGE_CLASS_NAME,
-  MOBILE_HEADER_ALERT_ICON_CLASS_NAME,
-  MOBILE_HEADER_ALERT_TRIGGER_CLASS_NAME,
-  MOBILE_HEADER_BUILD_NAME_CLASS_NAME,
-  MOBILE_HEADER_CLASS_NAMES,
-  MOBILE_HEADER_INNER_CLASS_NAME,
-  MOBILE_HEADER_MENU_TRIGGER_CLASS_NAME,
-  MOBILE_HEADER_WORDMARK_CLASS_NAME,
-  MOBILE_TOP_HEADER_MENU_GLYPH_CLASS_NAME,
-  MOBILE_TOP_HEADER_MENU_ICON_FRAME_CLASS_NAME,
-  MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME,
-  MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES,
-  type MobileHeaderVisibilityState,
+  MOBILE_DRAWER_TITLE_CLASS_NAME,
 } from "../components/mobileHeaderClassNames";
 import { BuildNameControl } from "./BuildNameControl";
 import { IllustratedCloseButton } from "../components/IllustratedCloseButton";
 
 export function MobileHeaderDrawer({
   buildName,
-  isHeaderVisible,
   isMenuAvailable,
   isDrawerOpen,
   isSuppressed,
-  menuTriggerRef,
   menuLayerElement,
   overlayTriggerRef,
   drawerPanelRef,
   drawerCloseRef,
-  onToggleDrawer,
   onCloseDrawer,
   onNameChange,
-  onOpenOptimization,
   onReset,
   onShare,
 }: {
   buildName: string;
-  isHeaderVisible: boolean;
   isMenuAvailable: boolean;
   isDrawerOpen: boolean;
   isSuppressed: boolean;
-  menuTriggerRef: RefObject<HTMLButtonElement | null>;
   menuLayerElement: HTMLDivElement | null;
   overlayTriggerRef: RefObject<HTMLButtonElement | null>;
   drawerPanelRef: RefObject<HTMLElement | null>;
   drawerCloseRef: RefObject<HTMLButtonElement | null>;
-  onToggleDrawer: (opener: HTMLButtonElement) => void;
   onCloseDrawer: () => void;
   onNameChange: (name: string) => void;
-  onOpenOptimization: () => void;
   onReset: () => void;
   onShare: () => void;
 }) {
@@ -102,15 +79,6 @@ export function MobileHeaderDrawer({
   });
   const isDrawerInteractive =
     isMenuAvailable && isDrawerOpen && !isSuppressed;
-  const headerState: MobileHeaderVisibilityState = isSuppressed
-    ? "suppressed"
-    : isHeaderVisible
-      ? isDrawerInteractive
-        ? "drawerOpen"
-        : "visible"
-      : "hidden";
-  const isHeaderInteractive = headerState === "visible";
-  const isHeaderRepresented = isHeaderInteractive || isDrawerInteractive;
 
   const closeDrawer = () => {
     if (isResetPending) closeResetConfirmation();
@@ -132,105 +100,6 @@ export function MobileHeaderDrawer({
 
   return (
     <>
-      <header
-        className={MOBILE_HEADER_CLASS_NAMES[headerState]}
-        data-mobile-header-state={headerState}
-        aria-hidden={!isHeaderRepresented}
-        inert={!isHeaderRepresented ? true : undefined}
-      >
-        <div className={MOBILE_HEADER_INNER_CLASS_NAME}>
-          <a
-            className={MOBILE_HEADER_BRAND_CLASS_NAME}
-            href="#"
-            aria-label="Nightfold home"
-            inert={!isHeaderInteractive ? true : undefined}
-            tabIndex={isHeaderInteractive ? undefined : -1}
-          >
-            <Image
-              className={MOBILE_HEADER_WORDMARK_CLASS_NAME}
-              src="/brand/nightfold-wordmark.png"
-              alt="Nightfold"
-              width={2035}
-              height={773}
-              unoptimized
-            />
-          </a>
-          <strong
-            className={MOBILE_HEADER_BUILD_NAME_CLASS_NAME}
-            title={buildName}
-            aria-hidden={!isHeaderInteractive}
-          >
-            {buildName}
-          </strong>
-          <button
-            type="button"
-            className={MOBILE_HEADER_ALERT_TRIGGER_CLASS_NAME}
-            aria-label="Open optimization"
-            inert={!isHeaderInteractive ? true : undefined}
-            tabIndex={isHeaderInteractive ? undefined : -1}
-            onClick={onOpenOptimization}
-          >
-            <Sparkles
-              className={MOBILE_HEADER_ALERT_ICON_CLASS_NAME}
-              aria-hidden="true"
-            />
-          </button>
-          <span
-            className="contents"
-            inert={!isHeaderInteractive ? true : undefined}
-          >
-            <AlertCenterTrigger
-              classNames={{
-                root: MOBILE_HEADER_ALERT_TRIGGER_CLASS_NAME,
-                icon: MOBILE_HEADER_ALERT_ICON_CLASS_NAME,
-                badge: MOBILE_HEADER_ALERT_BADGE_CLASS_NAME,
-              }}
-              tabIndex={isHeaderInteractive ? undefined : -1}
-            />
-          </span>
-          <button
-            ref={menuTriggerRef}
-            type="button"
-            className={MOBILE_HEADER_MENU_TRIGGER_CLASS_NAME}
-            aria-label={isDrawerOpen ? "Close builder menu" : "Open builder menu"}
-            aria-haspopup="dialog"
-            aria-expanded={isDrawerOpen}
-            aria-controls="builder-menu-drawer"
-            tabIndex={isHeaderRepresented ? undefined : -1}
-            onClick={(event) => onToggleDrawer(event.currentTarget)}
-          >
-            <span
-              className={MOBILE_TOP_HEADER_MENU_ICON_FRAME_CLASS_NAME}
-              aria-hidden="true"
-            >
-              <span className={MOBILE_TOP_HEADER_MENU_GLYPH_CLASS_NAME}>
-                <span
-                  className={`${MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME} ${
-                    isDrawerOpen
-                      ? MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.topOpen
-                      : MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.topClosed
-                  }`}
-                />
-                <span
-                  className={`${MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME} ${
-                    isDrawerOpen
-                      ? MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.middleOpen
-                      : MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.middleClosed
-                  }`}
-                />
-                <span
-                  className={`${MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAME} ${
-                    isDrawerOpen
-                      ? MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.bottomOpen
-                      : MOBILE_TOP_HEADER_MENU_STROKE_CLASS_NAMES.bottomClosed
-                  }`}
-                />
-              </span>
-            </span>
-          </button>
-        </div>
-      </header>
-
       <MobileFullscreenOverlay
         open={isDrawerInteractive}
         onOpenChange={(open) => {
@@ -244,12 +113,12 @@ export function MobileHeaderDrawer({
         portalContainer={menuLayerElement}
       >
         <Dialog.Title className={MOBILE_DRAWER_ACCESSIBLE_LABEL_CLASS_NAME}>
-          Builder menu
+          Frame actions
         </Dialog.Title>
         <Dialog.Description
           className={MOBILE_DRAWER_ACCESSIBLE_LABEL_CLASS_NAME}
         >
-          Build identity, sharing, resources, and reset controls.
+          Frame identity, sharing, resources, and reset controls.
         </Dialog.Description>
         <Dialog.Close
           ref={drawerCloseRef}
@@ -257,14 +126,15 @@ export function MobileHeaderDrawer({
           tabIndex={-1}
           aria-hidden="true"
         >
-          Close builder menu
+          Close Frame actions
         </Dialog.Close>
-        <span className={MOBILE_DRAWER_DESKTOP_CLOSE_CLASS_NAME}>
+        <div className={MOBILE_DRAWER_DESKTOP_CLOSE_CLASS_NAME}>
+          <span className={MOBILE_DRAWER_TITLE_CLASS_NAME}>Frame actions</span>
           <IllustratedCloseButton
-            aria-label="Close builder menu"
+            aria-label="Close Frame actions"
             onClick={closeDrawer}
           />
-        </span>
+        </div>
         <div className={MOBILE_DRAWER_BODY_CLASS_NAME}>
           <section
             className={`${MOBILE_DRAWER_SECTION_CLASS_NAME} ${MOBILE_FULLSCREEN_OVERLAY_STAGE_CLASS_NAMES.first}`}

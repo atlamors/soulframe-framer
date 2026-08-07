@@ -1,51 +1,37 @@
 type HeaderElement =
-  | "topbar"
-  | "topbarMobileSuppressed"
+  | "contextBar"
+  | "contextBarMobileSuppressed"
   | "mobileMenuLayer"
-  | "brand"
-  | "brandHeading"
-  | "brandWordmark"
-  | "brandTagline"
-  | "actions"
-  | "nonMenuActions"
-  | "nonAlertActions"
-  | "alertTrigger"
-  | "alertTriggerActive"
-  | "alertIcon"
-  | "alertBadge";
+  | "frameActions"
+  | "frameActionsLabel"
+  | "frameActionsName"
+  | "frameActionsChevron"
+  | "frameActionsChevronOpen";
 export type BuildNameControlAppearance = "drawer" | "header" | "statSheet";
 export type BuildNameEditingState = "default" | "editing";
 
 export const HEADER_CLASS_NAMES = {
-  topbar:
-    "grid min-h-20 grid-cols-12 items-center gap-6 tablet:max-compact-desktop:gap-2 compact-desktop:max-wide-desktop:min-h-18 compact-desktop:max-wide-desktop:gap-3 max-tablet:fixed max-tablet:inset-x-0 max-tablet:top-0 max-tablet:z-55 max-tablet:h-mobile-header max-tablet:min-h-mobile-header max-tablet:grid-cols-2 max-tablet:gap-2.25 max-tablet:border-0 max-tablet:bg-surface max-tablet:bg-none max-tablet:px-safe-inline max-tablet:pt-mobile-safe-top max-tablet:shadow-none",
-  topbarMobileSuppressed: "max-tablet:hidden",
+  contextBar:
+    "relative z-40 grid min-h-18 grid-cols-12 items-center gap-6 border-b border-line/40 compact-desktop:min-h-14 max-tablet:min-h-12 max-tablet:grid-cols-1 max-tablet:gap-0 max-tablet:px-1.5",
+  contextBarMobileSuppressed: "max-tablet:hidden",
   mobileMenuLayer: "contents",
-  brand:
-    "relative z-20 col-span-3 inline-flex w-47.5 flex-col items-start justify-self-start gap-1 leading-none text-inherit no-underline tablet:max-compact-desktop:w-36 compact-desktop:max-wide-desktop:w-43.5 max-tablet:col-span-1 max-tablet:w-31 max-tablet:gap-0.5 max-narrow:w-29",
-  brandHeading: "m-0 leading-0",
-  brandWordmark: "block h-auto w-full",
-  brandTagline:
-    "-mt-4.5 origin-left whitespace-nowrap pl-[5.3%] text-left font-sans text-2xs leading-tight font-semibold text-ink-soft tablet:max-compact-desktop:-mt-3.5 compact-desktop:max-wide-desktop:-mt-4 max-tablet:-mt-3 max-tablet:tracking-tight",
-  actions:
-    "relative z-80 col-span-3 flex items-center justify-self-end gap-2 tablet:max-compact-desktop:gap-1.5 compact-desktop:col-start-10 max-tablet:col-span-1 max-tablet:col-start-2 max-tablet:row-start-1",
-  nonMenuActions: "contents",
-  nonAlertActions: "contents",
-  alertTrigger:
-    "group pointer-events-auto relative inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center border-0 bg-transparent p-0 text-gold transition-colors duration-150 ease-out hover:text-gold-bright focus-visible:outline-none focus-visible:shadow-focus compact-desktop:max-wide-desktop:min-h-10 compact-desktop:max-wide-desktop:min-w-10 max-tablet:size-11 motion-reduce:transition-none",
-  alertTriggerActive:
-    "max-tablet:pointer-events-auto max-tablet:text-gold-bright",
-  alertIcon: "size-5.5",
-  alertBadge:
-    "absolute -top-1 -right-1 inline-flex min-h-4.5 min-w-4.5 items-center justify-center bg-danger px-1 font-sans text-3xs font-bold leading-none tabular-nums text-night shadow-control max-tablet:top-0 max-tablet:right-0",
+  frameActions:
+    "group col-span-3 col-start-10 inline-flex min-h-11 max-w-80 min-w-0 items-center justify-self-end border border-line-bright/40 bg-surface-deep/45 px-3 text-left shadow-control transition-colors hover:border-frame-line/70 hover:bg-surface-raised focus-visible:outline-none focus-visible:shadow-focus compact-desktop:col-span-5 compact-desktop:col-start-8 max-tablet:col-span-1 max-tablet:col-start-1 max-tablet:w-full max-tablet:max-w-none max-tablet:justify-self-stretch max-tablet:border-x-0 max-tablet:border-y-0 max-tablet:bg-transparent max-tablet:px-2 max-tablet:shadow-none motion-reduce:transition-none",
+  frameActionsLabel:
+    "mr-2 flex-none font-sans text-2xs font-bold uppercase tracking-[0.18em] text-gold",
+  frameActionsName:
+    "min-w-0 flex-1 truncate font-display text-base font-normal leading-none text-ink text-shadow-value",
+  frameActionsChevron:
+    "ml-2 size-4.5 flex-none text-gold transition-transform duration-150 ease-out motion-reduce:transition-none",
+  frameActionsChevronOpen: "rotate-180",
 } as const satisfies Record<HeaderElement, string>;
 
 export const BUILD_NAME_CONTROL_CLASS_NAMES = {
   header: {
     default:
-      "col-span-6 flex w-full max-w-130 min-w-0 items-center justify-self-center gap-0 [--build-name-frame-cap:24px] compact-desktop:hidden max-tablet:hidden max-tablet:[--build-name-frame-cap:22px] max-narrow:[--build-name-frame-cap:20px]",
+      "col-span-6 col-start-4 flex w-full max-w-130 min-w-0 items-center justify-self-center gap-0 [--build-name-frame-cap:24px] compact-desktop:hidden max-tablet:hidden max-tablet:[--build-name-frame-cap:22px] max-narrow:[--build-name-frame-cap:20px]",
     editing:
-      "col-span-6 flex w-full max-w-130 min-w-0 items-center justify-self-center gap-0 [--build-name-frame-cap:24px] compact-desktop:hidden max-tablet:hidden max-tablet:[--build-name-frame-cap:22px] max-narrow:[--build-name-frame-cap:20px]",
+      "col-span-6 col-start-4 flex w-full max-w-130 min-w-0 items-center justify-self-center gap-0 [--build-name-frame-cap:24px] compact-desktop:hidden max-tablet:hidden max-tablet:[--build-name-frame-cap:22px] max-narrow:[--build-name-frame-cap:20px]",
   },
   drawer: {
     default:

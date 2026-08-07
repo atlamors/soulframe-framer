@@ -166,6 +166,7 @@ import { BuildNameControl } from "./header/BuildNameControl";
 import { MobileHeaderDrawer } from "./header/MobileHeaderDrawer";
 import { useAlerts } from "../alerts/AlertsProvider";
 import { useMobileHistoryLayer } from "../hooks/useMobileHistoryLayer";
+import { useSoulframeShell } from "../soulframe/components/SoulframeShellContext";
 
 const UNMET_GEAR_ALERT_ID = "builder.unmet-gear-requirements";
 const PACT_ART_LIBRARY_KEY = "soulframe-framer.pact-arts.v1";
@@ -316,12 +317,12 @@ const DEFENSE_CONTEXT_COPY: Record<DefenseId, string> = {
 };
 
 export function BuilderShell() {
+  const { registerAiAction } = useSoulframeShell();
   const {
     closeAlertCenter,
     isCenterOpen,
     mobileHeaderLayerElement,
     notifyAlert,
-    setMobileHeaderLayerElement,
     syncAlert,
   } = useAlerts();
   const [build, setBuild] = useState<SoulframeBuild>(DEFAULT_BUILD);
@@ -365,7 +366,6 @@ export function BuilderShell() {
   const isMobileShellSuppressed = Boolean(activeSlot) || isPactPickerOpen;
   const {
     isMobileViewport,
-    isMobileHeaderVisible,
     isMobileMenuAvailable,
     isMobileMenuOpen,
     toggleMobileMenu,
@@ -376,7 +376,6 @@ export function BuilderShell() {
     mobileTopMenuTriggerRef,
     mobileMenuLayerRef,
     mobileMenuLayerElement,
-    mobileCompactMenuTriggerRef,
     activeMobileMenuTriggerRef,
     mobileMenuPanelRef,
     mobileMenuCloseRef,
@@ -385,19 +384,6 @@ export function BuilderShell() {
     mobileStatsPanelRef,
     mobileStatsRailRef,
   } = useMobileWorkspace(build, isMobileShellSuppressed);
-  const sharedMobileHeaderLayerRef = useCallback(
-    (element: HTMLDivElement | null) => {
-      mobileMenuLayerRef(element);
-      setMobileHeaderLayerElement(
-        isMobileViewport && isMobileMenuAvailable ? element : null,
-      );
-    }, [
-      isMobileMenuAvailable,
-      isMobileViewport,
-      mobileMenuLayerRef,
-      setMobileHeaderLayerElement,
-    ],
-  );
   const [hydrated, setHydrated] = useState(false);
   const mobileStatsGeometryState =
     mobileStatsPresentationState === "collapsed"
@@ -926,6 +912,28 @@ export function BuilderShell() {
     isMobileMenuOpen,
   ]);
 
+  useEffect(
+    () =>
+      registerAiAction({
+        label: isOptimizationOpen
+          ? "Close build optimization"
+          : "Optimize this Frame",
+        isActive: isOptimizationOpen,
+        onToggle: isOptimizationOpen
+          ? closeBuilderModalLayer
+          : openOptimization,
+        onDismiss: () => {
+          if (isOptimizationOpen) closeBuilderModalLayer();
+        },
+      }),
+    [
+      closeBuilderModalLayer,
+      isOptimizationOpen,
+      openOptimization,
+      registerAiAction,
+    ],
+  );
+
   useEffect(() => {
     if (!isCenterOpen) return;
     const timer = window.setTimeout(() => {
@@ -944,37 +952,29 @@ export function BuilderShell() {
     <main className={BUILDER_SHELL_CLASS_NAMES.app}>
       <BuilderHeader
         buildName={build.name}
-        isAlertCenterOpen={isCenterOpen}
         isMobileMenuAvailable={isMobileMenuAvailable}
         isMobileMenuOpen={isMobileMenuOpen}
         isMobileSuppressed={isMobileShellSuppressed}
-        isOptimizationOpen={isOptimizationOpen}
         mobileMenuTriggerRef={mobileTopMenuTriggerRef}
-        mobileMenuLayerRef={sharedMobileHeaderLayerRef}
-        onCloseOptimization={closeBuilderModalLayer}
+        mobileMenuLayerRef={mobileMenuLayerRef}
         onNameChange={(name) =>
           setBuild((current) => ({ ...current, name }))
         }
-        onOpenOptimization={openOptimization}
         onToggleMobileMenu={toggleBuilderMenu}
       />
       <MobileHeaderDrawer
         buildName={build.name}
-        isHeaderVisible={isMobileHeaderVisible}
         isMenuAvailable={isMobileMenuAvailable}
         isDrawerOpen={isMobileMenuOpen}
         isSuppressed={isMobileShellSuppressed}
-        menuTriggerRef={mobileCompactMenuTriggerRef}
         menuLayerElement={mobileMenuLayerElement}
         overlayTriggerRef={activeMobileMenuTriggerRef}
         drawerPanelRef={mobileMenuPanelRef}
         drawerCloseRef={mobileMenuCloseRef}
-        onToggleDrawer={toggleBuilderMenu}
         onCloseDrawer={closeMobileWorkspaceOverlay}
         onNameChange={(name) =>
           setBuild((current) => ({ ...current, name }))
         }
-        onOpenOptimization={openOptimization}
         onReset={resetBuild}
         onShare={shareBuild}
       />

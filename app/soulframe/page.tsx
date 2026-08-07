@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-export default async function Home({
+export default async function SoulframeHome({
   searchParams,
 }: {
   searchParams: Promise<{ build?: string | string[] }>;
@@ -8,7 +8,9 @@ export default async function Home({
   const { build } = await searchParams;
   const buildValue = Array.isArray(build) ? build[0] : build;
   if (typeof buildValue === "string" && buildValue.length > 0) {
-    redirect(`/soulframe?${new URLSearchParams({ build: buildValue })}`);
+    redirect(
+      `/soulframe/framer?${new URLSearchParams({ build: buildValue })}`,
+    );
   }
-  redirect("/soulframe");
+  redirect("/soulframe/framer");
 }

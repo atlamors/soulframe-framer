@@ -86,7 +86,10 @@ export const MOBILE_DRAWER_CONTENT_CLASS_NAME =
 export const MOBILE_DRAWER_ACCESSIBLE_LABEL_CLASS_NAME = "sr-only";
 
 export const MOBILE_DRAWER_DESKTOP_CLOSE_CLASS_NAME =
-  "max-tablet:hidden tablet:absolute tablet:top-1 tablet:right-2 tablet:z-20";
+  "flex h-13 flex-none items-center justify-between border-b border-line/55 px-safe-inline tablet:absolute tablet:top-1 tablet:right-2 tablet:z-20 tablet:h-auto tablet:border-0 tablet:p-0";
+
+export const MOBILE_DRAWER_TITLE_CLASS_NAME =
+  "font-sans text-2xs font-bold uppercase tracking-widest text-gold tablet:hidden";
 
 export const MOBILE_DRAWER_BUILD_HEADING_CLASS_NAME =
   "mb-2.5 font-sans text-2xs font-bold uppercase tracking-widest text-gold";
