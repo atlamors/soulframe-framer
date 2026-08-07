@@ -22,6 +22,14 @@
 *.pem
 /.codex-remote-attachments/
 
+# local agent instructions and planning artifacts
+/AGENTS*.md
+/.agents/
+/.codex/
+/docs/
+/tasks/
+/tmp/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

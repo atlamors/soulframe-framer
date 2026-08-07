@@ -198,9 +198,6 @@ Shewolf Snared and The Waste Bear can each grant `+1` to a selected Virtue.
 Those fixed bonuses and the equipped Talisman affect requirements and scaling,
 but dragging the triquetra does not redistribute them.
 
-See [docs/data-migration.md](docs/data-migration.md) for the detailed source
-mapping and remaining ambiguities.
-
 ## Recommended next milestone
 
 Add the approved in-game loadout reference, then expand the data model only
