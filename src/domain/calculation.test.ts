@@ -46,9 +46,32 @@ describe("armor calculations", () => {
       defenses: {
         physicalDefense: { total: 14 },
         magickDefense: { total: 4 },
-        stabilityIncrease: { total: 8 },
+        stabilityIncrease: { total: 9 },
       },
-      total: 26,
+      total: 27,
+    });
+  });
+
+  it("rounds Armet of Orengall defense scaling to the nearest integer", () => {
+    const item = armorCatalogue.find(
+      (entry) => entry.id === "helm-armet-of-orengall",
+    );
+    expect(item).toBeDefined();
+
+    expect(
+      calculateItemContribution(item!, {
+        courage: 9,
+        spirit: 0,
+        grace: 43,
+      }),
+    ).toMatchObject({
+      requirementMet: true,
+      defenses: {
+        physicalDefense: { total: 19 },
+        magickDefense: { total: 8 },
+        stabilityIncrease: { total: 18 },
+      },
+      total: 45,
     });
   });
 

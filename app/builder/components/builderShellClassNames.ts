@@ -10,7 +10,7 @@ export const BUILDER_SHELL_CLASS_NAMES = {
   desktopContents: "contents",
   desktopHidden: "hidden",
   alignmentRail:
-    "relative z-10 col-span-3 col-start-1 row-start-1 min-w-0 px-7.5 py-7 compact-desktop:col-span-1 compact-desktop:col-start-1 max-tablet:grid max-tablet:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] max-tablet:gap-x-2.25 max-tablet:px-2 max-tablet:py-5 tablet:max-compact-desktop:col-span-5 tablet:max-compact-desktop:col-start-1 tablet:max-compact-desktop:row-start-1 tablet:max-compact-desktop:px-3.5 compact-desktop:max-wide-desktop:px-3.5 compact-desktop:max-wide-desktop:py-4.5",
+    "relative z-20 col-span-3 col-start-1 row-start-1 min-w-0 px-7.5 py-7 compact-desktop:col-span-1 compact-desktop:col-start-1 max-tablet:grid max-tablet:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] max-tablet:gap-x-2.25 max-tablet:px-2 max-tablet:py-5 tablet:max-compact-desktop:col-span-5 tablet:max-compact-desktop:col-start-1 tablet:max-compact-desktop:row-start-1 tablet:max-compact-desktop:px-3.5 compact-desktop:max-wide-desktop:px-3.5 compact-desktop:max-wide-desktop:py-4.5",
   statsRail:
     "relative z-10 col-span-3 col-start-10 row-start-1 min-w-0 px-7.5 py-7 compact-desktop:col-span-1 compact-desktop:col-start-3 tablet:max-compact-desktop:block tablet:max-compact-desktop:flex-1 tablet:max-compact-desktop:px-3.5 tablet:max-compact-desktop:py-4 compact-desktop:max-wide-desktop:px-3.5 compact-desktop:max-wide-desktop:py-4.5",
   statSheetSurface:

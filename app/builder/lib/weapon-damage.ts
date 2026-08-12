@@ -72,9 +72,13 @@ export function getWeaponDamage(item: Weapon, virtues: VirtueValues) {
       ? 1
       : 1.5;
   const requirementMet = meetsWeaponRequirements(item, virtues);
+  const cappedPrimaryAttunement =
+    baseAttack === undefined
+      ? 0
+      : Math.min(rawAttunement, baseAttack * rarityMultiplier);
   const primaryBonus =
     requirementMet && baseAttack !== undefined
-      ? Math.floor(Math.min(rawAttunement, baseAttack * rarityMultiplier))
+      ? Math.round(cappedPrimaryAttunement)
       : 0;
   let secondaryBonus = 0;
 
@@ -84,7 +88,7 @@ export function getWeaponDamage(item: Weapon, virtues: VirtueValues) {
     charged.value !== undefined
   ) {
     if (charged.key === "chargedAttack") {
-      secondaryBonus = primaryBonus * 2;
+      secondaryBonus = Math.round(cappedPrimaryAttunement * 2);
     } else {
       const capMultiplier =
         charged.key === "chargedShot"
@@ -92,7 +96,7 @@ export function getWeaponDamage(item: Weapon, virtues: VirtueValues) {
           : charged.key === "fullChargedCast"
             ? 4.5
             : 1.5;
-      secondaryBonus = Math.floor(
+      secondaryBonus = Math.round(
         Math.min(
           rawAttunement,
           baseAttack * capMultiplier * rarityMultiplier,

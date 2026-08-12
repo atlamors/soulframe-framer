@@ -85,15 +85,33 @@ describe("armor optimization", () => {
     const result = optimizeAffinityForArmor(current, catalogue);
 
     expect(result.recommendedBuild.virtues).toEqual({
-      courage: 13,
-      spirit: 0,
-      grace: 3,
+      courage: 11,
+      spirit: 1,
+      grace: 4,
     });
     expect(result.currentMetRequirements).toBe(0);
     expect(result.recommendedMetRequirements).toBe(1);
     expect(result.recommendedCalculation.armorDefense).toBeGreaterThan(
       result.currentCalculation.armorDefense,
     );
+  });
+
+  it("normalizes an invalid optimizer baseline before recommending affinity", () => {
+    const current = build(
+      { courage: 16, spirit: 0, grace: 0 },
+      { helm: "courage-helm" },
+    );
+    const result = optimizeAffinityForArmor(
+      current,
+      [armor("courage-helm", "helm", 10, { courage: 2 })],
+    );
+
+    expect(result.currentBuild.virtues).toEqual({
+      courage: 14,
+      spirit: 1,
+      grace: 1,
+    });
+    expect(Object.values(result.recommendedBuild.virtues)).not.toContain(0);
   });
 
   it("does not move affinity when no armor is equipped", () => {

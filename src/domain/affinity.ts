@@ -7,6 +7,7 @@ import {
 import { progression } from "../data/progression";
 
 export const BASE_AFFINITY_POINTS = 16;
+export const MIN_BASE_VIRTUE_VALUE = 1;
 export const MAX_ENVOY_RANK = progression.maximumEnvoyRank;
 export const MAX_ALLOCATABLE_AFFINITY =
   BASE_AFFINITY_POINTS + MAX_ENVOY_RANK;

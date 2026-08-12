@@ -15,6 +15,7 @@ import type {
 } from "@/src/domain/publications/types";
 import {
   checkpointPublicationDraftAction,
+  archivePublicationAction,
   type CreateSoulframeBuildActionState,
   createAndPublishSoulframeBuildFromStateAction,
   createSoulframeBuildFromStateAction,
@@ -22,6 +23,7 @@ import {
   savePublicationDraftAction,
   unpublishPublicationAction,
 } from "../actions";
+import { publicPublicationPath } from "../publisherRoutes";
 import { SoulframeFrameDisplay } from "../rendering/SoulframeFrameSnapshot";
 import { RegisteredSemanticBlockRenderer } from "../rendering/SemanticBlocks";
 import { PublicationRichTextEditor } from "./PublicationRichTextEditor";
@@ -324,6 +326,11 @@ export function SoulframeBuildComposer(props: SoulframeBuildComposerProps) {
                   : createAndPublishAction
               }
               prerequisite={publishPrerequisite}
+              publicHref={
+                props.mode === "persisted" && props.status === "published"
+                  ? publicPublicationPath("soulframe.build", slug)
+                  : undefined
+              }
             >
                 <details
                   ref={detailsRef}
@@ -356,7 +363,16 @@ export function SoulframeBuildComposer(props: SoulframeBuildComposerProps) {
                           >
                             Unpublish
                           </button>
-                        ) : null}
+                        ) : (
+                          <button
+                            type="submit"
+                            formAction={archivePublicationAction}
+                            formNoValidate
+                            className="min-h-10 rounded-sm px-3 text-left font-sans text-xs text-red-200 hover:bg-control"
+                          >
+                            Archive
+                          </button>
+                        )}
                       </>
                     ) : null}
                     {activeStage?.data.role === "variant" ? (

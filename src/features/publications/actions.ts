@@ -24,6 +24,10 @@ import {
   PublicationInputError,
   PublicationNotFoundError,
 } from "../../server/supabase/publication-service";
+import {
+  publicPublicationPath,
+  publisherWorkspacePath,
+} from "./publisherRoutes";
 
 class PublisherProfileRequiredError extends Error {
   readonly name = "PublisherProfileRequiredError";
@@ -540,6 +544,87 @@ export async function unpublishPublicationAction(formData: FormData) {
     target = publisherLocation(publicationId, "notice", "unpublished");
   } catch (error) {
     target = publisherLocation(publicationId, "error", errorCode(error));
+  }
+  redirect(target);
+}
+
+function publisherWorkspaceLocation(
+  profileId: PublicationProfileId,
+  kind: "error" | "notice",
+  value: string,
+): string {
+  return `${publisherWorkspacePath(profileId)}?${new URLSearchParams({ [kind]: value })}`;
+}
+
+function revalidatePublicationRoutes(
+  profileId: PublicationProfileId,
+  slug: string,
+) {
+  revalidatePath(publisherWorkspacePath(profileId));
+  revalidatePath(profileId === "soulframe.build" ? "/soulframe/builds" : "/soulframe/guides");
+  revalidatePath(publicPublicationPath(profileId, slug));
+}
+
+export async function archivePublicationAction(formData: FormData) {
+  let profileId: PublicationProfileId | null = null;
+  let target: string;
+  try {
+    const context = await requirePublisherOwnerContext();
+    const publicationId = parsePublicationId(formString(formData, "publicationId"));
+    const publication = await context.publications.loadOwned({
+      ownerId: context.accountId,
+      publicationId,
+    });
+    if (!publication) throw new PublicationNotFoundError("Publication not found.");
+    profileId = publication.profileId;
+    if (publication.status === "published") {
+      throw new PublicationInputError("Unpublish before archiving.");
+    }
+    if (publication.status !== "draft" && publication.status !== "unpublished") {
+      throw new PublicationInputError("Only a private publication can be archived.");
+    }
+    await context.publications.delete({
+      ownerId: context.accountId,
+      publicationId,
+    });
+    revalidatePublicationRoutes(publication.profileId, publication.slug);
+    target = publisherWorkspaceLocation(publication.profileId, "notice", "archived");
+  } catch (error) {
+    target = profileId
+      ? publisherWorkspaceLocation(profileId, "error", errorCode(error))
+      : publisherLocation(null, "error", errorCode(error));
+  }
+  redirect(target);
+}
+
+export async function restorePublicationAction(formData: FormData) {
+  let profileId: PublicationProfileId | null = null;
+  let target: string;
+  try {
+    const context = await requirePublisherOwnerContext();
+    const publicationId = parsePublicationId(formString(formData, "publicationId"));
+    const publication = await context.publications.loadOwned({
+      ownerId: context.accountId,
+      publicationId,
+    });
+    if (!publication) throw new PublicationNotFoundError("Publication not found.");
+    profileId = publication.profileId;
+    if (publication.status !== "deleted" || !publication.deletionRecovery) {
+      throw new PublicationInputError("This publication is not archived.");
+    }
+    if (Date.parse(publication.deletionRecovery.recoverableUntil) <= Date.now()) {
+      throw new PublicationInputError("The archive recovery window has expired.");
+    }
+    await context.publications.restoreDeleted({
+      ownerId: context.accountId,
+      publicationId,
+    });
+    revalidatePublicationRoutes(publication.profileId, publication.slug);
+    target = publisherWorkspaceLocation(publication.profileId, "notice", "restored");
+  } catch (error) {
+    target = profileId
+      ? publisherWorkspaceLocation(profileId, "error", errorCode(error))
+      : publisherLocation(null, "error", errorCode(error));
   }
   redirect(target);
 }

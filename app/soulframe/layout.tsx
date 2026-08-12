@@ -9,7 +9,30 @@ export const metadata: Metadata = {
     template: "%s — Nightfold",
   },
   description:
-    "Plan, publish, and explore Soulframe builds with Nightfold.",
+    "Plan Soulframe builds, publish guides, and discover community knowledge on Nightfold.",
+  openGraph: {
+    type: "website",
+    siteName: "Nightfold",
+    images: [
+      {
+        url: "/social/cards/soulframe-v1.png",
+        width: 1200,
+        height: 630,
+        alt: "Nightfold — Soulframe builds, guides, and community knowledge",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      {
+        url: "/social/cards/soulframe-v1.png",
+        width: 1200,
+        height: 630,
+        alt: "Nightfold — Soulframe builds, guides, and community knowledge",
+      },
+    ],
+  },
 };
 
 export const dynamic = "force-dynamic";

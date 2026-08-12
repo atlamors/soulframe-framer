@@ -383,6 +383,58 @@ describe("build serialization", () => {
     });
   });
 
+  it("recovers a zero-valued version 5 Virtue allocation with a minimum warning", () => {
+    const encoded = Buffer.from(
+      JSON.stringify({
+        ...build,
+        virtues: { courage: 34, spirit: 0, grace: 0 },
+      }),
+    ).toString("base64url");
+
+    expect(deserializeBuild(encoded, catalogue)).toMatchObject({
+      ok: true,
+      build: { virtues: { courage: 32, spirit: 1, grace: 1 } },
+      warnings: [
+        "Virtue allocation was normalized to retain at least one point in each Virtue.",
+      ],
+    });
+  });
+
+  it("recovers a zero-valued legacy allocation while retaining its upgrade warning", () => {
+    const encoded = Buffer.from(
+      JSON.stringify({
+        schemaVersion: 2,
+        name: build.name,
+        virtues: { courage: 34, spirit: 0, grace: 0 },
+        equipment: build.equipment,
+      }),
+    ).toString("base64url");
+
+    expect(deserializeBuild(encoded, catalogue)).toMatchObject({
+      ok: true,
+      sourceSchemaVersion: 2,
+      build: { virtues: { courage: 32, spirit: 1, grace: 1 } },
+      warnings: [
+        "Saved build upgraded with affinity sources inferred from its Virtue pool.",
+      ],
+    });
+  });
+
+  it("normalizes malformed in-memory Virtues before encoding", () => {
+    const result = deserializeBuild(
+      serializeBuild({
+        ...build,
+        virtues: { courage: 34, spirit: 0, grace: 0 },
+      }),
+      catalogue,
+    );
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.build.virtues).toEqual({ courage: 32, spirit: 1, grace: 1 });
+      expect(result.warnings).toEqual([]);
+    }
+  });
+
   it("caps builds saved before the current Envoy Rank maximum", () => {
     const encoded = Buffer.from(
       JSON.stringify({

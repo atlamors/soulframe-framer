@@ -38,6 +38,7 @@ import type {
 } from "../../../domain/publications/types";
 import {
   checkpointPublicationDraftAction,
+  archivePublicationAction,
   createAndPublishPublicationFromStateAction,
   createPublicationFromStateAction,
   saveAndPublishPublicationAction,
@@ -45,6 +46,7 @@ import {
   unpublishPublicationAction,
   type CreatePublicationActionState,
 } from "../actions";
+import { publicPublicationPath } from "../publisherRoutes";
 import { PublicationRichTextEditor } from "./PublicationRichTextEditor";
 import { publicationRichTextProfiles } from "./publicationRichTextEditorModel";
 import { PublicationPublishingCard } from "./PublicationPublishingCard";
@@ -711,6 +713,11 @@ export function SoulframeGuideComposer(props: SoulframeGuideComposerProps) {
                 : saveAndPublishPublicationAction
             }
             prerequisite={prerequisite}
+            publicHref={
+              props.mode === "persisted" && props.status === "published"
+                ? publicPublicationPath("soulframe.guide", slug)
+                : undefined
+            }
           >
             <MoreMenu>
               <label className="font-sans text-3xs font-bold uppercase tracking-wide text-ink-muted">
@@ -781,7 +788,16 @@ export function SoulframeGuideComposer(props: SoulframeGuideComposerProps) {
                     >
                       Unpublish
                     </button>
-                  ) : null}
+                  ) : (
+                    <button
+                      type="submit"
+                      formAction={archivePublicationAction}
+                      formNoValidate
+                      className="min-h-10 rounded-sm px-3 text-left font-sans text-xs text-red-200 hover:bg-control"
+                    >
+                      Archive
+                    </button>
+                  )}
                 </>
               ) : null}
             </MoreMenu>

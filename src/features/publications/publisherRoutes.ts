@@ -15,6 +15,14 @@ export function publisherEditPath(
   return `${publisherWorkspacePath(profileId)}/${encodeURIComponent(id)}`;
 }
 
+export function publicPublicationPath(
+  profileId: PublicationProfileId,
+  slug: string,
+): string {
+  const segment = profileId === "soulframe.build" ? "builds" : "guides";
+  return `/soulframe/${segment}/${encodeURIComponent(slug)}`;
+}
+
 export function publisherProfileForSegment(
   segment: string,
 ): PublicationProfileId | null {
@@ -86,6 +94,15 @@ export function publisherActionMessage(
       tone: "success",
       text: "Unpublished. This piece is no longer publicly visible.",
     };
+  }
+  if (notice === "archived") {
+    return {
+      tone: "success",
+      text: "Archived. You can restore it during the recovery window.",
+    };
+  }
+  if (notice === "restored") {
+    return { tone: "success", text: "Restored to your private workspace." };
   }
   return undefined;
 }

@@ -20,6 +20,7 @@ import {
   BASE_AFFINITY_POINTS,
   MAX_ALLOCATABLE_AFFINITY,
   MAX_ENVOY_RANK,
+  MIN_BASE_VIRTUE_VALUE,
   getAllocatableAffinity,
   inferAffinitySources,
 } from "./affinity";
@@ -192,8 +193,11 @@ function validateBuild(
     (sum, virtue) => sum + virtues[virtue],
     0,
   );
+  const hasVirtueBelowMinimum = VIRTUE_IDS.some(
+    (virtue) => virtues[virtue] < MIN_BASE_VIRTUE_VALUE,
+  );
   const normalizedVirtues =
-    suppliedTotal === allocatablePoints
+    suppliedTotal === allocatablePoints && !hasVirtueBelowMinimum
       ? virtues
       : distributeVirtueTotal(allocatablePoints, virtues);
 
@@ -211,9 +215,11 @@ function validateBuild(
     );
   } else if (value.schemaVersion === 4) {
     warnings.push(ARTS_MIGRATION_WARNING);
-  } else if (suppliedTotal !== allocatablePoints) {
+  } else if (suppliedTotal !== allocatablePoints || hasVirtueBelowMinimum) {
     warnings.push(
-      `Virtue allocation was normalized to its ${BASE_AFFINITY_POINTS} base points plus Envoy Rank.`,
+      hasVirtueBelowMinimum
+        ? "Virtue allocation was normalized to retain at least one point in each Virtue."
+        : `Virtue allocation was normalized to its ${BASE_AFFINITY_POINTS} base points plus Envoy Rank.`,
     );
   }
 
@@ -511,6 +517,10 @@ export function serializeBuild(build: SoulframeBuild): string {
   });
   const json = JSON.stringify({
     ...build,
+    virtues: distributeVirtueTotal(
+      getAllocatableAffinity(build.affinitySources),
+      build.virtues,
+    ),
     combatArts: normalizeActiveCombatArtAllocations(
       build.combatArts,
       activeCombatArtNames,

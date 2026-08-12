@@ -6,6 +6,7 @@ import {
   updatePlannerAffinitySources,
   updatePlannerCombatArt,
   updatePlannerPact,
+  updatePlannerVirtues,
   updatePlannerWeapon,
 } from "./planner-sections";
 
@@ -81,5 +82,14 @@ describe("planner section updates", () => {
     expect(Object.values(next.virtues).reduce((sum, value) => sum + value, 0)).toBeGreaterThanOrEqual(
       Object.values(build.virtues).reduce((sum, value) => sum + value, 0),
     );
+  });
+
+  it("normalizes direct Virtue updates against the active source pool", () => {
+    const next = updatePlannerVirtues(plannerBuild(), {
+      courage: 36,
+      spirit: 0,
+      grace: 0,
+    });
+    expect(next.virtues).toEqual({ courage: 32, spirit: 1, grace: 1 });
   });
 });

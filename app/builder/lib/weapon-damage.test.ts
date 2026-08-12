@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { weaponCatalogue } from "@/src/data/weapons";
+import type { Weapon } from "@/src/domain/types";
 import {
   getChargedWeaponStat,
   getWeaponDamage,
@@ -58,6 +59,44 @@ describe("Rank 30 weapon damage availability", () => {
       { id: "stagger", label: "Stagger", bonus: undefined, value: 112 },
       { id: "smite", label: "Smite", bonus: undefined, value: "1 in 20" },
     ]);
+  });
+
+  it("rounds Seathorn primary and charged bonuses from their raw values", () => {
+    const seathorn = getWeapon("Seathorn");
+    const chargedSeathorn: Weapon = {
+      ...seathorn,
+      attunement: { courage: 5, spirit: 5, grace: 8 },
+      stats: {
+        ...seathorn.stats,
+        level30: {
+          ...seathorn.stats.level30,
+          chargedAttack: seathorn.stats.level30.fullChargedCast,
+        },
+      },
+    };
+
+    expect(
+      getWeaponDamage(chargedSeathorn, {
+        courage: 20,
+        spirit: 18,
+        grace: 7,
+      }),
+    ).toMatchObject({
+      requirementMet: true,
+      primary: { bonus: 125 },
+      secondary: { key: "chargedAttack", bonus: 250 },
+    });
+    expect(
+      getWeaponDamage(chargedSeathorn, {
+        courage: 20,
+        spirit: 19,
+        grace: 7,
+      }),
+    ).toMatchObject({
+      requirementMet: true,
+      primary: { bonus: 128 },
+      secondary: { key: "chargedAttack", bonus: 255 },
+    });
   });
 
   it("retains numeric zero bonuses for an equipped weapon", () => {

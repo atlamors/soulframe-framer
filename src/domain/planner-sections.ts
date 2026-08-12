@@ -114,7 +114,13 @@ export function updatePlannerPact(
 }
 
 export function updatePlannerVirtues(build: SoulframeBuild, virtues: VirtueValues) {
-  return { ...build, virtues };
+  return {
+    ...build,
+    virtues: distributeVirtueTotal(
+      getAllocatableAffinity(build.affinitySources),
+      virtues,
+    ),
+  };
 }
 
 export function updatePlannerAffinitySources(

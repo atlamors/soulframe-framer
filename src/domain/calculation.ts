@@ -39,7 +39,7 @@ export function calculateDefense(
     (sum, virtue) => sum + pips[virtue] * virtues[virtue],
     0,
   );
-  const scaling = Math.floor(ARMOR_SCALE * weightedPips);
+  const scaling = Math.round(ARMOR_SCALE * weightedPips);
   return { base, scaling, total: base + scaling };
 }
 

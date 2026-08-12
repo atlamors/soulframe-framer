@@ -164,8 +164,9 @@ function EditorSideMenu({ controls }: { controls: PublicationBlockControl[] }) {
     <SideMenu>
       <span
         className="contents"
-        onKeyUpCapture={(event) => {
+        onKeyDownCapture={(event) => {
           if (event.key !== "Enter" && event.key !== " ") return;
+          if (event.repeat) return;
           if (!(event.target instanceof HTMLButtonElement)) return;
           const trigger = event.target;
           const stopWatching = () => {

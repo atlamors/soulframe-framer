@@ -3,7 +3,10 @@ import {
   type VirtueId,
   type VirtueValues,
 } from "./types";
-import { MAX_ALLOCATABLE_AFFINITY } from "./affinity";
+import {
+  MAX_ALLOCATABLE_AFFINITY,
+  MIN_BASE_VIRTUE_VALUE,
+} from "./affinity";
 
 const clamp = (value: number, minimum: number, maximum: number) =>
   Math.min(maximum, Math.max(minimum, value));
@@ -123,18 +126,44 @@ export function distributeVirtueTotal(
   total: number,
   current: VirtueValues,
 ): VirtueValues {
-  return allocateByWeight(total, current);
+  const normalizedTotal = clamp(
+    Math.round(Number.isFinite(total) ? total : 0),
+    MIN_BASE_VIRTUE_VALUE * VIRTUE_IDS.length,
+    MAX_ALLOCATABLE_AFFINITY,
+  );
+  const allocated = allocateByWeight(
+    normalizedTotal - MIN_BASE_VIRTUE_VALUE * VIRTUE_IDS.length,
+    Object.fromEntries(
+      VIRTUE_IDS.map((virtue) => [
+        virtue,
+        Math.max(0, current[virtue] - MIN_BASE_VIRTUE_VALUE),
+      ]),
+    ) as VirtueValues,
+  );
+
+  return Object.fromEntries(
+    VIRTUE_IDS.map((virtue) => [
+      virtue,
+      allocated[virtue] + MIN_BASE_VIRTUE_VALUE,
+    ]),
+  ) as VirtueValues;
 }
 
 export function getVirtueAlignmentPoint(virtues: VirtueValues) {
-  const total = VIRTUE_IDS.reduce((sum, virtue) => sum + virtues[virtue], 0);
-  const values =
-    total === 0 ? { courage: 1, spirit: 1, grace: 1 } : virtues;
-  const valueTotal = total || 3;
+  const values = Object.fromEntries(
+    VIRTUE_IDS.map((virtue) => [
+      virtue,
+      Math.max(0, virtues[virtue] - MIN_BASE_VIRTUE_VALUE),
+    ]),
+  ) as VirtueValues;
+  const total = VIRTUE_IDS.reduce((sum, virtue) => sum + values[virtue], 0);
+  const geometryValues =
+    total === 0 ? { courage: 1, spirit: 1, grace: 1 } : values;
+  const valueTotal = total || VIRTUE_IDS.length;
 
   return {
-    x: (values.spirit * 0.5 + values.grace) / valueTotal,
-    y: (values.courage + values.grace) / valueTotal,
+    x: (geometryValues.spirit * 0.5 + geometryValues.grace) / valueTotal,
+    y: (geometryValues.courage + geometryValues.grace) / valueTotal,
   };
 }
 
@@ -152,7 +181,22 @@ export function virtuesFromAlignmentPoint(
     grace: x - minimumX,
   };
 
-  return allocateByWeight(total, weights);
+  const normalizedTotal = clamp(
+    Math.round(Number.isFinite(total) ? total : 0),
+    MIN_BASE_VIRTUE_VALUE * VIRTUE_IDS.length,
+    MAX_ALLOCATABLE_AFFINITY,
+  );
+  const allocated = allocateByWeight(
+    normalizedTotal - MIN_BASE_VIRTUE_VALUE * VIRTUE_IDS.length,
+    weights,
+  );
+
+  return Object.fromEntries(
+    VIRTUE_IDS.map((virtue) => [
+      virtue,
+      allocated[virtue] + MIN_BASE_VIRTUE_VALUE,
+    ]),
+  ) as VirtueValues;
 }
 
 export function shiftVirtueAlignment(
@@ -160,7 +204,8 @@ export function shiftVirtueAlignment(
   target: VirtueId,
 ): VirtueValues {
   const donors = VIRTUE_IDS.filter(
-    (virtue) => virtue !== target && current[virtue] > 0,
+    (virtue) =>
+      virtue !== target && current[virtue] > MIN_BASE_VIRTUE_VALUE,
   ).sort((left, right) => current[right] - current[left]);
   const donor = donors[0];
   if (!donor) return current;

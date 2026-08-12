@@ -32,29 +32,36 @@ describe("virtue alignment", () => {
       grace: 0,
     });
 
-    expect(result).toEqual({ courage: 34, spirit: 0, grace: 0 });
+    expect(result).toEqual({ courage: 12, spirit: 11, grace: 11 });
   });
 
   it("maps each triangle corner to its corresponding virtue", () => {
     expect(virtuesFromAlignmentPoint(34, 0.5, 0)).toEqual({
-      courage: 0,
-      spirit: 34,
-      grace: 0,
+      courage: 1,
+      spirit: 32,
+      grace: 1,
     });
     expect(virtuesFromAlignmentPoint(34, 0, 1)).toEqual({
-      courage: 34,
-      spirit: 0,
-      grace: 0,
+      courage: 32,
+      spirit: 1,
+      grace: 1,
     });
     expect(virtuesFromAlignmentPoint(34, 1, 1)).toEqual({
-      courage: 0,
-      spirit: 0,
-      grace: 34,
+      courage: 1,
+      spirit: 1,
+      grace: 32,
     });
   });
 
   it("round-trips a virtue ratio through the alignment point", () => {
     const virtues = { courage: 16, spirit: 8, grace: 10 };
+    const point = getVirtueAlignmentPoint(virtues);
+
+    expect(virtuesFromAlignmentPoint(34, point.x, point.y)).toEqual(virtues);
+  });
+
+  it("round-trips a valid near-corner allocation through the alignment point", () => {
+    const virtues = { courage: 1, spirit: 2, grace: 31 };
     const point = getVirtueAlignmentPoint(virtues);
 
     expect(virtuesFromAlignmentPoint(34, point.x, point.y)).toEqual(virtues);
@@ -75,5 +82,20 @@ describe("virtue alignment", () => {
         "spirit",
       ),
     ).toEqual({ courage: 11, spirit: 12, grace: 11 });
+  });
+
+  it("never takes a point from a Virtue at its base minimum", () => {
+    expect(
+      shiftVirtueAlignment({ courage: 32, spirit: 1, grace: 1 }, "spirit"),
+    ).toEqual({ courage: 31, spirit: 2, grace: 1 });
+    expect(
+      shiftVirtueAlignment({ courage: 1, spirit: 1, grace: 1 }, "spirit"),
+    ).toEqual({ courage: 1, spirit: 1, grace: 1 });
+  });
+
+  it("returns a deterministic floor allocation for malformed totals", () => {
+    expect(
+      distributeVirtueTotal(0, { courage: 0, spirit: 0, grace: 0 }),
+    ).toEqual({ courage: 1, spirit: 1, grace: 1 });
   });
 });

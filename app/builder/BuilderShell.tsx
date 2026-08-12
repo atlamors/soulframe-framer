@@ -708,7 +708,10 @@ export function BuilderShell({
   const updateVirtues = (virtues: VirtueValues) => {
     setBuild((current) => ({
       ...current,
-      virtues,
+      virtues: distributeVirtueTotal(
+        getAllocatableAffinity(current.affinitySources),
+        virtues,
+      ),
     }));
   };
 

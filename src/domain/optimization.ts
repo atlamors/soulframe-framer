@@ -13,7 +13,8 @@ import {
   calculateItemContribution,
   meetsArmorRequirement,
 } from "./calculation";
-import { getAllocatableAffinity } from "./affinity";
+import { getAllocatableAffinity, MIN_BASE_VIRTUE_VALUE } from "./affinity";
+import { distributeVirtueTotal } from "./virtue-alignment";
 
 export interface AffinityOptimization {
   kind: "affinity";
@@ -85,14 +86,25 @@ export function optimizeAffinityForArmor(
   catalogue: readonly ArmorItem[],
   talismans: readonly Talisman[] = [],
 ): AffinityOptimization {
-  const currentCalculation = calculateBuild(build, catalogue, talismans);
+  const total = getAllocatableAffinity(build.affinitySources);
+  const normalizedVirtues = distributeVirtueTotal(total, build.virtues);
+  const normalizedBuild = VIRTUE_IDS.every(
+    (virtue) => normalizedVirtues[virtue] === build.virtues[virtue],
+  )
+    ? build
+    : { ...build, virtues: normalizedVirtues };
+  const currentCalculation = calculateBuild(
+    normalizedBuild,
+    catalogue,
+    talismans,
+  );
   const equippedArmorCount = currentCalculation.items.length;
 
   if (equippedArmorCount === 0) {
     return {
       kind: "affinity",
-      currentBuild: build,
-      recommendedBuild: build,
+      currentBuild: normalizedBuild,
+      recommendedBuild: normalizedBuild,
       currentCalculation,
       recommendedCalculation: currentCalculation,
       equippedArmorCount,
@@ -102,12 +114,11 @@ export function optimizeAffinityForArmor(
     };
   }
 
-  const total = getAllocatableAffinity(build.affinitySources);
-  let bestVirtues = build.virtues;
+  let bestVirtues = normalizedBuild.virtues;
   let bestCalculation = currentCalculation;
 
-  for (let courage = 0; courage <= total; courage += 1) {
-    for (let spirit = 0; spirit <= total - courage; spirit += 1) {
+  for (let courage = MIN_BASE_VIRTUE_VALUE; courage <= total - 2; courage += 1) {
+    for (let spirit = MIN_BASE_VIRTUE_VALUE; spirit <= total - courage - 1; spirit += 1) {
       const candidateVirtues = {
         courage,
         spirit,
@@ -125,7 +136,7 @@ export function optimizeAffinityForArmor(
           bestCalculation,
           candidateVirtues,
           bestVirtues,
-          build.virtues,
+          normalizedBuild.virtues,
         )
       ) {
         bestVirtues = candidateVirtues;
@@ -134,14 +145,14 @@ export function optimizeAffinityForArmor(
     }
   }
 
-  const recommendedBuild = { ...build, virtues: bestVirtues };
+  const recommendedBuild = { ...normalizedBuild, virtues: bestVirtues };
   const changed = VIRTUE_IDS.some(
     (virtue) => bestVirtues[virtue] !== build.virtues[virtue],
   );
 
   return {
     kind: "affinity",
-    currentBuild: build,
+    currentBuild: normalizedBuild,
     recommendedBuild,
     currentCalculation,
     recommendedCalculation: bestCalculation,

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { useFormStatus } from "react-dom";
 import type { PublicationLifecycle } from "./publicationComposerModel";
@@ -18,6 +19,7 @@ type PublicationPublishingCardProps = {
   onPreview(): void;
   publishAction?: ButtonHTMLAttributes<HTMLButtonElement>["formAction"];
   prerequisite?: string | null;
+  publicHref?: string;
   children?: ReactNode;
 };
 
@@ -35,6 +37,7 @@ export function PublicationPublishingCard({
   onPreview,
   publishAction,
   prerequisite,
+  publicHref,
   children,
 }: PublicationPublishingCardProps) {
   const { pending: formPending } = useFormStatus();
@@ -76,6 +79,14 @@ export function PublicationPublishingCard({
         </label>
 
         <div className="mt-4 grid grid-cols-2 gap-2">
+          {publicHref ? (
+            <Link
+              href={publicHref}
+              className="col-span-2 inline-flex min-h-10 items-center justify-center rounded-sm border border-gold/70 px-3 font-sans text-xs font-bold uppercase text-gold-bright no-underline hover:bg-control"
+            >
+              View published
+            </Link>
+          ) : null}
           <button
             type="submit"
             disabled={saveDisabled || formPending}

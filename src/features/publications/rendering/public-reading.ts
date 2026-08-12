@@ -71,11 +71,27 @@ export async function createPublicPublicationMetadata(
       modifiedTime: publication.updatedAt,
       authors: [`@${publication.creatorHandle}`],
       tags: publication.release.state.metadata.classifications,
+      images: [
+        {
+          url: "/social/cards/soulframe-v1.png",
+          width: 1200,
+          height: 630,
+          alt: "Nightfold — Soulframe builds, guides, and community knowledge",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [
+        {
+          url: "/social/cards/soulframe-v1.png",
+          width: 1200,
+          height: 630,
+          alt: "Nightfold — Soulframe builds, guides, and community knowledge",
+        },
+      ],
     },
   };
 }
