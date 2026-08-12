@@ -36,12 +36,12 @@ export const WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES = {
     "absolute -top-0.5 right-1.25 text-lg text-verdant",
   filterRow: "my-2.5 grid grid-cols-2 gap-1.5",
   filterSelect:
-    "min-h-9 w-full min-w-0 cursor-pointer border border-frame-line/50 bg-control py-0 pr-7 pl-2.5 font-sans text-xs font-bold text-ink shadow-control hover:border-gold focus-visible:outline-none focus-visible:shadow-focus max-tablet:min-h-11 max-tablet:text-base",
+    "min-h-9 w-full min-w-0 cursor-pointer border border-frame-line/50 bg-surface bg-control py-0 pr-2 pl-2.5 font-sans text-xs font-bold text-ink shadow-control hover:border-gold hover:bg-control-hover focus-visible:border-gold focus-visible:outline-none focus-visible:shadow-focus max-tablet:min-h-11 max-tablet:text-base",
   configGrid: "grid grid-cols-3 gap-2 max-tablet:grid-cols-1",
   configLabel:
     "flex flex-col gap-1.5 text-xs font-bold uppercase tracking-wide text-ink-faint",
   configSelect:
-    "min-h-9 cursor-pointer border border-frame-line/50 bg-control py-0 pr-7 pl-2.5 font-sans text-xs font-bold text-ink shadow-control hover:border-gold focus-visible:outline-none focus-visible:shadow-focus max-tablet:min-h-11 max-tablet:text-base",
+    "min-h-9 w-full cursor-pointer border border-frame-line/50 bg-surface bg-control py-0 pr-2 pl-2.5 font-sans text-xs font-bold normal-case tracking-normal text-ink shadow-control hover:border-gold hover:bg-control-hover focus-visible:border-gold focus-visible:outline-none focus-visible:shadow-focus max-tablet:min-h-11 max-tablet:text-base",
   totemSlot: {
     active: {
       courage: {

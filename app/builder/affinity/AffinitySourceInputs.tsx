@@ -1,7 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import Image from "next/image";
+import { createPortal } from "react-dom";
 import { MAX_ENVOY_RANK } from "@/src/domain/affinity";
 import {
   VIRTUE_IDS,
@@ -16,6 +23,13 @@ import { RopeFrame } from "../components/RopeFrame";
 import { virtueMeta } from "../constants";
 
 type SourcePanel = "rank" | "fables";
+
+type SourcePanelPosition = {
+  left: number;
+  top: number;
+  width: number;
+  maxHeight: number;
+};
 
 const FABLES = [
   ["shewolf", "Shewolf Snared"],
@@ -43,6 +57,8 @@ export function AffinitySourceInputs({
   const sectionRef = useRef<HTMLElement>(null);
   const rankTriggerRef = useRef<HTMLButtonElement>(null);
   const fablesTriggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [panelPosition, setPanelPosition] = useState<SourcePanelPosition>();
   const selectedFableRewards = FABLES.flatMap(([fable]) => {
     const virtue = sources.fables[fable];
     return virtue ? [virtue] : [];
@@ -55,12 +71,20 @@ export function AffinitySourceInputs({
   useEffect(() => {
     if (!activePanel) return;
 
+    const focusFrame = window.requestAnimationFrame(() => {
+      panelRef.current
+        ?.querySelector<HTMLElement>("input, button")
+        ?.focus();
+    });
+
     const closeOnOutsideClick = (event: PointerEvent) => {
       if (
         event.target instanceof Node &&
-        !sectionRef.current?.contains(event.target)
+        !sectionRef.current?.contains(event.target) &&
+        !panelRef.current?.contains(event.target)
       ) {
         setActivePanel(undefined);
+        setPanelPosition(undefined);
       }
     };
     const closeOnEscape = (event: globalThis.KeyboardEvent) => {
@@ -78,12 +102,77 @@ export function AffinitySourceInputs({
     document.addEventListener("pointerdown", closeOnOutsideClick);
     document.addEventListener("keydown", closeOnEscape);
     return () => {
+      window.cancelAnimationFrame(focusFrame);
       document.removeEventListener("pointerdown", closeOnOutsideClick);
       document.removeEventListener("keydown", closeOnEscape);
     };
   }, [activePanel]);
 
+  useLayoutEffect(() => {
+    if (!activePanel) return;
+
+    const updatePosition = () => {
+      const trigger =
+        activePanel === "rank"
+          ? rankTriggerRef.current
+          : fablesTriggerRef.current;
+      const panel = panelRef.current;
+      if (!trigger || !panel) return;
+
+      const margin = 12;
+      const gap = 7;
+      const triggerRect = trigger.getBoundingClientRect();
+      const viewportWidth = document.documentElement.clientWidth;
+      const viewportHeight = window.innerHeight;
+      const mobile = viewportWidth < 961;
+      const width = mobile
+        ? viewportWidth - margin * 2
+        : Math.min(triggerRect.width, viewportWidth - margin * 2);
+      const left = mobile
+        ? margin
+        : Math.min(
+            Math.max(triggerRect.left, margin),
+            Math.max(margin, viewportWidth - width - margin),
+          );
+      const desiredHeight = panel.scrollHeight;
+      const spaceBelow = viewportHeight - triggerRect.bottom - gap - margin;
+      const spaceAbove = triggerRect.top - gap - margin;
+      const placeBelow =
+        spaceBelow >= Math.min(desiredHeight, mobile ? 220 : 120) ||
+        spaceBelow >= spaceAbove;
+      const maxHeight = Math.max(120, placeBelow ? spaceBelow : spaceAbove);
+      const renderedHeight = Math.min(desiredHeight, maxHeight);
+      const top = placeBelow
+        ? triggerRect.bottom + gap
+        : triggerRect.top - gap - renderedHeight;
+
+      setPanelPosition({
+        left,
+        top: Math.max(margin, top),
+        width,
+        maxHeight,
+      });
+    };
+
+    updatePosition();
+    const resizeObserver = new ResizeObserver(updatePosition);
+    if (panelRef.current) resizeObserver.observe(panelRef.current);
+    const trigger =
+      activePanel === "rank"
+        ? rankTriggerRef.current
+        : fablesTriggerRef.current;
+    if (trigger) resizeObserver.observe(trigger);
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
+    };
+  }, [activePanel]);
+
   const togglePanel = (panel: SourcePanel) => {
+    setPanelPosition(undefined);
     setActivePanel((current) => (current === panel ? undefined : panel));
   };
   const withFoundationClass = (base: string, foundation: string) =>
@@ -248,8 +337,9 @@ export function AffinitySourceInputs({
         </button>
       </div>
 
-      {activePanel ? (
+      {activePanel && typeof document !== "undefined" ? createPortal(
         <div
+          ref={panelRef}
           className={AFFINITY_SOURCE_CLASS_NAMES.panel}
           id={
             activePanel === "rank"
@@ -261,6 +351,16 @@ export function AffinitySourceInputs({
             activePanel === "rank"
               ? "Envoy Rank controls"
               : "Fable affinity rewards"
+          }
+          style={
+            panelPosition
+              ? ({
+                  left: panelPosition.left,
+                  top: panelPosition.top,
+                  width: panelPosition.width,
+                  maxHeight: panelPosition.maxHeight,
+                } satisfies CSSProperties)
+              : { left: 0, top: 0, visibility: "hidden" }
           }
         >
           <RopeFrame appearance="context" />
@@ -361,7 +461,8 @@ export function AffinitySourceInputs({
               })}
             </div>
           )}
-        </div>
+        </div>,
+        document.body,
       ) : null}
     </section>
   );

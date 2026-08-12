@@ -137,7 +137,7 @@ export const AFFINITY_SOURCE_CLASS_NAMES = {
   triggerArrow:
     "pointer-events-none absolute top-1/2 right-2 z-2 flex h-1.25 w-2.5 -translate-y-1/2 items-center justify-center transition-transform duration-150 ease-out group-aria-expanded/source:rotate-180 motion-reduce:transition-none",
   panel:
-    "absolute top-full left-0 z-30 mt-1.75 grid w-full min-w-0 gap-2 border border-line-bright bg-surface p-2.25 shadow-popover animate-popover-in max-tablet:fixed max-tablet:inset-x-3 max-tablet:top-auto max-tablet:bottom-17.5 max-tablet:mt-0 max-tablet:max-h-overlay-max max-tablet:w-auto max-tablet:overflow-x-hidden max-tablet:overflow-y-auto motion-reduce:animate-none",
+    "fixed z-70 grid min-w-0 gap-2 overflow-x-hidden overflow-y-auto border border-line-bright bg-surface p-2.25 shadow-popover animate-popover-in motion-reduce:animate-none",
   rankControls:
     "grid min-w-0 grid-cols-[minmax(0,1fr)_4rem] items-center gap-2",
   rankRange:

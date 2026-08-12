@@ -72,9 +72,9 @@ const EXPANDABLE_SEARCH_ROOT_CLASS_NAMES = {
 
 const EXPANDABLE_SEARCH_SURFACE_CLASS_NAMES = {
   closed:
-    "flex h-9 w-full items-center border border-frame-line/45 bg-control shadow-control transition-colors duration-150 ease-spring motion-reduce:transition-none max-tablet:h-11",
+    "flex h-9 w-full items-center border border-frame-line/45 bg-surface bg-control shadow-control transition-colors duration-150 ease-spring motion-reduce:transition-none max-tablet:h-11",
   open:
-    "flex h-9 w-full items-center border border-gold bg-control-hover shadow-control-active transition-colors duration-150 ease-spring motion-reduce:transition-none max-tablet:h-11",
+    "flex h-9 w-full items-center border border-gold bg-surface bg-control-hover shadow-control-active transition-colors duration-150 ease-spring motion-reduce:transition-none max-tablet:h-11",
 } as const satisfies Record<ExpandableSearchState, string>;
 
 const EXPANDABLE_SEARCH_INPUT_CLASS_NAMES = {

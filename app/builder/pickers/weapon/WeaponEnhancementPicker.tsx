@@ -34,6 +34,7 @@ import {
   CatalogueContextMenu as BuilderCatalogueContextMenu,
   ExpandableSearch as BuilderExpandableSearch,
 } from "../shared/CatalogueControls";
+import { NightfoldSelect } from "../shared/NightfoldSelect";
 import { PICKER_LAYOUT_CLASS_NAMES } from "../shared/PickerLayout";
 import { PickerTabs as BuilderPickerTabs } from "../shared/PickerTabs";
 import { WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES } from "./weaponEnhancementPickerClassNames";
@@ -488,36 +489,36 @@ export function WeaponEnhancementPicker({
                   <div
                     className={WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.filterRow}
                   >
-                    <select
+                    <NightfoldSelect
                       value={animal}
-                      onChange={(event) => setAnimal(event.target.value)}
-                      aria-label="Filter Totems by animal"
+                      onChange={setAnimal}
+                      ariaLabel="Filter Totems by animal"
                       className={
                         WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.filterSelect
                       }
-                    >
-                      <option value="all">All animals</option>
-                      {animalOptions.map((option) => (
-                        <option value={option} key={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
-                    <select
+                      options={[
+                        { value: "all", label: "All animals" },
+                        ...animalOptions.map((option) => ({
+                          value: option,
+                          label: option,
+                        })),
+                      ]}
+                    />
+                    <NightfoldSelect
                       value={enhances}
-                      onChange={(event) => setEnhances(event.target.value)}
-                      aria-label="Filter Totems by effect"
+                      onChange={setEnhances}
+                      ariaLabel="Filter Totems by effect"
                       className={
                         WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.filterSelect
                       }
-                    >
-                      <option value="all">All effects</option>
-                      {enhanceOptions.map((option) => (
-                        <option value={option} key={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
+                      options={[
+                        { value: "all", label: "All effects" },
+                        ...enhanceOptions.map((option) => ({
+                          value: option,
+                          label: option,
+                        })),
+                      ]}
+                    />
                   </div>
                 }
               />
@@ -622,85 +623,86 @@ export function WeaponEnhancementPicker({
                   <div
                     className={WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.configGrid}
                   >
-                    <label
+                    <div
                       className={
                         WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.configLabel
                       }
                     >
-                      Rank
-                      <select
-                        value={selection.rank}
+                      <span>Rank</span>
+                      <NightfoldSelect
+                        value={String(selection.rank)}
+                        ariaLabel="Totem rank"
                         className={
                           WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.configSelect
                         }
-                        onChange={(event) =>
+                        onChange={(value) =>
                           setTotem(totemCandidate, {
                             ...selection,
                             itemId: totemCandidate.id,
-                            rank: Number(event.target.value) as 0 | 1 | 2 | 3,
+                            rank: Number(value) as 0 | 1 | 2 | 3,
                           })
                         }
-                      >
-                        {[0, 1, 2, 3].map((rank) => (
-                          <option value={rank} key={rank}>
-                            {rank}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label
+                        options={[0, 1, 2, 3].map((rank) => ({
+                          value: String(rank),
+                          label: String(rank),
+                        }))}
+                      />
+                    </div>
+                    <div
                       className={
                         WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.configLabel
                       }
                     >
-                      Attunement
-                      <select
+                      <span>Attunement</span>
+                      <NightfoldSelect
                         value={selection.virtue}
+                        ariaLabel="Totem attunement"
                         className={
                           WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.configSelect
                         }
-                        onChange={(event) =>
+                        onChange={(value) =>
                           setTotem(totemCandidate, {
                             ...selection,
                             itemId: totemCandidate.id,
-                            virtue: event.target.value as VirtueId,
+                            virtue: value as VirtueId,
                           })
                         }
-                      >
-                        {VIRTUE_IDS.map((virtue) => (
-                          <option value={virtue} key={virtue}>
-                            {virtueMeta[virtue].label}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label
+                        options={VIRTUE_IDS.map((virtue) => ({
+                          value: virtue,
+                          label: virtueMeta[virtue].label,
+                        }))}
+                      />
+                    </div>
+                    <div
                       className={
                         WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.configLabel
                       }
                     >
-                      Variant
-                      <select
+                      <span>Variant</span>
+                      <NightfoldSelect
                         value={selection.variant}
+                        ariaLabel="Totem variant"
                         className={
                           WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.configSelect
                         }
-                        onChange={(event) =>
+                        onChange={(value) =>
                           setTotem(totemCandidate, {
                             ...selection,
                             itemId: totemCandidate.id,
-                            variant: event.target.value as
+                            variant: value as
                               | "universal"
                               | "combatArt",
                           })
                         }
-                      >
-                        <option value="universal">Universal</option>
-                        <option value="combatArt">
-                          {weapon?.combatArt ?? "Combat Art"}
-                        </option>
-                      </select>
-                    </label>
+                        options={[
+                          { value: "universal", label: "Universal" },
+                          {
+                            value: "combatArt",
+                            label: weapon?.combatArt ?? "Combat Art",
+                          },
+                        ]}
+                      />
+                    </div>
                   </div>
                   <section
                     className={WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES.effectCard}
