@@ -28,7 +28,7 @@ export const ALERT_CLASS_NAMES = {
   dialogDescription:
     "mt-1 font-sans text-xs font-semibold leading-snug text-ink-soft",
   dialogClose:
-    "inline-flex size-11 flex-none cursor-pointer items-center justify-center border border-line-bright/45 bg-surface-deep/55 p-0 text-ink-soft shadow-control transition-colors hover:border-line-bright hover:text-ink focus-visible:outline-none focus-visible:shadow-focus max-tablet:hidden motion-reduce:transition-none",
+    "inline-flex size-11 flex-none cursor-pointer items-center justify-center border border-line-bright/45 bg-surface-deep/55 p-0 text-ink-soft shadow-control transition-colors hover:border-line-bright hover:text-ink focus-visible:outline-none focus-visible:shadow-focus max-tablet:mt-2 max-tablet:mr-safe-inline max-tablet:self-end motion-reduce:transition-none",
   dialogCloseIcon: "size-5",
   dialogBody:
     "min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-4 max-tablet:px-safe-inline",

@@ -53,6 +53,41 @@ export const VIRTUE_ALIGNMENT_CLASS_NAMES = {
   optimizeIcon: "size-4 max-tablet:size-3.5",
 } as const;
 
+export const VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES = {
+  layout:
+    "grid h-full min-h-44 min-w-0 grid-cols-[minmax(0,3fr)_minmax(0,2fr)] items-stretch gap-x-2.25 compact-desktop:grid-cols-[minmax(0,1fr)_minmax(8rem,0.72fr)] compact-desktop:gap-x-4",
+  controls:
+    "contents",
+  figure: "contents",
+  figureRoot: "contents",
+  map:
+    "col-start-1 row-start-1 h-full! min-h-44 w-full! max-w-none! self-stretch aspect-auto!",
+  prismStack:
+    "top-1/2! h-full! w-auto! max-w-full! -translate-y-1/2",
+  nodeOverlay: "hidden",
+  totalOverlay: "hidden",
+  readout:
+    "col-start-2 row-start-1 flex min-w-0 flex-col justify-center gap-2 border-y border-line/35 py-2",
+  virtueList: "flex min-w-0 flex-col gap-1.5",
+  virtue:
+    "flex min-w-0 items-baseline justify-between gap-2",
+  virtueLabel:
+    "font-sans text-[0.625rem] font-bold uppercase leading-none tracking-wide text-ink-soft",
+  virtueValue: "flex items-baseline gap-0.5 whitespace-nowrap",
+  virtueStrong:
+    "font-display text-xl font-normal leading-none lining-nums tabular-nums text-ink",
+  virtueBonus:
+    "font-sans text-[0.625rem] font-bold leading-none lining-nums tabular-nums text-verdant",
+  total:
+    "flex min-w-0 flex-col items-center gap-1 border-b border-line/35 pb-2",
+  totalLabel:
+    "font-sans text-[0.625rem] font-bold uppercase leading-none tracking-wide text-ink-soft",
+  totalValue:
+    "font-display text-3xl font-normal leading-none lining-nums tabular-nums text-gold-bright",
+  pactBond:
+    "flex min-w-0 flex-col items-center gap-1",
+} as const;
+
 export const VIRTUE_PRISM_LAYER_CLASS_NAMES = {
   unlit:
     "pointer-events-none absolute inset-0 z-0 block size-full select-none object-contain opacity-90 drop-shadow-xl saturate-50 sepia contrast-105",
@@ -70,6 +105,18 @@ export const ALIGNMENT_NODE_CLASS_NAMES = {
   grace:
     "absolute right-0 bottom-1/5 z-10 flex items-center gap-1.75 max-tablet:bottom-0",
 } as const satisfies Record<VirtueId, string>;
+
+export const AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES = {
+  section:
+    "compact-desktop:mt-0! compact-desktop:border-0 compact-desktop:pt-0!",
+  header: "compact-desktop:mb-1.5",
+  triggerRow:
+    "max-tablet:grid-cols-2! max-tablet:gap-1.5! compact-desktop:mt-0! compact-desktop:grid-cols-2 compact-desktop:gap-1.5!",
+  trigger:
+    "compact-desktop:min-h-10! compact-desktop:flex-row compact-desktop:items-center compact-desktop:justify-between compact-desktop:gap-2 compact-desktop:px-2.5! compact-desktop:py-1!",
+  triggerTitle: "compact-desktop:text-[0.625rem]",
+  summary: "compact-desktop:pr-3 compact-desktop:text-sm!",
+} as const;
 
 export const AFFINITY_SOURCE_CLASS_NAMES = {
   section:
@@ -90,7 +137,7 @@ export const AFFINITY_SOURCE_CLASS_NAMES = {
   triggerArrow:
     "pointer-events-none absolute top-1/2 right-2 z-2 flex h-1.25 w-2.5 -translate-y-1/2 items-center justify-center transition-transform duration-150 ease-out group-aria-expanded/source:rotate-180 motion-reduce:transition-none",
   panel:
-    "relative isolate mt-1.75 grid w-full min-w-0 gap-2 border border-line-bright bg-surface p-2.25 shadow-popover animate-popover-in max-tablet:col-span-full max-tablet:col-start-1 max-tablet:row-start-3 motion-reduce:animate-none",
+    "absolute top-full left-0 z-30 mt-1.75 grid w-full min-w-0 gap-2 border border-line-bright bg-surface p-2.25 shadow-popover animate-popover-in max-tablet:fixed max-tablet:inset-x-3 max-tablet:top-auto max-tablet:bottom-17.5 max-tablet:mt-0 max-tablet:max-h-overlay-max max-tablet:w-auto max-tablet:overflow-x-hidden max-tablet:overflow-y-auto motion-reduce:animate-none",
   rankControls:
     "grid min-w-0 grid-cols-[minmax(0,1fr)_4rem] items-center gap-2",
   rankRange:
@@ -102,7 +149,7 @@ export const AFFINITY_SOURCE_CLASS_NAMES = {
     "grid min-w-0 gap-1.5 border border-frame-line/30 bg-surface-deep/55 px-2.5 py-2 shadow-control",
   fableTitle:
     "font-sans text-2xs font-bold uppercase tracking-wider text-ink-soft",
-  choiceGroup: "grid min-w-0 grid-cols-4 gap-1",
+  choiceGroup: "grid min-w-0 grid-cols-4 gap-1 max-mobile-wide:grid-cols-2",
   choice:
     "group relative isolate flex min-h-11 min-w-11 cursor-pointer items-center justify-center gap-1 border border-line-bright/35 bg-control px-1.5 py-1 font-sans text-2xs font-bold leading-tight text-ink-soft transition-colors hover:border-line-bright/75 hover:bg-control-hover hover:text-ink focus-visible:border-gold-bright focus-visible:bg-control-hover focus-visible:text-ink focus-visible:outline-none focus-visible:shadow-focus aria-pressed:border-gold-bright/75 aria-pressed:bg-surface-raised aria-pressed:text-gold-bright motion-reduce:transition-none",
   choiceIcon: "relative z-2 size-5 flex-none object-contain drop-shadow-art-strong",

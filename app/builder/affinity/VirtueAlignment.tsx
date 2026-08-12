@@ -33,6 +33,7 @@ import {
 } from "../components/virtuePipClassNames";
 import {
   ALIGNMENT_NODE_CLASS_NAMES,
+  VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES,
   VIRTUE_ALIGNMENT_CLASS_NAMES,
   VIRTUE_PRISM_LAYER_CLASS_NAMES,
 } from "../components/affinityClassNames";
@@ -54,13 +55,25 @@ type VirtuePrismInteraction = {
   onPointerMove: (event: ReactPointerEvent<SVGSVGElement>) => void;
 };
 
-function PactBondSummary({ values }: { values: VirtueValues }) {
+function PactBondSummary({
+  values,
+  presentation = "default",
+}: {
+  values: VirtueValues;
+  presentation?: "default" | "foundation";
+}) {
   const label = VIRTUE_IDS.map(
     (virtue) => `${virtueMeta[virtue].label} +${values[virtue]}`,
   ).join(", ");
 
   return (
-    <div className={VIRTUE_ALIGNMENT_CLASS_NAMES.pactBond}>
+    <div
+      className={
+        presentation === "foundation"
+          ? VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.pactBond
+          : VIRTUE_ALIGNMENT_CLASS_NAMES.pactBond
+      }
+    >
       <small className={VIRTUE_ALIGNMENT_CLASS_NAMES.pactBondLabel}>
         Pact Bond
       </small>
@@ -365,12 +378,16 @@ export function VirtueAlignment({
   virtues,
   bonuses,
   sources,
+  presentation = "default",
+  showSourceControls = true,
   onChange,
   onSourcesChange,
 }: {
   virtues: SoulframeBuild["virtues"];
   bonuses: VirtueValues;
   sources: AffinitySources;
+  presentation?: "default" | "foundation";
+  showSourceControls?: boolean;
   onChange: (virtues: VirtueValues) => void;
   onSourcesChange: (sources: AffinitySources) => void;
 }) {
@@ -389,6 +406,11 @@ export function VirtueAlignment({
   ) as VirtueValues;
   const visuals = getVirtueAlignmentVisuals(virtues);
   const figureOrder: VirtueId[] = ["spirit", "courage", "grace"];
+  const foundationReadoutOrder: VirtueId[] = ["spirit", "grace", "courage"];
+  const withFoundationClass = (base: string, foundation: string) =>
+    presentation === "foundation" && foundation
+      ? `${base} ${foundation}`
+      : base;
 
   const updateFromPointer = (event: ReactPointerEvent<SVGSVGElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -437,12 +459,14 @@ export function VirtueAlignment({
     onChange(shiftVirtueAlignment(virtues, target));
   };
 
-  return (
-    <>
-      <div
-        className={VIRTUE_ALIGNMENT_CLASS_NAMES.figure}
-        style={visuals.figureStyle}
-      >
+  const figure = (
+    <div
+      className={withFoundationClass(
+        VIRTUE_ALIGNMENT_CLASS_NAMES.figure,
+        VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.figureRoot,
+      )}
+      style={visuals.figureStyle}
+    >
         <p
           className={SCREEN_READER_ONLY_CLASS_NAME}
           id="alignment-instructions"
@@ -455,10 +479,21 @@ export function VirtueAlignment({
           Allocated: Courage {virtues.courage}, Spirit {virtues.spirit}, Grace{" "}
           {virtues.grace}. Effective: Courage {effectiveVirtues.courage},
           Spirit {effectiveVirtues.spirit}, Grace {effectiveVirtues.grace}.
+          {presentation === "foundation"
+            ? ` Base Affinity Points ${total}. Pact Bond affinity bonuses: ${VIRTUE_IDS.map((virtue) => `${virtueMeta[virtue].label} +${pactBondValues[virtue]}`).join(", ")}.`
+            : null}
         </span>
-        <div className={VIRTUE_ALIGNMENT_CLASS_NAMES.map}>
+        <div
+          className={withFoundationClass(
+            VIRTUE_ALIGNMENT_CLASS_NAMES.map,
+            VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.map,
+          )}
+        >
           <VirtuePrism
-            className={VIRTUE_ALIGNMENT_CLASS_NAMES.prismStack}
+            className={withFoundationClass(
+              VIRTUE_ALIGNMENT_CLASS_NAMES.prismStack,
+              VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.prismStack,
+            )}
             interaction={{
               ariaLabel: `Allocated Courage ${virtues.courage}, Spirit ${virtues.spirit}, Grace ${virtues.grace}. Effective Courage ${effectiveVirtues.courage}, Spirit ${effectiveVirtues.spirit}, Grace ${effectiveVirtues.grace}`,
               onKeyDown: handleAlignmentKey,
@@ -474,7 +509,10 @@ export function VirtueAlignment({
             const effective = effectiveVirtues[virtue];
             return (
               <span
-                className={ALIGNMENT_NODE_CLASS_NAMES[virtue]}
+                className={withFoundationClass(
+                  ALIGNMENT_NODE_CLASS_NAMES[virtue],
+                  VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.nodeOverlay,
+                )}
                 aria-hidden="true"
                 key={virtue}
               >
@@ -497,7 +535,12 @@ export function VirtueAlignment({
               </span>
             );
           })}
-          <div className={VIRTUE_ALIGNMENT_CLASS_NAMES.total}>
+          <div
+            className={withFoundationClass(
+              VIRTUE_ALIGNMENT_CLASS_NAMES.total,
+              VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.totalOverlay,
+            )}
+          >
             <small className={VIRTUE_ALIGNMENT_CLASS_NAMES.totalLabel}>
               Base Affinity Points
             </small>
@@ -509,8 +552,61 @@ export function VirtueAlignment({
             <PactBondSummary values={pactBondValues} />
           </div>
         </div>
-      </div>
-      <div className={VIRTUE_ALIGNMENT_CLASS_NAMES.mobileControls}>
+        {presentation === "foundation" ? (
+          <div
+            className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.readout}
+            aria-hidden="true"
+          >
+            <span className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.total}>
+              <small
+                className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.totalLabel}
+              >
+                Base Affinity Points
+              </small>
+              <strong
+                className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.totalValue}
+              >
+                {total}
+              </strong>
+            </span>
+            <div className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.virtueList}>
+              {foundationReadoutOrder.map((virtue) => (
+                <span
+                  className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.virtue}
+                  key={virtue}
+                >
+                  <small
+                    className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.virtueLabel}
+                  >
+                    {virtueMeta[virtue].label}
+                  </small>
+                  <span
+                    className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.virtueValue}
+                  >
+                    <strong
+                      className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.virtueStrong}
+                    >
+                      {effectiveVirtues[virtue]}
+                    </strong>
+                    {bonuses[virtue] > 0 ? (
+                      <em
+                        className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.virtueBonus}
+                      >
+                        +{bonuses[virtue]}
+                      </em>
+                    ) : null}
+                  </span>
+                </span>
+              ))}
+            </div>
+            <PactBondSummary values={pactBondValues} presentation="foundation" />
+          </div>
+        ) : null}
+    </div>
+  );
+  const controls = (
+    <div className={VIRTUE_ALIGNMENT_CLASS_NAMES.mobileControls}>
+      {presentation === "foundation" ? null : (
         <div className={VIRTUE_ALIGNMENT_CLASS_NAMES.mobileTotal}>
           <small className={VIRTUE_ALIGNMENT_CLASS_NAMES.mobileTotalLabel}>
             Base Affinity Points
@@ -520,8 +616,29 @@ export function VirtueAlignment({
           </strong>
           <PactBondSummary values={pactBondValues} />
         </div>
-        <AffinitySourceInputs sources={sources} onChange={onSourcesChange} />
-      </div>
-    </>
+      )}
+      {showSourceControls ? (
+        <AffinitySourceInputs
+          sources={sources}
+          presentation={presentation}
+          onChange={onSourcesChange}
+        />
+      ) : null}
+    </div>
   );
+
+  if (presentation === "foundation") {
+    return (
+      <div className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.layout}>
+        <div className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.controls}>
+          {controls}
+        </div>
+        <div className={VIRTUE_ALIGNMENT_FOUNDATION_CLASS_NAMES.figure}>
+          {figure}
+        </div>
+      </div>
+    );
+  }
+
+  return <>{figure}{controls}</>;
 }

@@ -35,9 +35,9 @@ type PickerLayoutElement =
 
 export const PICKER_LAYOUT_CLASS_NAMES = {
   backdrop:
-    "fixed inset-0 z-30 flex items-stretch justify-end bg-scrim max-tablet:z-50",
+    "fixed inset-x-0 top-14 bottom-0 z-30 flex items-stretch justify-end bg-scrim compact-desktop:pl-16 wide-desktop:pl-0 max-tablet:inset-x-0 max-tablet:top-mobile-header max-tablet:bottom-0 max-tablet:z-50",
   panel:
-    "relative isolate flex w-full max-w-overlay-lg flex-col border-l border-frame-line/70 bg-picker-panel shadow-picker-panel animate-slide-in motion-reduce:animate-none tablet:max-compact-desktop:w-screen max-tablet:h-dvh max-tablet:max-h-dvh max-tablet:w-screen max-tablet:overflow-hidden max-tablet:border-l-0",
+    "relative isolate flex w-full max-w-overlay-lg flex-col border-l border-frame-line/70 bg-picker-panel shadow-picker-panel animate-slide-in motion-reduce:animate-none tablet:max-compact-desktop:w-full max-tablet:h-full max-tablet:max-h-full max-tablet:w-screen max-tablet:overflow-hidden max-tablet:border-l-0",
   panelContent: "relative z-10 flex min-h-0 flex-1 flex-col",
   headerDefault:
     "flex min-h-20 items-center justify-between border-b border-frame-line/35 bg-picker-header px-6 py-4 shadow-control max-tablet:min-h-17 max-tablet:flex-none max-tablet:px-4 max-tablet:pt-safe-top max-tablet:pb-2.5",

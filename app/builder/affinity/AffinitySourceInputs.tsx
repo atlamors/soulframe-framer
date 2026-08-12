@@ -8,7 +8,10 @@ import {
   type AffinitySources,
   type VirtueId,
 } from "@/src/domain/types";
-import { AFFINITY_SOURCE_CLASS_NAMES } from "../components/affinityClassNames";
+import {
+  AFFINITY_SOURCE_CLASS_NAMES,
+  AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES,
+} from "../components/affinityClassNames";
 import { RopeFrame } from "../components/RopeFrame";
 import { virtueMeta } from "../constants";
 
@@ -27,9 +30,13 @@ function clampEnvoyRank(value: number) {
 
 export function AffinitySourceInputs({
   sources,
+  presentation = "default",
+  showHeader = true,
   onChange,
 }: {
   sources: AffinitySources;
+  presentation?: "default" | "foundation";
+  showHeader?: boolean;
   onChange: (sources: AffinitySources) => void;
 }) {
   const [activePanel, setActivePanel] = useState<SourcePanel>();
@@ -79,6 +86,8 @@ export function AffinitySourceInputs({
   const togglePanel = (panel: SourcePanel) => {
     setActivePanel((current) => (current === panel ? undefined : panel));
   };
+  const withFoundationClass = (base: string, foundation: string) =>
+    presentation === "foundation" ? `${base} ${foundation}` : base;
 
   const updateEnvoyRank = (value: number) => {
     if (!Number.isFinite(value)) return;
@@ -103,23 +112,43 @@ export function AffinitySourceInputs({
 
   return (
     <section
-      className={AFFINITY_SOURCE_CLASS_NAMES.section}
-      aria-labelledby="affinity-controls-title"
+      className={withFoundationClass(
+        AFFINITY_SOURCE_CLASS_NAMES.section,
+        AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES.section,
+      )}
+      {...(showHeader
+        ? { "aria-labelledby": "affinity-controls-title" }
+        : { "aria-label": "Affinity controls" })}
       ref={sectionRef}
     >
-      <header className={AFFINITY_SOURCE_CLASS_NAMES.header}>
-        <span
-          className={AFFINITY_SOURCE_CLASS_NAMES.title}
-          id="affinity-controls-title"
+      {showHeader ? (
+        <header
+          className={withFoundationClass(
+            AFFINITY_SOURCE_CLASS_NAMES.header,
+            AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES.header,
+          )}
         >
-          Affinity Controls
-        </span>
-      </header>
+          <span
+            className={AFFINITY_SOURCE_CLASS_NAMES.title}
+            id="affinity-controls-title"
+          >
+            Affinity Controls
+          </span>
+        </header>
+      ) : null}
 
-      <div className={AFFINITY_SOURCE_CLASS_NAMES.triggerRow}>
+      <div
+        className={withFoundationClass(
+          AFFINITY_SOURCE_CLASS_NAMES.triggerRow,
+          AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES.triggerRow,
+        )}
+      >
         <button
           type="button"
-          className={AFFINITY_SOURCE_CLASS_NAMES.trigger}
+          className={withFoundationClass(
+            AFFINITY_SOURCE_CLASS_NAMES.trigger,
+            AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES.trigger,
+          )}
           ref={rankTriggerRef}
           aria-label={`Envoy Rank, ${sources.envoyRank}`}
           aria-expanded={activePanel === "rank"}
@@ -127,10 +156,20 @@ export function AffinitySourceInputs({
           onClick={() => togglePanel("rank")}
         >
           <RopeFrame appearance="context" />
-          <span className={AFFINITY_SOURCE_CLASS_NAMES.triggerTitle}>
+          <span
+            className={withFoundationClass(
+              AFFINITY_SOURCE_CLASS_NAMES.triggerTitle,
+              AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES.triggerTitle,
+            )}
+          >
             Envoy Rank
           </span>
-          <strong className={AFFINITY_SOURCE_CLASS_NAMES.summary}>
+          <strong
+            className={withFoundationClass(
+              AFFINITY_SOURCE_CLASS_NAMES.summary,
+              AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES.summary,
+            )}
+          >
             {sources.envoyRank}
           </strong>
           <span
@@ -148,7 +187,10 @@ export function AffinitySourceInputs({
         </button>
         <button
           type="button"
-          className={AFFINITY_SOURCE_CLASS_NAMES.trigger}
+          className={withFoundationClass(
+            AFFINITY_SOURCE_CLASS_NAMES.trigger,
+            AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES.trigger,
+          )}
           ref={fablesTriggerRef}
           aria-label={`Fables, ${fableSummary}`}
           aria-expanded={activePanel === "fables"}
@@ -156,10 +198,20 @@ export function AffinitySourceInputs({
           onClick={() => togglePanel("fables")}
         >
           <RopeFrame appearance="context" />
-          <span className={AFFINITY_SOURCE_CLASS_NAMES.triggerTitle}>
+          <span
+            className={withFoundationClass(
+              AFFINITY_SOURCE_CLASS_NAMES.triggerTitle,
+              AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES.triggerTitle,
+            )}
+          >
             Fables
           </span>
-          <strong className={AFFINITY_SOURCE_CLASS_NAMES.summary}>
+          <strong
+            className={withFoundationClass(
+              AFFINITY_SOURCE_CLASS_NAMES.summary,
+              AFFINITY_SOURCE_FOUNDATION_CLASS_NAMES.summary,
+            )}
+          >
             {selectedFableRewards.length > 0 ? (
               <span
                 className={AFFINITY_SOURCE_CLASS_NAMES.summaryPips}

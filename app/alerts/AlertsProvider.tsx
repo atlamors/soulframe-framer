@@ -149,11 +149,13 @@ function AlertList({
   alerts,
   emptyMessage,
   mutedAlertIds,
+  onMute,
   onUnmute,
 }: {
   alerts: AlertRecord[];
   emptyMessage: string;
   mutedAlertIds: ReadonlySet<string>;
+  onMute: (alert: AlertRecord) => void;
   onUnmute: (alert: AlertRecord) => void;
 }) {
   if (!alerts.length) {
@@ -188,6 +190,15 @@ function AlertList({
                     Unmute
                   </button>
                 </>
+              ) : alert.status === "active" &&
+                alert.id === PERSISTED_GEAR_ALERT_ID ? (
+                <button
+                  type="button"
+                  className={ALERT_CLASS_NAMES.itemUnmute}
+                  onClick={() => onMute(alert)}
+                >
+                  Mute
+                </button>
               ) : null}
             </div>
           </article>
@@ -430,6 +441,7 @@ export function AlertsProvider({ children }: { children: ReactNode }) {
 
         <MobileFullscreenOverlay
           open={isCenterOpen}
+          modal={false}
           onOpenChange={(open) => {
             if (open) {
               setIsCenterOpen(true);
@@ -476,6 +488,7 @@ export function AlertsProvider({ children }: { children: ReactNode }) {
                 alerts={currentAlerts}
                 emptyMessage="No active alerts."
                 mutedAlertIds={mutedAlertIds}
+                onMute={(alert) => muteAlertType(alert.id)}
                 onUnmute={unmuteAlertType}
               />
             </section>
@@ -487,6 +500,7 @@ export function AlertsProvider({ children }: { children: ReactNode }) {
                 alerts={recentAlerts}
                 emptyMessage="No resolved alerts or recent notices yet."
                 mutedAlertIds={mutedAlertIds}
+                onMute={(alert) => muteAlertType(alert.id)}
                 onUnmute={unmuteAlertType}
               />
             </section>

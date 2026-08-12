@@ -81,7 +81,7 @@ export const MOBILE_DRAWER_OVERLAY_CLASS_NAME =
   `${MOBILE_FULLSCREEN_OVERLAY_CLASS_NAMES.overlay} max-tablet:z-0`;
 
 export const MOBILE_DRAWER_CONTENT_CLASS_NAME =
-  `${MOBILE_HEADER_MENU_SURFACE_CLASS_NAME} max-tablet:inset-0 max-tablet:z-10 max-tablet:h-dvh max-tablet:w-full max-tablet:pt-mobile-header max-tablet:pb-safe-bottom max-tablet:data-[state=open]:animate-mobile-overlay-surface-in max-tablet:data-[state=closed]:pointer-events-none max-tablet:data-[state=closed]:animate-mobile-overlay-surface-out tablet:top-0 tablet:right-0 tablet:bottom-0 tablet:w-112 tablet:border-l tablet:border-frame-line/60 tablet:bg-surface-overlay tablet:bg-aura-gold tablet:shadow-overlay tablet:backdrop-blur-xl tablet:data-[state=open]:animate-slide-in tablet:data-[state=closed]:pointer-events-none motion-reduce:animate-none`;
+  `${MOBILE_HEADER_MENU_SURFACE_CLASS_NAME} max-tablet:inset-0 max-tablet:z-10 max-tablet:h-dvh max-tablet:w-full max-tablet:pt-mobile-header max-tablet:pb-safe-bottom max-tablet:data-[state=open]:animate-mobile-overlay-surface-in max-tablet:data-[state=closed]:pointer-events-none max-tablet:data-[state=closed]:animate-mobile-overlay-surface-out tablet:top-14 tablet:right-0 tablet:bottom-0 tablet:w-112 tablet:border-l tablet:border-frame-line/60 tablet:bg-surface-overlay tablet:bg-aura-gold tablet:shadow-overlay tablet:backdrop-blur-xl tablet:data-[state=open]:animate-slide-in tablet:data-[state=closed]:pointer-events-none motion-reduce:animate-none`;
 
 export const MOBILE_DRAWER_ACCESSIBLE_LABEL_CLASS_NAME = "sr-only";
 

@@ -2,7 +2,7 @@ type WorkspaceHeadingAppearance = "alignment" | "statsTitle" | "damageTitle";
 
 export const BUILDER_SHELL_CLASS_NAMES = {
   app:
-    "relative isolate mx-auto min-h-[calc(100vh_-_5rem)] max-w-420 overflow-hidden px-16 max-tablet:min-h-[calc(100dvh_-_var(--spacing-mobile-header))] max-tablet:px-3 tablet:max-compact-desktop:px-3 compact-desktop:max-wide-desktop:px-7",
+    "relative isolate min-h-[calc(100vh_-_3.5rem)] w-full overflow-hidden px-16 max-tablet:min-h-[calc(100dvh_-_var(--spacing-mobile-header))] max-tablet:px-3 tablet:max-compact-desktop:px-3 compact-desktop:max-wide-desktop:px-7",
   workspace:
     "relative mt-6 grid min-h-170 grid-cols-12 compact-desktop:grid-cols-[3fr_5.5fr_3.5fr] max-tablet:mt-0 max-tablet:flex max-tablet:min-h-0 max-tablet:flex-col tablet:max-compact-desktop:mt-4 tablet:max-compact-desktop:min-h-0 tablet:max-compact-desktop:items-start compact-desktop:max-wide-desktop:mt-4 compact-desktop:max-wide-desktop:min-h-160",
   mainRegion:

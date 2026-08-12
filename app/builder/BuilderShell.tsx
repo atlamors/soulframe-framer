@@ -1,39 +1,17 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+import Link from "next/link";
 import { armorById, armorCatalogue } from "@/src/data/catalogue";
-import {
-  talismanById,
-  talismanCatalogue,
-} from "@/src/data/talismans";
-import {
-  weaponById,
-  weaponCatalogue,
-} from "@/src/data/weapons";
-import {
-  pactById,
-  pactCatalogue,
-} from "@/src/data/pacts";
-import {
-  runeById,
-  runeCatalogue,
-} from "@/src/data/runes";
+import { talismanCatalogue } from "@/src/data/talismans";
+import { weaponById, weaponCatalogue } from "@/src/data/weapons";
+import { pactById, pactCatalogue } from "@/src/data/pacts";
+import { runeById, runeCatalogue } from "@/src/data/runes";
 import { totemCatalogue } from "@/src/data/totems";
-import {
-  combatArtByName,
-  pactArtTreeByPactId,
-} from "@/src/data/arts";
-import {
-  calculateBuild,
-} from "@/src/domain/calculation";
+import { combatArtByName, pactArtTreeByPactId } from "@/src/data/arts";
+import { calculateBuild } from "@/src/domain/calculation";
 import {
   LEGACY_STORAGE_KEYS,
   STORAGE_KEY,
@@ -42,9 +20,7 @@ import {
   serializeBuild,
 } from "@/src/domain/serialization";
 import { distributeVirtueTotal } from "@/src/domain/virtue-alignment";
-import {
-  getAllocatableAffinity,
-} from "@/src/domain/affinity";
+import { getAllocatableAffinity } from "@/src/domain/affinity";
 import {
   optimizeAffinityForArmor,
   optimizeArmorForAffinity,
@@ -61,22 +37,16 @@ import {
   normalizePactArtAllocation,
 } from "@/src/domain/arts";
 import {
-  ARMOR_SLOTS,
   DEFENSE_IDS,
   VIRTUE_IDS,
   type AffinitySources,
   type ArtAllocation,
-  type ArmorSlot,
   type DefenseId,
   type EquipmentSlot,
   type SoulframeBuild,
   type VirtueValues,
 } from "@/src/domain/types";
-import {
-  DEFAULT_BUILD,
-  defenseMeta,
-  virtueMeta,
-} from "./constants";
+import { DEFAULT_BUILD, defenseMeta, virtueMeta } from "./constants";
 import {
   MOBILE_DEFENSE_LABEL_CLASS_NAMES,
   MOBILE_DEFENSE_SHORT_LABEL_CLASS_NAMES,
@@ -137,23 +107,20 @@ import {
   MOBILE_SECONDARY_MODIFIERS_CLASS_NAMES,
   MOBILE_WORKSPACE_SCRIM_CLASS_NAMES,
 } from "./components/mobileWorkspaceClassNames";
-import { VirtueAlignment as BuilderVirtueAlignment } from "./affinity/VirtueAlignment";
+import { VirtuesAffinityModule } from "./affinity/VirtuesAffinityModule";
 import {
-  EquipmentSlot as BuilderEquipmentSlot,
-  TalismanEquipmentSlot as BuilderTalismanEquipmentSlot,
-  WeaponEquipmentSlot as BuilderWeaponEquipmentSlot,
-} from "./loadout/EquipmentSlots";
-import { PactBanner as BuilderPactBanner } from "./loadout/PactBanner";
-import { PactPicker as BuilderPactPicker } from "./pickers/pact/PactPicker";
-import { ItemPicker as BuilderArmorPicker } from "./pickers/armor/ArmorPicker";
-import { TalismanPicker as BuilderTalismanPicker } from "./pickers/talisman/TalismanPicker";
+  ArmorTalismanEquipmentModule,
+  isArmorTalismanSlot,
+  updateArmorTalismanEquipment,
+} from "./loadout/ArmorTalismanEquipmentModule";
+import { PactArtsModule } from "./loadout/PactArtsModule";
 import {
   OptimizationLightbox as BuilderOptimizationLightbox,
   type OptimizationResult,
 } from "./optimization/OptimizationLightbox";
 import { MobileSupportZone } from "./support/MobileSupportZone";
-import { WeaponEnhancementPicker as BuilderWeaponEnhancementPicker } from "./pickers/weapon/WeaponEnhancementPicker";
-import { WeaponPicker as BuilderWeaponPicker } from "./pickers/weapon/WeaponPicker";
+import { WeaponEquipmentModule } from "./loadout/WeaponEquipmentModule";
+import { WeaponEnhancementsModule } from "./loadout/WeaponEnhancementsModule";
 import { ActiveBuildEffects } from "./stats/ActiveBuildEffects";
 import { WeaponDamagePanel } from "./stats/WeaponDamagePanel";
 import {
@@ -167,6 +134,7 @@ import { MobileHeaderDrawer } from "./header/MobileHeaderDrawer";
 import { useAlerts } from "../alerts/AlertsProvider";
 import { useMobileHistoryLayer } from "../hooks/useMobileHistoryLayer";
 import { useSoulframeShell } from "../soulframe/components/SoulframeShellContext";
+import { ArtifactControls } from "@/src/features/artifacts/ArtifactControls";
 
 const UNMET_GEAR_ALERT_ID = "builder.unmet-gear-requirements";
 const PACT_ART_LIBRARY_KEY = "soulframe-framer.pact-arts.v1";
@@ -218,13 +186,15 @@ function parseCombatArtLibrary(value: string | null): ArtLibrary {
 }
 
 function getActiveCombatArtNames(build: SoulframeBuild) {
-  return [...new Set(
-    (["mainHand", "offHand"] as const).flatMap((slot) => {
-      const itemId = build.equipment[slot];
-      const artName = itemId ? weaponById.get(itemId)?.combatArt : undefined;
-      return artName && combatArtByName.has(artName) ? [artName] : [];
-    }),
-  )];
+  return [
+    ...new Set(
+      (["mainHand", "offHand"] as const).flatMap((slot) => {
+        const itemId = build.equipment[slot];
+        const artName = itemId ? weaponById.get(itemId)?.combatArt : undefined;
+        return artName && combatArtByName.has(artName) ? [artName] : [];
+      }),
+    ),
+  ];
 }
 
 function hydrateActiveArts(
@@ -235,17 +205,16 @@ function hydrateActiveArts(
 ): SoulframeBuild {
   const pact = build.pact.itemId ? pactById.get(build.pact.itemId) : undefined;
   const hasExplicitV5Arts = sourceSchemaVersion === 5;
-  const hasExplicitV4PactArts =
-    sourceSchemaVersion === 4 && Boolean(pact);
+  const hasExplicitV4PactArts = sourceSchemaVersion === 4 && Boolean(pact);
   const artAllocation = pact
     ? normalizePactArtAllocation(
         pact,
         hasExplicitV5Arts || hasExplicitV4PactArts
           ? build.pact.artAllocation
-          : pactLibrary[pact.id] ??
-            (Object.keys(build.pact.artAllocation).length
-              ? build.pact.artAllocation
-              : createDefaultPactArtAllocation(pact)),
+          : (pactLibrary[pact.id] ??
+              (Object.keys(build.pact.artAllocation).length
+                ? build.pact.artAllocation
+                : createDefaultPactArtAllocation(pact))),
       ).value
     : {};
   const combatArts = Object.fromEntries(
@@ -254,8 +223,8 @@ function hydrateActiveArts(
       normalizeCombatArtAllocation(
         artName,
         hasExplicitV5Arts
-          ? build.combatArts[artName] ?? createDefaultCombatArtAllocation()
-          : combatLibrary[artName] ?? createDefaultCombatArtAllocation(),
+          ? (build.combatArts[artName] ?? createDefaultCombatArtAllocation())
+          : (combatLibrary[artName] ?? createDefaultCombatArtAllocation()),
       ).value,
     ]),
   );
@@ -316,7 +285,11 @@ const DEFENSE_CONTEXT_COPY: Record<DefenseId, string> = {
   stabilityIncrease: "Helps reduce stagger buildup and resist knockdowns.",
 };
 
-export function BuilderShell() {
+export function BuilderShell({
+  artifactOwnerId,
+}: {
+  artifactOwnerId: string | null;
+}) {
   const { registerAiAction } = useSoulframeShell();
   const {
     closeAlertCenter,
@@ -334,8 +307,7 @@ export function BuilderShell() {
     "weapon" | "arts" | "rune" | "totems"
   >("weapon");
   const [selectedTotemSlot, setSelectedTotemSlot] = useState(0);
-  const [activeDefenseContext, setActiveDefenseContext] =
-    useState<DefenseId>();
+  const [activeDefenseContext, setActiveDefenseContext] = useState<DefenseId>();
   const [defenseContextPosition, setDefenseContextPosition] =
     useState<DefenseContextPosition>();
   const defenseContextTriggerRefs = useRef(
@@ -386,13 +358,9 @@ export function BuilderShell() {
   } = useMobileWorkspace(build, isMobileShellSuppressed);
   const [hydrated, setHydrated] = useState(false);
   const mobileStatsGeometryState =
-    mobileStatsPresentationState === "collapsed"
-      ? "collapsed"
-      : "expanded";
+    mobileStatsPresentationState === "collapsed" ? "collapsed" : "expanded";
   const mobileStatsDetailState =
-    mobileStatsPresentationState === "collapsed"
-      ? "collapsed"
-      : "expanded";
+    mobileStatsPresentationState === "collapsed" ? "collapsed" : "expanded";
   const showDefenseContext = useCallback((defense: DefenseId) => {
     setActiveDefenseContext(defense);
   }, []);
@@ -430,9 +398,8 @@ export function BuilderShell() {
 
     const dismissOnPointerDown = (event: PointerEvent) => {
       if (!(event.target instanceof Node)) return;
-      const trigger = defenseContextTriggerRefs.current.get(
-        activeDefenseContext,
-      );
+      const trigger =
+        defenseContextTriggerRefs.current.get(activeDefenseContext);
       if (
         trigger?.contains(event.target) ||
         defenseContextPopoverRef.current?.contains(event.target)
@@ -460,9 +427,8 @@ export function BuilderShell() {
     if (!activeDefenseContext || !hydrated) return;
 
     const updatePosition = () => {
-      const trigger = defenseContextTriggerRefs.current.get(
-        activeDefenseContext,
-      );
+      const trigger =
+        defenseContextTriggerRefs.current.get(activeDefenseContext);
       const popover = defenseContextPopoverRef.current;
       if (!trigger || !popover) return;
 
@@ -505,18 +471,10 @@ export function BuilderShell() {
   );
   const optimizationResult = useMemo<OptimizationResult | undefined>(() => {
     if (optimizationMode === "affinity") {
-      return optimizeAffinityForArmor(
-        build,
-        armorCatalogue,
-        talismanCatalogue,
-      );
+      return optimizeAffinityForArmor(build, armorCatalogue, talismanCatalogue);
     }
     if (optimizationMode === "armor") {
-      return optimizeArmorForAffinity(
-        build,
-        armorCatalogue,
-        talismanCatalogue,
-      );
+      return optimizeArmorForAffinity(build, armorCatalogue, talismanCatalogue);
     }
     return undefined;
   }, [build, optimizationMode]);
@@ -639,9 +597,9 @@ export function BuilderShell() {
     } else {
       const stored =
         window.localStorage.getItem(STORAGE_KEY) ??
-        LEGACY_STORAGE_KEYS.map((key) =>
-          window.localStorage.getItem(key),
-        ).find((value) => value !== null);
+        LEGACY_STORAGE_KEYS.map((key) => window.localStorage.getItem(key)).find(
+          (value) => value !== null,
+        );
       if (stored) {
         const result = parseStoredBuild(stored, {
           armor: armorCatalogue,
@@ -780,9 +738,7 @@ export function BuilderShell() {
     const normalized = normalizePactArtAllocation(pact, allocation).value;
     setPactArtLibrary((current) => ({ ...current, [pactId]: normalized }));
     if (build.pact.itemId === pactId) {
-      setBuild((current) =>
-        withPactArtAllocation(current, pactId, normalized),
-      );
+      setBuild((current) => withPactArtAllocation(current, pactId, normalized));
     }
   };
 
@@ -798,9 +754,7 @@ export function BuilderShell() {
       remembered[pactId] ?? createDefaultPactArtAllocation(pact),
     ).value;
     setPactArtLibrary({ ...remembered, [pactId]: allocation });
-    setBuild((current) =>
-      withPactArtAllocation(current, pactId, allocation),
-    );
+    setBuild((current) => withPactArtAllocation(current, pactId, allocation));
   };
 
   const resetPactArtAllocation = (pactId: string) => {
@@ -826,10 +780,6 @@ export function BuilderShell() {
           }
         : current,
     );
-  };
-
-  const resetCombatArtAllocation = (artName: string) => {
-    updateCombatArtAllocation(artName, createDefaultCombatArtAllocation());
   };
 
   const equipWeapon = (
@@ -861,16 +811,16 @@ export function BuilderShell() {
       await navigator.clipboard.writeText(url.toString());
       notifyAlert({
         id: "builder.share",
-        title: "Build link ready",
-        description: "Build link copied to your clipboard.",
+        title: "Frame link ready",
+        description: "Frame link copied to your clipboard.",
         severity: "info",
       });
     } catch {
       window.history.replaceState(window.history.state, "", url);
       notifyAlert({
         id: "builder.share",
-        title: "Build link ready",
-        description: "Build link added to the address bar.",
+        title: "Frame link ready",
+        description: "Frame link added to the address bar.",
         severity: "info",
       });
     }
@@ -878,11 +828,7 @@ export function BuilderShell() {
 
   const resetBuild = () => {
     setBuild(
-      hydrateActiveArts(
-        DEFAULT_BUILD,
-        pactArtLibrary,
-        combatArtLibrary,
-      ),
+      hydrateActiveArts(DEFAULT_BUILD, pactArtLibrary, combatArtLibrary),
     );
     notifyAlert({
       id: "builder.reset",
@@ -899,18 +845,15 @@ export function BuilderShell() {
         setOptimizationMode(undefined);
       }
       toggleMobileMenu(opener);
-    }, [closeAlertCenter, isMobileMenuOpen, toggleMobileMenu],
+    },
+    [closeAlertCenter, isMobileMenuOpen, toggleMobileMenu],
   );
 
   const openOptimization = useCallback(() => {
     closeAlertCenter();
     if (isMobileMenuOpen) closeMobileWorkspaceOverlay();
     setOptimizationMode("choose");
-  }, [
-    closeAlertCenter,
-    closeMobileWorkspaceOverlay,
-    isMobileMenuOpen,
-  ]);
+  }, [closeAlertCenter, closeMobileWorkspaceOverlay, isMobileMenuOpen]);
 
   useEffect(
     () =>
@@ -948,36 +891,63 @@ export function BuilderShell() {
     isOptimizationOpen,
   ]);
 
+  const publisherHref = `/soulframe/publisher/builds/new?${new URLSearchParams({ frame: serializeBuild(build) })}`;
+
   return (
     <main className={BUILDER_SHELL_CLASS_NAMES.app}>
-      <BuilderHeader
-        buildName={build.name}
-        isMobileMenuAvailable={isMobileMenuAvailable}
-        isMobileMenuOpen={isMobileMenuOpen}
-        isMobileSuppressed={isMobileShellSuppressed}
-        mobileMenuTriggerRef={mobileTopMenuTriggerRef}
-        mobileMenuLayerRef={mobileMenuLayerRef}
-        onNameChange={(name) =>
-          setBuild((current) => ({ ...current, name }))
-        }
-        onToggleMobileMenu={toggleBuilderMenu}
-      />
-      <MobileHeaderDrawer
-        buildName={build.name}
-        isMenuAvailable={isMobileMenuAvailable}
-        isDrawerOpen={isMobileMenuOpen}
-        isSuppressed={isMobileShellSuppressed}
-        menuLayerElement={mobileMenuLayerElement}
-        overlayTriggerRef={activeMobileMenuTriggerRef}
-        drawerPanelRef={mobileMenuPanelRef}
-        drawerCloseRef={mobileMenuCloseRef}
-        onCloseDrawer={closeMobileWorkspaceOverlay}
-        onNameChange={(name) =>
-          setBuild((current) => ({ ...current, name }))
-        }
-        onReset={resetBuild}
-        onShare={shareBuild}
-      />
+      {!artifactOwnerId ? (
+        <BuilderHeader
+          buildName={build.name}
+          isMobileMenuAvailable={isMobileMenuAvailable}
+          isMobileMenuOpen={isMobileMenuOpen}
+          isMobileSuppressed={isMobileShellSuppressed}
+          mobileMenuTriggerRef={mobileTopMenuTriggerRef}
+          mobileMenuLayerRef={mobileMenuLayerRef}
+          onNameChange={(name) => setBuild((current) => ({ ...current, name }))}
+          onToggleMobileMenu={toggleBuilderMenu}
+        />
+      ) : null}
+      {hydrated && !artifactOwnerId ? (
+        <div
+          className={`relative z-30 mt-2 flex min-h-12 items-center justify-end border-b border-line/45 px-1.5 pb-2 ${isMobileShellSuppressed ? "max-tablet:hidden" : ""}`}
+        >
+          <Link
+            href={publisherHref}
+            className="inline-flex min-h-11 items-center justify-center border border-gold bg-control-hover px-4 font-sans text-2xs font-bold uppercase tracking-wide text-gold-bright no-underline shadow-control-active focus-visible:outline-none focus-visible:shadow-focus"
+            aria-label="Publish the active Frame as a Build"
+          >
+            Publish Build
+          </Link>
+        </div>
+      ) : null}
+      {artifactOwnerId && hydrated ? (
+        <ArtifactControls
+          ownerId={artifactOwnerId}
+          build={build}
+          isMobileSuppressed={isMobileShellSuppressed}
+          publishHref={publisherHref}
+          onNameChange={(name) => setBuild((current) => ({ ...current, name }))}
+          onReplaceBuild={setBuild}
+          onReset={resetBuild}
+          onShare={shareBuild}
+        />
+      ) : null}
+      {!artifactOwnerId ? (
+        <MobileHeaderDrawer
+          buildName={build.name}
+          isMenuAvailable={isMobileMenuAvailable}
+          isDrawerOpen={isMobileMenuOpen}
+          isSuppressed={isMobileShellSuppressed}
+          menuLayerElement={mobileMenuLayerElement}
+          overlayTriggerRef={activeMobileMenuTriggerRef}
+          drawerPanelRef={mobileMenuPanelRef}
+          drawerCloseRef={mobileMenuCloseRef}
+          onCloseDrawer={closeMobileWorkspaceOverlay}
+          onNameChange={(name) => setBuild((current) => ({ ...current, name }))}
+          onReset={resetBuild}
+          onShare={shareBuild}
+        />
+      ) : null}
       <section className={BUILDER_SHELL_CLASS_NAMES.workspace}>
         <div
           className={
@@ -985,9 +955,7 @@ export function BuilderShell() {
               isMobileStatsExpanded ? "visible" : "hidden"
             ]
           }
-          data-mobile-state={
-            isMobileStatsExpanded ? "visible" : "hidden"
-          }
+          data-mobile-state={isMobileStatsExpanded ? "visible" : "hidden"}
           data-mobile-workspace-scrim
           aria-hidden="true"
           onPointerDown={(event) => {
@@ -1010,81 +978,58 @@ export function BuilderShell() {
                 Virtues
               </span>
             </header>
-            <BuilderVirtueAlignment
-              virtues={build.virtues}
+            <VirtuesAffinityModule
+              build={build}
               bonuses={calculation.bonusVirtues}
-              sources={build.affinitySources}
-              onChange={updateVirtues}
+              onVirtuesChange={updateVirtues}
               onSourcesChange={updateAffinitySources}
             />
           </aside>
 
           <div className={BUILDER_SHELL_CLASS_NAMES.loadoutStage}>
-            <BuilderPactBanner
-              pact={
-                build.pact.itemId
-                  ? pactById.get(build.pact.itemId)
-                  : undefined
+            <PactArtsModule build={build} isOpen={isPactPickerOpen}
+              allocations={{ ...pactArtLibrary, ...(build.pact.itemId ? { [build.pact.itemId]: build.pact.artAllocation } : {}) }}
+              onOpen={() => setIsPactPickerOpen(true)} onClose={closeBuilderModalLayer}
+              onEquip={equipPact} onAllocationChange={updatePactArtAllocation} onResetAllocation={resetPactArtAllocation} />
+            <ArmorTalismanEquipmentModule
+              build={build}
+              calculation={calculation}
+              activeSlot={
+                isArmorTalismanSlot(activeSlot) ? activeSlot : undefined
               }
-              artAllocation={build.pact.artAllocation}
-              isActive={isPactPickerOpen}
-              onOpen={() => setIsPactPickerOpen(true)}
-            />
-            {ARMOR_SLOTS.map((slot) => {
-              const itemId = build.equipment[slot];
-              const item = itemId ? armorById.get(itemId) : undefined;
-              const contribution = calculation.items.find(
-                (entry) => entry.itemId === itemId,
-              );
-              return (
-                <BuilderEquipmentSlot
-                  key={slot}
-                  slot={slot}
-                  item={item}
-                  contribution={contribution}
-                  virtues={calculation.effectiveVirtues}
-                  isActive={activeSlot === slot}
-                  onOpen={() => setActiveSlot(slot)}
-                />
-              );
-            })}
-
-            <BuilderTalismanEquipmentSlot
-              item={
-                build.equipment.talisman
-                  ? talismanById.get(build.equipment.talisman)
-                  : undefined
+              onActiveSlotChange={setActiveSlot}
+              onClosePicker={closeBuilderModalLayer}
+              onEquipmentChange={(slot, itemId) =>
+                setBuild((current) =>
+                  updateArmorTalismanEquipment(current, slot, itemId),
+                )
               }
-              isActive={activeSlot === "talisman"}
-              onOpen={() => setActiveSlot("talisman")}
             />
-            {(["offHand", "mainHand"] as const).map((slot) => (
-              <BuilderWeaponEquipmentSlot
-                key={slot}
-                slot={slot}
-                item={
-                  build.equipment[slot]
-                    ? weaponById.get(build.equipment[slot]!)
-                    : undefined
+            <WeaponEquipmentModule build={build} calculation={calculation}
+              activeSlot={activeSlot === "mainHand" || activeSlot === "offHand" ? activeSlot : undefined}
+              activeTab={weaponConfigTab}
+              onOpen={(slot, tab, index) => { if (index !== undefined) setSelectedTotemSlot(index); setWeaponConfigTab(tab); setActiveSlot(slot); }}
+              onConfigure={(tab, index) => { if (index !== undefined) setSelectedTotemSlot(index); setWeaponConfigTab(tab); }}
+              onClose={closeBuilderModalLayer}
+              onWeaponChange={(slot, itemId) => {
+                if (itemId) {
+                  const normalized = normalizeWeaponEnhancements(build.weaponEnhancements[slot], weaponById.get(itemId), runeById);
+                  if (normalized.changed) notifyAlert({ id: "builder.weapon-enhancements-cleared", title: "Weapon enhancements adjusted", description: "Incompatible Rune or Totem selections were cleared for the new weapon.", severity: "warning" });
+                  equipWeapon(slot, itemId, normalized.value);
+                } else {
+                  const remembered = { ...combatArtLibrary, ...build.combatArts };
+                  setCombatArtLibrary(remembered);
+                  setBuild((current) => { const equipment = { ...current.equipment }; delete equipment[slot]; return withActiveCombatArts({ ...current, equipment, weaponEnhancements: { ...current.weaponEnhancements, [slot]: createEmptyWeaponEnhancements() } }, remembered); });
+                  closeBuilderModalLayer();
                 }
-                enhancements={build.weaponEnhancements[slot]}
-                virtues={calculation.effectiveVirtues}
-                isActive={activeSlot === slot}
-                onOpenWeapon={() => {
-                  setWeaponConfigTab("weapon");
-                  setActiveSlot(slot);
-                }}
-                onOpenRune={() => {
-                  setWeaponConfigTab("rune");
-                  setActiveSlot(slot);
-                }}
-                onOpenTotem={(index) => {
-                  setSelectedTotemSlot(index);
-                  setWeaponConfigTab("totems");
-                  setActiveSlot(slot);
-                }}
-              />
-            ))}
+              }} />
+            <WeaponEnhancementsModule build={build}
+              activeSlot={activeSlot === "mainHand" || activeSlot === "offHand" ? activeSlot : undefined}
+              activeTab={weaponConfigTab} selectedTotemSlot={selectedTotemSlot}
+              onOpen={(slot, tab, index) => { if (index !== undefined) setSelectedTotemSlot(index); setWeaponConfigTab(tab); setActiveSlot(slot); }}
+              onClose={closeBuilderModalLayer}
+              onEnhancementsChange={(slot, enhancements) => setBuild((current) => ({ ...current, weaponEnhancements: { ...current.weaponEnhancements, [slot]: enhancements } }))}
+              onArtAllocationChange={updateCombatArtAllocation} />
           </div>
 
           <MobileSupportZone />
@@ -1113,10 +1058,10 @@ export function BuilderShell() {
         </div>
 
         <section
-            ref={mobileStatsDockRef}
-            className={MOBILE_STATS_DOCK_CLASS_NAMES[mobileStatsGeometryState]}
-            data-mobile-state={mobileStatsPresentationState}
-          >
+          ref={mobileStatsDockRef}
+          className={MOBILE_STATS_DOCK_CLASS_NAMES[mobileStatsGeometryState]}
+          data-mobile-state={mobileStatsPresentationState}
+        >
           <div
             ref={mobileStatsPanelRef}
             className={MOBILE_STATS_PANEL_CLASS_NAMES[mobileStatsGeometryState]}
@@ -1128,7 +1073,9 @@ export function BuilderShell() {
           >
             <aside
               ref={mobileStatsRailRef}
-              className={MOBILE_STATS_RAIL_CLASS_NAMES[mobileStatsGeometryState]}
+              className={
+                MOBILE_STATS_RAIL_CLASS_NAMES[mobileStatsGeometryState]
+              }
             >
               <div
                 className={BUILDER_SHELL_CLASS_NAMES.statSheetSurface}
@@ -1140,20 +1087,28 @@ export function BuilderShell() {
                 }
               >
                 <div
-                  className={MOBILE_STATS_SUMMARY_CLASS_NAMES[mobileStatsGeometryState]}
+                  className={
+                    MOBILE_STATS_SUMMARY_CLASS_NAMES[mobileStatsGeometryState]
+                  }
                   data-mobile-stats-summary
                 >
                   <button
                     ref={mobileStatsTriggerRef}
                     type="button"
-                    className={MOBILE_STATS_TRIGGER_CLASS_NAMES[mobileStatsGeometryState]}
+                    className={
+                      MOBILE_STATS_TRIGGER_CLASS_NAMES[mobileStatsGeometryState]
+                    }
                     aria-expanded={isMobileStatsExpanded}
                     aria-controls="mobile-stats-panel"
                     aria-label={`${isMobileStatsExpanded ? "Collapse" : "Expand"} stat sheet. ${calculation.total} total defense. Sidearm ${mobileOffHandAttack} attack and ${mobileOffHandCharged} charged attack. Weapon ${mobileMainHandAttack} attack and ${mobileMainHandCharged} charged attack.`}
                     onClick={toggleMobileStats}
                   >
                     <span
-                      className={MOBILE_STATS_TRIGGER_ICON_SHELL_CLASS_NAMES[mobileStatsGeometryState]}
+                      className={
+                        MOBILE_STATS_TRIGGER_ICON_SHELL_CLASS_NAMES[
+                          mobileStatsGeometryState
+                        ]
+                      }
                       aria-hidden="true"
                     >
                       <Image
@@ -1165,7 +1120,11 @@ export function BuilderShell() {
                         unoptimized
                       />
                       <Image
-                        className={MOBILE_STATS_TRIGGER_ICON_CLASS_NAMES[mobileStatsGeometryState]}
+                        className={
+                          MOBILE_STATS_TRIGGER_ICON_CLASS_NAMES[
+                            mobileStatsGeometryState
+                          ]
+                        }
                         src="/icons/picker-select-arrow.svg"
                         alt=""
                         width={10}
@@ -1176,14 +1135,20 @@ export function BuilderShell() {
                     </span>
                   </button>
                   <header
-                    className={MOBILE_STATS_HEADING_CLASS_NAMES[mobileStatsGeometryState]}
+                    className={
+                      MOBILE_STATS_HEADING_CLASS_NAMES[mobileStatsGeometryState]
+                    }
                   >
                     <span
-                      className={BUILDER_SHELL_CLASS_NAMES.statSheetHeaderFloral}
+                      className={
+                        BUILDER_SHELL_CLASS_NAMES.statSheetHeaderFloral
+                      }
                       aria-hidden="true"
                     />
                     <span
-                      className={BUILDER_SHELL_CLASS_NAMES.statSheetHeaderOverlay}
+                      className={
+                        BUILDER_SHELL_CLASS_NAMES.statSheetHeaderOverlay
+                      }
                       aria-hidden="true"
                     />
                     <span
@@ -1205,7 +1170,9 @@ export function BuilderShell() {
                     >
                       <span
                         className={
-                          MOBILE_STATS_TITLE_CLASS_NAMES[mobileStatsGeometryState]
+                          MOBILE_STATS_TITLE_CLASS_NAMES[
+                            mobileStatsGeometryState
+                          ]
                         }
                       >
                         Stat Sheet
@@ -1233,7 +1200,9 @@ export function BuilderShell() {
                     <div className={MOBILE_STATS_COMPACT_DEFENSE_CLASS_NAME}>
                       <span className={MOBILE_STATS_COMPACT_CREST_CLASS_NAME}>
                         <Image
-                          className={MOBILE_STATS_COMPACT_CREST_LAYER_CLASS_NAME}
+                          className={
+                            MOBILE_STATS_COMPACT_CREST_LAYER_CLASS_NAME
+                          }
                           src="/icons/armor-crest/desktop-shield-nightframe-rear-filigree-v3.png"
                           alt=""
                           width={160}
@@ -1241,16 +1210,22 @@ export function BuilderShell() {
                           unoptimized
                           draggable={false}
                         />
-                        <strong className={MOBILE_STATS_COMPACT_TOTAL_CLASS_NAME}>
+                        <strong
+                          className={MOBILE_STATS_COMPACT_TOTAL_CLASS_NAME}
+                        >
                           {calculation.total}
                         </strong>
                       </span>
                       <span
-                        className={MOBILE_STATS_COMPACT_DEFENSE_VALUES_CLASS_NAME}
+                        className={
+                          MOBILE_STATS_COMPACT_DEFENSE_VALUES_CLASS_NAME
+                        }
                       >
                         {DEFENSE_IDS.map((defense) => (
                           <span
-                            className={MOBILE_STATS_COMPACT_DEFENSE_ITEM_CLASS_NAME}
+                            className={
+                              MOBILE_STATS_COMPACT_DEFENSE_ITEM_CLASS_NAME
+                            }
                             key={defense}
                           >
                             <Image
@@ -1266,46 +1241,90 @@ export function BuilderShell() {
                       </span>
                     </div>
                     <div className={MOBILE_STATS_COMPACT_GROUP_CLASS_NAME}>
-                      <span className={MOBILE_STATS_COMPACT_GROUP_LABEL_CLASS_NAME}>
+                      <span
+                        className={MOBILE_STATS_COMPACT_GROUP_LABEL_CLASS_NAME}
+                      >
                         Sidearm
                       </span>
                       <span className={MOBILE_STATS_COMPACT_METRICS_CLASS_NAME}>
-                        <span className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}>
-                          <small className={MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME}>
+                        <span
+                          className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}
+                        >
+                          <small
+                            className={
+                              MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME
+                            }
+                          >
                             Atk
                           </small>
-                          <strong className={MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME}>
+                          <strong
+                            className={
+                              MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME
+                            }
+                          >
                             {mobileOffHandAttack}
                           </strong>
                         </span>
-                        <span className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}>
-                          <small className={MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME}>
+                        <span
+                          className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}
+                        >
+                          <small
+                            className={
+                              MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME
+                            }
+                          >
                             Chg
                           </small>
-                          <strong className={MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME}>
+                          <strong
+                            className={
+                              MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME
+                            }
+                          >
                             {mobileOffHandCharged}
                           </strong>
                         </span>
                       </span>
                     </div>
                     <div className={MOBILE_STATS_COMPACT_GROUP_CLASS_NAME}>
-                      <span className={MOBILE_STATS_COMPACT_GROUP_LABEL_CLASS_NAME}>
+                      <span
+                        className={MOBILE_STATS_COMPACT_GROUP_LABEL_CLASS_NAME}
+                      >
                         Weapon
                       </span>
                       <span className={MOBILE_STATS_COMPACT_METRICS_CLASS_NAME}>
-                        <span className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}>
-                          <small className={MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME}>
+                        <span
+                          className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}
+                        >
+                          <small
+                            className={
+                              MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME
+                            }
+                          >
                             Atk
                           </small>
-                          <strong className={MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME}>
+                          <strong
+                            className={
+                              MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME
+                            }
+                          >
                             {mobileMainHandAttack}
                           </strong>
                         </span>
-                        <span className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}>
-                          <small className={MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME}>
+                        <span
+                          className={MOBILE_STATS_COMPACT_METRIC_CLASS_NAME}
+                        >
+                          <small
+                            className={
+                              MOBILE_STATS_COMPACT_METRIC_LABEL_CLASS_NAME
+                            }
+                          >
                             Chg
                           </small>
-                          <strong className={MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME}>
+                          <strong
+                            className={
+                              MOBILE_STATS_COMPACT_METRIC_VALUE_CLASS_NAME
+                            }
+                          >
                             {mobileMainHandCharged}
                           </strong>
                         </span>
@@ -1325,264 +1344,316 @@ export function BuilderShell() {
                     }
                     inert={mobileStatsPresentationState === "closing"}
                   >
-                  <div className={MOBILE_DEFENSE_BACKDROP_CLASS_NAME}>
-                    <div
-                      className={MOBILE_DEFENSE_HUD_CLASS_NAMES[mobileStatsGeometryState]}
-                      aria-label={`${calculation.total} total defense`}
-                      data-mobile-stats-block="defense"
-                    >
-                    <div
-                      className={MOBILE_DEFENSE_PLAQUE_CLASS_NAMES[mobileStatsGeometryState]}
-                    >
-                      <svg
+                    <div className={MOBILE_DEFENSE_BACKDROP_CLASS_NAME}>
+                      <div
                         className={
-                          MOBILE_DEFENSE_PLAQUE_DECORATION_CLASS_NAMES[
+                          MOBILE_DEFENSE_HUD_CLASS_NAMES[
                             mobileStatsGeometryState
                           ]
                         }
-                        viewBox="0 0 100 100"
-                        preserveAspectRatio="none"
-                        aria-hidden="true"
+                        aria-label={`${calculation.total} total defense`}
+                        data-mobile-stats-block="defense"
                       >
-                        <defs>
-                          <linearGradient
-                            id="defense-plaque-surface"
-                            x1="0"
-                            y1="0"
-                            x2="1"
-                            y2="0"
-                          >
-                            <stop offset="0" stopColor="#1e1812" stopOpacity="0.96" />
-                            <stop offset="1" stopColor="#2d2219" stopOpacity="0.9" />
-                          </linearGradient>
-                          <linearGradient
-                            id="defense-plaque-sheen"
-                            x1="0"
-                            y1="0"
-                            x2="1"
-                            y2="0"
-                          >
-                            <stop offset="0" stopColor="#d5a859" stopOpacity="0.2" />
-                            <stop offset="0.72" stopColor="#d5a859" stopOpacity="0" />
-                          </linearGradient>
-                        </defs>
-                        <path
-                          d="M2 4 96 1 98 12 95 26 99 40 96 54 99 69 95 84 98 97 3 100 0 88 3 73 0 57 3 40 0 22Z"
-                          fill="url(#defense-plaque-surface)"
-                        />
-                        <path
-                          d="M2 4 96 1 98 12 95 26 99 40 96 54 99 69 95 84 98 97 3 100 0 88 3 73 0 57 3 40 0 22Z"
-                          fill="url(#defense-plaque-sheen)"
-                        />
-                      </svg>
-                      {DEFENSE_IDS.map((defense) => (
                         <div
                           className={
-                            MOBILE_DEFENSE_STAT_CLASS_NAMES[mobileStatsGeometryState]
+                            MOBILE_DEFENSE_PLAQUE_CLASS_NAMES[
+                              mobileStatsGeometryState
+                            ]
                           }
-                          data-mobile-stats-detail
-                          key={defense}
+                        >
+                          <svg
+                            className={
+                              MOBILE_DEFENSE_PLAQUE_DECORATION_CLASS_NAMES[
+                                mobileStatsGeometryState
+                              ]
+                            }
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            aria-hidden="true"
+                          >
+                            <defs>
+                              <linearGradient
+                                id="defense-plaque-surface"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="0"
+                              >
+                                <stop
+                                  offset="0"
+                                  stopColor="#1e1812"
+                                  stopOpacity="0.96"
+                                />
+                                <stop
+                                  offset="1"
+                                  stopColor="#2d2219"
+                                  stopOpacity="0.9"
+                                />
+                              </linearGradient>
+                              <linearGradient
+                                id="defense-plaque-sheen"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="0"
+                              >
+                                <stop
+                                  offset="0"
+                                  stopColor="#d5a859"
+                                  stopOpacity="0.2"
+                                />
+                                <stop
+                                  offset="0.72"
+                                  stopColor="#d5a859"
+                                  stopOpacity="0"
+                                />
+                              </linearGradient>
+                            </defs>
+                            <path
+                              d="M2 4 96 1 98 12 95 26 99 40 96 54 99 69 95 84 98 97 3 100 0 88 3 73 0 57 3 40 0 22Z"
+                              fill="url(#defense-plaque-surface)"
+                            />
+                            <path
+                              d="M2 4 96 1 98 12 95 26 99 40 96 54 99 69 95 84 98 97 3 100 0 88 3 73 0 57 3 40 0 22Z"
+                              fill="url(#defense-plaque-sheen)"
+                            />
+                          </svg>
+                          {DEFENSE_IDS.map((defense) => (
+                            <div
+                              className={
+                                MOBILE_DEFENSE_STAT_CLASS_NAMES[
+                                  mobileStatsGeometryState
+                                ]
+                              }
+                              data-mobile-stats-detail
+                              key={defense}
+                            >
+                              <Image
+                                className={
+                                  MOBILE_DEFENSE_STAT_IMAGE_CLASS_NAMES[
+                                    mobileStatsGeometryState
+                                  ]
+                                }
+                                src={defenseMeta[defense].icon}
+                                alt=""
+                                aria-hidden="true"
+                                width={32}
+                                height={32}
+                                unoptimized
+                              />
+                              <span
+                                className={
+                                  MOBILE_DEFENSE_LABEL_CLASS_NAMES[
+                                    mobileStatsGeometryState
+                                  ]
+                                }
+                              >
+                                {defenseMeta[defense].label}
+                              </span>
+                              <span
+                                className={
+                                  MOBILE_DEFENSE_SHORT_LABEL_CLASS_NAMES[
+                                    mobileStatsGeometryState
+                                  ]
+                                }
+                                aria-hidden="true"
+                              >
+                                {MOBILE_DEFENSE_SHORT_LABELS[defense]}
+                              </span>
+                              <strong
+                                className={
+                                  MOBILE_DEFENSE_STAT_VALUE_CLASS_NAMES[
+                                    mobileStatsGeometryState
+                                  ]
+                                }
+                              >
+                                {calculation.defenses[defense]}
+                              </strong>
+                              <button
+                                ref={(element) => {
+                                  if (element) {
+                                    defenseContextTriggerRefs.current.set(
+                                      defense,
+                                      element,
+                                    );
+                                  } else {
+                                    defenseContextTriggerRefs.current.delete(
+                                      defense,
+                                    );
+                                  }
+                                }}
+                                className={MOBILE_DEFENSE_STAT_INFO_CLASS_NAME}
+                                type="button"
+                                aria-label={`Explain ${defenseMeta[defense].label}`}
+                                aria-describedby={
+                                  activeDefenseContext === defense
+                                    ? `defense-context-${defense}`
+                                    : undefined
+                                }
+                                aria-expanded={activeDefenseContext === defense}
+                                onPointerEnter={(event) => {
+                                  if (event.pointerType === "mouse") {
+                                    showDefenseContext(defense);
+                                  }
+                                }}
+                                onPointerLeave={(event) => {
+                                  if (
+                                    event.pointerType === "mouse" &&
+                                    document.activeElement !==
+                                      event.currentTarget
+                                  ) {
+                                    hideDefenseContext();
+                                  }
+                                }}
+                                onPointerDown={() => {
+                                  defensePointerDownWasActiveRef.current =
+                                    activeDefenseContext === defense;
+                                }}
+                                onFocus={() => showDefenseContext(defense)}
+                                onBlur={() => hideDefenseContext()}
+                                onKeyDown={(event) => {
+                                  if (
+                                    event.key !== "Enter" &&
+                                    event.key !== " "
+                                  ) {
+                                    return;
+                                  }
+                                  event.preventDefault();
+                                  setActiveDefenseContext((current) =>
+                                    current === defense ? undefined : defense,
+                                  );
+                                }}
+                                onClick={(event) => {
+                                  if (event.detail === 0) return;
+                                  if (defensePointerDownWasActiveRef.current) {
+                                    hideDefenseContext();
+                                  } else {
+                                    showDefenseContext(defense);
+                                  }
+                                }}
+                              >
+                                <span
+                                  className={
+                                    MOBILE_DEFENSE_STAT_INFO_GLYPH_CLASS_NAME
+                                  }
+                                  aria-hidden="true"
+                                >
+                                  i
+                                </span>
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div
+                          className={
+                            MOBILE_DEFENSE_CREST_CLASS_NAMES[
+                              mobileStatsGeometryState
+                            ]
+                          }
+                          aria-hidden="true"
+                          data-mobile-stats-shield
                         >
                           <Image
-                            className={
-                              MOBILE_DEFENSE_STAT_IMAGE_CLASS_NAMES[mobileStatsGeometryState]
-                            }
-                            src={defenseMeta[defense].icon}
+                            className={`${MOBILE_DEFENSE_LAYER_CLASS_NAMES[mobileStatsGeometryState]} block max-tablet:scale-[1.2] compact-desktop:scale-[1.2]`}
+                            src="/icons/armor-crest/desktop-shield-nightframe-rear-filigree-v3.png"
                             alt=""
-                            aria-hidden="true"
-                            width={32}
-                            height={32}
+                            width={160}
+                            height={180}
                             unoptimized
+                            draggable={false}
                           />
+                          {[
+                            "shield-bg",
+                            "shield-bg-art",
+                            "shield-border",
+                            "filigree",
+                          ].map((layer) => (
+                            <Image
+                              className={`${MOBILE_DEFENSE_LAYER_CLASS_NAMES[mobileStatsGeometryState]} hidden ${
+                                layer === "filigree"
+                                  ? MOBILE_DEFENSE_FILIGREE_CLASS_NAMES[
+                                      mobileStatsGeometryState
+                                    ]
+                                  : ""
+                              }`}
+                              src={`/icons/armor-crest/${layer}.svg`}
+                              alt=""
+                              width={160}
+                              height={180}
+                              unoptimized
+                              draggable={false}
+                              data-mobile-stats-filigree={
+                                layer === "filigree" ? "" : undefined
+                              }
+                              key={layer}
+                            />
+                          ))}
                           <span
                             className={
-                              MOBILE_DEFENSE_LABEL_CLASS_NAMES[
+                              MOBILE_DEFENSE_TOTAL_LABEL_CLASS_NAMES[
                                 mobileStatsGeometryState
                               ]
                             }
+                            data-mobile-stats-detail
                           >
-                            {defenseMeta[defense].label}
-                          </span>
-                          <span
-                            className={
-                              MOBILE_DEFENSE_SHORT_LABEL_CLASS_NAMES[
-                                mobileStatsGeometryState
-                              ]
-                            }
-                            aria-hidden="true"
-                          >
-                            {MOBILE_DEFENSE_SHORT_LABELS[defense]}
+                            Total Def
                           </span>
                           <strong
                             className={
-                              MOBILE_DEFENSE_STAT_VALUE_CLASS_NAMES[
+                              MOBILE_DEFENSE_TOTAL_CLASS_NAMES[
                                 mobileStatsGeometryState
                               ]
                             }
                           >
-                            {calculation.defenses[defense]}
+                            {calculation.total}
                           </strong>
-                          <button
-                            ref={(element) => {
-                              if (element) {
-                                defenseContextTriggerRefs.current.set(
-                                  defense,
-                                  element,
-                                );
-                              } else {
-                                defenseContextTriggerRefs.current.delete(defense);
-                              }
-                            }}
-                            className={MOBILE_DEFENSE_STAT_INFO_CLASS_NAME}
-                            type="button"
-                            aria-label={`Explain ${defenseMeta[defense].label}`}
-                            aria-describedby={
-                              activeDefenseContext === defense
-                                ? `defense-context-${defense}`
-                                : undefined
-                            }
-                            aria-expanded={activeDefenseContext === defense}
-                            onPointerEnter={(event) => {
-                              if (event.pointerType === "mouse") {
-                                showDefenseContext(defense);
-                              }
-                            }}
-                            onPointerLeave={(event) => {
-                              if (
-                                event.pointerType === "mouse" &&
-                                document.activeElement !== event.currentTarget
-                              ) {
-                                hideDefenseContext();
-                              }
-                            }}
-                            onPointerDown={() => {
-                              defensePointerDownWasActiveRef.current =
-                                activeDefenseContext === defense;
-                            }}
-                            onFocus={() => showDefenseContext(defense)}
-                            onBlur={() => hideDefenseContext()}
-                            onKeyDown={(event) => {
-                              if (event.key !== "Enter" && event.key !== " ") {
-                                return;
-                              }
-                              event.preventDefault();
-                              setActiveDefenseContext((current) =>
-                                current === defense ? undefined : defense,
-                              );
-                            }}
-                            onClick={(event) => {
-                              if (event.detail === 0) return;
-                              if (defensePointerDownWasActiveRef.current) {
-                                hideDefenseContext();
-                              } else {
-                                showDefenseContext(defense);
-                              }
-                            }}
-                          >
-                            <span
-                              className={MOBILE_DEFENSE_STAT_INFO_GLYPH_CLASS_NAME}
-                              aria-hidden="true"
-                            >
-                              i
-                            </span>
-                          </button>
                         </div>
-                      ))}
-                    </div>
-
-                      <div
-                        className={MOBILE_DEFENSE_CREST_CLASS_NAMES[mobileStatsGeometryState]}
-                        aria-hidden="true"
-                        data-mobile-stats-shield
-                      >
-                      <Image
-                        className={`${MOBILE_DEFENSE_LAYER_CLASS_NAMES[mobileStatsGeometryState]} block max-tablet:scale-[1.2] compact-desktop:scale-[1.2]`}
-                        src="/icons/armor-crest/desktop-shield-nightframe-rear-filigree-v3.png"
-                        alt=""
-                        width={160}
-                        height={180}
-                        unoptimized
-                        draggable={false}
-                      />
-                      {[
-                        "shield-bg",
-                        "shield-bg-art",
-                        "shield-border",
-                        "filigree",
-                      ].map((layer) => (
-                        <Image
-                          className={`${MOBILE_DEFENSE_LAYER_CLASS_NAMES[mobileStatsGeometryState]} hidden ${
-                            layer === "filigree"
-                              ? MOBILE_DEFENSE_FILIGREE_CLASS_NAMES[mobileStatsGeometryState]
-                              : ""
-                          }`}
-                          src={`/icons/armor-crest/${layer}.svg`}
-                          alt=""
-                          width={160}
-                          height={180}
-                          unoptimized
-                          draggable={false}
-                          data-mobile-stats-filigree={
-                            layer === "filigree" ? "" : undefined
-                          }
-                          key={layer}
-                        />
-                      ))}
-                      <span
-                        className={
-                          MOBILE_DEFENSE_TOTAL_LABEL_CLASS_NAMES[mobileStatsGeometryState]
-                        }
-                        data-mobile-stats-detail
-                      >
-                        Total Def
-                      </span>
-                      <strong
-                        className={
-                          MOBILE_DEFENSE_TOTAL_CLASS_NAMES[mobileStatsGeometryState]
-                        }
-                      >
-                        {calculation.total}
-                      </strong>
                       </div>
                     </div>
-                  </div>
 
-                  <section
-                    className={MOBILE_BUILD_DAMAGE_CLASS_NAMES[mobileStatsGeometryState]}
-                  >
-                    <div
+                    <section
                       className={
-                        MOBILE_BUILD_DAMAGE_PANELS_CLASS_NAMES[mobileStatsGeometryState]
+                        MOBILE_BUILD_DAMAGE_CLASS_NAMES[
+                          mobileStatsGeometryState
+                        ]
                       }
                     >
-                      <WeaponDamagePanel
-                        hand="Sidearm"
-                        index={2}
-                        mobileHand="Sidearm"
-                        mobileStatsState={mobileStatsGeometryState}
-                        morphKey="sidearm"
-                        virtues={calculation.effectiveVirtues}
-                        item={
-                          build.equipment.offHand
-                            ? weaponById.get(build.equipment.offHand)
-                            : undefined
+                      <div
+                        className={
+                          MOBILE_BUILD_DAMAGE_PANELS_CLASS_NAMES[
+                            mobileStatsGeometryState
+                          ]
                         }
-                      />
-                      <WeaponDamagePanel
-                        hand="Weapon"
-                        index={1}
-                        mobileHand="Weapon"
-                        mobileStatsState={mobileStatsGeometryState}
-                        morphKey="main"
-                        virtues={calculation.effectiveVirtues}
-                        item={
-                          build.equipment.mainHand
-                            ? weaponById.get(build.equipment.mainHand)
-                            : undefined
-                        }
-                      />
-                    </div>
-                  </section>
+                      >
+                        <WeaponDamagePanel
+                          hand="Sidearm"
+                          index={2}
+                          mobileHand="Sidearm"
+                          mobileStatsState={mobileStatsGeometryState}
+                          morphKey="sidearm"
+                          virtues={calculation.effectiveVirtues}
+                          item={
+                            build.equipment.offHand
+                              ? weaponById.get(build.equipment.offHand)
+                              : undefined
+                          }
+                        />
+                        <WeaponDamagePanel
+                          hand="Weapon"
+                          index={1}
+                          mobileHand="Weapon"
+                          mobileStatsState={mobileStatsGeometryState}
+                          morphKey="main"
+                          virtues={calculation.effectiveVirtues}
+                          item={
+                            build.equipment.mainHand
+                              ? weaponById.get(build.equipment.mainHand)
+                              : undefined
+                          }
+                        />
+                      </div>
+                    </section>
                   </div>
                 </div>
 
@@ -1596,7 +1667,9 @@ export function BuilderShell() {
                 calculation.modifiers.stagger > 0 ? (
                   <div
                     className={
-                      MOBILE_SECONDARY_MODIFIERS_CLASS_NAMES[mobileStatsDetailState]
+                      MOBILE_SECONDARY_MODIFIERS_CLASS_NAMES[
+                        mobileStatsDetailState
+                      ]
                     }
                   >
                     {calculation.modifiers.attack > 0 ? (
@@ -1604,7 +1677,9 @@ export function BuilderShell() {
                         <small className={SECONDARY_MODIFIER_CLASS_NAMES.label}>
                           Attack
                         </small>
-                        <strong className={SECONDARY_MODIFIER_CLASS_NAMES.value}>
+                        <strong
+                          className={SECONDARY_MODIFIER_CLASS_NAMES.value}
+                        >
                           +{calculation.modifiers.attack}
                         </strong>
                       </span>
@@ -1614,7 +1689,9 @@ export function BuilderShell() {
                         <small className={SECONDARY_MODIFIER_CLASS_NAMES.label}>
                           Stagger
                         </small>
-                        <strong className={SECONDARY_MODIFIER_CLASS_NAMES.value}>
+                        <strong
+                          className={SECONDARY_MODIFIER_CLASS_NAMES.value}
+                        >
                           +{calculation.modifiers.stagger}
                         </strong>
                       </span>
@@ -1679,144 +1756,6 @@ export function BuilderShell() {
           )
         : null}
 
-      {activeSlot && ARMOR_SLOTS.includes(activeSlot as ArmorSlot) ? (
-        <BuilderArmorPicker
-          slot={activeSlot as ArmorSlot}
-          build={build}
-          onClose={closeBuilderModalLayer}
-          onEquip={(itemId) => {
-            setBuild((current) => ({
-              ...current,
-              equipment: { ...current.equipment, [activeSlot]: itemId },
-            }));
-            closeBuilderModalLayer();
-          }}
-          onUnequip={() => {
-            setBuild((current) => {
-              const equipment = { ...current.equipment };
-              delete equipment[activeSlot];
-              return { ...current, equipment };
-            });
-            closeBuilderModalLayer();
-          }}
-        />
-      ) : null}
-
-      {(activeSlot === "mainHand" || activeSlot === "offHand") &&
-      weaponConfigTab === "weapon" ? (
-        <BuilderWeaponPicker
-          slot={activeSlot}
-          build={build}
-          onClose={closeBuilderModalLayer}
-          onConfigure={(tab, totemSlot) => {
-            if (totemSlot !== undefined) setSelectedTotemSlot(totemSlot);
-            setWeaponConfigTab(tab);
-          }}
-          onEquip={(itemId) => {
-            const weapon = weaponById.get(itemId);
-            const normalized = normalizeWeaponEnhancements(
-              build.weaponEnhancements[activeSlot],
-              weapon,
-              runeById,
-            );
-            if (normalized.changed) {
-              notifyAlert({
-                id: "builder.weapon-enhancements-cleared",
-                title: "Weapon enhancements adjusted",
-                description:
-                  "Incompatible Rune or Totem selections were cleared for the new weapon.",
-                severity: "warning",
-              });
-            }
-            equipWeapon(activeSlot, itemId, normalized.value);
-          }}
-          onUnequip={() => {
-            const remembered = { ...combatArtLibrary, ...build.combatArts };
-            setCombatArtLibrary(remembered);
-            setBuild((current) => {
-              const equipment = { ...current.equipment };
-              delete equipment[activeSlot];
-              return withActiveCombatArts(
-                {
-                  ...current,
-                  equipment,
-                  weaponEnhancements: {
-                    ...current.weaponEnhancements,
-                    [activeSlot]: createEmptyWeaponEnhancements(),
-                  },
-                },
-                remembered,
-              );
-            });
-            closeBuilderModalLayer();
-          }}
-        />
-      ) : null}
-
-      {(activeSlot === "mainHand" || activeSlot === "offHand") &&
-      weaponConfigTab !== "weapon" ? (
-        <BuilderWeaponEnhancementPicker
-          slot={activeSlot}
-          tab={weaponConfigTab}
-          selectedTotemSlot={selectedTotemSlot}
-          build={build}
-          onClose={closeBuilderModalLayer}
-          onTabChange={(tab, totemSlot) => {
-            if (totemSlot !== undefined) setSelectedTotemSlot(totemSlot);
-            setWeaponConfigTab(tab);
-          }}
-          onChange={(enhancements) =>
-            setBuild((current) => ({
-              ...current,
-              weaponEnhancements: {
-                ...current.weaponEnhancements,
-                [activeSlot]: enhancements,
-              },
-            }))
-          }
-          onArtAllocationChange={updateCombatArtAllocation}
-          onResetArtAllocation={resetCombatArtAllocation}
-        />
-      ) : null}
-
-      {isPactPickerOpen ? (
-        <BuilderPactPicker
-          currentId={build.pact.itemId}
-          allocations={{
-            ...pactArtLibrary,
-            ...(build.pact.itemId
-              ? { [build.pact.itemId]: build.pact.artAllocation }
-              : {}),
-          }}
-          onClose={closeBuilderModalLayer}
-          onEquip={equipPact}
-          onAllocationChange={updatePactArtAllocation}
-          onResetAllocation={resetPactArtAllocation}
-        />
-      ) : null}
-
-      {activeSlot === "talisman" ? (
-        <BuilderTalismanPicker
-          build={build}
-          onClose={closeBuilderModalLayer}
-          onEquip={(itemId) => {
-            setBuild((current) => ({
-              ...current,
-              equipment: { ...current.equipment, talisman: itemId },
-            }));
-            closeBuilderModalLayer();
-          }}
-          onUnequip={() => {
-            setBuild((current) => {
-              const equipment = { ...current.equipment };
-              delete equipment.talisman;
-              return { ...current, equipment };
-            });
-            closeBuilderModalLayer();
-          }}
-        />
-      ) : null}
-
       {optimizationMode !== undefined ? (
         <BuilderOptimizationLightbox
           result={optimizationResult}
@@ -1839,7 +1778,7 @@ export function BuilderShell() {
           }}
           portalContainer={
             isMobileViewport && isMobileMenuAvailable
-              ? mobileHeaderLayerElement ?? mobileMenuLayerElement
+              ? (mobileHeaderLayerElement ?? mobileMenuLayerElement)
               : undefined
           }
         />

@@ -50,9 +50,9 @@ type OptimizationLightboxElement =
 
 export const OPTIMIZATION_LIGHTBOX_CLASS_NAMES = {
   backdrop:
-    "fixed inset-0 z-60 flex items-center justify-center bg-surface-overlay p-6 backdrop-blur-md max-tablet:z-0 max-tablet:block max-tablet:bg-scrim max-tablet:p-0",
+    "fixed inset-x-0 top-14 bottom-0 z-60 flex items-center justify-center bg-surface-overlay p-6 backdrop-blur-md max-tablet:inset-0 max-tablet:z-50 max-tablet:block max-tablet:bg-scrim max-tablet:p-0",
   dialog:
-    `relative isolate flex max-h-215 w-full max-w-225 flex-col overflow-visible border border-line-bright bg-overlay animate-fade-up shadow-overlay max-tablet:fixed max-tablet:inset-0 max-tablet:z-10 max-tablet:h-dvh max-tablet:max-h-none max-tablet:max-w-none max-tablet:overflow-hidden max-tablet:border-0 ${MOBILE_HEADER_MENU_SURFACE_CLASS_NAME} max-tablet:pt-mobile-header max-tablet:pb-safe-bottom max-tablet:animate-mobile-overlay-surface-in motion-reduce:animate-none`,
+    `relative isolate flex max-h-[calc(100dvh-6.5rem)] w-full max-w-225 flex-col overflow-visible border border-line-bright bg-overlay animate-fade-up shadow-overlay max-tablet:fixed max-tablet:inset-0 max-tablet:z-10 max-tablet:h-dvh max-tablet:max-h-none max-tablet:max-w-none max-tablet:overflow-hidden max-tablet:border-0 ${MOBILE_HEADER_MENU_SURFACE_CLASS_NAME} max-tablet:pt-mobile-header max-tablet:pb-safe-bottom max-tablet:animate-mobile-overlay-surface-in motion-reduce:animate-none`,
   frame:
     "pointer-events-none absolute inset-0 z-10 max-tablet:hidden",
   header:

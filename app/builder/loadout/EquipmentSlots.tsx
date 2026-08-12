@@ -294,6 +294,7 @@ export function WeaponEquipmentSlot({
   enhancements,
   virtues,
   isActive,
+  showEnhancements = true,
   onOpenWeapon,
   onOpenRune,
   onOpenTotem,
@@ -303,6 +304,7 @@ export function WeaponEquipmentSlot({
   enhancements: WeaponEnhancements;
   virtues: SoulframeBuild["virtues"];
   isActive: boolean;
+  showEnhancements?: boolean;
   onOpenWeapon: () => void;
   onOpenRune: () => void;
   onOpenTotem: (index: number) => void;
@@ -379,10 +381,11 @@ export function WeaponEquipmentSlot({
           ) : null}
         </span>
       </button>
-      <span
-        className={EQUIPMENT_SLOT_ENCHANTMENT_STRIP_CLASS_NAME}
-        aria-label="Weapon enhancements"
-      >
+      {showEnhancements ? (
+        <span
+          className={EQUIPMENT_SLOT_ENCHANTMENT_STRIP_CLASS_NAME}
+          aria-label="Weapon enhancements"
+        >
         {item && weaponRequirements.length > 0 ? (
           <button
             type="button"
@@ -483,7 +486,8 @@ export function WeaponEquipmentSlot({
             </button>
           );
         })}
-      </span>
+        </span>
+      ) : null}
     </div>
   );
 }

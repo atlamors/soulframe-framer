@@ -6,7 +6,6 @@ import { ExternalLink } from "lucide-react";
 import { getRuneDisplayName, runeById, runeCatalogue } from "@/src/data/runes";
 import { totemById, totemCatalogue } from "@/src/data/totems";
 import { weaponById } from "@/src/data/weapons";
-import { combatArtByName } from "@/src/data/arts";
 import {
   canEquipTotemInSlot,
   formatTotemEffect,
@@ -24,7 +23,7 @@ import type {
   WeaponHandSlot,
   VirtueId,
 } from "@/src/domain/types";
-import { ArtAllocationList } from "../../arts/ArtAllocationList";
+import { CombatArtsModule } from "../../arts/CombatArtsModule";
 import { VIRTUE_IDS } from "@/src/domain/types";
 import { ACTION_BUTTON_CLASS_NAMES } from "../../components/actionClassNames";
 import { IllustratedCloseButton } from "../../components/IllustratedCloseButton";
@@ -159,8 +158,6 @@ export function WeaponEnhancementPicker({
     }
     onTabChange(nextTab, nextTotemSlot);
   };
-  const combatArt = weapon ? combatArtByName.get(weapon.combatArt) : undefined;
-
   return (
     <div
       className={PICKER_LAYOUT_CLASS_NAMES.backdrop}
@@ -200,21 +197,12 @@ export function WeaponEnhancementPicker({
         {tab === "arts" ? (
           <div className={PICKER_LAYOUT_CLASS_NAMES.bodyDetail}>
             <div className="col-span-full min-w-0 overflow-y-auto p-4 max-tablet:p-2">
-              {combatArt ? (
-                <ArtAllocationList
-                  label={`${combatArt.name} Combat Arts`}
-                  nodes={combatArt.nodes}
-                  allocation={build.combatArts[combatArt.name] ?? {}}
-                  onChange={(allocation) =>
-                    onArtAllocationChange(combatArt.name, allocation)
-                  }
-                  onReset={() => onResetArtAllocation(combatArt.name)}
-                />
-              ) : (
-                <p className="p-4 text-sm text-ink-soft">
-                  No source-verified Combat Art tree is available for this weapon.
-                </p>
-              )}
+              <CombatArtsModule
+                build={build}
+                slots={[slot]}
+                onAllocationChange={onArtAllocationChange}
+                onReset={onResetArtAllocation}
+              />
             </div>
           </div>
         ) : tab === "rune" ? (

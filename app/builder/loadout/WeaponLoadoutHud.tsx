@@ -23,6 +23,7 @@ import {
   LOADOUT_HUD_COPY_LABEL_CLASS_NAMES,
   LOADOUT_HUD_COPY_META_CLASS_NAMES,
   LOADOUT_HUD_COPY_STRONG_CLASS_NAMES,
+  LOADOUT_HUD_PUBLISHER_SUPPORT_COPY_CLASS_NAME,
   LOADOUT_HUD_RUNE_SEGMENT_CLASS_NAMES,
   LOADOUT_HUD_TOTEM_SEGMENT_CLASS_NAMES,
   LOADOUT_HUD_TOTEMS_CLASS_NAMES,
@@ -37,6 +38,7 @@ export function WeaponLoadoutHud({
   active,
   activeTotemSlot = 0,
   inline = false,
+  presentation = "default",
   onNavigate,
 }: {
   slot: WeaponHandSlot;
@@ -44,6 +46,7 @@ export function WeaponLoadoutHud({
   active: "weapon" | "arts" | "rune" | "totems";
   activeTotemSlot?: number;
   inline?: boolean;
+  presentation?: "default" | "publisher";
   onNavigate: (
     tab: "weapon" | "arts" | "rune" | "totems",
     totemSlot?: number,
@@ -55,7 +58,15 @@ export function WeaponLoadoutHud({
   const rune = enhancements.rune
     ? runeById.get(enhancements.rune.itemId)
     : undefined;
-  const layout = inline ? "inline" : "default";
+  const isPublisher = presentation === "publisher";
+  const layout = isPublisher ? "publisher" : inline ? "inline" : "default";
+  const supportingImageLayout = layout === "default" ? "default" : "inline";
+  const weaponArtworkAppearance = layout === "default" ? "hud" : "hudInline";
+  const weaponLabel = isPublisher
+    ? slot === "mainHand"
+      ? "Main Hand"
+      : "Off Hand"
+    : "Weapon";
   const weaponActivity = active === "weapon" ? "active" : "inactive";
   const runeActivity = active === "rune" ? "active" : "inactive";
   const runeSegmentState = getLoadoutSegmentState(
@@ -97,7 +108,7 @@ export function WeaponLoadoutHud({
             ) : null}
             <WeaponArtwork
               item={weapon}
-              appearance={inline ? "hudInline" : "hud"}
+              appearance={weaponArtworkAppearance}
               fallback={weaponSlotMeta[slot].index}
               sizes="52px"
             />
@@ -106,7 +117,7 @@ export function WeaponLoadoutHud({
             <small
               className={LOADOUT_HUD_COPY_LABEL_CLASS_NAMES[weaponActivity]}
             >
-              Weapon
+              {weaponLabel}
             </small>
             <strong
               className={
@@ -157,7 +168,7 @@ export function WeaponLoadoutHud({
             ) : null}
             {rune?.image ? (
               <Image
-                className={HUD_SUPPORTING_IMAGE_CLASS_NAMES[layout]}
+                className={HUD_SUPPORTING_IMAGE_CLASS_NAMES[supportingImageLayout]}
                 src={rune.image.thumbnailUrl}
                 alt=""
                 width={42}
@@ -168,7 +179,13 @@ export function WeaponLoadoutHud({
               "ᚱ"
             )}
           </span>
-          <span className={LOADOUT_HUD_COPY_CLASS_NAMES[layout].primary}>
+          <span
+            className={
+              isPublisher
+                ? LOADOUT_HUD_PUBLISHER_SUPPORT_COPY_CLASS_NAME
+                : LOADOUT_HUD_COPY_CLASS_NAMES[layout].primary
+            }
+          >
             <small
               className={LOADOUT_HUD_COPY_LABEL_CLASS_NAMES[runeActivity]}
             >
@@ -249,7 +266,9 @@ export function WeaponLoadoutHud({
                   ) : null}
                   {totem?.image ? (
                     <Image
-                      className={HUD_SUPPORTING_IMAGE_CLASS_NAMES[layout]}
+                      className={
+                        HUD_SUPPORTING_IMAGE_CLASS_NAMES[supportingImageLayout]
+                      }
                       src={totem.image.thumbnailUrl}
                       alt=""
                       width={38}

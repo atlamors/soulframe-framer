@@ -144,7 +144,7 @@ export function MobileHeaderDrawer({
               id="builder-menu-build-identity-heading"
               className={MOBILE_DRAWER_BUILD_HEADING_CLASS_NAME}
             >
-              Build
+              Frame
             </h2>
             <div className={MOBILE_DRAWER_BUILD_ROW_CLASS_NAME}>
               <BuildNameControl
@@ -176,7 +176,7 @@ export function MobileHeaderDrawer({
                 className={MOBILE_DRAWER_BUTTON_ICON_CLASS_NAME}
                 aria-hidden="true"
               />
-              Copy Build Link
+              Copy Frame Link
             </button>
           </section>
 
@@ -226,12 +226,12 @@ export function MobileHeaderDrawer({
               id="builder-menu-build-reset-heading"
               className={MOBILE_DRAWER_SECTION_HEADING_CLASS_NAME}
             >
-              Reset Build
+              Reset Frame
             </h3>
             {isResetPending ? (
               <div className={MOBILE_DRAWER_RESET_CONFIRM_CLASS_NAME}>
                 <p className={MOBILE_DRAWER_RESET_COPY_CLASS_NAME}>
-                  Restore the default build? This replaces the current loadout.
+                  Restore the default Frame? This replaces the current Frame.
                 </p>
                 <div className={MOBILE_DRAWER_ACTION_ROW_CLASS_NAME}>
                   <button
@@ -263,7 +263,7 @@ export function MobileHeaderDrawer({
                 className={MOBILE_DRAWER_DANGER_BUTTON_CLASS_NAME}
                 onClick={() => setIsResetPending(true)}
               >
-                Reset Build
+                Reset Frame
               </button>
             )}
           </section>

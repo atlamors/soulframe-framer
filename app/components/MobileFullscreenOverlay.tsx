@@ -17,6 +17,7 @@ export function MobileFullscreenOverlay({
   className,
   overlayClassName,
   portalContainer,
+  modal = true,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -30,6 +31,7 @@ export function MobileFullscreenOverlay({
   className?: string;
   overlayClassName?: string;
   portalContainer?: HTMLElement | null;
+  modal?: boolean;
 }) {
   const contentClassName = className
     ? `${MOBILE_FULLSCREEN_OVERLAY_CLASS_NAMES.contentBase} ${className}`
@@ -63,7 +65,7 @@ export function MobileFullscreenOverlay({
   );
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+    <Dialog.Root open={open} onOpenChange={onOpenChange} modal={modal}>
       <Dialog.Portal container={portalContainer ?? undefined}>
         {layers}
       </Dialog.Portal>

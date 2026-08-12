@@ -53,7 +53,6 @@ export function OptimizationLightbox({
   const affinityStrategyRef = useRef<HTMLButtonElement>(null);
   const armorStrategyRef = useRef<HTMLButtonElement>(null);
   const resultRef = useRef(result);
-  resultRef.current = result;
   const isAffinity = result?.kind === "affinity";
   const title = result
     ? isAffinity
@@ -105,6 +104,10 @@ export function OptimizationLightbox({
         : closeRef.current,
     [mobileCloseRef],
   );
+
+  useEffect(() => {
+    resultRef.current = result;
+  }, [result]);
 
   useEffect(() => {
     const previouslyFocused =

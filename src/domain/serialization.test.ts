@@ -109,6 +109,7 @@ describe("build serialization", () => {
       JSON.stringify({
         ...build,
         equipment: { helm: "helm-not-real" },
+        combatArts: {},
       }),
     ).toString("base64url");
     const result = deserializeBuild(encoded, catalogue);
