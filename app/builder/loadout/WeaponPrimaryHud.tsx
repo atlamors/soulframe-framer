@@ -1,6 +1,15 @@
 "use client";
 
-import type { VirtueValues, Weapon } from "@/src/domain/types";
+import {
+  getEffectiveWeaponAttunement,
+  getJoineryPipApplication,
+} from "@/src/domain/weapon-configuration";
+import type {
+  CraftworkTier,
+  Joinery,
+  VirtueValues,
+  Weapon,
+} from "@/src/domain/types";
 import {
   RequirementBadge,
   VirtuePipStrip,
@@ -15,11 +24,30 @@ import {
 export function WeaponPrimaryHud({
   item,
   virtues,
+  joinery,
+  craftwork = "Stock",
+  temperIds = [],
 }: {
   item: Weapon;
   virtues: VirtueValues;
+  joinery?: Joinery;
+  craftwork?: CraftworkTier;
+  temperIds?: readonly string[];
 }) {
-  const damage = getWeaponDamage(item, virtues);
+  const damage = getWeaponDamage(
+    item,
+    virtues,
+    joinery,
+    craftwork,
+    temperIds,
+  );
+  const effectiveAttunement = getEffectiveWeaponAttunement(
+    item.attunement,
+    joinery,
+  );
+  const joineryPipApplication = joinery
+    ? getJoineryPipApplication(item.attunement, joinery)
+    : undefined;
   const stats = [
     {
       id: "primary",
@@ -36,14 +64,17 @@ export function WeaponPrimaryHud({
     {
       id: "stagger",
       label: "Stagger",
-      bonus: null,
+      bonus: damage.staggerBonus,
       value: damage.stagger,
     },
     {
       id: "smite",
       label: "Smite",
-      bonus: null,
-      value: item.stats.smite.display || null,
+      bonus:
+        damage.smite.bonus === undefined
+          ? undefined
+          : `${damage.smite.bonus}%`,
+      value: damage.smite.display,
     },
   ];
   return (
@@ -81,12 +112,47 @@ export function WeaponPrimaryHud({
         ))}
       </div>
       <footer className={WEAPON_PRIMARY_CLASS_NAMES.meta}>
-        <span className={WEAPON_PRIMARY_META_ROW_CLASS_NAMES.default}>
-          <small className={WEAPON_PRIMARY_CLASS_NAMES.metaLabel}>
-            Attunement Pips
-          </small>
-          <VirtuePipStrip values={item.attunement} />
-        </span>
+        {joinery ? (
+          <span className={WEAPON_PRIMARY_CLASS_NAMES.attunementEnhanced}>
+            <small className={WEAPON_PRIMARY_CLASS_NAMES.metaLabel}>
+              Attunement Pips
+            </small>
+            <span className={WEAPON_PRIMARY_CLASS_NAMES.attunementRows}>
+              <span className={WEAPON_PRIMARY_CLASS_NAMES.attunementBase}>
+                <small
+                  className={WEAPON_PRIMARY_CLASS_NAMES.attunementRowLabel}
+                >
+                  Base
+                </small>
+                <VirtuePipStrip values={item.attunement} />
+              </span>
+              <span className={WEAPON_PRIMARY_CLASS_NAMES.attunementEffective}>
+                <small
+                  className={WEAPON_PRIMARY_CLASS_NAMES.attunementSource}
+                  title={joinery.name}
+                >
+                  {joinery.name}
+                </small>
+                <VirtuePipStrip values={effectiveAttunement} />
+                {joineryPipApplication && joineryPipApplication.wasted > 0 ? (
+                  <small
+                    className={WEAPON_PRIMARY_CLASS_NAMES.attunementWaste}
+                  >
+                    {joineryPipApplication.applied} applied ·{" "}
+                    {joineryPipApplication.wasted} wasted at 5-pip cap
+                  </small>
+                ) : null}
+              </span>
+            </span>
+          </span>
+        ) : (
+          <span className={WEAPON_PRIMARY_META_ROW_CLASS_NAMES.default}>
+            <small className={WEAPON_PRIMARY_CLASS_NAMES.metaLabel}>
+              Attunement Pips
+            </small>
+            <VirtuePipStrip values={item.attunement} />
+          </span>
+        )}
         <span className={WEAPON_PRIMARY_META_ROW_CLASS_NAMES.default}>
           <small className={WEAPON_PRIMARY_CLASS_NAMES.metaLabel}>
             Requirement

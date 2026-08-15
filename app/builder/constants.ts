@@ -43,10 +43,16 @@ export const DEFAULT_BUILD: SoulframeBuild = {
     mainHand: {
       rune: null,
       totems: [null, null, null, null],
+      craftwork: "Stock",
+      tempers: [],
+      joineryId: null,
     },
     offHand: {
       rune: null,
       totems: [null, null, null, null],
+      craftwork: "Stock",
+      tempers: [],
+      joineryId: null,
     },
   },
 };

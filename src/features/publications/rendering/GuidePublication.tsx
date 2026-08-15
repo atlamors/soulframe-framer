@@ -40,23 +40,23 @@ export function GuidePublication({
         canonicalUrl={canonicalUrl}
         guideSections={sections}
       />
-      <main className="min-h-[calc(100vh-5rem)] px-4 py-10 text-ink sm:px-6">
-        <article className="border border-line/70 bg-surface p-5 shadow-panel sm:p-8">
+      <main className="min-h-[calc(100vh-5rem)] px-4 py-8 text-ink sm:px-6 lg:py-12">
+        <article className="mx-auto max-w-6xl">
           <PublicationHeader
             publication={publication}
             kind="Guide"
             voteControl={voteControl}
           />
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-[14rem_minmax(0,1fr)]">
+          <div className="mt-8 grid gap-8 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-10">
             <nav
               aria-label="Guide table of contents"
-              className="h-fit border border-line/60 bg-surface-deep p-4 lg:sticky lg:top-24"
+              className="h-fit border-l border-gold/35 px-4 py-1 lg:sticky lg:top-24"
             >
               <h2 className="font-sans text-2xs font-bold uppercase tracking-[0.18em] text-gold">
                 In this Guide
               </h2>
-              <ol className="mt-3 space-y-1">
+              <ol className="mt-2 space-y-0.5">
                 {sections.map((section) => (
                   <li key={section.anchor}>
                     <a
@@ -70,7 +70,7 @@ export function GuidePublication({
               </ol>
             </nav>
 
-            <ReadingColumn className="min-w-0 space-y-5">
+            <ReadingColumn className="min-w-0 max-w-3xl space-y-6">
               {blocks.map((block) =>
                 block.type === "nightfold.heading" ||
                 block.type === "nightfold.rich-text" ? (

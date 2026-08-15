@@ -2,6 +2,7 @@ type HeaderElement =
   | "contextBar"
   | "contextBarMobileSuppressed"
   | "mobileMenuLayer"
+  | "frameActionsGroup"
   | "frameActions"
   | "frameActionsLabel"
   | "frameActionsName"
@@ -15,8 +16,10 @@ export const HEADER_CLASS_NAMES = {
     "relative z-40 grid min-h-18 grid-cols-12 items-center gap-6 border-b border-line/40 compact-desktop:min-h-14 max-tablet:min-h-12 max-tablet:grid-cols-1 max-tablet:gap-0 max-tablet:px-1.5",
   contextBarMobileSuppressed: "max-tablet:hidden",
   mobileMenuLayer: "contents",
+  frameActionsGroup:
+    "col-span-3 col-start-10 flex min-w-0 items-center justify-self-end gap-2 compact-desktop:col-span-5 compact-desktop:col-start-8 max-tablet:col-span-1 max-tablet:col-start-1 max-tablet:w-full max-tablet:justify-self-stretch",
   frameActions:
-    "group col-span-3 col-start-10 inline-flex min-h-11 max-w-80 min-w-0 items-center justify-self-end border border-line-bright/40 bg-surface-deep/45 px-3 text-left shadow-control transition-colors hover:border-frame-line/70 hover:bg-surface-raised focus-visible:outline-none focus-visible:shadow-focus compact-desktop:col-span-5 compact-desktop:col-start-8 max-tablet:col-span-1 max-tablet:col-start-1 max-tablet:w-full max-tablet:max-w-none max-tablet:justify-self-stretch max-tablet:border-x-0 max-tablet:border-y-0 max-tablet:bg-transparent max-tablet:px-2 max-tablet:shadow-none motion-reduce:transition-none",
+    "group inline-flex min-h-11 max-w-80 min-w-0 flex-1 items-center border border-line-bright/40 bg-surface-deep/45 px-3 text-left shadow-control transition-colors hover:border-frame-line/70 hover:bg-surface-raised focus-visible:outline-none focus-visible:shadow-focus max-tablet:max-w-none max-tablet:border-x-0 max-tablet:border-y-0 max-tablet:bg-transparent max-tablet:px-2 max-tablet:shadow-none motion-reduce:transition-none",
   frameActionsLabel:
     "mr-2 flex-none font-sans text-2xs font-bold uppercase tracking-[0.18em] text-gold",
   frameActionsName:

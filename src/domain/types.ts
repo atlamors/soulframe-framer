@@ -269,10 +269,95 @@ export interface Totem {
   image: CatalogueImage | null;
 }
 
+export type TemperOrigin =
+  | "Universal"
+  | "Cassid"
+  | "Dendrit"
+  | "Feykin"
+  | "Mendicant"
+  | "Ode'n";
+export type TemperCompatibility = "All Weapons" | "Melee" | "Bow" | "Magick";
+export type TemperConfidence =
+  | "confirmed"
+  | "unknown"
+  | "partial"
+  | "approximate"
+  | "assumed";
+
+export interface TemperStat {
+  effectId: string;
+  effect: string;
+  stacks: { single: string; double: string };
+  ranksRaw: string;
+  confidence: TemperConfidence;
+  notes: string;
+}
+
+export interface Temper {
+  id: string;
+  name: string;
+  internalId: string | null;
+  description: string;
+  iconFile: string;
+  icon: CatalogueImage;
+  origin: TemperOrigin;
+  compatibility: TemperCompatibility;
+  stats: TemperStat[];
+  isPlaceholder: boolean;
+  provenance: {
+    pageId: number;
+    pageRevisionId: number;
+    pageRevisionTimestamp: string;
+    pageUrl: string;
+  };
+}
+
+export type JoineryTier = "Blessed" | "Twice Blessed" | "Thrice Blessed";
+export type JoineryRarity = "Common" | "Uncommon" | "Rare";
+export type JoineryBlessing = "Mora" | "Saphene" | "Iridis";
+export type JoineryWeaponType =
+  | "Short Blade"
+  | "Long Blade"
+  | "Polearm"
+  | "Shield"
+  | "Heavy"
+  | "Magick"
+  | "Bow"
+  | "Flyblade";
+export type JoineryCompatibility =
+  | { scope: "all" }
+  | { scope: "types"; types: JoineryWeaponType[] };
+
+export interface Joinery {
+  id: string;
+  name: string;
+  family: string;
+  tier: JoineryTier;
+  rarity: JoineryRarity;
+  blessing: JoineryBlessing;
+  virtue: VirtueId;
+  attunementPips: 1 | 2 | 3;
+  attunementText: string;
+  description: string;
+  sourceTypes: string[];
+  compatibility: JoineryCompatibility;
+  iconFile: string;
+  icon: CatalogueImage;
+  parentPageUrl: string;
+}
+
 export interface RankedEnhancement {
   itemId: string;
   rank: EnhancementRank;
 }
+
+export type CraftworkTier =
+  | "Stock"
+  | "Military"
+  | "Officer"
+  | "Noble"
+  | "Sovereign"
+  | "Legendary";
 
 export interface TotemSelection extends RankedEnhancement {
   virtue: VirtueId;
@@ -287,10 +372,14 @@ export interface WeaponEnhancements {
     TotemSelection | null,
     TotemSelection | null,
   ];
+  craftwork: CraftworkTier;
+  /** Each entry consumes one Temper slot; a Temper may occur at most twice. */
+  tempers: string[];
+  joineryId: string | null;
 }
 
 export interface SoulframeBuild {
-  schemaVersion: 5;
+  schemaVersion: 6;
   name: string;
   virtues: VirtueValues;
   affinitySources: AffinitySources;

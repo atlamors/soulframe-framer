@@ -8,9 +8,11 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { armorCatalogue } from "@/src/data/catalogue";
+import { joineryById } from "@/src/data/joineries";
 import { talismanCatalogue } from "@/src/data/talismans";
 import { releasedWeaponCatalogue, weaponById } from "@/src/data/weapons";
 import { calculateBuild } from "@/src/domain/calculation";
+import { resolveValidWeaponJoinery } from "@/src/domain/weapon-configuration";
 import {
   VIRTUE_IDS,
   type SoulframeBuild,
@@ -54,7 +56,7 @@ export function WeaponPicker({
   build: SoulframeBuild;
   onClose: () => void;
   onConfigure: (
-    tab: "weapon" | "arts" | "rune" | "totems",
+    tab: "weapon" | "arts" | "rune" | "totems" | "tempers" | "joinery",
     totemSlot?: number,
   ) => void;
   onEquip: (itemId: string) => void;
@@ -93,6 +95,13 @@ export function WeaponPicker({
   const currentItem = build.equipment[slot]
     ? weaponById.get(build.equipment[slot]!)
     : undefined;
+  const currentJoinery = resolveValidWeaponJoinery(
+    build.weaponEnhancements[slot].joineryId,
+    currentItem,
+    joineryById,
+  );
+  const currentCraftwork = build.weaponEnhancements[slot].craftwork;
+  const currentTemperIds = build.weaponEnhancements[slot].tempers;
   const [candidateId, setCandidateId] = useState(
     currentItem?.id ?? compatibleItems[0]?.id,
   );
@@ -140,10 +149,16 @@ export function WeaponPicker({
       const leftDamage = getWeaponDamage(
         left,
         buildCalculation.effectiveVirtues,
+        left.id === currentItem?.id ? currentJoinery : undefined,
+        left.id === currentItem?.id ? currentCraftwork : "Stock",
+        left.id === currentItem?.id ? currentTemperIds : [],
       );
       const rightDamage = getWeaponDamage(
         right,
         buildCalculation.effectiveVirtues,
+        right.id === currentItem?.id ? currentJoinery : undefined,
+        right.id === currentItem?.id ? currentCraftwork : "Stock",
+        right.id === currentItem?.id ? currentTemperIds : [],
       );
       const values = {
         name: [left.name, right.name],
@@ -154,8 +169,8 @@ export function WeaponPicker({
         ],
         stagger: [leftDamage.stagger ?? -1, rightDamage.stagger ?? -1],
         smite: [
-          left.stats.smite.percent ?? -1,
-          right.stats.smite.percent ?? -1,
+          leftDamage.smite.percent ?? -1,
+          rightDamage.smite.percent ?? -1,
         ],
         art: [left.combatArt, right.combatArt],
         rarity: [rarityRank[left.rarity] ?? 0, rarityRank[right.rarity] ?? 0],
@@ -190,7 +205,13 @@ export function WeaponPicker({
     );
   };
   const weaponSortValue = (item: Weapon) => {
-    const damage = getWeaponDamage(item, buildCalculation.effectiveVirtues);
+    const damage = getWeaponDamage(
+      item,
+      buildCalculation.effectiveVirtues,
+      item.id === currentItem?.id ? currentJoinery : undefined,
+      item.id === currentItem?.id ? currentCraftwork : "Stock",
+      item.id === currentItem?.id ? currentTemperIds : [],
+    );
     switch (sortKey) {
       case "primary":
         return damage.primary.total ?? "—";
@@ -199,9 +220,9 @@ export function WeaponPicker({
       case "stagger":
         return damage.stagger ?? "—";
       case "smite":
-        return item.stats.smite.percent === null
+        return damage.smite.percent === undefined
           ? "—"
-          : `${item.stats.smite.percent}%`;
+          : `${damage.smite.percent}%`;
       case "art":
         return item.combatArt;
       case "rarity":
@@ -213,7 +234,17 @@ export function WeaponPicker({
     }
   };
 
-  const rank30Rows = candidate ? getWeaponDamageRows(candidate) : [];
+  const rank30Rows = candidate
+    ? candidate.id === currentItem?.id
+      ? getWeaponDamageRows(
+          candidate,
+          buildCalculation.effectiveVirtues,
+          currentJoinery,
+          currentCraftwork,
+          currentTemperIds,
+        )
+      : getWeaponDamageRows(candidate)
+    : [];
 
   return (
     <div
@@ -560,8 +591,21 @@ export function WeaponPicker({
                 </div>
 
                 <BuilderWeaponPrimaryHud
+                  craftwork={
+                    candidate.id === currentItem?.id
+                      ? currentCraftwork
+                      : "Stock"
+                  }
                   item={candidate}
                   virtues={buildCalculation.effectiveVirtues}
+                  joinery={
+                    candidate.id === currentItem?.id
+                      ? currentJoinery
+                      : undefined
+                  }
+                  temperIds={
+                    candidate.id === currentItem?.id ? currentTemperIds : []
+                  }
                 />
 
                 <details

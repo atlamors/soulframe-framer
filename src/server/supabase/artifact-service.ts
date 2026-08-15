@@ -70,7 +70,7 @@ function canonicalizePayload(
   }
 }
 
-function mapArtifact(value: unknown): BuildPlannerArtifact {
+export function mapArtifact(value: unknown): BuildPlannerArtifact {
   if (!isRow(value)) {
     throw new ArtifactDataError("Supabase returned an invalid artifact row.");
   }
@@ -87,7 +87,9 @@ function mapArtifact(value: unknown): BuildPlannerArtifact {
   if (
     typeof schemaVersion !== "number" ||
     !Number.isSafeInteger(schemaVersion) ||
-    schemaVersion !== codec.currentSchemaVersion
+    (schemaVersion !== 5 && schemaVersion !== codec.currentSchemaVersion) ||
+    !isRow(value.payload) ||
+    value.payload.schemaVersion !== schemaVersion
   ) {
     throw new ArtifactDataError(
       "The stored Frame uses an unsupported schema or payload.",
@@ -100,7 +102,7 @@ function mapArtifact(value: unknown): BuildPlannerArtifact {
     ownerId: requiredString(value, "owner_id"),
     gameId,
     name: requiredString(value, "name"),
-    schemaVersion,
+    schemaVersion: codec.currentSchemaVersion,
     payload,
     createdAt: requiredString(value, "created_at"),
     updatedAt: requiredString(value, "updated_at"),

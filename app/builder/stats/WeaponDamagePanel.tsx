@@ -1,5 +1,10 @@
 import { Fragment } from "react";
-import type { VirtueValues, Weapon } from "@/src/domain/types";
+import type {
+  CraftworkTier,
+  Joinery,
+  VirtueValues,
+  Weapon,
+} from "@/src/domain/types";
 import type { MobileStatsState } from "../components/mobileWorkspaceClassNames";
 import { getWeaponDamageRows } from "../lib/weapon-damage";
 import {
@@ -43,6 +48,9 @@ export function WeaponDamagePanel({
   hand,
   index,
   item,
+  joinery,
+  craftwork = "Stock",
+  temperIds = [],
   mobileHand,
   mobileStatsState,
   morphKey,
@@ -51,12 +59,21 @@ export function WeaponDamagePanel({
   hand: "Sidearm" | "Weapon";
   index: 1 | 2;
   item?: Weapon;
+  joinery?: Joinery;
+  craftwork?: CraftworkTier;
+  temperIds?: readonly string[];
   mobileHand: "Sidearm" | "Weapon";
   mobileStatsState: MobileStatsState;
   morphKey: "main" | "sidearm";
   virtues: VirtueValues;
 }) {
-  const stats = getWeaponDamageRows(item, virtues);
+  const stats = getWeaponDamageRows(
+    item,
+    virtues,
+    joinery,
+    craftwork,
+    temperIds,
+  );
 
   return (
     <section

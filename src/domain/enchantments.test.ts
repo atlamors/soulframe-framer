@@ -39,6 +39,7 @@ describe("weapon enhancement rules", () => {
     };
     const result = normalizeWeaponEnhancements(
       {
+        ...createEmptyWeaponEnhancements(),
         rune: null,
         totems: [selection, selection, null, selection],
       },
@@ -56,6 +57,7 @@ describe("weapon enhancement rules", () => {
       variant: "universal" as const,
     };
     const enhancements: WeaponEnhancements = {
+      ...createEmptyWeaponEnhancements(),
       rune: null,
       totems: [selection, null, null, null],
     };

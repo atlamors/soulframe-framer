@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useId, useState, type KeyboardEvent, type ReactNode } from "react";
-import type {
-  BuildStageBlock,
-  BuildSupportingBlock,
-  BuildSupportingSection,
-  HeadingBlock,
+import {
+  type BlockNoteCompatibleBlock,
+  type BuildStageBlock,
+  type BuildSupportingBlock,
+  type BuildSupportingSection,
+  type HeadingBlock,
 } from "../../../domain/publications/blocks";
 import { serializeBuild } from "../../../domain/serialization";
 import type { PublicPublication } from "../../../server/contracts/publications";
@@ -99,6 +100,52 @@ function stageAnchors(stages: readonly BuildStageBlock[]): readonly string[] {
   });
 }
 
+function blockNoteHasReaderVisibleText(
+  block: BlockNoteCompatibleBlock,
+): boolean {
+  const content = block.content;
+  const hasContent =
+    typeof content === "string"
+      ? Boolean(content.trim())
+      : Array.isArray(content)
+        ? content.some((inline) =>
+            inline.type === "text"
+              ? Boolean(inline.text.trim())
+              : inline.content.some((text) => Boolean(text.text.trim())),
+          )
+        : false;
+
+  return (
+    hasContent ||
+    Boolean(block.children?.some(blockNoteHasReaderVisibleText))
+  );
+}
+
+function hasReaderVisibleSupportingContent(
+  blocks: readonly BuildSupportingBlock[],
+): boolean {
+  return blocks.some((block) =>
+    block.type === "nightfold.heading"
+      ? Boolean(block.data.text.trim())
+      : block.data.document.some(blockNoteHasReaderVisibleText),
+  );
+}
+
+function hasMeaningfulSectionContent(
+  section: BuildSupportingSection,
+): boolean {
+  if (section.id !== SOULFRAME_BUILD_SECTION_IDS.strengthsWeaknesses) {
+    return hasReaderVisibleSupportingContent(section.blocks);
+  }
+
+  const structured = readStrengthsWeaknesses(section);
+  return Boolean(
+    structured.strengths.some((row) => row.content.trim()) ||
+      structured.weaknesses.some((row) => row.content.trim()) ||
+      hasReaderVisibleSupportingContent(structured.legacyBlocks),
+  );
+}
+
 export function BuildPublication({
   publication,
   canonicalUrl,
@@ -122,6 +169,9 @@ export function BuildPublication({
     home.data.role === "home"
       ? partitionBuildSupportingSections(home.data.sharedSections)
       : { global: [], stage: [] };
+  const meaningfulGlobalSections = homeSections.global.filter(
+    hasMeaningfulSectionContent,
+  );
   const selectedIndex = Math.max(
     0,
     stages.findIndex((stage) => stage.id === selectedStageId),
@@ -156,21 +206,17 @@ export function BuildPublication({
         publication={publication}
         canonicalUrl={canonicalUrl}
       />
-      <main className="min-h-[calc(100vh-5rem)] px-4 py-10 text-ink sm:px-6">
-        <article className="border border-line/70 bg-surface p-5 shadow-panel sm:p-8">
+      <main className="min-h-[calc(100vh-5rem)] px-4 py-8 text-ink sm:px-6 lg:py-12">
+        <article className="mx-auto max-w-6xl">
           <PublicationHeader
             publication={publication}
             kind="Build"
             voteControl={voteControl}
           />
 
-          <div className="mt-6 flex flex-wrap items-center gap-3 font-sans text-xs text-ink-muted">
-            <span>Game · Soulframe</span>
-          </div>
-
-          {homeSections.global.length > 0 ? (
-            <div className="mt-8 space-y-5">
-              {homeSections.global.map((section) => (
+          {meaningfulGlobalSections.length > 0 ? (
+            <div className="mt-7 space-y-5">
+              {meaningfulGlobalSections.map((section) => (
                 <SectionFrame
                   key={section.id}
                   title={
@@ -217,8 +263,8 @@ export function BuildPublication({
             </div>
           ) : null}
 
-          <div className="mt-8 space-y-5">
-            <div className="rounded-md border border-line/40 bg-surface-raised/55">
+          <div className="mt-7 space-y-5">
+            <div className="border-y border-line/55 bg-surface-raised/30">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line/55 px-4 py-2.5">
                 <h2 className="font-sans text-sm font-bold uppercase tracking-[0.08em] text-ink">
                   Build
@@ -262,7 +308,7 @@ export function BuildPublication({
               const stageAnchor = anchors[index] ?? `stage-${index}`;
               const stageSections = partitionBuildSupportingSections(
                 resolvedSections(stage, home),
-              ).stage;
+              ).stage.filter(hasMeaningfulSectionContent);
               return (
                 <section
                   key={stage.id}

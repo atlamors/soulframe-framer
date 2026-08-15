@@ -7,7 +7,14 @@ type WeaponPrimaryElement =
   | "statBonus"
   | "valueStrong"
   | "meta"
-  | "metaLabel";
+  | "metaLabel"
+  | "attunementEnhanced"
+  | "attunementRows"
+  | "attunementBase"
+  | "attunementEffective"
+  | "attunementRowLabel"
+  | "attunementSource"
+  | "attunementWaste";
 type WeaponPrimaryStatPosition = "default" | "last";
 
 export const WEAPON_PRIMARY_CLASS_NAMES = {
@@ -28,6 +35,19 @@ export const WEAPON_PRIMARY_CLASS_NAMES = {
     "mt-2.5 grid grid-cols-2 gap-3 border-t border-frame-line/32 px-3 pt-3 pb-0",
   metaLabel:
     "font-sans text-xs font-semibold uppercase tracking-wider text-ink-soft",
+  attunementEnhanced:
+    "flex min-w-0 flex-col gap-1.25 max-tablet:col-span-2",
+  attunementRows: "grid min-w-0 gap-1.25",
+  attunementBase:
+    "flex min-w-0 flex-col gap-0.75 border border-frame-line/25 bg-surface-deep/45 px-2 py-1.5 opacity-60",
+  attunementEffective:
+    "flex min-w-0 flex-col gap-0.75 border border-gold/50 border-l-2 border-l-gold bg-picker-row-selected px-2 py-1.5 shadow-picker-row-active",
+  attunementRowLabel:
+    "font-sans text-2xs font-bold uppercase tracking-wider text-ink-faint",
+  attunementSource:
+    "truncate font-sans text-2xs font-bold uppercase tracking-wider text-gold-bright",
+  attunementWaste:
+    "max-w-full font-sans text-2xs font-bold leading-tight text-ember",
 } as const satisfies Record<WeaponPrimaryElement, string>;
 
 export const WEAPON_PRIMARY_STAT_CLASS_NAMES = {

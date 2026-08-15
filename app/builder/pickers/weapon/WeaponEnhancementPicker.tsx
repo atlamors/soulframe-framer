@@ -37,6 +37,8 @@ import {
 import { NightfoldSelect } from "../shared/NightfoldSelect";
 import { PICKER_LAYOUT_CLASS_NAMES } from "../shared/PickerLayout";
 import { PickerTabs as BuilderPickerTabs } from "../shared/PickerTabs";
+import { JoineryPickerPanel } from "./JoineryPickerPanel";
+import { TemperPickerPanel } from "./TemperPickerPanel";
 import { WEAPON_ENHANCEMENT_PICKER_CLASS_NAMES } from "./weaponEnhancementPickerClassNames";
 export function WeaponEnhancementPicker({
   slot,
@@ -50,12 +52,12 @@ export function WeaponEnhancementPicker({
   onResetArtAllocation,
 }: {
   slot: WeaponHandSlot;
-  tab: "arts" | "rune" | "totems";
+  tab: "arts" | "rune" | "totems" | "tempers" | "joinery";
   selectedTotemSlot: number;
   build: SoulframeBuild;
   onClose: () => void;
   onTabChange: (
-    tab: "weapon" | "arts" | "rune" | "totems",
+    tab: "weapon" | "arts" | "rune" | "totems" | "tempers" | "joinery",
     totemSlot?: number,
   ) => void;
   onChange: (enhancements: WeaponEnhancements) => void;
@@ -149,7 +151,13 @@ export function WeaponEnhancementPicker({
     onChange({ ...enhancements, totems });
   };
   const navigate = (
-    nextTab: "weapon" | "arts" | "rune" | "totems",
+    nextTab:
+      | "weapon"
+      | "arts"
+      | "rune"
+      | "totems"
+      | "tempers"
+      | "joinery",
     nextTotemSlot?: number,
   ) => {
     if (nextTab === "totems" && nextTotemSlot !== undefined) {
@@ -423,6 +431,18 @@ export function WeaponEnhancementPicker({
               ) : null}
             </div>
           </div>
+        ) : tab === "tempers" ? (
+          <TemperPickerPanel
+            weapon={weapon}
+            enhancements={enhancements}
+            onChange={onChange}
+          />
+        ) : tab === "joinery" ? (
+          <JoineryPickerPanel
+            weapon={weapon}
+            enhancements={enhancements}
+            onChange={onChange}
+          />
         ) : (
           <div className={PICKER_LAYOUT_CLASS_NAMES.bodyDetail}>
             <aside className={PICKER_LAYOUT_CLASS_NAMES.catalogueColumn}>

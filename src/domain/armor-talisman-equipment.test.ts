@@ -7,7 +7,7 @@ import {
 
 function equipmentBuild(): SoulframeBuild {
   return {
-    schemaVersion: 5,
+    schemaVersion: 6,
     name: "Equipment isolation",
     virtues: { courage: 21, spirit: 18, grace: 15 },
     affinitySources: {
@@ -29,10 +29,16 @@ function equipmentBuild(): SoulframeBuild {
       mainHand: {
         rune: { itemId: "rune-main", rank: 2 },
         totems: [null, null, null, null],
+        craftwork: "Stock",
+        tempers: [],
+        joineryId: null,
       },
       offHand: {
         rune: null,
         totems: [null, null, null, null],
+        craftwork: "Stock",
+        tempers: [],
+        joineryId: null,
       },
     },
   };

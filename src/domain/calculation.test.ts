@@ -17,8 +17,8 @@ const additionalBuildSystems = {
   pact: { itemId: null, artAllocation: {} },
   combatArts: {},
   weaponEnhancements: {
-    mainHand: { rune: null, totems: [null, null, null, null] },
-    offHand: { rune: null, totems: [null, null, null, null] },
+    mainHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
+    offHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
   },
 } satisfies Pick<
   SoulframeBuild,
@@ -77,7 +77,7 @@ describe("armor calculations", () => {
 
   it("aggregates multiple equipped pieces", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 5,
+      schemaVersion: 6,
       ...additionalBuildSystems,
       name: "Test",
       virtues: { courage: 19, spirit: 12, grace: 12 },
@@ -117,7 +117,7 @@ describe("armor calculations", () => {
 
   it("reports equipped armor with unmet requirements", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 5,
+      schemaVersion: 6,
       ...additionalBuildSystems,
       name: "Unmet",
       virtues: { courage: 12, spirit: 12, grace: 12 },
@@ -132,7 +132,7 @@ describe("armor calculations", () => {
 
   it("reports unknown item ids without crashing", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 5,
+      schemaVersion: 6,
       ...additionalBuildSystems,
       name: "Unknown",
       virtues: { courage: 12, spirit: 12, grace: 12 },
@@ -146,7 +146,7 @@ describe("armor calculations", () => {
 
   it("applies Talisman virtue bonuses before armor requirements and scaling", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 5,
+      schemaVersion: 6,
       ...additionalBuildSystems,
       name: "Talisman virtues",
       virtues: { courage: 18, spirit: 12, grace: 12 },
@@ -170,7 +170,7 @@ describe("armor calculations", () => {
 
   it("adds flat Talisman defense and exposes raw combat modifiers", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 5,
+      schemaVersion: 6,
       ...additionalBuildSystems,
       name: "Talisman defense",
       virtues: { courage: 12, spirit: 12, grace: 12 },
@@ -192,7 +192,7 @@ describe("armor calculations", () => {
 
   it("applies Pact Art and Fable bonuses without changing the allocatable pool", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 5,
+      schemaVersion: 6,
       ...additionalBuildSystems,
       pact: {
         itemId: "pact-orengall",
@@ -232,7 +232,7 @@ describe("armor calculations", () => {
 
   it("uses compatibility-only legacy Pact Art bonuses while no exact Pact is equipped", () => {
     const build: SoulframeBuild = {
-      schemaVersion: 5,
+      schemaVersion: 6,
       ...additionalBuildSystems,
       name: "Legacy Pact Art compatibility",
       virtues: { courage: 18, spirit: 9, grace: 9 },

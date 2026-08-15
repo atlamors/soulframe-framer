@@ -1,16 +1,25 @@
 import {
   VIRTUE_IDS,
   type VirtueId,
+  type CraftworkTier,
+  type Joinery,
   type Rune,
+  type Temper,
   type TotemSelection,
   type Weapon,
   type WeaponEnhancements,
 } from "./types";
+import { normalizeWeaponConfigurationSelections } from "./weapon-configuration";
 
-export function createEmptyWeaponEnhancements(): WeaponEnhancements {
+export function createEmptyWeaponEnhancements(
+  craftwork: CraftworkTier = "Stock",
+): WeaponEnhancements {
   return {
     rune: null,
     totems: [null, null, null, null],
+    craftwork,
+    tempers: [],
+    joineryId: null,
   };
 }
 
@@ -42,6 +51,8 @@ export function normalizeWeaponEnhancements(
   enhancements: WeaponEnhancements,
   weapon: Weapon | undefined,
   runeById: ReadonlyMap<string, Rune>,
+  temperById?: ReadonlyMap<string, Temper>,
+  joineryById?: ReadonlyMap<string, Joinery>,
 ): { value: WeaponEnhancements; changed: boolean } {
   const selectedRune = enhancements.rune
     ? runeById.get(enhancements.rune.itemId)
@@ -58,12 +69,26 @@ export function normalizeWeaponEnhancements(
     seenTotems.add(totem.itemId);
     return totem;
   }) as WeaponEnhancements["totems"];
-  const value = { rune, totems };
+  const configuration = normalizeWeaponConfigurationSelections({
+    craftwork: enhancements.craftwork,
+    tempers: enhancements.tempers,
+    joineryId: enhancements.joineryId,
+    weapon,
+    temperById,
+    joineryById,
+  });
+  const value = {
+    rune,
+    totems,
+    craftwork: enhancements.craftwork,
+    ...configuration.value,
+  };
   return {
     value,
     changed:
       rune !== enhancements.rune ||
-      totems.some((totem, index) => totem !== enhancements.totems[index]),
+      totems.some((totem, index) => totem !== enhancements.totems[index]) ||
+      configuration.changed,
   };
 }
 

@@ -18,7 +18,7 @@ function plannerBuild(): SoulframeBuild {
     (item) => item.slot === "offHand" && item.combatArt !== mainHand.combatArt,
   )!;
   return {
-    schemaVersion: 5,
+    schemaVersion: 6,
     name: "Planner sections",
     virtues: { courage: 10, spirit: 10, grace: 10 },
     affinitySources: {
@@ -30,8 +30,8 @@ function plannerBuild(): SoulframeBuild {
     pact: { itemId: null, artAllocation: {} },
     combatArts: { [mainHand.combatArt]: {}, [offHand.combatArt]: { retained: 1 } },
     weaponEnhancements: {
-      mainHand: { rune: null, totems: [null, null, null, null] },
-      offHand: { rune: null, totems: [null, null, null, null] },
+      mainHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
+      offHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
     },
   };
 }
@@ -50,7 +50,7 @@ describe("planner section updates", () => {
     expect(equipped.pact).toBe(build.pact);
     const unequipped = updatePlannerWeapon(equipped, "mainHand", undefined);
     expect(unequipped.equipment.mainHand).toBeUndefined();
-    expect(unequipped.weaponEnhancements.mainHand).toEqual({ rune: null, totems: [null, null, null, null] });
+    expect(unequipped.weaponEnhancements.mainHand).toEqual({ rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null });
     expect(unequipped.combatArts[weapon.combatArt]).toBeUndefined();
     expect(unequipped.combatArts[offHandArt]).toEqual(
       equipped.combatArts[offHandArt],

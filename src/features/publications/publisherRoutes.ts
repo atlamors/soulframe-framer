@@ -1,5 +1,51 @@
 import type { PublicationProfileId } from "../../domain/publications/types";
 
+type NewBuildQueryValue = string | string[] | undefined;
+
+export type NewBuildPublisherQuery = {
+  frame?: NewBuildQueryValue;
+  title?: NewBuildQueryValue;
+  slug?: NewBuildQueryValue;
+  summary?: NewBuildQueryValue;
+  classifications?: NewBuildQueryValue;
+  error?: NewBuildQueryValue;
+};
+
+const NEW_BUILD_QUERY_LIMITS = {
+  frame: 32_000,
+  title: 160,
+  slug: 100,
+  summary: 320,
+  classifications: 500,
+  error: 500,
+} as const satisfies Record<keyof NewBuildPublisherQuery, number>;
+
+function firstBoundedQueryValue(
+  value: NewBuildQueryValue,
+  maximum: number,
+): string {
+  const first = Array.isArray(value) ? (value[0] ?? "") : (value ?? "");
+  return first.length <= maximum ? first : "";
+}
+
+/** Preserves only bounded Build-prefill fields across authentication/profile gates. */
+export function newBuildPublisherReturnPath(
+  query: NewBuildPublisherQuery,
+): string {
+  const search = new URLSearchParams();
+  for (const key of Object.keys(NEW_BUILD_QUERY_LIMITS) as Array<
+    keyof NewBuildPublisherQuery
+  >) {
+    const value = firstBoundedQueryValue(
+      query[key],
+      NEW_BUILD_QUERY_LIMITS[key],
+    );
+    if (value) search.set(key, value);
+  }
+  const pathname = "/soulframe/publisher/builds/new";
+  return search.size ? `${pathname}?${search}` : pathname;
+}
+
 export function publisherWorkspacePath(profileId: PublicationProfileId): string {
   return `/soulframe/publisher/${profileId === "soulframe.build" ? "builds" : "guides"}`;
 }
@@ -13,6 +59,22 @@ export function publisherEditPath(
   id: string,
 ): string {
   return `${publisherWorkspacePath(profileId)}/${encodeURIComponent(id)}`;
+}
+
+export function publisherActionLocation(
+  profileId: PublicationProfileId | null,
+  publicationId: string | null,
+  kind: "error" | "notice",
+  value: string,
+): string {
+  const pathname = publicationId
+    ? profileId
+      ? publisherEditPath(profileId, publicationId)
+      : `/soulframe/publisher/${encodeURIComponent(publicationId)}`
+    : profileId
+      ? publisherWorkspacePath(profileId)
+      : "/soulframe/publisher";
+  return `${pathname}?${new URLSearchParams({ [kind]: value })}`;
 }
 
 export function publicPublicationPath(

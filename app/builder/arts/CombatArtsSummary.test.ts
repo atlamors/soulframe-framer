@@ -9,7 +9,7 @@ import {
 
 function emptyBuild(): SoulframeBuild {
   return {
-    schemaVersion: 5,
+    schemaVersion: 6,
     name: "Combat Art summary",
     virtues: { courage: 10, spirit: 10, grace: 10 },
     affinitySources: {
@@ -21,8 +21,8 @@ function emptyBuild(): SoulframeBuild {
     pact: { itemId: null, artAllocation: {} },
     combatArts: {},
     weaponEnhancements: {
-      mainHand: { rune: null, totems: [null, null, null, null] },
-      offHand: { rune: null, totems: [null, null, null, null] },
+      mainHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
+      offHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
     },
   };
 }

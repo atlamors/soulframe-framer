@@ -1,0 +1,1602 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T18:11:47Z",
+  "source": {
+    "name": "Avakot Temper data module",
+    "publisher": "Avakot",
+    "moduleUrl": "https://wiki.avakot.org/Module:Data/Tempers",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 49064,
+    "revisionTimestamp": "2026-08-13T18:11:47Z"
+  },
+  "items": [
+    {
+      "id": "Afflicted Lurgy",
+      "name": "Afflicted Lurgy",
+      "internalId": null,
+      "description": "Chance to apply poison on hit.",
+      "iconFile": "AfflictedLurgy.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/2/25/AfflictedLurgy.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/2/25/AfflictedLurgy.png/192px-AfflictedLurgy.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AfflictedLurgy.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 255196,
+        "sha1": "fd2802f202ba4b7545ac70658c57a30409ddfb41"
+      },
+      "origin": "Cassid",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "poison_proc_chance",
+          "effect": "$1 Poison Proc Chance",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "confirmed",
+          "notes": "Applies on every strike. The second value is the documented double-stack chance."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10681,
+        "pageRevisionId": 48005,
+        "pageRevisionTimestamp": "2026-07-22T00:00:42Z",
+        "pageUrl": "https://wiki.avakot.org/Afflicted_Lurgy"
+      }
+    },
+    {
+      "id": "Aftershock",
+      "name": "Aftershock",
+      "internalId": null,
+      "description": "Chance to add Arcanic damage on hit.",
+      "iconFile": "Aftershock.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/3/32/Aftershock.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/3/32/Aftershock.png/192px-Aftershock.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Aftershock.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 245290,
+        "sha1": "48a0d5d5454cd5a763a7090451785c92a34b6f10"
+      },
+      "origin": "Feykin",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "arcanic_proc_chance",
+          "effect": "$1 Arcanic Proc Chance",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "confirmed",
+          "notes": "Applies on each hit. Despite the in-game description, this does not add weapon damage."
+        },
+        {
+          "effectId": "arcanic_damage_over_time",
+          "effect": "$1 Arcanic Damage Over Time",
+          "stacks": {
+            "single": "100% Hit Damage",
+            "double": "100% Hit Damage"
+          },
+          "ranksRaw": "100% Hit Damage/100% Hit Damage",
+          "confidence": "confirmed",
+          "notes": "On an Arcanic proc, damage is dealt over two ticks at 50% of the triggering hit per tick. Each tick is affected by Enemy Armour. This status behavior is unchanged by double-stacking."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10483,
+        "pageRevisionId": 48799,
+        "pageRevisionTimestamp": "2026-08-09T18:51:53Z",
+        "pageUrl": "https://wiki.avakot.org/Aftershock"
+      }
+    },
+    {
+      "id": "Arcane Alacrity",
+      "name": "Arcane Alacrity",
+      "internalId": null,
+      "description": "Magick Heavy Attacks charge more quickly.",
+      "iconFile": "ArcaneAlacrity.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f1/ArcaneAlacrity.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f1/ArcaneAlacrity.png/192px-ArcaneAlacrity.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:ArcaneAlacrity.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 131499,
+        "sha1": "b48791b1e622c9b00cc0225cf507cfd5e000e994"
+      },
+      "origin": "Universal",
+      "compatibility": "Magick",
+      "stats": [
+        {
+          "effectId": "heavy_attack_charge_rate",
+          "effect": "$1 Heavy Attack Charge Rate",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "confirmed",
+          "notes": "Applies to Magick Heavy Attack charging and stacks multiplicatively with Headlong."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10713,
+        "pageRevisionId": 46126,
+        "pageRevisionTimestamp": "2026-06-25T00:22:25Z",
+        "pageUrl": "https://wiki.avakot.org/Arcane_Alacrity"
+      }
+    },
+    {
+      "id": "Arcane Barrage",
+      "name": "Arcane Barrage",
+      "internalId": null,
+      "description": "Increased Damage and Stagger during Heavy Cast Attacks.",
+      "iconFile": "HeavyCastDamageStagger.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a7/HeavyCastDamageStagger.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a7/HeavyCastDamageStagger.png/192px-HeavyCastDamageStagger.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:HeavyCastDamageStagger.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 134803,
+        "sha1": "65715fb1faf3ec2f7c8523b854a9010e3cdcad09"
+      },
+      "origin": "Universal",
+      "compatibility": "Magick",
+      "stats": [
+        {
+          "effectId": "heavy_cast_damage",
+          "effect": "$1 Heavy Cast Damage",
+          "stacks": {
+            "single": "10 Damage",
+            "double": "20 Damage"
+          },
+          "ranksRaw": "10 Damage/20 Damage",
+          "confidence": "confirmed",
+          "notes": "Applies to Heavy Casts."
+        },
+        {
+          "effectId": "heavy_cast_stagger_damage",
+          "effect": "$1 Heavy Cast Stagger Damage",
+          "stacks": {
+            "single": "Unknown",
+            "double": "Unknown"
+          },
+          "ranksRaw": "Unknown/Unknown",
+          "confidence": "unknown",
+          "notes": "Applies to Heavy Casts. The magnitude is undocumented; the page states that double-stacking doubles it."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10692,
+        "pageRevisionId": 46128,
+        "pageRevisionTimestamp": "2026-06-25T00:23:53Z",
+        "pageUrl": "https://wiki.avakot.org/Arcane_Barrage"
+      }
+    },
+    {
+      "id": "Arcane Rebound",
+      "name": "Arcane Rebound",
+      "internalId": null,
+      "description": "Deflected Magick projectiles deal increased damage.",
+      "iconFile": "ArcaneRebound.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/70/ArcaneRebound.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/70/ArcaneRebound.png/192px-ArcaneRebound.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:ArcaneRebound.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 86164,
+        "sha1": "772a6d13118173d87e9f754d2a9f6d698596abe6"
+      },
+      "origin": "Universal",
+      "compatibility": "Magick",
+      "stats": [
+        {
+          "effectId": "deflected_projectile_damage",
+          "effect": "$1 Deflected Projectile Damage",
+          "stacks": {
+            "single": "~20%",
+            "double": "~40%"
+          },
+          "ranksRaw": "~20%/~40%",
+          "confidence": "approximate",
+          "notes": "Applies to deflected Magick projectiles. Both values are approximate; the second is derived from the documented doubling rule."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10718,
+        "pageRevisionId": 47549,
+        "pageRevisionTimestamp": "2026-07-09T09:10:58Z",
+        "pageUrl": "https://wiki.avakot.org/Arcane_Rebound"
+      }
+    },
+    {
+      "id": "Bounding Swipe",
+      "name": "Bounding Swipe",
+      "internalId": "SprintAttackDamageMod",
+      "description": "Increased Damage and Stagger while Sprinting.",
+      "iconFile": "BoundingSwipe.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/6/65/BoundingSwipe.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/65/BoundingSwipe.png/192px-BoundingSwipe.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:BoundingSwipe.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 131765,
+        "sha1": "842c4f075246bb5fce2c4f88393f9a87ba0861f3"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "sprint_attack_damage",
+          "effect": "$1 Sprint Attack Damage",
+          "stacks": {
+            "single": "12 Damage",
+            "double": "24 Damage"
+          },
+          "ranksRaw": "12 Damage/24 Damage",
+          "confidence": "confirmed",
+          "notes": "Applies to running attacks."
+        },
+        {
+          "effectId": "sprint_attack_stagger_damage",
+          "effect": "$1 Sprint Attack Stagger Damage",
+          "stacks": {
+            "single": "Unknown",
+            "double": "Unknown"
+          },
+          "ranksRaw": "Unknown/Unknown",
+          "confidence": "unknown",
+          "notes": "Applies to running attacks. The magnitude is undocumented; the page states that double-stacking doubles it."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 9820,
+        "pageRevisionId": 46097,
+        "pageRevisionTimestamp": "2026-06-25T00:05:07Z",
+        "pageUrl": "https://wiki.avakot.org/Bounding_Swipe"
+      }
+    },
+    {
+      "id": "Breakneck",
+      "name": "Breakneck",
+      "internalId": "HeavyAttackWindUpMod",
+      "description": "Heavy Attacks charge more quickly.",
+      "iconFile": "Breakneck.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e6/Breakneck.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e6/Breakneck.png/192px-Breakneck.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Breakneck.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 98655,
+        "sha1": "b5cb49205aba4e3f3a0b61117b158dffa46bc0e6"
+      },
+      "origin": "Universal",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "heavy_attack_charge_rate",
+          "effect": "$1 Heavy Attack Charge Rate",
+          "stacks": {
+            "single": "15%",
+            "double": "30%"
+          },
+          "ranksRaw": "15%/30%",
+          "confidence": "confirmed",
+          "notes": "Applies to Melee Heavy Attack charging and stacks multiplicatively with Headlong."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 9821,
+        "pageRevisionId": 46354,
+        "pageRevisionTimestamp": "2026-06-27T12:21:11Z",
+        "pageUrl": "https://wiki.avakot.org/Breakneck"
+      }
+    },
+    {
+      "id": "Bypass",
+      "name": "Bypass",
+      "internalId": null,
+      "description": "Enemy defense reduced on first hit.",
+      "iconFile": "Bypass.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/0a/Bypass.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/0a/Bypass.png/192px-Bypass.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Bypass.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 159415,
+        "sha1": "840635b24144f675c7efe65cba692cd5b4e0b145"
+      },
+      "origin": "Ode'n",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "enemy_armour_reduction",
+          "effect": "$1 Enemy Armour Reduction",
+          "stacks": {
+            "single": "10 Armour on First Hit",
+            "double": "10 Armour on First Two Hits"
+          },
+          "ranksRaw": "10 Armour on First Hit/10 Armour on First Two Hits",
+          "confidence": "partial",
+          "notes": "A single stack reduces Enemy Armour on the first hit. Double-stacking permits one additional reduction on the second hit. Duration and total cap are undocumented."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10684,
+        "pageRevisionId": 46110,
+        "pageRevisionTimestamp": "2026-06-25T00:14:05Z",
+        "pageUrl": "https://wiki.avakot.org/Bypass"
+      }
+    },
+    {
+      "id": "Cowp",
+      "name": "Cowp",
+      "internalId": null,
+      "description": "Grants chance for doubled Stagger damage.",
+      "iconFile": "Cowp.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/6/69/Cowp.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/6/69/Cowp.png/192px-Cowp.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Cowp.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 123265,
+        "sha1": "6475c2cca111426ce76fd206f6b5b7bf5a71d28d"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "double_stagger_chance",
+          "effect": "$1 Double Stagger Chance",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "confirmed",
+          "notes": "On a successful proc, the hit deals twice its normal Stagger damage."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10689,
+        "pageRevisionId": 46098,
+        "pageRevisionTimestamp": "2026-06-25T00:05:32Z",
+        "pageUrl": "https://wiki.avakot.org/Cowp"
+      }
+    },
+    {
+      "id": "Dual Cast",
+      "name": "Dual Cast",
+      "internalId": null,
+      "description": "Chance for a second projectile to be cast.",
+      "iconFile": "DualCast.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/fb/DualCast.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/fb/DualCast.png/192px-DualCast.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:DualCast.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 280279,
+        "sha1": "c3f6e8945d4377b5192ee011b94687ca29c667a5"
+      },
+      "origin": "Feykin",
+      "compatibility": "Magick",
+      "stats": [
+        {
+          "effectId": "duplicate_projectile_chance",
+          "effect": "$1 Duplicate Projectile Chance",
+          "stacks": {
+            "single": "9%",
+            "double": "18%"
+          },
+          "ranksRaw": "9%/18%",
+          "confidence": "confirmed",
+          "notes": "Applies to projectile-based Magick attacks. The duplicate carries the original projectile's Rune effects, including Archstorm and The Hollowing interactions."
+        },
+        {
+          "effectId": "non_projectile_exclusion",
+          "effect": "$1 Non-Projectile Exclusion",
+          "stacks": {
+            "single": "Assumed No",
+            "double": "Assumed No"
+          },
+          "ranksRaw": "Assumed No/Assumed No",
+          "confidence": "assumed",
+          "notes": "It is assumed, but unconfirmed, that Finishers and Ground Finishers are excluded. This applicability is unchanged by double-stacking."
+        },
+        {
+          "effectId": "mirrorspell_deflected_projectile_exclusion",
+          "effect": "$1 Mirrorspell-Deflected Projectile Exclusion",
+          "stacks": {
+            "single": "Assumed No",
+            "double": "Assumed No"
+          },
+          "ranksRaw": "Assumed No/Assumed No",
+          "confidence": "assumed",
+          "notes": "It is assumed, but unconfirmed, that projectiles deflected with Mirrorspell are excluded. This applicability is unchanged by double-stacking."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10719,
+        "pageRevisionId": 46363,
+        "pageRevisionTimestamp": "2026-06-27T13:29:36Z",
+        "pageUrl": "https://wiki.avakot.org/Dual_Cast"
+      }
+    },
+    {
+      "id": "Enkindled",
+      "name": "Enkindled",
+      "internalId": null,
+      "description": "Chance to add fire damage on hit.",
+      "iconFile": "Enkindled.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/d/d1/Enkindled.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/d1/Enkindled.png/192px-Enkindled.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Enkindled.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 184972,
+        "sha1": "9d7917c41a009b48b9e51646cbebf3472192ee8c"
+      },
+      "origin": "Dendrit",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "ablaze_proc_chance",
+          "effect": "$1 Ablaze Proc Chance",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "partial",
+          "notes": "Applies on hit. The proc does not appear to stack; that non-stacking behavior is not fully confirmed."
+        },
+        {
+          "effectId": "ablaze_damage_over_time",
+          "effect": "$1 Ablaze Damage Over Time",
+          "stacks": {
+            "single": "35% Hit Damage per Second",
+            "double": "35% Hit Damage per Second"
+          },
+          "ranksRaw": "35% Hit Damage per Second/35% Hit Damage per Second",
+          "confidence": "confirmed",
+          "notes": "A burning target takes this damage each second for four seconds. The proc does not appear to stack. This status behavior is unchanged by double-stacking."
+        },
+        {
+          "effectId": "ablaze_enemy_armour_reduction",
+          "effect": "$1 Ablaze Enemy Armour Reduction",
+          "stacks": {
+            "single": "Up to 50%",
+            "double": "Up to 50%"
+          },
+          "ranksRaw": "Up to 50%/Up to 50%",
+          "confidence": "partial",
+          "notes": "Enemy Armour is reduced by up to this amount while burning, then recovers gradually for six seconds after the burn ends. This status behavior is unchanged by double-stacking."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10682,
+        "pageRevisionId": 48315,
+        "pageRevisionTimestamp": "2026-07-26T21:26:32Z",
+        "pageUrl": "https://wiki.avakot.org/Enkindled"
+      }
+    },
+    {
+      "id": "First Strike",
+      "name": "First Strike",
+      "internalId": null,
+      "description": "Increased weapon damage against foes with full Life.",
+      "iconFile": "FirstStrike.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/d/dd/FirstStrike.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/dd/FirstStrike.png/192px-FirstStrike.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FirstStrike.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 180589,
+        "sha1": "442c50f2fa7e4a8f6728a34826d751cad56b8578"
+      },
+      "origin": "Cassid",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "full_life_target_damage",
+          "effect": "$1 Full Life Target Damage",
+          "stacks": {
+            "single": "20 Damage",
+            "double": "40 Damage"
+          },
+          "ranksRaw": "20 Damage/40 Damage",
+          "confidence": "confirmed",
+          "notes": "Applies when the foe is at full Life."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10686,
+        "pageRevisionId": 46120,
+        "pageRevisionTimestamp": "2026-06-25T00:18:15Z",
+        "pageUrl": "https://wiki.avakot.org/First_Strike"
+      }
+    },
+    {
+      "id": "Fleet Fling",
+      "name": "Fleet Fling",
+      "internalId": "ThrowSpeedMod",
+      "description": "Increased Throw Speed.",
+      "iconFile": "FleetFling.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/74/FleetFling.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/74/FleetFling.png/192px-FleetFling.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FleetFling.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 161765,
+        "sha1": "4969745c9bd4160106bbbfbd351666300700a8ae"
+      },
+      "origin": "Universal",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "throw_speed",
+          "effect": "$1 Throw Speed",
+          "stacks": {
+            "single": "20%",
+            "double": "40%"
+          },
+          "ranksRaw": "20%/40%",
+          "confidence": "confirmed",
+          "notes": "Applies to weapon throws."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 9822,
+        "pageRevisionId": 46114,
+        "pageRevisionTimestamp": "2026-06-25T00:15:20Z",
+        "pageUrl": "https://wiki.avakot.org/Fleet_Fling"
+      }
+    },
+    {
+      "id": "Follow Up",
+      "name": "Follow Up",
+      "internalId": null,
+      "description": "Increased weapon damage on consecutive attacks following a Heavy Attack.",
+      "iconFile": "FollowUp.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/fa/FollowUp.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/fa/FollowUp.png/192px-FollowUp.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FollowUp.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 114786,
+        "sha1": "ac579b59620adab0b0a1917523cab21446eacab2"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "post_heavy_consecutive_light_damage",
+          "effect": "$1 Post Heavy Consecutive Light Damage",
+          "stacks": {
+            "single": "7 Damage per Hit, 28 Maximum",
+            "double": "14 Damage per Hit, 56 Maximum"
+          },
+          "ranksRaw": "7 Damage per Hit, 28 Maximum/14 Damage per Hit, 56 Maximum",
+          "confidence": "confirmed",
+          "notes": "Consecutive Light Attacks after any Heavy Attack accumulate this bonus. Damage is affected by move multipliers."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10685,
+        "pageRevisionId": 46568,
+        "pageRevisionTimestamp": "2026-06-30T06:59:43Z",
+        "pageUrl": "https://wiki.avakot.org/Follow_Up"
+      }
+    },
+    {
+      "id": "Fortified",
+      "name": "Fortified",
+      "internalId": null,
+      "description": "Take less Stagger damage when blocking.",
+      "iconFile": "Fortified.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/Fortified.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/Fortified.png/192px-Fortified.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Fortified.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 154464,
+        "sha1": "2c3978ad31916507126a1c738d0407c6be9c8ac5"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "blocking_stagger_damage_reduction",
+          "effect": "$1 Blocking Stagger Damage Reduction",
+          "stacks": {
+            "single": "Unknown",
+            "double": "Unknown"
+          },
+          "ranksRaw": "Unknown/Unknown",
+          "confidence": "unknown",
+          "notes": "Applies while blocking. The magnitude is undocumented; the page states that double-stacking doubles it."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10690,
+        "pageRevisionId": 46099,
+        "pageRevisionTimestamp": "2026-06-25T00:06:34Z",
+        "pageUrl": "https://wiki.avakot.org/Fortified"
+      }
+    },
+    {
+      "id": "From Above",
+      "name": "From Above",
+      "internalId": null,
+      "description": "Increased weapon damage from Aerial Attacks.",
+      "iconFile": "FromAbove.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e8/FromAbove.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e8/FromAbove.png/192px-FromAbove.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FromAbove.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 208894,
+        "sha1": "87a52132b35789cf2c86124f0c1f026a225dd9ca"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "aerial_attack_damage",
+          "effect": "$1 Aerial Attack Damage",
+          "stacks": {
+            "single": "10 Damage",
+            "double": "20 Damage"
+          },
+          "ranksRaw": "10 Damage/20 Damage",
+          "confidence": "confirmed",
+          "notes": "Applies to aerial hits and is affected by move multipliers, so the displayed increase may be lower on many weapons."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10688,
+        "pageRevisionId": 46100,
+        "pageRevisionTimestamp": "2026-06-25T00:07:04Z",
+        "pageUrl": "https://wiki.avakot.org/From_Above"
+      }
+    },
+    {
+      "id": "Full Force",
+      "name": "Full Force",
+      "internalId": "HeavyAttackDamageAndStaggerMod",
+      "description": "Increased Damage and Stagger during Heavy Attacks.",
+      "iconFile": "FullForce.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e2/FullForce.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e2/FullForce.png/192px-FullForce.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:FullForce.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 138464,
+        "sha1": "22992b1ad2e822120a398e9e595d2aefb096fa21"
+      },
+      "origin": "Universal",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "heavy_attack_damage",
+          "effect": "$1 Heavy Attack Damage",
+          "stacks": {
+            "single": "15 Damage",
+            "double": "30 Damage"
+          },
+          "ranksRaw": "15 Damage/30 Damage",
+          "confidence": "confirmed",
+          "notes": "Applies to Heavy Attacks."
+        },
+        {
+          "effectId": "heavy_attack_stagger_damage",
+          "effect": "$1 Heavy Attack Stagger Damage",
+          "stacks": {
+            "single": "Unknown",
+            "double": "Unknown"
+          },
+          "ranksRaw": "Unknown/Unknown",
+          "confidence": "unknown",
+          "notes": "Applies to Heavy Attacks. The magnitude is undocumented; the page states that double-stacking doubles it."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 9823,
+        "pageRevisionId": 46355,
+        "pageRevisionTimestamp": "2026-06-27T12:22:55Z",
+        "pageUrl": "https://wiki.avakot.org/Full_Force"
+      }
+    },
+    {
+      "id": "Galvanic Strike",
+      "name": "Galvanic Strike",
+      "internalId": "OdeVoltaicDamageMod",
+      "description": "Adds Voltaic damage to weapon, staggering enemies in area of effect when it discharges.",
+      "iconFile": "GalvanicStrike.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/8/8a/GalvanicStrike.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/8a/GalvanicStrike.png/192px-GalvanicStrike.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:GalvanicStrike.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 134128,
+        "sha1": "77dc8bb90a121727a6cbaf853bd34f2b705027cf"
+      },
+      "origin": "Ode'n",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "voltaic_proc_chance",
+          "effect": "$1 Voltaic Proc Chance",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "confirmed",
+          "notes": "Applies on each hit. Despite the in-game description, this does not add weapon damage."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 9824,
+        "pageRevisionId": 48730,
+        "pageRevisionTimestamp": "2026-08-08T22:15:17Z",
+        "pageUrl": "https://wiki.avakot.org/Galvanic_Strike"
+      }
+    },
+    {
+      "id": "Hale and Hearty",
+      "name": "Hale and Hearty",
+      "internalId": null,
+      "description": "Increased weapon damage at full Life.",
+      "iconFile": "HaleAndHearty.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ef/HaleAndHearty.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ef/HaleAndHearty.png/192px-HaleAndHearty.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:HaleAndHearty.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 137055,
+        "sha1": "6217066e8ad01ff6027a7399651adc5de85dc84d"
+      },
+      "origin": "Universal",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "full_envoy_life_damage",
+          "effect": "$1 Full Envoy Life Damage",
+          "stacks": {
+            "single": "12 Damage",
+            "double": "24 Damage"
+          },
+          "ranksRaw": "12 Damage/24 Damage",
+          "confidence": "confirmed",
+          "notes": "Applies while the Envoy is at full Life."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10687,
+        "pageRevisionId": 46858,
+        "pageRevisionTimestamp": "2026-07-01T04:43:52Z",
+        "pageUrl": "https://wiki.avakot.org/Hale_and_Hearty"
+      }
+    },
+    {
+      "id": "Heightened Parry",
+      "name": "Heightened Parry",
+      "internalId": null,
+      "description": "Increased parry window.",
+      "iconFile": "HeightenedParry.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/5/5a/HeightenedParry.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/5/5a/HeightenedParry.png/192px-HeightenedParry.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:HeightenedParry.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 115671,
+        "sha1": "0a8c0e7cfefdeaa841e539585502ac507188713b"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "parry_window",
+          "effect": "$1 Parry Window",
+          "stacks": {
+            "single": "Unknown",
+            "double": "Unknown"
+          },
+          "ranksRaw": "Unknown/Unknown",
+          "confidence": "unknown",
+          "notes": "Applies to Parries and cannot appear on Magick weapons. The magnitude is undocumented; the page states that double-stacking doubles it."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10691,
+        "pageRevisionId": 46387,
+        "pageRevisionTimestamp": "2026-06-27T20:47:23Z",
+        "pageUrl": "https://wiki.avakot.org/Heightened_Parry"
+      }
+    },
+    {
+      "id": "Hunter's Relish",
+      "name": "Hunter's Relish",
+      "internalId": null,
+      "description": "Increased Life recovery when attacking during regain.",
+      "iconFile": "HuntersRelish.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/d/da/HuntersRelish.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/d/da/HuntersRelish.png/192px-HuntersRelish.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:HuntersRelish.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 106455,
+        "sha1": "60dbd1c91e38f215043a5f55bb348d639647f24c"
+      },
+      "origin": "Dendrit",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "regain_hit_life_recovery",
+          "effect": "$1 Regain Hit Life Recovery",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "confirmed",
+          "notes": "Applies to regain hits. A single stack produces 2% additional lifesteal up to the regain cap; the second value follows the documented doubling rule."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10720,
+        "pageRevisionId": 49056,
+        "pageRevisionTimestamp": "2026-08-12T18:11:14Z",
+        "pageUrl": "https://wiki.avakot.org/Hunter's_Relish"
+      }
+    },
+    {
+      "id": "PH AspectCassidParryStaggerName",
+      "name": "PH AspectCassidParryStaggerName",
+      "internalId": null,
+      "description": "Increased Stagger damage on parry.",
+      "iconFile": "AspectCassidParryStaggerName.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/ef/AspectCassidParryStaggerName.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/ef/AspectCassidParryStaggerName.png/192px-AspectCassidParryStaggerName.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:AspectCassidParryStaggerName.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 208192,
+        "sha1": "bdac9f6233949b1df81472aa9548a18991ed3f93"
+      },
+      "origin": "Cassid",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "parry_stagger_damage",
+          "effect": "$1 Parry Stagger Damage",
+          "stacks": {
+            "single": "Unknown",
+            "double": "Unknown"
+          },
+          "ranksRaw": "Unknown/Unknown",
+          "confidence": "unknown",
+          "notes": "Applies on a successful Parry. The magnitude is undocumented; the page states that double-stacking doubles it."
+        }
+      ],
+      "isPlaceholder": true,
+      "provenance": {
+        "pageId": 10721,
+        "pageRevisionId": 46131,
+        "pageRevisionTimestamp": "2026-06-25T00:31:19Z",
+        "pageUrl": "https://wiki.avakot.org/PH_AspectCassidParryStaggerName"
+      }
+    },
+    {
+      "id": "Quick Draw",
+      "name": "Quick Draw",
+      "internalId": null,
+      "description": "Bows charge more quickly.",
+      "iconFile": "QuickDraw.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/4/46/QuickDraw.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/46/QuickDraw.png/192px-QuickDraw.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:QuickDraw.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 88189,
+        "sha1": "5c4c68ac2d46655a3b39b36edd2c5a05c044fd77"
+      },
+      "origin": "Universal",
+      "compatibility": "Bow",
+      "stats": [
+        {
+          "effectId": "bow_charge_rate",
+          "effect": "$1 Bow Charge Rate",
+          "stacks": {
+            "single": "~12.5%",
+            "double": "~25%"
+          },
+          "ranksRaw": "~12.5%/~25%",
+          "confidence": "approximate",
+          "notes": "Applies to Bow charging. Both values are approximate and require further confirmation."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10714,
+        "pageRevisionId": 46124,
+        "pageRevisionTimestamp": "2026-06-25T00:21:04Z",
+        "pageUrl": "https://wiki.avakot.org/Quick_Draw"
+      }
+    },
+    {
+      "id": "Rejoinder",
+      "name": "Rejoinder",
+      "internalId": "DodgeAttackDamageMod",
+      "description": "Increased Damage and Stagger during dodge attacks.",
+      "iconFile": "Rejoinder.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/00/Rejoinder.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/00/Rejoinder.png/192px-Rejoinder.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Rejoinder.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 122977,
+        "sha1": "9a1aec271134ed9b6640d43664a0efee0f30636b"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "dodge_attack_base_damage",
+          "effect": "$1 Dodge Attack Base Damage",
+          "stacks": {
+            "single": "10 Base Damage",
+            "double": "20 Base Damage"
+          },
+          "ranksRaw": "10 Base Damage/20 Base Damage",
+          "confidence": "confirmed",
+          "notes": "Applies to Dodge Attacks, including Spectre Strikes, before the Spectre Strike multiplier."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 9825,
+        "pageRevisionId": 46374,
+        "pageRevisionTimestamp": "2026-06-27T15:54:21Z",
+        "pageUrl": "https://wiki.avakot.org/Rejoinder"
+      }
+    },
+    {
+      "id": "Renewed Slayer",
+      "name": "Renewed Slayer",
+      "internalId": null,
+      "description": "Restore Life upon slaying a foe.",
+      "iconFile": "RenewedSlayer.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f5/RenewedSlayer.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f5/RenewedSlayer.png/192px-RenewedSlayer.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:RenewedSlayer.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 72764,
+        "sha1": "327c7e02f8762902713cf1ed5d1f637259feb67f"
+      },
+      "origin": "Dendrit",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "kill_life_regeneration",
+          "effect": "$1 Kill Life Regeneration",
+          "stacks": {
+            "single": "5 Life per Second for 4 Seconds",
+            "double": "10 Life per Second for 4 Seconds"
+          },
+          "ranksRaw": "5 Life per Second for 4 Seconds/10 Life per Second for 4 Seconds",
+          "confidence": "confirmed",
+          "notes": "Triggers after slaying a foe. A later kill starts another instance that stacks during overlap. Taking damage interrupts the healing."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10731,
+        "pageRevisionId": 46007,
+        "pageRevisionTimestamp": "2026-06-23T11:09:50Z",
+        "pageUrl": "https://wiki.avakot.org/Renewed_Slayer"
+      }
+    },
+    {
+      "id": "Rupture",
+      "name": "Rupture",
+      "internalId": null,
+      "description": "Increased Shatter and Stagger damage.",
+      "iconFile": "Rupture.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/3/38/Rupture.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/3/38/Rupture.png/192px-Rupture.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Rupture.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 291110,
+        "sha1": "a2619c8c50b6b7306abf489a19c221b68dc67025"
+      },
+      "origin": "Universal",
+      "compatibility": "Bow",
+      "stats": [
+        {
+          "effectId": "splintered_embedded_arrow_damage",
+          "effect": "$1 Splintered Embedded Arrow Damage",
+          "stacks": {
+            "single": "8 Damage",
+            "double": "16 Damage"
+          },
+          "ranksRaw": "8 Damage/16 Damage",
+          "confidence": "confirmed",
+          "notes": "Applies when embedded arrows are splintered by the Splinter Combat Art. The second value follows the documented doubling rule."
+        },
+        {
+          "effectId": "bow_stagger_damage",
+          "effect": "$1 Bow Stagger Damage",
+          "stacks": {
+            "single": "Unknown",
+            "double": "Unknown"
+          },
+          "ranksRaw": "Unknown/Unknown",
+          "confidence": "partial",
+          "notes": "The magnitude is undocumented, and it is unconfirmed whether this applies to all Bow shots or only Splinter. The page states that double-stacking doubles it."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10535,
+        "pageRevisionId": 46371,
+        "pageRevisionTimestamp": "2026-06-27T15:33:48Z",
+        "pageUrl": "https://wiki.avakot.org/Rupture"
+      }
+    },
+    {
+      "id": "Savagery",
+      "name": "Savagery",
+      "internalId": null,
+      "description": "Chance to add Bleed damage on hit.",
+      "iconFile": "Savagery.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/b/bf/Savagery.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/b/bf/Savagery.png/192px-Savagery.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Savagery.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 99386,
+        "sha1": "7aae11aac29b24894c255548484758c2f3223f86"
+      },
+      "origin": "Mendicant",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "bleed_proc_chance",
+          "effect": "$1 Bleed Proc Chance",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "confirmed",
+          "notes": "Applies on hit."
+        },
+        {
+          "effectId": "bleed_damage_over_time",
+          "effect": "$1 Bleed Damage Over Time",
+          "stacks": {
+            "single": "20% Attack Damage per Tick",
+            "double": "20% Attack Damage per Tick"
+          },
+          "ranksRaw": "20% Attack Damage per Tick/20% Attack Damage per Tick",
+          "confidence": "confirmed",
+          "notes": "On a Bleed proc, damage is dealt for five ticks. This status behavior is unchanged by double-stacking."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10683,
+        "pageRevisionId": 48456,
+        "pageRevisionTimestamp": "2026-08-01T15:59:39Z",
+        "pageUrl": "https://wiki.avakot.org/Savagery"
+      }
+    },
+    {
+      "id": "Sinister Volley",
+      "name": "Sinister Volley",
+      "internalId": null,
+      "description": "Chance to inflict fear to foes when thrown weapon hits.",
+      "iconFile": "SinisterVolley.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/4/46/SinisterVolley.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/46/SinisterVolley.png/192px-SinisterVolley.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SinisterVolley.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 150793,
+        "sha1": "bd50e82be74f1bafbe490cf93ceaf001b1f26f45"
+      },
+      "origin": "Mendicant",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "throw_fear_proc_chance",
+          "effect": "$1 Throw Fear Proc Chance",
+          "stacks": {
+            "single": "Unknown",
+            "double": "Unknown"
+          },
+          "ranksRaw": "Unknown/Unknown",
+          "confidence": "unknown",
+          "notes": "Applies on weapon throw. The chance is undocumented and does not appear to work on Bosses; the page states that double-stacking doubles it."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10716,
+        "pageRevisionId": 47046,
+        "pageRevisionTimestamp": "2026-07-03T09:17:10Z",
+        "pageUrl": "https://wiki.avakot.org/Sinister_Volley"
+      }
+    },
+    {
+      "id": "Slinger's Tempo",
+      "name": "Slinger's Tempo",
+      "internalId": null,
+      "description": "Chance for Stagger to become Knockdown.",
+      "iconFile": "SlingersTempo.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/0a/SlingersTempo.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/0a/SlingersTempo.png/192px-SlingersTempo.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SlingersTempo.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 119844,
+        "sha1": "e052ad5774a3e55ac6d8cc9549a4fcb4fb3e357e"
+      },
+      "origin": "Ode'n",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "stagger_to_knockdown_chance",
+          "effect": "$1 Stagger To Knockdown Chance",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "confirmed",
+          "notes": "On staggering a foe, a proc converts Stagger to Knockdown and enables a Ground Finisher. Ground Finishers do not receive the Lethality Multiplier."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10715,
+        "pageRevisionId": 46351,
+        "pageRevisionTimestamp": "2026-06-27T10:52:39Z",
+        "pageUrl": "https://wiki.avakot.org/Slinger's_Tempo"
+      }
+    },
+    {
+      "id": "Sullying Force",
+      "name": "Sullying Force",
+      "internalId": "CritChanceMod",
+      "description": "Increased chance of Smite.",
+      "iconFile": "SullyingForce.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/8/89/SullyingForce.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/89/SullyingForce.png/192px-SullyingForce.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SullyingForce.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 200932,
+        "sha1": "08994a4d4bad3e5f1232239d0004e10fc7b0534d"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "smite_proc_chance",
+          "effect": "$1 Smite Proc Chance",
+          "stacks": {
+            "single": "3%",
+            "double": "6%"
+          },
+          "ranksRaw": "3%/6%",
+          "confidence": "confirmed",
+          "notes": "Adds this chance to proc Smite."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 9826,
+        "pageRevisionId": 46102,
+        "pageRevisionTimestamp": "2026-06-25T00:08:12Z",
+        "pageUrl": "https://wiki.avakot.org/Sullying_Force"
+      }
+    },
+    {
+      "id": "Swift Strike",
+      "name": "Swift Strike",
+      "internalId": null,
+      "description": "Increased weapon attack speed.",
+      "iconFile": "SwiftStrike.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/8/8b/SwiftStrike.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/8/8b/SwiftStrike.png/192px-SwiftStrike.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SwiftStrike.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 218961,
+        "sha1": "c4a3262f0de6594d7c843b3c93e7bf2177ed0646"
+      },
+      "origin": "Universal",
+      "compatibility": "Melee",
+      "stats": [
+        {
+          "effectId": "weapon_attack_speed",
+          "effect": "$1 Weapon Attack Speed",
+          "stacks": {
+            "single": "15%",
+            "double": "30%"
+          },
+          "ranksRaw": "15%/30%",
+          "confidence": "confirmed",
+          "notes": "Also affects Envoy kicks and unarmed strikes while the weapon is thrown."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10712,
+        "pageRevisionId": 47678,
+        "pageRevisionTimestamp": "2026-07-12T23:02:12Z",
+        "pageUrl": "https://wiki.avakot.org/Swift_Strike"
+      }
+    },
+    {
+      "id": "Swooning Blow",
+      "name": "Swooning Blow",
+      "internalId": "StaggerMod",
+      "description": "Increased Stagger while attacking.",
+      "iconFile": "SwooningBlow.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/SwooningBlow.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/SwooningBlow.png/192px-SwooningBlow.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SwooningBlow.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 126507,
+        "sha1": "aa3beeab860a03172c59722f98c74283699c7b2a"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "hit_stagger_damage",
+          "effect": "$1 Hit Stagger Damage",
+          "stacks": {
+            "single": "12 Stagger Damage",
+            "double": "24 Stagger Damage"
+          },
+          "ranksRaw": "12 Stagger Damage/24 Stagger Damage",
+          "confidence": "confirmed",
+          "notes": "Applies on hit."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 9827,
+        "pageRevisionId": 46103,
+        "pageRevisionTimestamp": "2026-06-25T00:08:46Z",
+        "pageUrl": "https://wiki.avakot.org/Swooning_Blow"
+      }
+    },
+    {
+      "id": "Sympathy Pang",
+      "name": "Sympathy Pang",
+      "internalId": null,
+      "description": "Damage inflicted from attacks will spread to another.",
+      "iconFile": "SympathyPang.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/3/33/SympathyPang.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/3/33/SympathyPang.png/192px-SympathyPang.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:SympathyPang.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 143750,
+        "sha1": "0b697f2eba1e786023f1f6323c3dc4058e9ac623"
+      },
+      "origin": "Feykin",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "nearby_foe_damage_spread",
+          "effect": "$1 Nearby Foe Damage Spread",
+          "stacks": {
+            "single": "10%",
+            "double": "20%"
+          },
+          "ranksRaw": "10%/20%",
+          "confidence": "confirmed",
+          "notes": "Applies on hit to a nearby foe and is not affected by Enemy Armour. It can propagate statuses, consumes additional Fellust charges, and can trigger Barkbare to steal Enemy Armour."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10504,
+        "pageRevisionId": 45932,
+        "pageRevisionTimestamp": "2026-06-22T00:50:44Z",
+        "pageUrl": "https://wiki.avakot.org/Sympathy_Pang"
+      }
+    },
+    {
+      "id": "Unencumbered",
+      "name": "Unencumbered",
+      "internalId": null,
+      "description": "Increased weapon damage while no sidearm is equipped.",
+      "iconFile": "Unencumbered.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/7/79/Unencumbered.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/7/79/Unencumbered.png/192px-Unencumbered.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Unencumbered.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 63504,
+        "sha1": "f9751f65877ad645ac8bcbf2461d9d4401bc0058"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "no_sidearm_weapon_damage",
+          "effect": "$1 No Sidearm Weapon Damage",
+          "stacks": {
+            "single": "14 Damage",
+            "double": "28 Damage"
+          },
+          "ranksRaw": "14 Damage/28 Damage",
+          "confidence": "confirmed",
+          "notes": "Applies while the Envoy has no Sidearm equipped."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10589,
+        "pageRevisionId": 46857,
+        "pageRevisionTimestamp": "2026-07-01T04:43:30Z",
+        "pageUrl": "https://wiki.avakot.org/Unencumbered"
+      }
+    },
+    {
+      "id": "Unnerving Blow",
+      "name": "Unnerving Blow",
+      "internalId": null,
+      "description": "Chance to inflict fear on foes when hit.",
+      "iconFile": "UnnervingBlow.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/04/UnnervingBlow.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/04/UnnervingBlow.png/192px-UnnervingBlow.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:UnnervingBlow.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 179228,
+        "sha1": "6c43c65bc7880d6fa3f0df81425b1463bf41b684"
+      },
+      "origin": "Mendicant",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "hit_fear_proc_chance",
+          "effect": "$1 Hit Fear Proc Chance",
+          "stacks": {
+            "single": "Unknown",
+            "double": "Unknown"
+          },
+          "ranksRaw": "Unknown/Unknown",
+          "confidence": "unknown",
+          "notes": "Applies on hit. The chance is undocumented and does not appear to work on Bosses; the page states that double-stacking doubles it."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 10717,
+        "pageRevisionId": 47047,
+        "pageRevisionTimestamp": "2026-07-03T09:17:25Z",
+        "pageUrl": "https://wiki.avakot.org/Unnerving_Blow"
+      }
+    },
+    {
+      "id": "Venger",
+      "name": "Venger",
+      "internalId": "RiposteDamageMod",
+      "description": "Increased Riposte Damage.",
+      "iconFile": "Venger.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/4/46/Venger.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/4/46/Venger.png/192px-Venger.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Venger.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 110381,
+        "sha1": "01d2d0f8f6e8e99b2ba27e111d4a1dc270499477"
+      },
+      "origin": "Universal",
+      "compatibility": "All Weapons",
+      "stats": [
+        {
+          "effectId": "riposte_base_damage",
+          "effect": "$1 Riposte Base Damage",
+          "stacks": {
+            "single": "15 Base Damage",
+            "double": "30 Base Damage"
+          },
+          "ranksRaw": "15 Base Damage/30 Base Damage",
+          "confidence": "confirmed",
+          "notes": "Applies before the Riposte Multiplier, is unaffected by the Lethality Multiplier, and does not scale with Grace. It cannot appear on Magick weapons."
+        }
+      ],
+      "isPlaceholder": false,
+      "provenance": {
+        "pageId": 9828,
+        "pageRevisionId": 46824,
+        "pageRevisionTimestamp": "2026-06-30T18:12:21Z",
+        "pageUrl": "https://wiki.avakot.org/Venger"
+      }
+    }
+  ]
+}

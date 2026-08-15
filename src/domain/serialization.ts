@@ -5,11 +5,13 @@ import {
   type AffinitySources,
   type ArmorItem,
   type EquipmentSlot,
+  type Joinery,
   type PactArtRank,
   type Pact,
   type Rune,
   type SoulframeBuild,
   type Talisman,
+  type Temper,
   type Totem,
   type TotemSelection,
   type Weapon,
@@ -35,11 +37,16 @@ import {
   normalizeActiveCombatArtAllocations,
   normalizePactArtAllocation,
 } from "./arts";
+import { joineryById as defaultJoineryById } from "../data/joineries";
+import { runeById as defaultRuneById } from "../data/runes";
+import { temperById as defaultTemperById } from "../data/tempers";
 import { weaponById } from "../data/weapons";
+import { isCraftworkTier } from "./weapon-configuration";
 
-export const BUILD_SCHEMA_VERSION = 5 as const;
-export const STORAGE_KEY = "soulframe-framer.build.v5";
+export const BUILD_SCHEMA_VERSION = 6 as const;
+export const STORAGE_KEY = "soulframe-framer.build.v6";
 export const LEGACY_STORAGE_KEYS = [
+  "soulframe-framer.build.v5",
   "soulframe-framer.build.v4",
   "soulframe-framer.build.v3",
   "soulframe-framer.build.v2",
@@ -49,6 +56,8 @@ export const ARTS_MIGRATION_WARNING =
   "Saved build upgraded with direct Pact and Combat Art configuration.";
 export const UNMAPPED_LEGACY_PACT_ARTS_WARNING =
   "Legacy Pact Art Virtue bonuses were preserved but could not be attached to an exact Pact.";
+export const WEAPON_CONFIGURATION_MIGRATION_WARNING =
+  "Saved build upgraded with Craftwork, Temper, and Joinery configuration.";
 const MAX_VIRTUE_VALUE = MAX_ALLOCATABLE_AFFINITY;
 const LEGACY_MAX_ENVOY_RANK = 99;
 
@@ -59,6 +68,8 @@ export interface BuildCatalogue {
   pacts?: readonly Pact[];
   runes?: readonly Rune[];
   totems?: readonly Totem[];
+  tempers?: readonly Temper[];
+  joineries?: readonly Joinery[];
 }
 
 export type DecodeResult =
@@ -66,7 +77,7 @@ export type DecodeResult =
       ok: true;
       build: SoulframeBuild;
       warnings: string[];
-      sourceSchemaVersion: 1 | 2 | 3 | 4 | 5;
+      sourceSchemaVersion: 1 | 2 | 3 | 4 | 5 | 6;
     }
   | { ok: false; error: string };
 
@@ -132,6 +143,7 @@ function validateBuild(
     value.schemaVersion !== 2 &&
     value.schemaVersion !== 3 &&
     value.schemaVersion !== 4 &&
+    value.schemaVersion !== 5 &&
     value.schemaVersion !== BUILD_SCHEMA_VERSION
   ) {
     return { ok: false, error: "This build uses an unsupported schema version." };
@@ -165,6 +177,7 @@ function validateBuild(
   const affinitySources =
     value.schemaVersion === 3 ||
     value.schemaVersion === 4 ||
+    value.schemaVersion === 5 ||
     value.schemaVersion === BUILD_SCHEMA_VERSION
       ? validateAffinitySources(value.affinitySources)
       : inferAffinitySources(virtues);
@@ -174,6 +187,7 @@ function validateBuild(
   const suppliedEnvoyRank =
     (value.schemaVersion === 3 ||
       value.schemaVersion === 4 ||
+      value.schemaVersion === 5 ||
       value.schemaVersion === BUILD_SCHEMA_VERSION) &&
     isRecord(value.affinitySources) &&
     typeof value.affinitySources.envoyRank === "number"
@@ -215,6 +229,8 @@ function validateBuild(
     );
   } else if (value.schemaVersion === 4) {
     warnings.push(ARTS_MIGRATION_WARNING);
+  } else if (value.schemaVersion === 5) {
+    warnings.push(WEAPON_CONFIGURATION_MIGRATION_WARNING);
   } else if (suppliedTotal !== allocatablePoints || hasVirtueBelowMinimum) {
     warnings.push(
       hasVirtueBelowMinimum
@@ -284,6 +300,7 @@ function validateBuild(
     : undefined;
   const pactValue =
     (value.schemaVersion === 4 ||
+      value.schemaVersion === 5 ||
       value.schemaVersion === BUILD_SCHEMA_VERSION) &&
     isRecord(value.pact)
       ? value.pact
@@ -307,7 +324,7 @@ function validateBuild(
       return { ok: false, error: "Pact rank is invalid." };
     }
     if (
-      value.schemaVersion === BUILD_SCHEMA_VERSION &&
+      (value.schemaVersion === 5 || value.schemaVersion === BUILD_SCHEMA_VERSION) &&
       !isRecord(pactValue.artAllocation)
     ) {
       return { ok: false, error: "Pact Art allocation is invalid." };
@@ -328,7 +345,7 @@ function validateBuild(
         variant: pactItemId.startsWith("pact-wyld-") ? "wyld" : "normal",
       }
     : undefined;
-  if (value.schemaVersion === BUILD_SCHEMA_VERSION) {
+  if (value.schemaVersion === 5 || value.schemaVersion === BUILD_SCHEMA_VERSION) {
     const normalized = normalizePactArtAllocation(
       selectedPact,
       pactValue?.artAllocation,
@@ -357,9 +374,16 @@ function validateBuild(
   const knownTotemIds = catalogue?.totems
     ? new Set(catalogue.totems.map((item) => item.id))
     : undefined;
+  const temperById = catalogue?.tempers
+    ? new Map(catalogue.tempers.map((item) => [item.id, item]))
+    : undefined;
+  const joineryById = catalogue?.joineries
+    ? new Map(catalogue.joineries.map((item) => [item.id, item]))
+    : undefined;
   const runeById = new Map((catalogue?.runes ?? []).map((item) => [item.id, item]));
   const rawEnhancements =
     (value.schemaVersion === 4 ||
+      value.schemaVersion === 5 ||
       value.schemaVersion === BUILD_SCHEMA_VERSION) &&
     isRecord(value.weaponEnhancements)
       ? value.weaponEnhancements
@@ -423,17 +447,49 @@ function validateBuild(
         } as TotemSelection;
       }) as WeaponEnhancements["totems"];
 
+      let craftwork: WeaponEnhancements["craftwork"] = "Stock";
+      let tempers: string[] = [];
+      let joineryId: string | null = null;
+      if (value.schemaVersion === BUILD_SCHEMA_VERSION) {
+        if (!isCraftworkTier(raw.craftwork)) {
+          throw new Error(`Invalid Craftwork selection for ${slot}.`);
+        }
+        if (
+          !Array.isArray(raw.tempers) ||
+          !raw.tempers.every(
+            (temperId) =>
+              typeof temperId === "string" && temperId.length <= 120,
+          )
+        ) {
+          throw new Error(`Invalid Temper selections for ${slot}.`);
+        }
+        if (
+          raw.joineryId !== null &&
+          (typeof raw.joineryId !== "string" || raw.joineryId.length > 120)
+        ) {
+          throw new Error(`Invalid Joinery selection for ${slot}.`);
+        }
+        craftwork = raw.craftwork;
+        tempers = [...raw.tempers];
+        joineryId = raw.joineryId;
+      }
+
       const selectedWeaponId = equipment[slot];
       const selectedWeapon = selectedWeaponId
         ? catalogue?.weapons.find((weapon) => weapon.id === selectedWeaponId)
         : undefined;
       const normalized = catalogue
         ? normalizeWeaponEnhancements(
-            { rune, totems },
+            { rune, totems, craftwork, tempers, joineryId },
             selectedWeapon,
             runeById,
+            temperById,
+            joineryById,
           )
-        : { value: { rune, totems }, changed: false };
+        : {
+            value: { rune, totems, craftwork, tempers, joineryId },
+            changed: false,
+          };
       if (normalized.changed) {
         warnings.push(
           `${slot === "mainHand" ? "Main Hand" : "Off Hand"} enchantments were normalized for compatibility.`,
@@ -444,7 +500,7 @@ function validateBuild(
   ) as SoulframeBuild["weaponEnhancements"];
 
   if (
-    value.schemaVersion === BUILD_SCHEMA_VERSION &&
+    (value.schemaVersion === 5 || value.schemaVersion === BUILD_SCHEMA_VERSION) &&
     !isRecord(value.combatArts)
   ) {
     return { ok: false, error: "Combat Art configuration is invalid." };
@@ -459,15 +515,18 @@ function validateBuild(
           ? [weapon.combatArt]
           : [];
       })
-    : value.schemaVersion === BUILD_SCHEMA_VERSION && isRecord(value.combatArts)
+    : (value.schemaVersion === 5 || value.schemaVersion === BUILD_SCHEMA_VERSION) &&
+        isRecord(value.combatArts)
       ? Object.keys(value.combatArts)
       : [];
   const normalizedCombatArts = normalizeActiveCombatArtAllocations(
-    value.schemaVersion === BUILD_SCHEMA_VERSION ? value.combatArts : {},
+    value.schemaVersion === 5 || value.schemaVersion === BUILD_SCHEMA_VERSION
+      ? value.combatArts
+      : {},
     activeCombatArtNames,
   );
   if (
-    value.schemaVersion === BUILD_SCHEMA_VERSION &&
+    (value.schemaVersion === 5 || value.schemaVersion === BUILD_SCHEMA_VERSION) &&
     normalizedCombatArts.changed
   ) {
     warnings.push(
@@ -507,7 +566,10 @@ function validateBuild(
   };
 }
 
-export function serializeBuild(build: SoulframeBuild): string {
+export function serializeBuild(
+  build: SoulframeBuild,
+  catalogue?: BuildCatalogue,
+): string {
   const activeCombatArtNames = WEAPON_HAND_SLOTS.flatMap((slot) => {
     const itemId = build.equipment[slot];
     const weapon = itemId ? weaponById.get(itemId) : undefined;
@@ -515,6 +577,34 @@ export function serializeBuild(build: SoulframeBuild): string {
       ? [weapon.combatArt]
       : [];
   });
+  const runeById = catalogue?.runes
+    ? new Map(catalogue.runes.map((item) => [item.id, item]))
+    : defaultRuneById;
+  const temperById = catalogue?.tempers
+    ? new Map(catalogue.tempers.map((item) => [item.id, item]))
+    : defaultTemperById;
+  const joineryById = catalogue?.joineries
+    ? new Map(catalogue.joineries.map((item) => [item.id, item]))
+    : defaultJoineryById;
+  const weaponEnhancements = Object.fromEntries(
+    WEAPON_HAND_SLOTS.map((slot) => {
+      const weaponId = build.equipment[slot];
+      const weapon = weaponId
+        ? catalogue?.weapons.find((candidate) => candidate.id === weaponId) ??
+          weaponById.get(weaponId)
+        : undefined;
+      return [
+        slot,
+        normalizeWeaponEnhancements(
+          build.weaponEnhancements[slot],
+          weapon,
+          runeById,
+          temperById,
+          joineryById,
+        ).value,
+      ];
+    }),
+  );
   const json = JSON.stringify({
     ...build,
     virtues: distributeVirtueTotal(
@@ -525,6 +615,7 @@ export function serializeBuild(build: SoulframeBuild): string {
       build.combatArts,
       activeCombatArtNames,
     ).value,
+    weaponEnhancements,
   });
   const bytes = new TextEncoder().encode(json);
   let binary = "";

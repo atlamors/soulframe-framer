@@ -6,11 +6,17 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "node scripts/next-dev.mjs",
+    "dev": "node --env-file-if-exists=.env.local scripts/supabase-local.mjs dev",
     "build": "next build",
     "start": "next start",
     "test": "vitest run",
+    "test:supabase-local": "node --test scripts/supabase-local.test.mjs",
     "typecheck": "tsc --noEmit",
+    "supabase:local:start": "node --env-file-if-exists=.env.local scripts/supabase-local.mjs start",
+    "supabase:local:status": "node --env-file-if-exists=.env.local scripts/supabase-local.mjs status",
+    "supabase:local:stop": "node --env-file-if-exists=.env.local scripts/supabase-local.mjs stop",
+    "supabase:local:reset": "node --env-file-if-exists=.env.local scripts/supabase-local.mjs reset",
+    "supabase:local:test": "node --env-file-if-exists=.env.local scripts/supabase-local.mjs test",
     "supabase:staging:dry-run": "node --env-file-if-exists=.env.local scripts/supabase-db.mjs staging dry-run",
     "supabase:production:dry-run": "node --env-file-if-exists=.env.local scripts/supabase-db.mjs production dry-run",
     "supabase:staging:push:emergency": "node --env-file-if-exists=.env.local scripts/supabase-db.mjs staging push",
@@ -25,6 +31,10 @@
     "import:weapons": "node scripts/import-weapons.mjs",
     "import:enchantments": "node scripts/import-enchantments.mjs",
     "import:weapon-drops": "node scripts/import-weapon-drops.mjs",
+    "audit:tempers": "node scripts/import-tempers.mjs audit",
+    "import:tempers": "node scripts/import-tempers.mjs import",
+    "audit:joineries": "node scripts/import-joineries.mjs audit",
+    "import:joineries": "node scripts/import-joineries.mjs import",
     "lint": "eslint . --ignore-pattern .next"
   },
   "dependencies": {
@@ -53,6 +63,7 @@
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.6",
     "fflate": "0.8.2",
+    "supabase": "2.112.0",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vitest": "^3.2.7"

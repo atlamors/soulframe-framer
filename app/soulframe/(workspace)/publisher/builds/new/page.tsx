@@ -7,20 +7,16 @@ import {
 import type { SoulframeBuild } from "@/src/domain/types";
 import { SoulframeBuildComposer } from "@/src/features/publications/editor/SoulframeBuildComposer";
 import { createInitialSoulframeBuildState } from "@/src/features/publications/editor/soulframeBuildComposerModel";
-import { publisherActionMessage } from "@/src/features/publications/publisherRoutes";
+import {
+  newBuildPublisherReturnPath,
+  publisherActionMessage,
+  type NewBuildPublisherQuery,
+} from "@/src/features/publications/publisherRoutes";
 import { getBackendForRequest } from "@/src/server/composition/backend";
 
 export const dynamic = "force-dynamic";
 
 type QueryValue = string | string[] | undefined;
-type NewBuildQuery = {
-  frame?: QueryValue;
-  title?: QueryValue;
-  slug?: QueryValue;
-  summary?: QueryValue;
-  classifications?: QueryValue;
-  error?: QueryValue;
-};
 
 function bounded(value: QueryValue, maximum: number): string {
   const first = Array.isArray(value) ? (value[0] ?? "") : (value ?? "");
@@ -30,10 +26,10 @@ function bounded(value: QueryValue, maximum: number): string {
 export default async function NewBuildPage({
   searchParams,
 }: {
-  searchParams: Promise<NewBuildQuery>;
+  searchParams: Promise<NewBuildPublisherQuery>;
 }) {
   const query = await searchParams;
-  const route = "/soulframe/publisher/builds/new";
+  const route = newBuildPublisherReturnPath(query);
   const { auth } = await getBackendForRequest();
   const session = await auth.getSession();
   if (!session) {

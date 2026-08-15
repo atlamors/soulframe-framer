@@ -31,8 +31,9 @@ enable_signup = true
 enabled = true
 client_id = "env(SUPABASE_AUTH_DISCORD_CLIENT_ID)"
 secret = "env(SUPABASE_AUTH_DISCORD_SECRET)"
+redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
 
 [auth.external.twitch]
-enabled = true
-client_id = "env(SUPABASE_AUTH_TWITCH_CLIENT_ID)"
-secret = "env(SUPABASE_AUTH_TWITCH_SECRET)"
+enabled = false
+client_id = ""
+secret = ""

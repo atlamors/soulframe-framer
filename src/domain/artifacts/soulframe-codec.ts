@@ -1,8 +1,10 @@
 import { armorCatalogue } from "../../data/catalogue";
 import { pactCatalogue } from "../../data/pacts";
+import { joineryCatalogue } from "../../data/joineries";
 import { runeCatalogue } from "../../data/runes";
 import { talismanCatalogue } from "../../data/talismans";
 import { totemCatalogue } from "../../data/totems";
+import { temperCatalogue } from "../../data/tempers";
 import { weaponCatalogue } from "../../data/weapons";
 import {
   BUILD_SCHEMA_VERSION,
@@ -22,6 +24,8 @@ const SOULFRAME_BUILD_CATALOGUE: BuildCatalogue = {
   pacts: pactCatalogue,
   runes: runeCatalogue,
   totems: totemCatalogue,
+  tempers: temperCatalogue,
+  joineries: joineryCatalogue,
 };
 
 export const SOULFRAME_FRAME_HANDOFF_MAX_LENGTH = 32_000;
@@ -107,9 +111,12 @@ function canonicalizeSoulframePayload(payload: unknown) {
 
   const parsed = parseStoredBuild(serialized, SOULFRAME_BUILD_CATALOGUE);
   if (!parsed.ok) throw new BuildPlannerArtifactCodecError(parsed.error);
-  if (parsed.sourceSchemaVersion !== BUILD_SCHEMA_VERSION) {
+  if (
+    parsed.sourceSchemaVersion !== 5 &&
+    parsed.sourceSchemaVersion !== BUILD_SCHEMA_VERSION
+  ) {
     throw new BuildPlannerArtifactCodecError(
-      `The Frame payload must use Soulframe schema version ${BUILD_SCHEMA_VERSION}.`,
+      `Stored Frame artifacts must use Soulframe schema version 5 or ${BUILD_SCHEMA_VERSION}.`,
     );
   }
   return parsed.build;

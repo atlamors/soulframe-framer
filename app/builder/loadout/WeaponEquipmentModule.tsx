@@ -4,7 +4,13 @@ import type { BuildCalculation, SoulframeBuild, WeaponHandSlot } from "@/src/dom
 import { WeaponEquipmentSlot } from "./EquipmentSlots";
 import { WeaponPicker } from "../pickers/weapon/WeaponPicker";
 
-export type WeaponPlannerTab = "weapon" | "arts" | "rune" | "totems";
+export type WeaponPlannerTab =
+  | "weapon"
+  | "arts"
+  | "rune"
+  | "totems"
+  | "tempers"
+  | "joinery";
 export function WeaponEquipmentModule({ build, calculation, activeSlot, activeTab, showEnhancements = true, onOpen, onConfigure, onClose, onWeaponChange }: {
   build: SoulframeBuild; calculation: BuildCalculation; activeSlot?: WeaponHandSlot; activeTab: WeaponPlannerTab;
   showEnhancements?: boolean;

@@ -43,12 +43,12 @@ export function WeaponLoadoutHud({
 }: {
   slot: WeaponHandSlot;
   build: SoulframeBuild;
-  active: "weapon" | "arts" | "rune" | "totems";
+  active: "weapon" | "arts" | "rune" | "totems" | "tempers" | "joinery";
   activeTotemSlot?: number;
   inline?: boolean;
   presentation?: "default" | "publisher";
   onNavigate: (
-    tab: "weapon" | "arts" | "rune" | "totems",
+    tab: "weapon" | "arts" | "rune" | "totems" | "tempers" | "joinery",
     totemSlot?: number,
   ) => void;
 }) {

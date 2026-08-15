@@ -10,6 +10,8 @@ import { weaponById, weaponCatalogue } from "@/src/data/weapons";
 import { pactById, pactCatalogue } from "@/src/data/pacts";
 import { runeById, runeCatalogue } from "@/src/data/runes";
 import { totemCatalogue } from "@/src/data/totems";
+import { temperById, temperCatalogue } from "@/src/data/tempers";
+import { joineryById, joineryCatalogue } from "@/src/data/joineries";
 import { combatArtByName, pactArtTreeByPactId } from "@/src/data/arts";
 import { calculateBuild } from "@/src/domain/calculation";
 import {
@@ -20,6 +22,16 @@ import {
   serializeBuild,
 } from "@/src/domain/serialization";
 import { distributeVirtueTotal } from "@/src/domain/virtue-alignment";
+import { resolveValidWeaponJoinery } from "@/src/domain/weapon-configuration";
+import {
+  createCloudWeaponConfigurationWorkspaceKey,
+  createResilientWeaponConfigurationMemoryStorage,
+  getOrCreateLocalWeaponConfigurationWorkspaceKey,
+  recallWeaponConfiguration,
+  rememberWeaponConfiguration,
+  replaceLocalWeaponConfigurationWorkspaceKey,
+  type WeaponConfigurationMemoryStorage,
+} from "@/src/domain/weapon-configuration-memory";
 import { getAllocatableAffinity } from "@/src/domain/affinity";
 import {
   optimizeAffinityForArmor,
@@ -139,6 +151,13 @@ import { ArtifactControls } from "@/src/features/artifacts/ArtifactControls";
 const UNMET_GEAR_ALERT_ID = "builder.unmet-gear-requirements";
 const PACT_ART_LIBRARY_KEY = "soulframe-framer.pact-arts.v1";
 const COMBAT_ART_LIBRARY_KEY = "soulframe-framer.combat-arts.v1";
+const WEAPON_CONFIGURATION_MEMORY_CATALOGUE = {
+  weapons: weaponCatalogue,
+  runes: runeCatalogue,
+  totems: totemCatalogue,
+  tempers: temperCatalogue,
+  joineries: joineryCatalogue,
+};
 
 type ArtLibrary = Record<string, ArtAllocation>;
 
@@ -201,15 +220,16 @@ function hydrateActiveArts(
   build: SoulframeBuild,
   pactLibrary: ArtLibrary,
   combatLibrary: ArtLibrary,
-  sourceSchemaVersion?: 1 | 2 | 3 | 4 | 5,
+  sourceSchemaVersion?: 1 | 2 | 3 | 4 | 5 | 6,
 ): SoulframeBuild {
   const pact = build.pact.itemId ? pactById.get(build.pact.itemId) : undefined;
-  const hasExplicitV5Arts = sourceSchemaVersion === 5;
+  const hasExplicitCurrentArts =
+    sourceSchemaVersion === 5 || sourceSchemaVersion === 6;
   const hasExplicitV4PactArts = sourceSchemaVersion === 4 && Boolean(pact);
   const artAllocation = pact
     ? normalizePactArtAllocation(
         pact,
-        hasExplicitV5Arts || hasExplicitV4PactArts
+        hasExplicitCurrentArts || hasExplicitV4PactArts
           ? build.pact.artAllocation
           : (pactLibrary[pact.id] ??
               (Object.keys(build.pact.artAllocation).length
@@ -222,7 +242,7 @@ function hydrateActiveArts(
       artName,
       normalizeCombatArtAllocation(
         artName,
-        hasExplicitV5Arts
+        hasExplicitCurrentArts
           ? (build.combatArts[artName] ?? createDefaultCombatArtAllocation())
           : (combatLibrary[artName] ?? createDefaultCombatArtAllocation()),
       ).value,
@@ -304,7 +324,7 @@ export function BuilderShell({
   const [activeSlot, setActiveSlot] = useState<EquipmentSlot>();
   const [isPactPickerOpen, setIsPactPickerOpen] = useState(false);
   const [weaponConfigTab, setWeaponConfigTab] = useState<
-    "weapon" | "arts" | "rune" | "totems"
+    "weapon" | "arts" | "rune" | "totems" | "tempers" | "joinery"
   >("weapon");
   const [selectedTotemSlot, setSelectedTotemSlot] = useState(0);
   const [activeDefenseContext, setActiveDefenseContext] = useState<DefenseId>();
@@ -357,6 +377,9 @@ export function BuilderShell({
     mobileStatsRailRef,
   } = useMobileWorkspace(build, isMobileShellSuppressed);
   const [hydrated, setHydrated] = useState(false);
+  const weaponConfigurationWorkspaceKeyRef = useRef<string | null>(null);
+  const weaponConfigurationStorageRef =
+    useRef<WeaponConfigurationMemoryStorage | null>(null);
   const mobileStatsGeometryState =
     mobileStatsPresentationState === "collapsed" ? "collapsed" : "expanded";
   const mobileStatsDetailState =
@@ -495,17 +518,35 @@ export function BuilderShell({
   );
   const unmetRequirementCount =
     unmetArmorItems.length + unmetWeaponItems.length;
+  const currentMainHandWeapon = build.equipment.mainHand
+    ? weaponById.get(build.equipment.mainHand)
+    : undefined;
+  const currentOffHandWeapon = build.equipment.offHand
+    ? weaponById.get(build.equipment.offHand)
+    : undefined;
+  const currentMainHandJoinery = resolveValidWeaponJoinery(
+    build.weaponEnhancements.mainHand.joineryId,
+    currentMainHandWeapon,
+    joineryById,
+  );
+  const currentOffHandJoinery = resolveValidWeaponJoinery(
+    build.weaponEnhancements.offHand.joineryId,
+    currentOffHandWeapon,
+    joineryById,
+  );
   const mobileMainHandDamage = getWeaponDamageRows(
-    build.equipment.mainHand
-      ? weaponById.get(build.equipment.mainHand)
-      : undefined,
+    currentMainHandWeapon,
     calculation.effectiveVirtues,
+    currentMainHandJoinery,
+    build.weaponEnhancements.mainHand.craftwork,
+    build.weaponEnhancements.mainHand.tempers,
   );
   const mobileOffHandDamage = getWeaponDamageRows(
-    build.equipment.offHand
-      ? weaponById.get(build.equipment.offHand)
-      : undefined,
+    currentOffHandWeapon,
     calculation.effectiveVirtues,
+    currentOffHandJoinery,
+    build.weaponEnhancements.offHand.craftwork,
+    build.weaponEnhancements.offHand.tempers,
   );
   const mobileMainHandAttack =
     mobileMainHandDamage.find((stat) => stat.id === "attack")?.value ?? "—";
@@ -553,7 +594,7 @@ export function BuilderShell({
     );
   useEffect(() => {
     let nextBuild: SoulframeBuild | undefined;
-    let nextSourceSchemaVersion: 1 | 2 | 3 | 4 | 5 | undefined;
+    let nextSourceSchemaVersion: 1 | 2 | 3 | 4 | 5 | 6 | undefined;
     const rememberedPactArts = parsePactArtLibrary(
       window.localStorage.getItem(PACT_ART_LIBRARY_KEY),
     );
@@ -565,9 +606,17 @@ export function BuilderShell({
           title: string;
           description: string;
           severity: "info" | "warning" | "danger";
-        }
+      }
       | undefined;
+    const weaponConfigurationStorage =
+      weaponConfigurationStorageRef.current ??
+      createResilientWeaponConfigurationMemoryStorage(window.localStorage);
+    weaponConfigurationStorageRef.current = weaponConfigurationStorage;
     const shared = new URLSearchParams(window.location.search).get("build");
+    weaponConfigurationWorkspaceKeyRef.current =
+      getOrCreateLocalWeaponConfigurationWorkspaceKey(
+        weaponConfigurationStorage,
+      );
     if (shared) {
       const result = deserializeBuild(shared, {
         armor: armorCatalogue,
@@ -576,8 +625,14 @@ export function BuilderShell({
         pacts: pactCatalogue,
         runes: runeCatalogue,
         totems: totemCatalogue,
+        tempers: temperCatalogue,
+        joineries: joineryCatalogue,
       });
       if (result.ok) {
+        weaponConfigurationWorkspaceKeyRef.current =
+          replaceLocalWeaponConfigurationWorkspaceKey(
+            weaponConfigurationStorage,
+          );
         nextBuild = result.build;
         nextSourceSchemaVersion = result.sourceSchemaVersion;
         nextNotice = {
@@ -608,6 +663,8 @@ export function BuilderShell({
           pacts: pactCatalogue,
           runes: runeCatalogue,
           totems: totemCatalogue,
+          tempers: temperCatalogue,
+          joineries: joineryCatalogue,
         });
         if (result.ok) {
           nextBuild = result.build;
@@ -785,11 +842,63 @@ export function BuilderShell({
     );
   };
 
-  const equipWeapon = (
+  const rememberEquippedWeapon = (
+    sourceBuild: SoulframeBuild,
     slot: "mainHand" | "offHand",
-    itemId: string,
-    enhancements: SoulframeBuild["weaponEnhancements"][typeof slot],
-  ) => {
+  ): string[] => {
+    const workspaceKey = weaponConfigurationWorkspaceKeyRef.current;
+    const storage = weaponConfigurationStorageRef.current;
+    const weaponId = sourceBuild.equipment[slot];
+    if (!workspaceKey || !storage || !weaponId) return [];
+    return rememberWeaponConfiguration(
+      storage,
+      workspaceKey,
+      weaponId,
+      sourceBuild.weaponEnhancements[slot],
+      WEAPON_CONFIGURATION_MEMORY_CATALOGUE,
+    ).warnings;
+  };
+
+  const rememberEquippedWeapons = (sourceBuild: SoulframeBuild): string[] => [
+    ...rememberEquippedWeapon(sourceBuild, "mainHand"),
+    ...rememberEquippedWeapon(sourceBuild, "offHand"),
+  ];
+
+  const notifyWeaponConfigurationMemoryWarnings = (warnings: string[]) => {
+    const uniqueWarnings = [...new Set(warnings)];
+    if (uniqueWarnings.length === 0) return;
+    notifyAlert({
+      id: "builder.weapon-configuration-recall-adjusted",
+      title: "Remembered weapon configuration adjusted",
+      description: uniqueWarnings.join(" "),
+      severity: "warning",
+    });
+  };
+
+  const equipWeapon = (slot: "mainHand" | "offHand", itemId: string) => {
+    const rememberWarnings = rememberEquippedWeapon(build, slot);
+    const normalized = normalizeWeaponEnhancements(
+      build.weaponEnhancements[slot],
+      weaponById.get(itemId),
+      runeById,
+      temperById,
+      joineryById,
+    );
+    const workspaceKey = weaponConfigurationWorkspaceKeyRef.current;
+    const storage = weaponConfigurationStorageRef.current;
+    const recalled = workspaceKey && storage
+      ? recallWeaponConfiguration(
+          storage,
+          workspaceKey,
+          itemId,
+          WEAPON_CONFIGURATION_MEMORY_CATALOGUE,
+        )
+      : { configuration: null, warnings: [] };
+    notifyWeaponConfigurationMemoryWarnings([
+      ...rememberWarnings,
+      ...recalled.warnings,
+    ]);
+    const enhancements = recalled.configuration ?? normalized.value;
     const remembered = { ...combatArtLibrary, ...build.combatArts };
     setCombatArtLibrary(remembered);
     setBuild((current) =>
@@ -830,6 +939,7 @@ export function BuilderShell({
   };
 
   const resetBuild = () => {
+    notifyWeaponConfigurationMemoryWarnings(rememberEquippedWeapons(build));
     setBuild(
       hydrateActiveArts(DEFAULT_BUILD, pactArtLibrary, combatArtLibrary),
     );
@@ -906,22 +1016,20 @@ export function BuilderShell({
           isMobileSuppressed={isMobileShellSuppressed}
           mobileMenuTriggerRef={mobileTopMenuTriggerRef}
           mobileMenuLayerRef={mobileMenuLayerRef}
+          trailingAction={
+            hydrated ? (
+              <Link
+                href={publisherHref}
+                className="inline-flex min-h-11 flex-none items-center justify-center whitespace-nowrap border border-gold bg-control-hover px-4 font-sans text-2xs font-bold uppercase tracking-wide text-gold-bright no-underline shadow-control-active focus-visible:outline-none focus-visible:shadow-focus"
+                aria-label="Publish the active Frame as a Build"
+              >
+                Publish Build
+              </Link>
+            ) : null
+          }
           onNameChange={(name) => setBuild((current) => ({ ...current, name }))}
           onToggleMobileMenu={toggleBuilderMenu}
         />
-      ) : null}
-      {hydrated && !artifactOwnerId ? (
-        <div
-          className={`relative z-30 mt-2 flex min-h-12 items-center justify-end border-b border-line/45 px-1.5 pb-2 ${isMobileShellSuppressed ? "max-tablet:hidden" : ""}`}
-        >
-          <Link
-            href={publisherHref}
-            className="inline-flex min-h-11 items-center justify-center border border-gold bg-control-hover px-4 font-sans text-2xs font-bold uppercase tracking-wide text-gold-bright no-underline shadow-control-active focus-visible:outline-none focus-visible:shadow-focus"
-            aria-label="Publish the active Frame as a Build"
-          >
-            Publish Build
-          </Link>
-        </div>
       ) : null}
       {artifactOwnerId && hydrated ? (
         <ArtifactControls
@@ -930,7 +1038,25 @@ export function BuilderShell({
           isMobileSuppressed={isMobileShellSuppressed}
           publishHref={publisherHref}
           onNameChange={(name) => setBuild((current) => ({ ...current, name }))}
-          onReplaceBuild={setBuild}
+          onReplaceBuild={(nextBuild) => {
+            notifyWeaponConfigurationMemoryWarnings(
+              rememberEquippedWeapons(build),
+            );
+            setBuild(nextBuild);
+          }}
+          onAdoptArtifactIdentity={(artifactId) => {
+            weaponConfigurationWorkspaceKeyRef.current =
+              createCloudWeaponConfigurationWorkspaceKey(artifactId);
+          }}
+          onDetachArtifactIdentity={() => {
+            notifyWeaponConfigurationMemoryWarnings(
+              rememberEquippedWeapons(build),
+            );
+            weaponConfigurationWorkspaceKeyRef.current =
+              replaceLocalWeaponConfigurationWorkspaceKey(
+                weaponConfigurationStorageRef.current ?? window.localStorage,
+              );
+          }}
           onReset={resetBuild}
           onShare={shareBuild}
         />
@@ -1016,10 +1142,11 @@ export function BuilderShell({
               onClose={closeBuilderModalLayer}
               onWeaponChange={(slot, itemId) => {
                 if (itemId) {
-                  const normalized = normalizeWeaponEnhancements(build.weaponEnhancements[slot], weaponById.get(itemId), runeById);
-                  if (normalized.changed) notifyAlert({ id: "builder.weapon-enhancements-cleared", title: "Weapon enhancements adjusted", description: "Incompatible Rune or Totem selections were cleared for the new weapon.", severity: "warning" });
-                  equipWeapon(slot, itemId, normalized.value);
+                  equipWeapon(slot, itemId);
                 } else {
+                  notifyWeaponConfigurationMemoryWarnings(
+                    rememberEquippedWeapon(build, slot),
+                  );
                   const remembered = { ...combatArtLibrary, ...build.combatArts };
                   setCombatArtLibrary(remembered);
                   setBuild((current) => { const equipment = { ...current.equipment }; delete equipment[slot]; return withActiveCombatArts({ ...current, equipment, weaponEnhancements: { ...current.weaponEnhancements, [slot]: createEmptyWeaponEnhancements() } }, remembered); });
@@ -1062,8 +1189,16 @@ export function BuilderShell({
 
         <section
           ref={mobileStatsDockRef}
-          className={MOBILE_STATS_DOCK_CLASS_NAMES[mobileStatsGeometryState]}
+          className={`${MOBILE_STATS_DOCK_CLASS_NAMES[mobileStatsGeometryState]} ${
+            isMobileShellSuppressed
+              ? "max-tablet:invisible max-tablet:pointer-events-none"
+              : ""
+          }`}
           data-mobile-state={mobileStatsPresentationState}
+          aria-hidden={
+            isMobileShellSuppressed && isMobileViewport ? true : undefined
+          }
+          inert={isMobileShellSuppressed && isMobileViewport}
         >
           <div
             ref={mobileStatsPanelRef}
@@ -1630,12 +1765,15 @@ export function BuilderShell({
                         }
                       >
                         <WeaponDamagePanel
+                          craftwork={build.weaponEnhancements.offHand.craftwork}
                           hand="Sidearm"
                           index={2}
                           mobileHand="Sidearm"
                           mobileStatsState={mobileStatsGeometryState}
                           morphKey="sidearm"
                           virtues={calculation.effectiveVirtues}
+                          joinery={currentOffHandJoinery}
+                          temperIds={build.weaponEnhancements.offHand.tempers}
                           item={
                             build.equipment.offHand
                               ? weaponById.get(build.equipment.offHand)
@@ -1643,12 +1781,15 @@ export function BuilderShell({
                           }
                         />
                         <WeaponDamagePanel
+                          craftwork={build.weaponEnhancements.mainHand.craftwork}
                           hand="Weapon"
                           index={1}
                           mobileHand="Weapon"
                           mobileStatsState={mobileStatsGeometryState}
                           morphKey="main"
                           virtues={calculation.effectiveVirtues}
+                          joinery={currentMainHandJoinery}
+                          temperIds={build.weaponEnhancements.mainHand.tempers}
                           item={
                             build.equipment.mainHand
                               ? weaponById.get(build.equipment.mainHand)

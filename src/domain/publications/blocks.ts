@@ -1,4 +1,5 @@
 import type { SoulframeBuild } from "../types";
+import { BUILD_SCHEMA_VERSION } from "../serialization";
 import type {
   PublicationProfileId,
   PublicationValidationIssue,
@@ -454,8 +455,8 @@ const stageDefinition: PublicationBlockDefinition<BuildStageBlock> = {
     if (typeof block.data?.name !== "string" || !block.data.name.trim()) {
       issues.push({ code: "stage-name-required", message: "A stage name is required.", path: "blocks" });
     }
-    if (block.data?.planner?.schemaVersion !== 5) {
-      issues.push({ code: "planner-schema-unsupported", message: "The stage planner payload must use schema version 5.", path: "blocks" });
+    if (block.data?.planner?.schemaVersion !== BUILD_SCHEMA_VERSION) {
+      issues.push({ code: "planner-schema-unsupported", message: `The stage planner payload must use schema version ${BUILD_SCHEMA_VERSION}.`, path: "blocks" });
     }
 
     if (block.data?.role === "home") {

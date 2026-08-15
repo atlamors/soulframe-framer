@@ -20,9 +20,9 @@ export function PublicationHeader({
 }) {
   const metadata = publication.release.state.metadata;
   return (
-    <header className="border-b border-line/60 pb-7">
+    <header className="border-b border-line/55 pb-6">
       <nav aria-label="Breadcrumb" className="font-sans text-xs text-ink-muted">
-        <ol className="flex flex-wrap items-center gap-2">
+        <ol className="flex min-w-0 flex-wrap items-center gap-2">
           <li>
             <Link
               href="/soulframe/framer"
@@ -34,16 +34,16 @@ export function PublicationHeader({
           <li aria-hidden="true">/</li>
           <li>{kind}s</li>
           <li aria-hidden="true">/</li>
-          <li aria-current="page" className="text-ink-soft">
+          <li aria-current="page" className="min-w-0 truncate text-ink-soft">
             {metadata.title}
           </li>
         </ol>
       </nav>
 
-      <p className="mt-6 font-sans text-2xs font-bold uppercase tracking-[0.18em] text-gold">
+      <p className="mt-5 font-sans text-2xs font-bold uppercase tracking-[0.18em] text-gold">
         Soulframe {kind}
       </p>
-      <h1 className="mt-2 max-w-4xl font-display text-4xl uppercase tracking-wide text-gold-bright sm:text-5xl">
+      <h1 className="mt-2 max-w-4xl font-display text-3xl uppercase tracking-wide text-gold-bright sm:text-5xl">
         {metadata.title}
       </h1>
       {metadata.summary ? (
@@ -51,31 +51,6 @@ export function PublicationHeader({
           {metadata.summary}
         </p>
       ) : null}
-
-      <dl className="mt-5 flex flex-wrap gap-x-6 gap-y-2 font-sans text-xs text-ink-muted">
-        <div className="flex gap-1.5">
-          <dt>Creator</dt>
-          <dd className="font-bold text-ink-soft">@{publication.creatorHandle}</dd>
-        </div>
-        <div className="flex gap-1.5">
-          <dt>Published</dt>
-          <dd>
-            <time dateTime={publication.firstPublishedAt}>
-              {formatDate(publication.firstPublishedAt)}
-            </time>
-          </dd>
-        </div>
-        <div className="flex gap-1.5">
-          <dt>Updated on</dt>
-          <dd>
-            <time dateTime={publication.release.publishedAt}>
-              {formatDate(publication.release.publishedAt)}
-            </time>
-          </dd>
-        </div>
-      </dl>
-
-      <div className="mt-5">{voteControl}</div>
 
       {metadata.classifications.length > 0 ? (
         <ul aria-label="Classifications" className="mt-5 flex flex-wrap gap-2">
@@ -89,6 +64,32 @@ export function PublicationHeader({
           ))}
         </ul>
       ) : null}
+
+      <div className="mt-5 flex flex-col gap-4 border-t border-line/45 pt-4 sm:flex-row sm:items-center sm:justify-between">
+        <dl className="flex flex-wrap gap-x-6 gap-y-2 font-sans text-xs text-ink-muted">
+          <div className="flex gap-1.5">
+            <dt>Creator</dt>
+            <dd className="font-bold text-ink-soft">@{publication.creatorHandle}</dd>
+          </div>
+          <div className="flex gap-1.5">
+            <dt>Published</dt>
+            <dd>
+              <time dateTime={publication.firstPublishedAt}>
+                {formatDate(publication.firstPublishedAt)}
+              </time>
+            </dd>
+          </div>
+          <div className="flex gap-1.5">
+            <dt>Updated</dt>
+            <dd>
+              <time dateTime={publication.release.publishedAt}>
+                {formatDate(publication.release.publishedAt)}
+              </time>
+            </dd>
+          </div>
+        </dl>
+        <div className="shrink-0">{voteControl}</div>
+      </div>
     </header>
   );
 }

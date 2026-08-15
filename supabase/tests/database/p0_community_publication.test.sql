@@ -1395,6 +1395,22 @@ select is(
 -- Deterministic published fixtures exercise all three orders without relying
 -- on wall-clock time.
 reset role;
+
+update public.publications
+set status = 'unpublished',
+    current_release_id = null
+where game_id = 'soulframe'
+  and profile_id = 'soulframe.build'
+  and status = 'published'
+  and is_valid
+  and deleted_at is null
+  and current_release_id is not null
+  and id not in (
+    '10000000-0000-0000-0000-000000000001',
+    '10000000-0000-0000-0000-000000000002',
+    '10000000-0000-0000-0000-000000000003'
+  );
+
 set constraints publications_current_release_same_publication_fk deferred;
 
 insert into public.publications (

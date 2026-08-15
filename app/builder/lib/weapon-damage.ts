@@ -1,5 +1,12 @@
 import { VIRTUE_IDS } from "@/src/domain/types";
+import { temperById } from "@/src/data/tempers";
+import {
+  getEffectiveWeaponAttunement,
+  getEquippedTemperNumericalModifiers,
+} from "@/src/domain/weapon-configuration";
 import type {
+  CraftworkTier,
+  Joinery,
   VirtueValues,
   Weapon,
   WeaponLevelStats,
@@ -10,6 +17,49 @@ const FARILWYD_RANK_30_FALLBACK = {
   chargedAttack: 190,
   stagger: 112,
 } as const satisfies WeaponLevelStats;
+
+const CRAFTWORK_RANKS = {
+  Stock: 0,
+  Military: 1,
+  Officer: 2,
+  Noble: 3,
+  Sovereign: 4,
+  Legendary: 5,
+} as const satisfies Record<CraftworkTier, number>;
+
+function isDualBlade(item: Weapon) {
+  return (
+    item.combatArt === "Short Blade" &&
+    ((item.sourceSlot === "Weapon" && item.name !== "Rostrum") ||
+      item.name === "Clivers")
+  );
+}
+
+function getCraftworkLightAttackBonus(
+  item: Weapon,
+  craftwork: CraftworkTier,
+) {
+  const damagePerRank = isDualBlade(item) ? 2 : 4;
+  return CRAFTWORK_RANKS[craftwork] * damagePerRank;
+}
+
+function getCraftworkActionBonus(
+  item: Weapon,
+  key: keyof WeaponLevelStats,
+  lightAttackBonus: number,
+) {
+  if (key === "attack") return lightAttackBonus;
+
+  const level0Attack = item.stats.level0.attack;
+  const level0Action = item.stats.level0[key];
+  if (level0Attack !== undefined && level0Action !== undefined) {
+    return Math.round((lightAttackBonus * level0Action) / level0Attack);
+  }
+
+  return item.name === "Farilwyd" && key === "chargedAttack"
+    ? lightAttackBonus * 2
+    : 0;
+}
 
 function getRank30WeaponStats(item: Weapon): WeaponLevelStats {
   const stats = item.stats.level30;
@@ -55,30 +105,58 @@ export function meetsWeaponRequirements(
   );
 }
 
-export function getWeaponDamage(item: Weapon, virtues: VirtueValues) {
+export function getWeaponDamage(
+  item: Weapon,
+  virtues: VirtueValues,
+  joinery?: Joinery,
+  craftwork: CraftworkTier = "Stock",
+  temperIds: readonly string[] = [],
+) {
   const level30Stats = getRank30WeaponStats(item);
-  const baseAttack = level30Stats.attack;
+  const temperModifiers = getEquippedTemperNumericalModifiers(
+    temperIds,
+    temperById,
+  );
+  const stockAttack = level30Stats.attack;
   const charged = getChargedWeaponStat(level30Stats);
+  const lightCraftworkBonus = getCraftworkLightAttackBonus(item, craftwork);
+  const primaryCraftworkBonus =
+    stockAttack === undefined ? 0 : lightCraftworkBonus;
+  const secondaryCraftworkBonus =
+    charged.value === undefined
+      ? 0
+      : getCraftworkActionBonus(item, charged.key, lightCraftworkBonus);
+  const baseAttack =
+    stockAttack === undefined
+      ? undefined
+      : stockAttack + primaryCraftworkBonus;
+  const secondaryBase =
+    charged.value === undefined
+      ? undefined
+      : charged.value + secondaryCraftworkBonus;
+  const effectiveAttunement = getEffectiveWeaponAttunement(
+    item.attunement,
+    joinery,
+  );
   const naturalGracePips =
-    item.attunement.grace > 0 ? item.attunement.grace + 0.6 : 0;
+    item.attunement.grace > 0 && effectiveAttunement.grace < 5
+      ? effectiveAttunement.grace + 0.6
+      : effectiveAttunement.grace;
   const rawAttunement =
     0.5 *
-    (virtues.courage * item.attunement.courage +
-      virtues.spirit * item.attunement.spirit +
+    (virtues.courage * effectiveAttunement.courage +
+      virtues.spirit * effectiveAttunement.spirit +
       virtues.grace * naturalGracePips);
-  const rarityMultiplier =
-    item.rarity === "Common" &&
-    !["Vasp-IV", "Rivt-II", "Clivers"].includes(item.name)
-      ? 1
-      : 1.5;
   const requirementMet = meetsWeaponRequirements(item, virtues);
-  const cappedPrimaryAttunement =
-    baseAttack === undefined
-      ? 0
-      : Math.min(rawAttunement, baseAttack * rarityMultiplier);
+  const primaryCap = getAttunementComponentCap(
+    item,
+    "lightAttack",
+    stockAttack,
+    primaryCraftworkBonus,
+  );
   const primaryBonus =
     requirementMet && baseAttack !== undefined
-      ? Math.round(cappedPrimaryAttunement)
+      ? Math.round(Math.min(rawAttunement, primaryCap))
       : 0;
   let secondaryBonus = 0;
 
@@ -87,23 +165,44 @@ export function getWeaponDamage(item: Weapon, virtues: VirtueValues) {
     baseAttack !== undefined &&
     charged.value !== undefined
   ) {
-    if (charged.key === "chargedAttack") {
-      secondaryBonus = Math.round(cappedPrimaryAttunement * 2);
-    } else {
-      const capMultiplier =
-        charged.key === "chargedShot"
-          ? 2.5
-          : charged.key === "fullChargedCast"
-            ? 4.5
-            : 1.5;
-      secondaryBonus = Math.round(
-        Math.min(
-          rawAttunement,
-          baseAttack * capMultiplier * rarityMultiplier,
-        ),
-      );
-    }
+    const secondaryCap = getSecondaryAttunementComponentCap(
+      item,
+      charged.key,
+      charged.value,
+      secondaryCraftworkBonus,
+      primaryCraftworkBonus,
+    );
+    const secondaryRaw =
+      charged.key === "chargedAttack" ? rawAttunement * 2 : rawAttunement;
+    secondaryBonus = Math.round(Math.min(secondaryRaw, secondaryCap));
   }
+
+  const hasStaggerTemperModifier = temperModifiers.staggerDamage !== 0;
+  const baseStagger =
+    level30Stats.stagger ?? (hasStaggerTemperModifier ? 0 : undefined);
+  const stagger =
+    baseStagger === undefined
+      ? undefined
+      : baseStagger + temperModifiers.staggerDamage;
+  const staggerBonus = hasStaggerTemperModifier
+    ? temperModifiers.staggerDamage
+    : undefined;
+  const hasSmiteTemperModifier =
+    temperModifiers.smiteChancePercentagePoints !== 0;
+  // An empty source Smite field contributes no base chance. A nonempty source
+  // value without a parsed percentage remains unknown and is never replaced.
+  const baseSmitePercent =
+    item.stats.smite.percent ??
+    (hasSmiteTemperModifier && item.stats.smite.display === "" ? 0 : null);
+  const smiteBonus =
+    baseSmitePercent !== null &&
+    hasSmiteTemperModifier
+      ? temperModifiers.smiteChancePercentagePoints
+      : undefined;
+  const smitePercent =
+    baseSmitePercent === null
+      ? undefined
+      : baseSmitePercent + (smiteBonus ?? 0);
 
   return {
     requirementMet,
@@ -116,24 +215,38 @@ export function getWeaponDamage(item: Weapon, virtues: VirtueValues) {
     secondary: {
       key: charged.key,
       label: charged.label,
-      base: charged.value,
+      base: secondaryBase,
       bonus: secondaryBonus,
       total:
-        charged.value === undefined
+        secondaryBase === undefined
           ? undefined
-          : charged.value + secondaryBonus,
+          : secondaryBase + secondaryBonus,
     },
-    stagger: level30Stats.stagger,
+    stagger,
+    staggerBonus,
+    smite: {
+      bonus: smiteBonus,
+      percent: smitePercent,
+      display:
+        smiteBonus === undefined
+          ? item.stats.smite.display || undefined
+          : `${smitePercent}%`,
+    },
   };
 }
 
 export function getWeaponDamageRows(
   item?: Weapon,
   virtues?: VirtueValues,
+  joinery?: Joinery,
+  craftwork: CraftworkTier = "Stock",
+  temperIds: readonly string[] = [],
 ) {
   const stats = item ? getRank30WeaponStats(item) : undefined;
   const calculated =
-    item && virtues ? getWeaponDamage(item, virtues) : undefined;
+    item && virtues
+      ? getWeaponDamage(item, virtues, joinery, craftwork, temperIds)
+      : undefined;
   const charged = stats
     ? getChargedWeaponStat(stats)
     : { label: "Charged Attack", value: undefined };
@@ -154,14 +267,93 @@ export function getWeaponDamageRows(
     {
       id: "stagger",
       label: "Stagger",
-      bonus: undefined,
+      bonus: calculated?.staggerBonus,
       value: calculated?.stagger ?? stats?.stagger,
     },
     {
       id: "smite",
       label: "Smite",
-      bonus: undefined,
-      value: item?.stats.smite.display || undefined,
+      bonus:
+        calculated?.smite.bonus === undefined
+          ? undefined
+          : `${calculated.smite.bonus}%`,
+      value:
+        calculated?.smite.display ?? (item?.stats.smite.display || undefined),
     },
   ];
+}
+
+type DamageCapKey = keyof Weapon["stats"]["damageCaps"];
+
+function getAttunementComponentCap(
+  item: Weapon,
+  capKey: DamageCapKey,
+  stockRank30Base: number | undefined,
+  craftworkActionBonus = 0,
+) {
+  if (stockRank30Base === undefined) return 0;
+
+  const exactTotalCap = item.stats.damageCaps[capKey];
+  if (exactTotalCap !== undefined) {
+    const stockComponent = Math.max(0, exactTotalCap - stockRank30Base);
+    const level0Action = item.stats.level0.attack;
+    const craftworkComponent =
+      level0Action === undefined
+        ? 0
+        : Math.round((craftworkActionBonus * stockComponent) / level0Action);
+    return stockComponent + craftworkComponent;
+  }
+
+  if (item.name !== "Farilwyd" || capKey !== "lightAttack") return 0;
+  const level0Base = item.stats.level0.attack;
+  if (level0Base === undefined) return 0;
+  const rarityMultiplier = item.rarity === "Common" ? 1 : 1.5;
+  const stockComponent = level0Base * rarityMultiplier;
+  return (
+    stockComponent +
+    Math.round((craftworkActionBonus * stockComponent) / level0Base)
+  );
+}
+
+function getSecondaryAttunementComponentCap(
+  item: Weapon,
+  key: keyof WeaponLevelStats,
+  stockRank30Base: number,
+  craftworkActionBonus: number,
+  lightCraftworkBonus: number,
+) {
+  const capKey: DamageCapKey | undefined =
+    key === "chargedAttack" || key === "fullChargedCast"
+      ? "chargedHeavyAttack"
+      : key === "chargedShot"
+        ? "chargedShotAttack"
+        : key === "throw" || key === "perfectThrow"
+          ? key
+          : undefined;
+
+  if (capKey) {
+    const exactTotalCap = item.stats.damageCaps[capKey];
+    if (exactTotalCap !== undefined) {
+      const stockComponent = Math.max(0, exactTotalCap - stockRank30Base);
+      const level0Action = item.stats.level0[key];
+      const craftworkComponent =
+        level0Action === undefined
+          ? 0
+          : Math.round(
+              (craftworkActionBonus * stockComponent) / level0Action,
+            );
+      return stockComponent + craftworkComponent;
+    }
+  }
+
+  if (item.name === "Farilwyd" && key === "chargedAttack") {
+    return getAttunementComponentCap(
+      item,
+      "lightAttack",
+      getRank30WeaponStats(item).attack,
+      lightCraftworkBonus,
+    ) * 2;
+  }
+
+  return 0;
 }

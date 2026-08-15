@@ -29,6 +29,8 @@
 /docs/
 /tasks/
 /tmp/
+/supabase/.branches/
+/supabase/.temp/
 
 # debug
 npm-debug.log*

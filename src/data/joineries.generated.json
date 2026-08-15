@@ -1,0 +1,1127 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-21T11:37:15Z",
+  "source": {
+    "name": "Avakot Joinery data module",
+    "publisher": "Avakot",
+    "moduleUrl": "https://wiki.avakot.org/Module:Data/Joineries",
+    "apiUrl": "https://wiki.avakot.org/w/api.php",
+    "contentLicense": "CC BY-SA 4.0 unless otherwise noted",
+    "attributionUrl": "https://wiki.avakot.org/Project:Copyrights",
+    "revisionId": 45863,
+    "revisionTimestamp": "2026-06-21T11:37:15Z"
+  },
+  "items": [
+    {
+      "id": "Feybalt: Blessed by Iridis",
+      "name": "Feybalt: Blessed by Iridis",
+      "family": "Feybalt",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 1,
+      "attunementText": "+1 Spirit Attunement",
+      "description": "A metal with a blueish iridescence, traditionally used in the art of Steelsinging. Though its melting point is remarkably low, Feybalt is a powerful conductor for magicks- fey and otherwise. Sure to be the perfect joinery for mending magick weapons.",
+      "sourceTypes": [
+        "Magick"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Magick"
+        ]
+      },
+      "iconFile": "Feybalt.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/Feybalt.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/Feybalt.png/192px-Feybalt.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Feybalt.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100729,
+        "sha1": "be35b2aed14347152d24cc02b54ae48130982c65"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Feybalt"
+    },
+    {
+      "id": "Feybalt: Blessed by Mora",
+      "name": "Feybalt: Blessed by Mora",
+      "family": "Feybalt",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 1,
+      "attunementText": "+1 Courage Attunement",
+      "description": "A metal with a blueish iridescence, traditionally used in the art of Steelsinging. Though its melting point is remarkably low, Feybalt is a powerful conductor for magicks- fey and otherwise. Sure to be the perfect joinery for mending magick weapons.",
+      "sourceTypes": [
+        "Magick"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Magick"
+        ]
+      },
+      "iconFile": "Feybalt.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/Feybalt.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/Feybalt.png/192px-Feybalt.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Feybalt.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100729,
+        "sha1": "be35b2aed14347152d24cc02b54ae48130982c65"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Feybalt"
+    },
+    {
+      "id": "Feybalt: Blessed by Saphene",
+      "name": "Feybalt: Blessed by Saphene",
+      "family": "Feybalt",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 1,
+      "attunementText": "+1 Grace Attunement",
+      "description": "A metal with a blueish iridescence, traditionally used in the art of Steelsinging. Though its melting point is remarkably low, Feybalt is a powerful conductor for magicks- fey and otherwise. Sure to be the perfect joinery for mending magick weapons.",
+      "sourceTypes": [
+        "Magick"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Magick"
+        ]
+      },
+      "iconFile": "Feybalt.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/Feybalt.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/Feybalt.png/192px-Feybalt.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Feybalt.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100729,
+        "sha1": "be35b2aed14347152d24cc02b54ae48130982c65"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Feybalt"
+    },
+    {
+      "id": "Feybalt: Thrice Blessed by Iridis",
+      "name": "Feybalt: Thrice Blessed by Iridis",
+      "family": "Feybalt",
+      "tier": "Thrice Blessed",
+      "rarity": "Rare",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 3,
+      "attunementText": "+3 Spirit Attunement",
+      "description": "A metal with a blueish iridescence, traditionally used in the art of Steelsinging. Though its melting point is remarkably low, Feybalt is a powerful conductor for magicks- fey and otherwise. Sure to be the perfect joinery for mending magick weapons.",
+      "sourceTypes": [
+        "Magick"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Magick"
+        ]
+      },
+      "iconFile": "Feybalt.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/Feybalt.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/Feybalt.png/192px-Feybalt.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Feybalt.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100729,
+        "sha1": "be35b2aed14347152d24cc02b54ae48130982c65"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Feybalt"
+    },
+    {
+      "id": "Feybalt: Thrice Blessed by Mora",
+      "name": "Feybalt: Thrice Blessed by Mora",
+      "family": "Feybalt",
+      "tier": "Thrice Blessed",
+      "rarity": "Rare",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 3,
+      "attunementText": "+3 Courage Attunement",
+      "description": "A metal with a blueish iridescence, traditionally used in the art of Steelsinging. Though its melting point is remarkably low, Feybalt is a powerful conductor for magicks- fey and otherwise. Sure to be the perfect joinery for mending magick weapons.",
+      "sourceTypes": [
+        "Magick"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Magick"
+        ]
+      },
+      "iconFile": "Feybalt.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/Feybalt.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/Feybalt.png/192px-Feybalt.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Feybalt.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100729,
+        "sha1": "be35b2aed14347152d24cc02b54ae48130982c65"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Feybalt"
+    },
+    {
+      "id": "Feybalt: Thrice Blessed by Saphene",
+      "name": "Feybalt: Thrice Blessed by Saphene",
+      "family": "Feybalt",
+      "tier": "Thrice Blessed",
+      "rarity": "Rare",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 3,
+      "attunementText": "+3 Grace Attunement",
+      "description": "A metal with a blueish iridescence, traditionally used in the art of Steelsinging. Though its melting point is remarkably low, Feybalt is a powerful conductor for magicks- fey and otherwise. Sure to be the perfect joinery for mending magick weapons.",
+      "sourceTypes": [
+        "Magick"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Magick"
+        ]
+      },
+      "iconFile": "Feybalt.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/Feybalt.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/Feybalt.png/192px-Feybalt.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Feybalt.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100729,
+        "sha1": "be35b2aed14347152d24cc02b54ae48130982c65"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Feybalt"
+    },
+    {
+      "id": "Feybalt: Twice Blessed by Iridis",
+      "name": "Feybalt: Twice Blessed by Iridis",
+      "family": "Feybalt",
+      "tier": "Twice Blessed",
+      "rarity": "Uncommon",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 2,
+      "attunementText": "+2 Spirit Attunement",
+      "description": "A metal with a blueish iridescence, traditionally used in the art of Steelsinging. Though its melting point is remarkably low, Feybalt is a powerful conductor for magicks- fey and otherwise. Sure to be the perfect joinery for mending magick weapons.",
+      "sourceTypes": [
+        "Magick"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Magick"
+        ]
+      },
+      "iconFile": "Feybalt.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/Feybalt.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/Feybalt.png/192px-Feybalt.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Feybalt.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100729,
+        "sha1": "be35b2aed14347152d24cc02b54ae48130982c65"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Feybalt"
+    },
+    {
+      "id": "Feybalt: Twice Blessed by Mora",
+      "name": "Feybalt: Twice Blessed by Mora",
+      "family": "Feybalt",
+      "tier": "Twice Blessed",
+      "rarity": "Uncommon",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 2,
+      "attunementText": "+2 Courage Attunement",
+      "description": "A metal with a blueish iridescence, traditionally used in the art of Steelsinging. Though its melting point is remarkably low, Feybalt is a powerful conductor for magicks- fey and otherwise. Sure to be the perfect joinery for mending magick weapons.",
+      "sourceTypes": [
+        "Magick"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Magick"
+        ]
+      },
+      "iconFile": "Feybalt.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/Feybalt.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/Feybalt.png/192px-Feybalt.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Feybalt.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100729,
+        "sha1": "be35b2aed14347152d24cc02b54ae48130982c65"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Feybalt"
+    },
+    {
+      "id": "Feybalt: Twice Blessed by Saphene",
+      "name": "Feybalt: Twice Blessed by Saphene",
+      "family": "Feybalt",
+      "tier": "Twice Blessed",
+      "rarity": "Uncommon",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 2,
+      "attunementText": "+2 Grace Attunement",
+      "description": "A metal with a blueish iridescence, traditionally used in the art of Steelsinging. Though its melting point is remarkably low, Feybalt is a powerful conductor for magicks- fey and otherwise. Sure to be the perfect joinery for mending magick weapons.",
+      "sourceTypes": [
+        "Magick"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Magick"
+        ]
+      },
+      "iconFile": "Feybalt.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/0/06/Feybalt.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/0/06/Feybalt.png/192px-Feybalt.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Feybalt.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 100729,
+        "sha1": "be35b2aed14347152d24cc02b54ae48130982c65"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Feybalt"
+    },
+    {
+      "id": "Gildaur: Blessed by Iridis",
+      "name": "Gildaur: Blessed by Iridis",
+      "family": "Gildaur",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 1,
+      "attunementText": "+1 Spirit Attunement",
+      "description": "A warm-gold metal, traditionally used in the art of Steelsinging. Found most frequently in the coffers of Aureli traders, Gildaur is a rare import. For good reason. It is flexible, lightweight and strong in equal measures, a fine joinery for anything that needs mending.",
+      "sourceTypes": [
+        "All Weapons"
+      ],
+      "compatibility": {
+        "scope": "all"
+      },
+      "iconFile": "Gildaur.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/Gildaur.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/Gildaur.png/192px-Gildaur.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Gildaur.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 102401,
+        "sha1": "94204072128987467f80156e62891d5871b270c8"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Gildaur"
+    },
+    {
+      "id": "Gildaur: Blessed by Mora",
+      "name": "Gildaur: Blessed by Mora",
+      "family": "Gildaur",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 1,
+      "attunementText": "+1 Courage Attunement",
+      "description": "A warm-gold metal, traditionally used in the art of Steelsinging. Found most frequently in the coffers of Aureli traders, Gildaur is a rare import. For good reason. It is flexible, lightweight and strong in equal measures, a fine joinery for anything that needs mending.",
+      "sourceTypes": [
+        "All Weapons"
+      ],
+      "compatibility": {
+        "scope": "all"
+      },
+      "iconFile": "Gildaur.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/Gildaur.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/Gildaur.png/192px-Gildaur.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Gildaur.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 102401,
+        "sha1": "94204072128987467f80156e62891d5871b270c8"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Gildaur"
+    },
+    {
+      "id": "Gildaur: Blessed by Saphene",
+      "name": "Gildaur: Blessed by Saphene",
+      "family": "Gildaur",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 1,
+      "attunementText": "+1 Grace Attunement",
+      "description": "A warm-gold metal, traditionally used in the art of Steelsinging. Found most frequently in the coffers of Aureli traders, Gildaur is a rare import. For good reason. It is flexible, lightweight and strong in equal measures, a fine joinery for anything that needs mending.",
+      "sourceTypes": [
+        "All Weapons"
+      ],
+      "compatibility": {
+        "scope": "all"
+      },
+      "iconFile": "Gildaur.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/Gildaur.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/Gildaur.png/192px-Gildaur.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Gildaur.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 102401,
+        "sha1": "94204072128987467f80156e62891d5871b270c8"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Gildaur"
+    },
+    {
+      "id": "Gildaur: Thrice Blessed by Iridis",
+      "name": "Gildaur: Thrice Blessed by Iridis",
+      "family": "Gildaur",
+      "tier": "Thrice Blessed",
+      "rarity": "Rare",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 3,
+      "attunementText": "+3 Spirit Attunement",
+      "description": "A warm-gold metal, traditionally used in the art of Steelsinging. Found most frequently in the coffers of Aureli traders, Gildaur is a rare import. For good reason. It is flexible, lightweight and strong in equal measures, a fine joinery for anything that needs mending.",
+      "sourceTypes": [
+        "All Weapons"
+      ],
+      "compatibility": {
+        "scope": "all"
+      },
+      "iconFile": "Gildaur.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/Gildaur.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/Gildaur.png/192px-Gildaur.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Gildaur.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 102401,
+        "sha1": "94204072128987467f80156e62891d5871b270c8"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Gildaur"
+    },
+    {
+      "id": "Gildaur: Thrice Blessed by Mora",
+      "name": "Gildaur: Thrice Blessed by Mora",
+      "family": "Gildaur",
+      "tier": "Thrice Blessed",
+      "rarity": "Rare",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 3,
+      "attunementText": "+3 Courage Attunement",
+      "description": "A warm-gold metal, traditionally used in the art of Steelsinging. Found most frequently in the coffers of Aureli traders, Gildaur is a rare import. For good reason. It is flexible, lightweight and strong in equal measures, a fine joinery for anything that needs mending.",
+      "sourceTypes": [
+        "All Weapons"
+      ],
+      "compatibility": {
+        "scope": "all"
+      },
+      "iconFile": "Gildaur.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/Gildaur.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/Gildaur.png/192px-Gildaur.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Gildaur.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 102401,
+        "sha1": "94204072128987467f80156e62891d5871b270c8"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Gildaur"
+    },
+    {
+      "id": "Gildaur: Thrice Blessed by Saphene",
+      "name": "Gildaur: Thrice Blessed by Saphene",
+      "family": "Gildaur",
+      "tier": "Thrice Blessed",
+      "rarity": "Rare",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 3,
+      "attunementText": "+3 Grace Attunement",
+      "description": "A warm-gold metal, traditionally used in the art of Steelsinging. Found most frequently in the coffers of Aureli traders, Gildaur is a rare import. For good reason. It is flexible, lightweight and strong in equal measures, a fine joinery for anything that needs mending.",
+      "sourceTypes": [
+        "All Weapons"
+      ],
+      "compatibility": {
+        "scope": "all"
+      },
+      "iconFile": "Gildaur.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/a/a2/Gildaur.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/a/a2/Gildaur.png/192px-Gildaur.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Gildaur.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 102401,
+        "sha1": "94204072128987467f80156e62891d5871b270c8"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Gildaur"
+    },
+    {
+      "id": "Quicksilver: Blessed by Iridis",
+      "name": "Quicksilver: Blessed by Iridis",
+      "family": "Quicksilver",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 1,
+      "attunementText": "+1 Spirit Attunement",
+      "description": "An incredibly smooth ball of silvern metal, traditionally used in the art of Steelsinging. Once thought to be stray bubbles, floated 'way from the silvern sea. Though this theory is disregarded by most Pensives today, it would explain this ore's unnatural lightness. The ideal joinery for mending ranged weapons.",
+      "sourceTypes": [
+        "Bow",
+        "Flyblade"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Bow",
+          "Flyblade"
+        ]
+      },
+      "iconFile": "Quicksilver.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Quicksilver.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Quicksilver.png/192px-Quicksilver.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Quicksilver.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 101785,
+        "sha1": "3244b2e13e4ac131225fcb8eb57c37a21fd1106f"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Quicksilver"
+    },
+    {
+      "id": "Quicksilver: Blessed by Mora",
+      "name": "Quicksilver: Blessed by Mora",
+      "family": "Quicksilver",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 1,
+      "attunementText": "+1 Courage Attunement",
+      "description": "An incredibly smooth ball of silvern metal, traditionally used in the art of Steelsinging. Once thought to be stray bubbles, floated 'way from the silvern sea. Though this theory is disregarded by most Pensives today, it would explain this ore's unnatural lightness. The ideal joinery for mending ranged weapons.",
+      "sourceTypes": [
+        "Bow",
+        "Flyblade"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Bow",
+          "Flyblade"
+        ]
+      },
+      "iconFile": "Quicksilver.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Quicksilver.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Quicksilver.png/192px-Quicksilver.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Quicksilver.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 101785,
+        "sha1": "3244b2e13e4ac131225fcb8eb57c37a21fd1106f"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Quicksilver"
+    },
+    {
+      "id": "Quicksilver: Blessed by Saphene",
+      "name": "Quicksilver: Blessed by Saphene",
+      "family": "Quicksilver",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 1,
+      "attunementText": "+1 Grace Attunement",
+      "description": "An incredibly smooth ball of silvern metal, traditionally used in the art of Steelsinging. Once thought to be stray bubbles, floated 'way from the silvern sea. Though this theory is disregarded by most Pensives today, it would explain this ore's unnatural lightness. The ideal joinery for mending ranged weapons.",
+      "sourceTypes": [
+        "Bow",
+        "Flyblade"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Bow",
+          "Flyblade"
+        ]
+      },
+      "iconFile": "Quicksilver.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Quicksilver.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Quicksilver.png/192px-Quicksilver.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Quicksilver.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 101785,
+        "sha1": "3244b2e13e4ac131225fcb8eb57c37a21fd1106f"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Quicksilver"
+    },
+    {
+      "id": "Quicksilver: Thrice Blessed by Iridis",
+      "name": "Quicksilver: Thrice Blessed by Iridis",
+      "family": "Quicksilver",
+      "tier": "Thrice Blessed",
+      "rarity": "Rare",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 3,
+      "attunementText": "+3 Spirit Attunement",
+      "description": "An incredibly smooth ball of silvern metal, traditionally used in the art of Steelsinging. Once thought to be stray bubbles, floated 'way from the silvern sea. Though this theory is disregarded by most Pensives today, it would explain this ore's unnatural lightness. The ideal joinery for mending ranged weapons.",
+      "sourceTypes": [
+        "Bow",
+        "Flyblade"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Bow",
+          "Flyblade"
+        ]
+      },
+      "iconFile": "Quicksilver.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Quicksilver.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Quicksilver.png/192px-Quicksilver.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Quicksilver.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 101785,
+        "sha1": "3244b2e13e4ac131225fcb8eb57c37a21fd1106f"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Quicksilver"
+    },
+    {
+      "id": "Quicksilver: Thrice Blessed by Mora",
+      "name": "Quicksilver: Thrice Blessed by Mora",
+      "family": "Quicksilver",
+      "tier": "Thrice Blessed",
+      "rarity": "Rare",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 3,
+      "attunementText": "+3 Courage Attunement",
+      "description": "An incredibly smooth ball of silvern metal, traditionally used in the art of Steelsinging. Once thought to be stray bubbles, floated 'way from the silvern sea. Though this theory is disregarded by most Pensives today, it would explain this ore's unnatural lightness. The ideal joinery for mending ranged weapons.",
+      "sourceTypes": [
+        "Bow",
+        "Flyblade"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Bow",
+          "Flyblade"
+        ]
+      },
+      "iconFile": "Quicksilver.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Quicksilver.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Quicksilver.png/192px-Quicksilver.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Quicksilver.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 101785,
+        "sha1": "3244b2e13e4ac131225fcb8eb57c37a21fd1106f"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Quicksilver"
+    },
+    {
+      "id": "Quicksilver: Thrice Blessed by Saphene",
+      "name": "Quicksilver: Thrice Blessed by Saphene",
+      "family": "Quicksilver",
+      "tier": "Thrice Blessed",
+      "rarity": "Rare",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 3,
+      "attunementText": "+3 Grace Attunement",
+      "description": "An incredibly smooth ball of silvern metal, traditionally used in the art of Steelsinging. Once thought to be stray bubbles, floated 'way from the silvern sea. Though this theory is disregarded by most Pensives today, it would explain this ore's unnatural lightness. The ideal joinery for mending ranged weapons.",
+      "sourceTypes": [
+        "Bow",
+        "Flyblade"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Bow",
+          "Flyblade"
+        ]
+      },
+      "iconFile": "Quicksilver.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Quicksilver.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Quicksilver.png/192px-Quicksilver.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Quicksilver.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 101785,
+        "sha1": "3244b2e13e4ac131225fcb8eb57c37a21fd1106f"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Quicksilver"
+    },
+    {
+      "id": "Quicksilver: Twice Blessed by Iridis",
+      "name": "Quicksilver: Twice Blessed by Iridis",
+      "family": "Quicksilver",
+      "tier": "Twice Blessed",
+      "rarity": "Uncommon",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 2,
+      "attunementText": "+2 Spirit Attunement",
+      "description": "An incredibly smooth ball of silvern metal, traditionally used in the art of Steelsinging. Once thought to be stray bubbles, floated 'way from the silvern sea. Though this theory is disregarded by most Pensives today, it would explain this ore's unnatural lightness. The ideal joinery for mending ranged weapons.",
+      "sourceTypes": [
+        "Bow",
+        "Flyblade"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Bow",
+          "Flyblade"
+        ]
+      },
+      "iconFile": "Quicksilver.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Quicksilver.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Quicksilver.png/192px-Quicksilver.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Quicksilver.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 101785,
+        "sha1": "3244b2e13e4ac131225fcb8eb57c37a21fd1106f"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Quicksilver"
+    },
+    {
+      "id": "Quicksilver: Twice Blessed by Mora",
+      "name": "Quicksilver: Twice Blessed by Mora",
+      "family": "Quicksilver",
+      "tier": "Twice Blessed",
+      "rarity": "Uncommon",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 2,
+      "attunementText": "+2 Courage Attunement",
+      "description": "An incredibly smooth ball of silvern metal, traditionally used in the art of Steelsinging. Once thought to be stray bubbles, floated 'way from the silvern sea. Though this theory is disregarded by most Pensives today, it would explain this ore's unnatural lightness. The ideal joinery for mending ranged weapons.",
+      "sourceTypes": [
+        "Bow",
+        "Flyblade"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Bow",
+          "Flyblade"
+        ]
+      },
+      "iconFile": "Quicksilver.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Quicksilver.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Quicksilver.png/192px-Quicksilver.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Quicksilver.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 101785,
+        "sha1": "3244b2e13e4ac131225fcb8eb57c37a21fd1106f"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Quicksilver"
+    },
+    {
+      "id": "Quicksilver: Twice Blessed by Saphene",
+      "name": "Quicksilver: Twice Blessed by Saphene",
+      "family": "Quicksilver",
+      "tier": "Twice Blessed",
+      "rarity": "Uncommon",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 2,
+      "attunementText": "+2 Grace Attunement",
+      "description": "An incredibly smooth ball of silvern metal, traditionally used in the art of Steelsinging. Once thought to be stray bubbles, floated 'way from the silvern sea. Though this theory is disregarded by most Pensives today, it would explain this ore's unnatural lightness. The ideal joinery for mending ranged weapons.",
+      "sourceTypes": [
+        "Bow",
+        "Flyblade"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Bow",
+          "Flyblade"
+        ]
+      },
+      "iconFile": "Quicksilver.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/f/f8/Quicksilver.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/f/f8/Quicksilver.png/192px-Quicksilver.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Quicksilver.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 101785,
+        "sha1": "3244b2e13e4ac131225fcb8eb57c37a21fd1106f"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Quicksilver"
+    },
+    {
+      "id": "Verite: Blessed by Iridis",
+      "name": "Verite: Blessed by Iridis",
+      "family": "Verite",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 1,
+      "attunementText": "+1 Spirit Attunement",
+      "description": "A dull ore with a reddish tint. A fine metal, traditionally used in the art of Steelsinging. Verite was a favourite medium for talisman makers of the Quiet Years, as it was thought to bring stability in turbulent times. Today, it remains a reliable joinery for mending melee weapons.",
+      "sourceTypes": [
+        "Short Blade",
+        "Long Blade",
+        "Polearm",
+        "Shield",
+        "Greatsword"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Short Blade",
+          "Long Blade",
+          "Polearm",
+          "Shield",
+          "Heavy"
+        ]
+      },
+      "iconFile": "Verite.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e1/Verite.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e1/Verite.png/192px-Verite.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Verite.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 104307,
+        "sha1": "51bacd8062c572eda759b6c753bc71d076b4f689"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Verite"
+    },
+    {
+      "id": "Verite: Blessed by Mora",
+      "name": "Verite: Blessed by Mora",
+      "family": "Verite",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 1,
+      "attunementText": "+1 Courage Attunement",
+      "description": "A dull ore with a reddish tint. A fine metal, traditionally used in the art of Steelsinging. Verite was a favourite medium for talisman makers of the Quiet Years, as it was thought to bring stability in turbulent times. Today, it remains a reliable joinery for mending melee weapons.",
+      "sourceTypes": [
+        "Short Blade",
+        "Long Blade",
+        "Polearm",
+        "Shield",
+        "Greatsword"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Short Blade",
+          "Long Blade",
+          "Polearm",
+          "Shield",
+          "Heavy"
+        ]
+      },
+      "iconFile": "Verite.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e1/Verite.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e1/Verite.png/192px-Verite.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Verite.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 104307,
+        "sha1": "51bacd8062c572eda759b6c753bc71d076b4f689"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Verite"
+    },
+    {
+      "id": "Verite: Blessed by Saphene",
+      "name": "Verite: Blessed by Saphene",
+      "family": "Verite",
+      "tier": "Blessed",
+      "rarity": "Common",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 1,
+      "attunementText": "+1 Grace Attunement",
+      "description": "A dull ore with a reddish tint. A fine metal, traditionally used in the art of Steelsinging. Verite was a favourite medium for talisman makers of the Quiet Years, as it was thought to bring stability in turbulent times. Today, it remains a reliable joinery for mending melee weapons.",
+      "sourceTypes": [
+        "Short Blade",
+        "Long Blade",
+        "Polearm",
+        "Shield",
+        "Greatsword"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Short Blade",
+          "Long Blade",
+          "Polearm",
+          "Shield",
+          "Heavy"
+        ]
+      },
+      "iconFile": "Verite.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e1/Verite.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e1/Verite.png/192px-Verite.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Verite.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 104307,
+        "sha1": "51bacd8062c572eda759b6c753bc71d076b4f689"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Verite"
+    },
+    {
+      "id": "Verite: Twice Blessed by Iridis",
+      "name": "Verite: Twice Blessed by Iridis",
+      "family": "Verite",
+      "tier": "Twice Blessed",
+      "rarity": "Uncommon",
+      "blessing": "Iridis",
+      "virtue": "spirit",
+      "attunementPips": 2,
+      "attunementText": "+2 Spirit Attunement",
+      "description": "A dull ore with a reddish tint. A fine metal, traditionally used in the art of Steelsinging. Verite was a favourite medium for talisman makers of the Quiet Years, as it was thought to bring stability in turbulent times. Today, it remains a reliable joinery for mending melee weapons.",
+      "sourceTypes": [
+        "Short Blade",
+        "Long Blade",
+        "Polearm",
+        "Shield",
+        "Greatsword"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Short Blade",
+          "Long Blade",
+          "Polearm",
+          "Shield",
+          "Heavy"
+        ]
+      },
+      "iconFile": "Verite.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e1/Verite.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e1/Verite.png/192px-Verite.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Verite.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 104307,
+        "sha1": "51bacd8062c572eda759b6c753bc71d076b4f689"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Verite"
+    },
+    {
+      "id": "Verite: Twice Blessed by Mora",
+      "name": "Verite: Twice Blessed by Mora",
+      "family": "Verite",
+      "tier": "Twice Blessed",
+      "rarity": "Uncommon",
+      "blessing": "Mora",
+      "virtue": "courage",
+      "attunementPips": 2,
+      "attunementText": "+2 Courage Attunement",
+      "description": "A dull ore with a reddish tint. A fine metal, traditionally used in the art of Steelsinging. Verite was a favourite medium for talisman makers of the Quiet Years, as it was thought to bring stability in turbulent times. Today, it remains a reliable joinery for mending melee weapons.",
+      "sourceTypes": [
+        "Short Blade",
+        "Long Blade",
+        "Polearm",
+        "Shield",
+        "Greatsword"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Short Blade",
+          "Long Blade",
+          "Polearm",
+          "Shield",
+          "Heavy"
+        ]
+      },
+      "iconFile": "Verite.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e1/Verite.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e1/Verite.png/192px-Verite.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Verite.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 104307,
+        "sha1": "51bacd8062c572eda759b6c753bc71d076b4f689"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Verite"
+    },
+    {
+      "id": "Verite: Twice Blessed by Saphene",
+      "name": "Verite: Twice Blessed by Saphene",
+      "family": "Verite",
+      "tier": "Twice Blessed",
+      "rarity": "Uncommon",
+      "blessing": "Saphene",
+      "virtue": "grace",
+      "attunementPips": 2,
+      "attunementText": "+2 Grace Attunement",
+      "description": "A dull ore with a reddish tint. A fine metal, traditionally used in the art of Steelsinging. Verite was a favourite medium for talisman makers of the Quiet Years, as it was thought to bring stability in turbulent times. Today, it remains a reliable joinery for mending melee weapons.",
+      "sourceTypes": [
+        "Short Blade",
+        "Long Blade",
+        "Polearm",
+        "Shield",
+        "Greatsword"
+      ],
+      "compatibility": {
+        "scope": "types",
+        "types": [
+          "Short Blade",
+          "Long Blade",
+          "Polearm",
+          "Shield",
+          "Heavy"
+        ]
+      },
+      "iconFile": "Verite.png",
+      "icon": {
+        "imageUrl": "https://static.wikitide.net/soulframewiki/e/e1/Verite.png",
+        "thumbnailUrl": "https://static.wikitide.net/soulframewiki/thumb/e/e1/Verite.png/192px-Verite.png",
+        "descriptionUrl": "https://wiki.avakot.org/File:Verite.png",
+        "mimeType": "image/png",
+        "width": 512,
+        "height": 512,
+        "thumbnailWidth": 192,
+        "thumbnailHeight": 192,
+        "bytes": 104307,
+        "sha1": "51bacd8062c572eda759b6c753bc71d076b4f689"
+      },
+      "parentPageUrl": "https://wiki.avakot.org/Verite"
+    }
+  ],
+  "parents": [
+    "Feybalt",
+    "Gildaur",
+    "Quicksilver",
+    "Verite"
+  ],
+  "archives": [
+    "Eldore",
+    "Grey Gold",
+    "Palladium",
+    "Sun Gold",
+    "Tribalt"
+  ]
+}

@@ -89,6 +89,8 @@ export function ArtifactControls({
   publishHref,
   onNameChange,
   onReplaceBuild,
+  onAdoptArtifactIdentity,
+  onDetachArtifactIdentity,
   onReset,
   onShare,
 }: {
@@ -98,6 +100,8 @@ export function ArtifactControls({
   publishHref: string;
   onNameChange: (name: string) => void;
   onReplaceBuild: (build: SoulframeBuild) => void;
+  onAdoptArtifactIdentity: (artifactId: string) => void;
+  onDetachArtifactIdentity: () => void;
   onReset: () => void;
   onShare: () => void;
 }) {
@@ -176,8 +180,12 @@ export function ArtifactControls({
     setDialogError(null);
   };
 
-  const applyArtifact = (artifact: BuildPlannerArtifact) => {
+  const applyArtifact = (
+    artifact: BuildPlannerArtifact,
+    adoptIdentity: boolean,
+  ) => {
     onReplaceBuild(artifact.payload);
+    if (adoptIdentity) onAdoptArtifactIdentity(artifact.id);
     setActiveArtifact({ id: artifact.id, name: artifact.name });
     setPersistedBaseline(buildFingerprint(artifact.payload));
     setArtifacts((current) => mergeArtifact(current, artifact));
@@ -200,7 +208,7 @@ export function ArtifactControls({
         announceFailure(result.error.message);
         return false;
       }
-      applyArtifact(result.value);
+      applyArtifact(result.value, false);
       announceSuccess(
         "Cloud Frame saved",
         `${result.value.name} is up to date.`,
@@ -231,7 +239,7 @@ export function ArtifactControls({
         announceFailure(message);
         return;
       }
-      applyArtifact(result.value);
+      applyArtifact(result.value, true);
       closeDialog();
       announceSuccess(
         "Cloud Frame loaded",
@@ -314,7 +322,7 @@ export function ArtifactControls({
         announceFailure(result.error.message);
         return;
       }
-      applyArtifact(result.value);
+      applyArtifact(result.value, true);
       announceSuccess(
         dialog.mode === "create" ? "Cloud Frame saved" : "Cloud copy created",
         `${result.value.name} is now the active cloud Frame.`,
@@ -393,6 +401,7 @@ export function ArtifactControls({
       );
       setActiveArtifact(null);
       setPersistedBaseline(null);
+      onDetachArtifactIdentity();
       closeDialog();
       announceSuccess(
         "Cloud Frame deleted",

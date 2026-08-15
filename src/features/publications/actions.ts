@@ -26,6 +26,7 @@ import {
 } from "../../server/supabase/publication-service";
 import {
   publicPublicationPath,
+  publisherActionLocation,
   publisherWorkspacePath,
 } from "./publisherRoutes";
 
@@ -177,14 +178,14 @@ function publisherLocation(
   publicationId: string | null,
   kind: "error" | "notice",
   value: string,
-  frame?: string | null,
+  profileId: PublicationProfileId | null = null,
 ): string {
-  const pathname = publicationId
-    ? `/soulframe/publisher/${encodeURIComponent(publicationId)}`
-    : "/soulframe/publisher";
-  const search = new URLSearchParams({ [kind]: value });
-  if (frame) search.set("frame", frame);
-  return `${pathname}?${search}`;
+  return publisherActionLocation(profileId, publicationId, kind, value);
+}
+
+function submittedProfileId(formData: FormData): PublicationProfileId | null {
+  const value = formString(formData, "profileId");
+  return isPublicationProfileId(value) ? value : null;
 }
 
 export async function createPublicationAction(formData: FormData) {
@@ -217,7 +218,7 @@ export async function createPublicationAction(formData: FormData) {
       ),
     });
     revalidatePath("/soulframe/publisher");
-    target = publisherLocation(publication.id, "notice", "created");
+    target = publisherLocation(publication.id, "notice", "created", profile.id);
   } catch (error) {
     const search = new URLSearchParams({ error: errorCode(error) });
     const preservedInputs = [
@@ -271,7 +272,7 @@ export async function createSoulframeBuildFromStateAction(
       initialState: parseState(formData),
     });
     revalidatePath("/soulframe/publisher");
-    target = publisherLocation(publication.id, "notice", "created");
+    target = publisherLocation(publication.id, "notice", "created", profile.id);
   } catch (error) {
     return {
       status: "error",
@@ -320,6 +321,7 @@ export async function createAndPublishSoulframeBuildFromStateAction(
     publicationId,
     published ? "notice" : "error",
     published ? "published" : "created-not-published",
+    "soulframe.build",
   );
 
   try {
@@ -355,7 +357,7 @@ export async function createPublicationFromStateAction(
       initialState: parseState(formData),
     });
     revalidatePath("/soulframe/publisher");
-    target = publisherLocation(publication.id, "notice", "created");
+    target = publisherLocation(publication.id, "notice", "created", profile.id);
   } catch (error) {
     return {
       status: "error" as const,
@@ -409,6 +411,7 @@ export async function createAndPublishPublicationFromStateAction(
     publicationId,
     published ? "notice" : "error",
     published ? "published" : "created-not-published",
+    parseProfileId(profileId),
   );
   try {
     revalidatePath(`/soulframe/publisher/${publicationId}`);
@@ -436,6 +439,7 @@ async function saveSubmittedDraft(
 }
 
 export async function savePublicationDraftAction(formData: FormData) {
+  const profileId = submittedProfileId(formData);
   let publicationId: string | null = null;
   let target: string;
   try {
@@ -443,14 +447,15 @@ export async function savePublicationDraftAction(formData: FormData) {
     publicationId = parsePublicationId(formString(formData, "publicationId"));
     await saveSubmittedDraft(context, formData, publicationId);
     revalidatePath(`/soulframe/publisher/${publicationId}`);
-    target = publisherLocation(publicationId, "notice", "saved");
+    target = publisherLocation(publicationId, "notice", "saved", profileId);
   } catch (error) {
-    target = publisherLocation(publicationId, "error", errorCode(error));
+    target = publisherLocation(publicationId, "error", errorCode(error), profileId);
   }
   redirect(target);
 }
 
 export async function checkpointPublicationDraftAction(formData: FormData) {
+  const profileId = submittedProfileId(formData);
   let publicationId: string | null = null;
   let target: string;
   try {
@@ -461,14 +466,15 @@ export async function checkpointPublicationDraftAction(formData: FormData) {
       publicationId,
     });
     revalidatePath(`/soulframe/publisher/${publicationId}`);
-    target = publisherLocation(publicationId, "notice", "checkpointed");
+    target = publisherLocation(publicationId, "notice", "checkpointed", profileId);
   } catch (error) {
-    target = publisherLocation(publicationId, "error", errorCode(error));
+    target = publisherLocation(publicationId, "error", errorCode(error), profileId);
   }
   redirect(target);
 }
 
 export async function publishPublicationAction(formData: FormData) {
+  const profileId = submittedProfileId(formData);
   let publicationId: string | null = null;
   let target: string;
   try {
@@ -481,15 +487,16 @@ export async function publishPublicationAction(formData: FormData) {
     revalidatePath(`/soulframe/publisher/${publicationId}`);
     revalidatePath("/soulframe/builds");
     revalidatePath("/soulframe/guides");
-    target = publisherLocation(publicationId, "notice", "published");
+    target = publisherLocation(publicationId, "notice", "published", profileId);
   } catch (error) {
-    target = publisherLocation(publicationId, "error", errorCode(error));
+    target = publisherLocation(publicationId, "error", errorCode(error), profileId);
   }
   redirect(target);
 }
 
 /** Saves the submitted editor snapshot before producing an immutable release. */
 export async function saveAndPublishPublicationAction(formData: FormData) {
+  const profileId = submittedProfileId(formData);
   let publicationId: string | null = null;
   let context: PublisherOwnerContext;
   try {
@@ -497,7 +504,7 @@ export async function saveAndPublishPublicationAction(formData: FormData) {
     publicationId = parsePublicationId(formString(formData, "publicationId"));
     await saveSubmittedDraft(context, formData, publicationId);
   } catch (error) {
-    redirect(publisherLocation(publicationId, "error", errorCode(error)));
+    redirect(publisherLocation(publicationId, "error", errorCode(error), profileId));
   }
 
   let published = false;
@@ -515,6 +522,7 @@ export async function saveAndPublishPublicationAction(formData: FormData) {
     publicationId,
     published ? "notice" : "error",
     published ? "published" : "saved-not-published",
+    profileId,
   );
   try {
     revalidatePath(`/soulframe/publisher/${publicationId}`);
@@ -529,6 +537,7 @@ export async function saveAndPublishPublicationAction(formData: FormData) {
 }
 
 export async function unpublishPublicationAction(formData: FormData) {
+  const profileId = submittedProfileId(formData);
   let publicationId: string | null = null;
   let target: string;
   try {
@@ -541,9 +550,9 @@ export async function unpublishPublicationAction(formData: FormData) {
     revalidatePath(`/soulframe/publisher/${publicationId}`);
     revalidatePath("/soulframe/builds");
     revalidatePath("/soulframe/guides");
-    target = publisherLocation(publicationId, "notice", "unpublished");
+    target = publisherLocation(publicationId, "notice", "unpublished", profileId);
   } catch (error) {
-    target = publisherLocation(publicationId, "error", errorCode(error));
+    target = publisherLocation(publicationId, "error", errorCode(error), profileId);
   }
   redirect(target);
 }

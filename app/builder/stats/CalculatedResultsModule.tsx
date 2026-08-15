@@ -1,5 +1,7 @@
 import { ChevronDown } from "lucide-react";
+import { joineryById } from "@/src/data/joineries";
 import { weaponById } from "@/src/data/weapons";
+import { resolveValidWeaponJoinery } from "@/src/domain/weapon-configuration";
 import {
   DEFENSE_IDS,
   VIRTUE_IDS,
@@ -20,7 +22,22 @@ export function CalculatedResultsModule({
   const weapons = (["mainHand", "offHand"] as const).flatMap((slot) => {
     const id = build.equipment[slot];
     const weapon = id ? weaponById.get(id) : undefined;
-    return weapon ? [{ slot, weapon }] : [];
+    const joinery = resolveValidWeaponJoinery(
+      build.weaponEnhancements[slot].joineryId,
+      weapon,
+      joineryById,
+    );
+    return weapon
+      ? [
+          {
+            slot,
+            weapon,
+            joinery,
+            craftwork: build.weaponEnhancements[slot].craftwork,
+            temperIds: build.weaponEnhancements[slot].tempers,
+          },
+        ]
+      : [];
   });
   const weaponGridClassName =
     weapons.length > 1
@@ -71,10 +88,13 @@ export function CalculatedResultsModule({
 
         {weapons.length > 0 ? (
           <div className={weaponGridClassName}>
-            {weapons.map(({ slot, weapon }) => (
+            {weapons.map(({ slot, weapon, joinery, craftwork, temperIds }) => (
               <WeaponPrimaryHud
+                craftwork={craftwork}
                 key={slot}
                 item={weapon}
+                joinery={joinery}
+                temperIds={temperIds}
                 virtues={calculation.effectiveVirtues}
               />
             ))}

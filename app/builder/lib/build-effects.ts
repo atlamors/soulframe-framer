@@ -1,4 +1,5 @@
 import { getRuneDisplayName, runeById } from "@/src/data/runes";
+import { temperById } from "@/src/data/tempers";
 import { totemById } from "@/src/data/totems";
 import {
   formatTotemEffect,
@@ -12,6 +13,7 @@ import {
   getAllocatedCombatArtEffects,
   getAllocatedPactArtEffects,
 } from "@/src/domain/arts";
+import { getEquippedTemperEffects } from "@/src/domain/weapon-configuration";
 
 export function getActiveBuildEffects(build: SoulframeBuild) {
   const pact = build.pact.itemId ? pactById.get(build.pact.itemId) : undefined;
@@ -58,7 +60,19 @@ export function getActiveBuildEffects(build: SoulframeBuild) {
         },
       ];
     });
-    return [...runeEffects, ...totemEffects];
+    const temperEffects = getEquippedTemperEffects(
+      enhancements.tempers,
+      temperById,
+    ).map((effect) => ({
+      id: `${slot}-temper-${effect.id}`,
+      source: `${label} · ${effect.temperName}${
+        effect.occurrences === 2 ? " ×2" : ""
+      }`,
+      text: effect.numericalModifier
+        ? `${effect.text} · Included in calculated totals: ${effect.numericalModifier.metric}`
+        : `${effect.text} · Informational — not included in calculated totals`,
+    }));
+    return [...runeEffects, ...totemEffects, ...temperEffects];
   });
   return [...pactEffects, ...combatArtEffects, ...enhancementEffects];
 }

@@ -5,6 +5,8 @@ import { weaponCatalogue } from "../data/weapons";
 import { pactCatalogue } from "../data/pacts";
 import { runeCatalogue } from "../data/runes";
 import { totemCatalogue } from "../data/totems";
+import { temperCatalogue } from "../data/tempers";
+import { joineryCatalogue } from "../data/joineries";
 import { combatArtCatalogue } from "../data/arts";
 import {
   deserializeBuild,
@@ -14,7 +16,7 @@ import {
 import type { SoulframeBuild } from "./types";
 
 const build: SoulframeBuild = {
-  schemaVersion: 5,
+  schemaVersion: 6,
   name: "First Envoy",
   virtues: { courage: 12, spirit: 11, grace: 11 },
   affinitySources: {
@@ -36,8 +38,8 @@ const build: SoulframeBuild = {
     }),
   ),
   weaponEnhancements: {
-    mainHand: { rune: null, totems: [null, null, null, null] },
-    offHand: { rune: null, totems: [null, null, null, null] },
+    mainHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
+    offHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
   },
 };
 const catalogue = {
@@ -47,6 +49,8 @@ const catalogue = {
   pacts: pactCatalogue,
   runes: runeCatalogue,
   totems: totemCatalogue,
+  tempers: temperCatalogue,
+  joineries: joineryCatalogue,
 };
 const mainWeapon = weaponCatalogue.find(
   (weapon) => weapon.id === build.equipment.mainHand,
@@ -59,7 +63,7 @@ describe("build serialization", () => {
   it("round trips a build", () => {
     expect(deserializeBuild(serializeBuild(build), catalogue)).toEqual({
       ok: true,
-      sourceSchemaVersion: 5,
+      sourceSchemaVersion: 6,
       build,
       warnings: [],
     });
@@ -96,7 +100,7 @@ describe("build serialization", () => {
 
   it("rejects unsupported schema versions", () => {
     const unsupported = Buffer.from(
-      JSON.stringify({ ...build, schemaVersion: 6 }),
+      JSON.stringify({ ...build, schemaVersion: 7 }),
     ).toString("base64url");
     expect(deserializeBuild(unsupported, catalogue)).toEqual({
       ok: false,
@@ -201,8 +205,8 @@ describe("build serialization", () => {
         ...build,
         pact: { itemId: null, artAllocation: {} },
         weaponEnhancements: {
-          mainHand: { rune: null, totems: [null, null, null, null] },
-          offHand: { rune: null, totems: [null, null, null, null] },
+          mainHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
+          offHand: { rune: null, totems: [null, null, null, null], craftwork: "Stock", tempers: [], joineryId: null },
         },
       },
       warnings: [
@@ -238,6 +242,31 @@ describe("build serialization", () => {
       build: { ...build, weaponEnhancements: legacyEnhancements },
       warnings: [
         "Saved build upgraded with direct Pact and Combat Art configuration.",
+      ],
+    });
+  });
+
+  it("migrates version 5 Rune and Totem state into empty Stock configurations", () => {
+    const legacyEnhancements = Object.fromEntries(
+      Object.entries(build.weaponEnhancements).map(([slot, enhancements]) => [
+        slot,
+        { rune: enhancements.rune, totems: enhancements.totems },
+      ]),
+    );
+    const legacy = Buffer.from(
+      JSON.stringify({
+        ...build,
+        schemaVersion: 5,
+        weaponEnhancements: legacyEnhancements,
+      }),
+    ).toString("base64url");
+
+    expect(deserializeBuild(legacy, catalogue)).toEqual({
+      ok: true,
+      sourceSchemaVersion: 5,
+      build,
+      warnings: [
+        "Saved build upgraded with Craftwork, Temper, and Joinery configuration.",
       ],
     });
   });
@@ -312,7 +341,7 @@ describe("build serialization", () => {
   });
 
   it.each([3, 4] as const)(
-    "keeps version %s compatibility-only Pact Art bonuses through a v5 round trip",
+    "keeps version %s compatibility-only Pact Art bonuses through a v6 round trip",
     (schemaVersion) => {
       const legacyPactArts = {
         courage: 2 as const,
@@ -353,14 +382,14 @@ describe("build serialization", () => {
       );
       expect(persisted).toEqual({
         ok: true,
-        sourceSchemaVersion: 5,
+        sourceSchemaVersion: 6,
         build: migrated.build,
         warnings: [],
       });
     },
   );
 
-  it("normalizes a version 5 allocation to base points plus Envoy Rank", () => {
+  it("normalizes a version 6 allocation to base points plus Envoy Rank", () => {
     const encoded = Buffer.from(
       JSON.stringify({
         ...build,
@@ -372,7 +401,7 @@ describe("build serialization", () => {
 
     expect(result).toEqual({
       ok: true,
-      sourceSchemaVersion: 5,
+      sourceSchemaVersion: 6,
       build: {
         ...build,
         virtues: { courage: 12, spirit: 11, grace: 11 },
@@ -383,7 +412,7 @@ describe("build serialization", () => {
     });
   });
 
-  it("recovers a zero-valued version 5 Virtue allocation with a minimum warning", () => {
+  it("recovers a zero-valued version 6 Virtue allocation with a minimum warning", () => {
     const encoded = Buffer.from(
       JSON.stringify({
         ...build,
@@ -435,6 +464,35 @@ describe("build serialization", () => {
     }
   });
 
+  it("canonicalizes incompatible Temper and Joinery selections before encoding", () => {
+    const incompatibleTemper = temperCatalogue.find(
+      (temper) =>
+        temper.isPlaceholder ||
+        (temper.origin !== "Universal" && temper.origin !== mainWeapon.origin),
+    )!;
+    const encoded = serializeBuild({
+      ...build,
+      weaponEnhancements: {
+        ...build.weaponEnhancements,
+        mainHand: {
+          ...build.weaponEnhancements.mainHand,
+          tempers: [incompatibleTemper.id],
+          joineryId: "not-real",
+        },
+      },
+    });
+    const result = deserializeBuild(encoded, catalogue);
+    expect(result).toMatchObject({
+      ok: true,
+      build: {
+        weaponEnhancements: {
+          mainHand: { tempers: [], joineryId: null },
+        },
+      },
+      warnings: [],
+    });
+  });
+
   it("caps builds saved before the current Envoy Rank maximum", () => {
     const encoded = Buffer.from(
       JSON.stringify({
@@ -447,7 +505,7 @@ describe("build serialization", () => {
 
     expect(result).toEqual({
       ok: true,
-      sourceSchemaVersion: 5,
+      sourceSchemaVersion: 6,
       build,
       warnings: [
         "Envoy Rank was capped at the current maximum of 18.",

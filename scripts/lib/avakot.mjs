@@ -3,9 +3,10 @@ const USER_AGENT =
   "Soulframe-Framer/0.1 (https://github.com/atlamors/soulframe-framer)";
 
 export class LuaTableParser {
-  constructor(source) {
+  constructor(source, { rejectDuplicateKeys = false } = {}) {
     this.source = source;
     this.index = 0;
+    this.rejectDuplicateKeys = rejectDuplicateKeys;
   }
 
   error(message) {
@@ -97,6 +98,10 @@ export class LuaTableParser {
     if (character === "-" || /\d/.test(character)) return this.parseNumber();
     const identifier = this.parseIdentifier();
     if (identifier === "nil") return null;
+    // Some Avakot data modules use JSON-style `null` for absent metadata.
+    // Preserve that source distinction as JavaScript null rather than failing
+    // the entire import.
+    if (identifier === "null") return null;
     if (identifier === "true") return true;
     if (identifier === "false") return false;
     this.error(`Unsupported Lua value "${identifier}"`);
@@ -143,6 +148,12 @@ export class LuaTableParser {
           value = this.parseValue();
         }
       }
+      if (
+        this.rejectDuplicateKeys &&
+        Object.prototype.hasOwnProperty.call(result, key)
+      ) {
+        this.error(`Duplicate Lua table key "${key}"`);
+      }
       result[key] = value;
       this.skipSpace();
       if (this.source[this.index] === "," || this.source[this.index] === ";") {
@@ -185,15 +196,46 @@ export const fetchJson = async (url) => {
   return response.json();
 };
 
-export const getModule = async (page) => {
+export const getModuleSource = async (page) => {
   const response = await fetchJson(
     apiUrl({ action: "parse", page, prop: "wikitext" }),
   );
   if (!response.parse?.wikitext) {
     throw new Error(`Could not read Avakot module ${page}.`);
   }
-  return new LuaTableParser(response.parse.wikitext).parse();
+  return response.parse.wikitext;
 };
+
+export const getModule = async (page) =>
+  new LuaTableParser(await getModuleSource(page)).parse();
+
+export const moduleRevisionFromResponse = (response, page) => {
+  const sourcePage = response.query?.pages?.[0];
+  const revision = sourcePage?.revisions?.[0];
+  const source = revision?.slots?.main?.content ?? revision?.["*"];
+  if (!revision || typeof source !== "string") {
+    throw new Error(`Could not read Avakot module revision for ${page}.`);
+  }
+  return {
+    source,
+    revisionId: revision.revid,
+    revisionTimestamp: revision.timestamp,
+  };
+};
+
+export const getModuleRevision = async (page) =>
+  moduleRevisionFromResponse(
+    await fetchJson(
+      apiUrl({
+        action: "query",
+        prop: "revisions",
+        rvprop: "ids|timestamp|content",
+        rvslots: "main",
+        titles: page,
+      }),
+    ),
+    page,
+  );
 
 export const getRevision = async (page) => {
   const response = await fetchJson(

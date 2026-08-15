@@ -4,6 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { DEFAULT_BUILD } from "@/app/builder/constants";
 import {
   useActionState,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -23,7 +24,7 @@ import {
   savePublicationDraftAction,
   unpublishPublicationAction,
 } from "../actions";
-import { publicPublicationPath } from "../publisherRoutes";
+import { publicPublicationPath, publisherNewPath } from "../publisherRoutes";
 import { SoulframeFrameDisplay } from "../rendering/SoulframeFrameSnapshot";
 import { RegisteredSemanticBlockRenderer } from "../rendering/SemanticBlocks";
 import { PublicationRichTextEditor } from "./PublicationRichTextEditor";
@@ -146,6 +147,14 @@ export function SoulframeBuildComposer(props: SoulframeBuildComposerProps) {
   >("copy-active");
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const variantTriggerRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (props.mode !== "new" || !window.location.search) return;
+    window.history.replaceState(
+      window.history.state,
+      "",
+      `${publisherNewPath("soulframe.build")}${window.location.hash}`,
+    );
+  }, [props.mode]);
   const initialCreateState: CreateSoulframeBuildActionState = {
     status: "idle",
     message: "",
@@ -273,6 +282,7 @@ export function SoulframeBuildComposer(props: SoulframeBuildComposerProps) {
     >
       <input type="hidden" name="state" value={serialized} />
       <input type="hidden" name="slug" value={slug} />
+      <input type="hidden" name="profileId" value="soulframe.build" />
       {props.mode === "persisted" ? (
         <input type="hidden" name="publicationId" value={props.publicationId} />
       ) : null}
